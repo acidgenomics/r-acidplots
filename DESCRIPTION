@@ -1,0 +1,57 @@
+Package: minimalism
+Title: Minimalist visualizations for bioinformatics
+Description: Part of the basejump toolkit for bioinformatics.
+Version: 0.1.0
+Date: 2019-03-27
+Authors@R: c(
+    person(
+        "Michael", "Steinbaugh",
+        email = "mike@steinbaugh.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-2403-2221")
+    ),
+    person(
+        given = "Acid Genomics",
+        role = c("cph", "fnd")
+    ))
+URL:
+    https://minimalism.acidgenomics.com/,
+    https://github.com/acidgenomics/minimalism/
+BugReports: https://github.com/acidgenomics/minimalism/issues/
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.4)
+Imports:
+    basejump (>= 0.9.16), bioverbs (>= 0.1.10), goalie (>= 0.2.12),
+    SingleCellExperiment, SummarizedExperiment,
+    cowplot (>= 0.9.4), dplyr (>= 0.8), ggplot2 (>= 3.1.0), magrittr (>= 1.5),
+        tibble (>= 2.1),
+    grDevices, methods, stats, utils
+Suggests:
+    acidData,
+    BiocStyle, knitr,
+    patrick, testthat,
+    tidyverse
+Remotes:
+    acidgenomics/acidData,
+    acidgenomics/basejump,
+    acidgenomics/bioverbs,
+    acidgenomics/goalie
+biocViews: Visualization
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+Collate: 
+    'imports.R'
+    'params.R'
+    'plotCounts-methods.R'
+    'plotCountsPerBiotype-methods.R'
+    'plotCountsPerBroadClass-methods.R'
+    'plotCountsPerGene-methods.R'
+    'plotGenderMarkers-methods.R'
+    'plotGenesDetected-methods.R'
+    'plotPCA-methods.R'
+    'plotQC-methods.R'
+    'plotTotalCounts-methods.R'
+    'plotZerosVsDepth-methods.R'
+    'reexports.R'
