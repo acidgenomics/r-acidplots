@@ -1,8 +1,5 @@
-# FIXME Consider moving ggplot2 themes here as well.
-
-
 #' @importFrom SummarizedExperiment assays assays<- rowData
-#' @importFrom S4Vectors DataFrame
+#' @importFrom S4Vectors DataFrame aggregate
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert
 #'   as.SummarizedExperiment as_tibble basejump_geom_abline camel cell2sample
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
@@ -26,7 +23,7 @@
 #' @importFrom matrixStats rowVars
 #' @importFrom methods as is validObject
 #' @importFrom rlang := UQ sym syms
-#' @importFrom stats prcomp
+#' @importFrom stats as.formula prcomp
 #' @importFrom tibble tibble
 #' @importFrom tidyr gather
 #' @importFrom utils data globalVariables
