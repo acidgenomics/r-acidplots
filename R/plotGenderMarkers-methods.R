@@ -1,7 +1,3 @@
-#' @include plotCounts-methods.R
-
-
-
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
 #' @inheritParams plotCounts
@@ -25,7 +21,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
 
         # Load the relevant internal gender markers data.
         organism <- organism(object)
-        data("gender_markers", package = "basejump", envir = environment())
+        data("gender_markers", package = "acidData", envir = environment())
         markers <- get("gender_markers", inherits = FALSE)
         assert(is.list(markers))
         # Error if the organism is not supported.
