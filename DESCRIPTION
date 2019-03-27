@@ -43,7 +43,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
-    'ggplot2.R'
+    'ggplot-themes.R'
+    'ggplot2-geoms.R'
     'globals.R'
     'imports.R'
     'package.R'
