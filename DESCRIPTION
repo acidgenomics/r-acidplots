@@ -43,21 +43,3 @@ biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
-Collate: 
-    'ggplot-themes.R'
-    'ggplot2-geoms.R'
-    'globals.R'
-    'imports.R'
-    'package.R'
-    'params.R'
-    'plotCounts-methods.R'
-    'plotCountsPerBiotype-methods.R'
-    'plotCountsPerBroadClass-methods.R'
-    'plotCountsPerGene-methods.R'
-    'plotGenderMarkers-methods.R'
-    'plotGenesDetected-methods.R'
-    'plotPCA-methods.R'
-    'plotQC-methods.R'
-    'plotTotalCounts-methods.R'
-    'plotZerosVsDepth-methods.R'
-    'reexports.R'
