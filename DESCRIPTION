@@ -20,6 +20,7 @@ URL:
 BugReports: https://github.com/acidgenomics/minimalism/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
+LazyData: false
 Depends: R (>= 3.4)
 Imports:
     basejump (>= 0.9.16), bioverbs (>= 0.1.10), goalie (>= 0.2.12),
