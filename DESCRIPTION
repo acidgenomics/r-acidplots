@@ -2,7 +2,7 @@ Package: minimalism
 Title: Minimalist visualizations for bioinformatics
 Description: Part of the basejump toolkit for bioinformatics.
 Version: 0.1.0
-Date: 2019-03-27
+Date: 2019-03-28
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
