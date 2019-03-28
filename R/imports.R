@@ -1,11 +1,10 @@
 #' @importFrom SummarizedExperiment assays assays<- rowData
 #' @importFrom S4Vectors DataFrame aggregate
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert
-#'   as.SummarizedExperiment as_tibble basejump_geom_abline camel cell2sample
-#'   convertGenesToSymbols counts decode formalsList interestingGroups
-#'   interestingGroups<- matchArgsToDoCall matchInterestingGroups
-#'   mapGenesToRownames meltCounts metrics organism sampleData snake
-#'   standardizeCall zerosVsDepth
+#'   as.SummarizedExperiment as_tibble camel cell2sample convertGenesToSymbols
+#'   counts decode formalsList interestingGroups interestingGroups<-
+#'   matchArgsToDoCall matchInterestingGroups mapGenesToRownames meltCounts
+#'   metrics organism sampleData snake standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
 #'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
