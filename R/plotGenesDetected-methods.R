@@ -72,7 +72,7 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
             )
 
         if (isPositive(limit)) {
-            p <- p + basejump_geom_abline(yintercept = limit)
+            p <- p + acid_geom_abline(yintercept = limit)
         }
 
         if (is(fill, "ScaleDiscrete")) {

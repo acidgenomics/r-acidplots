@@ -3,20 +3,20 @@
 #' Convenience functions with modified defaults for
 #' [ggplot2](http://ggplot2.org).
 #'
-#' @section basejump_geom_abline:
+#' @section acid_geom_abline:
 #'
 #' Horizontal or vertical cutoff line.
 #'
-#' @section basejump_geom_label:
+#' @section acid_geom_label:
 #'
 #' Modified version of [ggplot2::geom_label()].
 #'
-#' @section basejump_geom_label_average:
+#' @section acid_geom_label_average:
 #'
 #' Add average labels to a plot. For example, `col` can be `nGene`. Median or
 #' mean values are always calculated per sample (`sampleName`).
 #'
-#' @section basejump_geom_label_repel:
+#' @section acid_geom_label_repel:
 #'
 #' Repulsive textual annotations. Modified basejump version of
 #' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
@@ -48,21 +48,21 @@
 #' @return `ggproto`.
 #'
 #' @examples
-#' ## basejump_geom_abline ====
+#' ## acid_geom_abline ====
 #' ## x-axis line
-#' geom <- basejump_geom_abline(xintercept = 1L)
+#' geom <- acid_geom_abline(xintercept = 1L)
 #' geom
 #'
 #' ## y-axis line
-#' geom <- basejump_geom_abline(yintercept = 1L)
+#' geom <- acid_geom_abline(yintercept = 1L)
 #' geom
 #'
-#' ## basejump_geom_label ====
-#' geom <- basejump_geom_label()
+#' ## acid_geom_label ====
+#' geom <- acid_geom_label()
 #' geom
 #'
-#' ## basejump_geom_label_average ====
-#' geom <- basejump_geom_label_average(
+#' ## acid_geom_label_average ====
+#' geom <- acid_geom_label_average(
 #'     data = tibble::tibble(
 #'         sampleName = rep(c("sample1", "sample2"), times = 4L),
 #'         counts = seq_len(8L)
@@ -72,8 +72,8 @@
 #' )
 #' geom
 #'
-#' ## basejump_geom_label_repel ====
-#' geom <- basejump_geom_label_repel()
+#' ## acid_geom_label_repel ====
+#' geom <- acid_geom_label_repel()
 #' geom
 NULL
 
@@ -103,7 +103,7 @@ NULL
 
 #' @rdname ggplot2-geoms
 #' @export
-basejump_geom_abline <- function(
+acid_geom_abline <- function(
     xintercept = NULL,
     yintercept = NULL
 ) {
@@ -139,7 +139,7 @@ basejump_geom_abline <- function(
 
 #' @rdname ggplot2-geoms
 #' @export
-basejump_geom_label <- function(
+acid_geom_label <- function(
     data = NULL,
     mapping = NULL,
     ...
@@ -165,7 +165,7 @@ basejump_geom_label <- function(
 
 #' @rdname ggplot2-geoms
 #' @export
-basejump_geom_label_average <- function(
+acid_geom_label_average <- function(
     data,
     col,
     fun = c("mean", "median"),
@@ -205,7 +205,7 @@ basejump_geom_label_average <- function(
     }
 
     do.call(
-        what = basejump_geom_label,
+        what = acid_geom_label,
         args = list(
             data = data,
             mapping = aes(label = !!sym("roundedAverage")),
@@ -218,7 +218,7 @@ basejump_geom_label_average <- function(
 
 #' @rdname ggplot2-geoms
 #' @export
-basejump_geom_label_repel <- function(
+acid_geom_label_repel <- function(
     data = NULL,
     mapping = NULL,
     color = NULL,
