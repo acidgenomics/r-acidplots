@@ -2,20 +2,20 @@
 % Please edit documentation in R/ggplot2-geoms.R
 \name{ggplot2-geoms}
 \alias{ggplot2-geoms}
-\alias{basejump_geom_abline}
-\alias{basejump_geom_label}
-\alias{basejump_geom_label_average}
-\alias{basejump_geom_label_repel}
+\alias{acid_geom_abline}
+\alias{acid_geom_label}
+\alias{acid_geom_label_average}
+\alias{acid_geom_label_repel}
 \title{ggplot2 geometric objects}
 \usage{
-basejump_geom_abline(xintercept = NULL, yintercept = NULL)
+acid_geom_abline(xintercept = NULL, yintercept = NULL)
 
-basejump_geom_label(data = NULL, mapping = NULL, ...)
+acid_geom_label(data = NULL, mapping = NULL, ...)
 
-basejump_geom_label_average(data, col, fun = c("mean", "median"),
+acid_geom_label_average(data, col, fun = c("mean", "median"),
   digits = 0L, ...)
 
-basejump_geom_label_repel(data = NULL, mapping = NULL, color = NULL,
+acid_geom_label_repel(data = NULL, mapping = NULL, color = NULL,
   size = 4L, ...)
 }
 \arguments{
@@ -58,26 +58,26 @@ Font size.}
 Convenience functions with modified defaults for
 \href{http://ggplot2.org}{ggplot2}.
 }
-\section{basejump_geom_abline}{
+\section{acid_geom_abline}{
 
 
 Horizontal or vertical cutoff line.
 }
 
-\section{basejump_geom_label}{
+\section{acid_geom_label}{
 
 
 Modified version of \code{\link[ggplot2:geom_label]{ggplot2::geom_label()}}.
 }
 
-\section{basejump_geom_label_average}{
+\section{acid_geom_label_average}{
 
 
 Add average labels to a plot. For example, \code{col} can be \code{nGene}. Median or
 mean values are always calculated per sample (\code{sampleName}).
 }
 
-\section{basejump_geom_label_repel}{
+\section{acid_geom_label_repel}{
 
 
 Repulsive textual annotations. Modified basejump version of
@@ -86,21 +86,21 @@ is required, simply use the ggrepel version instead.
 }
 
 \examples{
-## basejump_geom_abline ====
+## acid_geom_abline ====
 ## x-axis line
-geom <- basejump_geom_abline(xintercept = 1L)
+geom <- acid_geom_abline(xintercept = 1L)
 geom
 
 ## y-axis line
-geom <- basejump_geom_abline(yintercept = 1L)
+geom <- acid_geom_abline(yintercept = 1L)
 geom
 
-## basejump_geom_label ====
-geom <- basejump_geom_label()
+## acid_geom_label ====
+geom <- acid_geom_label()
 geom
 
-## basejump_geom_label_average ====
-geom <- basejump_geom_label_average(
+## acid_geom_label_average ====
+geom <- acid_geom_label_average(
     data = tibble::tibble(
         sampleName = rep(c("sample1", "sample2"), times = 4L),
         counts = seq_len(8L)
@@ -110,8 +110,8 @@ geom <- basejump_geom_label_average(
 )
 geom
 
-## basejump_geom_label_repel ====
-geom <- basejump_geom_label_repel()
+## acid_geom_label_repel ====
+geom <- acid_geom_label_repel()
 geom
 }
 \seealso{

@@ -4,9 +4,10 @@
 \name{minimalism-package}
 \alias{minimalism}
 \alias{minimalism-package}
-\title{minimalism}
+\title{minimalism
+Minimalist visualizations for bioinformatics.}
 \description{
-Minimalist visualizations for bioinformatics.
+Part of the basejump toolkit for bioinformatics.
 }
 \seealso{
 Useful links:
@@ -26,3 +27,4 @@ Other contributors:
 }
 
 }
+\keyword{internal}

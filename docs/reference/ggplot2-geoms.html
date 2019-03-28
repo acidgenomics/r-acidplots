@@ -81,6 +81,9 @@ ggplot2." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -114,14 +117,14 @@ ggplot2." />
     
     </div>
 
-    <pre class="usage"><span class='fu'>basejump_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>acid_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>basejump_geom_label</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>acid_geom_label</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
-<span class='fu'>basejump_geom_label_average</span>(<span class='no'>data</span>, <span class='no'>col</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mean"</span>, <span class='st'>"median"</span>),
+<span class='fu'>acid_geom_label_average</span>(<span class='no'>data</span>, <span class='no'>col</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mean"</span>, <span class='st'>"median"</span>),
   <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='no'>...</span>)
 
-<span class='fu'>basejump_geom_label_repel</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>acid_geom_label_repel</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>4L</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -183,23 +186,23 @@ Font size.</p></td>
 
     <p><code>ggproto</code>.</p>
     
-    <h2 class="hasAnchor" id="basejump-geom-abline"><a class="anchor" href="#basejump-geom-abline"></a>basejump_geom_abline</h2>
+    <h2 class="hasAnchor" id="acid-geom-abline"><a class="anchor" href="#acid-geom-abline"></a>acid_geom_abline</h2>
 
     
     <p>Horizontal or vertical cutoff line.</p>
     
-    <h2 class="hasAnchor" id="basejump-geom-label"><a class="anchor" href="#basejump-geom-label"></a>basejump_geom_label</h2>
+    <h2 class="hasAnchor" id="acid-geom-label"><a class="anchor" href="#acid-geom-label"></a>acid_geom_label</h2>
 
     
     <p>Modified version of <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_text'>ggplot2::geom_label()</a></code>.</p>
     
-    <h2 class="hasAnchor" id="basejump-geom-label-average"><a class="anchor" href="#basejump-geom-label-average"></a>basejump_geom_label_average</h2>
+    <h2 class="hasAnchor" id="acid-geom-label-average"><a class="anchor" href="#acid-geom-label-average"></a>acid_geom_label_average</h2>
 
     
     <p>Add average labels to a plot. For example, <code>col</code> can be <code>nGene</code>. Median or
 mean values are always calculated per sample (<code>sampleName</code>).</p>
     
-    <h2 class="hasAnchor" id="basejump-geom-label-repel"><a class="anchor" href="#basejump-geom-label-repel"></a>basejump_geom_label_repel</h2>
+    <h2 class="hasAnchor" id="acid-geom-label-repel"><a class="anchor" href="#acid-geom-label-repel"></a>acid_geom_label_repel</h2>
 
     
     <p>Repulsive textual annotations. Modified basejump version of
@@ -215,26 +218,26 @@ is required, simply use the ggrepel version instead.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## basejump_geom_abline ====</span>
+    <pre class="examples"><div class='input'><span class='co'>## acid_geom_abline ====</span>
 <span class='co'>## x-axis line</span>
-<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
+<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
 <span class='no'>geom</span></div><div class='output co'>#&gt; mapping: xintercept = ~xintercept 
 #&gt; geom_vline: na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
 <span class='co'>## y-axis line</span>
-<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_abline</span>(<span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
+<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_abline</span>(<span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
 <span class='no'>geom</span></div><div class='output co'>#&gt; mapping: yintercept = ~yintercept 
 #&gt; geom_hline: na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'>## basejump_geom_label ====</span>
-<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label</span>()
+<span class='co'>## acid_geom_label ====</span>
+<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_label</span>()
 <span class='no'>geom</span></div><div class='output co'>#&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'>## basejump_geom_label_average ====</span>
-<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_average</span>(
+<span class='co'>## acid_geom_label_average ====</span>
+<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_label_average</span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
         <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
         <span class='kw'>counts</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>8L</span>)
@@ -246,8 +249,8 @@ is required, simply use the ggrepel version instead.</p>
 #&gt; geom_label: parse = FALSE, label.padding = 0.2, label.r = 0.15, label.size = NA, na.rm = FALSE
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
-<span class='co'>## basejump_geom_label_repel ====</span>
-<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>basejump_geom_label_repel</span>()
+<span class='co'>## acid_geom_label_repel ====</span>
+<span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_label_repel</span>()
 <span class='no'>geom</span></div><div class='output co'>#&gt; geom_label_repel: parse = FALSE, box.padding = 0.5, label.padding = 0.25, point.padding = 0.75, label.r = 0.15, label.size = 0.25, segment.colour = NULL, segment.size = 0.5, segment.alpha = NULL, min.segment.length = 0.5, arrow = list(angle = 30, length = 0.01, ends = 2, type = 1), na.rm = FALSE, force = 1, max.iter = 2000, nudge_x = 0, nudge_y = 0, xlim = c(NA, NA), ylim = c(NA, NA), direction = both, seed = NA
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div></pre>
@@ -259,13 +262,13 @@ is required, simply use the ggrepel version instead.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#basejump-geom-abline">basejump_geom_abline</a></li>
+      <li><a href="#acid-geom-abline">acid_geom_abline</a></li>
 
-      <li><a href="#basejump-geom-label">basejump_geom_label</a></li>
+      <li><a href="#acid-geom-label">acid_geom_label</a></li>
 
-      <li><a href="#basejump-geom-label-average">basejump_geom_label_average</a></li>
+      <li><a href="#acid-geom-label-average">acid_geom_label_average</a></li>
 
-      <li><a href="#basejump-geom-label-repel">basejump_geom_label_repel</a></li>
+      <li><a href="#acid-geom-label-repel">acid_geom_label_repel</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
