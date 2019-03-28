@@ -21,8 +21,12 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
 
         # Load the relevant internal gender markers data.
         organism <- organism(object)
-        data("gender_markers", package = "acidData", envir = environment())
-        markers <- get("gender_markers", inherits = FALSE)
+        data(
+            list = "genderMarkers",
+            package = "minimalism",
+            envir = environment()
+        )
+        markers <- get("genderMarkers", inherits = FALSE)
         assert(is.list(markers))
         # Error if the organism is not supported.
         # Convert from camel case back to full Latin.
