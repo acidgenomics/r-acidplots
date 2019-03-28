@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotZerosVsDepth
 #' @inheritParams params
 #' @examples
-#' data(sce, package = "acidData")
+#' data(sce, package = "acidtest")
 #' plotZerosVsDepth(sce)
 NULL
 

@@ -33,7 +33,7 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(rse, package = "acidData")
+#' data(rse, package = "acidtest")
 #' plotPCA(rse, label = FALSE)
 #' plotPCA(rse, label = TRUE)
 NULL

@@ -75,7 +75,7 @@ a way to look at how samples are clustering.
 }
 
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 plotPCA(rse, label = FALSE)
 plotPCA(rse, label = TRUE)
 }

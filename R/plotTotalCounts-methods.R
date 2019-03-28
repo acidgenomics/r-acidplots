@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotTotalCounts
 #' @inheritParams params
 #' @examples
-#' data(rse, sce, package = "acidData")
+#' data(rse, sce, package = "acidtest")
 #' plotTotalCounts(rse)
 #' plotTotalCounts(sce)
 NULL

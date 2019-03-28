@@ -30,12 +30,12 @@ Imports:
         tibble (>= 2.1), tidyr (>= 0.8),
     grDevices, methods, stats, utils
 Suggests:
-    acidData,
+    acidtest (>= 0.1),
     BiocStyle, knitr,
     patrick, testthat,
     tidyverse
 Remotes:
-    acidgenomics/acidData,
+    acidgenomics/acidtest,
     acidgenomics/basejump,
     acidgenomics/bioverbs,
     acidgenomics/goalie

@@ -7,7 +7,7 @@
 Plot counts per broad class definition
 }
 \examples{
-data(rse, sce, package = "acidData")
+data(rse, sce, package = "acidtest")
 
 ## SummarizedExperiment ====
 plotCountsPerBroadClass(rse)

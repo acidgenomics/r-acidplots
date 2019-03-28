@@ -6,7 +6,7 @@
 #'   Type of ggplot2 geometric object to use.
 #'
 #' @examples
-#' data(rse, sce, package = "acidData")
+#' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerGene(rse, geom = "boxplot")
