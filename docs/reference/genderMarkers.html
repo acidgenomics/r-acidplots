@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot counts per broad class definition — plotCountsPerBroadClass • minimalism</title>
+<title>Sexually dimorphic gender marker genes — genderMarkers • minimalism</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot counts per broad class definition — plotCountsPerBroadClass" />
+<meta property="og:title" content="Sexually dimorphic gender marker genes — genderMarkers" />
 
-<meta property="og:description" content="Plot counts per broad class definition" />
+<meta property="og:description" content="Sexually dimorphic gender marker genes" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,36 +104,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot counts per broad class definition</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/plotCountsPerBroadClass-methods.R'><code>R/plotCountsPerBroadClass-methods.R</code></a></small>
-    <div class="hidden name"><code>plotCountsPerBroadClass.Rd</code></div>
+    <h1>Sexually dimorphic gender marker genes</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>genderMarkers.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot counts per broad class definition</p>
+    <p>Sexually dimorphic gender marker genes</p>
     
     </div>
 
+    <pre class="usage"><span class='no'>genderMarkers</span></pre>
         
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>An object of class <code>list</code> of length 2.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='fu'>plotCountsPerBroadClass</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotCountsPerBroadClass-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'>plotCountsPerBroadClass</span>(<span class='no'>sce</span>)</div><div class='img'><img src='plotCountsPerBroadClass-2.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>genderMarkers</span>)
+<span class='no'>genderMarkers</span></div><div class='output co'>#&gt; $homoSapiens
+#&gt; <span style='color: #949494;'># A tibble: 6 x 3</span><span>
+#&gt;   geneID          geneName chromosome
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ENSG00000173674 EIF1AX   X         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> ENSG00000229807 XIST     X         
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ENSG00000067048 DDX3Y    Y         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> ENSG00000012817 KDM5D    Y         
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> ENSG00000114374 USP9Y    Y         
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ENSG00000183878 UTY      Y         
+#&gt; 
+#&gt; $musMusculus
+#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+#&gt;   geneID             geneName chromosome
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ENSMUSG00000086503 Xist     X         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> ENSMUSG00000069045 Ddx3y    Y         
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ENSMUSG00000056673 Kdm5d    Y         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> ENSMUSG00000068457 Uty      Y         
+#&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-            
+      
+      <li><a href="#format">Format</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Michael Steinbaugh, Rory Kirchner</p>
   </div>
 </div>
 
