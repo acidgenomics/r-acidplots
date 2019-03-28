@@ -42,6 +42,6 @@ Plot title.}
 Plot percentage of zeros vs. library depth
 }
 \examples{
-data(sce, package = "acidData")
+data(sce, package = "acidtest")
 plotZerosVsDepth(sce)
 }

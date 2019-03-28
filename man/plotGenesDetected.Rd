@@ -59,7 +59,7 @@ Plot title.}
 Plot genes detected
 }
 \examples{
-data(rse, sce, package = "acidData")
+data(rse, sce, package = "acidtest")
 plotGenesDetected(rse)
 plotGenesDetected(sce)
 }

@@ -24,6 +24,6 @@ name must be defined in
 Quality control
 }
 \examples{
-data(rse, package = "acidData")
+data(rse, package = "acidtest")
 plotQC(rse)
 }
