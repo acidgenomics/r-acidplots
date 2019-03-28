@@ -42,15 +42,15 @@
 #'   To set the discrete color palette globally, use:
 #'
 #'   ```
-#'   options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
+#'   options(acid.color.discrete = ggplot2::scale_color_viridis_d())
 #'   ```
 #' @param counts `matrix`.
 #'   Count matrix. Normalized counts are recommended.
 #' @param countsAxisLabel `character(1)`.
 #'   Counts axis label.
 #' @param dark `logical(1)`.
-#'   Plot against a dark background using the [basejump::theme_midnight()]
-#'   ggplot2 theme.
+#'   Plot against a dark background using the
+#'   [`theme_midnight()`][minimalism::theme_midnight] ggplot2 theme.
 #' @param dimsUse `integer`.
 #'   Vector of length 2 that denotes the columns from the reduced dimension
 #'   matrix to use for `centerX` and `centerY` column calculations. Defaults the
@@ -83,7 +83,7 @@
 #'   To set the discrete fill palette globally, use:
 #'
 #'   ```
-#'   options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
+#'   options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 #'   ```
 #' @param flip `logical(1)`.
 #'   Flip x and y axes. Recommended for plots containing many samples.
