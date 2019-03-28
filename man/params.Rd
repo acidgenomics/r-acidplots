@@ -50,7 +50,7 @@ Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
 are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
 
-To set the discrete color palette globally, use:\preformatted{options(basejump.color.discrete = ggplot2::scale_color_viridis_d())
+To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
 }}
 
 \item{counts}{\code{matrix}.
@@ -60,8 +60,8 @@ Count matrix. Normalized counts are recommended.}
 Counts axis label.}
 
 \item{dark}{\code{logical(1)}.
-Plot against a dark background using the \code{\link[basejump:theme_midnight]{basejump::theme_midnight()}}
-ggplot2 theme.}
+Plot against a dark background using the
+\code{\link[minimalism:theme_midnight]{theme_midnight()}} ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}.
 Vector of length 2 that denotes the columns from the reduced dimension
@@ -99,7 +99,7 @@ Desired ggplot2 fill scale. Must supply discrete values. When set to
 \code{NULL}, the default ggplot2 color palette will be used. If manual color
 definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
 
-To set the discrete fill palette globally, use:\preformatted{options(basejump.fill.discrete = ggplot2::scale_fill_viridis_d())
+To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
 \item{flip}{\code{logical(1)}.
