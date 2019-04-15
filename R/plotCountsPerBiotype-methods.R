@@ -14,10 +14,11 @@ NULL
 
 
 
+#' @rdname plotCountsPerBiotype
+#' @name plotCountsPerBiotype
 #' @importFrom bioverbs plotCountsPerBiotype
-#' @aliases NULL
 #' @export
-bioverbs::plotCountsPerBiotype
+NULL
 
 
 

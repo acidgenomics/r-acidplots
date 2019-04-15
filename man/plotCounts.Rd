@@ -67,7 +67,7 @@ object <- rse
 
 rownames <- head(rownames(object))
 print(rownames)
-g2s <- Gene2Symbol(object)
+g2s <- basejump::Gene2Symbol(object)
 geneIDs <- head(g2s[["geneID"]])
 print(geneIDs)
 geneNames <- head(g2s[["geneName"]])
