@@ -40,10 +40,11 @@ NULL
 
 
 
+#' @rdname plotPCA
+#' @name plotPCA
 #' @importFrom BiocGenerics plotPCA
-#' @aliases NULL
 #' @export
-BiocGenerics::plotPCA
+NULL
 
 
 
