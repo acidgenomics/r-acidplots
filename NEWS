@@ -1,3 +1,9 @@
+## minimaism 0.1.1 (2019-04-15)
+
+Updated packages depencies and switched to Docker for Travis CI.
+
+
+
 ## minimalism 0.1.0 (2019-03-28)
 
 Initial release, migrating ggplot2 functions from basejump package.

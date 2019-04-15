@@ -14,10 +14,11 @@ NULL
 
 
 
+#' @rdname plotCountsPerBroadClass
+#' @name plotCountsPerBroadClass
 #' @importFrom bioverbs plotCountsPerBroadClass
-#' @aliases NULL
 #' @export
-bioverbs::plotCountsPerBroadClass
+NULL
 
 
 
