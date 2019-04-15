@@ -8,10 +8,11 @@ NULL
 
 
 
+#' @rdname plotZerosVsDepth
+#' @name plotZerosVsDepth
 #' @importFrom bioverbs plotZerosVsDepth
-#' @aliases NULL
 #' @export
-bioverbs::plotZerosVsDepth
+NULL
 
 
 

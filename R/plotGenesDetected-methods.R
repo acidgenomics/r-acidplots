@@ -9,10 +9,11 @@ NULL
 
 
 
+#' @rdname plotGenesDetected
+#' @name plotGenesDetected
 #' @importFrom bioverbs plotGenesDetected
-#' @aliases NULL
 #' @export
-bioverbs::plotGenesDetected
+NULL
 
 
 
