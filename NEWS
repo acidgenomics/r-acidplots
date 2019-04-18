@@ -1,4 +1,18 @@
-## minimaism 0.1.1 (2019-04-15)
+## minimalism 0.1.2 (2019-04-18)
+
+### New functions
+
+- `base_breaks`: An attempt as automatic pretty breaks based on the default R
+  plotting engine. Derived from a Stack Overflow post (see documentation).
+
+### Minor changes
+
+- `plotCountsPerBiotype`, `plotCountsPerBroadClass` switched to recommending
+  log10 counts by default.
+
+
+
+## minimalism 0.1.1 (2019-04-15)
 
 Updated packages depencies and switched to Docker for Travis CI.
 

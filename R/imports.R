@@ -16,7 +16,7 @@
 #'   element_rect element_text expand_limits facet_wrap geom_bar geom_boxplot
 #'   geom_density geom_hline geom_jitter geom_label geom_point geom_violin
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
-#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
+#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
 #'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
@@ -26,6 +26,7 @@
 #' @importFrom matrixStats rowVars
 #' @importFrom methods as is validObject
 #' @importFrom rlang := UQ quo_text sym syms
+#' @importFrom scales log_breaks
 #' @importFrom stats as.formula prcomp
 #' @importFrom tibble tibble
 #' @importFrom tidyr gather

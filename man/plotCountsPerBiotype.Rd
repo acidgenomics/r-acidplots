@@ -9,12 +9,12 @@
 \title{Plot counts per biotype}
 \usage{
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
-  n = 9L, interestingGroups = NULL, trans = "log2",
-  countsAxisLabel = "counts")
+  n = 9L, interestingGroups = NULL, trans = c("log10", "log2",
+  "identity"), countsAxisLabel = "counts")
 
 \S4method{plotCountsPerBroadClass}{SummarizedExperiment}(object,
-  assay = 1L, interestingGroups = NULL, trans = "log2",
-  countsAxisLabel = "counts")
+  assay = 1L, interestingGroups = NULL, trans = c("log10", "log2",
+  "identity"), countsAxisLabel = "counts")
 }
 \arguments{
 \item{object}{Object.}
