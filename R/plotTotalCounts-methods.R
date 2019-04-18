@@ -77,7 +77,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         }
 
         if (isTRUE(flip)) {
-            p <- p + coord_flip()
+            p <- flip_x_discrete(p)
         }
 
         if (identical(interestingGroups, "sampleName")) {

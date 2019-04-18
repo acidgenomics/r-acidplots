@@ -123,7 +123,7 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
 
         # Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !geom %in% "density") {
-            p <- p + coord_flip()
+            p <- flip_x_discrete(p)
         }
 
         if (identical(interestingGroups, "sampleName")) {
