@@ -1,3 +1,7 @@
+# FIXME Add `minCounts` support here.
+
+
+
 #' @name plotCountsPerGene
 #' @inherit bioverbs::plotCountsPerGene
 #' @inheritParams params
@@ -141,6 +145,17 @@ formals(plotCountsPerGene.SummarizedExperiment)[["flip"]] <-
     formalsList[["flip"]]
 
 
+
+#' @rdname plotCountsPerGene
+#' @export
+setMethod(
+    f = "plotCountsPerGene",
+    signature = signature("SummarizedExperiment"),
+    definition = plotCountsPerGene.SummarizedExperiment
+)
+
+
+
 plotCountsPerGene.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
@@ -152,18 +167,9 @@ plotCountsPerGene.SingleCellExperiment <-  # nolint
             )
         )
     }
+
 formals(plotCountsPerGene.SingleCellExperiment) <-
     formals(plotCountsPerGene.SummarizedExperiment)
-
-
-
-#' @rdname plotCountsPerGene
-#' @export
-setMethod(
-    f = "plotCountsPerGene",
-    signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerGene.SummarizedExperiment
-)
 
 
 
