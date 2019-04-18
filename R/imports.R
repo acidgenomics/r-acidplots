@@ -24,7 +24,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom matrixStats rowVars
 #' @importFrom methods as is validObject
-#' @importFrom rlang := UQ sym syms
+#' @importFrom rlang := UQ quo_text sym syms
 #' @importFrom stats as.formula prcomp
 #' @importFrom tibble tibble
 #' @importFrom tidyr gather

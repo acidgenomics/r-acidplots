@@ -22,7 +22,7 @@
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
 #'
-#' @name ggplot2-themes
+#' @name acid_theme
 #'
 #' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.
@@ -67,7 +67,7 @@ NULL
 
 
 
-#' @rdname ggplot2-themes
+#' @rdname acid_theme
 #' @export
 theme_paperwhite <- function(
     base_size = 14L,
@@ -142,7 +142,7 @@ theme_paperwhite <- function(
 
 
 
-#' @rdname ggplot2-themes
+#' @rdname acid_theme
 #' @export
 theme_midnight <- function() {
     assert(
