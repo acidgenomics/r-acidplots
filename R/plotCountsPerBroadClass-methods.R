@@ -27,14 +27,20 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         object,
         assay = 1L,
         interestingGroups = NULL,
-        trans = "log2",
+        trans = c("log10", "log2", "identity"),
         countsAxisLabel = "counts"
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isString(trans),
             isString(countsAxisLabel)
+        )
+        trans <- match.arg(trans)
+        breaks <- switch(
+            EXPR = trans,
+            identity = waiver(),
+            log2 = log_breaks(base = 2L),
+            log10 = log_breaks(base = 10L)
         )
 
         interestingGroups(object) <-
@@ -120,7 +126,11 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
                 scale = "area",
                 trim = TRUE
             ) +
-            scale_y_continuous(trans = trans) +
+            scale_y_continuous(
+                trans = trans,
+                breaks = breaks,
+                labels = prettyNum
+            ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
                 title = "counts per broad class",
