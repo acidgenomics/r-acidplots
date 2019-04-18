@@ -22,7 +22,7 @@
 #' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
-#' @name ggplot2-geoms
+#' @name acid_geom
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `character(1)`.
@@ -79,29 +79,7 @@ NULL
 
 
 
-.geneMedianLine <- stat_summary(
-    fun.y = median,
-    fun.ymin = median,
-    fun.ymax = median,
-    geom = "crossbar",
-    show.legend = FALSE,
-    width = 0.5
-)
-
-
-
-.genePoint <- function(size = 3L, alpha = 1L, ...) {
-    geom_point(
-        size = size,
-        alpha = alpha,
-        position = position_jitterdodge(dodge.width = 0.9),
-        ...
-    )
-}
-
-
-
-#' @rdname ggplot2-geoms
+#' @rdname acid_geom
 #' @export
 acid_geom_abline <- function(
     xintercept = NULL,
@@ -137,7 +115,7 @@ acid_geom_abline <- function(
 
 
 
-#' @rdname ggplot2-geoms
+#' @rdname acid_geom
 #' @export
 acid_geom_label <- function(
     data = NULL,
@@ -163,7 +141,7 @@ acid_geom_label <- function(
 
 
 
-#' @rdname ggplot2-geoms
+#' @rdname acid_geom
 #' @export
 acid_geom_label_average <- function(
     data,
@@ -216,7 +194,7 @@ acid_geom_label_average <- function(
 
 
 
-#' @rdname ggplot2-geoms
+#' @rdname acid_geom
 #' @export
 acid_geom_label_repel <- function(
     data = NULL,
