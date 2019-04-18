@@ -18,8 +18,9 @@
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie hasUniqueCols isCharacter isFlag isGGScale isInClosedRange
-#'   isInt isNonNegative isNumber isPositive isScalar isString isSubset
+#' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
+#'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
+#'   isSubset
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
 #' @importFrom matrixStats rowVars

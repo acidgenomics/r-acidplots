@@ -21,16 +21,20 @@
 flip_x_discrete <- function(object) {
     assert(
         is(object, "ggplot"),
-        isSubset("x", names(object[["mapping"]])),
         identical(
             x = object[["layers"]][[1L]][["geom"]][["required_aes"]],
             y = c("x", "y")
         )
     )
+
     data <- object[["data"]]
     assert(is.data.frame(data))
-    xCol <- quo_text(object[["mapping"]][["x"]])
+
+    mapping <- .detectMapping(object)
+    assert(is(mapping, "uneval"))
+    xCol <- quo_text(mapping[["x"]])
     limits <- rev(levels(as.factor(data[[xCol]])))
+
     object +
         scale_x_discrete(limits = limits) +
         coord_flip()
