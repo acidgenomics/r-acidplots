@@ -3,11 +3,17 @@
 \name{synesthesia}
 \alias{synesthesia}
 \alias{synesthesia_pal}
+\alias{scale_fill_synesthesia_c}
+\alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
 \usage{
 synesthesia(n = 256L)
 
-synesthesia_pal(n)
+synesthesia_pal()
+
+scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
+
+scale_fill_synesthesia_d(...)
 }
 \description{
 Synesthesia color palette

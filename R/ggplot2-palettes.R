@@ -32,9 +32,10 @@ synesthesia <- function(n = 256L) {
     assert(isInt(n), isPositive(n))
     colors <- vapply(
         X = c(
-            "darkorchid3", "darkorchid1",
-            "chartreuse2", "chartreuse3",
-            "darkorange1", "darkorange3"
+            "purple4",
+            "dodgerblue",
+            "chartreuse",
+            "orange"
         ),
         FUN = col2hex,
         FUN.VALUE = character(1L),
@@ -47,7 +48,7 @@ synesthesia <- function(n = 256L) {
 
 #' @rdname synesthesia
 #' @export
-synesthesia_pal <- function(n) {
+synesthesia_pal <- function() {
     function(n) {
         synesthesia(n)
     }
@@ -55,8 +56,15 @@ synesthesia_pal <- function(n) {
 
 
 
-#' @importFrom ggplot2 continuous_scale
+#' @importFrom ggplot2 continuous_scale discrete_scale
 #' @importFrom scales gradient_n_pal
+#' @importFrom ggplot2 discrete_scale
+NULL
+
+
+
+#' @rdname synesthesia
+#' @export
 scale_fill_synesthesia_c <- function(
     ...,
     na.value = "grey50",
@@ -68,6 +76,19 @@ scale_fill_synesthesia_c <- function(
         palette = gradient_n_pal(colours = synesthesia()),
         na.value = na.value,
         guide = guide,
+        ...
+    )
+}
+
+
+
+#' @rdname synesthesia
+#' @export
+scale_fill_synesthesia_d <- function(...) {
+    discrete_scale(
+        aesthetics = "fill",
+        scale_name = "synesthesia_d",
+        palette = synesthesia_pal(),
         ...
     )
 }
