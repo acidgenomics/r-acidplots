@@ -23,6 +23,7 @@
 #' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isInClosedRange isInt isNonNegative isNumber
 #'   isPositive isScalar isString isSubset
+#' @importFrom grDevices axisTicks
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
 #' @importFrom matrixStats rowVars

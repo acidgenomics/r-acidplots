@@ -8,9 +8,6 @@ flip_x_discrete(object)
 }
 \arguments{
 \item{object}{\code{ggplot}.}
-
-\item{xCol}{\code{character(1)}.
-Column name of discrete data plotted on the X axis.}
 }
 \value{
 \code{ggplot}.

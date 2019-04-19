@@ -144,9 +144,9 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
                 trim = TRUE
             ) +
             scale_y_continuous(
-                trans = trans,
                 breaks = breaks,
-                labels = prettyNum
+                labels = prettyNum,
+                trans = trans
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(

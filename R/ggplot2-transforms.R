@@ -6,8 +6,6 @@
 #' top on the Y axis, making them more human readable.
 #'
 #' @param object `ggplot`.
-#' @param xCol `character(1)`.
-#'   Column name of discrete data plotted on the X axis.
 #'
 #' @return `ggplot`.
 #'
