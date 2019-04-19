@@ -9,10 +9,12 @@
 #' - `gplots::col2hex()`.
 #' - `ggplot2::continuous_scale()`, `ggplot2::discrete_scale()`.
 #' - `scales::gradient_n_pal()`.
-#' - `viridis::viridis()`, `viridis::viridis_pal()`.
+#' - `viridisLite::viridis.map`, `viridis::viridis()`, `viridis::viridis_pal()`.
 #' - `Seurat::CustomPalette()`, `Seurat::PurpleAndYellow()`.
 #'
 #' Additional URLs:
+#' - http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+#' - https://matplotlib.org/tutorials/colors/colormaps.html
 #' - https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf
 #' - http://colorbrewer2.org/
 #' - http://colorspace.r-forge.r-project.org/
@@ -29,7 +31,11 @@
 synesthesia <- function(n = 256L) {
     assert(isInt(n), isPositive(n))
     colors <- vapply(
-        X = c("purple", "green", "orange"),
+        X = c(
+            "darkorchid3", "darkorchid1",
+            "chartreuse2", "chartreuse3",
+            "darkorange1", "darkorange3"
+        ),
         FUN = col2hex,
         FUN.VALUE = character(1L),
         USE.NAMES = FALSE
