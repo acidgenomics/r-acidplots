@@ -29,12 +29,14 @@ image(matrix(1:400, 20), col = synesthesia())
 \item \code{gplots::col2hex()}.
 \item \code{ggplot2::continuous_scale()}, \code{ggplot2::discrete_scale()}.
 \item \code{scales::gradient_n_pal()}.
-\item \code{viridis::viridis()}, \code{viridis::viridis_pal()}.
+\item \code{viridisLite::viridis.map}, \code{viridis::viridis()}, \code{viridis::viridis_pal()}.
 \item \code{Seurat::CustomPalette()}, \code{Seurat::PurpleAndYellow()}.
 }
 
 Additional URLs:
 \itemize{
+\item http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+\item https://matplotlib.org/tutorials/colors/colormaps.html
 \item https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf
 \item http://colorbrewer2.org/
 \item http://colorspace.r-forge.r-project.org/
