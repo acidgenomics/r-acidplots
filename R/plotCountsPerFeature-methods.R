@@ -40,7 +40,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         fill,
         flip,
         countsAxisLabel = "counts",
-        title = "counts per gene"
+        title = "Counts per feature"
     ) {
         validObject(object)
         assert(
@@ -60,15 +60,12 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
 
-        # Cutoff messages are too noisy, so suppressing here.
-        suppressMessages(
-            data <- meltCounts(
-                object = object,
-                assay = assay,
-                minCounts = minCounts,
-                minCountsMethod = minCountsMethod,
-                trans = trans
-            )
+        data <- meltCounts(
+            object = object,
+            assay = assay,
+            minCounts = minCounts,
+            minCountsMethod = minCountsMethod,
+            trans = trans
         )
 
         # Counts axis label. Automatically add transformation, if necessary.
@@ -198,3 +195,11 @@ setMethod(
     signature = signature("SingleCellExperiment"),
     definition = plotCountsPerFeature.SingleCellExperiment
 )
+
+
+
+#' @rdname plotCountsPerFeature
+#' @export
+plotCountsPerGene <- function(...) {
+    plotCountsPerFeature(..., title = "Counts per gene")
+}

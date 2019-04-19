@@ -28,12 +28,14 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         assay = 1L,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
-        countsAxisLabel = "counts"
+        countsAxisLabel = "counts",
+        title = "Counts per broad class"
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isString(countsAxisLabel)
+            isString(countsAxisLabel),
+            isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
         breaks <- switch(
@@ -45,6 +47,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
 
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
 
         rowData <- rowData(object)
         # Ensure Rle columns get decoded.
@@ -133,7 +136,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
-                title = "counts per broad class",
+                title = title,
                 x = NULL,
                 y = countsAxisLabel,
                 fill = paste(interestingGroups, collapse = ":\n")
