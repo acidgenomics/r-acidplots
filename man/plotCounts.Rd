@@ -7,10 +7,11 @@
 \title{Plot counts}
 \usage{
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
-  interestingGroups = NULL, countsAxisLabel = "counts",
-  medianLine = TRUE, color = getOption("basejump.discrete.color",
-  NULL), legend = getOption("basejump.legend", TRUE),
-  style = c("facet", "wide"))
+  interestingGroups = NULL, trans = c("identity", "log2", "log10"),
+  countsAxisLabel = "counts", medianLine = TRUE,
+  color = getOption("basejump.discrete.color", NULL),
+  legend = getOption("basejump.legend", TRUE), style = c("facet",
+  "wide"))
 }
 \arguments{
 \item{object}{Object.}
@@ -29,6 +30,12 @@ name must be defined in
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
+
+\item{trans}{\code{character(1)}.
+Name of the axis scale transformation to apply.
+
+For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
 
 \item{countsAxisLabel}{\code{character(1)}.
 Label to use for the counts axis.}
@@ -63,19 +70,18 @@ Plot counts
 }
 \examples{
 data(rse, package = "acidtest")
-object <- rse
 
-rownames <- head(rownames(object))
+rownames <- head(rownames(rse))
 print(rownames)
-g2s <- basejump::Gene2Symbol(object)
+g2s <- basejump::Gene2Symbol(rse)
 geneIDs <- head(g2s[["geneID"]])
 print(geneIDs)
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Rownames, gene IDs, and gene names (symbols) are supported.
-plotCounts(object, genes = geneIDs, style = "facet")
-plotCounts(object, genes = geneNames, style = "wide")
+plotCounts(rse, genes = geneIDs, style = "facet")
+plotCounts(rse, genes = geneNames, style = "wide")
 }
 \seealso{
 \itemize{

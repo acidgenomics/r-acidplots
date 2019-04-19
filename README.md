@@ -1,7 +1,7 @@
 # minimalism
 
 [![Travis CI build status](https://travis-ci.com/acidgenomics/minimalism.svg?branch=master)](https://travis-ci.com/acidgenomics/minimalism)
-[![Build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/minimalism/branch/master)
+[![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/minimalism/branch/master)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 Minimalist visualizations for bioinformatics.

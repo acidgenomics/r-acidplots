@@ -4,6 +4,8 @@
 \name{reexports}
 \alias{reexports}
 \alias{Gene2Symbol}
+\alias{aes}
+\alias{ggplot}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -12,5 +14,7 @@ below to see their documentation.
 
 \describe{
   \item{basejump}{\code{\link[basejump]{Gene2Symbol}}}
+
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 }}
 

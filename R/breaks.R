@@ -1,5 +1,7 @@
 #' Pretty breaks that resemble the base plotting engine
 #'
+#' @export
+#'
 #' @param n `integer(1)`.
 #'   Desired number of breaks.
 #'
