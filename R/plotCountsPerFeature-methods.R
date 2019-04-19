@@ -60,12 +60,15 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
 
-        data <- meltCounts(
-            object = object,
-            assay = assay,
-            minCounts = minCounts,
-            minCountsMethod = minCountsMethod,
-            trans = trans
+        # Cutoff messages are too noisy, so suppressing here.
+        suppressMessages(
+            data <- meltCounts(
+                object = object,
+                assay = assay,
+                minCounts = minCounts,
+                minCountsMethod = minCountsMethod,
+                trans = trans
+            )
         )
 
         # Counts axis label. Automatically add transformation, if necessary.
