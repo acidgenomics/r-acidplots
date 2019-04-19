@@ -1,23 +1,23 @@
-#' @name plotGenesDetected
-#' @inherit bioverbs::plotGenesDetected
+#' @name plotFeaturesDetected
+#' @inherit bioverbs::plotFeaturesDetected
 #' @inheritParams params
 #' @examples
 #' data(rse, sce, package = "acidtest")
-#' plotGenesDetected(rse)
-#' plotGenesDetected(sce)
+#' plotFeaturesDetected(rse)
+#' plotFeaturesDetected(sce)
 NULL
 
 
 
-#' @rdname plotGenesDetected
-#' @name plotGenesDetected
-#' @importFrom bioverbs plotGenesDetected
+#' @rdname plotFeaturesDetected
+#' @name plotFeaturesDetected
+#' @importFrom bioverbs plotFeaturesDetected
 #' @export
 NULL
 
 
 
-plotGenesDetected.SummarizedExperiment <-  # nolint
+plotFeaturesDetected.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
@@ -26,7 +26,8 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         minCounts = 1L,
         fill,
         flip,
-        title = "genes detected"
+        title = "Features detected",
+        countsAxisLabel = "features"
     ) {
         validObject(object)
         assert(
@@ -35,7 +36,8 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
             isInt(minCounts) && isNonNegative(minCounts),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
-            isString(title, nullOK = TRUE)
+            isString(title, nullOK = TRUE),
+            isString(countsAxisLabel)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -47,17 +49,17 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         if (is(counts, "sparseMatrix")) {
             colSums <- Matrix::colSums
         }
-        geneCount <- colSums(counts >= minCounts)
+        featureCount <- colSums(counts >= minCounts)
 
         data <- metrics(object) %>%
             as_tibble() %>%
-            mutate(geneCount = !!geneCount)
+            mutate(featureCount = !!featureCount)
 
         p <- ggplot(
             data = data,
             mapping = aes(
                 x = !!sym("sampleName"),
-                y = !!sym("geneCount"),
+                y = !!sym("featureCount"),
                 fill = !!sym("interestingGroups")
             )
         ) +
@@ -68,7 +70,7 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
             labs(
                 title = title,
                 x = NULL,
-                y = "gene count",
+                y = countsAxisLabel,
                 fill = paste(interestingGroups, collapse = ":\n")
             )
 
@@ -91,42 +93,54 @@ plotGenesDetected.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotGenesDetected.SummarizedExperiment)[["fill"]] <-
+formals(plotFeaturesDetected.SummarizedExperiment)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotGenesDetected.SummarizedExperiment)[["flip"]] <-
+formals(plotFeaturesDetected.SummarizedExperiment)[["flip"]] <-
     formalsList[["flip"]]
 
 
 
-#' @rdname plotGenesDetected
+#' @rdname plotFeaturesDetected
 #' @export
 setMethod(
-    f = "plotGenesDetected",
+    f = "plotFeaturesDetected",
     signature = signature("SummarizedExperiment"),
-    definition = plotGenesDetected.SummarizedExperiment
+    definition = plotFeaturesDetected.SummarizedExperiment
 )
 
 
 
-plotGenesDetected.SingleCellExperiment <-  # nolint
+plotFeaturesDetected.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
-            what = plotGenesDetected,
+            what = plotFeaturesDetected,
             args = matchArgsToDoCall(
                 args = list(object = aggregateCellsToSamples(object))
             )
         )
     }
 
-formals(plotGenesDetected.SingleCellExperiment) <-
-    formals(plotGenesDetected.SummarizedExperiment)
+formals(plotFeaturesDetected.SingleCellExperiment) <-
+    formals(plotFeaturesDetected.SummarizedExperiment)
 
 
 
-#' @rdname plotGenesDetected
+#' @rdname plotFeaturesDetected
 #' @export
 setMethod(
-    f = "plotGenesDetected",
+    f = "plotFeaturesDetected",
     signature = signature("SingleCellExperiment"),
-    definition = plotGenesDetected.SingleCellExperiment
+    definition = plotFeaturesDetected.SingleCellExperiment
 )
+
+
+
+#' @rdname plotFeaturesDetected
+#' @export
+plotGenesDetected <- function(...) {
+    plotFeaturesDetected(
+        ...,
+        title = "Genes detected",
+        countsAxisLabel = "genes"
+    )
+}

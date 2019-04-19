@@ -29,13 +29,15 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         n = 9L,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
-        countsAxisLabel = "counts"
+        countsAxisLabel = "counts",
+        title = "Counts per biotype"
     ) {
         validObject(object)
         assert(
             isScalar(assay),
             isInt(n),
-            isString(countsAxisLabel)
+            isString(countsAxisLabel),
+            isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
         breaks <- switch(
@@ -150,7 +152,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
-                title = "counts per biotype",
+                title = title,
                 x = NULL,
                 y = countsAxisLabel,
                 fill = paste(interestingGroups, collapse = ":\n")

@@ -10,11 +10,13 @@
 \usage{
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
   n = 9L, interestingGroups = NULL, trans = c("log10", "log2",
-  "identity"), countsAxisLabel = "counts")
+  "identity"), countsAxisLabel = "counts",
+  title = "Counts per biotype")
 
 \S4method{plotCountsPerBroadClass}{SummarizedExperiment}(object,
   assay = 1L, interestingGroups = NULL, trans = c("log10", "log2",
-  "identity"), countsAxisLabel = "counts")
+  "identity"), countsAxisLabel = "counts",
+  title = "Counts per broad class")
 }
 \arguments{
 \item{object}{Object.}
@@ -40,6 +42,9 @@ For more information:\preformatted{help(topic = "scale_x_continuous", package = 
 
 \item{countsAxisLabel}{\code{character(1)}.
 Counts axis label.}
+
+\item{title}{\code{character(1)}.
+Plot title.}
 }
 \value{
 \code{ggplot}.
