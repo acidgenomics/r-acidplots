@@ -3,12 +3,15 @@
 \name{acid_geom}
 \alias{acid_geom}
 \alias{acid_geom_abline}
+\alias{acid_geom_bar}
 \alias{acid_geom_label}
 \alias{acid_geom_label_average}
 \alias{acid_geom_label_repel}
 \title{ggplot2 geometric objects}
 \usage{
 acid_geom_abline(xintercept = NULL, yintercept = NULL)
+
+acid_geom_bar(..., color = NA, stat = "identity")
 
 acid_geom_label(data = NULL, mapping = NULL, ...)
 
@@ -22,6 +25,17 @@ acid_geom_label_repel(data = NULL, mapping = NULL, color = NULL,
 \item{xintercept, yintercept}{\code{numeric(1)}.
 Value denoting x- or y-axis cutoff. Specify one but not both.}
 
+\item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+\code{colour = "red"} or \code{size = 3}. They may also be parameters
+to the paired geom/stat.}
+
+\item{color}{\code{character(1)}.
+Text color (e.g. \code{"orange"}).}
+
+\item{stat}{The statistical transformation to use on the data for this
+layer, as a string.}
+
 \item{data}{\code{data.frame}.
 Data.}
 
@@ -29,11 +43,6 @@ Data.}
 \code{\link[=aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
 default), it is combined with the default mapping at the top level of the
 plot. You must supply \code{mapping} if there is no plot mapping.}
-
-\item{...}{Other arguments passed on to \code{\link[=layer]{layer()}}. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-\code{colour = "red"} or \code{size = 3}. They may also be parameters
-to the paired geom/stat.}
 
 \item{col}{\code{character(1)}.
 Column name.}
@@ -44,9 +53,6 @@ or "\code{median}".}
 
 \item{digits}{\code{integer(1)}.
 Number of significant digits to use. Defaults to rounded.}
-
-\item{color}{\code{character(1)}.
-Text color (e.g. \code{"orange"}).}
 
 \item{size}{\code{integer(1)}.
 Font size.}

@@ -81,50 +81,59 @@ NULL
 
 #' @rdname acid_geom
 #' @export
-acid_geom_abline <- function(
-    xintercept = NULL,
-    yintercept = NULL
-) {
-    alpha <- 0.75
-    color <- "black"
-    linetype <- "dashed"
-    size <- 1L
-    if (
-        (is.null(xintercept) && is.null(yintercept)) ||
-        (is.numeric(xintercept) && is.numeric(yintercept))
+acid_geom_abline <-  # nolint
+    function(
+        xintercept = NULL,
+        yintercept = NULL
     ) {
-        stop("Either `xintercept` or `yintercept` is required.", call. = FALSE)
-    } else if (is.numeric(xintercept)) {
-        geom_vline(
-            xintercept = xintercept,
-            alpha = alpha,
-            color = color,
-            linetype = linetype,
-            size = size
-        )
-    } else if (is.numeric(yintercept)) {
-        geom_hline(
-            yintercept = yintercept,
-            alpha = alpha,
-            color = color,
-            linetype = linetype,
-            size = size
-        )
+        alpha <- 0.75
+        color <- "black"
+        linetype <- "dashed"
+        size <- 1L
+        if (
+            (is.null(xintercept) && is.null(yintercept)) ||
+            (is.numeric(xintercept) && is.numeric(yintercept))
+        ) {
+            stop("Either `xintercept` or `yintercept` is required.")
+        } else if (is.numeric(xintercept)) {
+            geom_vline(
+                xintercept = xintercept,
+                alpha = alpha,
+                color = color,
+                linetype = linetype,
+                size = size
+            )
+        } else if (is.numeric(yintercept)) {
+            geom_hline(
+                yintercept = yintercept,
+                alpha = alpha,
+                color = color,
+                linetype = linetype,
+                size = size
+            )
+        }
     }
-}
 
 
 
 #' @rdname acid_geom
 #' @export
-acid_geom_label <- function(
-    data = NULL,
-    mapping = NULL,
-    ...
-) {
-    do.call(
-        what = geom_label,
-        args = list(
+acid_geom_bar <-  # nolint
+    function(..., color = NA, stat = "identity") {
+        geom_bar(..., color = NA, stat = "identity")
+    }
+
+
+
+#' @rdname acid_geom
+#' @export
+acid_geom_label <-  # nolint
+    function(
+        data = NULL,
+        mapping = NULL,
+        ...
+    ) {
+        geom_label(
             data = data,
             mapping = mapping,
             alpha = 0.75,
@@ -136,76 +145,72 @@ acid_geom_label <- function(
             show.legend = FALSE,
             ...
         )
-    )
-}
+    }
 
 
 
 #' @rdname acid_geom
 #' @export
-acid_geom_label_average <- function(
-    data,
-    col,
-    fun = c("mean", "median"),
-    digits = 0L,
-    ...
-) {
-    data <- as.data.frame(data)
-    assert(
-        isString(col),
-        isSubset(col, colnames(data)),
-        isInt(digits)
-    )
-    fun <- match.arg(fun)
-    fun <- get(fun)
-    assert(is.function(fun))
-
-    aggdata <- aggregate(
-        formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
-        data = data,
-        FUN = fun
-    )
-    aggdata[["roundedAverage"]] <- round(aggdata[[col]], digits = digits)
-
-    # Add `aggregate` column for facet wrapping, if necessary
-    if ("aggregate" %in% colnames(data)) {
-        sampleFacet <- data %>%
-            .[, c("sampleName", "aggregate")] %>%
-            unique()
-        data <- merge(
-            x = aggdata,
-            y = sampleFacet,
-            by = "sampleName",
-            all.x = TRUE
+acid_geom_label_average <-  # nolint
+    function(
+        data,
+        col,
+        fun = c("mean", "median"),
+        digits = 0L,
+        ...
+    ) {
+        data <- as.data.frame(data)
+        assert(
+            isString(col),
+            isSubset(col, colnames(data)),
+            isInt(digits)
         )
-    } else {
-        data <- aggdata
-    }
+        fun <- match.arg(fun)
+        fun <- get(fun)
+        assert(is.function(fun))
 
-    do.call(
-        what = acid_geom_label,
-        args = list(
+        aggdata <- aggregate(
+            formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
+            data = data,
+            FUN = fun
+        )
+        aggdata[["roundedAverage"]] <- round(aggdata[[col]], digits = digits)
+
+        # Add `aggregate` column for facet wrapping, if necessary
+        if ("aggregate" %in% colnames(data)) {
+            sampleFacet <- data %>%
+                .[, c("sampleName", "aggregate")] %>%
+                unique()
+            data <- merge(
+                x = aggdata,
+                y = sampleFacet,
+                by = "sampleName",
+                all.x = TRUE
+            )
+        } else {
+            data <- aggdata
+        }
+
+        acid_geom_label(
             data = data,
             mapping = aes(label = !!sym("roundedAverage")),
             ...
         )
-    )
-}
+    }
 
 
 
 #' @rdname acid_geom
 #' @export
-acid_geom_label_repel <- function(
-    data = NULL,
-    mapping = NULL,
-    color = NULL,
-    size = 4L,
-    ...
-) {
-    geom <- do.call(
-        what = geom_label_repel,
-        args = list(
+acid_geom_label_repel <-  # nolint
+    function(
+        data = NULL,
+        mapping = NULL,
+        color = NULL,
+        size = 4L,
+        ...
+    ) {
+        geom <- geom_label_repel(
             data = data,
             mapping = mapping,
             arrow = arrow(length = unit(0.01, "npc")),
@@ -219,9 +224,8 @@ acid_geom_label_repel <- function(
             size = size,
             ...
         )
-    )
-    if (is.character(color)) {
-        geom[["aes_params"]][["colour"]] <- color
+        if (is.character(color)) {
+            geom[["aes_params"]][["colour"]] <- color
+        }
+        geom
     }
-    geom
-}

@@ -18,25 +18,36 @@
 #' library(ggplot2)
 #' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 #' print(g)
-#' flip_x_discrete(g)
-flip_x_discrete <- function(object) {
-    assert(
-        is(object, "ggplot"),
-        isSubset(
-            x = "x",
-            y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
+#' acid_flip_x_discrete(g)
+acid_flip_x_discrete <-  # nolint
+    function(object) {
+        assert(
+            is(object, "ggplot"),
+            isSubset(
+                x = "x",
+                y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
+            )
         )
-    )
 
-    data <- object[["data"]]
-    assert(is.data.frame(data))
+        data <- object[["data"]]
+        assert(is.data.frame(data))
 
-    mapping <- .detectMapping(object)
-    assert(is(mapping, "uneval"))
-    xCol <- quo_text(mapping[["x"]])
-    limits <- rev(levels(as.factor(data[[xCol]])))
+        mapping <- .detectMapping(object)
+        assert(is(mapping, "uneval"))
+        xCol <- quo_text(mapping[["x"]])
+        limits <- rev(levels(as.factor(data[[xCol]])))
 
-    object +
-        scale_x_discrete(limits = limits) +
-        coord_flip()
-}
+        object +
+            scale_x_discrete(limits = limits) +
+            coord_flip()
+    }
+
+
+
+acid_scale_y_continuous_nopad <-  # nolint
+    function(
+        ...,
+        expand = expand_scale(mult = c(0L, 0.025))
+    ) {
+        scale_y_continuous(..., expand = expand)
+    }

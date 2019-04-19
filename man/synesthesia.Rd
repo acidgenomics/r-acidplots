@@ -4,6 +4,7 @@
 \alias{synesthesia}
 \alias{synesthesia_pal}
 \alias{scale_colour_synesthesia_c}
+\alias{scale_colour_synesthesia_d}
 \alias{scale_fill_synesthesia_c}
 \alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
@@ -14,7 +15,7 @@ synesthesia_pal()
 
 scale_colour_synesthesia_c()
 
-scale_colour_synesthesia_c()
+scale_colour_synesthesia_d()
 
 scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
 
