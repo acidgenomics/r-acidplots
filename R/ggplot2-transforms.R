@@ -13,7 +13,8 @@
 #' - `coord_flip()`.
 #'
 #' @examples
-#' g <- ggplot(data = ggplot2::mpg, aes(x = class)) + geom_bar()
+#' library(ggplot2)
+#' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 #' print(g)
 #' flip_x_discrete(g)
 flip_x_discrete <- function(object) {

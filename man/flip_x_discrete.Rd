@@ -20,7 +20,8 @@ This function puts the samples that were near the left origin on the X at the
 top on the Y axis, making them more human readable.
 }
 \examples{
-g <- ggplot(data = ggplot2::mpg, aes(x = class)) + geom_bar()
+library(ggplot2)
+g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 print(g)
 flip_x_discrete(g)
 }
