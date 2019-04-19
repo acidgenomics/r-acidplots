@@ -1,9 +1,5 @@
 context("plotCounts")
 
-#' ## Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotCounts(object, genes = geneIDs, style = "facet")
-#' plotCounts(object, genes = geneNames, style = "wide")
-
 test_that("default", {
     x <- plotCounts(object = object, genes = genes)
     expect_s3_class(x, "ggplot")
