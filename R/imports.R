@@ -1,6 +1,7 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment assays assays<- rowData
 #' @importFrom S4Vectors DataFrame aggregate
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert
@@ -23,7 +24,8 @@
 #' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
 #'   isGreaterThanOrEqualTo isInClosedRange isInt isNonNegative isNumber
 #'   isPositive isScalar isString isSubset
-#' @importFrom grDevices axisTicks
+#' @importFrom gplots col2hex
+#' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
 #' @importFrom matrixStats rowVars
