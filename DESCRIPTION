@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    basejump (>= 0.10.3), bioverbs (>= 0.1.12), goalie (>= 0.2.14),
+    basejump (>= 0.10.4), bioverbs (>= 0.1.12), goalie (>= 0.2.14),
     BiocGenerics, SingleCellExperiment, SummarizedExperiment, S4Vectors,
     Matrix (>= 1.2), cowplot (>= 0.9.4), dplyr (>= 0.8), ggplot2 (>= 3.1.0),
         ggrepel (>= 0.8), magrittr (>= 1.5), matrixStats (>= 0.54),
