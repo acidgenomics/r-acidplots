@@ -4,6 +4,7 @@ data(
     envir = environment()
 )
 
+object <- rse
 rownames <- head(rownames(rse))
 g2s <- basejump::Gene2Symbol(rse)
 geneIDs <- head(g2s[["geneID"]])
