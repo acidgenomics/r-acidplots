@@ -3,22 +3,34 @@
 #' @export
 #'
 #' @seealso
-#' - `colorRamps::matlab.like()`, `colorRamps::matlab.like2()`.
-#' - `RColorBrewer::display.brewer.all()`.
-#' - `grDevices::hsv()`, `grDevices::rgb()`, `grDevices::col2rgb()`.
-#' - `gplots::col2hex()`.
-#' - `ggplot2::continuous_scale()`, `ggplot2::discrete_scale()`.
-#' - `scales::gradient_n_pal()`.
-#' - `viridisLite::viridis.map`, `viridis::viridis()`, `viridis::viridis_pal()`.
-#' - `Seurat::CustomPalette()`, `Seurat::PurpleAndYellow()`.
+#' Adapted from viridis color palette:
 #'
-#' Additional URLs:
+#' - `viridis::viridis()`.
+#' - `viridis::viridis_pal()`.
+#' - `viridis::scale_colour_viridis_c()`.
+#' - `viridis::scale_colour_viridis_d()`.
+#' - `viridis::scale_fill_viridis_c()`.
+#' - `viridis::scale_fill_viridis_d()`.
+#'
+#' Useful color palette URLs:
+#'
 #' - http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 #' - https://matplotlib.org/tutorials/colors/colormaps.html
 #' - https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf
 #' - http://colorbrewer2.org/
 #' - http://colorspace.r-forge.r-project.org/
 #' - http://hclwizard.org/
+#'
+#' Additional color palette functions that may be relevant:
+#'
+#' - `grDevices::hsv()`, `grDevices::rgb()`, `grDevices::col2rgb()`.
+#' - `gplots::col2hex()`.
+#' - `ggplot2::continuous_scale()`, `ggplot2::discrete_scale()`.
+#' - `scales::gradient_n_pal()`.
+#' - `colorRamps::matlab.like()`, `colorRamps::matlab.like2()`.
+#' - `viridisLite::viridis.map`.
+#' - `Seurat::CustomPalette()`, `Seurat::PurpleAndYellow()`.
+#' - `RColorBrewer::display.brewer.all()`.
 #'
 #' @examples
 #' library(ggplot2)
@@ -33,9 +45,12 @@ synesthesia <- function(n = 256L) {
     colors <- vapply(
         X = c(
             "purple4",
+            "purple1",
             "dodgerblue",
-            "chartreuse",
-            "orange"
+            "green",  # "chartreuse"
+            "darkorange",
+            "firebrick1",
+            "firebrick4"
         ),
         FUN = col2hex,
         FUN.VALUE = character(1L),
@@ -56,10 +71,19 @@ synesthesia_pal <- function() {
 
 
 
-#' @importFrom ggplot2 continuous_scale discrete_scale
-#' @importFrom scales gradient_n_pal
-#' @importFrom ggplot2 discrete_scale
-NULL
+#' @rdname synesthesia
+#' @export
+scale_colour_synesthesia_c <- function(
+) {
+}
+
+
+
+#' @rdname synesthesia
+#' @export
+scale_colour_synesthesia_c <- function(
+) {
+}
 
 
 
@@ -92,30 +116,3 @@ scale_fill_synesthesia_d <- function(...) {
         ...
     )
 }
-
-
-
-# h <- ggplot(diamonds, aes(carat, price)) + geom_hex()
-# h + scale_fill_gradientn(colours = c("purple", "green", "orange"))
-# h + scale_fill_viridis_c()
-
-
-# .purple_orange_fill <-
-#     scale_fill_gradient(low = "orange", high = "purple")
-
-
-# scale_fill_gradient
-
-# colorRampPalette(brewer.pal(n = 7L, name = "RdYlBu"))(256L)
-
-# viridis::viridis(n = 256L)
-
-# ggplot2::scale_colour_viridis_c()
-# ggplot2::scale_colour_viridis_d()
-# ggplot2::scale_fill_viridis_c()
-# ggplot2::scale_fill_viridis_d()
-
-
-# purple
-# green
-# orange
