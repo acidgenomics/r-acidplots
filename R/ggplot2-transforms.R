@@ -5,6 +5,8 @@
 #' This function puts the samples that were near the left origin on the X at the
 #' top on the Y axis, making them more human readable.
 #'
+#' @export
+#'
 #' @param object `ggplot`.
 #'
 #' @return `ggplot`.
