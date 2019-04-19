@@ -156,6 +156,9 @@ theme_midnight <- function() {
     legend_position <- match.arg(legend_position)
     assert(isFlag(grid))
 
+    # Set dark mode global variable that we can access in plotting functions.
+    options(acid.dark = TRUE)
+
     gray <- "gray10"
 
     text <- element_text(

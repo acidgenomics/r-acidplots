@@ -1,3 +1,7 @@
+# FIXME Incomplete commit
+
+
+
 #' Synesthesia color palette
 #'
 #' @export
@@ -16,7 +20,6 @@
 #'
 #' - http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 #' - https://matplotlib.org/tutorials/colors/colormaps.html
-#' - https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf
 #' - http://colorbrewer2.org/
 #' - http://colorspace.r-forge.r-project.org/
 #' - http://hclwizard.org/
@@ -63,11 +66,12 @@ synesthesia <- function(n = 256L) {
 
 #' @rdname synesthesia
 #' @export
-synesthesia_pal <- function() {
-    function(n) {
-        synesthesia(n)
+synesthesia_pal <-  # nolint
+    function() {
+        function(n) {
+            synesthesia(n)
+        }
     }
-}
 
 
 
@@ -81,7 +85,7 @@ scale_colour_synesthesia_c <- function(
 
 #' @rdname synesthesia
 #' @export
-scale_colour_synesthesia_c <- function(
+scale_colour_synesthesia_d <- function(
 ) {
 }
 
