@@ -7,7 +7,8 @@
 #'   as.SummarizedExperiment as_tibble camel cell2sample convertGenesToSymbols
 #'   counts decode formalsList interestingGroups interestingGroups<-
 #'   matchArgsToDoCall matchInterestingGroups mapGenesToRownames meltCounts
-#'   metrics organism sampleData snake standardizeCall zerosVsDepth
+#'   methodFormals metrics organism sampleData snake standardizeCall
+#'   zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
 #'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
@@ -16,11 +17,12 @@
 #'   element_rect element_text expand_limits facet_wrap geom_bar geom_boxplot
 #'   geom_density geom_hline geom_jitter geom_label geom_point geom_violin
 #'   geom_vline ggplot guides labs position_jitterdodge scale_x_continuous
-#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver
+#'   scale_x_discrete scale_y_continuous stat_ecdf stat_summary theme
+#'   theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
-#'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
-#'   isSubset
+#'   isGreaterThanOrEqualTo isInClosedRange isInt isNonNegative isNumber
+#'   isPositive isScalar isString isSubset
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
 #' @importFrom matrixStats rowVars

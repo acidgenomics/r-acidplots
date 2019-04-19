@@ -1,9 +1,6 @@
-# FIXME Add `minCounts` support here.
-
-
-
-#' @name plotCountsPerGene
-#' @inherit bioverbs::plotCountsPerGene
+#' @name plotCountsPerFeature
+#' @inherit bioverbs::plotCountsPerFeature
+#' @inheritParams basejump::meltCounts
 #' @inheritParams params
 #'
 #' @param geom `character(1)`.
@@ -13,27 +10,29 @@
 #' data(rse, sce, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
-#' plotCountsPerGene(rse, geom = "boxplot")
-#' plotCountsPerGene(rse, geom = "density")
+#' plotCountsPerFeature(rse, geom = "boxplot")
+#' plotCountsPerFeature(rse, geom = "density")
 #'
 #' ## SingleCellExperiment ====
-#' plotCountsPerGene(sce)
+#' plotCountsPerFeature(sce)
 NULL
 
 
 
-#' @rdname plotCountsPerGene
-#' @name plotCountsPerGene
-#' @importFrom bioverbs plotCountsPerGene
+#' @rdname plotCountsPerFeature
+#' @name plotCountsPerFeature
+#' @importFrom bioverbs plotCountsPerFeature
 #' @export
 NULL
 
 
 
-plotCountsPerGene.SummarizedExperiment <-  # nolint
+plotCountsPerFeature.SummarizedExperiment <-  # nolint
     function(
         object,
         assay = 1L,
+        minCounts = 1L,
+        minCountsMethod,
         interestingGroups = NULL,
         geom = c("boxplot", "density", "violin"),
         trans = c("identity", "log2", "log10"),
@@ -46,13 +45,17 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(
             isScalar(assay),
+            isInt(minCounts),
+            isGreaterThanOrEqualTo(minCounts, 1L),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
             isString(countsAxisLabel, nullOK = TRUE),
             isString(title, nullOK = TRUE)
         )
+        minCountsMethod <- match.arg(minCountsMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
+
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
@@ -60,16 +63,14 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         data <- meltCounts(
             object = object,
             assay = assay,
-            nonzeroGenes = TRUE,
+            minCounts = minCounts,
+            minCountsMethod = minCountsMethod,
             trans = trans
         )
 
-        # Subtitle
-        if (isString(title)) {
-            count <- length(unique(data[["rowname"]]))
-            subtitle <- paste(count, "non-zero genes")
-        } else {
-            subtitle <- NULL
+        # Counts axis label. Automatically add transformation, if necessary.
+        if (trans != "identity") {
+            countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
         # Construct the ggplot.
@@ -112,6 +113,14 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
                 labs(x = NULL, y = countsAxisLabel)
         }
 
+        # Subtitle
+        if (isString(title)) {
+            count <- length(unique(data[["rowname"]]))
+            subtitle <- paste(count, "features")
+        } else {
+            subtitle <- NULL
+        }
+
         # Add the axis and legend labels.
         p <- p +
             labs(
@@ -137,29 +146,35 @@ plotCountsPerGene.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotCountsPerGene.SummarizedExperiment)[["color"]] <-
+formals(plotCountsPerFeature.SummarizedExperiment)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCountsPerGene.SummarizedExperiment)[["fill"]] <-
+formals(plotCountsPerFeature.SummarizedExperiment)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotCountsPerGene.SummarizedExperiment)[["flip"]] <-
+formals(plotCountsPerFeature.SummarizedExperiment)[["flip"]] <-
     formalsList[["flip"]]
+formals(plotCountsPerFeature.SummarizedExperiment)[["minCountsMethod"]] <-
+    methodFormals(
+        f = "meltCounts",
+        signature = "SummarizedExperiment",
+        package = "basejump"
+    )[["minCountsMethod"]]
 
 
 
-#' @rdname plotCountsPerGene
+#' @rdname plotCountsPerFeature
 #' @export
 setMethod(
-    f = "plotCountsPerGene",
+    f = "plotCountsPerFeature",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerGene.SummarizedExperiment
+    definition = plotCountsPerFeature.SummarizedExperiment
 )
 
 
 
-plotCountsPerGene.SingleCellExperiment <-  # nolint
+plotCountsPerFeature.SingleCellExperiment <-  # nolint
     function(object) {
         do.call(
-            what = plotCountsPerGene,
+            what = plotCountsPerFeature,
             args = matchArgsToDoCall(
                 args = list(
                     object = aggregateCellsToSamples(object)
@@ -168,15 +183,15 @@ plotCountsPerGene.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotCountsPerGene.SingleCellExperiment) <-
-    formals(plotCountsPerGene.SummarizedExperiment)
+formals(plotCountsPerFeature.SingleCellExperiment) <-
+    formals(plotCountsPerFeature.SummarizedExperiment)
 
 
 
-#' @rdname plotCountsPerGene
+#' @rdname plotCountsPerFeature
 #' @export
 setMethod(
-    f = "plotCountsPerGene",
+    f = "plotCountsPerFeature",
     signature = signature("SingleCellExperiment"),
-    definition = plotCountsPerGene.SingleCellExperiment
+    definition = plotCountsPerFeature.SingleCellExperiment
 )

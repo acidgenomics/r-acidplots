@@ -21,9 +21,9 @@
 flip_x_discrete <- function(object) {
     assert(
         is(object, "ggplot"),
-        identical(
-            x = object[["layers"]][[1L]][["geom"]][["required_aes"]],
-            y = c("x", "y")
+        isSubset(
+            x = "x",
+            y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
         )
     )
 
