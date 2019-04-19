@@ -3,6 +3,7 @@
 \name{synesthesia}
 \alias{synesthesia}
 \alias{synesthesia_pal}
+\alias{scale_colour_synesthesia_c}
 \alias{scale_fill_synesthesia_c}
 \alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
@@ -10,6 +11,10 @@
 synesthesia(n = 256L)
 
 synesthesia_pal()
+
+scale_colour_synesthesia_c()
+
+scale_colour_synesthesia_c()
 
 scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
 
@@ -28,18 +33,17 @@ p + scale_fill_synesthesia_c()
 image(matrix(1:400, 20), col = synesthesia())
 }
 \seealso{
+Adapted from viridis color palette:
 \itemize{
-\item \code{colorRamps::matlab.like()}, \code{colorRamps::matlab.like2()}.
-\item \code{RColorBrewer::display.brewer.all()}.
-\item \code{grDevices::hsv()}, \code{grDevices::rgb()}, \code{grDevices::col2rgb()}.
-\item \code{gplots::col2hex()}.
-\item \code{ggplot2::continuous_scale()}, \code{ggplot2::discrete_scale()}.
-\item \code{scales::gradient_n_pal()}.
-\item \code{viridisLite::viridis.map}, \code{viridis::viridis()}, \code{viridis::viridis_pal()}.
-\item \code{Seurat::CustomPalette()}, \code{Seurat::PurpleAndYellow()}.
+\item \code{viridis::viridis()}.
+\item \code{viridis::viridis_pal()}.
+\item \code{viridis::scale_colour_viridis_c()}.
+\item \code{viridis::scale_colour_viridis_d()}.
+\item \code{viridis::scale_fill_viridis_c()}.
+\item \code{viridis::scale_fill_viridis_d()}.
 }
 
-Additional URLs:
+Useful color palette URLs:
 \itemize{
 \item http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 \item https://matplotlib.org/tutorials/colors/colormaps.html
@@ -47,5 +51,17 @@ Additional URLs:
 \item http://colorbrewer2.org/
 \item http://colorspace.r-forge.r-project.org/
 \item http://hclwizard.org/
+}
+
+Additional color palette functions that may be relevant:
+\itemize{
+\item \code{grDevices::hsv()}, \code{grDevices::rgb()}, \code{grDevices::col2rgb()}.
+\item \code{gplots::col2hex()}.
+\item \code{ggplot2::continuous_scale()}, \code{ggplot2::discrete_scale()}.
+\item \code{scales::gradient_n_pal()}.
+\item \code{colorRamps::matlab.like()}, \code{colorRamps::matlab.like2()}.
+\item \code{viridisLite::viridis.map}.
+\item \code{Seurat::CustomPalette()}, \code{Seurat::PurpleAndYellow()}.
+\item \code{RColorBrewer::display.brewer.all()}.
 }
 }
