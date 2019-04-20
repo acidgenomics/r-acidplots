@@ -8,8 +8,8 @@
 \usage{
 \S4method{plotZerosVsDepth}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, color = getOption(x =
-  "acid.color.discrete", default = acidplots::scale_colour_synesthesia_d),
-  title = "zeros vs. depth")
+  "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), title = "zeros vs. depth")
 }
 \arguments{
 \item{object}{Object.}

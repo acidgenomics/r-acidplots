@@ -17,10 +17,6 @@ NULL
 
 
 
-
-
-
-
 plotTotalCounts.SummarizedExperiment <-  # nolint
     function(
         object,
@@ -65,8 +61,8 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
                 fill = !!sym("interestingGroups")
             )
         ) +
-            geom_bar_simple() +
-            scale_y_continuous_nopad() +
+            acid_geom_bar() +
+            acid_scale_y_continuous_nopad() +
             labs(
                 title = title,
                 x = NULL,
@@ -79,7 +75,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         }
 
         if (isTRUE(flip)) {
-            p <- flip_x_discrete(p)
+            p <- acid_coord_flip(p)
         }
 
         if (identical(interestingGroups, "sampleName")) {

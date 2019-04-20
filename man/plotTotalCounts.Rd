@@ -9,13 +9,13 @@
 \usage{
 \S4method{plotTotalCounts}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d),
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
   flip = getOption(x = "acid.flip", default = TRUE),
   title = "Total counts")
 
 \S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d),
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
   flip = getOption(x = "acid.flip", default = TRUE),
   title = "Total counts")
 }
