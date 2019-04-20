@@ -1,7 +1,10 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importFrom SummarizedExperiment assays assays<- rowData
+#' @importMethodsFrom basejump coerce
+#'
+#' @importFrom RColorBrewer brewer.pal
+#' @importFrom SummarizedExperiment assays assays<- colData rowData
 #' @importFrom S4Vectors DataFrame aggregate
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert
 #'   as.SummarizedExperiment as_tibble camel cell2sample convertGenesToSymbols
@@ -20,19 +23,22 @@
 #'   position_jitterdodge scale_x_continuous scale_x_discrete scale_y_continuous
 #'   stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie hasLength hasUniqueCols isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isInClosedRange isInt isNonNegative isNumber
-#'   isPositive isScalar isString isSubset
+#' @importFrom goalie allAreHexColors areDisjointSets assert hasDims hasLength
+#'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames hasUniqueCols
+#'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
+#'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
+#'   isSubset
 #' @importFrom gplots col2hex
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
-#' @importFrom matrixStats rowVars
-#' @importFrom methods as is validObject
+#' @importFrom matrixStats colVars rowVars
+#' @importFrom methods as formalArgs is validObject
+#' @importFrom pheatmap pheatmap
 #' @importFrom rlang := UQ quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks
-#' @importFrom stats as.formula prcomp
-#' @importFrom tibble tibble
+#' @importFrom stats as.formula dist hclust prcomp quantile
+#' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather
 #' @importFrom utils data globalVariables
 NULL

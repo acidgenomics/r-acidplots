@@ -34,7 +34,7 @@ Suggests:
     acidtest (>= 0.1),
     BiocStyle, knitr,
     patrick, testthat,
-    RColorBrewer, bbcplot, viridis
+    bbcplot, viridis
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/basejump,
