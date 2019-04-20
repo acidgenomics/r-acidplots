@@ -11,17 +11,17 @@
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, borderColor = NULL, title = TRUE,
-  ...)
+  treeheightCol = 50L, color = getOption("acid.heatmap.color", default
+  = synesthesia), legendColor = getOption("acid.heatmap.color", default =
+  synesthesia), borderColor = NULL, title = TRUE, ...)
 
 \S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, borderColor = NULL, title = TRUE,
-  ...)
+  treeheightCol = 50L, color = getOption("acid.heatmap.color", default
+  = synesthesia), legendColor = getOption("acid.heatmap.color", default =
+  synesthesia), borderColor = NULL, title = TRUE, ...)
 }
 \arguments{
 \item{object}{Object.}

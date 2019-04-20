@@ -84,10 +84,11 @@ NULL
 
 
 
+#' @rdname plotHeatmap
+#' @name plotHeatmap
 #' @importFrom bioverbs plotHeatmap
-#' @aliases NULL
 #' @export
-bioverbs::plotHeatmap
+NULL
 
 
 
@@ -106,8 +107,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         treeheightRow = 50L,
         # Set to `0L` to disable.
         treeheightCol = 50L,
-        color = viridis::viridis,
-        legendColor = viridis::viridis,
+        color,
+        legendColor,
         borderColor = NULL,
         title = NULL,
         ...
@@ -233,6 +234,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         args <- .pheatmapArgs(args)
         do.call(what = pheatmap, args = args)
     }
+
+formals(plotHeatmap.SummarizedExperiment)[["color"]] <-
+    formalsList[["acid.heatmap.color"]]
+formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
+    formalsList[["acid.heatmap.color"]]
 
 
 
