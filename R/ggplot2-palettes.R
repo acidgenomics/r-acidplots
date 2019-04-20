@@ -1,7 +1,3 @@
-# FIXME Incomplete commit
-
-
-
 #' Synesthesia color palette
 #'
 #' @export
@@ -47,13 +43,10 @@ synesthesia <- function(n = 256L) {
     assert(isInt(n), isPositive(n))
     colors <- vapply(
         X = c(
-            "purple4",
-            "purple1",
+            "purple4", "purple1",
             "dodgerblue",
-            "green",  # "chartreuse"
-            "darkorange",
-            "firebrick1",
-            "firebrick4"
+            "green",
+            "darkorange1", "darkorange3"
         ),
         FUN = col2hex,
         FUN.VALUE = character(1L),
@@ -77,46 +70,66 @@ synesthesia_pal <-  # nolint
 
 #' @rdname synesthesia
 #' @export
-scale_colour_synesthesia_c <- function(
-) {
-}
+scale_colour_synesthesia_c <-  # nolint
+    function(
+        ...,
+        na.value = "grey50",
+        guide = "colourbar"
+    ) {
+        discrete_scale(
+            aesthetics = "colour",
+            scale_name = "synesthesia_c",
+            palette = gradient_n_pal(colours = synesthesia()),
+            na.value = na.value,
+            guide = guide,
+            ...
+        )
+    }
 
 
 
 #' @rdname synesthesia
 #' @export
-scale_colour_synesthesia_d <- function(
-) {
-}
-
-
-
-#' @rdname synesthesia
-#' @export
-scale_fill_synesthesia_c <- function(
-    ...,
-    na.value = "grey50",
-    guide = "colourbar"
-) {
-    continuous_scale(
-        aesthetics = "fill",
-        scale_name = "synesthesia_c",
-        palette = gradient_n_pal(colours = synesthesia()),
-        na.value = na.value,
-        guide = guide,
-        ...
-    )
-}
-
-
-
-#' @rdname synesthesia
-#' @export
-scale_fill_synesthesia_d <- function(...) {
+scale_colour_synesthesia_d <-  # nolint
+    function(...) {
     discrete_scale(
-        aesthetics = "fill",
+        aesthetics = "colour",
         scale_name = "synesthesia_d",
         palette = synesthesia_pal(),
         ...
     )
 }
+
+
+
+#' @rdname synesthesia
+#' @export
+scale_fill_synesthesia_c <-  # nolint
+    function(
+        ...,
+        na.value = "grey50",
+        guide = "colourbar"
+    ) {
+        continuous_scale(
+            aesthetics = "fill",
+            scale_name = "synesthesia_c",
+            palette = gradient_n_pal(colours = synesthesia()),
+            na.value = na.value,
+            guide = guide,
+            ...
+        )
+    }
+
+
+
+#' @rdname synesthesia
+#' @export
+scale_fill_synesthesia_d <-  # nolint
+    function(...) {
+        discrete_scale(
+            aesthetics = "fill",
+            scale_name = "synesthesia_d",
+            palette = synesthesia_pal(),
+            ...
+        )
+    }
