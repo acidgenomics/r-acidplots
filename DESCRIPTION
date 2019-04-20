@@ -34,13 +34,12 @@ Suggests:
     acidtest (>= 0.1),
     BiocStyle, knitr,
     patrick, testthat,
-    bbcplot, colorRamps, viridis
+    colorRamps, viridis
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/basejump,
     acidgenomics/bioverbs,
-    acidgenomics/goalie,
-    bbc/bbplot
+    acidgenomics/goalie
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
