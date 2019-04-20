@@ -1,6 +1,7 @@
 #' Synesthesia color palette
 #'
-#' @export
+#' @rdname synesthesia
+#' @name synesthesia
 #'
 #' @seealso
 #' Adapted from viridis color palette:
@@ -47,6 +48,12 @@
 #'
 #' ## base color
 #' image(matrix(1:400, 20), col = synesthesia())
+NULL
+
+
+
+#' @rdname synesthesia
+#' @export
 synesthesia <- function(n = 256L) {
     assert(isInt(n), isPositive(n))
     colors <- vapply(
@@ -86,7 +93,7 @@ scale_colour_synesthesia_c <-  # nolint
     ) {
         continuous_scale(
             aesthetics = "colour",
-            scale_name = "synesthesia_c",
+            scale_name = "synesthesia",
             palette = gradient_n_pal(colours = synesthesia()),
             na.value = na.value,
             guide = guide,
@@ -98,15 +105,29 @@ scale_colour_synesthesia_c <-  # nolint
 
 #' @rdname synesthesia
 #' @export
+scale_color_synesthesia_c <-  # nolint
+    scale_colour_synesthesia_c
+
+
+
+#' @rdname synesthesia
+#' @export
 scale_colour_synesthesia_d <-  # nolint
     function(...) {
-    discrete_scale(
-        aesthetics = "colour",
-        scale_name = "synesthesia_d",
-        palette = synesthesia_pal(),
-        ...
-    )
-}
+        discrete_scale(
+            aesthetics = "colour",
+            scale_name = "synesthesia",
+            palette = synesthesia_pal(),
+            ...
+        )
+    }
+
+
+
+#' @rdname synesthesia
+#' @export
+scale_color_synesthesia_d <-  # nolint
+    scale_colour_synesthesia_d
 
 
 
@@ -120,7 +141,7 @@ scale_fill_synesthesia_c <-  # nolint
     ) {
         continuous_scale(
             aesthetics = "fill",
-            scale_name = "synesthesia_c",
+            scale_name = "synesthesia",
             palette = gradient_n_pal(colours = synesthesia()),
             na.value = na.value,
             guide = guide,
@@ -136,7 +157,7 @@ scale_fill_synesthesia_d <-  # nolint
     function(...) {
         discrete_scale(
             aesthetics = "fill",
-            scale_name = "synesthesia_d",
+            scale_name = "synesthesia",
             palette = synesthesia_pal(),
             ...
         )

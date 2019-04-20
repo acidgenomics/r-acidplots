@@ -1,8 +1,3 @@
-# nolint start
-# Using snake case, following ggplot2 conventions.
-
-
-
 #' ggplot2 themes
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
@@ -22,7 +17,7 @@
 #' for visualizing many points with a high dynamic color range, such as t-SNE
 #' expression plots.
 #'
-#' @name acid_theme
+#' @name themes
 #'
 #' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.
@@ -67,7 +62,7 @@ NULL
 
 
 
-#' @rdname acid_theme
+#' @rdname themes
 #' @export
 acid_theme_light <-  # nolint
     function(
@@ -145,7 +140,7 @@ acid_theme_light <-  # nolint
 
 
 
-#' @rdname acid_theme
+#' @rdname themes
 #' @export
 acid_theme_dark <-  # nolint
     function() {
@@ -216,7 +211,3 @@ acid_theme_dark <-  # nolint
 
 # Set the formals.
 formals(acid_theme_dark) <- formals(acid_theme_light)
-
-
-
-# nolint end
