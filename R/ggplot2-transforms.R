@@ -18,8 +18,8 @@
 #' library(ggplot2)
 #' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 #' print(g)
-#' acid_flip_x_discrete(g)
-acid_flip_x_discrete <-  # nolint
+#' acid_coord_flip(g)
+acid_coord_flip <-  # nolint
     function(object) {
         assert(
             is(object, "ggplot"),

@@ -12,21 +12,21 @@
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "violin"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default = acidplots::scale_colour_synesthesia_d),
-  fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d), flip = getOption(x = "acid.flip",
-  default = TRUE), countsAxisLabel = "counts",
-  title = "Counts per feature")
+  "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
+  flip = getOption(x = "acid.flip", default = TRUE),
+  countsAxisLabel = "counts", title = "Counts per feature")
 
 \S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "violin"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default = acidplots::scale_colour_synesthesia_d),
-  fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d), flip = getOption(x = "acid.flip",
-  default = TRUE), countsAxisLabel = "counts",
-  title = "Counts per feature")
+  "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
+  flip = getOption(x = "acid.flip", default = TRUE),
+  countsAxisLabel = "counts", title = "Counts per feature")
 
 plotCountsPerGene(...)
 }
