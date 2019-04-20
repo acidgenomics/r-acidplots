@@ -1,8 +1,8 @@
-Package: minimalism
-Title: Minimalist visualizations for bioinformatics
-Description: Part of the basejump toolkit for bioinformatics.
+Package: acidplots
+Title: Functions for plotting genomic data
+Description: Extension of the basejump toolkit for bioinformatics.
 Version: 0.1.2
-Date: 2019-04-18
+Date: 2019-04-20
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
