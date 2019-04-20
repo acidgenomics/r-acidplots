@@ -26,27 +26,35 @@
 #' - `gplots::col2hex()`.
 #' - `ggplot2::continuous_scale()`, `ggplot2::discrete_scale()`.
 #' - `scales::gradient_n_pal()`.
-#' - `colorRamps::matlab.like()`, `colorRamps::matlab.like2()`.
-#' - `viridisLite::viridis.map`.
 #' - `Seurat::CustomPalette()`, `Seurat::PurpleAndYellow()`.
+#' - `colorRamps::matlab.like()`, `colorRamps::matlab.like2()`.
 #' - `RColorBrewer::display.brewer.all()`.
+#' - `viridisLite::viridis.map`.
 #'
 #' @examples
 #' library(ggplot2)
 #'
+#' ## ggplot continuous colour
+#'
+#' ## ggplot discrete colour
+#'
+#' ## ggplot continuous fill
 #' p <- ggplot(diamonds, aes(carat, price)) + geom_hex()
 #' p + scale_fill_viridis_c()
 #' p + scale_fill_synesthesia_c()
 #'
+#' ## ggplot discrete fill
+#'
+#' ## base color
 #' image(matrix(1:400, 20), col = synesthesia())
 synesthesia <- function(n = 256L) {
     assert(isInt(n), isPositive(n))
     colors <- vapply(
         X = c(
-            "purple4", "purple1",
+            "darkorchid3", "purple1",
             "dodgerblue",
-            "green",
-            "darkorange1", "darkorange3"
+            "green2",
+            "orange1", "darkorange3"
         ),
         FUN = col2hex,
         FUN.VALUE = character(1L),
@@ -76,7 +84,7 @@ scale_colour_synesthesia_c <-  # nolint
         na.value = "grey50",
         guide = "colourbar"
     ) {
-        discrete_scale(
+        continuous_scale(
             aesthetics = "colour",
             scale_name = "synesthesia_c",
             palette = gradient_n_pal(colours = synesthesia()),

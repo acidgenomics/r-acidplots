@@ -13,9 +13,10 @@ synesthesia(n = 256L)
 
 synesthesia_pal()
 
-scale_colour_synesthesia_c()
+scale_colour_synesthesia_c(..., na.value = "grey50",
+  guide = "colourbar")
 
-scale_colour_synesthesia_d()
+scale_colour_synesthesia_d(...)
 
 scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
 
@@ -27,10 +28,18 @@ Synesthesia color palette
 \examples{
 library(ggplot2)
 
+## ggplot continuous colour
+
+## ggplot discrete colour
+
+## ggplot continuous fill
 p <- ggplot(diamonds, aes(carat, price)) + geom_hex()
 p + scale_fill_viridis_c()
 p + scale_fill_synesthesia_c()
 
+## ggplot discrete fill
+
+## base color
 image(matrix(1:400, 20), col = synesthesia())
 }
 \seealso{
@@ -59,9 +68,9 @@ Additional color palette functions that may be relevant:
 \item \code{gplots::col2hex()}.
 \item \code{ggplot2::continuous_scale()}, \code{ggplot2::discrete_scale()}.
 \item \code{scales::gradient_n_pal()}.
-\item \code{colorRamps::matlab.like()}, \code{colorRamps::matlab.like2()}.
-\item \code{viridisLite::viridis.map}.
 \item \code{Seurat::CustomPalette()}, \code{Seurat::PurpleAndYellow()}.
+\item \code{colorRamps::matlab.like()}, \code{colorRamps::matlab.like2()}.
 \item \code{RColorBrewer::display.brewer.all()}.
+\item \code{viridisLite::viridis.map}.
 }
 }
