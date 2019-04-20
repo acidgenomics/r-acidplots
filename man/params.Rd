@@ -26,7 +26,7 @@ Counts axis label.}
 
 \item{dark}{\code{logical(1)}.
 Plot against a dark background using the
-\code{\link[minimalism:theme_midnight]{theme_midnight()}} ggplot2 theme.}
+\code{\link[acidplots:theme_midnight]{theme_midnight()}} ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}.
 Vector of length 2 that denotes the columns from the reduced dimension

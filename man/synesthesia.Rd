@@ -48,7 +48,6 @@ Useful color palette URLs:
 \itemize{
 \item http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
 \item https://matplotlib.org/tutorials/colors/colormaps.html
-\item https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf
 \item http://colorbrewer2.org/
 \item http://colorspace.r-forge.r-project.org/
 \item http://hclwizard.org/

@@ -24,7 +24,7 @@
 #'   Counts axis label.
 #' @param dark `logical(1)`.
 #'   Plot against a dark background using the
-#'   [`theme_midnight()`][minimalism::theme_midnight] ggplot2 theme.
+#'   [`theme_midnight()`][acidplots::theme_midnight] ggplot2 theme.
 #' @param dimsUse `integer`.
 #'   Vector of length 2 that denotes the columns from the reduced dimension
 #'   matrix to use for `centerX` and `centerY` column calculations. Defaults the

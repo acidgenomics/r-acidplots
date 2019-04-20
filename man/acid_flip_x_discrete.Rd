@@ -23,7 +23,7 @@ top on the Y axis, making them more human readable.
 library(ggplot2)
 g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 print(g)
-flip_x_discrete(g)
+acid_flip_x_discrete(g)
 }
 \seealso{
 \itemize{

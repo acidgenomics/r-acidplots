@@ -15,9 +15,9 @@ Authors@R: c(
         role = c("cph", "fnd")
     ))
 URL:
-    https://minimalism.acidgenomics.com/,
-    https://github.com/acidgenomics/minimalism/
-BugReports: https://github.com/acidgenomics/minimalism/issues/
+    https://acidplots.acidgenomics.com/,
+    https://github.com/acidgenomics/acidplots/
+BugReports: https://github.com/acidgenomics/acidplots/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
@@ -34,12 +34,13 @@ Suggests:
     acidtest (>= 0.1),
     BiocStyle, knitr,
     patrick, testthat,
-    tidyverse
+    RColorBrewer, bbcplot, viridis
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/basejump,
     acidgenomics/bioverbs,
-    acidgenomics/goalie
+    acidgenomics/goalie,
+    bbc/bbplot
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
