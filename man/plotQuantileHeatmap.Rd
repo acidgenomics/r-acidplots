@@ -10,18 +10,14 @@
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L,
-  color = getOption("acid.heatmap.color", default = synesthesia),
-  legendColor = getOption("acid.heatmap.color", default = synesthesia),
-  legend = FALSE, borderColor = NULL, title = NULL, ...)
+  treeheightRow = 0L, treeheightCol = 50L, legend = FALSE,
+  borderColor = NULL, title = NULL, ...)
 
 \S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L,
-  color = getOption("acid.heatmap.color", default = synesthesia),
-  legendColor = getOption("acid.heatmap.color", default = synesthesia),
-  legend = FALSE, borderColor = NULL, title = NULL, ...)
+  treeheightRow = 0L, treeheightCol = 50L, legend = FALSE,
+  borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -38,14 +34,6 @@ Groups of interest that define the samples. If left unset, defaults to
 
 \item{n}{\code{integer(1)}.
 The number of quantile breaks to create.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
 
 \item{legend}{\code{logical(1)}.
 Show the color legend.}

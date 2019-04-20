@@ -8,15 +8,15 @@
 \title{Plot total read counts}
 \usage{
 \S4method{plotTotalCounts}{SummarizedExperiment}(object, assay = 1L,
-  interestingGroups = NULL, perMillion = FALSE,
-  fill = getOption("acid.fill.discrete", default = NULL),
-  flip = getOption("acid.flip", default = TRUE),
+  interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d),
+  flip = getOption(x = "acid.flip", default = TRUE),
   title = "Total counts")
 
 \S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, perMillion = FALSE,
-  fill = getOption("acid.fill.discrete", default = NULL),
-  flip = getOption("acid.flip", default = TRUE),
+  interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
+  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d),
+  flip = getOption(x = "acid.flip", default = TRUE),
   title = "Total counts")
 }
 \arguments{
