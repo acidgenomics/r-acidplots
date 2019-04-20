@@ -10,16 +10,18 @@
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
-  title = NULL, ...)
+  treeheightRow = 0L, treeheightCol = 50L,
+  color = getOption("acid.heatmap.color", default = synesthesia),
+  legendColor = getOption("acid.heatmap.color", default = synesthesia),
+  legend = FALSE, borderColor = NULL, title = NULL, ...)
 
 \S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, legend = FALSE, borderColor = NULL,
-  title = NULL, ...)
+  treeheightRow = 0L, treeheightCol = 50L,
+  color = getOption("acid.heatmap.color", default = synesthesia),
+  legendColor = getOption("acid.heatmap.color", default = synesthesia),
+  legend = FALSE, borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}

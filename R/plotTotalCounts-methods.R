@@ -29,7 +29,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         perMillion = FALSE,
         fill,
         flip,
-        title = "total counts"
+        title = "Total counts"
     ) {
         validObject(object)
         assert(

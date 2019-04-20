@@ -54,7 +54,7 @@ synesthesia <- function(n = 256L) {
             "darkorchid3", "purple1",
             "dodgerblue",
             "green2",
-            "orange1", "darkorange3"
+            "orange1", "darkorange2"
         ),
         FUN = col2hex,
         FUN.VALUE = character(1L),

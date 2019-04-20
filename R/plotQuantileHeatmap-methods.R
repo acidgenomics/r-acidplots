@@ -21,10 +21,11 @@ NULL
 
 
 
+#' @rdname plotQuantileHeatmap
+#' @name plotQuantileHeatmap
 #' @importFrom bioverbs plotQuantileHeatmap
-#' @aliases NULL
 #' @export
-bioverbs::plotQuantileHeatmap
+NULL
 
 
 
@@ -52,8 +53,8 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         showColnames = TRUE,
         treeheightRow = 0L,
         treeheightCol = 50L,
-        color = viridis::viridis,
-        legendColor = viridis::viridis,
+        color,
+        legendColor,
         legend = FALSE,
         borderColor = NULL,
         title = NULL,
@@ -155,6 +156,11 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         args <- .pheatmapArgs(args)
         do.call(what = pheatmap, args = args)
     }
+
+formals(plotQuantileHeatmap.SummarizedExperiment)[["color"]] <-
+    formalsList[["acid.heatmap.color"]]
+formals(plotQuantileHeatmap.SummarizedExperiment)[["legendColor"]] <-
+    formalsList[["acid.heatmap.color"]]
 
 
 

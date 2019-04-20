@@ -21,10 +21,11 @@ NULL
 
 
 
+#' @rdname plotCorrelationHeatmap
+#' @name plotCorrelationHeatmap
 #' @importFrom bioverbs plotCorrelationHeatmap
-#' @aliases NULL
 #' @export
-bioverbs::plotCorrelationHeatmap
+NULL
 
 
 
@@ -39,8 +40,8 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         showColnames = TRUE,
         treeheightRow = 0L,
         treeheightCol = 50L,
-        color = viridis::viridis,
-        legendColor = viridis::viridis,
+        color,
+        legendColor,
         borderColor = NULL,
         title = TRUE,
         ...
@@ -150,6 +151,10 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 
 formals(plotCorrelationHeatmap.SummarizedExperiment)[["method"]] <-
     formals(stats::cor)[["method"]]
+formals(plotCorrelationHeatmap.SummarizedExperiment)[["color"]] <-
+    formalsList[["acid.heatmap.color"]]
+formals(plotCorrelationHeatmap.SummarizedExperiment)[["legendColor"]] <-
+    formalsList[["acid.heatmap.color"]]
 
 
 

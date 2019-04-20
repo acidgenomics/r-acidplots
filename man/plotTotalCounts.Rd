@@ -11,13 +11,13 @@
   interestingGroups = NULL, perMillion = FALSE,
   fill = getOption("acid.fill.discrete", default = NULL),
   flip = getOption("acid.flip", default = TRUE),
-  title = "total counts")
+  title = "Total counts")
 
 \S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE,
   fill = getOption("acid.fill.discrete", default = NULL),
   flip = getOption("acid.flip", default = TRUE),
-  title = "total counts")
+  title = "Total counts")
 }
 \arguments{
 \item{object}{Object.}

@@ -11,17 +11,19 @@
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,
   clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 50L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, borderColor = NULL, title = NULL,
-  ...)
+  treeheightRow = 50L, treeheightCol = 50L,
+  color = getOption("acid.heatmap.color", default = synesthesia),
+  legendColor = getOption("acid.heatmap.color", default = synesthesia),
+  borderColor = NULL, title = NULL, ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,
   clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 50L, treeheightCol = 50L, color = viridis::viridis,
-  legendColor = viridis::viridis, borderColor = NULL, title = NULL,
-  ...)
+  treeheightRow = 50L, treeheightCol = 50L,
+  color = getOption("acid.heatmap.color", default = synesthesia),
+  legendColor = getOption("acid.heatmap.color", default = synesthesia),
+  borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
