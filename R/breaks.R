@@ -15,8 +15,8 @@
 #'   https://stackoverflow.com/questions/14255533
 #'
 #' @examples
-#' acid_base_breaks()
-acid_base_breaks <-  # nolint
+#' acid_pretty_breaks()
+acid_pretty_breaks <-  # nolint
     function(n = 5L) {
         function(x) {
             axisTicks(

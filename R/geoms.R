@@ -22,7 +22,7 @@
 #' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
-#' @name acid_geom
+#' @name geoms
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `character(1)`.
@@ -79,7 +79,7 @@ NULL
 
 
 
-#' @rdname acid_geom
+#' @rdname geoms
 #' @export
 acid_geom_abline <-  # nolint
     function(
@@ -116,7 +116,7 @@ acid_geom_abline <-  # nolint
 
 
 
-#' @rdname acid_geom
+#' @rdname geoms
 #' @export
 acid_geom_bar <-  # nolint
     function(..., color = NA, stat = "identity") {
@@ -125,7 +125,7 @@ acid_geom_bar <-  # nolint
 
 
 
-#' @rdname acid_geom
+#' @rdname geoms
 #' @export
 acid_geom_label <-  # nolint
     function(
@@ -149,7 +149,7 @@ acid_geom_label <-  # nolint
 
 
 
-#' @rdname acid_geom
+#' @rdname geoms
 #' @export
 acid_geom_label_average <-  # nolint
     function(
@@ -200,7 +200,7 @@ acid_geom_label_average <-  # nolint
 
 
 
-#' @rdname acid_geom
+#' @rdname geoms
 #' @export
 acid_geom_label_repel <-  # nolint
     function(
