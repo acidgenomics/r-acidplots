@@ -15,14 +15,15 @@
 #'   https://stackoverflow.com/questions/14255533
 #'
 #' @examples
-#' base_breaks()
-base_breaks <- function(n = 5L) {  # nolint
-    function(x) {
-        axisTicks(
-            usr = log10(range(x, na.rm = TRUE)),
-            log = TRUE,
-            axp = NULL,
-            nint = n
-        )
+#' acid_base_breaks()
+acid_base_breaks <-  # nolint
+    function(n = 5L) {
+        function(x) {
+            axisTicks(
+                usr = log10(range(x, na.rm = TRUE)),
+                log = TRUE,
+                axp = NULL,
+                nint = n
+            )
+        }
     }
-}

@@ -10,15 +10,17 @@
 \usage{
 \S4method{plotFeaturesDetected}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
-  fill = getOption("acid.fill.discrete", default = NULL),
-  flip = getOption("acid.flip", default = TRUE),
-  title = "Features detected", countsAxisLabel = "features")
+  fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d), flip = getOption(x = "acid.flip",
+  default = TRUE), title = "Features detected",
+  countsAxisLabel = "features")
 
 \S4method{plotFeaturesDetected}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
-  fill = getOption("acid.fill.discrete", default = NULL),
-  flip = getOption("acid.flip", default = TRUE),
-  title = "Features detected", countsAxisLabel = "features")
+  fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d), flip = getOption(x = "acid.flip",
+  default = TRUE), title = "Features detected",
+  countsAxisLabel = "features")
 
 plotGenesDetected(...)
 }

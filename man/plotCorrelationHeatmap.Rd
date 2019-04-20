@@ -11,17 +11,13 @@
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = getOption("acid.heatmap.color", default
-  = synesthesia), legendColor = getOption("acid.heatmap.color", default =
-  synesthesia), borderColor = NULL, title = TRUE, ...)
+  treeheightCol = 50L, borderColor = NULL, title = TRUE, ...)
 
 \S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = getOption("acid.heatmap.color", default
-  = synesthesia), legendColor = getOption("acid.heatmap.color", default =
-  synesthesia), borderColor = NULL, title = TRUE, ...)
+  treeheightCol = 50L, borderColor = NULL, title = TRUE, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -40,14 +36,6 @@ Groups of interest that define the samples. If left unset, defaults to
 Correlation coefficient (or covariance) method to be computed. Defaults to
 "\code{pearson}" but "\code{spearman}" or "\code{kendall}" can also be used. Refer to the
 \code{\link[stats:cor]{stats::cor()}} documentation for details.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
 
 \item{title}{\code{character(1)}.
 Plot title.}

@@ -11,19 +11,15 @@
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,
   clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 50L, treeheightCol = 50L,
-  color = getOption("acid.heatmap.color", default = synesthesia),
-  legendColor = getOption("acid.heatmap.color", default = synesthesia),
-  borderColor = NULL, title = NULL, ...)
+  treeheightRow = 50L, treeheightCol = 50L, borderColor = NULL,
+  title = NULL, ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,
   clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 50L, treeheightCol = 50L,
-  color = getOption("acid.heatmap.color", default = synesthesia),
-  legendColor = getOption("acid.heatmap.color", default = synesthesia),
-  borderColor = NULL, title = NULL, ...)
+  treeheightRow = 50L, treeheightCol = 50L, borderColor = NULL,
+  title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -37,14 +33,6 @@ name must be defined in
 \item{interestingGroups}{\code{character}.
 Groups of interest that define the samples. If left unset, defaults to
 \code{sampleName}.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
 
 \item{title}{\code{character(1)}.
 Plot title.}
