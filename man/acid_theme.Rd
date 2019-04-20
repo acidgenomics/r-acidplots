@@ -2,15 +2,15 @@
 % Please edit documentation in R/ggplot2-themes.R
 \name{acid_theme}
 \alias{acid_theme}
-\alias{theme_paperwhite}
-\alias{theme_midnight}
+\alias{acid_theme_light}
+\alias{acid_theme_dark}
 \title{ggplot2 themes}
 \usage{
-theme_paperwhite(base_size = 14L, base_family = "", face = c("bold",
+acid_theme_light(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "top", "none"), grid = FALSE, minimal = FALSE)
 
-theme_midnight(base_size = 14L, base_family = "", face = c("bold",
+acid_theme_dark(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "top", "none"), grid = FALSE, minimal = FALSE)
 }
@@ -42,17 +42,17 @@ panel borders.}
 Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
 \details{
-All themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
+Both themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
 modifications and extra user-definable parameters.
 }
-\section{Paperwhite}{
+\section{Light}{
 
 
 High contrast black and white theme optimized for print. Recommended for
 scientific manuscripts and website tutorials.
 }
 
-\section{Midnight}{
+\section{Dark}{
 
 
 Blackout theme that sets the plot background as black, with white text.
@@ -76,12 +76,12 @@ p <- ggplot(
 ## Paperwhite theme.
 p +
     geom_point() +
-    theme_paperwhite(legend_position = "none")
+    acid_theme_light(legend_position = "none")
 
 ## Midnight theme.
 p +
     geom_point() +
-    theme_midnight(legend_position = "none")
+    acid_theme_dark(legend_position = "none")
 }
 \seealso{
 \code{ggplot2::theme()}.
