@@ -1,7 +1,6 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment assays assays<- rowData
 #' @importFrom S4Vectors DataFrame aggregate
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert

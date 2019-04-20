@@ -1,6 +1,6 @@
 globalVariables(".")
 
-packageVersion <- packageVersion("minimalism")
+packageVersion <- packageVersion("acidplots")
 
 #' freerange test data URL
 #' @keywords internal
@@ -8,6 +8,6 @@ packageVersion <- packageVersion("minimalism")
 #' @examples
 #' minimalismTestsURL
 minimalismTestsURL <- paste0(
-    "http://tests.acidgenomics.com/minimalism/",
+    "http://tests.acidgenomics.com/acidplots/",
     "v", packageVersion$major, ".", packageVersion$minor  # nolint
 )

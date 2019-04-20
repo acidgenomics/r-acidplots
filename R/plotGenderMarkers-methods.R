@@ -24,7 +24,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         organism <- organism(object)
         data(
             list = "genderMarkers",
-            package = "minimalism",
+            package = "acidplots",
             envir = environment()
         )
         markers <- get("genderMarkers", inherits = FALSE)
