@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot counts per biotype — plotCountsPerBiotype • minimalism</title>
+<title>Plot counts per biotype — plotCountsPerBiotype • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -64,8 +64,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot counts per biotype</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/plotCountsPerBiotype-methods.R'><code>R/plotCountsPerBiotype-methods.R</code></a>, <a href='https://github.com/acidgenomics/minimalism/blob/master/R/plotCountsPerBroadClass-methods.R'><code>R/plotCountsPerBroadClass-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotCountsPerBiotype-methods.R'><code>R/plotCountsPerBiotype-methods.R</code></a>, <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotCountsPerBroadClass-methods.R'><code>R/plotCountsPerBroadClass-methods.R</code></a></small>
     <div class="hidden name"><code>plotCountsPerBiotype.Rd</code></div>
     </div>
 
@@ -117,13 +117,15 @@
 
     <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotCountsPerBiotype</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>9L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log2"</span>,
-  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>)
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>9L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"log10"</span>, <span class='st'>"log2"</span>,
+  <span class='st'>"identity"</span>), <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Counts per biotype"</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'><a href='plotCountsPerBroadClass.html'>plotCountsPerBroadClass</a></span>(<span class='no'>object</span>,
-  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log2"</span>,
-  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>)</pre>
+  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"log10"</span>, <span class='st'>"log2"</span>,
+  <span class='st'>"identity"</span>), <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Counts per broad class"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +164,11 @@ Name of the axis scale transformation to apply.</p>
       <th>countsAxisLabel</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Counts axis label.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Plot title.</p></td>
     </tr>
     </table>
     

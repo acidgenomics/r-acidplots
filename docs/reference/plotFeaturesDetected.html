@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot genes detected — plotGenesDetected • minimalism</title>
+<title>Plot features detected — plotFeaturesDetected • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot genes detected — plotGenesDetected" />
+<meta property="og:title" content="Plot features detected — plotFeaturesDetected" />
 
-<meta property="og:description" content="Plot genes detected" />
+<meta property="og:description" content="Visualize the number of features (i.e. genes) detected." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -64,8 +64,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -104,30 +104,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot genes detected</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/plotGenesDetected-methods.R'><code>R/plotGenesDetected-methods.R</code></a></small>
-    <div class="hidden name"><code>plotGenesDetected.Rd</code></div>
+    <h1>Plot features detected</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotFeaturesDetected-methods.R'><code>R/plotFeaturesDetected-methods.R</code></a></small>
+    <div class="hidden name"><code>plotFeaturesDetected.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot genes detected</p>
+    <p>Visualize the number of features (i.e. genes) detected.</p>
     
     </div>
 
     <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotGenesDetected</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+<span class='fu'>plotFeaturesDetected</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>),
-  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"genes detected"</span>)
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
+  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>scale_fill_synesthesia_d</a></span>()), <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
+  <span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Features detected"</span>,
+  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"features"</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>plotGenesDetected</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+<span class='fu'>plotFeaturesDetected</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw'>NULL</span>),
-  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"genes detected"</span>)</pre>
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
+  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>scale_fill_synesthesia_d</a></span>()), <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
+  <span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Features detected"</span>,
+  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"features"</span>)
+
+<span class='fu'>plotGenesDetected</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,6 +183,15 @@ Flip x and y axes. Recommended for plots containing many samples.</p></td>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Plot title.</p></td>
     </tr>
+    <tr>
+      <th>countsAxisLabel</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Counts axis label.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -188,7 +201,7 @@ Plot title.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
-<span class='fu'>plotGenesDetected</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotGenesDetected-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotGenesDetected</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='img'><img src='plotGenesDetected-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotFeaturesDetected</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotFeaturesDetected-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotFeaturesDetected</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='img'><img src='plotFeaturesDetected-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

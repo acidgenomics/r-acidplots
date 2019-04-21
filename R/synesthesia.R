@@ -2,6 +2,15 @@
 #'
 #' @rdname synesthesia
 #' @name synesthesia
+#' @inheritParams params
+#'
+#' @param guide `character(1)` or `function`.
+#'   A function used to create a guide or its name.
+#'   See [`guides()`][ggplot2::guides] for details.
+#' @param n `integer(1)`.
+#'   The number of colors (>= 1) to be in the palette.
+#' @param na.value `character(1)`.
+#'   Missing values will be replaced with this value.
 #'
 #' @seealso
 #' Adapted from viridis color palette:
@@ -54,8 +63,10 @@
 #'
 #' ## Base color
 #' par(mar = rep(2.5, times = 4L))
-#' image(matrix(1:400, 20), col = synesthesia())
-#' image(matrix(1:100, nrow = 10), col = synesthesia())
+#' image(
+#'     matrix(data = seq_len(100L), nrow = 10, ncol = 10),
+#'     col = synesthesia()
+#' )
 NULL
 
 

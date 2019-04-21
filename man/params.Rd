@@ -13,6 +13,15 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
+\item{borderColor}{\code{character(1)} or \code{NULL}.
+Border color. Disabled by default for improved aesthetics.}
+
+\item{clusteringMethod}{\code{character(1)}.
+Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
+
+\item{clusterRows, clusterCols}{\code{logical(1)}.
+Arrange with hierarchical clustering.}
+
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
@@ -81,6 +90,11 @@ Size of the text label.}
 \item{legend}{\code{logical(1)}.
 Show plot legend.}
 
+\item{legendColor}{\code{function} or \code{NULL}.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set \code{NULL}, will use the default pheatmap
+colors.}
+
 \item{level}{\code{character(1)}.
 Return as genes or transcripts.}
 
@@ -133,6 +147,13 @@ Point size for dots in the plot.}
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
 
+\item{scale}{\code{character(1)}.
+Whether the values should be centered and scaled in either the row or
+column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
+
+\item{showRownames, showColnames}{\code{logical(1)}.
+Show row or column names.}
+
 \item{sigPointColor}{\code{character}.
 Color names for labeling upregulated and downregulated genes. Also supports
 a character string for labeling DEGs with the same color, regardless of
@@ -149,6 +170,9 @@ Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
+
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{trendline}{\code{logical(1)}.
 Include trendline on plot.}

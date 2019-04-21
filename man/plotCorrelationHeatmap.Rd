@@ -11,13 +11,19 @@
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, borderColor = NULL, title = TRUE, ...)
+  treeheightCol = 50L, color = getOption(x = "acid.heatmap.color",
+  default = acidplots::synesthesia), legendColor = getOption(x =
+  "acid.heatmap.color", default = acidplots::synesthesia),
+  borderColor = NULL, title = TRUE, ...)
 
 \S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
   showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, borderColor = NULL, title = TRUE, ...)
+  treeheightCol = 50L, color = getOption(x = "acid.heatmap.color",
+  default = acidplots::synesthesia), legendColor = getOption(x =
+  "acid.heatmap.color", default = acidplots::synesthesia),
+  borderColor = NULL, title = TRUE, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -36,6 +42,37 @@ Groups of interest that define the samples. If left unset, defaults to
 Correlation coefficient (or covariance) method to be computed. Defaults to
 "\code{pearson}" but "\code{spearman}" or "\code{kendall}" can also be used. Refer to the
 \code{\link[stats:cor]{stats::cor()}} documentation for details.}
+
+\item{clusteringMethod}{\code{character(1)}.
+Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
+
+\item{showRownames}{\code{logical(1)}.
+Show row or column names.}
+
+\item{showColnames}{\code{logical(1)}.
+Show row or column names.}
+
+\item{treeheightRow}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
+
+\item{treeheightCol}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
+
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+
+To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
+}}
+
+\item{legendColor}{\code{function} or \code{NULL}.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set \code{NULL}, will use the default pheatmap
+colors.}
+
+\item{borderColor}{\code{character(1)} or \code{NULL}.
+Border color. Disabled by default for improved aesthetics.}
 
 \item{title}{\code{character(1)}.
 Plot title.}

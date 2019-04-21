@@ -236,9 +236,9 @@ plotHeatmap.SummarizedExperiment <-  # nolint
     }
 
 formals(plotHeatmap.SummarizedExperiment)[["color"]] <-
-    formalsList[["acid.heatmap.color"]]
+    formalsList[["heatmap.color"]]
 formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
-    formalsList[["acid.heatmap.color"]]
+    formalsList[["heatmap.color"]]
 
 
 

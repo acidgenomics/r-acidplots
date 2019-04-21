@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ggplot2 geometric objects — ggplot2-geoms • minimalism</title>
+<title>ggplot2 geometric objects — geoms • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="ggplot2 geometric objects — ggplot2-geoms" />
+<meta property="og:title" content="ggplot2 geometric objects — geoms" />
 
 <meta property="og:description" content="Convenience functions with modified defaults for
 ggplot2." />
@@ -65,8 +65,8 @@ ggplot2." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@ ggplot2." />
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -106,8 +106,8 @@ ggplot2." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ggplot2 geometric objects</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/ggplot2-geoms.R'><code>R/ggplot2-geoms.R</code></a></small>
-    <div class="hidden name"><code>ggplot2-geoms.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/geoms.R'><code>R/geoms.R</code></a></small>
+    <div class="hidden name"><code>geoms.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -118,6 +118,8 @@ ggplot2." />
     </div>
 
     <pre class="usage"><span class='fu'>acid_geom_abline</span>(<span class='kw'>xintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>yintercept</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>acid_geom_bar</span>(<span class='no'>...</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"identity"</span>)
 
 <span class='fu'>acid_geom_label</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
@@ -136,6 +138,23 @@ ggplot2." />
 Value denoting x- or y-axis cutoff. Specify one but not both.</p></td>
     </tr>
     <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code>layer()</code>. These are
+often aesthetics, used to set an aesthetic to a fixed value, like
+<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
+to the paired geom/stat.</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Text color (e.g. <code>"orange"</code>).</p></td>
+    </tr>
+    <tr>
+      <th>stat</th>
+      <td><p>The statistical transformation to use on the data for this
+layer, as a string.</p></td>
+    </tr>
+    <tr>
       <th>data</th>
       <td><p><code>data.frame</code>.
 Data.</p></td>
@@ -146,13 +165,6 @@ Data.</p></td>
 <code>aes_()</code>. If specified and <code>inherit.aes = TRUE</code> (the
 default), it is combined with the default mapping at the top level of the
 plot. You must supply <code>mapping</code> if there is no plot mapping.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed on to <code>layer()</code>. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-<code>colour = "red"</code> or <code>size = 3</code>. They may also be parameters
-to the paired geom/stat.</p></td>
     </tr>
     <tr>
       <th>col</th>
@@ -169,11 +181,6 @@ or "<code>median</code>".</p></td>
       <th>digits</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
 Number of significant digits to use. Defaults to rounded.</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Text color (e.g. <code>"orange"</code>).</p></td>
     </tr>
     <tr>
       <th>size</th>
