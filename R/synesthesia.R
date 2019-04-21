@@ -34,20 +34,28 @@
 #'
 #' @examples
 #' library(ggplot2)
+#' theme_set(acid_theme_light())
 #'
-#' ## ggplot continuous colour
+#' ## Colour, continuous
+#' cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(colour = hwy))
+#' cc + scale_colour_synesthesia_c()
 #'
-#' ## ggplot discrete colour
+#' ## Colour, discrete
+#' cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(colour = fl), fill = NA)
+#' cd + scale_colour_synesthesia_d()
 #'
-#' ## ggplot continuous fill
-#' p <- ggplot(diamonds, aes(carat, price)) + geom_hex()
-#' p + scale_fill_viridis_c()
-#' p + scale_fill_synesthesia_c()
+#' ## Fill, continuous
+#' fc <- ggplot(diamonds, aes(carat, price)) + geom_hex()
+#' fc + scale_fill_synesthesia_c()
 #'
-#' ## ggplot discrete fill
+#' ## Fill, discrete
+#' fd <- ggplot(mpg, aes(fl)) + geom_bar(aes(fill = fl))
+#' fd + scale_fill_synesthesia_d()
 #'
-#' ## base color
+#' ## Base color
+#' par(mar = rep(2.5, times = 4L))
 #' image(matrix(1:400, 20), col = synesthesia())
+#' image(matrix(1:100, nrow = 10), col = synesthesia())
 NULL
 
 
