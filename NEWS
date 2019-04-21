@@ -2,9 +2,34 @@
 
 Reworked package, consolidating previous minimalism and firestarter packages.
 
+### New functions
+
+- `synesthesia` color palette functions.
+- `acid_coord_flip`: Intelligently puts samples at the top of the Y axis when
+  flipped. Particularly useful for barplots.
+- `acid_pretty_breaks`: Attempt to improve `scales::pretty_breaks`, using an
+  approach more similar to the base plot engine.
+- Renamed ggplot2 themes: `acid_theme_light`, `acid_theme_dark`.
+
+### Major changes
+
+- All ggplot2 geoms and transformations (`ggproto` functions) now consistently
+  use `acid_` as a prefix.
+
+### Minor changes
+
+- `plotCountsPerBiotype` and `plotCountsPerBroadClass` now support `title`.
+
+### Deprecations
+
+- `plotCountsPerGene` has been renamed to `plotCountsPerFeature`.
+- `plotGenesDetected` has been renamed to `plotFeaturesDetected`.
+- Deprecated `theme_paperwhite` and `theme_midnight` in favor of
+  `acid_theme_light` and `acid_theme_dark`.
 
 
-## minimalism 0.1.2 (2019-04-18)
+
+## acidplots (minimalism) 0.1.2 (2019-04-18)
 
 ### New functions
 
@@ -18,12 +43,12 @@ Reworked package, consolidating previous minimalism and firestarter packages.
 
 
 
-## minimalism 0.1.1 (2019-04-15)
+## acidplots (minimalism) 0.1.1 (2019-04-15)
 
 Updated packages depencies and switched to Docker for Travis CI.
 
 
 
-## minimalism 0.1.0 (2019-03-28)
+## acidplots (minimalism) 0.1.0 (2019-03-28)
 
 Initial release, migrating ggplot2 functions from basejump package.
