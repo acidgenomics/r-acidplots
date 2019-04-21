@@ -109,6 +109,45 @@
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-0-2019-04-20" class="anchor"></a>acidplots 0.2.0 (2019-04-20)</h2>
 <p>Reworked package, consolidating previous minimalism and firestarter packages.</p>
+<div id="new-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h3>
+<ul>
+<li>
+<code>synesthesia</code> color palette functions.</li>
+<li>
+<code>acid_coord_flip</code>: Intelligently puts samples at the top of the Y axis when flipped. Particularly useful for barplots.</li>
+<li>
+<code>acid_pretty_breaks</code>: Attempt to improve <code><a href="https://www.rdocumentation.org/packages/scales/topics/pretty_breaks">scales::pretty_breaks</a></code>, using an approach more similar to the base plot engine.</li>
+<li>Renamed ggplot2 themes: <code>acid_theme_light</code>, <code>acid_theme_dark</code>.</li>
+</ul>
+</div>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>All ggplot2 geoms and transformations (<code>ggproto</code> functions) now consistently use <code>acid_</code> as a prefix.</li>
+</ul>
+</div>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>
+<code>plotCountsPerBiotype</code> and <code>plotCountsPerBroadClass</code> now support <code>title</code>.</li>
+</ul>
+</div>
+<div id="deprecations" class="section level3">
+<h3 class="hasAnchor">
+<a href="#deprecations" class="anchor"></a>Deprecations</h3>
+<ul>
+<li>
+<code>plotCountsPerGene</code> has been renamed to <code>plotCountsPerFeature</code>.</li>
+<li>
+<code>plotGenesDetected</code> has been renamed to <code>plotFeaturesDetected</code>.</li>
+<li>Deprecated <code>theme_paperwhite</code> and <code>theme_midnight</code> in favor of <code>acid_theme_light</code> and <code>acid_theme_dark</code>.</li>
+</ul>
+</div>
 </div>
   </div>
 

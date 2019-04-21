@@ -138,16 +138,6 @@ name must be defined in
 Border color. Disabled by default for improved aesthetics.</p></td>
     </tr>
     <tr>
-      <th>clusteringMethod</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>clusterRows, clusterCols</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Arrange with hierarchical clustering.</p></td>
-    </tr>
-    <tr>
       <th>color</th>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
@@ -246,13 +236,6 @@ Size of the text label.</p></td>
 Show plot legend.</p></td>
     </tr>
     <tr>
-      <th>legendColor</th>
-      <td><p><code>function</code> or <code>NULL</code>.
-Hexadecimal color function to use for legend labels. Note that hexadecimal
-values are not supported. If set <code>NULL</code>, will use the default pheatmap
-colors.</p></td>
-    </tr>
-    <tr>
       <th>level</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Return as genes or transcripts.</p></td>
@@ -345,18 +328,6 @@ Whether the values should be centered and scaled in either the row or
 column direction ("<code>row</code>", "<code>column</code>"), or remain unscaled ("<code>none</code>").</p></td>
     </tr>
     <tr>
-      <th>showRownames, showColnames</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
-Show row or column names.</p></td>
-    </tr>
-    <tr>
-      <th>sigPointColor</th>
-      <td><p><code>character</code>.
-Color names for labeling upregulated and downregulated genes. Also supports
-a character string for labeling DEGs with the same color, regardless of
-direction.</p></td>
-    </tr>
-    <tr>
       <th>subtitle</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Plot subtitle.</p></td>
@@ -372,11 +343,6 @@ Plot title.</p></td>
 Name of the axis scale transformation to apply.</p>
 <p>For more information:</p><pre>help(topic = "scale_x_continuous", package = "ggplot2")
 </pre></td>
-    </tr>
-    <tr>
-      <th>treeheightRow, treeheightCol</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
-Size of the row and column dendrograms. Use <code>0</code> to disable.</p></td>
     </tr>
     <tr>
       <th>trendline</th>

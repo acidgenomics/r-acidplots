@@ -190,12 +190,20 @@ Size of the row and column dendrograms. Use <code>0</code> to disable.</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p><code>ScaleDiscrete</code>.
-Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/scale_manual'>ggplot2::scale_color_manual()</a></code>.</p>
-<p>To set the discrete color palette globally, use:</p><pre>options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-</pre></td>
+      <td><p><code>function</code>, <code>character</code>, or <code>NULL</code>.
+Hexadecimal color function or values to use for plot.</p>
+<p>We generally recommend these hexadecimal functions from the viridis
+package, in addition to our <code><a href='synesthesia.html'>synesthesia()</a></code> palette:</p><ul>
+<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::viridis()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::inferno()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::magma()</a></code>.</p></li>
+<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::plasma()</a></code>.</p></li>
+</ul>
+
+<p>Alternatively, colors can be defined manually using hexadecimal values
+(e.g. <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("#FF0000", "#0000FF")</a></code>), but this is not generally recommended.
+Refer to the RColorBrewer package for hexadecimal color palettes that may
+be suitable. If set <code>NULL</code>, will use the default pheatmap colors.</p></td>
     </tr>
     <tr>
       <th>legendColor</th>
