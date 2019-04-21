@@ -45,31 +45,31 @@ column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{non
 \item{clusteringMethod}{\code{character(1)}.
 Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
 
-\item{clusterRows}{\code{logical(1)}.
+\item{clusterRows, clusterCols}{\code{logical(1)}.
 Arrange with hierarchical clustering.}
 
-\item{clusterCols}{\code{logical(1)}.
-Arrange with hierarchical clustering.}
-
-\item{showRownames}{\code{logical(1)}.
+\item{showRownames, showColnames}{\code{logical(1)}.
 Show row or column names.}
 
-\item{showColnames}{\code{logical(1)}.
-Show row or column names.}
-
-\item{treeheightRow}{\code{integer(1)}.
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
 
-\item{treeheightCol}{\code{integer(1)}.
-Size of the row and column dendrograms. Use \code{0} to disable.}
+\item{color}{\code{function}, \code{character}, or \code{NULL}.
+Hexadecimal color function or values to use for plot.
 
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+We generally recommend these hexadecimal functions from the viridis
+package:
+\itemize{
+\item \code{viridis::viridis()} (\emph{default}).
+\item \code{viridis::inferno()}.
+\item \code{viridis::magma()}.
+\item \code{viridis::plasma()}.
+}
 
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
+Alternatively, colors can be defined manually using hexadecimal values
+(e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
+Refer to the RColorBrewer package for hexadecimal color palettes that may
+be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 
 \item{legendColor}{\code{function} or \code{NULL}.
 Hexadecimal color function to use for legend labels. Note that hexadecimal
