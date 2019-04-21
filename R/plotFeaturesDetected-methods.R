@@ -130,15 +130,3 @@ setMethod(
     signature = signature("SingleCellExperiment"),
     definition = plotFeaturesDetected.SingleCellExperiment
 )
-
-
-
-#' @rdname plotFeaturesDetected
-#' @export
-plotGenesDetected <- function(...) {
-    plotFeaturesDetected(
-        ...,
-        title = "Genes detected",
-        countsAxisLabel = "genes"
-    )
-}

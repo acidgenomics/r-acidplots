@@ -5,7 +5,6 @@
 \alias{plotCountsPerFeature}
 \alias{plotCountsPerFeature,SummarizedExperiment-method}
 \alias{plotCountsPerFeature,SingleCellExperiment-method}
-\alias{plotCountsPerGene}
 \title{Plot counts per feature}
 \usage{
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
@@ -27,8 +26,6 @@
   "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
   flip = getOption(x = "acid.flip", default = TRUE),
   countsAxisLabel = "counts", title = "Counts per feature")
-
-plotCountsPerGene(...)
 }
 \arguments{
 \item{object}{Object.}
@@ -89,8 +86,6 @@ Counts axis label.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.
