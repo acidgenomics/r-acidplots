@@ -8,9 +8,9 @@
 \usage{
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
-  countsAxisLabel = "counts", medianLine = TRUE,
-  color = getOption("basejump.discrete.color", NULL),
-  legend = getOption("basejump.legend", TRUE), style = c("facet",
+  countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
+  = "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), legend, style = c("facet",
   "wide"))
 }
 \arguments{
