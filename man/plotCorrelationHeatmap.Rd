@@ -62,9 +62,9 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 Hexadecimal color function or values to use for plot.
 
 We generally recommend these hexadecimal functions from the viridis
-package:
+package, in addition to our \code{\link[=synesthesia]{synesthesia()}} palette:
 \itemize{
-\item \code{viridis::viridis()} (\emph{default}).
+\item \code{viridis::viridis()}.
 \item \code{viridis::inferno()}.
 \item \code{viridis::magma()}.
 \item \code{viridis::plasma()}.
