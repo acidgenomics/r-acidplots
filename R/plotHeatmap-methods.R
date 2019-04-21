@@ -58,9 +58,9 @@
 #'   Hexadecimal color function or values to use for plot.
 #'
 #'   We generally recommend these hexadecimal functions from the viridis
-#'   package:
+#'   package, in addition to our [synesthesia()] palette:
 #'
-#'   - `viridis::viridis()` (*default*).
+#'   - `viridis::viridis()`.
 #'   - `viridis::inferno()`.
 #'   - `viridis::magma()`.
 #'   - `viridis::plasma()`.
