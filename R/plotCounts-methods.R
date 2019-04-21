@@ -177,8 +177,8 @@ plotCounts.SummarizedExperiment <-  # nolint
         trans = c("identity", "log2", "log10"),
         countsAxisLabel = "counts",
         medianLine = TRUE,
-        color = getOption("basejump.discrete.color", NULL),
-        legend = getOption("basejump.legend", TRUE),
+        color,
+        legend,
         style = c("facet", "wide")
     ) {
         # Detect DESeqDataSet and use normalized counts, if necessary.
@@ -245,6 +245,11 @@ plotCounts.SummarizedExperiment <-  # nolint
             )
         )
     }
+
+formals(plotCounts.SummarizedExperiment)[["color"]] <-
+    formalsList[["color.discrete"]]
+formals(plotCounts.SummarizedExperiment)[["legend"]]
+    formalsList[["legend"]]
 
 
 

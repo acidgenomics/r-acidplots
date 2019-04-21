@@ -9,9 +9,9 @@
 \usage{
 \S4method{plotGenderMarkers}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
-  countsAxisLabel = "counts", medianLine = TRUE,
-  color = getOption("basejump.discrete.color", NULL),
-  legend = getOption("basejump.legend", TRUE), style = "wide")
+  countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
+  = "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), legend, style = "wide")
 }
 \arguments{
 \item{object}{Object.}
