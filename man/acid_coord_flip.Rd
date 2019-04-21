@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot2-transforms.R
 \name{acid_coord_flip}
 \alias{acid_coord_flip}
-\title{Flip discrete data}
+\title{Flip coordinates}
 \usage{
 acid_coord_flip(object)
 }

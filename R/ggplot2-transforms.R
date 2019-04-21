@@ -1,4 +1,4 @@
-#' Flip discrete data
+#' Flip coordinates
 #'
 #' Intelligently flip a plot with discrete data on the X axis.
 #'
@@ -44,6 +44,11 @@ acid_coord_flip <-  # nolint
 
 
 
+#' Remove Y axis padding
+#' @export
+#' @inheritParams ggplot2::scale_y_continuous
+#' @examples
+#' acid_scale_y_continuous_nopad()
 acid_scale_y_continuous_nopad <-  # nolint
     function(
         ...,
