@@ -50,6 +50,34 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inheritParams params
 #'
+#' @param clusteringMethod `character(1)`.
+#'   Clustering method. Accepts the same values as [stats::hclust()].
+#' @param clusterRows,clusterCols `logical(1)`.
+#'   Arrange with hierarchical clustering.
+#' @param color `function`, `character`, or `NULL`.
+#'   Hexadecimal color function or values to use for plot.
+#'
+#'   We generally recommend these hexadecimal functions from the viridis
+#'   package:
+#'
+#'   - `viridis::viridis()` (*default*).
+#'   - `viridis::inferno()`.
+#'   - `viridis::magma()`.
+#'   - `viridis::plasma()`.
+#'
+#'   Alternatively, colors can be defined manually using hexadecimal values
+#'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
+#'   Refer to the RColorBrewer package for hexadecimal color palettes that may
+#'   be suitable. If set `NULL`, will use the default pheatmap colors.
+#'
+#' @param legendColor `function` or `NULL`.
+#'   Hexadecimal color function to use for legend labels. Note that hexadecimal
+#'   values are not supported. If set `NULL`, will use the default pheatmap
+#'   colors.
+#' @param showRownames,showColnames `logical(1)`.
+#'   Show row or column names.
+#' @param treeheightRow,treeheightCol `integer(1)`.
+#'   Size of the row and column dendrograms. Use `0` to disable.
 #' @param ... Passthrough arguments to [pheatmap::pheatmap()].
 #'   The argument names must be formatted in camel case, not snake case.
 #'

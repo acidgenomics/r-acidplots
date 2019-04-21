@@ -59,13 +59,22 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 \item{treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
 
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+\item{color}{\code{function}, \code{character}, or \code{NULL}.
+Hexadecimal color function or values to use for plot.
 
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
+We generally recommend these hexadecimal functions from the viridis
+package:
+\itemize{
+\item \code{viridis::viridis()} (\emph{default}).
+\item \code{viridis::inferno()}.
+\item \code{viridis::magma()}.
+\item \code{viridis::plasma()}.
+}
+
+Alternatively, colors can be defined manually using hexadecimal values
+(e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
+Refer to the RColorBrewer package for hexadecimal color palettes that may
+be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 
 \item{legendColor}{\code{function} or \code{NULL}.
 Hexadecimal color function to use for legend labels. Note that hexadecimal
