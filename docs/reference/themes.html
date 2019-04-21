@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ggplot2 themes — ggplot2-themes • minimalism</title>
+<title>ggplot2 themes — themes • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="ggplot2 themes — ggplot2-themes" />
+<meta property="og:title" content="ggplot2 themes — themes" />
 
 <meta property="og:description" content="Complete ggplot2 themes." />
 <meta name="twitter:card" content="summary" />
@@ -64,8 +64,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -105,8 +105,8 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ggplot2 themes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/ggplot-themes.R'><code>R/ggplot-themes.R</code></a></small>
-    <div class="hidden name"><code>ggplot2-themes.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/themes.R'><code>R/themes.R</code></a></small>
+    <div class="hidden name"><code>themes.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -115,11 +115,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>theme_paperwhite</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bold"</span>,
+    <pre class="usage"><span class='fu'>acid_theme_light</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
   <span class='st'>"top"</span>, <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>theme_midnight</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bold"</span>,
+<span class='fu'>acid_theme_dark</span>(<span class='kw'>base_size</span> <span class='kw'>=</span> <span class='fl'>14L</span>, <span class='kw'>base_family</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>face</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bold"</span>,
   <span class='st'>"plain"</span>), <span class='kw'>aspect_ratio</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"right"</span>, <span class='st'>"bottom"</span>,
   <span class='st'>"top"</span>, <span class='st'>"none"</span>), <span class='kw'>grid</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>minimal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
@@ -168,16 +168,16 @@ panel borders.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>All themes are based off of <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>ggplot2::theme_linedraw()</a></code>, but with
+    <p>Both themes are based off of <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme'>ggplot2::theme_linedraw()</a></code>, but with
 modifications and extra user-definable parameters.</p>
     
-    <h2 class="hasAnchor" id="paperwhite"><a class="anchor" href="#paperwhite"></a>Paperwhite</h2>
+    <h2 class="hasAnchor" id="light"><a class="anchor" href="#light"></a>Light</h2>
 
     
     <p>High contrast black and white theme optimized for print. Recommended for
 scientific manuscripts and website tutorials.</p>
     
-    <h2 class="hasAnchor" id="midnight"><a class="anchor" href="#midnight"></a>Midnight</h2>
+    <h2 class="hasAnchor" id="dark"><a class="anchor" href="#dark"></a>Dark</h2>
 
     
     <p>Blackout theme that sets the plot background as black, with white text.
@@ -205,11 +205,11 @@ expression plots.</p>
 <span class='co'>## Paperwhite theme.</span>
 <span class='no'>p</span> +
     <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-    <span class='fu'>theme_paperwhite</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2-themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
+    <span class='fu'>acid_theme_light</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Midnight theme.</span>
 <span class='no'>p</span> +
     <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-    <span class='fu'>theme_midnight</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='ggplot2-themes-2.png' alt='' width='700' height='433' /></div></pre>
+    <span class='fu'>acid_theme_dark</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -220,9 +220,9 @@ expression plots.</p>
 
       <li><a href="#details">Details</a></li>
 
-      <li><a href="#paperwhite">Paperwhite</a></li>
+      <li><a href="#light">Light</a></li>
 
-      <li><a href="#midnight">Midnight</a></li>
+      <li><a href="#dark">Dark</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

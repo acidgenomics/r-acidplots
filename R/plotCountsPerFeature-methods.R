@@ -136,7 +136,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
 
         # Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !geom %in% "density") {
-            p <- flip_x_discrete(p)
+            p <- acid_coord_flip(p)
         }
 
         if (identical(interestingGroups, "sampleName")) {

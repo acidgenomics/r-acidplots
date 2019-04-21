@@ -152,9 +152,9 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
 formals(plotCorrelationHeatmap.SummarizedExperiment)[["method"]] <-
     formals(stats::cor)[["method"]]
 formals(plotCorrelationHeatmap.SummarizedExperiment)[["color"]] <-
-    formalsList[["acid.heatmap.color"]]
+    formalsList[["heatmap.color"]]
 formals(plotCorrelationHeatmap.SummarizedExperiment)[["legendColor"]] <-
-    formalsList[["acid.heatmap.color"]]
+    formalsList[["heatmap.color"]]
 
 
 

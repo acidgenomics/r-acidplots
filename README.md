@@ -1,10 +1,10 @@
-# minimalism
+# acidplots
 
-[![Travis CI build status](https://travis-ci.com/acidgenomics/minimalism.svg?branch=master)](https://travis-ci.com/acidgenomics/minimalism)
-[![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/minimalism/branch/master)
+[![Travis CI build status](https://travis-ci.com/acidgenomics/acidplots.svg?branch=master)](https://travis-ci.com/acidgenomics/acidplots)
+[![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/acidplots/branch/master)
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-Minimalist visualizations for bioinformatics.
+Functions for plotting genomic data.
 
 ## Installation
 
@@ -17,7 +17,7 @@ if (!require("BiocManager")) {
     install.packages("BiocManager")
 }
 BiocManager::install("remotes")
-BiocManager::install("acidgenomics/minimalism")
+BiocManager::install("acidgenomics/acidplots")
 ```
 
 [Bioconductor]: https://bioconductor.org/

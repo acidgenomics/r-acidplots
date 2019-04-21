@@ -29,6 +29,19 @@ scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
 
 scale_fill_synesthesia_d(...)
 }
+\arguments{
+\item{n}{\code{integer(1)}.
+The number of colors (>= 1) to be in the palette.}
+
+\item{...}{Additional arguments.}
+
+\item{na.value}{\code{character(1)}.
+Missing values will be replaced with this value.}
+
+\item{guide}{\code{character(1)} or \code{function}.
+A function used to create a guide or its name.
+See \code{\link[ggplot2:guides]{guides()}} for details.}
+}
 \description{
 Synesthesia color palette
 }
@@ -54,8 +67,10 @@ fd + scale_fill_synesthesia_d()
 
 ## Base color
 par(mar = rep(2.5, times = 4L))
-image(matrix(1:400, 20), col = synesthesia())
-image(matrix(1:100, nrow = 10), col = synesthesia())
+image(
+    matrix(data = seq_len(100L), nrow = 10, ncol = 10),
+    col = synesthesia()
+)
 }
 \seealso{
 Adapted from viridis color palette:

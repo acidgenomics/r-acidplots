@@ -10,6 +10,12 @@
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
 #'   name must be defined in
 #'   [`assayNames()`][SummarizedExperiment::assayNames].
+#' @param borderColor `character(1)` or `NULL`.
+#'   Border color. Disabled by default for improved aesthetics.
+#' @param clusteringMethod `character(1)`.
+#'   Clustering method. Accepts the same values as [stats::hclust()].
+#' @param clusterRows,clusterCols `logical(1)`.
+#'   Arrange with hierarchical clustering.
 #' @param color `ScaleDiscrete`.
 #'   Desired ggplot2 color scale. Must supply discrete values. When set `NULL`,
 #'   the default ggplot2 color palette will be used. If manual color definitions
@@ -68,6 +74,10 @@
 #'   Size of the text label.
 #' @param legend `logical(1)`.
 #'   Show plot legend.
+#' @param legendColor `function` or `NULL`.
+#'   Hexadecimal color function to use for legend labels. Note that hexadecimal
+#'   values are not supported. If set `NULL`, will use the default pheatmap
+#'   colors.
 #' @param level `character(1)`.
 #'   Return as genes or transcripts.
 #' @param limit `numeric(1)`.
@@ -103,6 +113,11 @@
 #' @param return `character(1)`.
 #'   Return type. Uses [`match.arg()`][base::match.arg] internally and defaults
 #'   to the first argument in the `character` vector.
+#' @param scale `character(1)`.
+#'   Whether the values should be centered and scaled in either the row or
+#'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").
+#' @param showRownames,showColnames `logical(1)`.
+#'   Show row or column names.
 #' @param sigPointColor `character`.
 #'   Color names for labeling upregulated and downregulated genes. Also supports
 #'   a character string for labeling DEGs with the same color, regardless of
@@ -119,6 +134,8 @@
 #'   ```
 #'   help(topic = "scale_x_continuous", package = "ggplot2")
 #'   ```
+#' @param treeheightRow,treeheightCol `integer(1)`.
+#'   Size of the row and column dendrograms. Use `0` to disable.
 #' @param trendline `logical(1)`.
 #'   Include trendline on plot.
 #' @param ... Additional arguments.

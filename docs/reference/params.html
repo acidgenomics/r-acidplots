@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parameters — params • minimalism</title>
+<title>Parameters — params • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -64,8 +64,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -87,7 +87,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -105,7 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Parameters</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/minimalism/blob/master/R/params.R'><code>R/params.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/params.R'><code>R/params.R</code></a></small>
     <div class="hidden name"><code>params.Rd</code></div>
     </div>
 
@@ -133,6 +133,21 @@ name must be defined in
 <code><a href='https://www.rdocumentation.org/packages/SummarizedExperiment/topics/SummarizedExperiment-class'>assayNames()</a></code>.</p></td>
     </tr>
     <tr>
+      <th>borderColor</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
+Border color. Disabled by default for improved aesthetics.</p></td>
+    </tr>
+    <tr>
+      <th>clusteringMethod</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>clusterRows, clusterCols</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Arrange with hierarchical clustering.</p></td>
+    </tr>
+    <tr>
       <th>color</th>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
@@ -150,7 +165,7 @@ Counts axis label.</p></td>
       <th>dark</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
 Plot against a dark background using the
-<code><a href='ggplot2-themes.html'>theme_midnight()</a></code> ggplot2 theme.</p></td>
+<code><a href='deprecated.html'>theme_midnight()</a></code> ggplot2 theme.</p></td>
     </tr>
     <tr>
       <th>dimsUse</th>
@@ -229,6 +244,13 @@ Size of the text label.</p></td>
       <th>legend</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
 Show plot legend.</p></td>
+    </tr>
+    <tr>
+      <th>legendColor</th>
+      <td><p><code>function</code> or <code>NULL</code>.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set <code>NULL</code>, will use the default pheatmap
+colors.</p></td>
     </tr>
     <tr>
       <th>level</th>
@@ -317,6 +339,17 @@ Return type. Uses <code><a href='https://www.rdocumentation.org/packages/base/to
 to the first argument in the <code>character</code> vector.</p></td>
     </tr>
     <tr>
+      <th>scale</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+Whether the values should be centered and scaled in either the row or
+column direction ("<code>row</code>", "<code>column</code>"), or remain unscaled ("<code>none</code>").</p></td>
+    </tr>
+    <tr>
+      <th>showRownames, showColnames</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>.
+Show row or column names.</p></td>
+    </tr>
+    <tr>
       <th>sigPointColor</th>
       <td><p><code>character</code>.
 Color names for labeling upregulated and downregulated genes. Also supports
@@ -339,6 +372,11 @@ Plot title.</p></td>
 Name of the axis scale transformation to apply.</p>
 <p>For more information:</p><pre>help(topic = "scale_x_continuous", package = "ggplot2")
 </pre></td>
+    </tr>
+    <tr>
+      <th>treeheightRow, treeheightCol</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
+Size of the row and column dendrograms. Use <code>0</code> to disable.</p></td>
     </tr>
     <tr>
       <th>trendline</th>
