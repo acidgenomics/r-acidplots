@@ -5,7 +5,6 @@
 \alias{plotFeaturesDetected}
 \alias{plotFeaturesDetected,SummarizedExperiment-method}
 \alias{plotFeaturesDetected,SingleCellExperiment-method}
-\alias{plotGenesDetected}
 \title{Plot features detected}
 \usage{
 \S4method{plotFeaturesDetected}{SummarizedExperiment}(object, assay = 1L,
@@ -21,8 +20,6 @@
   acidplots::scale_fill_synesthesia_d()), flip = getOption(x =
   "acid.flip", default = TRUE), title = "Features detected",
   countsAxisLabel = "features")
-
-plotGenesDetected(...)
 }
 \arguments{
 \item{object}{Object.}
@@ -59,8 +56,6 @@ Plot title.}
 
 \item{countsAxisLabel}{\code{character(1)}.
 Counts axis label.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

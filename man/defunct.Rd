@@ -2,7 +2,17 @@
 % Please edit documentation in R/deprecated.R
 \name{defunct}
 \alias{defunct}
+\alias{plotCountsPerGene}
+\alias{plotGenesDetected}
 \title{Defunct functions}
+\usage{
+plotCountsPerGene(...)
+
+plotGenesDetected(...)
+}
+\arguments{
+\item{...}{Additional arguments.}
+}
 \value{
 \code{.Defunct}.
 }

@@ -16,6 +16,18 @@ NULL
 
 
 # v0.2.0 =======================================================================
+#' @rdname defunct
+#' @export
+plotCountsPerGene <- function(...) {
+    .Defunct("plotCountsPerFeature")
+}
+
+#' @rdname defunct
+#' @export
+plotGenesDetected <- function(...) {
+    .Defunct("plotFeaturesDetected")
+}
+
 #' @rdname deprecated
 #' @export
 theme_midnight <- function(...) {

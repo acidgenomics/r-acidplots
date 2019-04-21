@@ -195,11 +195,3 @@ setMethod(
     signature = signature("SingleCellExperiment"),
     definition = plotCountsPerFeature.SingleCellExperiment
 )
-
-
-
-#' @rdname plotCountsPerFeature
-#' @export
-plotCountsPerGene <- function(...) {
-    plotCountsPerFeature(..., title = "Counts per gene")
-}
