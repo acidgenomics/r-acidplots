@@ -13,9 +13,9 @@
 #'   methodFormals metrics organism sampleData snake standardizeCall
 #'   zerosVsDepth
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr arrange bind_rows case_when desc filter funs group_by
-#'   left_join mutate mutate_all mutate_at mutate_if n pull rename select
-#'   select_if slice summarise summarise_all top_n ungroup
+#' @importFrom dplyr arrange bind_rows case_when desc filter group_by left_join
+#'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
+#'   summarise summarise_all top_n ungroup
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
 #'   expand_limits expand_scale facet_wrap geom_bar geom_boxplot geom_density
