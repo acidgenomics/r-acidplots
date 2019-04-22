@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Defunct functions — defunct • acidplots</title>
+<title>Remove Y axis padding — acid_scale_y_continuous_nopad • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Defunct functions — defunct" />
+<meta property="og:title" content="Remove Y axis padding — acid_scale_y_continuous_nopad" />
 
-<meta property="og:description" content="Defunct functions" />
+<meta property="og:description" content="Remove Y axis padding" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -104,43 +104,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Defunct functions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a></small>
-    <div class="hidden name"><code>defunct.Rd</code></div>
+    <h1>Remove Y axis padding</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/ggplot2-transforms.R'><code>R/ggplot2-transforms.R</code></a></small>
+    <div class="hidden name"><code>acid_scale_y_continuous_nopad.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Defunct functions</p>
+    <p>Remove Y axis padding</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotCountsPerGene</span>(<span class='no'>...</span>)
-
-<span class='fu'>plotGenesDetected</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>acid_scale_y_continuous_nopad</span>(<span class='no'>...</span>, <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fu'>expand_scale</span>(<span class='kw'>mult</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0L</span>,
+  <span class='fl'>0.025</span>)))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Other arguments passed on to <code>scale_(x|y)_continuous()</code></p></td>
+    </tr>
+    <tr>
+      <th>expand</th>
+      <td><p>Vector of range expansion constants used to add some
+padding around the data, to ensure that they are placed some distance
+away from the axes. Use the convenience function <code>expand_scale()</code>
+to generate the values for the <code>expand</code> argument. The defaults are to
+expand the scale by 5% on each side for continuous variables, and by
+0.6 units on each side for discrete variables.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>.Defunct</code>.</p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>acid_scale_y_continuous_nopad</span>()</div><div class='output co'>#&gt; &lt;ScaleContinuousPosition&gt;
+#&gt;  Range:  
+#&gt;  Limits:    0 --    1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
