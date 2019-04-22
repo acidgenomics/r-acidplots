@@ -17,19 +17,18 @@
 #'
 #' @examples
 #' data(rse, package = "acidtest")
-#' object <- rse
 #'
-#' rownames <- head(rownames(object))
+#' rownames <- head(rownames(rse))
 #' print(rownames)
-#' g2s <- basejump::Gene2Symbol(object)
+#' g2s <- basejump::Gene2Symbol(rse)
 #' geneIDs <- head(g2s[["geneID"]])
 #' print(geneIDs)
 #' geneNames <- head(g2s[["geneName"]])
 #' print(geneNames)
 #'
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotCounts(object, genes = geneIDs, style = "facet")
-#' plotCounts(object, genes = geneNames, style = "wide")
+#' plotCounts(rse, genes = geneIDs, style = "facet")
+#' plotCounts(rse, genes = geneNames, style = "wide")
 NULL
 
 
@@ -42,18 +41,47 @@ NULL
 
 
 
+.geneMedianLine <- stat_summary(
+    fun.y = median,
+    fun.ymin = median,
+    fun.ymax = median,
+    geom = "crossbar",
+    show.legend = FALSE,
+    width = 0.5
+)
+
+
+
+.genePoint <- function(
+    size = 3L,
+    alpha = 1L,
+    ...
+) {
+    geom_point(
+        ...,
+        size = size,
+        alpha = alpha,
+        position = position_jitterdodge(dodge.width = 0.9)
+    )
+}
+
+
+
 .plotCountsFacet <- function(
     object,
-    countsAxisLabel = "counts",
-    medianLine = TRUE,
-    color = NULL,
-    legend = TRUE
+    trans,
+    countsAxisLabel,
+    medianLine,
+    color,
+    legend
 ) {
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.
-    data <- meltCounts(object)
+    suppressMessages(
+        data <- meltCounts(object, trans = trans)
+    )
 
     p <- ggplot(
         data = data,
@@ -64,6 +92,7 @@ NULL
         )
     ) +
         .genePoint(show.legend = legend) +
+        scale_y_continuous() +
         facet_wrap(facets = sym("rowname"), scales = "free_y") +
         labs(
             x = NULL,
@@ -93,16 +122,19 @@ NULL
 
 .plotCountsWide <- function(
     object,
-    countsAxisLabel = "counts",
-    medianLine = TRUE,
-    color = NULL,
-    legend = TRUE
+    trans,
+    countsAxisLabel,
+    medianLine,
+    color,
+    legend
 ) {
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
     # Coerce the data to a melted tibble.
-    data <- meltCounts(object)
+    suppressMessages(
+        data <- meltCounts(object, trans = trans)
+    )
 
     p <- ggplot(
         data = data,
@@ -113,6 +145,7 @@ NULL
         )
     ) +
         .genePoint(show.legend = legend) +
+        scale_y_continuous() +
         labs(
             x = NULL,
             y = countsAxisLabel,
@@ -141,10 +174,11 @@ plotCounts.SummarizedExperiment <-  # nolint
         genes,
         assay = 1L,
         interestingGroups = NULL,
+        trans = c("identity", "log2", "log10"),
         countsAxisLabel = "counts",
         medianLine = TRUE,
-        color = getOption("basejump.discrete.color", NULL),
-        legend = getOption("basejump.legend", TRUE),
+        color,
+        legend,
         style = c("facet", "wide")
     ) {
         # Detect DESeqDataSet and use normalized counts, if necessary.
@@ -162,17 +196,19 @@ plotCounts.SummarizedExperiment <-  # nolint
             # Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
+            isString(countsAxisLabel),
             isFlag(medianLine),
             isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isFlag(legend)
         )
+        trans <- match.arg(trans)
+        style <- match.arg(style)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
 
         # Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
-        interestingGroups(object) <-
-            matchInterestingGroups(object, interestingGroups)
-        style <- match.arg(style)
 
         # Minimize the SE object only contain the assay of our choice.
         assay <- assays(object)[[assay]]
@@ -185,16 +221,23 @@ plotCounts.SummarizedExperiment <-  # nolint
             object <- convertGenesToSymbols(object)
         )
 
+        # Counts axis label. Automatically add transformation, if necessary.
+        if (trans != "identity") {
+            countsAxisLabel <- paste(trans, countsAxisLabel)
+        }
+
         # Plot style.
         if (style == "facet") {
             what <- .plotCountsFacet
         } else if (style == "wide") {
             what <- .plotCountsWide
         }
+
         do.call(
             what = what,
             args = list(
                 object = object,
+                trans = trans,
                 countsAxisLabel = countsAxisLabel,
                 medianLine = medianLine,
                 color = color,
@@ -202,6 +245,11 @@ plotCounts.SummarizedExperiment <-  # nolint
             )
         )
     }
+
+formals(plotCounts.SummarizedExperiment)[["color"]] <-
+    formalsList[["color.discrete"]]
+formals(plotCounts.SummarizedExperiment)[["legend"]] <-
+    formalsList[["legend"]]
 
 
 

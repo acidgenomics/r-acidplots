@@ -1,4 +1,4 @@
-#' minimalism
-#' Minimalist visualizations for bioinformatics.
+#' acidplots
+#' Functions for plotting genomic data.
 #' @keywords internal
 "_PACKAGE"

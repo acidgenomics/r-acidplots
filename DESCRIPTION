@@ -1,8 +1,8 @@
-Package: minimalism
-Title: Minimalist visualizations for bioinformatics
-Description: Part of the basejump toolkit for bioinformatics.
-Version: 0.1.1
-Date: 2019-04-15
+Package: acidplots
+Title: Functions for plotting genomic data
+Description: Extension of the basejump toolkit for bioinformatics.
+Version: 0.2.0
+Date: 2019-04-22
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -15,25 +15,26 @@ Authors@R: c(
         role = c("cph", "fnd")
     ))
 URL:
-    https://minimalism.acidgenomics.com/,
-    https://github.com/acidgenomics/minimalism/
-BugReports: https://github.com/acidgenomics/minimalism/issues/
+    https://acidplots.acidgenomics.com/,
+    https://github.com/acidgenomics/acidplots/
+BugReports: https://github.com/acidgenomics/acidplots/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
 Depends: R (>= 3.4)
 Imports:
-    basejump (>= 0.10.3), bioverbs (>= 0.1.11), goalie (>= 0.2.14),
+    basejump (>= 0.10.4), bioverbs (>= 0.1.13), goalie (>= 0.2.15),
     BiocGenerics, SingleCellExperiment, SummarizedExperiment, S4Vectors,
-    Matrix (>= 1.2), cowplot (>= 0.9.4), dplyr (>= 0.8), ggplot2 (>= 3.1.0),
-        ggrepel (>= 0.8), magrittr (>= 1.5), matrixStats, rlang,
-        tibble (>= 2.1), tidyr (>= 0.8),
-    methods, stats, utils
+    Matrix (>= 1.2), RColorBrewer (>= 1.1), cowplot (>= 0.9.4), dplyr (>= 0.8),
+        ggplot2 (>= 3.1.0), ggrepel (>= 0.8), gplots (>= 3.0),
+        magrittr (>= 1.5), matrixStats (>= 0.54), pheatmap (>= 1.0.12),
+        rlang (>= 0.3.4), tibble (>= 2.1), tidyr (>= 0.8),
+    grDevices, methods, scales, stats, utils
 Suggests:
     acidtest (>= 0.1),
     BiocStyle, knitr,
     patrick, testthat,
-    tidyverse
+    viridis
 Remotes:
     acidgenomics/acidtest,
     acidgenomics/basejump,

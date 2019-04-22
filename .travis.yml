@@ -3,12 +3,16 @@ language: general
 services:
   - docker
 
+branches:
+  only:
+    - master
+
 before_install:
   - docker pull acidgenomics/basejump
   - docker images
 
 script:
-  - docker run -ti --user="bioc" --volume="${PWD}:/minimalism" --workdir="/minimalism" acidgenomics/basejump Rscript -e 'source("travis-docker.R")'
+  - docker run -ti --user="bioc" --volume="${PWD}:/acidplots" --workdir="/acidplots" acidgenomics/basejump Rscript -e 'source("travis-docker.R")'
 
 notifications:
   email:

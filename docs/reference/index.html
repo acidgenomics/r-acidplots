@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • minimalism</title>
+<title>Function reference • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -61,8 +61,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">minimalism</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="../index.html">acidplots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/acidgenomics/minimalism">
+  <a href="https://github.com/acidgenomics/acidplots">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -122,21 +122,33 @@
       <tr>
         
         <td>
+          <p><code><a href="acid_coord_flip.html">acid_coord_flip()</a></code> </p>
+        </td>
+        <td><p>Flip discrete data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="acid_pretty_breaks.html">acid_pretty_breaks()</a></code> </p>
+        </td>
+        <td><p>Pretty breaks that resemble the base plotting engine</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="genderMarkers.html">genderMarkers</a></code> </p>
         </td>
         <td><p>Sexually dimorphic gender marker genes</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="ggplot2-geoms.html">acid_geom_abline()</a></code> <code><a href="ggplot2-geoms.html">acid_geom_label()</a></code> <code><a href="ggplot2-geoms.html">acid_geom_label_average()</a></code> <code><a href="ggplot2-geoms.html">acid_geom_label_repel()</a></code> </p>
+          <p><code><a href="geoms.html">acid_geom_abline()</a></code> <code><a href="geoms.html">acid_geom_bar()</a></code> <code><a href="geoms.html">acid_geom_label()</a></code> <code><a href="geoms.html">acid_geom_label_average()</a></code> <code><a href="geoms.html">acid_geom_label_repel()</a></code> </p>
         </td>
         <td><p>ggplot2 geometric objects</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="ggplot2-themes.html">theme_paperwhite()</a></code> <code><a href="ggplot2-themes.html">theme_midnight()</a></code> </p>
+          <p><code><a href="plotCorrelationHeatmap.html">plotCorrelationHeatmap(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotCorrelationHeatmap.html">plotCorrelationHeatmap(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
         </td>
-        <td><p>ggplot2 themes</p></td>
+        <td><p>Correlation heatmap</p></td>
       </tr><tr>
         
         <td>
@@ -158,9 +170,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="plotCountsPerGene.html">plotCountsPerGene(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotCountsPerGene.html">plotCountsPerGene(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="plotCountsPerFeature.html">plotCountsPerFeature(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotCountsPerFeature.html">plotCountsPerFeature(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> <code><a href="plotCountsPerFeature.html">plotCountsPerGene()</a></code> </p>
         </td>
-        <td><p>Plot counts per gene</p></td>
+        <td><p>Plot counts per feature</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plotFeaturesDetected.html">plotFeaturesDetected(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotFeaturesDetected.html">plotFeaturesDetected(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> <code><a href="plotFeaturesDetected.html">plotGenesDetected()</a></code> </p>
+        </td>
+        <td><p>Plot features detected</p></td>
       </tr><tr>
         
         <td>
@@ -170,9 +188,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="plotGenesDetected.html">plotGenesDetected(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotGenesDetected.html">plotGenesDetected(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+          <p><code><a href="plotHeatmap.html">plotHeatmap(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotHeatmap.html">plotHeatmap(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Plot genes detected</p></td>
+        <td><p>Heatmap</p></td>
       </tr><tr>
         
         <td>
@@ -188,6 +206,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="plotQuantileHeatmap.html">plotQuantileHeatmap(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotQuantileHeatmap.html">plotQuantileHeatmap(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Quantile heatmap</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="plotTotalCounts.html">plotTotalCounts(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> <code><a href="plotTotalCounts.html">plotTotalCounts(<i>&lt;SingleCellExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Plot total read counts</p></td>
@@ -197,6 +221,18 @@
           <p><code><a href="plotZerosVsDepth.html">plotZerosVsDepth(<i>&lt;SummarizedExperiment&gt;</i>)</a></code> </p>
         </td>
         <td><p>Plot percentage of zeros vs. library depth</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="synesthesia.html">synesthesia()</a></code> <code><a href="synesthesia.html">synesthesia_pal()</a></code> <code><a href="synesthesia.html">scale_colour_synesthesia_c()</a></code> <code><a href="synesthesia.html">scale_color_synesthesia_c()</a></code> <code><a href="synesthesia.html">scale_colour_synesthesia_d()</a></code> <code><a href="synesthesia.html">scale_color_synesthesia_d()</a></code> <code><a href="synesthesia.html">scale_fill_synesthesia_c()</a></code> <code><a href="synesthesia.html">scale_fill_synesthesia_d()</a></code> </p>
+        </td>
+        <td><p>Synesthesia color palette</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="themes.html">acid_theme_light()</a></code> <code><a href="themes.html">acid_theme_dark()</a></code> </p>
+        </td>
+        <td><p>ggplot2 themes</p></td>
       </tr>
     </tbody>
     </table>
