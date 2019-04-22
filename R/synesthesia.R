@@ -107,7 +107,7 @@ synesthesia_pal <-  # nolint
 scale_colour_synesthesia_c <-  # nolint
     function(
         ...,
-        na.value = "grey50",
+        na.value = "grey50",  # nolint
         guide = "colourbar"
     ) {
         continuous_scale(
@@ -155,7 +155,7 @@ scale_color_synesthesia_d <-  # nolint
 scale_fill_synesthesia_c <-  # nolint
     function(
         ...,
-        na.value = "grey50",
+        na.value = "grey50",  # nolint
         guide = "colourbar"
     ) {
         continuous_scale(
