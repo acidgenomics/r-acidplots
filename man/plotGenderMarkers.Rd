@@ -11,7 +11,8 @@
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
   countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
   = "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), legend, style = "wide")
+  acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
+  "acid.legend", default = TRUE), style = "wide")
 }
 \arguments{
 \item{object}{Object.}

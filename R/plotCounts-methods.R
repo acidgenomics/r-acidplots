@@ -248,7 +248,7 @@ plotCounts.SummarizedExperiment <-  # nolint
 
 formals(plotCounts.SummarizedExperiment)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCounts.SummarizedExperiment)[["legend"]]
+formals(plotCounts.SummarizedExperiment)[["legend"]] <-
     formalsList[["legend"]]
 
 
