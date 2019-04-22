@@ -1,8 +1,7 @@
 ^.*\.Rproj$
-^.*\.gz$
-^.*\.pdf$
 ^CONTRIBUTING\.md$
 ^Meta$
+^Rplots\.pdf$
 ^\.Rprofile$
 ^\.Rproj\.user$
 ^\.git$

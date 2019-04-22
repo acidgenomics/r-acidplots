@@ -25,7 +25,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         perMillion = FALSE,
         fill,
         flip,
-        title = "total counts"
+        title = "Total counts"
     ) {
         validObject(object)
         assert(
@@ -61,10 +61,8 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
                 fill = !!sym("interestingGroups")
             )
         ) +
-            geom_bar(
-                color = "black",
-                stat = "identity"
-            ) +
+            acid_geom_bar() +
+            acid_scale_y_continuous_nopad() +
             labs(
                 title = title,
                 x = NULL,
@@ -77,7 +75,7 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         }
 
         if (isTRUE(flip)) {
-            p <- p + coord_flip()
+            p <- acid_coord_flip(p)
         }
 
         if (identical(interestingGroups, "sampleName")) {

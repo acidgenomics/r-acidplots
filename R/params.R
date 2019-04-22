@@ -10,6 +10,8 @@
 #'   [`assays()`][SummarizedExperiment::assays]. When passing in a string, the
 #'   name must be defined in
 #'   [`assayNames()`][SummarizedExperiment::assayNames].
+#' @param borderColor `character(1)` or `NULL`.
+#'   Border color. Disabled by default for improved aesthetics.
 #' @param color `ScaleDiscrete`.
 #'   Desired ggplot2 color scale. Must supply discrete values. When set `NULL`,
 #'   the default ggplot2 color palette will be used. If manual color definitions
@@ -24,7 +26,7 @@
 #'   Counts axis label.
 #' @param dark `logical(1)`.
 #'   Plot against a dark background using the
-#'   [`theme_midnight()`][minimalism::theme_midnight] ggplot2 theme.
+#'   [`theme_midnight()`][acidplots::theme_midnight] ggplot2 theme.
 #' @param dimsUse `integer`.
 #'   Vector of length 2 that denotes the columns from the reduced dimension
 #'   matrix to use for `centerX` and `centerY` column calculations. Defaults the
@@ -103,10 +105,9 @@
 #' @param return `character(1)`.
 #'   Return type. Uses [`match.arg()`][base::match.arg] internally and defaults
 #'   to the first argument in the `character` vector.
-#' @param sigPointColor `character`.
-#'   Color names for labeling upregulated and downregulated genes. Also supports
-#'   a character string for labeling DEGs with the same color, regardless of
-#'   direction.
+#' @param scale `character(1)`.
+#'   Whether the values should be centered and scaled in either the row or
+#'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").
 #' @param subtitle `character(1)`.
 #'   Plot subtitle.
 #' @param title `character(1)`.

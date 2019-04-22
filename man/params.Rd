@@ -13,6 +13,9 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
+\item{borderColor}{\code{character(1)} or \code{NULL}.
+Border color. Disabled by default for improved aesthetics.}
+
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
@@ -26,7 +29,7 @@ Counts axis label.}
 
 \item{dark}{\code{logical(1)}.
 Plot against a dark background using the
-\code{\link[minimalism:theme_midnight]{theme_midnight()}} ggplot2 theme.}
+\code{\link[acidplots:theme_midnight]{theme_midnight()}} ggplot2 theme.}
 
 \item{dimsUse}{\code{integer}.
 Vector of length 2 that denotes the columns from the reduced dimension
@@ -133,10 +136,9 @@ Point size for dots in the plot.}
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
 to the first argument in the \code{character} vector.}
 
-\item{sigPointColor}{\code{character}.
-Color names for labeling upregulated and downregulated genes. Also supports
-a character string for labeling DEGs with the same color, regardless of
-direction.}
+\item{scale}{\code{character(1)}.
+Whether the values should be centered and scaled in either the row or
+column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
 
 \item{subtitle}{\code{character(1)}.
 Plot subtitle.}
