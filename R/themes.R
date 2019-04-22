@@ -1,3 +1,7 @@
+# nolint start
+
+
+
 #' ggplot2 themes
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
@@ -211,3 +215,7 @@ acid_theme_dark <-  # nolint
 
 # Set the formals.
 formals(acid_theme_dark) <- formals(acid_theme_light)
+
+
+
+# nolint end
