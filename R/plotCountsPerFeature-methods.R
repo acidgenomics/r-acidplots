@@ -116,7 +116,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         # Subtitle
         if (isString(title)) {
             count <- length(unique(data[["rowname"]]))
-            subtitle <- paste(count, "features")
+            subtitle <- paste("n", "=", count)
         } else {
             subtitle <- NULL
         }
