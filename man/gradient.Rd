@@ -4,7 +4,7 @@
 \alias{gradient}
 \title{Hex color gradient generator}
 \usage{
-gradient(colors = c(low = "darkorchid3", mid = "gray50", high =
+gradient(colors = c(low = "darkorchid3", mid = "gray75", high =
   "darkorange2"), n = 256L)
 }
 \arguments{

@@ -15,7 +15,7 @@
 gradient <- function(
     colors = c(
         low = "darkorchid3",
-        mid = "gray50",
+        mid = "gray75",
         high = "darkorange2"
     ),
     n = 256L

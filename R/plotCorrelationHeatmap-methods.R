@@ -109,7 +109,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
-        color <- .pheatmapColorPalette(color)
+        color <- .pheatmapColorPalette(color = color)
 
         # Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(

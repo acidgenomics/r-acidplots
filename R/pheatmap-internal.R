@@ -133,7 +133,7 @@
     } else if (is.function(color)) {
         # Hexadecimal color function (e.g. viridis functions).
         assert(isHexColorFunction(color))
-        color(n)
+        color(n = n)
     } else {
         # pheatmap default palette.
         # Note that `n` argument won't get evaluated here.

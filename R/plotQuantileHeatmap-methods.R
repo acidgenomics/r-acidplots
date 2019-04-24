@@ -115,7 +115,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         annotationColors <- x[["annotationColors"]]
 
         # Note the number of breaks here.
-        color <- .pheatmapColorPalette(color, n = length(breaks) - 1L)
+        color <- .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
 
         # Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
