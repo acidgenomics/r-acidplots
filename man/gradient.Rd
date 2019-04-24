@@ -2,10 +2,15 @@
 % Please edit documentation in R/gradient.R
 \name{gradient}
 \alias{gradient}
+\alias{purpleOrange}
+\alias{blueYellow}
 \title{Hex color gradient generator}
 \usage{
-gradient(colors = c(low = "darkorchid3", mid = "gray75", high =
-  "darkorange2"), n = 256L)
+gradient(colors, n)
+
+purpleOrange(n = 256L)
+
+blueYellow(n = 256)
 }
 \arguments{
 \item{colors}{\code{character}.
@@ -22,5 +27,6 @@ Hexadecimal colors in RGB space.
 Hex color gradient generator
 }
 \examples{
-gradient(n = 3L)
+purpleOrange(n = 3L)
+blueYellow(n = 3L)
 }

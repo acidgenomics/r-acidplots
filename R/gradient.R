@@ -11,18 +11,42 @@
 #'   Hexadecimal colors in RGB space.
 #'
 #' @examples
-#' gradient(n = 3L)
-gradient <- function(
-    colors = c(
-        low = "darkorchid3",
-        mid = "gray75",
-        high = "darkorange2"
-    ),
-    n = 256L
-) {
+#' purpleOrange(n = 3L)
+#' blueYellow(n = 3L)
+gradient <- function(colors, n) {
     assert(
         isCharacter(colors),
         isInt(n), isPositive(n)
     )
     colorRampPalette(colors = colors, space = "rgb")(n)
+}
+
+
+
+#' @rdname gradient
+#' @export
+purpleOrange <- function(n = 256L) {
+    gradient(
+        colors = c(
+            low = "darkorchid3",
+            mid = "gray75",
+            high = "darkorange2"
+        ),
+        n = n
+    )
+}
+
+
+
+#' @rdname gradient
+#' @export
+blueYellow <- function(n = 256) {
+    gradient(
+        colors = c(
+            low = "dodgerblue",
+            mid = "black",
+            high = "yellow"
+        ),
+        n = n
+    )
 }
