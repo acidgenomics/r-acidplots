@@ -42,6 +42,9 @@ Missing values will be replaced with this value.}
 A function used to create a guide or its name.
 See \code{\link[ggplot2:guides]{guides()}} for details.}
 }
+\value{
+\code{character} or \code{ggproto}.
+}
 \description{
 Synesthesia color palette
 }

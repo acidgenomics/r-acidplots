@@ -12,6 +12,8 @@
 #' @param na.value `character(1)`.
 #'   Missing values will be replaced with this value.
 #'
+#' @return `character` or `ggproto`.
+#'
 #' @seealso
 #' Adapted from viridis color palette:
 #'
