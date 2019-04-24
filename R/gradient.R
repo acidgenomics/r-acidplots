@@ -1,11 +1,17 @@
 #' Hex color gradient generator
 #'
+#' @export
+#'
 #' @param colors `character`.
 #'   Color names or hexadecimal values used to define the gradient.
 #' @param n `integer(1)`.
 #'   The number of colors (>= 1) to be in the palette.
 #'
-#' @export
+#' @return `character`.
+#'   Hexadecimal colors in RGB space.
+#'
+#' @examples
+#' gradient(n = 3L)
 gradient <- function(
     colors = c(
         low = "darkorchid3",
