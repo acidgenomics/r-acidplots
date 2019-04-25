@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Version 0.1 • acidplots</title>
+<title>Hex color gradient generator — gradient • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Version 0.1" />
+<meta property="og:title" content="Hex color gradient generator — gradient" />
+
+<meta property="og:description" content="Hex color gradient generator" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -101,53 +104,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small>0.1</small></h1>
-      
+    <h1>Hex color gradient generator</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/gradient.R'><code>R/gradient.R</code></a></small>
+    <div class="hidden name"><code>gradient.Rd</code></div>
     </div>
 
-    <div id="acidplots-0-1-0-2019-03-28" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acidplots-0-1-0-2019-03-28" class="anchor"></a>acidplots 0.1.0 (2019-03-28)</h2>
-<p>Initial release, migrating ggplot2 functions from basejump package.</p>
-</div>
-    <div id="acidplots-0-1-1-2019-04-15" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acidplots-0-1-1-2019-04-15" class="anchor"></a>acidplots 0.1.1 (2019-04-15)</h2>
-<p>Updated packages depencies and switched to Docker for Travis CI.</p>
-</div>
-    <div id="acidplots-0-1-2-2019-04-18" class="section level2">
-<h2 class="hasAnchor">
-<a href="#acidplots-0-1-2-2019-04-18" class="anchor"></a>acidplots 0.1.2 (2019-04-18)</h2>
-<div id="new-functions-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#new-functions-2" class="anchor"></a>New functions</h3>
-<ul>
-<li>
-<code>base_breaks</code>: An attempt as automatic pretty breaks based on the default R plotting engine. Derived from a Stack Overflow post (see documentation).</li>
-</ul>
-</div>
-<div id="minor-changes-2" class="section level3">
-<h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
-<ul>
-<li>
-<code>plotCountsPerBiotype</code>, <code>plotCountsPerBroadClass</code> switched to recommending log10 counts by default.</li>
-</ul>
-</div>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Hex color gradient generator</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>gradient</span>(<span class='no'>colors</span>, <span class='no'>n</span>)
+
+<span class='fu'>purpleOrange</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>256L</span>)
+
+<span class='fu'>blueYellow</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>256</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>colors</th>
+      <td><p><code>character</code>.
+Color names or hexadecimal values used to define the gradient.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
+The number of colors (&gt;= 1) to be in the palette.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>character</code>.
+Hexadecimal colors in RGB space.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>purpleOrange</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>)</div><div class='output co'>#&gt; [1] "#A020F0" "#CCCCCC" "#FF8C00"</div><div class='input'><span class='fu'>blueYellow</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>)</div><div class='output co'>#&gt; [1] "#1E90FF" "#000000" "#FFFF00"</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#acidplots-0-1-0-2019-03-28">0.1.0</a></li>
-        <li><a href="#acidplots-0-1-1-2019-04-15">0.1.1</a></li>
-        <li><a href="#acidplots-0-1-2-2019-04-18">0.1.2</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>
