@@ -117,7 +117,9 @@ unless the library sizes or total RNA expression are different.</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='fu'>plotCountsPerFeature</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotCountsPerFeature</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>minCountsMethod</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"perFeature"</span>, <span class='st'>"absolute"</span>),
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"boxplot"</span>, <span class='st'>"density"</span>, <span class='st'>"violin"</span>),
@@ -221,6 +223,10 @@ Counts axis label.</p></td>
       <th>title</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
 Plot title.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
     
