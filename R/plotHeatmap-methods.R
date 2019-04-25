@@ -225,13 +225,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
 
+        args <- list(color = color)
         if (is.numeric(breaks)) {
-            color <-
-                .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
-        } else {
-            color <-
-                .pheatmapColorPalette(color = color)
+            args[["n"]] <- length(breaks) - 1L
         }
+        color <- do.call(what = .pheatmapColorPalette, args = args)
 
         # Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
