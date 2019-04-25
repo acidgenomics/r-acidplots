@@ -7,6 +7,8 @@
 \alias{plotTotalCounts,SingleCellExperiment-method}
 \title{Plot total read counts}
 \usage{
+plotTotalCounts(object, ...)
+
 \S4method{plotTotalCounts}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
   "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
@@ -48,6 +50,8 @@ Flip x and y axes. Recommended for plots containing many samples.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

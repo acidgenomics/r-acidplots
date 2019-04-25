@@ -1,6 +1,9 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #' plotFeaturesDetected(rse)
@@ -12,6 +15,7 @@ NULL
 #' @rdname plotFeaturesDetected
 #' @name plotFeaturesDetected
 #' @importFrom bioverbs plotFeaturesDetected
+#' @usage plotFeaturesDetected
 #' @export
 NULL
 

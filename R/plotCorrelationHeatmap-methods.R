@@ -1,12 +1,13 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
+#'
 #' @inheritParams plotHeatmap
 #' @inheritParams params
-#'
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed. Defaults to
 #'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
 #'   [stats::cor()] documentation for details.
+#' @param ... Additional arguments.
 #'
 #' @return `pheatmap`.
 #' @examples
@@ -24,6 +25,7 @@ NULL
 #' @rdname plotCorrelationHeatmap
 #' @name plotCorrelationHeatmap
 #' @importFrom bioverbs plotCorrelationHeatmap
+#' @usage plotCorrelationHeatmap(object, ...)
 #' @export
 NULL
 

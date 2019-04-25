@@ -1,10 +1,11 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
+#'
 #' @inheritParams basejump::meltCounts
 #' @inheritParams params
-#'
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(rse, sce, package = "acidtest")
@@ -22,6 +23,7 @@ NULL
 #' @rdname plotCountsPerFeature
 #' @name plotCountsPerFeature
 #' @importFrom bioverbs plotCountsPerFeature
+#' @usage plotCountsPerFeature(object, ...)
 #' @export
 NULL
 

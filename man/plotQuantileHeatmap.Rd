@@ -7,6 +7,8 @@
 \alias{plotQuantileHeatmap,SingleCellExperiment-method}
 \title{Quantile heatmap}
 \usage{
+plotQuantileHeatmap(object, ...)
+
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, n = 10L, clusterRows = TRUE,
   clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,

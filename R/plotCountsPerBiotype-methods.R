@@ -1,7 +1,10 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBiotype
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #'
@@ -17,6 +20,7 @@ NULL
 #' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBiotype
 #' @importFrom bioverbs plotCountsPerBiotype
+#' @usage plotCountsPerBiotype(object, ...)
 #' @export
 NULL
 
