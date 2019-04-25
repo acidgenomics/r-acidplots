@@ -156,7 +156,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
 
 
 
-#' @rdname plotCountsPerBiotype
+#' @rdname plotCountsPerBroadClass
 #' @export
 setMethod(
     f = "plotCountsPerBroadClass",
