@@ -1,7 +1,9 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
+#'
 #' @inheritParams plotCounts
 #' @inheritParams params
+#' @param ... Additional arguments.
 #'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 NULL
@@ -11,6 +13,7 @@ NULL
 #' @rdname plotGenderMarkers
 #' @name plotGenderMarkers
 #' @importFrom bioverbs plotGenderMarkers
+#' @usage plotGenderMarkers(object, ...)
 #' @export
 NULL
 

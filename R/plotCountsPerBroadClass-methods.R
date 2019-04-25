@@ -1,7 +1,10 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBroadClass
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #'
@@ -17,6 +20,7 @@ NULL
 #' @rdname plotCountsPerBroadClass
 #' @name plotCountsPerBroadClass
 #' @importFrom bioverbs plotCountsPerBroadClass
+#' @usage plotCountsPerBroadClass(object, ...)
 #' @export
 NULL
 
@@ -152,7 +156,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
 
 
 
-#' @rdname plotCountsPerBiotype
+#' @rdname plotCountsPerBroadClass
 #' @export
 setMethod(
     f = "plotCountsPerBroadClass",

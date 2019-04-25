@@ -12,6 +12,8 @@
 #' @param na.value `character(1)`.
 #'   Missing values will be replaced with this value.
 #'
+#' @return `character` or `ggproto`.
+#'
 #' @seealso
 #' Adapted from viridis color palette:
 #'
@@ -74,19 +76,15 @@ NULL
 #' @rdname synesthesia
 #' @export
 synesthesia <- function(n = 256L) {
-    assert(isInt(n), isPositive(n))
-    colors <- vapply(
-        X = c(
+    gradient(
+        colors = c(
             "darkorchid3", "purple1",
             "dodgerblue",
             "green2",
             "orange1", "darkorange2"
         ),
-        FUN = col2hex,
-        FUN.VALUE = character(1L),
-        USE.NAMES = FALSE
+        n = n
     )
-    colorRampPalette(colors = colors, space = "rgb")(n)
 }
 
 

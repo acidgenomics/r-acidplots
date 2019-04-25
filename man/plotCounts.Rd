@@ -6,6 +6,8 @@
 \alias{plotCounts,SummarizedExperiment-method}
 \title{Plot counts}
 \usage{
+plotCounts(object, ...)
+
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
   countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
@@ -57,6 +59,8 @@ Show plot legend.}
 
 \item{style}{\code{character(1)}.
 Plot style.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \itemize{

@@ -7,6 +7,8 @@
 \alias{plotCountsPerFeature,SingleCellExperiment-method}
 \title{Plot counts per feature}
 \usage{
+plotCountsPerFeature(object, ...)
+
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "violin"),
@@ -86,6 +88,8 @@ Counts axis label.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

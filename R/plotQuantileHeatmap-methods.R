@@ -1,14 +1,16 @@
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
+#'
 #' @inheritParams plotHeatmap
 #' @inheritParams params
-#'
 #' @param legend `logical(1)`.
 #'   Show the color legend.
 #' @param n `integer(1)`.
 #'   The number of quantile breaks to create.
+#' @param ... Additional arguments.
 #'
 #' @return `pheatmap`.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #'
@@ -24,6 +26,7 @@ NULL
 #' @rdname plotQuantileHeatmap
 #' @name plotQuantileHeatmap
 #' @importFrom bioverbs plotQuantileHeatmap
+#' @usage plotQuantileHeatmap(object, ...)
 #' @export
 NULL
 
@@ -115,7 +118,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         annotationColors <- x[["annotationColors"]]
 
         # Note the number of breaks here.
-        color <- .pheatmapColorPalette(color, n = length(breaks) - 1L)
+        color <- .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
 
         # Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(

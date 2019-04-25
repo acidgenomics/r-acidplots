@@ -6,6 +6,8 @@
 \alias{plotPCA,SummarizedExperiment-method}
 \title{Principal component analysis plot}
 \usage{
+plotPCA(object, ...)
+
 \S4method{plotPCA}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, ntop = 500L, label = getOption(x =
   "acid.label", default = FALSE), color = getOption(x =

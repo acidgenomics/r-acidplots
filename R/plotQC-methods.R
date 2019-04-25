@@ -1,6 +1,9 @@
 #' @name plotQC
 #' @inherit bioverbs::plotQC
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, package = "acidtest")
 #' plotQC(rse)
@@ -11,6 +14,7 @@ NULL
 #' @rdname plotQC
 #' @name plotQC
 #' @importFrom bioverbs plotQC
+#' @usage plotQC(object, ...)
 #' @export
 NULL
 
