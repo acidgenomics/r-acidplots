@@ -137,6 +137,8 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         treeheightCol = 50L,
         color,
         legendColor,
+        breaks = NULL,
+        legendBreaks = NULL,
         borderColor = NULL,
         title = NULL,
         ...
@@ -155,15 +157,13 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             isString(borderColor, nullOK = TRUE),
             isString(title, nullOK = TRUE)
         )
+        scale <- match.arg(scale)
+        if (!isString(borderColor)) borderColor <- NA
+        if (!isString(title)) title <- NA
+        if (!is.numeric(breaks)) breaks <- NA
+        if (!is.numeric(legendBreaks)) legendBreaks <- NA
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
-        scale <- match.arg(scale)
-        if (!isString(borderColor)) {
-            borderColor <- NA
-        }
-        if (!isString(title)) {
-            title <- NA
-        }
 
         # Warn and early return if any samples are duplicated.
         # We've included this step here to work with the minimal bcbio RNA-seq
@@ -224,7 +224,14 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
-        color <- .pheatmapColorPalette(color = color)
+
+        if (is.numeric(breaks)) {
+            color <-
+                .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
+        } else {
+            color <-
+                .pheatmapColorPalette(color = color)
+        }
 
         # Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
@@ -247,9 +254,11 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
+            breaks = breaks,
             clusterCols = hc[["cols"]],
             clusterRows = hc[["rows"]],
             color = color,
+            legendBreaks = legendBreaks,
             main = title,
             # We're already applied scaling manually (see above).
             scale = "none",
