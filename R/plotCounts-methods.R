@@ -1,7 +1,7 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param countsAxisLabel `character(1)`.
 #'   Label to use for the counts axis.
 #' @param medianLine `logical(1)`.
@@ -9,6 +9,7 @@
 #'   sample name.
 #' @param style `character(1)`.
 #'   Plot style.
+#' @param ... Additional arguments.
 #'
 #' @return
 #' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
@@ -36,6 +37,7 @@ NULL
 #' @rdname plotCounts
 #' @name plotCounts
 #' @importFrom bioverbs plotCounts
+#' @usage plotCounts(object, ...)
 #' @export
 NULL
 

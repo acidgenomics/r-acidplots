@@ -1,6 +1,9 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(sce, package = "acidtest")
 #' plotZerosVsDepth(sce)
@@ -11,6 +14,7 @@ NULL
 #' @rdname plotZerosVsDepth
 #' @name plotZerosVsDepth
 #' @importFrom bioverbs plotZerosVsDepth
+#' @usage plotZerosVsDepth(object, ...)
 #' @export
 NULL
 
@@ -22,7 +26,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         assay = 1L,
         interestingGroups = NULL,
         color,
-        title = "zeros vs. depth"
+        title = "Zeros vs. depth"
     ) {
         validObject(object)
         assert(

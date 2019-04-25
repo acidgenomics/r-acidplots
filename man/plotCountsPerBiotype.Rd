@@ -8,6 +8,8 @@
 \alias{plotCountsPerBroadClass,SummarizedExperiment-method}
 \title{Plot counts per biotype}
 \usage{
+plotCountsPerBiotype(object, ...)
+
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
   n = 9L, interestingGroups = NULL, trans = c("log10", "log2",
   "identity"), countsAxisLabel = "counts",
@@ -45,6 +47,8 @@ Counts axis label.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

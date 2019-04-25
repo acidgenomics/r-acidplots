@@ -7,6 +7,8 @@
 \alias{plotCorrelationHeatmap,SingleCellExperiment-method}
 \title{Correlation heatmap}
 \usage{
+plotCorrelationHeatmap(object, ...)
+
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",

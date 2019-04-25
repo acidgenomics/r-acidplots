@@ -1,6 +1,9 @@
 #' @name plotTotalCounts
 #' @inherit bioverbs::plotTotalCounts
+#'
 #' @inheritParams params
+#' @param ... Additional arguments.
+#'
 #' @examples
 #' data(rse, sce, package = "acidtest")
 #' plotTotalCounts(rse)
@@ -12,6 +15,7 @@ NULL
 #' @rdname plotTotalCounts
 #' @name plotTotalCounts
 #' @importFrom bioverbs plotTotalCounts
+#' @usage plotTotalCounts(object, ...)
 #' @export
 NULL
 

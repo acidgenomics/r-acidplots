@@ -7,6 +7,8 @@
 \alias{plotGenderMarkers,SingleCellExperiment-method}
 \title{Plot sexually dimorphic gender marker genes}
 \usage{
+plotGenderMarkers(object, ...)
+
 \S4method{plotGenderMarkers}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
   countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x

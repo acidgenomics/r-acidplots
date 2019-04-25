@@ -3,6 +3,12 @@
 \name{plotCountsPerBroadClass}
 \alias{plotCountsPerBroadClass}
 \title{Plot counts per broad class definition}
+\usage{
+plotCountsPerBroadClass(object, ...)
+}
+\arguments{
+\item{...}{Additional arguments.}
+}
 \description{
 Plot counts per broad class definition
 }

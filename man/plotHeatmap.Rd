@@ -7,6 +7,8 @@
 \alias{plotHeatmap,SingleCellExperiment-method}
 \title{Heatmap}
 \usage{
+plotHeatmap(object, ...)
+
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,

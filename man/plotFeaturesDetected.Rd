@@ -7,6 +7,8 @@
 \alias{plotFeaturesDetected,SingleCellExperiment-method}
 \title{Plot features detected}
 \usage{
+plotFeaturesDetected
+
 \S4method{plotFeaturesDetected}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
   fill = getOption(x = "acid.fill.discrete", default =
@@ -56,6 +58,8 @@ Plot title.}
 
 \item{countsAxisLabel}{\code{character(1)}.
 Counts axis label.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

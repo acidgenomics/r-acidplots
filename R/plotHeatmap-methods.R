@@ -48,8 +48,8 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param breaks `numeric` or `NULL`.
 #'   A sequence of numbers that covers the range of values in the matrix. Must
 #'   be 1 element longer than the color vector, which is handled internally
@@ -120,6 +120,7 @@ NULL
 #' @rdname plotHeatmap
 #' @name plotHeatmap
 #' @importFrom bioverbs plotHeatmap
+#' @usage plotHeatmap(object, ...)
 #' @export
 NULL
 
