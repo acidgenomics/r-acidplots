@@ -1,3 +1,25 @@
+## acidplots 0.2.1 (2019-04-25)
+
+### New functions
+
+- New `gradient` palette functions: `purpleOrange`, `blueYellow`.
+- Remove gplots package from imports.
+
+### Major changes
+
+- `plotHeatmap` now supports automatic color calculation when `breaks` argument
+  is defined. Also improved support for `legendBreaks`.
+
+### Minor changes
+
+- Fix `.pheatmapColorPalette` internal check for `color`, which requires `n`
+  argument, rather than assuming positional variable.
+- `plotCountsPerFeature`: Improve the count subtitle.
+- S4 generic reexport documentation fixes.
+- Miscellaneous documentation fixes.
+
+
+
 ## acidplots 0.2.0 (2019-04-22)
 
 Reworked package, consolidating previous minimalism and firestarter packages.

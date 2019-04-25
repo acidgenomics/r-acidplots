@@ -7,6 +7,8 @@
 \alias{plotHeatmap,SingleCellExperiment-method}
 \title{Heatmap}
 \usage{
+plotHeatmap(object, ...)
+
 \S4method{plotHeatmap}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
   clusteringMethod = "ward.D2", clusterRows = FALSE,
@@ -14,7 +16,8 @@
   treeheightRow = 50L, treeheightCol = 50L, color = getOption(x =
   "acid.heatmap.color", default = acidplots::synesthesia),
   legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), borderColor = NULL, title = NULL, ...)
+  acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
+  borderColor = NULL, title = NULL, ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
@@ -23,7 +26,8 @@
   treeheightRow = 50L, treeheightCol = 50L, color = getOption(x =
   "acid.heatmap.color", default = acidplots::synesthesia),
   legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), borderColor = NULL, title = NULL, ...)
+  acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
+  borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -43,7 +47,7 @@ Whether the values should be centered and scaled in either the row or
 column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
 
 \item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
+Clustering method. Accepts the same values as \code{\link[stats:hclust]{hclust()}}.}
 
 \item{clusterRows, clusterCols}{\code{logical(1)}.
 Arrange with hierarchical clustering.}
@@ -76,13 +80,21 @@ Hexadecimal color function to use for legend labels. Note that hexadecimal
 values are not supported. If set \code{NULL}, will use the default pheatmap
 colors.}
 
+\item{breaks}{\code{numeric} or \code{NULL}.
+A sequence of numbers that covers the range of values in the matrix. Must
+be 1 element longer than the color vector, which is handled internally
+automatically, differing from the behavior in pheatmap.}
+
+\item{legendBreaks}{\code{numeric} or \code{NULL}.
+Numeric vector of breakpoints for the color legend.}
+
 \item{borderColor}{\code{character(1)} or \code{NULL}.
 Border color. Disabled by default for improved aesthetics.}
 
 \item{title}{\code{character(1)}.
 Plot title.}
 
-\item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}}.
+\item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}
 }
 \value{
@@ -115,7 +127,7 @@ See also:
 
 Row- and column-wise hierarchical clustering is performed when \code{clusterRows}
 and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls
-\code{\link[stats:hclust]{stats::hclust()}}, and defaults to the Ward method.
+\code{\link[stats:hclust]{hclust()}}, and defaults to the Ward method.
 
 Automatic hierarchical clustering of rows and/or columns can error for some
 datasets. When this occurs, you'll likely see this error:\preformatted{Error in hclust(d, method = method) :
@@ -124,9 +136,9 @@ NA/NaN/Inf in foreign function call
 
 In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{FALSE}, or
 you can attempt to pass an \code{hclust} object to these arguments. This is
-recommended as an alternate approach to be used with \code{\link[pheatmap:pheatmap]{pheatmap::pheatmap()}},
-which is called internally by our plotting code. Here's how this can be
-accomplished:\preformatted{mat <- assay(mat)
+recommended as an alternate approach to be used with
+\code{\link[pheatmap:pheatmap]{pheatmap()}}, which is called internally by our
+plotting code. Here's how this can be accomplished:\preformatted{mat <- assay(mat)
 dist <- dist(mat)
 hclust <- hclust(dist, method = "ward.D2")
 }

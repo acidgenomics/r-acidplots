@@ -10,11 +10,12 @@
 #' a way to look at how samples are clustering.
 #'
 #' @name plotPCA
-#' @inheritParams params
 #'
+#' @inheritParams params
 #' @param ntop `integer(1)` or `Inf`.
 #'   Number of most variable genes to plot.
 #'   Use `Inf` to include all genes (*not recommended*).
+#' @param ... Additional arguments.
 #'
 #' @references Jolliffe, et al., 2002.
 #'
@@ -43,6 +44,7 @@ NULL
 #' @rdname plotPCA
 #' @name plotPCA
 #' @importFrom BiocGenerics plotPCA
+#' @usage plotPCA(object, ...)
 #' @export
 NULL
 

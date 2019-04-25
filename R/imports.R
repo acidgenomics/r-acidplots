@@ -28,7 +28,6 @@
 #'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
 #'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
 #'   isSubset
-#' @importFrom gplots col2hex
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%

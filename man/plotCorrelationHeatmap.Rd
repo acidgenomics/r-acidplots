@@ -7,6 +7,8 @@
 \alias{plotCorrelationHeatmap,SingleCellExperiment-method}
 \title{Correlation heatmap}
 \usage{
+plotCorrelationHeatmap(object, ...)
+
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(object,
   assay = 1L, interestingGroups = NULL, method = c("pearson",
   "kendall", "spearman"), clusteringMethod = "ward.D2",
@@ -44,7 +46,7 @@ Correlation coefficient (or covariance) method to be computed. Defaults to
 \code{\link[stats:cor]{stats::cor()}} documentation for details.}
 
 \item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{\link[stats:hclust]{stats::hclust()}}.}
+Clustering method. Accepts the same values as \code{\link[stats:hclust]{hclust()}}.}
 
 \item{showRownames}{\code{logical(1)}.
 Show row or column names.}

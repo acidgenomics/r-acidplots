@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -115,7 +115,9 @@
     
     </div>
 
-    <pre class="usage"><span class='co'># S4 method for SummarizedExperiment</span>
+    <pre class="usage"><span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for SummarizedExperiment</span>
 <span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>,
   <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"pearson"</span>,
   <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span>), <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>,
@@ -166,7 +168,7 @@ Correlation coefficient (or covariance) method to be computed. Defaults to
     <tr>
       <th>clusteringMethod</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></td>
+Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>hclust()</a></code>.</p></td>
     </tr>
     <tr>
       <th>showRownames</th>
