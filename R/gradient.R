@@ -28,9 +28,9 @@ gradient <- function(colors, n) {
 purpleOrange <- function(n = 256L) {
     gradient(
         colors = c(
-            low = "darkorchid3",
-            mid = "gray75",
-            high = "darkorange2"
+            low = "purple",
+            mid = "gray80",
+            high = "orange"
         ),
         n = n
     )
