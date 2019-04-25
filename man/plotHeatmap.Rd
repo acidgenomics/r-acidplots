@@ -14,7 +14,8 @@
   treeheightRow = 50L, treeheightCol = 50L, color = getOption(x =
   "acid.heatmap.color", default = acidplots::synesthesia),
   legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), borderColor = NULL, title = NULL, ...)
+  acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
+  borderColor = NULL, title = NULL, ...)
 
 \S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, scale = c("none", "row", "column"),
@@ -23,7 +24,8 @@
   treeheightRow = 50L, treeheightCol = 50L, color = getOption(x =
   "acid.heatmap.color", default = acidplots::synesthesia),
   legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), borderColor = NULL, title = NULL, ...)
+  acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
+  borderColor = NULL, title = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
