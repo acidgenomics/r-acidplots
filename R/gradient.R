@@ -30,7 +30,7 @@ purpleOrange <- function(n = 256L) {
         colors = c(
             low = "purple",
             mid = "gray80",
-            high = "orange"
+            high = "darkorange"
         ),
         n = n
     )
