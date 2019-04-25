@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -123,7 +123,8 @@
   <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
   <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>),
   <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>), <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
@@ -133,7 +134,8 @@
   <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
   <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>),
   <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>), <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/acidplots/topics/synesthesia'>synesthesia</a></span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,7 +167,7 @@ column direction ("<code>row</code>", "<code>column</code>"), or remain unscaled
     <tr>
       <th>clusteringMethod</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
-Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>.</p></td>
+Clustering method. Accepts the same values as <code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>hclust()</a></code>.</p></td>
     </tr>
     <tr>
       <th>clusterRows, clusterCols</th>
@@ -207,6 +209,18 @@ values are not supported. If set <code>NULL</code>, will use the default pheatma
 colors.</p></td>
     </tr>
     <tr>
+      <th>breaks</th>
+      <td><p><code>numeric</code> or <code>NULL</code>.
+A sequence of numbers that covers the range of values in the matrix. Must
+be 1 element longer than the color vector, which is handled internally
+automatically, differing from the behavior in pheatmap.</p></td>
+    </tr>
+    <tr>
+      <th>legendBreaks</th>
+      <td><p><code>numeric</code> or <code>NULL</code>.
+Numeric vector of breakpoints for the color legend.</p></td>
+    </tr>
+    <tr>
       <th>borderColor</th>
       <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>NULL</code>.
 Border color. Disabled by default for improved aesthetics.</p></td>
@@ -218,7 +232,7 @@ Plot title.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>.
+      <td><p>Passthrough arguments to <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap()</a></code>.
 The argument names must be formatted in camel case, not snake case.</p></td>
     </tr>
     </table>
@@ -247,16 +261,16 @@ The argument names must be formatted in camel case, not snake case.</p></td>
     
     <p>Row- and column-wise hierarchical clustering is performed when <code>clusterRows</code>
 and/or <code>clusterCols</code> are set to <code>TRUE</code>. Internally, this calls
-<code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code>, and defaults to the Ward method.</p>
+<code><a href='https://www.rdocumentation.org/packages/stats/topics/hclust'>hclust()</a></code>, and defaults to the Ward method.</p>
 <p>Automatic hierarchical clustering of rows and/or columns can error for some
 datasets. When this occurs, you'll likely see this error:</p><pre>Error in hclust(d, method = method) :
 NA/NaN/Inf in foreign function call
 </pre>
     <p>In this case, either set <code>clusterRows</code> and/or <code>clusterCols</code> to <code>FALSE</code>, or
 you can attempt to pass an <code>hclust</code> object to these arguments. This is
-recommended as an alternate approach to be used with <code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap::pheatmap()</a></code>,
-which is called internally by our plotting code. Here's how this can be
-accomplished:</p><pre>mat &lt;- assay(mat)
+recommended as an alternate approach to be used with
+<code><a href='https://www.rdocumentation.org/packages/pheatmap/topics/pheatmap'>pheatmap()</a></code>, which is called internally by our
+plotting code. Here's how this can be accomplished:</p><pre>mat &lt;- assay(mat)
 dist &lt;- dist(mat)
 hclust &lt;- hclust(dist, method = "ward.D2")
 </pre>
