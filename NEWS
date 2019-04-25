@@ -15,6 +15,7 @@
 - Fix `.pheatmapColorPalette` internal check for `color`, which requires `n`
   argument, rather than assuming positional variable.
 - `plotCountsPerFeature`: Improve the count subtitle.
+- S4 generic reexport documentation fixes.
 - Miscellaneous documentation fixes.
 
 
