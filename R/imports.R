@@ -6,6 +6,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment assays assays<- colData rowData
 #' @importFrom S4Vectors DataFrame aggregate
+#' @importFrom UpSetR upset
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples assert
 #'   as.SummarizedExperiment as_tibble camel cell2sample convertGenesToSymbols
 #'   counts decode formalsList interestingGroups interestingGroups<-
