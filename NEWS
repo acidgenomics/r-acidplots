@@ -1,3 +1,12 @@
+## acidplots 0.2.2 (2019-04-26)
+
+### Major changes
+
+- Now importing `upset` function from UpSetR, with modified formals, so we can
+  easily call this from other packages, including [DESeqAnalysis][].
+
+
+
 ## acidplots 0.2.1 (2019-04-25)
 
 ### New functions
@@ -73,4 +82,10 @@ Updated packages depencies and switched to Docker for Travis CI.
 
 ## acidplots 0.1.0 (2019-03-28)
 
-Initial release, migrating ggplot2 functions from basejump package.
+Initial release, migrating ggplot2 functions from [basejump][] package.
+
+
+
+[DESeqAnalysis]: https://deseqanalysis.acidgenomics.com/
+[basejump]: https://basejump.acidgenomics.com/
+[ggplot2]: https://ggplot2.tidyverse.org/
