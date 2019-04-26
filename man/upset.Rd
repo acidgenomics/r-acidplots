@@ -109,6 +109,9 @@ in the following format: c(intersection size title, intersection size tick label
 
 \item{set_size.angles}{Numeric, angle to rotate the set size plot x-axis text}
 }
+\value{
+Graphical output, no return.
+}
 \description{
 Visualization of set intersections using novel UpSet matrix design.
 }
@@ -121,54 +124,11 @@ data belonging to queries of interest. Most aspects of the UpSet plot are custom
 Depending on how the featuers are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
 }
 \examples{
-movies <- read.csv( system.file("extdata", "movies.csv", package = "UpSetR"), header=TRUE, sep=";" )
-
-require(ggplot2); require(plyr); require(gridExtra); require(grid);
-
-between <- function(row, min, max){
-  newData <- (row["ReleaseDate"] < max) & (row["ReleaseDate"] > min)
-}
-
-plot1 <- function(mydata, x){
-  myplot <- (ggplot(mydata, aes_string(x= x, fill = "color"))
-            + geom_histogram() + scale_fill_identity()
-            + theme(plot.margin = unit(c(0,0,0,0), "cm")))
-}
-
-plot2 <- function(mydata, x, y){
-  myplot <- (ggplot(data = mydata, aes_string(x=x, y=y, colour = "color"), alpha = 0.5)
-            + geom_point() + scale_color_identity()
-            + theme_bw() + theme(plot.margin = unit(c(0,0,0,0), "cm")))
-}
-
-attributeplots <- list(gridrows = 55,
-                  plots = list(list(plot = plot1, x= "ReleaseDate",  queries = FALSE),
-                         list(plot = plot1, x= "ReleaseDate", queries = TRUE),
-                         list(plot = plot2, x = "ReleaseDate", y = "AvgRating", queries = FALSE),
-                         list(plot = plot2, x = "ReleaseDate", y = "AvgRating", queries = TRUE)),
-                   ncols = 3)
-
-upset(movies, nsets = 7, nintersects = 30, mb.ratio = c(0.5, 0.5),
-      order.by = c("freq", "degree"), decreasing = c(TRUE,FALSE))
-
-upset(movies, sets = c("Drama", "Comedy", "Action", "Thriller", "Western", "Documentary"),
-      queries = list(list(query = intersects, params = list("Drama", "Action")),
-                list(query = between, params = list(1970, 1980), color = "red", active = TRUE)))
-
-upset(movies, attribute.plots = attributeplots,
-     queries = list(list(query = between, params = list(1920, 1940)),
-                    list(query = intersects, params = list("Drama"), color= "red"),
-                    list(query = elements, params = list("ReleaseDate", 1990, 1991, 1992))),
-      main.bar.color = "yellow")
+## Refer to UpSetR::upset() documentation for examples.
 }
 \references{
 Lex et al. (2014). UpSet: Visualization of Intersecting Sets
 IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis 2014), vol 20, pp. 1983-1992, (2014). \url{http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf}
 
 Lex and Gehlenborg (2014). Points of view: Sets and intersections. Nature Methods 11, 779 (2014). \url{http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html}
-}
-\seealso{
-Original UpSet Website: \url{http://vcg.github.io/upset/about/}
-
-UpSetR github for additional examples: \url{http://github.com/hms-dbmi/UpSetR}
 }
