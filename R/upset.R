@@ -1,12 +1,15 @@
 #' UpSetR plot, with improved default aesthetics
-#' @inherit UpSetR::upset
 #' @export
+#' @inherit UpSetR::upset description details params references
+#' @return Graphical output, no return.
+#' @examples
+#' ## Refer to UpSetR::upset() documentation for examples.
 upset <- UpSetR::upset
 
 f <- formals(upset)
 f[["line.size"]] <- 1L
-f[["matrix.color"]] <- "black"
 f[["main.bar.color"]] <- "black"
+f[["matrix.color"]] <- "black"
 f[["matrix.dot.alpha"]] <- 1L
 f[["mb.ratio"]] <- quote(c(0.6, 0.4))
 f[["point.size"]] <- 3L
