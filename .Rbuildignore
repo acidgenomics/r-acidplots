@@ -15,4 +15,5 @@
 ^docs$
 ^pkgdown$
 ^travis-docker\.R$
+^travis-docker\.sh$
 ^vignettes/\.build\.timestamp$
