@@ -12,7 +12,7 @@ then
 fi
 
 image="acidgenomics/${image}:${tag}"
-package="$(basename "$TRAVIS_BUILD_DIR")"
+package="$(basename "$PWD")"
 
 docker pull "$image"
 docker run -ti \
