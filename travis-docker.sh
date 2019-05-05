@@ -15,4 +15,8 @@ image="acidgenomics/${image}:${tag}"
 package="$(basename "$TRAVIS_BUILD_DIR")"
 
 docker pull "$image"
-docker run -ti --volume="${PWD}:/${package}" --workdir="/${package}" "$image" Rscript -e 'source("travis-docker.R")'
+docker run -ti \
+    --volume="${PWD}:/${package}" \
+    --workdir="/${package}" \
+    "$image" \
+    Rscript -e 'source("travis-docker.R")'
