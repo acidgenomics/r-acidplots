@@ -21,7 +21,7 @@ BugReports: https://github.com/acidgenomics/acidplots/issues/
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false
-Depends: R (>= 3.4)
+Depends: R (>= 3.5)
 Imports:
     basejump (>= 0.10.4), bioverbs (>= 0.1.14), goalie (>= 0.2.15),
     BiocGenerics, SingleCellExperiment, SummarizedExperiment, S4Vectors,
