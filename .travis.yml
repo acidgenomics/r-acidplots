@@ -21,12 +21,6 @@ jobs:
     - stage: test
       name: "Docker: Bioconductor 3.7"
       script: tag="bioc-3.7" ./travis-docker.sh
-    - stage: test
-      name: "Docker: Bioconductor 3.6"
-      script: tag="bioc-3.6" ./travis-docker.sh
-    - stage: test
-      name: "Docker: Bioconductor 3.5"
-      script: tag="bioc-3.6" ./travis-docker.sh
 
 matrix:
   fast_finish: true
