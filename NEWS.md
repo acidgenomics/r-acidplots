@@ -1,3 +1,11 @@
+## acidplots 0.2.3 (2019-05-05)
+
+### Major changes
+
+- Now pinned against R >= 3.5.
+
+
+
 ## acidplots 0.2.2 (2019-04-26)
 
 ### Major changes

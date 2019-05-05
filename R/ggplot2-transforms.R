@@ -45,8 +45,12 @@ acid_coord_flip <-  # nolint
 
 
 #' Remove Y axis padding
+#'
 #' @export
 #' @inheritParams ggplot2::scale_y_continuous
+#'
+#' @return `ggproto`.
+#'
 #' @examples
 #' acid_scale_y_continuous_nopad()
 acid_scale_y_continuous_nopad <-  # nolint
