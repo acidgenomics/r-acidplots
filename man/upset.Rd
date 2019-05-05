@@ -5,13 +5,13 @@
 \title{UpSetR plot, with improved default aesthetics}
 \usage{
 upset(data, nsets = 5, nintersects = 40, sets = NULL,
-  keep.order = F, set.metadata = NULL, intersections = NULL,
+  keep.order = FALSE, set.metadata = NULL, intersections = NULL,
   matrix.color = "black", main.bar.color = "black",
   mainbar.y.label = "Intersection Size", mainbar.y.max = NULL,
   sets.bar.color = "black", sets.x.label = "Set Size",
   point.size = 3L, line.size = 1L, mb.ratio = c(0.6, 0.4),
   expression = NULL, att.pos = NULL, att.color = main.bar.color,
-  order.by = c("freq", "degree"), decreasing = c(T, F),
+  order.by = c("freq", "degree"), decreasing = c(TRUE, FALSE),
   show.numbers = "yes", number.angles = 0, group.by = "degree",
   cutoff = NULL, queries = NULL, query.legend = "none",
   shade.color = NA, shade.alpha = 1L, matrix.dot.alpha = 1L,

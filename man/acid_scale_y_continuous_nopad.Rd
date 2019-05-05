@@ -17,6 +17,9 @@ to generate the values for the \code{expand} argument. The defaults are to
 expand the scale by 5\% on each side for continuous variables, and by
 0.6 units on each side for discrete variables.}
 }
+\value{
+\code{ggproto}.
+}
 \description{
 Remove Y axis padding
 }
