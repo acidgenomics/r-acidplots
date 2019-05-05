@@ -17,4 +17,7 @@ f[["sets.bar.color"]] <- "black"
 f[["shade.alpha"]] <- 1L
 f[["shade.color"]] <- NA
 f[["text.scale"]] <- 1.5
+# Fix T/F usage in UpSetR package.
+f[["decreasing"]] <- c(TRUE, FALSE)
+f[["keep.order"]] <- FALSE
 formals(upset) <- f

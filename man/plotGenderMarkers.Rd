@@ -68,6 +68,9 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 }
+\examples{
+class(plotGenderMarkers)
+}
 \seealso{
 \code{plotCounts()}.
 }
