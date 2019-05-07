@@ -32,12 +32,14 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         assay = 1L,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
+        fill,
         countsAxisLabel = "counts",
         title = "Counts per broad class"
     ) {
         validObject(object)
         assert(
             isScalar(assay),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isString(countsAxisLabel),
             isString(title, nullOK = TRUE)
         )
@@ -129,7 +131,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         ) +
             geom_violin(
                 mapping = aes(fill = !!sym("interestingGroups")),
-                color = "black",
+                color = NA,
                 scale = "area",
                 trim = TRUE
             ) +
@@ -151,8 +153,15 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
                 axis.title.x = element_blank()
             )
 
+        if (is(fill, "ScaleDiscrete")) {
+            p <- p + fill
+        }
+
         p
     }
+
+formals(plotCountsPerBroadClass.SummarizedExperiment)[["fill"]] <-
+    formalsList[["fill.discrete"]]
 
 
 
