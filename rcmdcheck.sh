@@ -14,9 +14,9 @@ set -Eeuxo pipefail
 export TZ="America/New_York"
 
 # Get the package version and define the `R CMD build` tarball output.
-export PKG_NAME="$(basename "$PWD")"
-export PKG_VERSION=$(egrep "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:\s//")
-export PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
+PKG_NAME="$(basename "$PWD")"
+PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:\s//")"
+PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
 
 echo "Session information"
 Rscript -e "utils::sessionInfo()"
@@ -43,8 +43,8 @@ Rscript -e "BiocCheck::BiocCheck( \
 rm "$PKG_TARBALL"
 
 echo "Coverage"
-Rscript -e 'covr::package_coverage()'
+Rscript -e "covr::package_coverage()"
 
 echo "lintr"
-Rscript -e 'if (packageVersion("base") >= "3.6") \
-    lintr::lint_package(path = ".")'
+Rscript -e "if (packageVersion(\"base\") >= \"3.6\") \
+    lintr::lint_package(path = \".\")"
