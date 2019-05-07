@@ -16,7 +16,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -73,7 +74,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +92,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/acidplots">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -141,7 +142,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer(1)</a></code>.
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code>.
 The number of colors (&gt;= 1) to be in the palette.</p></td>
     </tr>
     <tr>
@@ -150,14 +151,14 @@ The number of colors (&gt;= 1) to be in the palette.</p></td>
     </tr>
     <tr>
       <th>na.value</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>.
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Missing values will be replaced with this value.</p></td>
     </tr>
     <tr>
       <th>guide</th>
-      <td><p><code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code> or <code>function</code>.
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> or <code>function</code>.
 A function used to create a guide or its name.
-See <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/guides'>guides()</a></code> for details.</p></td>
+See <code><a href='https://rdrr.io/pkg/ggplot2/man/guides.html'>guides()</a></code> for details.</p></td>
     </tr>
     </table>
     
@@ -168,8 +169,8 @@ See <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/guides
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Adapted from viridis color palette:</p><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/reexports'>viridis::viridis()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/viridis/topics/viridis_pal'>viridis::viridis_pal()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/viridis/man/reexports.html'>viridis::viridis()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/viridis/man/viridis_pal.html'>viridis::viridis_pal()</a></code>.</p></li>
 <li><p><code>viridis::scale_colour_viridis_c()</code>.</p></li>
 <li><p><code>viridis::scale_colour_viridis_d()</code>.</p></li>
 <li><p><code>viridis::scale_fill_viridis_c()</code>.</p></li>
@@ -183,37 +184,37 @@ See <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/guides
 <li><p>http://hclwizard.org/</p></li>
 </ul></div>
     <div class='dont-index'><p>Additional color palette functions that may be relevant:</p><ul>
-<li><p><code><a href='https://www.rdocumentation.org/packages/grDevices/topics/hsv'>grDevices::hsv()</a></code>, <code><a href='https://www.rdocumentation.org/packages/grDevices/topics/rgb'>grDevices::rgb()</a></code>, <code><a href='https://www.rdocumentation.org/packages/grDevices/topics/col2rgb'>grDevices::col2rgb()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/gplots/topics/col2hex'>gplots::col2hex()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/continuous_scale'>ggplot2::continuous_scale()</a></code>, <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/discrete_scale'>ggplot2::discrete_scale()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/scales/topics/gradient_n_pal'>scales::gradient_n_pal()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/Seurat/topics/CustomPalette'>Seurat::CustomPalette()</a></code>, <code><a href='https://www.rdocumentation.org/packages/Seurat/topics/CustomPalette'>Seurat::PurpleAndYellow()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/r/grDevices/hsv.html'>grDevices::hsv()</a></code>, <code><a href='https://rdrr.io/r/grDevices/rgb.html'>grDevices::rgb()</a></code>, <code><a href='https://rdrr.io/r/grDevices/col2rgb.html'>grDevices::col2rgb()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/gplots/man/col2hex.html'>gplots::col2hex()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/ggplot2/man/continuous_scale.html'>ggplot2::continuous_scale()</a></code>, <code><a href='https://rdrr.io/pkg/ggplot2/man/discrete_scale.html'>ggplot2::discrete_scale()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/scales/man/gradient_n_pal.html'>scales::gradient_n_pal()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/Seurat/man/CustomPalette.html'>Seurat::CustomPalette()</a></code>, <code><a href='https://rdrr.io/pkg/Seurat/man/CustomPalette.html'>Seurat::PurpleAndYellow()</a></code>.</p></li>
 <li><p><code>colorRamps::matlab.like()</code>, <code>colorRamps::matlab.like2()</code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer'>RColorBrewer::display.brewer.all()</a></code>.</p></li>
-<li><p><code><a href='https://www.rdocumentation.org/packages/viridisLite/topics/viridis.map'>viridisLite::viridis.map</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>RColorBrewer::display.brewer.all()</a></code>.</p></li>
+<li><p><code><a href='https://rdrr.io/pkg/viridisLite/man/viridis.map.html'>viridisLite::viridis.map</a></code>.</p></li>
 </ul></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/theme_get'>theme_set</a></span>(<span class='fu'><a href='themes.html'>acid_theme_light</a></span>())
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme_get.html'>theme_set</a></span>(<span class='fu'><a href='themes.html'>acid_theme_light</a></span>())
 
 <span class='co'>## Colour, continuous</span>
-<span class='no'>cc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) + <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_jitter'>geom_jitter</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>hwy</span>))
+<span class='no'>cc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_jitter.html'>geom_jitter</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>hwy</span>))
 <span class='no'>cc</span> + <span class='fu'>scale_colour_synesthesia_c</span>()</div><div class='img'><img src='synesthesia-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Colour, discrete</span>
-<span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_bar</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>fl</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+<span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>fl</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 <span class='no'>cd</span> + <span class='fu'>scale_colour_synesthesia_d</span>()</div><div class='img'><img src='synesthesia-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Fill, continuous</span>
-<span class='no'>fc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>diamonds</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>carat</span>, <span class='no'>price</span>)) + <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_hex'>geom_hex</a></span>()
+<span class='no'>fc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>diamonds</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>carat</span>, <span class='no'>price</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_hex.html'>geom_hex</a></span>()
 <span class='no'>fc</span> + <span class='fu'>scale_fill_synesthesia_c</span>()</div><div class='img'><img src='synesthesia-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Fill, discrete</span>
-<span class='no'>fd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_bar</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>fl</span>))
+<span class='no'>fd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>fl</span>))
 <span class='no'>fd</span> + <span class='fu'>scale_fill_synesthesia_d</span>()</div><div class='img'><img src='synesthesia-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Base color</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/par'>par</a></span>(<span class='kw'>mar</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>2.5</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/image'>image</a></span>(
-    <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq_len</a></span>(<span class='fl'>100L</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>10</span>),
+<span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>2.5</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>))
+<span class='fu'><a href='https://rdrr.io/r/graphics/image.html'>image</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>100L</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>ncol</span> <span class='kw'>=</span> <span class='fl'>10</span>),
     <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>synesthesia</span>()
 )</div><div class='img'><img src='synesthesia-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
@@ -238,7 +239,7 @@ See <code><a href='https://www.rdocumentation.org/packages/ggplot2/topics/guides
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
       </footer>
    </div>
