@@ -33,6 +33,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         n = 9L,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
+        fill,
         countsAxisLabel = "counts",
         title = "Counts per biotype"
     ) {
@@ -40,6 +41,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         assert(
             isScalar(assay),
             isInt(n),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isString(countsAxisLabel),
             isString(title, nullOK = TRUE)
         )
@@ -145,7 +147,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         ) +
             geom_violin(
                 mapping = aes(fill = !!sym("interestingGroups")),
-                color = "black",
+                color = NA,
                 scale = "area",
                 trim = TRUE
             ) +
@@ -167,8 +169,15 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
                 axis.title.x = element_blank()
             )
 
+        if (is(fill, "ScaleDiscrete")) {
+            p <- p + fill
+        }
+
         p
     }
+
+formals(plotCountsPerBiotype.SummarizedExperiment)[["fill"]] <-
+    formalsList[["fill.discrete"]]
 
 
 
