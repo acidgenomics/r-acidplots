@@ -36,7 +36,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         minCounts = 1L,
         minCountsMethod,
         interestingGroups = NULL,
-        geom = c("boxplot", "density", "violin"),
+        geom = c("boxplot", "density"),
         trans = c("identity", "log2", "log10"),
         color,
         fill,
@@ -49,6 +49,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             isScalar(assay),
             isInt(minCounts),
             isGreaterThanOrEqualTo(minCounts, 1L),
+            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
             isString(countsAxisLabel, nullOK = TRUE),
@@ -101,18 +102,6 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
                     color = "black"
                 ) +
                 labs(x = NULL, y = countsAxisLabel)
-        } else if (geom == "violin") {
-            p <- p +
-                geom_violin(
-                    mapping = aes(
-                        x = !!sym("sampleName"),
-                        y = !!sym("counts"),
-                        fill = !!sym("interestingGroups")
-                    ),
-                    color = "black",
-                    scale = "width"
-                ) +
-                labs(x = NULL, y = countsAxisLabel)
         }
 
         # Subtitle
@@ -132,8 +121,14 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
                 fill = paste(interestingGroups, collapse = ":\n")
             )
 
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
+        if (geom == "boxplot") {
+            if (is(fill, "ScaleDiscrete")) {
+                p <- p + fill
+            }
+        } else if (geom == "density") {
+            if (is(color, "ScaleDiscrete")) {
+                p <- p + color
+            }
         }
 
         # Flip the axis for plots with counts on y-axis, if desired.
