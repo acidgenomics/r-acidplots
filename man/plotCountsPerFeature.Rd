@@ -11,7 +11,7 @@ plotCountsPerFeature(object, ...)
 
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  interestingGroups = NULL, geom = c("boxplot", "density"),
+  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
   "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
@@ -21,7 +21,7 @@ plotCountsPerFeature(object, ...)
 
 \S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
   minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  interestingGroups = NULL, geom = c("boxplot", "density"),
+  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
   "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), fill = getOption(x =

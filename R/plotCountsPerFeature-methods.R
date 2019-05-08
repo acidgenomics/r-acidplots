@@ -36,7 +36,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         minCounts = 1L,
         minCountsMethod,
         interestingGroups = NULL,
-        geom = c("boxplot", "density"),
+        geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
         color,
         fill,
@@ -102,6 +102,17 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
                     color = "black"
                 ) +
                 labs(x = NULL, y = countsAxisLabel)
+        } else if (geom == "jitter") {
+            p <- p +
+                geom_jitter(
+                    mapping = aes(
+                        x = !!sym("sampleName"),
+                        y = !!sym("counts"),
+                        color = !!sym("interestingGroups")
+                    ),
+                    size = 0.5
+                ) +
+                labs(x = NULL, y = countsAxisLabel)
         }
 
         # Subtitle
@@ -125,7 +136,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
             }
-        } else if (geom == "density") {
+        } else if (geom %in% c("density", "jitter")) {
             if (is(color, "ScaleDiscrete")) {
                 p <- p + color
             }

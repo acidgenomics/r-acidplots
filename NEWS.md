@@ -1,3 +1,19 @@
+## acidplots 0.2.4 (2019-05-08)
+
+### Minor changes
+
+- Improved log2 and log10 axis scale handling for `plotCountsPerBiotype` and
+  `plotCountsPerBroadClass`. Previously, the `breaks` argument was defined in
+  internal `scale_y_continuous` ggplot2 call, but this doesn't perform well for
+  many RNA-seq datasets at log2 scale. Instead, it's better to log2 scale the
+  data first and then simplify indicate log2 on the y axis title.
+- `plotCountsPerFeature`: Improved custom color handling for density geom.
+  Removed violin geom support but added jitter geom support. The violin
+  plot method doesn't scale well for multiple samples, and the boxplot is
+  visually easier to interpret for this metric, in general.
+
+
+
 ## acidplots 0.2.3 (2019-05-05)
 
 ### Major changes
