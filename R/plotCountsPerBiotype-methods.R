@@ -131,7 +131,6 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
 
         # Prepare the minimal tibble required for plotting.
         data <- data %>%
-            # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
             left_join(
                 y = as_tibble(rowData, rownames = "rowname"),
