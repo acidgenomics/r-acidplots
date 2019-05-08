@@ -36,7 +36,7 @@
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
 #' @importFrom rlang := UQ quo_text sym syms
-#' @importFrom scales gradient_n_pal log_breaks
+#' @importFrom scales gradient_n_pal log_breaks pretty_breaks
 #' @importFrom stats as.formula dist hclust prcomp quantile
 #' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather

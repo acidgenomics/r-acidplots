@@ -32,7 +32,8 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         assay = 1L,
         n = 9L,
         interestingGroups = NULL,
-        trans = c("log10", "log2", "identity"),
+        trans = c("identity", "log2", "log10"),
+        fill,
         countsAxisLabel = "counts",
         title = "Counts per biotype"
     ) {
@@ -40,20 +41,30 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         assert(
             isScalar(assay),
             isInt(n),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isString(countsAxisLabel),
             isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
-        breaks <- switch(
-            EXPR = trans,
-            identity = waiver(),
-            log2 = log_breaks(base = 2L),
-            log10 = log_breaks(base = 10L)
-        )
 
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
+
+        # Get the count matrix.
+        assay <- assays(object)[[assay]]
+        # Ensure sparse matrix is coerced to dense.
+        assay <- as.matrix(assay)
+
+        # Log transform, if necessary.
+        if (trans == "log2") {
+            assay <- log2(assay + 1L)
+        } else if (trans == "log10") {
+            assay <- log10(assay + 1L)
+        }
+        if (trans != "identity") {
+            countsAxisLabel <- paste(trans, countsAxisLabel)
+        }
 
         rowData <- rowData(object)
         # Ensure Rle columns get decoded.
@@ -97,9 +108,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
         # Gather the counts into a long tibble.
-        data <- assays(object)[[assay]] %>%
-            # Ensure sparse matrix is coerced to dense.
-            as.matrix() %>%
+        data <- assay %>%
             as_tibble(rownames = "rowname") %>%
             gather(
                 key = "colname",
@@ -122,7 +131,6 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
 
         # Prepare the minimal tibble required for plotting.
         data <- data %>%
-            # Drop zero counts, which is useful when log scaling the axis.
             filter(!!sym("counts") > 0L) %>%
             left_join(
                 y = as_tibble(rowData, rownames = "rowname"),
@@ -145,14 +153,13 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         ) +
             geom_violin(
                 mapping = aes(fill = !!sym("interestingGroups")),
-                color = "black",
+                color = NA,
                 scale = "area",
                 trim = TRUE
             ) +
             scale_y_continuous(
-                breaks = breaks,
-                labels = prettyNum,
-                trans = trans
+                breaks = pretty_breaks(),
+                labels = prettyNum
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
@@ -167,8 +174,15 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
                 axis.title.x = element_blank()
             )
 
+        if (is(fill, "ScaleDiscrete")) {
+            p <- p + fill
+        }
+
         p
     }
+
+formals(plotCountsPerBiotype.SummarizedExperiment)[["fill"]] <-
+    formalsList[["fill.discrete"]]
 
 
 

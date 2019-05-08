@@ -9,8 +9,9 @@
 plotCountsPerBroadClass(object, ...)
 
 \S4method{plotCountsPerBroadClass}{SummarizedExperiment}(object,
-  assay = 1L, interestingGroups = NULL, trans = c("log10", "log2",
-  "identity"), countsAxisLabel = "counts",
+  assay = 1L, interestingGroups = NULL, trans = c("identity", "log2",
+  "log10"), fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
   title = "Counts per broad class")
 }
 \arguments{
@@ -30,6 +31,14 @@ Groups of interest that define the samples. If left unset, defaults to
 Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
+
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
+Desired ggplot2 fill scale. Must supply discrete values. When set to
+\code{NULL}, the default ggplot2 color palette will be used. If manual color
+definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
+
+To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
 \item{countsAxisLabel}{\code{character(1)}.
