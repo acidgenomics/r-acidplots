@@ -9,8 +9,8 @@
 plotCountsPerBiotype(object, ...)
 
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
-  n = 9L, interestingGroups = NULL, trans = c("log10", "log2",
-  "identity"), fill = getOption(x = "acid.fill.discrete", default =
+  n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
+  "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
   title = "Counts per biotype")
 }
