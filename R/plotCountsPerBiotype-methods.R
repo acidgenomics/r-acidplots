@@ -32,7 +32,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         assay = 1L,
         n = 9L,
         interestingGroups = NULL,
-        trans = c("log10", "log2", "identity"),
+        trans = c("identity", "log2", "log10"),
         fill,
         countsAxisLabel = "counts",
         title = "Counts per biotype"
@@ -46,16 +46,25 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
-        breaks <- switch(
-            EXPR = trans,
-            identity = waiver(),
-            log2 = log_breaks(base = 2L),
-            log10 = log_breaks(base = 10L)
-        )
 
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
+
+        # Get the count matrix.
+        assay <- assays(object)[[assay]]
+        # Ensure sparse matrix is coerced to dense.
+        assay <- as.matrix(assay)
+
+        # Log transform, if necessary.
+        if (trans == "log2") {
+            assay <- log2(assay + 1L)
+        } else if (trans == "log10") {
+            assay <- log10(assay + 1L)
+        }
+        if (trans != "identity") {
+            countsAxisLabel <- paste(trans, countsAxisLabel)
+        }
 
         rowData <- rowData(object)
         # Ensure Rle columns get decoded.
@@ -99,9 +108,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
         # Gather the counts into a long tibble.
-        data <- assays(object)[[assay]] %>%
-            # Ensure sparse matrix is coerced to dense.
-            as.matrix() %>%
+        data <- assay %>%
             as_tibble(rownames = "rowname") %>%
             gather(
                 key = "colname",
@@ -152,9 +159,8 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
                 trim = TRUE
             ) +
             scale_y_continuous(
-                breaks = breaks,
-                labels = prettyNum,
-                trans = trans
+                breaks = pretty_breaks(),
+                labels = prettyNum
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
             labs(
