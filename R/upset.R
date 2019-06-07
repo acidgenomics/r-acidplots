@@ -3,7 +3,14 @@
 #' @inherit UpSetR::upset description details params references
 #' @return Graphical output, no return.
 #' @examples
-#' ## Refer to UpSetR::upset() documentation for examples.
+#' ## Refer to UpSetR::upset() documentation for more examples.
+#' movies <- read.csv(
+#'     system.file("extdata", "movies.csv", package = "UpSetR"),
+#'     header = TRUE,
+#'     sep = ";"
+#' )
+#' upset(movies)
+# Last modified 2019-06-07.
 upset <- UpSetR::upset
 
 f <- formals(upset)
