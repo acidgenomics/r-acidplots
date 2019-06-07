@@ -1,3 +1,11 @@
+## acidplots 0.2.5 (2019-06-07)
+
+### Minor changes
+
+- `upset`: Compatibility update for UpSetR v1.4 release.
+
+
+
 ## acidplots 0.2.4 (2019-05-08)
 
 ### Minor changes
