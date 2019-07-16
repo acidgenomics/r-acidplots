@@ -106,11 +106,12 @@ geom <- acid_geom_label()
 geom
 
 ## acid_geom_label_average ====
+data = tibble::tibble(
+    sampleName = rep(c("sample1", "sample2"), times = 4L),
+    counts = seq_len(8L)
+)
 geom <- acid_geom_label_average(
-    data = tibble::tibble(
-        sampleName = rep(c("sample1", "sample2"), times = 4L),
-        counts = seq_len(8L)
-    ),
+    data = data,
     col = "counts",
     fun = "mean"
 )
