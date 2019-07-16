@@ -18,16 +18,18 @@ PKG_NAME="$(basename "$PWD")"
 PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:[[:space:]]//")"
 PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
 
-echo "Session information"
+echo "travis_fold:start:session_info"
 Rscript -e "utils::sessionInfo()"
 Rscript -e "sessioninfo::session_info()"
+echo "travis_fold:end:session_info"
 
-echo "R CMD check"
+echo "travis_fold:start:r_cmd_check"
 # Set `--as-cran` flag for extra verbose incoming package checks.
 R CMD build . --no-build-vignettes --no-manual
 R CMD check "$PKG_TARBALL" --ignore-vignettes --no-manual --timings
+echo "travis_fold:end:r_cmd_check"
 
-echo "BiocCheck"
+echo "travis_fold:start:bioc_check"
 # Note that running `R CMD BiocCheck` directly requires `script/BiocCheck` to
 # be installed at `/usr/lib64/R/bin`. Otherwise, can run directly using Rscript.
 # Set `--new-package` flag for extra verbose incoming package checks.
@@ -39,12 +41,14 @@ Rscript -e "BiocCheck::BiocCheck( \
     \`no-check-version-num\` = TRUE, \
     \`no-check-vignettes\` = TRUE, \
     \`quit-with-status\` = TRUE)"
+echo "travis_fold:end:bioc_check"
 
 rm "$PKG_TARBALL"
 
-echo "Coverage"
-Rscript -e "covr::package_coverage()"
+echo "travis_fold:start:lints"
+./lints.R
+echo "travis_fold:end:lints"
 
-echo "lintr"
-Rscript -e "if (packageVersion(\"base\") >= \"3.6\") \
-    lintr::lint_package(path = \".\")"
+echo "travis_fold:start:coverage"
+./coverage.R
+echo "travis_fold:end:coverage"
