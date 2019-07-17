@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UpSetR plot, with improved default aesthetics — upset • acidplots</title>
+<title>UpSetR plot — upset • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -33,9 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="UpSetR plot, with improved default aesthetics — upset" />
+<meta property="og:title" content="UpSetR plot — upset" />
 
-<meta property="og:description" content="Visualization of set intersections using novel UpSet matrix design." />
+<meta property="og:description" content="Wrapper for UpSetR::upset() with improved default aesthetics." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -48,6 +49,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -66,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -103,195 +105,71 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>UpSetR plot, with improved default aesthetics</h1>
+    <h1>UpSetR plot</h1>
     <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/upset.R'><code>R/upset.R</code></a></small>
     <div class="hidden name"><code>upset.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Visualization of set intersections using novel UpSet matrix design.</p>
+    <p>Wrapper for <code><a href='https://rdrr.io/pkg/UpSetR/man/upset.html'>UpSetR::upset()</a></code> with improved default aesthetics.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>upset</span>(<span class='no'>data</span>, <span class='kw'>nsets</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>nintersects</span> <span class='kw'>=</span> <span class='fl'>40</span>, <span class='kw'>sets</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>keep.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>set.metadata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>intersections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>matrix.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>main.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>mainbar.y.label</span> <span class='kw'>=</span> <span class='st'>"Intersection Size"</span>, <span class='kw'>mainbar.y.max</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sets.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>sets.x.label</span> <span class='kw'>=</span> <span class='st'>"Set Size"</span>,
-  <span class='kw'>point.size</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>line.size</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>mb.ratio</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6</span>, <span class='fl'>0.4</span>),
-  <span class='kw'>expression</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>att.pos</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>att.color</span> <span class='kw'>=</span> <span class='no'>main.bar.color</span>,
-  <span class='kw'>order.by</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"freq"</span>, <span class='st'>"degree"</span>), <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
-  <span class='kw'>show.numbers</span> <span class='kw'>=</span> <span class='st'>"yes"</span>, <span class='kw'>number.angles</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>group.by</span> <span class='kw'>=</span> <span class='st'>"degree"</span>,
-  <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>queries</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>query.legend</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
-  <span class='kw'>shade.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>shade.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>matrix.dot.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>empty.intersections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>color.pal</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>boxplot.summary</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>attribute.plots</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale.intersections</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
-  <span class='kw'>scale.sets</span> <span class='kw'>=</span> <span class='st'>"identity"</span>, <span class='kw'>text.scale</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>set_size.angles</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>upset</span>(<span class='no'>...</span>, <span class='kw'>line.size</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>main.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
+  <span class='kw'>matrix.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>matrix.dot.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>mb.ratio</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6</span>,
+  <span class='fl'>0.4</span>), <span class='kw'>point.size</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>sets.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>shade.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>shade.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>text.scale</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
+  <span class='kw'>keep.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>Data set</p></td>
-    </tr>
-    <tr>
-      <th>nsets</th>
-      <td><p>Number of sets to look at</p></td>
-    </tr>
-    <tr>
-      <th>nintersects</th>
-      <td><p>Number of intersections to plot. If set to NA, all intersections will be plotted.</p></td>
-    </tr>
-    <tr>
-      <th>sets</th>
-      <td><p>Specific sets to look at (Include as combinations. Ex: c("Name1", "Name2"))</p></td>
-    </tr>
-    <tr>
-      <th>keep.order</th>
-      <td><p>Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.</p></td>
-    </tr>
-    <tr>
-      <th>set.metadata</th>
-      <td><p>Metadata that offers insight to an attribute of the sets. Input should be a data frame where the first column is set names, and the 
-remaining columns are attributes of those sets. To learn how to use this parameter it is highly suggested to view the set metadata vignette. The link
-can be found on the package's GitHub page.</p></td>
-    </tr>
-    <tr>
-      <th>intersections</th>
-      <td><p>Specific intersections to include in plot entered as a list of lists.
-Ex: list(list("Set name1", "Set name2"), list("Set name1", "Set name3")). If data is entered into this parameter the only data shown on the UpSet plot
-will be the specific intersections listed.</p></td>
-    </tr>
-    <tr>
-      <th>matrix.color</th>
-      <td><p>Color of the intersection points</p></td>
-    </tr>
-    <tr>
-      <th>main.bar.color</th>
-      <td><p>Color of the main bar plot</p></td>
-    </tr>
-    <tr>
-      <th>mainbar.y.label</th>
-      <td><p>The y-axis label of the intersection size bar plot</p></td>
-    </tr>
-    <tr>
-      <th>mainbar.y.max</th>
-      <td><p>The maximum y value of the intersection size bar plot scale. May be useful when aligning multiple UpSet plots horizontally.</p></td>
-    </tr>
-    <tr>
-      <th>sets.bar.color</th>
-      <td><p>Color of set size bar plot</p></td>
-    </tr>
-    <tr>
-      <th>sets.x.label</th>
-      <td><p>The x-axis label of the set size bar plot</p></td>
-    </tr>
-    <tr>
-      <th>point.size</th>
-      <td><p>Size of points in matrix plot</p></td>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
     </tr>
     <tr>
       <th>line.size</th>
       <td><p>Width of lines in matrix plot</p></td>
     </tr>
     <tr>
-      <th>mb.ratio</th>
-      <td><p>Ratio between matrix plot and main bar plot (Keep in terms of hundreths)</p></td>
+      <th>main.bar.color</th>
+      <td><p>Color of the main bar plot</p></td>
     </tr>
     <tr>
-      <th>expression</th>
-      <td><p>Expression to subset attributes of intersection or element query data. Enter as string (Ex: "ColName &gt; 3")</p></td>
-    </tr>
-    <tr>
-      <th>att.pos</th>
-      <td><p>Position of attribute plot. If NULL or "bottom" the plot will be at below UpSet plot. If "top" it will be above UpSert plot</p></td>
-    </tr>
-    <tr>
-      <th>att.color</th>
-      <td><p>Color of attribute histogram bins or scatterplot points for unqueried data represented by main bars. Default set to color of main bars.</p></td>
-    </tr>
-    <tr>
-      <th>order.by</th>
-      <td><p>How the intersections in the matrix should be ordered by. Options include frequency (entered as "freq"), degree, or both in any order.</p></td>
-    </tr>
-    <tr>
-      <th>decreasing</th>
-      <td><p>How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)</p></td>
-    </tr>
-    <tr>
-      <th>show.numbers</th>
-      <td><p>Show numbers of intersection sizes above bars</p></td>
-    </tr>
-    <tr>
-      <th>number.angles</th>
-      <td><p>The angle of the numbers atop the intersection size bars</p></td>
-    </tr>
-    <tr>
-      <th>group.by</th>
-      <td><p>How the data should be grouped ("degree" or "sets")</p></td>
-    </tr>
-    <tr>
-      <th>cutoff</th>
-      <td><p>The number of intersections from each set (to cut off at) when aggregating by sets</p></td>
-    </tr>
-    <tr>
-      <th>queries</th>
-      <td><p>Unified querie of intersections, elements, and custom row functions. Entered as a list that contains a list of
-queries. query is the type of query being conducted. params are the parameters of the query (if any). color is the color of the points on the
-plot that will represent the query. If no color is selected one will be provided automatically. active takes TRUE or FALSE, and if
-TRUE, it will overlay the bars present  with the results from the query. If FALSE a tick mark will indicate the intersection size.
-See examples section on how to do this.</p></td>
-    </tr>
-    <tr>
-      <th>query.legend</th>
-      <td><p>Position query legend on top or bottom of UpSet plot</p></td>
-    </tr>
-    <tr>
-      <th>shade.color</th>
-      <td><p>Color of row shading in matrix</p></td>
-    </tr>
-    <tr>
-      <th>shade.alpha</th>
-      <td><p>Transparency of shading in matrix</p></td>
+      <th>matrix.color</th>
+      <td><p>Color of the intersection points</p></td>
     </tr>
     <tr>
       <th>matrix.dot.alpha</th>
       <td><p>Transparency of the empty intersections points in the matrix</p></td>
     </tr>
     <tr>
-      <th>empty.intersections</th>
-      <td><p>Additionally display empty sets up to nintersects</p></td>
+      <th>mb.ratio</th>
+      <td><p>Ratio between matrix plot and main bar plot (Keep in terms of hundredths)</p></td>
     </tr>
     <tr>
-      <th>color.pal</th>
-      <td><p>Color palette for attribute plots</p></td>
+      <th>point.size</th>
+      <td><p>Size of points in matrix plot</p></td>
     </tr>
     <tr>
-      <th>boxplot.summary</th>
-      <td><p>Boxplots representing the distribution of a selected attribute for each intersection. Select attributes by entering a character vector of attribute names (e.g. c("Name1", "Name2")).
-The maximum number of attributes that can be entered is 2.</p></td>
+      <th>sets.bar.color</th>
+      <td><p>Color of set size bar plot</p></td>
     </tr>
     <tr>
-      <th>attribute.plots</th>
-      <td><p>Create custom ggplot using intersection data represented in the main bar plot. Prior to adding custom plots, the UpSet plot is set up in a 100 by 100 grid.
-The attribute.plots parameter takes a list that contains the number of rows that should be allocated for the custom plot, and a list of plots with specified positions.
-nrows is the number of rows the custom plots should take up. There is already 100 allocated for the custom plot. plots takes a list that contains a function that returns
-a custom ggplots and the x and y aesthetics for the function. ncols is the number of columns that your ggplots should take up. See examples for how to add custom ggplots.</p></td>
+      <th>shade.alpha</th>
+      <td><p>Transparency of shading in matrix</p></td>
     </tr>
     <tr>
-      <th>scale.intersections</th>
-      <td><p>The scale to be used for the intersection sizes. Options: "identity", "log10", "log2"</p></td>
-    </tr>
-    <tr>
-      <th>scale.sets</th>
-      <td><p>The scale to be used for the set sizes. Options: "identity", "log10", "log2"</p></td>
+      <th>shade.color</th>
+      <td><p>Color of row shading in matrix</p></td>
     </tr>
     <tr>
       <th>text.scale</th>
@@ -299,8 +177,12 @@ a custom ggplots and the x and y aesthetics for the function. ncols is the numbe
 in the following format: c(intersection size title, intersection size tick labels, set size title, set size tick labels, set names, numbers above bars)</p></td>
     </tr>
     <tr>
-      <th>set_size.angles</th>
-      <td><p>Numeric, angle to rotate the set size plot x-axis text</p></td>
+      <th>decreasing</th>
+      <td><p>How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)</p></td>
+    </tr>
+    <tr>
+      <th>keep.order</th>
+      <td><p>Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.</p></td>
     </tr>
     </table>
     
@@ -312,10 +194,10 @@ in the following format: c(intersection size title, intersection size tick label
 
     <p>Visualization of set data in the layout described by Lex and Gehlenborg in <a href='http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html'>http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html</a>.
 UpSet also allows for visualization of queries on intersections and elements, along with custom queries queries implemented using
-Hadley Wickhams apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
+Hadley Wickham's apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
 to be displayed alongside the UpSet plot. The user also has the the ability to pass their own plots into the function to further analyze
 data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
-Depending on how the featuers are selected, UpSet can display between 25-65 sets and between 40-100 intersections.</p>
+Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -325,8 +207,13 @@ IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>## Refer to UpSetR::upset() documentation for examples.
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>## Refer to UpSetR::upset() documentation for more examples.</span>
+<span class='no'>movies</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span>(
+    <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"movies.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"UpSetR"</span>),
+    <span class='kw'>header</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>";"</span>
+)
+<span class='fu'>upset</span>(<span class='no'>movies</span>)</div><div class='img'><img src='upset-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -345,19 +232,23 @@ IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

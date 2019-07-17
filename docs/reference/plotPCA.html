@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -50,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -66,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -103,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -167,7 +170,7 @@ Superimpose sample text labels on the plot.</p></td>
       <td><p><code>ScaleDiscrete</code>.
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
 the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://rdrr.io/pkg/ggplot2/man/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
+are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
 <p>To set the discrete color palette globally, use:</p><pre>options(acid.color.discrete = ggplot2::scale_color_viridis_d())
 </pre></td>
     </tr>
@@ -205,7 +208,9 @@ to the first argument in the <code>character</code> vector.</p></td>
     <h2 class="hasAnchor" id="principal-component-analysis"><a class="anchor" href="#principal-component-analysis"></a>Principal component analysis</h2>
 
     
-    <p>PCA (Jolliffe, et al., 2002) is a multivariate technique that allows us to
+
+
+<p>PCA (Jolliffe, et al., 2002) is a multivariate technique that allows us to
 summarize the systematic patterns of variations in the data. PCA takes the
 expression levels for genes and transforms it in principal component space,
 reducing each sample into one point. Thereby, we can separate samples by
@@ -224,7 +229,8 @@ a way to look at how samples are clustering.</p>
     signature = "DESeqTransform",
     package = "DESeq2"
 )
-</pre></div>
+</pre>
+</div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -250,19 +256,23 @@ a way to look at how samples are clustering.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
