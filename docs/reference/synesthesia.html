@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -50,6 +51,7 @@
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -66,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -103,6 +105,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -158,7 +161,7 @@ Missing values will be replaced with this value.</p></td>
       <th>guide</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> or <code>function</code>.
 A function used to create a guide or its name.
-See <code><a href='https://rdrr.io/pkg/ggplot2/man/guides.html'>guides()</a></code> for details.</p></td>
+See <code><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides()</a></code> for details.</p></td>
     </tr>
     </table>
     
@@ -175,41 +178,44 @@ See <code><a href='https://rdrr.io/pkg/ggplot2/man/guides.html'>guides()</a></co
 <li><p><code>viridis::scale_colour_viridis_d()</code>.</p></li>
 <li><p><code>viridis::scale_fill_viridis_c()</code>.</p></li>
 <li><p><code>viridis::scale_fill_viridis_d()</code>.</p></li>
-</ul></div>
-    <div class='dont-index'><p>Useful color palette URLs:</p><ul>
+</ul>
+
+<p>Useful color palette URLs:</p><ul>
 <li><p>http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf</p></li>
 <li><p>https://matplotlib.org/tutorials/colors/colormaps.html</p></li>
 <li><p>http://colorbrewer2.org/</p></li>
 <li><p>http://colorspace.r-forge.r-project.org/</p></li>
 <li><p>http://hclwizard.org/</p></li>
-</ul></div>
-    <div class='dont-index'><p>Additional color palette functions that may be relevant:</p><ul>
+</ul>
+
+<p>Additional color palette functions that may be relevant:</p><ul>
 <li><p><code><a href='https://rdrr.io/r/grDevices/hsv.html'>grDevices::hsv()</a></code>, <code><a href='https://rdrr.io/r/grDevices/rgb.html'>grDevices::rgb()</a></code>, <code><a href='https://rdrr.io/r/grDevices/col2rgb.html'>grDevices::col2rgb()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/gplots/man/col2hex.html'>gplots::col2hex()</a></code>.</p></li>
-<li><p><code><a href='https://rdrr.io/pkg/ggplot2/man/continuous_scale.html'>ggplot2::continuous_scale()</a></code>, <code><a href='https://rdrr.io/pkg/ggplot2/man/discrete_scale.html'>ggplot2::discrete_scale()</a></code>.</p></li>
+<li><p><code><a href='https://ggplot2.tidyverse.org/reference/continuous_scale.html'>ggplot2::continuous_scale()</a></code>, <code><a href='https://ggplot2.tidyverse.org/reference/discrete_scale.html'>ggplot2::discrete_scale()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/scales/man/gradient_n_pal.html'>scales::gradient_n_pal()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/Seurat/man/CustomPalette.html'>Seurat::CustomPalette()</a></code>, <code><a href='https://rdrr.io/pkg/Seurat/man/CustomPalette.html'>Seurat::PurpleAndYellow()</a></code>.</p></li>
 <li><p><code>colorRamps::matlab.like()</code>, <code>colorRamps::matlab.like2()</code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>RColorBrewer::display.brewer.all()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/viridisLite/man/viridis.map.html'>viridisLite::viridis.map</a></code>.</p></li>
-</ul></div>
+</ul>
+</div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme_get.html'>theme_set</a></span>(<span class='fu'><a href='themes.html'>acid_theme_light</a></span>())
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span>(<span class='fu'><a href='themes.html'>acid_theme_light</a></span>())
 
 <span class='co'>## Colour, continuous</span>
-<span class='no'>cc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_jitter.html'>geom_jitter</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>hwy</span>))
+<span class='no'>cc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>cty</span>, <span class='no'>hwy</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_jitter.html'>geom_jitter</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>hwy</span>))
 <span class='no'>cc</span> + <span class='fu'>scale_colour_synesthesia_c</span>()</div><div class='img'><img src='synesthesia-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Colour, discrete</span>
-<span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>fl</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+<span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>colour</span> <span class='kw'>=</span> <span class='no'>fl</span>), <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 <span class='no'>cd</span> + <span class='fu'>scale_colour_synesthesia_d</span>()</div><div class='img'><img src='synesthesia-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Fill, continuous</span>
-<span class='no'>fc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>diamonds</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>carat</span>, <span class='no'>price</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_hex.html'>geom_hex</a></span>()
+<span class='no'>fc</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>diamonds</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>carat</span>, <span class='no'>price</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_hex.html'>geom_hex</a></span>()
 <span class='no'>fc</span> + <span class='fu'>scale_fill_synesthesia_c</span>()</div><div class='img'><img src='synesthesia-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Fill, discrete</span>
-<span class='no'>fd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>fl</span>))
+<span class='no'>fd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>fl</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>fl</span>))
 <span class='no'>fd</span> + <span class='fu'>scale_fill_synesthesia_d</span>()</div><div class='img'><img src='synesthesia-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Base color</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span>(<span class='kw'>mar</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>2.5</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>))
@@ -233,19 +239,23 @@ See <code><a href='https://rdrr.io/pkg/ggplot2/man/guides.html'>guides()</a></co
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
