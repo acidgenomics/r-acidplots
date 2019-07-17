@@ -8,10 +8,6 @@ options(
     warning = quote(quit(status = 1L))
 )
 
-if (packageVersion("base") < "3.6") {
-    quit()
-}
-
 requireNamespace("lintr", quietly = TRUE)
 
 lints <- lintr::lint_package(path = ".")

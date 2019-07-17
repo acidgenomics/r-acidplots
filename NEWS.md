@@ -1,10 +1,9 @@
-## acidplots 0.2.5 (2019-06-07)
+## acidplots 0.2.5 (2019-07-17)
 
 ### Minor changes
 
 - `upset`: Compatibility update for UpSetR v1.4 release.
-
-
+- Compatibility fixes for basejump v0.10.11 release.
 
 ## acidplots 0.2.4 (2019-05-08)
 
@@ -20,15 +19,11 @@
   plot method doesn't scale well for multiple samples, and the boxplot is
   visually easier to interpret for this metric, in general.
 
-
-
 ## acidplots 0.2.3 (2019-05-05)
 
 ### Major changes
 
 - Now pinned against R >= 3.5.
-
-
 
 ## acidplots 0.2.2 (2019-04-26)
 
@@ -36,8 +31,6 @@
 
 - Now importing `upset` function from UpSetR, with modified formals, so we can
   easily call this from other packages, including [DESeqAnalysis][].
-
-
 
 ## acidplots 0.2.1 (2019-04-25)
 
@@ -58,8 +51,6 @@
 - `plotCountsPerFeature`: Improve the count subtitle.
 - S4 generic reexport documentation fixes.
 - Miscellaneous documentation fixes.
-
-
 
 ## acidplots 0.2.0 (2019-04-22)
 
@@ -90,8 +81,6 @@ Reworked package, consolidating previous minimalism and firestarter packages.
 - Deprecated `theme_paperwhite` and `theme_midnight` in favor of
   `acid_theme_light` and `acid_theme_dark`.
 
-
-
 ## acidplots 0.1.2 (2019-04-18)
 
 ### New functions
@@ -104,19 +93,13 @@ Reworked package, consolidating previous minimalism and firestarter packages.
 - `plotCountsPerBiotype`, `plotCountsPerBroadClass` switched to recommending
   log10 counts by default.
 
-
-
 ## acidplots 0.1.1 (2019-04-15)
 
 Updated packages depencies and switched to Docker for Travis CI.
 
-
-
 ## acidplots 0.1.0 (2019-03-28)
 
 Initial release, migrating ggplot2 functions from [basejump][] package.
-
-
 
 [DESeqAnalysis]: https://deseqanalysis.acidgenomics.com/
 [basejump]: https://basejump.acidgenomics.com/
