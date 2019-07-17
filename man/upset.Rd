@@ -2,129 +2,64 @@
 % Please edit documentation in R/upset.R
 \name{upset}
 \alias{upset}
-\title{UpSetR plot, with improved default aesthetics}
+\title{UpSetR plot}
 \usage{
-upset(data, nsets = 5, nintersects = 40, sets = NULL,
-  keep.order = FALSE, set.metadata = NULL, intersections = NULL,
-  matrix.color = "black", main.bar.color = "black",
-  mainbar.y.label = "Intersection Size", mainbar.y.max = NULL,
-  sets.bar.color = "black", sets.x.label = "Set Size",
-  point.size = 3L, line.size = 1L, mb.ratio = c(0.6, 0.4),
-  expression = NULL, att.pos = NULL, att.color = main.bar.color,
-  order.by = c("freq", "degree"), decreasing = c(TRUE, FALSE),
-  show.numbers = "yes", number.angles = 0, group.by = "degree",
-  cutoff = NULL, queries = NULL, query.legend = "none",
-  shade.color = NA, shade.alpha = 1L, matrix.dot.alpha = 1L,
-  empty.intersections = NULL, color.pal = 1, boxplot.summary = NULL,
-  attribute.plots = NULL, scale.intersections = "identity",
-  scale.sets = "identity", text.scale = 1.5, set_size.angles = 0)
+upset(..., line.size = 1L, main.bar.color = "black",
+  matrix.color = "black", matrix.dot.alpha = 1L, mb.ratio = c(0.6,
+  0.4), point.size = 3L, sets.bar.color = "black", shade.alpha = 1L,
+  shade.color = NA, text.scale = 1.5, decreasing = c(TRUE, FALSE),
+  keep.order = FALSE)
 }
 \arguments{
-\item{data}{Data set}
-
-\item{nsets}{Number of sets to look at}
-
-\item{nintersects}{Number of intersections to plot. If set to NA, all intersections will be plotted.}
-
-\item{sets}{Specific sets to look at (Include as combinations. Ex: c("Name1", "Name2"))}
-
-\item{keep.order}{Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.}
-
-\item{set.metadata}{Metadata that offers insight to an attribute of the sets. Input should be a data frame where the first column is set names, and the 
-remaining columns are attributes of those sets. To learn how to use this parameter it is highly suggested to view the set metadata vignette. The link
-can be found on the package's GitHub page.}
-
-\item{intersections}{Specific intersections to include in plot entered as a list of lists.
-Ex: list(list("Set name1", "Set name2"), list("Set name1", "Set name3")). If data is entered into this parameter the only data shown on the UpSet plot
-will be the specific intersections listed.}
-
-\item{matrix.color}{Color of the intersection points}
-
-\item{main.bar.color}{Color of the main bar plot}
-
-\item{mainbar.y.label}{The y-axis label of the intersection size bar plot}
-
-\item{mainbar.y.max}{The maximum y value of the intersection size bar plot scale. May be useful when aligning multiple UpSet plots horizontally.}
-
-\item{sets.bar.color}{Color of set size bar plot}
-
-\item{sets.x.label}{The x-axis label of the set size bar plot}
-
-\item{point.size}{Size of points in matrix plot}
+\item{...}{Additional arguments.}
 
 \item{line.size}{Width of lines in matrix plot}
 
-\item{mb.ratio}{Ratio between matrix plot and main bar plot (Keep in terms of hundreths)}
+\item{main.bar.color}{Color of the main bar plot}
 
-\item{expression}{Expression to subset attributes of intersection or element query data. Enter as string (Ex: "ColName > 3")}
-
-\item{att.pos}{Position of attribute plot. If NULL or "bottom" the plot will be at below UpSet plot. If "top" it will be above UpSert plot}
-
-\item{att.color}{Color of attribute histogram bins or scatterplot points for unqueried data represented by main bars. Default set to color of main bars.}
-
-\item{order.by}{How the intersections in the matrix should be ordered by. Options include frequency (entered as "freq"), degree, or both in any order.}
-
-\item{decreasing}{How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)}
-
-\item{show.numbers}{Show numbers of intersection sizes above bars}
-
-\item{number.angles}{The angle of the numbers atop the intersection size bars}
-
-\item{group.by}{How the data should be grouped ("degree" or "sets")}
-
-\item{cutoff}{The number of intersections from each set (to cut off at) when aggregating by sets}
-
-\item{queries}{Unified querie of intersections, elements, and custom row functions. Entered as a list that contains a list of
-queries. query is the type of query being conducted. params are the parameters of the query (if any). color is the color of the points on the
-plot that will represent the query. If no color is selected one will be provided automatically. active takes TRUE or FALSE, and if
-TRUE, it will overlay the bars present  with the results from the query. If FALSE a tick mark will indicate the intersection size.
-See examples section on how to do this.}
-
-\item{query.legend}{Position query legend on top or bottom of UpSet plot}
-
-\item{shade.color}{Color of row shading in matrix}
-
-\item{shade.alpha}{Transparency of shading in matrix}
+\item{matrix.color}{Color of the intersection points}
 
 \item{matrix.dot.alpha}{Transparency of the empty intersections points in the matrix}
 
-\item{empty.intersections}{Additionally display empty sets up to nintersects}
+\item{mb.ratio}{Ratio between matrix plot and main bar plot (Keep in terms of hundredths)}
 
-\item{color.pal}{Color palette for attribute plots}
+\item{point.size}{Size of points in matrix plot}
 
-\item{boxplot.summary}{Boxplots representing the distribution of a selected attribute for each intersection. Select attributes by entering a character vector of attribute names (e.g. c("Name1", "Name2")).
-The maximum number of attributes that can be entered is 2.}
+\item{sets.bar.color}{Color of set size bar plot}
 
-\item{attribute.plots}{Create custom ggplot using intersection data represented in the main bar plot. Prior to adding custom plots, the UpSet plot is set up in a 100 by 100 grid.
-The attribute.plots parameter takes a list that contains the number of rows that should be allocated for the custom plot, and a list of plots with specified positions.
-nrows is the number of rows the custom plots should take up. There is already 100 allocated for the custom plot. plots takes a list that contains a function that returns
-a custom ggplots and the x and y aesthetics for the function. ncols is the number of columns that your ggplots should take up. See examples for how to add custom ggplots.}
+\item{shade.alpha}{Transparency of shading in matrix}
 
-\item{scale.intersections}{The scale to be used for the intersection sizes. Options: "identity", "log10", "log2"}
-
-\item{scale.sets}{The scale to be used for the set sizes. Options: "identity", "log10", "log2"}
+\item{shade.color}{Color of row shading in matrix}
 
 \item{text.scale}{Numeric, value to scale the text sizes, applies to all axis labels, tick labels, and numbers above bar plot. Can be a universal scale, or a vector containing individual scales
 in the following format: c(intersection size title, intersection size tick labels, set size title, set size tick labels, set names, numbers above bars)}
 
-\item{set_size.angles}{Numeric, angle to rotate the set size plot x-axis text}
+\item{decreasing}{How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)}
+
+\item{keep.order}{Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.}
 }
 \value{
 Graphical output, no return.
 }
 \description{
-Visualization of set intersections using novel UpSet matrix design.
+Wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
 \details{
 Visualization of set data in the layout described by Lex and Gehlenborg in \url{http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html}.
 UpSet also allows for visualization of queries on intersections and elements, along with custom queries queries implemented using
-Hadley Wickhams apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
+Hadley Wickham's apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
 to be displayed alongside the UpSet plot. The user also has the the ability to pass their own plots into the function to further analyze
 data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
-Depending on how the featuers are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
+Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
 }
 \examples{
-## Refer to UpSetR::upset() documentation for examples.
+## Refer to UpSetR::upset() documentation for more examples.
+movies <- read.csv(
+    system.file("extdata", "movies.csv", package = "UpSetR"),
+    header = TRUE,
+    sep = ";"
+)
+upset(movies)
 }
 \references{
 Lex et al. (2014). UpSet: Visualization of Intersecting Sets

@@ -40,7 +40,7 @@ purpleOrange <- function(n = 256L) {
 
 #' @rdname gradient
 #' @export
-blueYellow <- function(n = 256) {
+blueYellow <- function(n = 256L) {
     gradient(
         colors = c(
             low = "dodgerblue",

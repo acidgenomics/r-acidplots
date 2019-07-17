@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -51,6 +52,7 @@ ggplot2." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -67,7 +69,7 @@ ggplot2." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -104,6 +106,7 @@ ggplot2." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -200,32 +203,42 @@ Font size.</p></td>
     <h2 class="hasAnchor" id="acid-geom-abline"><a class="anchor" href="#acid-geom-abline"></a>acid_geom_abline</h2>
 
     
-    <p>Horizontal or vertical cutoff line.</p>
+
+
+<p>Horizontal or vertical cutoff line.</p>
     
     <h2 class="hasAnchor" id="acid-geom-label"><a class="anchor" href="#acid-geom-label"></a>acid_geom_label</h2>
 
     
-    <p>Modified version of <code><a href='https://rdrr.io/pkg/ggplot2/man/geom_text.html'>ggplot2::geom_label()</a></code>.</p>
+
+
+<p>Modified version of <code><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>ggplot2::geom_label()</a></code>.</p>
     
     <h2 class="hasAnchor" id="acid-geom-label-average"><a class="anchor" href="#acid-geom-label-average"></a>acid_geom_label_average</h2>
 
     
-    <p>Add average labels to a plot. For example, <code>col</code> can be <code>nGene</code>. Median or
+
+
+<p>Add average labels to a plot. For example, <code>col</code> can be <code>nGene</code>. Median or
 mean values are always calculated per sample (<code>sampleName</code>).</p>
     
     <h2 class="hasAnchor" id="acid-geom-label-repel"><a class="anchor" href="#acid-geom-label-repel"></a>acid_geom_label_repel</h2>
 
     
-    <p>Repulsive textual annotations. Modified basejump version of
+
+
+<p>Repulsive textual annotations. Modified basejump version of
 <code><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>ggrepel::geom_label_repel()</a></code>. If advanced customization of the text labels
 is required, simply use the ggrepel version instead.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><ul>
-<li><p><code><a href='https://rdrr.io/pkg/ggplot2/man/geom_text.html'>ggplot2::geom_label()</a></code>.</p></li>
+    <div class='dont-index'>
+<ul>
+<li><p><code><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>ggplot2::geom_label()</a></code>.</p></li>
 <li><p><code><a href='https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html'>ggrepel::geom_label_repel()</a></code>.</p></li>
-</ul></div>
+</ul>
+</div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -248,11 +261,12 @@ is required, simply use the ggrepel version instead.</p>
 #&gt; stat_identity: na.rm = FALSE
 #&gt; position_identity </div><div class='input'>
 <span class='co'>## acid_geom_label_average ====</span>
+<span class='no'>data</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
+    <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
+    <span class='kw'>counts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>8L</span>)
+)
 <span class='no'>geom</span> <span class='kw'>&lt;-</span> <span class='fu'>acid_geom_label_average</span>(
-    <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(
-        <span class='kw'>sampleName</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sample1"</span>, <span class='st'>"sample2"</span>), <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>4L</span>),
-        <span class='kw'>counts</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>8L</span>)
-    ),
+    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>,
     <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>"counts"</span>,
     <span class='kw'>fun</span> <span class='kw'>=</span> <span class='st'>"mean"</span>
 )
@@ -289,19 +303,23 @@ is required, simply use the ggrepel version instead.</p>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by <a href='https://steinbaugh.com/'>Michael Steinbaugh</a>, <a href='https://acidgenomics.com/'>Acid Genomics</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
