@@ -30,6 +30,7 @@ matrix:
   fast_finish: true
 
 build_script:
+  - travis-tool.sh install_bioc GenomeInfoDbData
   - travis-tool.sh install_bioc_deps
 
 test_script:
