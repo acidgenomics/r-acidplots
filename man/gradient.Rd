@@ -10,7 +10,7 @@ gradient(colors, n)
 
 purpleOrange(n = 256L)
 
-blueYellow(n = 256)
+blueYellow(n = 256L)
 }
 \arguments{
 \item{colors}{\code{character}.
