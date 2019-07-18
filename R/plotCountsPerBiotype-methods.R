@@ -98,7 +98,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             # Require at least 10 genes.
             filter(!!sym("n") >= 10L) %>%
             arrange(desc(!!sym("n"))) %>%
-            top_n(n = n, wt = !!sym("n")) %>%
+            top_n(n = !!n, wt = !!sym("n")) %>%
             pull(!!sym(biotypeCol)) %>%
             as.character()
 

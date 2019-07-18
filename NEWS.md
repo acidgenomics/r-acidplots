@@ -1,3 +1,12 @@
+## acidplots 0.2.6 (2019-07-18)
+
+### Minor changes
+
+- `plotCountsPerBiotype`: Internal tidyeval bug fix for call to `dplyr::top_n`.
+  Previously, the `n` argument supported direct variable input, but now it
+  must be unquoted, due to change in underlying rlang engine following the
+  0.4 update.
+
 ## acidplots 0.2.5 (2019-07-17)
 
 ### Minor changes

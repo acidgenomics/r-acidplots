@@ -8,16 +8,16 @@ Functions for plotting genomic data.
 
 ## Installation
 
-### [Bioconductor][] method
-
-We recommend installing the package with [BiocManager][].
+### [R][] method
 
 ```r
-if (!require("BiocManager")) {
-    install.packages("BiocManager")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+    install.packages("remotes")
 }
-BiocManager::install("remotes")
-BiocManager::install("acidgenomics/acidplots")
+Sys.setenv(R_REMOTES_UPGRADE = "always")
+# Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
+remotes::install_github("acidgenomics/acidplots")
+remotes::update_packages()
 ```
 
 [Bioconductor]: https://bioconductor.org/
