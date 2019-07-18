@@ -210,6 +210,8 @@ plotCounts.SummarizedExperiment <-  # nolint
 
         # Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
+
+        # This will support objects that don't contain gene-to-symbol mappings.
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
 
         # Minimize the SE object only contain the assay of our choice.
@@ -218,9 +220,17 @@ plotCounts.SummarizedExperiment <-  # nolint
 
         # Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
+
         # Now convert the rownames to symbols, for visualization.
-        suppressMessages(
-            object <- convertGenesToSymbols(object)
+        object <- tryCatch(
+            expr = {
+                suppressMessages(
+                    object <- convertGenesToSymbols(object)
+                )
+            },
+            error = function(e) {
+                object
+            }
         )
 
         # Counts axis label. Automatically add transformation, if necessary.
