@@ -80,7 +80,7 @@ NULL
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
-    # Coerce the data to a melted tibble.
+    ## Coerce the data to a melted tibble.
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
@@ -133,7 +133,7 @@ NULL
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
-    # Coerce the data to a melted tibble.
+    ## Coerce the data to a melted tibble.
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
@@ -183,7 +183,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend,
         style = c("facet", "wide")
     ) {
-        # Detect DESeqDataSet and use normalized counts, if necessary.
+        ## Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
             message("DESeqDataSet detected. Using normalized counts.")
             assays <- list(normalized = counts(object, normalized = TRUE))
@@ -195,7 +195,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(
             isCharacter(genes),
-            # Limit the number of genes that can be plotted at once.
+            ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
             isString(countsAxisLabel),
@@ -208,27 +208,27 @@ plotCounts.SummarizedExperiment <-  # nolint
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 
-        # Coercing to `SummarizedExperiment` for fast subsetting below.
+        ## Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
 
-        # Minimize the SE object only contain the assay of our choice.
+        ## Minimize the SE object only contain the assay of our choice.
         assay <- assays(object)[[assay]]
         assays(object) <- list(assay = assay)
 
-        # Subset to match the genes, which have been mapped to the rownames.
+        ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
-        # Now convert the rownames to symbols, for visualization.
+        ## Now convert the rownames to symbols, for visualization.
         suppressMessages(
             object <- convertGenesToSymbols(object)
         )
 
-        # Counts axis label. Automatically add transformation, if necessary.
+        ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
-        # Plot style.
+        ## Plot style.
         if (style == "facet") {
             what <- .plotCountsFacet
         } else if (style == "wide") {

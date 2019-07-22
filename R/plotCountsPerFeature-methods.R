@@ -71,12 +71,12 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             trans = trans
         )
 
-        # Counts axis label. Automatically add transformation, if necessary.
+        ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
-        # Construct the ggplot.
+        ## Construct the ggplot.
         p <- ggplot(data = data)
 
         if (geom == "density") {
@@ -115,7 +115,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
                 labs(x = NULL, y = countsAxisLabel)
         }
 
-        # Subtitle
+        ## Subtitle
         if (isString(title)) {
             count <- length(unique(data[["rowname"]]))
             subtitle <- paste("n", "=", count)
@@ -123,7 +123,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             subtitle <- NULL
         }
 
-        # Add the axis and legend labels.
+        ## Add the axis and legend labels.
         p <- p +
             labs(
                 title = title,
@@ -142,7 +142,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Flip the axis for plots with counts on y-axis, if desired.
+        ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !geom %in% "density") {
             p <- acid_coord_flip(p)
         }

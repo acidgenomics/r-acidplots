@@ -1,4 +1,4 @@
-# nolint start
+## nolint start
 
 
 
@@ -80,8 +80,8 @@ acid_theme_light <-  # nolint
     ) {
         assert(
             isNumber(base_size),
-            # Don't use `isString()` check on `base_family`, since empty string
-            # is allowed by ggplot2.
+            ## Don't use `isString()` check on `base_family`, since empty string
+            ## is allowed by ggplot2.
             is.character(base_family) && length(base_family) == 1L
         )
         face <- match.arg(face)
@@ -100,14 +100,14 @@ acid_theme_light <-  # nolint
             colour = "black"
         )
 
-        # Include the grid lines.
+        ## Include the grid lines.
         if (isTRUE(grid)) {
             panel_grid_major <- element_line(colour = gray, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
 
-        # Remove panel border and axis ticks.
+        ## Remove panel border and axis ticks.
         if (isTRUE(minimal)) {
             axis_ticks <- element_blank()
             panel_border <- element_blank()
@@ -150,8 +150,8 @@ acid_theme_dark <-  # nolint
     function() {
         assert(
             isNumber(base_size),
-            # Don't use `isString()` check on `base_family`, since empty string
-            # is allowed by ggplot2.
+            ## Don't use `isString()` check on `base_family`, since empty string
+            ## is allowed by ggplot2.
             is.character(base_family) && length(base_family) == 1L
         )
         face <- match.arg(face)
@@ -159,7 +159,7 @@ acid_theme_dark <-  # nolint
         legend_position <- match.arg(legend_position)
         assert(isFlag(grid))
 
-        # Set dark mode global variable that we can access inside functions.
+        ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = TRUE)
 
         gray <- "gray10"
@@ -170,14 +170,14 @@ acid_theme_dark <-  # nolint
             colour = "white"
         )
 
-        # Include the grid lines.
+        ## Include the grid lines.
         if (isTRUE(grid)) {
             panel_grid_major <- element_line(colour = gray, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
 
-        # Remove panel border and axis ticks.
+        ## Remove panel border and axis ticks.
         if (isTRUE(minimal)) {
             axis_ticks <- element_blank()
             panel_border <- element_blank()
@@ -213,9 +213,9 @@ acid_theme_dark <-  # nolint
             )
     }
 
-# Set the formals.
+## Set the formals.
 formals(acid_theme_dark) <- formals(acid_theme_light)
 
 
 
-# nolint end
+## nolint end
