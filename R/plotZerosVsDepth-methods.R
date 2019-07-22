@@ -63,7 +63,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
             p <- p + color
         }
 
-        # Wrap samples by `aggregate` column, if defined.
+        ## Wrap samples by `aggregate` column, if defined.
         facets <- NULL
         if (isTRUE("aggregate" %in% colnames(data))) {
             facets <- "aggregate"

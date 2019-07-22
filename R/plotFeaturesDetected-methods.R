@@ -49,7 +49,7 @@ plotFeaturesDetected.SummarizedExperiment <-  # nolint
 
         counts <- assays(object)[[assay]]
 
-        # Keep this calculation sparse, if necessary, for speed.
+        ## Keep this calculation sparse, if necessary, for speed.
         if (is(counts, "sparseMatrix")) {
             colSums <- Matrix::colSums
         }

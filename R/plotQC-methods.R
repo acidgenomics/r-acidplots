@@ -20,7 +20,7 @@ NULL
 
 
 
-# Consider exporting this as a method?
+## Consider exporting this as a method?
 .plotSumsECDF <- function(object, fun) {
     assert(is.function(fun))
     data <- tibble(x = fun(object))
@@ -43,24 +43,24 @@ plotQC.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(isScalar(assay))
 
-        # Always coerce to dense matrix.
+        ## Always coerce to dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Total counts.
+        ## Total counts.
         totalCounts <- plotTotalCounts(object, assay = assay)
 
-        # Dropout rate.
+        ## Dropout rate.
         zerosVsDepth <- plotZerosVsDepth(object, assay = assay)
 
-        # Counts per row (gene).
+        ## Counts per row (gene).
         rowSums <- .plotSumsECDF(mat, fun = rowSums) +
             labs(title = "counts per row")
 
-        # Counts per column (sample).
+        ## Counts per column (sample).
         colSums <- .plotSumsECDF(mat, fun = colSums) +
             labs(title = "counts per column")
 
-        # Return paneled plot.
+        ## Return paneled plot.
         plot_grid(
             plotlist = list(
                 totalCounts = totalCounts,
