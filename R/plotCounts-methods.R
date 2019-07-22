@@ -211,7 +211,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         ## Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
 
-        # This will support objects that don't contain gene-to-symbol mappings.
+        ## This will support objects that don't contain gene-to-symbol mappings.
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
 
         ## Minimize the SE object only contain the assay of our choice.
