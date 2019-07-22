@@ -1,5 +1,5 @@
-# nocov start
-# nolint start
+## nocov start
+## nolint start
 
 
 
@@ -17,7 +17,7 @@ NULL
 
 
 
-# v0.2.0 =======================================================================
+## v0.2.0 =======================================================================
 #' @rdname defunct
 #' @export
 plotCountsPerGene <- function(...) {
@@ -45,5 +45,5 @@ theme_paperwhite <- function(...) {
 }
 
 
-# nocov end
-# nolint end
+## nocov end
+## nolint end

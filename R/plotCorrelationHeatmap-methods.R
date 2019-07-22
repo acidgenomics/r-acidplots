@@ -71,16 +71,16 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         } else if (!isString(title)) {
             title <- NA
         }
-        # Warn and early return if any samples are duplicated.
+        ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
 
-        # Correlation matrix.
+        ## Correlation matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Inform the user if NA values are present, and replace with zeros.
+        ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {
             message(paste(
                 sum(is.na(mat)),
@@ -95,12 +95,12 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         ))
         cor <- cor(x = mat, y = NULL, method = method)
 
-        # Check for NA values in correlation matrix and error, if necessary.
+        ## Check for NA values in correlation matrix and error, if necessary.
         if (any(is.na(cor))) {
             stop("NA values detected in correlation matrix.")
         }
 
-        # Get annotation columns and colors automatically.
+        ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(
             is.list(x),
@@ -113,7 +113,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         annotationColors <- x[["annotationColors"]]
         color <- .pheatmapColorPalette(color = color)
 
-        # Substitute human-friendly sample names, if defined.
+        ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
             error = function(e) NULL
@@ -129,7 +129,7 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Return pretty heatmap with modified defaults.
+        ## Return pretty heatmap with modified defaults.
         args <- list(
             mat = cor,
             annotationCol = annotationCol,

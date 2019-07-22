@@ -10,12 +10,12 @@ with_parameters_test_that(
     "SummarizedExperiment", {
         p <- fun(object)
         expect_is(p, "pheatmap")
-        # Plot should contain annotation data.
+        ## Plot should contain annotation data.
         expect_true(
             "annotation_legend" %in% p[["gtable"]][["layout"]][["name"]]
         )
 
-        # Test color and title support.
+        ## Test color and title support.
         expect_is(
             object = fun(
                 object = object,
@@ -26,7 +26,7 @@ with_parameters_test_that(
             class = "pheatmap"
         )
 
-        # Hexadecimal color functions (e.g. viridis).
+        ## Hexadecimal color functions (e.g. viridis).
         expect_is(
             object = fun(
                 object = object,
@@ -36,7 +36,7 @@ with_parameters_test_that(
             class = "pheatmap"
         )
 
-        # Hexadecimal color palettes (e.g. RColorBrewer).
+        ## Hexadecimal color palettes (e.g. RColorBrewer).
         color <- colorRampPalette(
             RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
         )(256L)
@@ -45,7 +45,7 @@ with_parameters_test_that(
             class = "pheatmap"
         )
 
-        # Disable interesting groups.
+        ## Disable interesting groups.
         expect_is(
             object = fun(
                 object = object,

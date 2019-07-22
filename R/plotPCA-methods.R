@@ -64,21 +64,21 @@ plotPCA.SummarizedExperiment <-  # nolint
         return = c("ggplot", "DataFrame"),
         ...
     ) {
-        # nocov start
+        ## nocov start
         call <- standardizeCall()
-        # genes
+        ## genes
         if ("genes" %in% names(call)) {
             stop("`genes` is defunct. Use `ntop` argument instead.")
         }
-        # samples, censorSamples
+        ## samples, censorSamples
         if (any(c("samples", "censorSamples") %in% names(call))) {
             stop("Sample selection is defunct. Use bracket-based subsetting.")
         }
-        # returnData
+        ## returnData
         if ("returnData" %in% names(call)) {
             stop("`returnData` is defunct. Use `return` argument instead.")
         }
-        # nocov end
+        ## nocov end
 
         validObject(object)
         assert(
@@ -95,7 +95,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         interestingGroups <- interestingGroups(object)
         return <- match.arg(return)
 
-        # Warn and early return if any samples are duplicated.
+        ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
@@ -109,7 +109,7 @@ plotPCA.SummarizedExperiment <-  # nolint
 
         message(paste("Plotting PCA using", nGene, "genes."))
 
-        # Using a modified version of DESeq2 DESeqTransform method here.
+        ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assays(object)[[assay]]
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
@@ -122,8 +122,8 @@ plotPCA.SummarizedExperiment <-  # nolint
             sampleData(object)
         )
 
-        # Note that we're assigning the percent variation values used
-        # for the axes into the object attributes.
+        ## Note that we're assigning the percent variation values used
+        ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[1L:2L]
 
         if (return == "DataFrame") {
