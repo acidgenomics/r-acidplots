@@ -23,7 +23,7 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
     function() {
         validObject(object)
 
-        # Load the relevant internal gender markers data.
+        ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
             list = "genderMarkers",
@@ -32,8 +32,8 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         )
         markers <- get("genderMarkers", inherits = FALSE)
         assert(is.list(markers))
-        # Error if the organism is not supported.
-        # Convert from camel case back to full Latin.
+        ## Error if the organism is not supported.
+        ## Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
             snake() %>%
             sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
@@ -48,8 +48,8 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         markers <- markers[[camel(organism)]]
         assert(is(markers, "tbl_df"))
 
-        # Message the user instead of erroring, since many datasets don't
-        # contain the dimorphic gender markers.
+        ## Message the user instead of erroring, since many datasets don't
+        ## contain the dimorphic gender markers.
         genes <- tryCatch(
             expr = mapGenesToRownames(
                 object = object,

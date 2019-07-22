@@ -51,12 +51,12 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
 
-        # Get the count matrix.
+        ## Get the count matrix.
         assay <- assays(object)[[assay]]
-        # Ensure sparse matrix is coerced to dense.
+        ## Ensure sparse matrix is coerced to dense.
         assay <- as.matrix(assay)
 
-        # Log transform, if necessary.
+        ## Log transform, if necessary.
         if (trans == "log2") {
             assay <- log2(assay + 1L)
         } else if (trans == "log10") {
@@ -67,20 +67,20 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
         }
 
         rowData <- rowData(object)
-        # Ensure Rle columns get decoded.
+        ## Ensure Rle columns get decoded.
         rowData <- decode(rowData)
-        # Ensure row names are defined, which isn't always the case for
-        # row data derived from SE (non-ranged).
+        ## Ensure row names are defined, which isn't always the case for
+        ## row data derived from SE (non-ranged).
         rownames(rowData) <- rownames(object)
 
-        # Determine whether to use transcripts or genes automatically.
+        ## Determine whether to use transcripts or genes automatically.
         if ("transcriptBiotype" %in% colnames(rowData)) {
             biotypeCol <- "transcriptBiotype"
         } else {
             biotypeCol <- "geneBiotype"
         }
 
-        # Warn and early return if the biotypes are not defined in rowData.
+        ## Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
             warning(paste(
                 "rowData() does not contain biotypes defined in",
@@ -89,25 +89,25 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             return(invisible())
         }
 
-        # Get the top biotypes from the row data.
+        ## Get the top biotypes from the row data.
         biotypes <- rowData %>%
             as_tibble() %>%
             select(!!sym(biotypeCol)) %>%
             group_by(!!sym(biotypeCol)) %>%
             summarise(n = n()) %>%
-            # Require at least 10 genes.
+            ## Require at least 10 genes.
             filter(!!sym("n") >= 10L) %>%
             arrange(desc(!!sym("n"))) %>%
             top_n(n = n, wt = !!sym("n")) %>%
             pull(!!sym(biotypeCol)) %>%
             as.character()
 
-        # Coerce the sample data to a tibble.
+        ## Coerce the sample data to a tibble.
         sampleData <- sampleData(object) %>%
             as_tibble(rownames = "sampleID") %>%
             mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
 
-        # Gather the counts into a long tibble.
+        ## Gather the counts into a long tibble.
         data <- assay %>%
             as_tibble(rownames = "rowname") %>%
             gather(
@@ -116,7 +116,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
                 -UQ(sym("rowname"))
             )
 
-        # SingleCellExperiment requires cell2sample mapping.
+        ## SingleCellExperiment requires cell2sample mapping.
         if (is(object, "SingleCellExperiment")) {
             c2s <- cell2sample(object, return = "tibble") %>%
                 rename(!!sym("colname") := !!sym("cellID"))
@@ -129,7 +129,7 @@ plotCountsPerBiotype.SummarizedExperiment <-  # nolint
             data <- rename(data, !!sym("sampleID") := !!sym("colname"))
         }
 
-        # Prepare the minimal tibble required for plotting.
+        ## Prepare the minimal tibble required for plotting.
         data <- data %>%
             filter(!!sym("counts") > 0L) %>%
             left_join(

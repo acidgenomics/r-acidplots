@@ -177,7 +177,7 @@ acid_geom_label_average <-  # nolint
         )
         aggdata[["roundedAverage"]] <- round(aggdata[[col]], digits = digits)
 
-        # Add `aggregate` column for facet wrapping, if necessary
+        ## Add `aggregate` column for facet wrapping, if necessary
         if ("aggregate" %in% colnames(data)) {
             sampleFacet <- data %>%
                 .[, c("sampleName", "aggregate")] %>%
