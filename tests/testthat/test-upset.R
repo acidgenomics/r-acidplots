@@ -1,6 +1,5 @@
 context("upset")
 
-## Refer to UpSetR::upset() documentation for more examples.
 test_that("upset", {
     movies <- read.csv(
         system.file("extdata", "movies.csv", package = "UpSetR"),
