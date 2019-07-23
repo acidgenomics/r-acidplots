@@ -11,7 +11,13 @@
 #'
 #' @return `pheatmap`.
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotCorrelationHeatmap(rse)
@@ -31,7 +37,8 @@ NULL
 
 
 
-plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -151,11 +158,11 @@ plotCorrelationHeatmap.SummarizedExperiment <-  # nolint
         do.call(what = pheatmap, args = args)
     }
 
-formals(plotCorrelationHeatmap.SummarizedExperiment)[["method"]] <-
+formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
     formals(stats::cor)[["method"]]
-formals(plotCorrelationHeatmap.SummarizedExperiment)[["color"]] <-
+formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(plotCorrelationHeatmap.SummarizedExperiment)[["legendColor"]] <-
+formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
     formalsList[["heatmap.color"]]
 
 
@@ -165,12 +172,13 @@ formals(plotCorrelationHeatmap.SummarizedExperiment)[["legendColor"]] <-
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = plotCorrelationHeatmap.SummarizedExperiment
+    definition = `plotCorrelationHeatmap,SummarizedExperiment`
 )
 
 
 
-plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCorrelationHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
@@ -181,8 +189,8 @@ plotCorrelationHeatmap.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotCorrelationHeatmap.SingleCellExperiment) <-
-    formals(plotCorrelationHeatmap.SummarizedExperiment)
+formals(`plotCorrelationHeatmap,SingleCellExperiment`) <-
+    formals(`plotCorrelationHeatmap,SummarizedExperiment`)
 
 
 
@@ -191,5 +199,5 @@ formals(plotCorrelationHeatmap.SingleCellExperiment) <-
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = plotCorrelationHeatmap.SingleCellExperiment
+    definition = `plotCorrelationHeatmap,SingleCellExperiment`
 )

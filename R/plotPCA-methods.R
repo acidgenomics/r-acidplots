@@ -34,8 +34,18 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
 #' plotPCA(rse, label = FALSE)
+#'
+#' ## SingleCellExperiment ====
 #' plotPCA(rse, label = TRUE)
 NULL
 
@@ -50,7 +60,8 @@ NULL
 
 
 
-plotPCA.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -165,11 +176,11 @@ plotPCA.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotPCA.SummarizedExperiment)[["color"]] <-
+formals(`plotPCA,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotPCA.SummarizedExperiment)[["label"]] <-
+formals(`plotPCA,SummarizedExperiment`)[["label"]] <-
     formalsList[["label"]]
-formals(plotPCA.SummarizedExperiment)[["pointSize"]] <-
+formals(`plotPCA,SummarizedExperiment`)[["pointSize"]] <-
     formalsList[["point.size"]]
 
 
@@ -179,5 +190,5 @@ formals(plotPCA.SummarizedExperiment)[["pointSize"]] <-
 setMethod(
     f = "plotPCA",
     signature = signature("SummarizedExperiment"),
-    definition = plotPCA.SummarizedExperiment
+    definition = `plotPCA,SummarizedExperiment`
 )

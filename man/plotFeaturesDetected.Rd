@@ -68,7 +68,17 @@ Counts axis label.}
 Visualize the number of features (i.e. genes) detected.
 }
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+
+## SummarizedExperiment ====
 plotFeaturesDetected(rse)
+
+## SingleCellExperiment ====
 plotFeaturesDetected(sce)
 }

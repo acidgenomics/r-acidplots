@@ -5,7 +5,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
+#'
+#' ## SummarizedExperiment ====
 #' plotQC(rse)
 NULL
 
@@ -21,6 +24,7 @@ NULL
 
 
 ## Consider exporting this as a method?
+## Updated 2019-07-23.
 .plotSumsECDF <- function(object, fun) {
     assert(is.function(fun))
     data <- tibble(x = fun(object))
@@ -38,7 +42,8 @@ NULL
 
 
 
-plotQC.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotQC,SummarizedExperiment` <-  # nolint
     function(object, assay = 1L) {
         validObject(object)
         assert(isScalar(assay))
@@ -78,5 +83,5 @@ plotQC.SummarizedExperiment <-  # nolint
 setMethod(
     f = "plotQC",
     signature = signature("SummarizedExperiment"),
-    definition = plotQC.SummarizedExperiment
+    definition = `plotQC,SummarizedExperiment`
 )

@@ -5,7 +5,18 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
+#' plotZerosVsDepth(rse)
+#'
+#' ## SingleCellExperiment ====
 #' plotZerosVsDepth(sce)
 NULL
 
@@ -20,7 +31,8 @@ NULL
 
 
 
-plotZerosVsDepth.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -75,7 +87,7 @@ plotZerosVsDepth.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotZerosVsDepth.SummarizedExperiment)[["color"]] <-
+formals(`plotZerosVsDepth,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
 
 
@@ -85,5 +97,5 @@ formals(plotZerosVsDepth.SummarizedExperiment)[["color"]] <-
 setMethod(
     f = "plotZerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = plotZerosVsDepth.SummarizedExperiment
+    definition = `plotZerosVsDepth,SummarizedExperiment`
 )

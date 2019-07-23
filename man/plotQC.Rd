@@ -28,6 +28,9 @@ name must be defined in
 Quality control
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
+
+## SummarizedExperiment ====
 plotQC(rse)
 }

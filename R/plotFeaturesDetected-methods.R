@@ -5,8 +5,18 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
 #' plotFeaturesDetected(rse)
+#'
+#' ## SingleCellExperiment ====
 #' plotFeaturesDetected(sce)
 NULL
 
@@ -21,7 +31,8 @@ NULL
 
 
 
-plotFeaturesDetected.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -95,9 +106,9 @@ plotFeaturesDetected.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotFeaturesDetected.SummarizedExperiment)[["fill"]] <-
+formals(`plotFeaturesDetected,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotFeaturesDetected.SummarizedExperiment)[["flip"]] <-
+formals(`plotFeaturesDetected,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
 
 
@@ -107,12 +118,13 @@ formals(plotFeaturesDetected.SummarizedExperiment)[["flip"]] <-
 setMethod(
     f = "plotFeaturesDetected",
     signature = signature("SummarizedExperiment"),
-    definition = plotFeaturesDetected.SummarizedExperiment
+    definition = `plotFeaturesDetected,SummarizedExperiment`
 )
 
 
 
-plotFeaturesDetected.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotFeaturesDetected,SingleCellExperiment` <-  # nolint
     function(object) {
         do.call(
             what = plotFeaturesDetected,
@@ -122,8 +134,8 @@ plotFeaturesDetected.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotFeaturesDetected.SingleCellExperiment) <-
-    formals(plotFeaturesDetected.SummarizedExperiment)
+formals(`plotFeaturesDetected,SingleCellExperiment`) <-
+    formals(`plotFeaturesDetected,SummarizedExperiment`)
 
 
 
@@ -132,5 +144,5 @@ formals(plotFeaturesDetected.SingleCellExperiment) <-
 setMethod(
     f = "plotFeaturesDetected",
     signature = signature("SingleCellExperiment"),
-    definition = plotFeaturesDetected.SingleCellExperiment
+    definition = `plotFeaturesDetected,SingleCellExperiment`
 )

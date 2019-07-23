@@ -8,7 +8,13 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerFeature(rse, geom = "boxplot")
@@ -29,7 +35,8 @@ NULL
 
 
 
-plotCountsPerFeature.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -154,13 +161,13 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotCountsPerFeature.SummarizedExperiment)[["color"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["fill"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["flip"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["minCountsMethod"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["minCountsMethod"]] <-
     methodFormals(
         f = "meltCounts",
         signature = "SummarizedExperiment",
@@ -174,12 +181,13 @@ formals(plotCountsPerFeature.SummarizedExperiment)[["minCountsMethod"]] <-
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerFeature.SummarizedExperiment
+    definition = `plotCountsPerFeature,SummarizedExperiment`
 )
 
 
 
-plotCountsPerFeature.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCountsPerFeature,SingleCellExperiment` <-  # nolint
     function(object) {
         do.call(
             what = plotCountsPerFeature,
@@ -191,8 +199,8 @@ plotCountsPerFeature.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotCountsPerFeature.SingleCellExperiment) <-
-    formals(plotCountsPerFeature.SummarizedExperiment)
+formals(`plotCountsPerFeature,SingleCellExperiment`) <-
+    formals(`plotCountsPerFeature,SummarizedExperiment`)
 
 
 
@@ -201,5 +209,5 @@ formals(plotCountsPerFeature.SingleCellExperiment) <-
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SingleCellExperiment"),
-    definition = plotCountsPerFeature.SingleCellExperiment
+    definition = `plotCountsPerFeature,SingleCellExperiment`
 )
