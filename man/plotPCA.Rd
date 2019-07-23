@@ -87,9 +87,6 @@ sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
 plotPCA(rse, label = FALSE)
-
-## SingleCellExperiment ====
-plotPCA(rse, label = TRUE)
 }
 \references{
 Jolliffe, et al., 2002.

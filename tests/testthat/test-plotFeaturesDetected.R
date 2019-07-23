@@ -1,8 +1,8 @@
-context("plotZerosVsDepth")
+context("plotFeaturesDetected")
 
 with_parameters_test_that(
-    "plotZerosVsDepth", {
-        p <- plotZerosVsDepth(object)
+    "plotFeaturesDetected", {
+        p <- plotFeaturesDetected(object)
         expect_s3_class(p, "ggplot")
     },
     object = list(

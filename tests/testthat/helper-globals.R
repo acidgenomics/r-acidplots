@@ -16,5 +16,6 @@ geneNames <- head(g2s[["geneName"]])
 object <- rse
 genes <- geneIDs
 
+allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
 tibble <- tibble::tibble

@@ -6,6 +6,21 @@
 #' @param ... Additional arguments.
 #'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
+#'
+#' @examples
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
+#' ## > plotGenderMarkers(rse)
+#'
+#' ## SingleCellExperiment ====
+#' ## > plotGenderMarkers(sce)
 NULL
 
 

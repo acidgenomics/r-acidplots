@@ -106,10 +106,8 @@ NULL
         p
     }
 
-formals(`plotFeaturesDetected,SummarizedExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotFeaturesDetected,SummarizedExperiment`)[["flip"]] <-
-    formalsList[["flip"]]
+formals(`plotFeaturesDetected,SummarizedExperiment`)[c("fill", "flip")] <-
+    formalsList[c("fill.discrete", "flip")]
 
 
 

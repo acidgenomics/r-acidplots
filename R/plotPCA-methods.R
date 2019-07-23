@@ -44,9 +44,6 @@
 #'
 #' ## SummarizedExperiment ====
 #' plotPCA(rse, label = FALSE)
-#'
-#' ## SingleCellExperiment ====
-#' plotPCA(rse, label = TRUE)
 NULL
 
 
@@ -176,12 +173,8 @@ NULL
         p
     }
 
-formals(`plotPCA,SummarizedExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
-formals(`plotPCA,SummarizedExperiment`)[["label"]] <-
-    formalsList[["label"]]
-formals(`plotPCA,SummarizedExperiment`)[["pointSize"]] <-
-    formalsList[["point.size"]]
+formals(`plotPCA,SummarizedExperiment`)[c("color", "label", "pointSize")] <-
+    formalsList[c("color.discrete", "label", "point.size")]
 
 
 
