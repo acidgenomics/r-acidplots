@@ -69,7 +69,19 @@ genes, and overall gene experssion for the X and Y chromosomes.
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 }
 \examples{
-class(plotGenderMarkers)
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+
+## SummarizedExperiment ====
+## > plotGenderMarkers(rse)
+
+## SingleCellExperiment ====
+## > plotGenderMarkers(sce)
 }
 \seealso{
 \code{plotCounts()}.
