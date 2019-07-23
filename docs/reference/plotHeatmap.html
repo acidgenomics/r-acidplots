@@ -305,7 +305,13 @@ hclust &lt;- hclust(dist, method = "ward.D2")
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
+    <span class='no'>RangedSummarizedExperiment</span>,
+    <span class='no'>SingleCellExperiment</span>,
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+)
+<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>

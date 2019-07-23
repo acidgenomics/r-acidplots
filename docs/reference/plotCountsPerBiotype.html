@@ -169,7 +169,7 @@ Name of the axis scale transformation to apply.</p>
       <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
 <code>NULL</code>, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>.</p>
+definitions are desired, we recommend using <code><a href='https://rdrr.io/pkg/ggplot2/man/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>.</p>
 <p>To set the discrete fill palette globally, use:</p><pre>options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 </pre></td>
     </tr>
@@ -195,7 +195,13 @@ Plot title.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
+    <span class='no'>RangedSummarizedExperiment</span>,
+    <span class='no'>SingleCellExperiment</span>,
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+)
+<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>plotCountsPerBiotype</span>(<span class='no'>rse</span>)</div><div class='img'><img src='plotCountsPerBiotype-1.png' alt='' width='700' height='433' /></div><div class='input'>
