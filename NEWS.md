@@ -1,3 +1,10 @@
+## acidplots 0.2.7 (2019-07-23)
+
+### Minor changes
+
+- Improved naming consistency of internal S4 functions.
+- Updated basejump dependencies.
+
 ## acidplots 0.2.6 (2019-07-18)
 
 ### Minor changes
