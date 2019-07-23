@@ -7,4 +7,3 @@ test_that("acid_coord_flip", {
     p <- acid_coord_flip(p)
     expect_s3_class(p, "ggplot")
 })
-
