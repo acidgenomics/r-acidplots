@@ -12,7 +12,13 @@
 #' @return `pheatmap`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotQuantileHeatmap(rse)
@@ -32,6 +38,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .quantileBreaks <- function(object, n = 10L) {
     assert(
         is.matrix(object),
@@ -44,7 +51,8 @@ NULL
 
 
 
-plotQuantileHeatmap.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -160,9 +168,9 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         do.call(what = pheatmap, args = args)
     }
 
-formals(plotQuantileHeatmap.SummarizedExperiment)[["color"]] <-
+formals(`plotQuantileHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(plotQuantileHeatmap.SummarizedExperiment)[["legendColor"]] <-
+formals(`plotQuantileHeatmap,SummarizedExperiment`)[["legendColor"]] <-
     formalsList[["heatmap.color"]]
 
 
@@ -172,12 +180,13 @@ formals(plotQuantileHeatmap.SummarizedExperiment)[["legendColor"]] <-
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = plotQuantileHeatmap.SummarizedExperiment
+    definition = `plotQuantileHeatmap,SummarizedExperiment`
 )
 
 
 
-plotQuantileHeatmap.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotQuantileHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
@@ -188,8 +197,8 @@ plotQuantileHeatmap.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotQuantileHeatmap.SingleCellExperiment) <-
-    formals(plotQuantileHeatmap.SummarizedExperiment)
+formals(`plotQuantileHeatmap,SingleCellExperiment`) <-
+    formals(`plotQuantileHeatmap,SummarizedExperiment`)
 
 
 
@@ -198,5 +207,5 @@ formals(plotQuantileHeatmap.SingleCellExperiment) <-
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = plotQuantileHeatmap.SingleCellExperiment
+    definition = `plotQuantileHeatmap,SingleCellExperiment`
 )

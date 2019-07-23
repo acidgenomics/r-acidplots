@@ -95,7 +95,13 @@
 #' @return `pheatmap`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotHeatmap(rse)
@@ -126,7 +132,8 @@ NULL
 
 
 
-plotHeatmap.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -276,9 +283,9 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         do.call(what = pheatmap, args = args)
     }
 
-formals(plotHeatmap.SummarizedExperiment)[["color"]] <-
+formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
+formals(`plotHeatmap,SummarizedExperiment`)[["legendColor"]] <-
     formalsList[["heatmap.color"]]
 
 
@@ -288,12 +295,13 @@ formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
 setMethod(
     f = "plotHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = plotHeatmap.SummarizedExperiment
+    definition = `plotHeatmap,SummarizedExperiment`
 )
 
 
 
-plotHeatmap.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
@@ -304,8 +312,8 @@ plotHeatmap.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotHeatmap.SingleCellExperiment) <-
-    formals(plotHeatmap.SummarizedExperiment)
+formals(`plotHeatmap,SingleCellExperiment`) <-
+    formals(`plotHeatmap,SummarizedExperiment`)
 
 
 
@@ -314,5 +322,5 @@ formals(plotHeatmap.SingleCellExperiment) <-
 setMethod(
     f = "plotHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = plotHeatmap.SingleCellExperiment
+    definition = `plotHeatmap,SingleCellExperiment`
 )

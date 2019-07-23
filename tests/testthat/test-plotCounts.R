@@ -32,7 +32,7 @@ with_parameters_test_that(
     )
 )
 
-trans <- eval(formals(plotCounts.SummarizedExperiment)[["trans"]])
+trans <- eval(formals(`plotCounts,SummarizedExperiment`)[["trans"]])
 
 with_parameters_test_that(
     "trans", {
@@ -51,7 +51,7 @@ with_parameters_test_that(
     )
 )
 
-style <- eval(formals(plotCounts.SummarizedExperiment)[["style"]])
+style <- eval(formals(`plotCounts,SummarizedExperiment`)[["style"]])
 
 with_parameters_test_that(
     "style", {

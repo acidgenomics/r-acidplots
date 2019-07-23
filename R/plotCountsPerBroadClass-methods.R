@@ -6,7 +6,13 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerBroadClass(rse)
@@ -26,7 +32,8 @@ NULL
 
 
 
-plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -167,7 +174,7 @@ plotCountsPerBroadClass.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotCountsPerBroadClass.SummarizedExperiment)[["fill"]] <-
+formals(`plotCountsPerBroadClass,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 
 
@@ -177,5 +184,5 @@ formals(plotCountsPerBroadClass.SummarizedExperiment)[["fill"]] <-
 setMethod(
     f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerBroadClass.SummarizedExperiment
+    definition = `plotCountsPerBroadClass,SummarizedExperiment`
 )

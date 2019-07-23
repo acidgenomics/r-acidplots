@@ -73,8 +73,10 @@ Plot style.}
 Plot counts
 }
 \examples{
-data(rse, package = "acidtest")
+data(RangedSummarizedExperiment, package = "acidtest")
+rse <- RangedSummarizedExperiment
 
+## SummarizedExperiment ====
 rownames <- head(rownames(rse))
 print(rownames)
 g2s <- basejump::Gene2Symbol(rse)

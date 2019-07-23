@@ -5,8 +5,18 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
 #' plotTotalCounts(rse)
+#'
+#' ## SingleCellExperiment ====
 #' plotTotalCounts(sce)
 NULL
 
@@ -21,7 +31,8 @@ NULL
 
 
 
-plotTotalCounts.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -89,14 +100,25 @@ plotTotalCounts.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotTotalCounts.SummarizedExperiment)[["fill"]] <-
+formals(`plotTotalCounts,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotTotalCounts.SummarizedExperiment)[["flip"]] <-
+formals(`plotTotalCounts,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
 
 
 
-plotTotalCounts.SingleCellExperiment <-  # nolint
+#' @rdname plotTotalCounts
+#' @export
+setMethod(
+    f = "plotTotalCounts",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotTotalCounts,SummarizedExperiment`
+)
+
+
+
+## Updated 2019-07-23.
+`plotTotalCounts,SingleCellExperiment` <-  # nolint
     function(object) {
         do.call(
             what = plotTotalCounts,
@@ -106,18 +128,8 @@ plotTotalCounts.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotTotalCounts.SingleCellExperiment) <-
-    formals(plotTotalCounts.SummarizedExperiment)
-
-
-
-#' @rdname plotTotalCounts
-#' @export
-setMethod(
-    f = "plotTotalCounts",
-    signature = signature("SummarizedExperiment"),
-    definition = plotTotalCounts.SummarizedExperiment
-)
+formals(`plotTotalCounts,SingleCellExperiment`) <-
+    formals(`plotTotalCounts,SummarizedExperiment`)
 
 
 
@@ -126,5 +138,5 @@ setMethod(
 setMethod(
     f = "plotTotalCounts",
     signature = signature("SingleCellExperiment"),
-    definition = plotTotalCounts.SingleCellExperiment
+    definition = `plotTotalCounts,SingleCellExperiment`
 )

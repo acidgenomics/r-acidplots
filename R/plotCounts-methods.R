@@ -17,8 +17,10 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
+#' ## SummarizedExperiment ====
 #' rownames <- head(rownames(rse))
 #' print(rownames)
 #' g2s <- basejump::Gene2Symbol(rse)
@@ -43,6 +45,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .geneMedianLine <- stat_summary(
     fun.y = median,
     fun.ymin = median,
@@ -54,6 +57,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .genePoint <- function(
     size = 3L,
     alpha = 1L,
@@ -69,6 +73,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .plotCountsFacet <- function(
     object,
     trans,
@@ -122,6 +127,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .plotCountsWide <- function(
     object,
     trans,
@@ -170,7 +176,8 @@ NULL
 
 
 
-plotCounts.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
         genes,
@@ -258,9 +265,9 @@ plotCounts.SummarizedExperiment <-  # nolint
         )
     }
 
-formals(plotCounts.SummarizedExperiment)[["color"]] <-
+formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCounts.SummarizedExperiment)[["legend"]] <-
+formals(`plotCounts,SummarizedExperiment`)[["legend"]] <-
     formalsList[["legend"]]
 
 
@@ -270,5 +277,5 @@ formals(plotCounts.SummarizedExperiment)[["legend"]] <-
 setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
-    definition = plotCounts.SummarizedExperiment
+    definition = `plotCounts,SummarizedExperiment`
 )
