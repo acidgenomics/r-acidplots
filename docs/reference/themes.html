@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
       </span>
     </div>
 
@@ -175,7 +175,7 @@ panel borders.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Both themes are based off of <code><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>ggplot2::theme_linedraw()</a></code>, but with
+    <p>Both themes are based off of <code><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>ggplot2::theme_linedraw()</a></code>, but with
 modifications and extra user-definable parameters.</p>
     
     <h2 class="hasAnchor" id="light"><a class="anchor" href="#light"></a>Light</h2>
@@ -198,14 +198,14 @@ expression plots.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>ggplot2::theme()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://ggplot2.tidyverse.org/reference/theme.html'>ggplot2::theme()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(
     <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>,
-    <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(
+    <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(
         <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
         <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>displ</span>,
         <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>manufacturer</span>,
@@ -215,11 +215,11 @@ expression plots.</p>
 
 <span class='co'>## Paperwhite theme.</span>
 <span class='no'>p</span> +
-    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span>() +
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
     <span class='fu'>acid_theme_light</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## Midnight theme.</span>
 <span class='no'>p</span> +
-    <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span>() +
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
     <span class='fu'>acid_theme_dark</span>(<span class='kw'>legend_position</span> <span class='kw'>=</span> <span class='st'>"none"</span>)</div><div class='img'><img src='themes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
