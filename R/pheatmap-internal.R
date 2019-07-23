@@ -112,7 +112,7 @@
             toString(invalidNames)
         ))
     }
-    names(args) <- snake(names(args))
+    names(args) <- snakeCase(names(args))
     assert(
         isSubset(names(args), formalArgs(pheatmap)),
         hasNoDuplicates(names(args))

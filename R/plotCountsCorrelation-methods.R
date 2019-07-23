@@ -3,6 +3,10 @@
 #'
 #' @inheritParams base::Extract
 #' @inheritParams params
+#' @param xTitle `character(1)`.
+#'   Name of object defined in `x`.
+#' @param yTitle `character(1)`.
+#'   Name of object defined in `y`.
 #' @param ... Additional arguments.
 #'
 #' @examples
