@@ -1,5 +1,12 @@
 ## acidplots 0.2.7 (2019-07-23)
 
+### New functions
+
+- `plotCountsCorrelation` and `plotCountsCorrelationHeatmap`: New functions
+  optimized for plotting correlation between gene expression matrices.
+  Particularly useful for comparing pseudoaligned vs. aligned counts, which is
+  implemented in the new bcbioRNASeq package update.
+
 ### Minor changes
 
 - Improved naming consistency of internal S4 functions.
