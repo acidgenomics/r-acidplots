@@ -81,6 +81,9 @@ Superimpose sample text labels on the plot.}
 \item{labelSize}{\code{integer(1)}.
 Size of the text label.}
 
+\item{labs}{\code{list}.
+ggplot2 labels. See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{legend}{\code{logical(1)}.
 Show plot legend.}
 

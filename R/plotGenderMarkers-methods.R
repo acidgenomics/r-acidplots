@@ -36,7 +36,7 @@ NULL
         ## Error if the organism is not supported.
         ## Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
-            snake() %>%
+            snakeCase() %>%
             sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
             sub("_", " ", .)
         if (!organism %in% supportedOrganisms) {
@@ -46,7 +46,7 @@ NULL
                 toString(supportedOrganisms)
             ))
         }
-        markers <- markers[[camel(organism)]]
+        markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
 
         ## Message the user instead of erroring, since many datasets don't

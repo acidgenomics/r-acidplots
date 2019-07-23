@@ -64,6 +64,15 @@ plotCountsCorrelation(x, y, ...)
     An index value of \code{NULL} is treated as if it were \code{integer(0)}.
   }
 
+\item{xTitle}{\code{character(1)}.
+Name of object defined in \code{x}.}
+
+\item{yTitle}{\code{character(1)}.
+Name of object defined in \code{y}.}
+
+\item{labs}{\code{list}.
+ggplot2 labels. See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{...}{Additional arguments.}
 }
 \value{

@@ -68,6 +68,8 @@
 #'   Superimpose sample text labels on the plot.
 #' @param labelSize `integer(1)`.
 #'   Size of the text label.
+#' @param labs `list`.
+#'   ggplot2 labels. See [ggplot2::labs()] for details.
 #' @param legend `logical(1)`.
 #'   Show plot legend.
 #' @param level `character(1)`.
