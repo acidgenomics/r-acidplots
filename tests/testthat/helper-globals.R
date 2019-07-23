@@ -15,3 +15,5 @@ geneNames <- head(g2s[["geneName"]])
 
 object <- rse
 genes <- geneIDs
+
+tibble <- tibble::tibble
