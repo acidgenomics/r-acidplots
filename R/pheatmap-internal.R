@@ -18,7 +18,7 @@
         isHexColorFunction(legendColor, nullOK = TRUE)
     )
 
-    ## Annotation columns -------------------------------------------------------
+    ## Annotation columns ------------------------------------------------------
     data <- colData(object)
     interestingGroups <- interestingGroups(object)
 
@@ -52,11 +52,10 @@
         as.data.frame() %>%
         column_to_rownames("rowname")
 
-    ## Drop any remaining factor columns that contain a single value.
-    ## Note that we don't want to necessarily use `levels()` in place of
-    ## `unique()` here, in case we have a situation where we're comparing a value
-    ## against `NA`. Here this will a level of 1, even though we have 2 unique
-    ## values.
+    ## Drop any remaining factor columns that contain a single value. Note that
+    ## we don't want to necessarily use `levels()` in place of `unique()` here,
+    ## in case we have a situation where we're comparing a value against `NA`.
+    ## Here this will a level of 1, even though we have 2 unique values.
     hasMultiple <- vapply(
         X = data,
         FUN = function(x) {
@@ -73,7 +72,7 @@
         data <- data[, hasMultiple, drop = FALSE]
     }
 
-    ## Colors -------------------------------------------------------------------
+    ## Colors ------------------------------------------------------------------
     if (
         is.data.frame(data) &&
         is.function(legendColor)
@@ -92,7 +91,7 @@
         colors <- NA
     }
 
-    ## Return -------------------------------------------------------------------
+    ## Return ------------------------------------------------------------------
     list(
         annotationCol = data,
         annotationColors = colors
@@ -101,8 +100,8 @@
 
 
 
-## Sanitize formals into snake case and abort on duplicates.
-## Duplicates may arise if user is mixing and matching camel/snake case.
+## Sanitize formals into snake case and abort on duplicates. Duplicates may
+## arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
     assert(is.list(args), hasNames(args))
     ## Abort on snake case formatted formal args.
@@ -124,7 +123,7 @@
 
 
 
-## If `color = NULL`, use the pheatmap default palette
+## If `color = NULL`, use the pheatmap default palette.
 .pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {
         ## Hexadecimal color palette (e.g. RColorBrewer, viridis return).
