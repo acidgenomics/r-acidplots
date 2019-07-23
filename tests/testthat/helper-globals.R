@@ -16,6 +16,8 @@ geneNames <- head(g2s[["geneName"]])
 object <- rse
 genes <- geneIDs
 
+mpg <- ggplot2::mpg
+
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
 tibble <- tibble::tibble
