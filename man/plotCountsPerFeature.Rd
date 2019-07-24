@@ -38,10 +38,10 @@ Name or index of count matrix slotted in
 name must be defined in
 \code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
 
-\item{minCounts}{\code{integer(1)}.
-Minimum count threshold to apply. Filters using "greater than or equal to"
-logic internally. Note that this threshold gets applied prior to
-logarithmic transformation, when \code{trans} argument applies.}
+\item{minCounts}{\code{integer(1)} or \code{NULL}.
+Minimum count threshold to apply. Disable with \code{NULL}. Filters using
+"greater than or equal to" logic internally. Note that this threshold gets
+applied prior to logarithmic transformation, when \code{trans} argument applies.}
 
 \item{minCountsMethod}{\code{character(1)}.
 Uses \code{\link[base:match.arg]{match.arg()}}.
@@ -99,7 +99,13 @@ Generally, we expect similar count spreads for all genes between samples
 unless the library sizes or total RNA expression are different.
 }
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
 plotCountsPerFeature(rse, geom = "boxplot")

@@ -71,17 +71,14 @@ p <- ggplot(
         color = manufacturer,
         fill = manufacturer
     )
-)
+) +
+    geom_point()
 
 ## Paperwhite theme.
-p +
-    geom_point() +
-    acid_theme_light(legend_position = "none")
+p + acid_theme_light(legend_position = "none")
 
 ## Midnight theme.
-p +
-    geom_point() +
-    acid_theme_dark(legend_position = "none")
+p + acid_theme_dark(legend_position = "none")
 }
 \seealso{
 \code{ggplot2::theme()}.

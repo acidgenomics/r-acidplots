@@ -17,8 +17,10 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "acidtest")
+#' rse <- RangedSummarizedExperiment
 #'
+#' ## SummarizedExperiment ====
 #' rownames <- head(rownames(rse))
 #' print(rownames)
 #' g2s <- basejump::Gene2Symbol(rse)
@@ -43,6 +45,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .geneMedianLine <- stat_summary(
     fun.y = median,
     fun.ymin = median,
@@ -54,6 +57,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .genePoint <- function(
     size = 3L,
     alpha = 1L,
@@ -69,6 +73,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .plotCountsFacet <- function(
     object,
     trans,
@@ -80,7 +85,7 @@ NULL
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
-    # Coerce the data to a melted tibble.
+    ## Coerce the data to a melted tibble.
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
@@ -122,6 +127,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .plotCountsWide <- function(
     object,
     trans,
@@ -133,7 +139,7 @@ NULL
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
 
-    # Coerce the data to a melted tibble.
+    ## Coerce the data to a melted tibble.
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
@@ -170,7 +176,8 @@ NULL
 
 
 
-plotCounts.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
         genes,
@@ -183,7 +190,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         legend,
         style = c("facet", "wide")
     ) {
-        # Detect DESeqDataSet and use normalized counts, if necessary.
+        ## Detect DESeqDataSet and use normalized counts, if necessary.
         if (is(object, "DESeqDataSet")) {
             message("DESeqDataSet detected. Using normalized counts.")
             assays <- list(normalized = counts(object, normalized = TRUE))
@@ -195,7 +202,7 @@ plotCounts.SummarizedExperiment <-  # nolint
         validObject(object)
         assert(
             isCharacter(genes),
-            # Limit the number of genes that can be plotted at once.
+            ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
             isString(countsAxisLabel),
@@ -208,27 +215,37 @@ plotCounts.SummarizedExperiment <-  # nolint
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 
-        # Coercing to `SummarizedExperiment` for fast subsetting below.
+        ## Coercing to `SummarizedExperiment` for fast subsetting below.
         object <- as.SummarizedExperiment(object)
+
+        ## This will support objects that don't contain gene-to-symbol mappings.
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
 
-        # Minimize the SE object only contain the assay of our choice.
+        ## Minimize the SE object only contain the assay of our choice.
         assay <- assays(object)[[assay]]
         assays(object) <- list(assay = assay)
 
-        # Subset to match the genes, which have been mapped to the rownames.
+        ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
-        # Now convert the rownames to symbols, for visualization.
-        suppressMessages(
-            object <- convertGenesToSymbols(object)
+
+        ## Now convert the row names to symbols, for visualization.
+        object <- tryCatch(
+            expr = {
+                suppressMessages(
+                    object <- convertGenesToSymbols(object)
+                )
+            },
+            error = function(e) {
+                object
+            }
         )
 
-        # Counts axis label. Automatically add transformation, if necessary.
+        ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
-        # Plot style.
+        ## Plot style.
         if (style == "facet") {
             what <- .plotCountsFacet
         } else if (style == "wide") {
@@ -248,9 +265,9 @@ plotCounts.SummarizedExperiment <-  # nolint
         )
     }
 
-formals(plotCounts.SummarizedExperiment)[["color"]] <-
+formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCounts.SummarizedExperiment)[["legend"]] <-
+formals(`plotCounts,SummarizedExperiment`)[["legend"]] <-
     formalsList[["legend"]]
 
 
@@ -260,5 +277,5 @@ formals(plotCounts.SummarizedExperiment)[["legend"]] <-
 setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
-    definition = plotCounts.SummarizedExperiment
+    definition = `plotCounts,SummarizedExperiment`
 )

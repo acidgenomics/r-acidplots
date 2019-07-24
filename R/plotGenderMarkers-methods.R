@@ -6,6 +6,21 @@
 #' @param ... Additional arguments.
 #'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
+#'
+#' @examples
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
+#' ## > plotGenderMarkers(rse)
+#'
+#' ## SingleCellExperiment ====
+#' ## > plotGenderMarkers(sce)
 NULL
 
 
@@ -19,11 +34,12 @@ NULL
 
 
 
-plotGenderMarkers.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function() {
         validObject(object)
 
-        # Load the relevant internal gender markers data.
+        ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
             list = "genderMarkers",
@@ -32,10 +48,10 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         )
         markers <- get("genderMarkers", inherits = FALSE)
         assert(is.list(markers))
-        # Error if the organism is not supported.
-        # Convert from camel case back to full Latin.
+        ## Error if the organism is not supported.
+        ## Convert from camel case back to full Latin.
         supportedOrganisms <- names(markers) %>%
-            snake() %>%
+            snakeCase() %>%
             sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
             sub("_", " ", .)
         if (!organism %in% supportedOrganisms) {
@@ -45,11 +61,11 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
                 toString(supportedOrganisms)
             ))
         }
-        markers <- markers[[camel(organism)]]
+        markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
 
-        # Message the user instead of erroring, since many datasets don't
-        # contain the dimorphic gender markers.
+        ## Message the user instead of erroring, since many datasets don't
+        ## contain the dimorphic gender markers.
         genes <- tryCatch(
             expr = mapGenesToRownames(
                 object = object,
@@ -72,10 +88,10 @@ plotGenderMarkers.SummarizedExperiment <-  # nolint
         )
     }
 
-f <- formals(plotCounts.SummarizedExperiment)
+f <- formals(`plotCounts,SummarizedExperiment`)
 f <- f[setdiff(names(f), "genes")]
 f[["style"]] <- "wide"
-formals(plotGenderMarkers.SummarizedExperiment) <- f
+formals(`plotGenderMarkers,SummarizedExperiment`) <- f
 
 
 
@@ -84,7 +100,7 @@ formals(plotGenderMarkers.SummarizedExperiment) <- f
 setMethod(
     f = "plotGenderMarkers",
     signature = signature("SummarizedExperiment"),
-    definition = plotGenderMarkers.SummarizedExperiment
+    definition = `plotGenderMarkers,SummarizedExperiment`
 )
 
 

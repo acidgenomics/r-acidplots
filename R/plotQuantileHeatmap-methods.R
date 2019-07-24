@@ -12,7 +12,13 @@
 #' @return `pheatmap`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotQuantileHeatmap(rse)
@@ -32,6 +38,7 @@ NULL
 
 
 
+## Updated 2019-07-23.
 .quantileBreaks <- function(object, n = 10L) {
     assert(
         is.matrix(object),
@@ -44,7 +51,8 @@ NULL
 
 
 
-plotQuantileHeatmap.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -86,15 +94,15 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             title <- NA
         }
 
-        # Warn and early return if any samples are duplicated.
+        ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
 
-        # Modify the object to use gene symbols in the row names automatically,
-        # if possible. We're using `tryCatch()` call here to return the object
-        # unmodified if gene symbols aren't defined.
+        ## Modify the object to use gene symbols in the row names automatically,
+        ## if possible. We're using `tryCatch()` call here to return the object
+        ## unmodified if gene symbols aren't defined.
         object <- tryCatch(
             expr = suppressMessages(
                 convertGenesToSymbols(object)
@@ -102,13 +110,13 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             error = function(e) object
         )
 
-        # Ensure we're using a dense matrix.
+        ## Ensure we're using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Calculate the quantile breaks.
+        ## Calculate the quantile breaks.
         breaks <- .quantileBreaks(mat, n = n)
 
-        # Get annotation columns and colors automatically.
+        ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(
             is.list(x),
@@ -117,10 +125,10 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
 
-        # Note the number of breaks here.
+        ## Note the number of breaks here.
         color <- .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
 
-        # Substitute human-friendly sample names, if defined.
+        ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
             error = function(e) NULL
@@ -135,7 +143,7 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Return pretty heatmap with modified defaults.
+        ## Return pretty heatmap with modified defaults.
         args <- list(
             mat = mat,
             annotationCol = annotationCol,
@@ -160,9 +168,9 @@ plotQuantileHeatmap.SummarizedExperiment <-  # nolint
         do.call(what = pheatmap, args = args)
     }
 
-formals(plotQuantileHeatmap.SummarizedExperiment)[["color"]] <-
+formals(`plotQuantileHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(plotQuantileHeatmap.SummarizedExperiment)[["legendColor"]] <-
+formals(`plotQuantileHeatmap,SummarizedExperiment`)[["legendColor"]] <-
     formalsList[["heatmap.color"]]
 
 
@@ -172,12 +180,13 @@ formals(plotQuantileHeatmap.SummarizedExperiment)[["legendColor"]] <-
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = plotQuantileHeatmap.SummarizedExperiment
+    definition = `plotQuantileHeatmap,SummarizedExperiment`
 )
 
 
 
-plotQuantileHeatmap.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotQuantileHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
@@ -188,8 +197,8 @@ plotQuantileHeatmap.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotQuantileHeatmap.SingleCellExperiment) <-
-    formals(plotQuantileHeatmap.SummarizedExperiment)
+formals(`plotQuantileHeatmap,SingleCellExperiment`) <-
+    formals(`plotQuantileHeatmap,SummarizedExperiment`)
 
 
 
@@ -198,5 +207,5 @@ formals(plotQuantileHeatmap.SingleCellExperiment) <-
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = plotQuantileHeatmap.SingleCellExperiment
+    definition = `plotQuantileHeatmap,SingleCellExperiment`
 )

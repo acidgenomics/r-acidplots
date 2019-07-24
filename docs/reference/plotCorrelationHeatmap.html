@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.7</span>
       </span>
     </div>
 
@@ -243,7 +243,13 @@ Plot title.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>rse</span>, <span class='no'>sce</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
+    <span class='no'>RangedSummarizedExperiment</span>,
+    <span class='no'>SingleCellExperiment</span>,
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
+)
+<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
+<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>rse</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating correlation matrix using pearson method.</span></div><div class='img'><img src='plotCorrelationHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>

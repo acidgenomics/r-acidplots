@@ -46,6 +46,17 @@ Plot title.}
 Plot percentage of zeros vs. library depth
 }
 \examples{
-data(sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+
+## SummarizedExperiment ====
+plotZerosVsDepth(rse)
+
+## SingleCellExperiment ====
 plotZerosVsDepth(sce)
 }

@@ -1,3 +1,4 @@
+library(ggplot2)
 library(testthat)
 library(patrick)
 library(acidplots)

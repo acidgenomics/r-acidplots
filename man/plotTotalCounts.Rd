@@ -60,7 +60,17 @@ Plot title.}
 Plot total read counts
 }
 \examples{
-data(rse, sce, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+
+## SummarizedExperiment ====
 plotTotalCounts(rse)
+
+## SingleCellExperiment ====
 plotTotalCounts(sce)
 }
