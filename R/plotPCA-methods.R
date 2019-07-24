@@ -34,9 +34,16 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(rse, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
+#'
+#' ## SummarizedExperiment ====
 #' plotPCA(rse, label = FALSE)
-#' plotPCA(rse, label = TRUE)
 NULL
 
 
@@ -50,7 +57,8 @@ NULL
 
 
 
-plotPCA.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -64,21 +72,21 @@ plotPCA.SummarizedExperiment <-  # nolint
         return = c("ggplot", "DataFrame"),
         ...
     ) {
-        # nocov start
+        ## nocov start
         call <- standardizeCall()
-        # genes
+        ## genes
         if ("genes" %in% names(call)) {
             stop("`genes` is defunct. Use `ntop` argument instead.")
         }
-        # samples, censorSamples
+        ## samples, censorSamples
         if (any(c("samples", "censorSamples") %in% names(call))) {
             stop("Sample selection is defunct. Use bracket-based subsetting.")
         }
-        # returnData
+        ## returnData
         if ("returnData" %in% names(call)) {
             stop("`returnData` is defunct. Use `return` argument instead.")
         }
-        # nocov end
+        ## nocov end
 
         validObject(object)
         assert(
@@ -95,7 +103,7 @@ plotPCA.SummarizedExperiment <-  # nolint
         interestingGroups <- interestingGroups(object)
         return <- match.arg(return)
 
-        # Warn and early return if any samples are duplicated.
+        ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
@@ -109,7 +117,7 @@ plotPCA.SummarizedExperiment <-  # nolint
 
         message(paste("Plotting PCA using", nGene, "genes."))
 
-        # Using a modified version of DESeq2 DESeqTransform method here.
+        ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assays(object)[[assay]]
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
@@ -122,8 +130,8 @@ plotPCA.SummarizedExperiment <-  # nolint
             sampleData(object)
         )
 
-        # Note that we're assigning the percent variation values used
-        # for the axes into the object attributes.
+        ## Note that we're assigning the percent variation values used
+        ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[1L:2L]
 
         if (return == "DataFrame") {
@@ -165,12 +173,8 @@ plotPCA.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotPCA.SummarizedExperiment)[["color"]] <-
-    formalsList[["color.discrete"]]
-formals(plotPCA.SummarizedExperiment)[["label"]] <-
-    formalsList[["label"]]
-formals(plotPCA.SummarizedExperiment)[["pointSize"]] <-
-    formalsList[["point.size"]]
+formals(`plotPCA,SummarizedExperiment`)[c("color", "label", "pointSize")] <-
+    formalsList[c("color.discrete", "label", "point.size")]
 
 
 
@@ -179,5 +183,5 @@ formals(plotPCA.SummarizedExperiment)[["pointSize"]] <-
 setMethod(
     f = "plotPCA",
     signature = signature("SummarizedExperiment"),
-    definition = plotPCA.SummarizedExperiment
+    definition = `plotPCA,SummarizedExperiment`
 )

@@ -77,9 +77,16 @@ a way to look at how samples are clustering.
 }
 
 \examples{
-data(rse, package = "acidtest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+
+## SummarizedExperiment ====
 plotPCA(rse, label = FALSE)
-plotPCA(rse, label = TRUE)
 }
 \references{
 Jolliffe, et al., 2002.

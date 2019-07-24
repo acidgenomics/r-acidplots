@@ -16,10 +16,10 @@
 #' )
 #' upset(movies)
 
-# Updated 2019-07-17.
+## Updated 2019-07-17.
 upset <- function(
     ...,
-    # nolint start
+    ## nolint start
     line.size = 1L,
     main.bar.color = "black",
     matrix.color = "black",
@@ -30,10 +30,10 @@ upset <- function(
     shade.alpha = 1L,
     shade.color = NA,
     text.scale = 1.5,
-    # Fix T/F usage in UpSetR package.
+    ## Fix T/F usage in UpSetR package.
     decreasing = c(TRUE, FALSE),
     keep.order = FALSE
-    # nolint end
+    ## nolint end
 ) {
     UpSetR::upset(
         ...,

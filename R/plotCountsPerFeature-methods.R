@@ -8,7 +8,13 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotCountsPerFeature(rse, geom = "boxplot")
@@ -29,7 +35,8 @@ NULL
 
 
 
-plotCountsPerFeature.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -71,12 +78,12 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             trans = trans
         )
 
-        # Counts axis label. Automatically add transformation, if necessary.
+        ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
-        # Construct the ggplot.
+        ## Construct the ggplot.
         p <- ggplot(data = data)
 
         if (geom == "density") {
@@ -115,7 +122,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
                 labs(x = NULL, y = countsAxisLabel)
         }
 
-        # Subtitle
+        ## Subtitle
         if (isString(title)) {
             count <- length(unique(data[["rowname"]]))
             subtitle <- paste("n", "=", count)
@@ -123,7 +130,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             subtitle <- NULL
         }
 
-        # Add the axis and legend labels.
+        ## Add the axis and legend labels.
         p <- p +
             labs(
                 title = title,
@@ -142,7 +149,7 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Flip the axis for plots with counts on y-axis, if desired.
+        ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !geom %in% "density") {
             p <- acid_coord_flip(p)
         }
@@ -154,13 +161,13 @@ plotCountsPerFeature.SummarizedExperiment <-  # nolint
         p
     }
 
-formals(plotCountsPerFeature.SummarizedExperiment)[["color"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["fill"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["flip"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
-formals(plotCountsPerFeature.SummarizedExperiment)[["minCountsMethod"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["minCountsMethod"]] <-
     methodFormals(
         f = "meltCounts",
         signature = "SummarizedExperiment",
@@ -174,12 +181,13 @@ formals(plotCountsPerFeature.SummarizedExperiment)[["minCountsMethod"]] <-
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SummarizedExperiment"),
-    definition = plotCountsPerFeature.SummarizedExperiment
+    definition = `plotCountsPerFeature,SummarizedExperiment`
 )
 
 
 
-plotCountsPerFeature.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotCountsPerFeature,SingleCellExperiment` <-  # nolint
     function(object) {
         do.call(
             what = plotCountsPerFeature,
@@ -191,8 +199,8 @@ plotCountsPerFeature.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotCountsPerFeature.SingleCellExperiment) <-
-    formals(plotCountsPerFeature.SummarizedExperiment)
+formals(`plotCountsPerFeature,SingleCellExperiment`) <-
+    formals(`plotCountsPerFeature,SummarizedExperiment`)
 
 
 
@@ -201,5 +209,5 @@ formals(plotCountsPerFeature.SingleCellExperiment) <-
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SingleCellExperiment"),
-    definition = plotCountsPerFeature.SingleCellExperiment
+    definition = `plotCountsPerFeature,SingleCellExperiment`
 )

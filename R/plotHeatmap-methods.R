@@ -95,7 +95,13 @@
 #' @return `pheatmap`.
 #'
 #' @examples
-#' data(rse, sce, package = "acidtest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
+#' rse <- RangedSummarizedExperiment
+#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
 #' plotHeatmap(rse)
@@ -126,7 +132,8 @@ NULL
 
 
 
-plotHeatmap.SummarizedExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -137,9 +144,9 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         clusterCols = FALSE,
         showRownames = FALSE,
         showColnames = TRUE,
-        # Set to `0L` to disable.
+        ## Set to `0L` to disable.
         treeheightRow = 50L,
-        # Set to `0L` to disable.
+        ## Set to `0L` to disable.
         treeheightCol = 50L,
         color,
         legendColor,
@@ -171,17 +178,17 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 
-        # Warn and early return if any samples are duplicated.
-        # We've included this step here to work with the minimal bcbio RNA-seq
-        # test data set, which contains duplicate samples.
+        ## Warn and early return if any samples are duplicated.
+        ## We've included this step here to work with the minimal bcbio RNA-seq
+        ## test data set, which contains duplicate samples.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
 
-        # Modify the object to use gene symbols in the row names automatically,
-        # if possible. We're using `tryCatch()` call here to return the object
-        # unmodified if gene symbols aren't defined.
+        ## Modify the object to use gene symbols in the row names automatically,
+        ## if possible. We're using `tryCatch()` call here to return the object
+        ## unmodified if gene symbols aren't defined.
         object <- tryCatch(
             expr = suppressMessages(
                 convertGenesToSymbols(object)
@@ -189,25 +196,25 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             error = function(e) object
         )
 
-        # Ensure we're always using a dense matrix.
+        ## Ensure we're always using a dense matrix.
         mat <- as.matrix(assays(object)[[assay]])
 
-        # Ensure the user isn't passing in a matrix with any rows or columns
-        # containing all zeros when we're attempting to z-scale.
+        ## Ensure the user isn't passing in a matrix with any rows or columns
+        ## containing all zeros when we're attempting to z-scale.
         if (scale != "none") {
             assert(hasNonZeroRowsAndCols(mat))
         }
 
-        # Pre-process the matrix by applying row/column scaling, if desired.
-        # Run this step before hierarchical clustering (i.e. calculating the
-        # distance matrix).
+        ## Pre-process the matrix by applying row/column scaling, if desired.
+        ## Run this step before hierarchical clustering (i.e. calculating the
+        ## distance matrix).
         mat <- .scaleMatrix(mat, scale = scale)
 
-        # Now we're ready to perform hierarchical clustering. Generate `hclust`
-        # objects for rows and columns that we'll pass to pheatmap. Note that
-        # pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
-        # these have been found to error for some datasets. Therefore, we're
-        # performing hclust calculations on own here.
+        ## Now we're ready to perform hierarchical clustering. Generate `hclust`
+        ## objects for rows and columns that we'll pass to pheatmap. Note that
+        ## pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
+        ## these have been found to error for some datasets. Therefore, we're
+        ## performing hclust calculations on own here.
         hc <- .hclust(
             object = mat,
             method = clusteringMethod,
@@ -219,7 +226,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             identical(names(hc), c("rows", "cols"))
         )
 
-        # Get annotation columns and colors automatically.
+        ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(
             is.list(x),
@@ -237,7 +244,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         }
         color <- do.call(what = .pheatmapColorPalette, args = args)
 
-        # Substitute human-friendly sample names, if defined.
+        ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
             error = function(e) NULL
@@ -252,7 +259,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             }
         }
 
-        # Return pretty heatmap with modified defaults.
+        ## Return pretty heatmap with modified defaults.
         args <- list(
             mat = mat,
             annotationCol = annotationCol,
@@ -264,7 +271,7 @@ plotHeatmap.SummarizedExperiment <-  # nolint
             color = color,
             legendBreaks = legendBreaks,
             main = title,
-            # We're already applied scaling manually (see above).
+            ## We're already applied scaling manually (see above).
             scale = "none",
             showColnames = showColnames,
             showRownames = showRownames,
@@ -276,9 +283,9 @@ plotHeatmap.SummarizedExperiment <-  # nolint
         do.call(what = pheatmap, args = args)
     }
 
-formals(plotHeatmap.SummarizedExperiment)[["color"]] <-
+formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
+formals(`plotHeatmap,SummarizedExperiment`)[["legendColor"]] <-
     formalsList[["heatmap.color"]]
 
 
@@ -288,12 +295,13 @@ formals(plotHeatmap.SummarizedExperiment)[["legendColor"]] <-
 setMethod(
     f = "plotHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = plotHeatmap.SummarizedExperiment
+    definition = `plotHeatmap,SummarizedExperiment`
 )
 
 
 
-plotHeatmap.SingleCellExperiment <-  # nolint
+## Updated 2019-07-23.
+`plotHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
         agg <- aggregateCellsToSamples(object, fun = "mean")
         do.call(
@@ -304,8 +312,8 @@ plotHeatmap.SingleCellExperiment <-  # nolint
         )
     }
 
-formals(plotHeatmap.SingleCellExperiment) <-
-    formals(plotHeatmap.SummarizedExperiment)
+formals(`plotHeatmap,SingleCellExperiment`) <-
+    formals(`plotHeatmap,SummarizedExperiment`)
 
 
 
@@ -314,5 +322,5 @@ formals(plotHeatmap.SingleCellExperiment) <-
 setMethod(
     f = "plotHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = plotHeatmap.SingleCellExperiment
+    definition = `plotHeatmap,SingleCellExperiment`
 )
