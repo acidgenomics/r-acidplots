@@ -32,10 +32,7 @@
                 method = method
             ),
             error = function(e) {
-                warning(
-                    "hclust() row calculation failed. Skipping.",
-                    call. = FALSE
-                )
+                warning("hclust() row calculation failed. Skipping.")
                 FALSE
             }
         )
@@ -50,10 +47,7 @@
                 method = method
             ),
             error = function(e) {
-                warning(
-                    "hclust() column calculation failed. Skipping.",
-                    call. = FALSE
-                )
+                warning("hclust() column calculation failed. Skipping.")
                 FALSE
             }
         )
