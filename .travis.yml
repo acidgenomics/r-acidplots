@@ -14,16 +14,16 @@ jobs:
   include:
     - stage: test
       name: "bioc-3.9"
-      script: image="basejump" tag="bioc-3.9" ./docker.sh
+      script: image="rnaseq" tag="bioc-3.9" ./docker.sh
     - stage: test
       name: "bioc-3.8"
-      script: image="basejump" tag="bioc-3.8" ./docker.sh
+      script: image="rnaseq" tag="bioc-3.8" ./docker.sh
     - stage: test
       name: "bioc-3.7"
-      script: image="basejump" tag="bioc-3.7" ./docker.sh
+      script: image="rnaseq" tag="bioc-3.7" ./docker.sh
     - stage: test
       name: "bioc-devel"
-      script: image="basejump" tag="bioc-devel" ./docker.sh
+      script: image="rnaseq" tag="bioc-devel" ./docker.sh
 
 matrix:
   allow_failures:
