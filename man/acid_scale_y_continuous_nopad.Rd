@@ -23,6 +23,9 @@ expand the scale by 5\% on each side for continuous variables, and by
 \description{
 Remove Y axis padding
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 acid_scale_y_continuous_nopad()
 }

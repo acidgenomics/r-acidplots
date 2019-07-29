@@ -66,6 +66,8 @@ This is a convenience function that quickly plots known sexually dimorphic
 genes, and overall gene experssion for the X and Y chromosomes.
 }
 \note{
+Updated 2019-07-29.
+
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 }
 \examples{
