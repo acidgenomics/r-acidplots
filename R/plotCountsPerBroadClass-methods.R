@@ -80,11 +80,13 @@ NULL
         biotypeCol <- "broadClass"
         ## Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
+            ## nocov start
             warning(paste(
                 "rowData() does not contain biotypes defined in",
                 biotypeCol, "column."
             ))
             return(invisible())
+            ## nocov end
         }
 
         biotypes <- rowData %>%
