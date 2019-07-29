@@ -1,6 +1,7 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBroadClass
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

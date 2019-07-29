@@ -1,6 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBiotype
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.
@@ -32,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-07-29.
 `plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -149,7 +150,8 @@ NULL
                 y = as_tibble(sampleData),
                 by = "sampleID"
             ) %>%
-            select(!!!syms(c("counts", "interestingGroups", biotypeCol)))
+            select(!!!syms(c("counts", "interestingGroups", biotypeCol))) %>%
+            mutate(!!sym(biotypeCol) := gsub("_", " ", !!sym(biotypeCol)))
 
         p <- ggplot(
             data = data,

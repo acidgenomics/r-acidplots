@@ -1,5 +1,6 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams params

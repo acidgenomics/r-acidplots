@@ -1,9 +1,9 @@
 #' Synesthesia color palette
 #'
-#' @rdname synesthesia
 #' @name synesthesia
-#' @inheritParams params
+#' @note Updated 2019-07-29.
 #'
+#' @inheritParams params
 #' @param guide `character(1)` or `function`.
 #'   A function used to create a guide or its name.
 #'   See [`guides()`][ggplot2::guides] for details.

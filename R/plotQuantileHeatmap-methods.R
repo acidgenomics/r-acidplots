@@ -1,5 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams params
@@ -165,7 +166,20 @@ NULL
             ...
         )
         args <- .pheatmapArgs(args)
-        do.call(what = pheatmap, args = args)
+        ## Ignore "partial match of 'just' to 'justification'" warning.
+        withCallingHandlers(
+            expr = do.call(what = pheatmap, args = args),
+            warning = function(w) {
+                if (isTRUE(grepl(
+                    pattern = "partial match",
+                    x = as.character(w)
+                ))) {
+                    invokeRestart("muffleWarning")
+                } else {
+                    w
+                }
+            }
+        )
     }
 
 formals(`plotQuantileHeatmap,SummarizedExperiment`)[["color"]] <-

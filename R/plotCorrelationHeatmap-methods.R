@@ -1,5 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams params
