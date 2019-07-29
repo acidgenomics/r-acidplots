@@ -67,6 +67,9 @@ Counts axis label.}
 \description{
 Visualize the number of features (i.e. genes) detected.
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 data(
     RangedSummarizedExperiment,

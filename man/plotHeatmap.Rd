@@ -103,6 +103,9 @@ The argument names must be formatted in camel case, not snake case.}
 \description{
 Construct a simple heatmap.
 }
+\note{
+Updated 2019-07-29.
+}
 \section{Scaling}{
 
 

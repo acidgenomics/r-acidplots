@@ -1,6 +1,8 @@
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
+    matrix,
+    matrix_lfc,
     package = "acidtest",
     envir = environment()
 )
@@ -18,6 +20,10 @@ genes <- geneIDs
 
 mpg <- ggplot2::mpg
 
+## nolint start
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
+`assay<-` <- SummarizedExperiment::`assay<-`
+`rowData<-` <- SummarizedExperiment::`rowData<-`
 tibble <- tibble::tibble
+## nolint end

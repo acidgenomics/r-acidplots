@@ -26,6 +26,9 @@ Hexadecimal colors in RGB space.
 \description{
 Hex color gradient generator
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 purpleOrange(n = 3L)
 blueYellow(n = 3L)

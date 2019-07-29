@@ -10,6 +10,7 @@
 #' a way to look at how samples are clustering.
 #'
 #' @name plotPCA
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param ntop `integer(1)` or `Inf`.

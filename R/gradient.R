@@ -1,5 +1,6 @@
 #' Hex color gradient generator
 #'
+#' @note Updated 2019-07-29.
 #' @export
 #'
 #' @param colors `character`.

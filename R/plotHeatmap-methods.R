@@ -48,6 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param breaks `numeric` or `NULL`.
@@ -132,7 +133,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-07-29.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -280,7 +281,22 @@ NULL
             ...
         )
         args <- .pheatmapArgs(args)
-        do.call(what = pheatmap, args = args)
+        ## Ignore "partial match of 'just' to 'justification'" warning.
+        withCallingHandlers(
+            expr = do.call(what = pheatmap, args = args),
+            ## nocov start
+            warning = function(w) {
+                if (isTRUE(grepl(
+                    pattern = "partial match",
+                    x = as.character(w)
+                ))) {
+                    invokeRestart("muffleWarning")
+                } else {
+                    w
+                }
+            }
+            ## nocov end
+        )
     }
 
 formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
