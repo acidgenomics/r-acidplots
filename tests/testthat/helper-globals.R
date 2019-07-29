@@ -18,6 +18,9 @@ genes <- geneIDs
 
 mpg <- ggplot2::mpg
 
+## nolint start
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
+`rowData<-` <- SummarizedExperiment::`rowData<-`
 tibble <- tibble::tibble
+## nolint end
