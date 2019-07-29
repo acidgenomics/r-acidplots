@@ -1,5 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param countsAxisLabel `character(1)`.

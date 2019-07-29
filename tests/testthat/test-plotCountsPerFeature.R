@@ -1,14 +1,18 @@
 context("plotCountsPerFeature")
 
-test_that("SummarizedExperiment", {
-    p <- plotCountsPerFeature(rse, geom = "boxplot")
-    expect_s3_class(p, "ggplot")
+with_parameters_test_that(
+    "RSE, SCE", {
+        p <- plotCountsPerFeature(object)
+        expect_s3_class(p, "ggplot")
+    },
+    object = list(rse, sce)
+)
 
-    p <- plotCountsPerFeature(rse, geom = "density")
-    expect_s3_class(p, "ggplot")
-})
-
-test_that("SingleCellExperiment", {
-    p <- plotCountsPerFeature(sce)
-    expect_s3_class(p, "ggplot")
-})
+geom <- eval(formals(`plotCountsPerFeature,SummarizedExperiment`)[["geom"]])
+with_parameters_test_that(
+    "geom", {
+        p <- plotCountsPerFeature(rse, geom = geom)
+        expect_s3_class(p, "ggplot")
+    },
+    geom = geom
+)

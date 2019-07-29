@@ -48,6 +48,9 @@ See \code{\link[ggplot2:guides]{guides()}} for details.}
 \description{
 Synesthesia color palette
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 library(ggplot2)
 theme_set(acid_theme_light())

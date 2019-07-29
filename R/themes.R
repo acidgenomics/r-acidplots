@@ -22,6 +22,7 @@
 #' expression plots.
 #'
 #' @name themes
+#' @note Updated 2019-07-29.
 #'
 #' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.

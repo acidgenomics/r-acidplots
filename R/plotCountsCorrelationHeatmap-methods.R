@@ -1,5 +1,6 @@
 #' @name plotCountsCorrelationHeatmap
 #' @inherit bioverbs::plotCountsCorrelationHeatmap
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams stats::cor

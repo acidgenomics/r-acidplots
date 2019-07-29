@@ -1,5 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams basejump::meltCounts
 #' @inheritParams params

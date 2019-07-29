@@ -19,6 +19,9 @@ Intelligently flip a plot with discrete data on the X axis.
 This function puts the samples that were near the left origin on the X at the
 top on the Y axis, making them more human readable.
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 library(ggplot2)
 g <- ggplot(data = mpg, aes(x = class)) + geom_bar()

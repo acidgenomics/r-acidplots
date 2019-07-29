@@ -72,6 +72,9 @@ Plot style.}
 \description{
 Plot counts
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

@@ -45,6 +45,9 @@ Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 Both themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
 modifications and extra user-definable parameters.
 }
+\note{
+Updated 2019-07-29.
+}
 \section{Light}{
 
 

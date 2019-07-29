@@ -1,5 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams params

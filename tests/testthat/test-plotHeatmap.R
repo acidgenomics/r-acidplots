@@ -57,9 +57,57 @@ with_parameters_test_that(
     fun = funs
 )
 
+with_parameters_test_that(
+    "SingleCellExperiment", {
+        p <- fun(object)
+        expect_s3_class(p, "pheatmap")
+    },
+    fun = funs
+)
+
+with_parameters_test_that(
+    "Non-unique samples", {
+        assay(rse)[, 2L] <- assay(rse)[, 1L]
+        expect_warning(
+            object = fun(rse),
+            regexp = "Non-unique samples detected. Skipping plot."
+        )
+    },
+    fun = funs
+)
+
 test_that("Invalid pheatmap passthrough", {
     expect_error(
         object = plotHeatmap(object, show_colnames = FALSE),
         regexp = "Specify arguments in camel case: show_colnames"
     )
+})
+
+test_that("Row and column scaling", {
+    expect_true(any(rowSums(assay(rse)) == 0L))
+    expect_false(any(colSums(assay(rse)) == 0L))
+
+    # Error if matrix counts any all zero rows.
+    expect_error(
+        object = plotHeatmap(rse, scale = "row"),
+        regexp = "hasNonZeroRowsAndCols"
+    )
+
+    # Drop zero rows and now can plot.
+    keep <- rowSums(assay(rse)) > 0L
+    rse <- rse[keep, ]
+    p <- plotHeatmap(
+        object = rse,
+        scale = "row",
+        clusterRows = TRUE,
+        clusterCols = TRUE
+    )
+    expect_s3_class(p, "pheatmap")
+    p <- plotHeatmap(
+        object = rse,
+        scale = "col",
+        clusterRows = TRUE,
+        clusterCols = TRUE
+    )
+    expect_s3_class(p, "pheatmap")
 })

@@ -1,5 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.

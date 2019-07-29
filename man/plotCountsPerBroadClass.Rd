@@ -55,6 +55,9 @@ Plot.
 \description{
 Plot counts per broad class definition
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 data(
     RangedSummarizedExperiment,

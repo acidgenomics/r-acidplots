@@ -1,5 +1,7 @@
-## Return hierarchical clustering rows and columns for heatmap return.
-## Return `FALSE` (not `NULL`) to skip.
+#' Return hierarchical clustering rows and columns for heatmap return
+#' @note Updated 2019-07-29.
+#' @return `hclust` object or `FALSE` (not `NULL`) to skip.
+#' @noRd
 .hclust <- function(
     object,
     method = "ward.D2",
@@ -32,11 +34,10 @@
                 method = method
             ),
             error = function(e) {
-                warning(
-                    "hclust() row calculation failed. Skipping.",
-                    call. = FALSE
-                )
+                ## nocov start
+                warning("hclust() row calculation failed. Skipping.")
                 FALSE
+                ## nocov end
             }
         )
     }
@@ -50,11 +51,10 @@
                 method = method
             ),
             error = function(e) {
-                warning(
-                    "hclust() column calculation failed. Skipping.",
-                    call. = FALSE
-                )
+                ## nocov start
+                warning("hclust() column calculation failed. Skipping.")
                 FALSE
+                ## nocov end
             }
         )
     }
@@ -64,23 +64,27 @@
 
 
 
-## Apply z-scaling to matrix.
-## When scaling by row, drop features without sufficient variance and inform.
-## Columns require sufficient variation and will error intentionally otherwise.
-## Modified version of `pheatmap:::scale_mat()`.
+#' Apply z-scaling to matrix
+#'
+#' When scaling by row, drop features without sufficient variance and inform.
+#' Columns require sufficient variation and will error intentionally otherwise.
+#' Modified version of `pheatmap:::scale_mat()`.
+#'
+#' @note Updated 2019-07-29.
+#' @noRd
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
     assert(is.matrix(object), is.numeric(object))
     scale <- match.arg(scale)
 
-    if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, " (z-score)."))
+    ## Inform the user if NA values are present. Note that we're including
+    ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
+    ## case.
+    if (any(is.na(object))) {
+        warning("NA values detected in matrix.")  # nocov
     }
 
-    ## Inform the user if NA values are present.
-    ## Note that we're including `na.rm` in `rowVars()` and `colVars()` calls
-    ## below to handle this edge case.
-    if (any(is.na(object))) {
-        message("NA values detected in matrix.")
+    if (scale != "none") {
+        message(paste0("Scaling matrix per ", scale, " (z-score)."))
     }
 
     ## Assert checks to look for sufficient variance when the user is attempting
@@ -94,6 +98,7 @@
     if (scale == "row") {
         pass <- rowVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
+            ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
             message(paste(
@@ -106,10 +111,12 @@
                 toString(rownames(object)[which(fail)], width = 200L)
             ))
             object <- object[pass, , drop = FALSE]
+            ## nocov end
         }
     } else if (scale == "column") {
         pass <- colVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
+            ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
             stop(paste(
@@ -121,6 +128,7 @@
                 "have enough variance:",
                 toString(colnames(object)[which(fail)], width = 200L)
             ))
+            ## nocov end
         }
     }
 
@@ -137,16 +145,19 @@
 
 
 
-.scaleCols <- function(object) {
-    t(.scaleRows(t(object)))
-}
-
-
-
+## Updated 2019-07-29.
 .scaleRows <- function(object) {
     assert(is.matrix(object), is.numeric(object))
     mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
     sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
     out <- (object - mean) / sd
     out
+}
+
+
+
+## Updated 2019-07-29.
+.scaleCols <- function(object) {
+    assert(is.matrix(object), is.numeric(object))
+    t(.scaleRows(t(object)))
 }

@@ -64,6 +64,9 @@ Font size.}
 Convenience functions with modified defaults for
 \href{http://ggplot2.org}{ggplot2}.
 }
+\note{
+Updated 2019-07-29.
+}
 \section{acid_geom_abline}{
 
 

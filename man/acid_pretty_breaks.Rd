@@ -16,6 +16,9 @@ Desired number of breaks.}
 \description{
 Pretty breaks that resemble the base plotting engine
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 acid_pretty_breaks()
 }
