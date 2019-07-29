@@ -23,6 +23,7 @@
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name geoms
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `character(1)`.

@@ -1,5 +1,6 @@
 #' Pretty breaks that resemble the base plotting engine
 #'
+#' @note Updated 2019-07-29.
 #' @export
 #'
 #' @param n `integer(1)`.

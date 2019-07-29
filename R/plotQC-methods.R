@@ -1,5 +1,6 @@
 #' @name plotQC
 #' @inherit bioverbs::plotQC
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams params
 #' @param ... Additional arguments.
@@ -35,7 +36,7 @@ NULL
         stat_ecdf(size = 1L) +
         scale_x_continuous(trans = "sqrt") +
         labs(
-            x = deparse(substitute(fun)),
+            x = makeLabel(deparse(substitute(fun))),
             y = "ECDF"
         )
 }

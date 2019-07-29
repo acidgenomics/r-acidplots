@@ -2,9 +2,12 @@
 #'
 #' Wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
-#' @export
 #' @inherit UpSetR::upset details params references
+#' @note Updated 2019-07-29.
+#' @export
+#'
 #' @inheritParams params
+#'
 #' @return Graphical output, no return.
 #'
 #' @examples
@@ -15,8 +18,6 @@
 #'     sep = ";"
 #' )
 #' upset(movies)
-
-## Updated 2019-07-17.
 upset <- function(
     ...,
     ## nolint start
