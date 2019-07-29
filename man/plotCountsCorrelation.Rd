@@ -81,6 +81,9 @@ Graphical output.
 \description{
 Compare feature expression correlation across two data sets.
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
 rse <- RangedSummarizedExperiment

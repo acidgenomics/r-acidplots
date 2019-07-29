@@ -52,6 +52,9 @@ to be displayed alongside the UpSet plot. The user also has the the ability to p
 data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
 Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 ## Refer to UpSetR::upset() documentation for more examples.
 movies <- read.csv(

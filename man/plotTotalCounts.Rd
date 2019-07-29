@@ -59,6 +59,9 @@ Plot title.}
 \description{
 Plot total read counts
 }
+\note{
+Updated 2019-07-29.
+}
 \examples{
 data(
     RangedSummarizedExperiment,
