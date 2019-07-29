@@ -169,6 +169,7 @@ NULL
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
             expr = do.call(what = pheatmap, args = args),
+            ## nocov start
             warning = function(w) {
                 if (isTRUE(grepl(
                     pattern = "partial match",
@@ -179,6 +180,7 @@ NULL
                     w
                 }
             }
+            ## nocov end
         )
     }
 
