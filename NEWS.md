@@ -1,3 +1,12 @@
+## acidplots 0.2.8 (2019-07-29)
+
+### Minor changes
+
+- Improved warning suppression for partial match in `pheatmap` calls.
+- Improved documentation.
+- Improving automatic plot title and label handling with new `makeLabel` and
+  `makeTitle` functions from syntactic update.
+
 ## acidplots 0.2.7 (2019-07-23)
 
 ### New functions
