@@ -84,27 +84,33 @@ test_that("Invalid pheatmap passthrough", {
 })
 
 test_that("Row and column scaling", {
-    expect_true(any(rowSums(assay(rse)) == 0L))
-    expect_false(any(colSums(assay(rse)) == 0L))
+    object <- rse
+
+    ## Introduce zero rows, so we can check handling.
+    assay(object)[seq_len(2L), ] <- 0L
+
+
+    expect_true(any(rowSums(assay(object)) == 0L))
+    expect_false(any(colSums(assay(object)) == 0L))
 
     # Error if matrix counts any all zero rows.
     expect_error(
-        object = plotHeatmap(rse, scale = "row"),
+        object = plotHeatmap(object, scale = "row"),
         regexp = "hasNonZeroRowsAndCols"
     )
 
     # Drop zero rows and now can plot.
-    keep <- rowSums(assay(rse)) > 0L
-    rse <- rse[keep, ]
+    keep <- rowSums(assay(object)) > 0L
+    object <- object[keep, ]
     p <- plotHeatmap(
-        object = rse,
+        object = object,
         scale = "row",
         clusterRows = TRUE,
         clusterCols = TRUE
     )
     expect_s3_class(p, "pheatmap")
     p <- plotHeatmap(
-        object = rse,
+        object = object,
         scale = "col",
         clusterRows = TRUE,
         clusterCols = TRUE
