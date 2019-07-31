@@ -17,5 +17,5 @@ test_that("SummarizedExperiment", {
     rowData(object)[["geneName"]][seq] <- geneNames
     p <- plotGenderMarkers(object)
     expect_s3_class(p, "ggplot")
-    expect_true(all(geneNames %in% p$data[["rowname"]]))
+    expect_true(all(geneNames %in% p[["data"]][["rowname"]]))
 })
