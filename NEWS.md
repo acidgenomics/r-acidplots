@@ -1,3 +1,11 @@
+## acidplots 0.2.9 (2019-07-30)
+
+### Minor changes
+
+- Updated basejump dependency versions.
+- Updated some unit tests to reflect RangedSummarizedExperiment example update
+  in acidtest package.
+
 ## acidplots 0.2.8 (2019-07-29)
 
 ### Minor changes
