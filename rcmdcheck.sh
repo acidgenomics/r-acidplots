@@ -2,7 +2,7 @@
 set -Eeuxo pipefail
 
 # R package checks
-# Updated 2019-07-21.
+# Updated 2019-07-31.
 #
 # See also:
 # - R CMD build --help
@@ -18,8 +18,8 @@ export _R_CHECK_FORCE_SUGGESTS_=false
 export TZ="America/New_York"
 
 # Get the package version and define the `R CMD build` tarball output.
-PKG_NAME="$(basename "$PWD")"
-PKG_VERSION="$(grep -E "^Version:\s[.0-9a-z]+$" DESCRIPTION | sed "s/^Version:[[:space:]]//")"
+PKG_NAME="$(grep -E "^Package:" DESCRIPTION | cut -d ' ' -f 2)"
+PKG_VERSION="$(grep -E "^Version:" DESCRIPTION | cut -d ' ' -f 2)"
 PKG_TARBALL="${PKG_NAME}_${PKG_VERSION}.tar.gz"
 
 echo "travis_fold:start:session_info"
