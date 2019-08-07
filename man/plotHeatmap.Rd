@@ -33,14 +33,11 @@ plotHeatmap(object, ...)
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
-Groups of interest that define the samples. If left unset, defaults to
-\code{sampleName}.}
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{scale}{\code{character(1)}.
 Whether the values should be centered and scaled in either the row or
@@ -89,10 +86,10 @@ automatically, differing from the behavior in pheatmap.}
 Numeric vector of breakpoints for the color legend.}
 
 \item{borderColor}{\code{character(1)} or \code{NULL}.
-Border color. Disabled by default for improved aesthetics.}
+Border color.}
 
 \item{title}{\code{character(1)}.
-Plot title.}
+Title.}
 
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}

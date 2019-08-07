@@ -20,14 +20,11 @@ plotPCA(object, ...)
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
-Groups of interest that define the samples. If left unset, defaults to
-\code{sampleName}.}
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{ntop}{\code{integer(1)} or \code{Inf}.
 Number of most variable genes to plot.
@@ -48,10 +45,10 @@ To set the discrete color palette globally, use:\preformatted{options(acid.color
 Point size for dots in the plot.}
 
 \item{title}{\code{character(1)}.
-Plot title.}
+Title.}
 
 \item{subtitle}{\code{character(1)}.
-Plot subtitle.}
+Subtitle.}
 
 \item{return}{\code{character(1)}.
 Return type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults
