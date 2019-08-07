@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotHeatmap
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param legend `logical(1)`.
 #'   Show the color legend.
 #' @param n `integer(1)`.

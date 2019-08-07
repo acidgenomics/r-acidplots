@@ -12,7 +12,7 @@
 #' @name plotPCA
 #' @note Updated 2019-07-29.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
 #'   Number of most variable genes to plot.
 #'   Use `Inf` to include all genes (*not recommended*).

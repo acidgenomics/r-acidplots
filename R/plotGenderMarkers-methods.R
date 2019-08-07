@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotCounts
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
