@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams basejump::meltCounts
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
 #' @param ... Additional arguments.

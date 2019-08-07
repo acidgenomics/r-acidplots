@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams base::Extract
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param xTitle `character(1)`.
 #'   Name of object defined in `x`.
 #' @param yTitle `character(1)`.

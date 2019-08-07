@@ -50,7 +50,10 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @note Updated 2019-07-29.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
+#' @param scale `character(1)`.
+#'   Whether the values should be centered and scaled in either the row or
+#'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").
 #' @param breaks `numeric` or `NULL`.
 #'   A sequence of numbers that covers the range of values in the matrix. Must
 #'   be 1 element longer than the color vector, which is handled internally

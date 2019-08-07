@@ -4,7 +4,7 @@
 #'
 #' @inheritParams base::Extract
 #' @inheritParams stats::cor
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param ... Passthrough arguments to
 #'   [`plotHeatmap()`][acidplots::plotHeatmap].
 #'

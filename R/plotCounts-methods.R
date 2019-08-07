@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotCounts
 #' @note Updated 2019-07-29.
 #'
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param countsAxisLabel `character(1)`.
 #'   Label to use for the counts axis.
 #' @param medianLine `logical(1)`.
