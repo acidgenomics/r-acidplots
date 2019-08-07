@@ -1,3 +1,11 @@
+## acidplots 0.2.10 (2019-08-06)
+
+### Minor changes
+
+- Improved documentation consistency by importing shared parameter roxygen
+  from the new acidroxygen package.
+- Updated basejump dependency versions.
+
 ## acidplots 0.2.9 (2019-07-30)
 
 ### Minor changes

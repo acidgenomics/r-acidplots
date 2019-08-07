@@ -3,7 +3,7 @@
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams plotHeatmap
-#' @inheritParams params
+#' @inheritParams acidroxygen::params
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed. Defaults to
 #'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
