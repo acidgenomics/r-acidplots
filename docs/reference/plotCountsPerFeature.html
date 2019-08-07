@@ -69,7 +69,7 @@ unless the library sizes or total RNA expression are different." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -158,10 +158,7 @@ unless the library sizes or total RNA expression are different.</p>
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector(1)</a></code>.
-Name or index of count matrix slotted in
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays()</a></code>. When passing in a string, the
-name must be defined in
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assayNames()</a></code>.</p></td>
+Assay name or index position.</p></td>
     </tr>
     <tr>
       <th>minCounts</th>
@@ -184,8 +181,8 @@ operation. This applies to all counts, not per feature.</p></li>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
-Groups of interest that define the samples. If left unset, defaults to
-<code>sampleName</code>.</p></td>
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.</p></td>
     </tr>
     <tr>
       <th>geom</th>
@@ -229,7 +226,7 @@ Counts axis label.</p></td>
     <tr>
       <th>title</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Plot title.</p></td>
+Title.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -258,7 +255,7 @@ Plot title.</p></td>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='fu'>plotCountsPerFeature</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"boxplot"</span>)</div><div class='output co'>#&gt; <span class='message'>500 / 500 features passed minimum rowSums() &gt;= 1 expression cutoff.</span></div><div class='img'><img src='plotCountsPerFeature-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerFeature</span>(<span class='no'>rse</span>, <span class='kw'>geom</span> <span class='kw'>=</span> <span class='st'>"density"</span>)</div><div class='output co'>#&gt; <span class='message'>500 / 500 features passed minimum rowSums() &gt;= 1 expression cutoff.</span></div><div class='img'><img src='plotCountsPerFeature-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='fu'>plotCountsPerFeature</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='output co'>#&gt; <span class='message'>489 / 500 features passed minimum rowSums() &gt;= 1 expression cutoff.</span></div><div class='img'><img src='plotCountsPerFeature-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotCountsPerFeature</span>(<span class='no'>sce</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using sum().</span></div><div class='output co'>#&gt; <span class='message'>478 / 500 features passed minimum rowSums() &gt;= 1 expression cutoff.</span></div><div class='img'><img src='plotCountsPerFeature-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

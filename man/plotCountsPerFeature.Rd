@@ -33,10 +33,7 @@ plotCountsPerFeature(object, ...)
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{minCounts}{\code{integer(1)} or \code{NULL}.
 Minimum count threshold to apply. Disable with \code{NULL}. Filters using
@@ -54,8 +51,8 @@ operation. This applies to all counts, not per feature.
 }}
 
 \item{interestingGroups}{\code{character}.
-Groups of interest that define the samples. If left unset, defaults to
-\code{sampleName}.}
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{geom}{\code{character(1)}.
 Type of ggplot2 geometric object to use.}
@@ -87,7 +84,7 @@ Flip x and y axes. Recommended for plots containing many samples.}
 Counts axis label.}
 
 \item{title}{\code{character(1)}.
-Plot title.}
+Title.}
 
 \item{...}{Additional arguments.}
 }

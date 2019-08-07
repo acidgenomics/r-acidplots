@@ -14,7 +14,7 @@ plotCountsCorrelationHeatmap(x, y, ...)
 \arguments{
 \item{x}{Object.}
 
-\item{y}{Secondary object.}
+\item{y}{Object.}
 
 \item{i}{
     indices specifying elements to extract or replace.  Indices are

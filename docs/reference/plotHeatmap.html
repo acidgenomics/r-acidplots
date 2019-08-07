@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
       </span>
     </div>
 
@@ -156,16 +156,13 @@
     <tr>
       <th>assay</th>
       <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector(1)</a></code>.
-Name or index of count matrix slotted in
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assays()</a></code>. When passing in a string, the
-name must be defined in
-<code><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>assayNames()</a></code>.</p></td>
+Assay name or index position.</p></td>
     </tr>
     <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
-Groups of interest that define the samples. If left unset, defaults to
-<code>sampleName</code>.</p></td>
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.</p></td>
     </tr>
     <tr>
       <th>scale</th>
@@ -232,12 +229,12 @@ Numeric vector of breakpoints for the color legend.</p></td>
     <tr>
       <th>borderColor</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> or <code>NULL</code>.
-Border color. Disabled by default for improved aesthetics.</p></td>
+Border color.</p></td>
     </tr>
     <tr>
       <th>title</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Plot title.</p></td>
+Title.</p></td>
     </tr>
     <tr>
       <th>...</th>

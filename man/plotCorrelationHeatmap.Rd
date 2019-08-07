@@ -31,14 +31,11 @@ plotCorrelationHeatmap(object, ...)
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
-Name or index of count matrix slotted in
-\code{\link[SummarizedExperiment:assays]{assays()}}. When passing in a string, the
-name must be defined in
-\code{\link[SummarizedExperiment:assayNames]{assayNames()}}.}
+Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
-Groups of interest that define the samples. If left unset, defaults to
-\code{sampleName}.}
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{method}{\code{character(1)}.
 Correlation coefficient (or covariance) method to be computed. Defaults to
@@ -83,10 +80,10 @@ values are not supported. If set \code{NULL}, will use the default pheatmap
 colors.}
 
 \item{borderColor}{\code{character(1)} or \code{NULL}.
-Border color. Disabled by default for improved aesthetics.}
+Border color.}
 
 \item{title}{\code{character(1)}.
-Plot title.}
+Title.}
 
 \item{...}{Additional arguments.}
 }
