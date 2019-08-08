@@ -71,6 +71,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
+    'assert-internal.R'
     'barcodeRanksPerSample-methods.R'
     'breaks.R'
     'data.R'
@@ -103,6 +104,7 @@ Collate:
     'plotMitoVsCoding-methods.R'
     'plotNovelty-methods.R'
     'plotPCA-methods.R'
+    'plotQC-internal.R'
     'plotQC-methods.R'
     'plotQuantileHeatmap-methods.R'
     'plotTotalCounts-methods.R'

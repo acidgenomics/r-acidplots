@@ -23,11 +23,11 @@
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
 #'   expand_limits expand_scale facet_wrap geom_bar geom_boxplot geom_density
-#'   geom_hline geom_jitter geom_label geom_point geom_violin geom_vline ggplot
+#'   geom_hline geom_jitter geom_label geom_line geom_point geom_violin geom_vline ggplot
 #'   guides labs position_jitterdodge scale_x_continuous scale_x_discrete
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie allAreHexColors areDisjointSets assert hasDims hasLength
+#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert hasDims hasLength
 #'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames hasUniqueCols
 #'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
 #'   isInClosedRange isInLeftOpenRange isInt isNonNegative isNumber isPositive

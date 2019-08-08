@@ -58,8 +58,12 @@ droplet-based scRNA-seq data.
 Updated 2019-08-08.
 }
 \examples{
-data(indrops)
-plotCountsVsFeatures(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calcualteMetrics(object)
+plotCountsVsFeatures(object)
 }
 \seealso{
 \code{\link[=plotCountsPerCell]{plotCountsPerCell()}}.

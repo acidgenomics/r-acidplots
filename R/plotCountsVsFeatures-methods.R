@@ -7,8 +7,12 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotCountsVsFeatures(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' plotCountsVsFeatures(object)
 NULL
 
 
@@ -22,7 +26,7 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## Updated 2019-08-08.
 `plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
     function(
         object,
