@@ -3,6 +3,7 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom DropletUtils barcodeRanks
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assays assays<- colData
 #'   rowData
