@@ -30,7 +30,7 @@ NULL
 
 
 ## Updated 2019-07-24.
-`barcodeRanksPerSample,bcbioSingleCell` <-  # nolint
+`barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object) {
         assert(packageVersion("DropletUtils") >= "1.4")
         which <- sys.parent()
@@ -79,11 +79,11 @@ NULL
         ranks
     }
 
-f1 <- formals(`barcodeRanksPerSample,bcbioSingleCell`)
+f1 <- formals(`barcodeRanksPerSample,SingleCellExperiment`)
 f2 <- formals(barcodeRanks)
 f2 <- f2[setdiff(names(f2), c(names(f1), "m", "..."))]
 f <- c(f1, f2)
-formals(`barcodeRanksPerSample,bcbioSingleCell`) <- f
+formals(`barcodeRanksPerSample,SingleCellExperiment`) <- f
 
 
 
@@ -91,6 +91,6 @@ formals(`barcodeRanksPerSample,bcbioSingleCell`) <- f
 #' @export
 setMethod(
     f = "barcodeRanksPerSample",
-    signature = signature("bcbioSingleCell"),
-    definition = `barcodeRanksPerSample,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `barcodeRanksPerSample,SingleCellExperiment`
 )

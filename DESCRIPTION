@@ -28,6 +28,7 @@ Imports:
     bioverbs (>= 0.2.1),
     goalie (>= 0.3.1),
     BiocGenerics,
+    DropletUtils,
     SingleCellExperiment,
     SummarizedExperiment,
     S4Vectors,
@@ -54,7 +55,6 @@ Suggests:
     acidroxygen (>= 0.0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
-    DropletUtils,
     knitr (>= 1.23),
     patrick (>= 0.0.1),
     testthat (>= 2.1),
@@ -91,7 +91,9 @@ Collate:
     'plotCountsCorrelationHeatmap-methods.R'
     'plotCountsPerBiotype-methods.R'
     'plotCountsPerBroadClass-methods.R'
+    'plotCountsPerCell-methods.R'
     'plotCountsPerFeature-methods.R'
+    'plotCountsVsFeatures-methods.R'
     'plotFeaturesDetected-methods.R'
     'plotGenderMarkers-methods.R'
     'plotGenesPerCell-methods.R'
@@ -103,8 +105,6 @@ Collate:
     'plotQC-methods.R'
     'plotQuantileHeatmap-methods.R'
     'plotTotalCounts-methods.R'
-    'plotUMIsPerCell-methods.R'
-    'plotUMIsVsGenes-methods.R'
     'plotZerosVsDepth-methods.R'
     'synesthesia.R'
     'themes.R'
