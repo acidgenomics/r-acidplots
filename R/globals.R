@@ -1,6 +1,6 @@
 globalVariables(".")
 
-packageVersion <- packageVersion("acidplots")
+.version <- packageVersion("acidplots")
 
 #' acidplots test data URL
 #' @keywords internal
@@ -9,5 +9,8 @@ packageVersion <- packageVersion("acidplots")
 #' acidplotsTestsURL
 acidplotsTestsURL <- paste0(
     "http://tests.acidgenomics.com/acidplots/",
-    "v", packageVersion$major, ".", packageVersion$minor  # nolint
+    "v", .version$major, ".", .version$minor  # nolint
 )
+
+## This is also defined in acidplots.
+geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
