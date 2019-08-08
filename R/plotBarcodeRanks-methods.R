@@ -1,7 +1,3 @@
-## FIXME Move to acidplots.
-
-
-
 #' @name plotBarcodeRanks
 #' @author Michael Steinbaugh
 #' @include barcodeRanksPerSample-methods.R
@@ -32,8 +28,8 @@ NULL
 
 
 
-## Updated 2019-07-24.
-`plotBarcodeRanks,bcbioSingleCell` <-  # nolint
+## Updated 2019-08-08.
+`plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(
         object,
         colors = c(
@@ -142,11 +138,11 @@ NULL
         plot_grid(plotlist = plotlist)
     }
 
-f1 <- formals(`plotBarcodeRanks,bcbioSingleCell`)
-f2 <- formals(`barcodeRanksPerSample,bcbioSingleCell`)
+f1 <- formals(`plotBarcodeRanks,SingleCellExperiment`)
+f2 <- formals(`barcodeRanksPerSample,SingleCellExperiment`)
 f2 <- f2[setdiff(names(f2), names(f1))]
 f <- c(f1, f2)
-formals(`plotBarcodeRanks,bcbioSingleCell`) <- f
+formals(`plotBarcodeRanks,SingleCellExperiment`) <- f
 
 
 
@@ -154,6 +150,6 @@ formals(`plotBarcodeRanks,bcbioSingleCell`) <- f
 #' @export
 setMethod(
     f = "plotBarcodeRanks",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotBarcodeRanks,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `plotBarcodeRanks,SingleCellExperiment`
 )

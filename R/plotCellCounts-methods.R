@@ -23,7 +23,7 @@ NULL
 
 
 ## Updated 2019-07-27.
-`plotCellCounts,bcbioSingleCell` <-  # nolint
+`plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
@@ -99,7 +99,7 @@ NULL
         p
     }
 
-formals(`plotCellCounts,bcbioSingleCell`)[["fill"]] <-
+formals(`plotCellCounts,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 
 
@@ -107,6 +107,6 @@ formals(`plotCellCounts,bcbioSingleCell`)[["fill"]] <-
 #' @export
 setMethod(
     f = "plotCellCounts",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotCellCounts,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `plotCellCounts,SingleCellExperiment`
 )
