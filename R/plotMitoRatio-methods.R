@@ -1,7 +1,3 @@
-## FIXME Move to acidplots.
-
-
-
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
@@ -28,7 +24,7 @@ NULL
 
 
 ## Updated 2019-07-27.
-`plotMitoRatio,bcbioSingleCell` <-  # nolint
+`plotMitoRatio,SingleCellExperiment` <-  # nolint
     function(
         object,
         geom,
@@ -56,9 +52,9 @@ NULL
         )
     }
 
-formals(`plotMitoRatio,bcbioSingleCell`)[["fill"]] <-
+formals(`plotMitoRatio,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotMitoRatio,bcbioSingleCell`)[["geom"]] <- geom
+formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- geom
 
 
 
@@ -66,6 +62,6 @@ formals(`plotMitoRatio,bcbioSingleCell`)[["geom"]] <- geom
 #' @export
 setMethod(
     f = "plotMitoRatio",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotMitoRatio,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `plotMitoRatio,SingleCellExperiment`
 )

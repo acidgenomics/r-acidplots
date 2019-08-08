@@ -1,7 +1,3 @@
-## FIXME Move to acidplots.
-
-
-
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotMitoVsCoding
@@ -27,7 +23,7 @@ NULL
 
 
 ## Updated 2019-07-24.
-`plotMitoVsCoding,bcbioSingleCell` <-  # nolint
+`plotMitoVsCoding,SingleCellExperiment` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
@@ -52,7 +48,7 @@ NULL
         )
     }
 
-formals(`plotMitoVsCoding,bcbioSingleCell`)[["color"]] <-
+formals(`plotMitoVsCoding,SingleCellExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
 
 
@@ -61,6 +57,6 @@ formals(`plotMitoVsCoding,bcbioSingleCell`)[["color"]] <-
 #' @export
 setMethod(
     f = "plotMitoVsCoding",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotMitoVsCoding,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `plotMitoVsCoding,SingleCellExperiment`
 )

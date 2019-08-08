@@ -29,8 +29,8 @@
 #' @importFrom goalie allAreHexColors areDisjointSets assert hasDims hasLength
 #'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames hasUniqueCols
 #'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
-#'   isInClosedRange isInt isNonNegative isNumber isPositive isScalar isString
-#'   isSubset
+#'   isInClosedRange isInLeftOpenRange isInt isNonNegative isNumber isPositive
+#'   isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
