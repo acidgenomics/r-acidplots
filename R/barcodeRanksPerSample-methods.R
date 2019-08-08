@@ -1,15 +1,20 @@
 #' @name barcodeRanksPerSample
-#' @author Michael Steinbaugh
 #' @inherit bioverbs::barcodeRanksPerSample
 #' @inherit DropletUtils::barcodeRanks
-#' @note Updated 2019-07-24.
+#' @note Updated 2019-08-08.
+#'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
+#'
 #' @seealso [DropletUtils::barcodeRanks()].
+#'
 #' @examples
-#' data(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
 #' if (packageVersion("DropletUtils") >= "1.4") {
-#'     x <- barcodeRanksPerSample(indrops)
+#'     object <- SingleCellExperiment
+#'     x <- barcodeRanksPerSample(object)
 #'     names(x)
 #' }
 NULL
@@ -25,7 +30,14 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## FIXME Seeing this warning pop up on minimal example.
+## Warning in smooth.spline(x[new.keep], y[new.keep], df = df, ...) :
+## not using invalid df; must have 1 < df <= n := #{unique x} = 13
+## Calls: barcodeRanksPerSample ... lapply -> FUN -> do.call -> <Anonymous> -> smooth.spline
+
+
+
+## Updated 2019-08-08.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object) {
         assert(packageVersion("DropletUtils") >= "1.4")
@@ -36,24 +48,29 @@ NULL
         samples <- levels(cell2sample)
 
         ## Subset the counts per sample into a list.
-        countsPerSample <- lapply(samples, function(sample) {
-            cells <- names(cell2sample)[which(cell2sample == sample)]
-            counts[, cells, drop = FALSE]
-        })
+        countsPerSample <- lapply(
+            X = samples,
+            FUN = function(sample, counts) {
+                cells <- names(cell2sample)[which(cell2sample == sample)]
+                counts[, cells, drop = FALSE]
+            },
+            counts = counts
+        )
+        names(countsPerSample) <- samples
 
         ## Calculate the ranks per sample.
-        ranks <- lapply(
+        ## Note that this now supports sparse matrices.
+        DataFrameList(lapply(
             X = countsPerSample,
             FUN = function(counts) {
                 x <- do.call(
                     what = barcodeRanks,
                     args = matchArgsToDoCall(
-                        args = list(m = as.matrix(counts)),
+                        args = list(m = counts),
                         removeFormals = "object",
                         which = which
                     )
                 )
-
                 ## Check DropletUtils return.
                 assert(
                     is(x, "DataFrame"),
@@ -66,13 +83,9 @@ NULL
                         y = c("knee", "inflection")
                     )
                 )
-
                 x
             }
-        )
-
-        names(ranks) <- samples
-        ranks
+        ))
     }
 
 f1 <- formals(`barcodeRanksPerSample,SingleCellExperiment`)
