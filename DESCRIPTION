@@ -54,6 +54,7 @@ Suggests:
     acidroxygen (>= 0.0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
+    DropletUtils,
     knitr (>= 1.23),
     patrick (>= 0.0.1),
     testthat (>= 2.1),
@@ -68,3 +69,43 @@ biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
+Collate: 
+    'barcodeRanksPerSample-methods.R'
+    'breaks.R'
+    'data.R'
+    'deprecated.R'
+    'geoms.R'
+    'ggplot2-internal.R'
+    'ggplot2-transforms.R'
+    'globals.R'
+    'gradient.R'
+    'heatmap-internal.R'
+    'imports.R'
+    'package.R'
+    'pheatmap-internal.R'
+    'plotBarcodeRanks-methods.R'
+    'plotCellCounts-methods.R'
+    'plotCorrelationHeatmap-methods.R'
+    'plotCounts-methods.R'
+    'plotCountsCorrelation-methods.R'
+    'plotCountsCorrelationHeatmap-methods.R'
+    'plotCountsPerBiotype-methods.R'
+    'plotCountsPerBroadClass-methods.R'
+    'plotCountsPerFeature-methods.R'
+    'plotFeaturesDetected-methods.R'
+    'plotGenderMarkers-methods.R'
+    'plotGenesPerCell-methods.R'
+    'plotHeatmap-methods.R'
+    'plotMitoRatio-methods.R'
+    'plotMitoVsCoding-methods.R'
+    'plotNovelty-methods.R'
+    'plotPCA-methods.R'
+    'plotQC-methods.R'
+    'plotQuantileHeatmap-methods.R'
+    'plotTotalCounts-methods.R'
+    'plotUMIsPerCell-methods.R'
+    'plotUMIsVsGenes-methods.R'
+    'plotZerosVsDepth-methods.R'
+    'synesthesia.R'
+    'themes.R'
+    'upset.R'
