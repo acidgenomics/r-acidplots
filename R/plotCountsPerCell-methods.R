@@ -11,12 +11,15 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotCountsPerCell(indrops, geom = "violin")
-#' plotCountsPerCell(indrops, geom = "ridgeline")
-#' plotCountsPerCell(indrops, geom = "ecdf")
-#' plotCountsPerCell(indrops, geom = "histogram")
-#' plotCountsPerCell(indrops, geom = "boxplot")
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' plotCountsPerCell(object, geom = "violin")
+#' plotCountsPerCell(object, geom = "ridgeline")
+#' plotCountsPerCell(object, geom = "ecdf")
+#' plotCountsPerCell(object, geom = "histogram")
+#' plotCountsPerCell(object, geom = "boxplot")
 NULL
 
 

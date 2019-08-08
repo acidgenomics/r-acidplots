@@ -64,14 +64,14 @@ Note that only points with total counts above \code{lower} will be considered, r
 Updated 2019-08-08.
 }
 \examples{
-data(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
 if (packageVersion("DropletUtils") >= "1.4") {
-    plotBarcodeRanks(indrops)
+    object <- SingleCellExperiment
+    plotBarcodeRanks(object)
 }
 }
 \seealso{
 \code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.
-}
-\author{
-Michael Steinbaugh
 }

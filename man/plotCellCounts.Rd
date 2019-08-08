@@ -43,8 +43,11 @@ Plot cell counts
 Updated 2019-07-29.
 }
 \examples{
-data(indrops)
-plotCellCounts(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+plotCellCounts(object)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

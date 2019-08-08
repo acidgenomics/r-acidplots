@@ -79,12 +79,15 @@ droplet-based scRNA-seq data.
 Updated 2019-08-08.
 }
 \examples{
-data(indrops)
-plotCountsPerCell(indrops, geom = "violin")
-plotCountsPerCell(indrops, geom = "ridgeline")
-plotCountsPerCell(indrops, geom = "ecdf")
-plotCountsPerCell(indrops, geom = "histogram")
-plotCountsPerCell(indrops, geom = "boxplot")
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+plotCountsPerCell(object, geom = "violin")
+plotCountsPerCell(object, geom = "ridgeline")
+plotCountsPerCell(object, geom = "ecdf")
+plotCountsPerCell(object, geom = "histogram")
+plotCountsPerCell(object, geom = "boxplot")
 }
 \seealso{
 \code{\link[=plotCountsVsFeatures]{plotCountsVsFeatures()}}.

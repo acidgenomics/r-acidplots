@@ -7,8 +7,11 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotCellCounts(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' plotCellCounts(object)
 NULL
 
 

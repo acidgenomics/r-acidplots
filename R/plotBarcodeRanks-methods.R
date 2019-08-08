@@ -1,5 +1,4 @@
 #' @name plotBarcodeRanks
-#' @author Michael Steinbaugh
 #' @include barcodeRanksPerSample-methods.R
 #' @inherit bioverbs::plotBarcodeRanks
 #' @inherit barcodeRanksPerSample
@@ -11,9 +10,12 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
 #' if (packageVersion("DropletUtils") >= "1.4") {
-#'     plotBarcodeRanks(indrops)
+#'     object <- SingleCellExperiment
+#'     plotBarcodeRanks(object)
 #' }
 NULL
 
