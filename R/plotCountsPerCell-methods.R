@@ -1,12 +1,7 @@
-## FIXME Rename to plotCountsPerCell
-## FIXME Move to acidplots.
-
-
-
-#' @name plotUMIsPerCell
+#' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
-#' @inherit bioverbs::plotUMIsPerCell
+#' @inherit bioverbs::plotCountsPerCell
 #' @note Updated 2019-08-08.
 #'
 #' @inheritParams acidroxygen::params
@@ -17,26 +12,26 @@
 #'
 #' @examples
 #' data(indrops)
-#' plotUMIsPerCell(indrops, geom = "violin")
-#' plotUMIsPerCell(indrops, geom = "ridgeline")
-#' plotUMIsPerCell(indrops, geom = "ecdf")
-#' plotUMIsPerCell(indrops, geom = "histogram")
-#' plotUMIsPerCell(indrops, geom = "boxplot")
+#' plotCountsPerCell(indrops, geom = "violin")
+#' plotCountsPerCell(indrops, geom = "ridgeline")
+#' plotCountsPerCell(indrops, geom = "ecdf")
+#' plotCountsPerCell(indrops, geom = "histogram")
+#' plotCountsPerCell(indrops, geom = "boxplot")
 NULL
 
 
 
-#' @rdname plotUMIsPerCell
-#' @name plotUMIsPerCell
-#' @importFrom bioverbs plotUMIsPerCell
-#' @usage plotUMIsPerCell(object, ...)
+#' @rdname plotCountsPerCell
+#' @name plotCountsPerCell
+#' @importFrom bioverbs plotCountsPerCell
+#' @usage plotCountsPerCell(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-07-24.
-`plotUMIsPerCell,bcbioSingleCell` <-  # nolint
+`plotCountsPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
         geom,
@@ -47,7 +42,7 @@ NULL
         trans = "log10",
         color,
         fill,
-        title = "UMIs per cell"
+        title = "Counts per cell"
     ) {
         assert(isString(title, nullOK = TRUE))
         geom <- match.arg(geom)
@@ -109,12 +104,12 @@ NULL
                     point = points,
                     MoreArgs = list(metrics = metrics(object)),
                     FUN = function(metrics, sampleID, point) {
-                        nUMI <- metrics[
+                        nCount <- metrics[
                             metrics[["sampleID"]] == sampleID,
                             "nCount",
                             drop = TRUE
                         ]
-                        e <- ecdf(sort(nUMI))
+                        e <- ecdf(sort(nCount))
                         e(point)
                     },
                     SIMPLIFY = TRUE,
@@ -154,16 +149,16 @@ NULL
         p
     }
 
-formals(`plotUMIsPerCell,bcbioSingleCell`)[c("color", "fill")] <-
+formals(`plotCountsPerCell,SingleCellExperiment`)[c("color", "fill")] <-
     formalsList[c("color.discrete", "fill.discrete")]
-formals(`plotUMIsPerCell,bcbioSingleCell`)[["geom"]] <- geom
+formals(`plotCountsPerCell,SingleCellExperiment`)[["geom"]] <- geom
 
 
 
-#' @rdname plotUMIsPerCell
+#' @rdname plotCountsPerCell
 #' @export
 setMethod(
-    f = "plotUMIsPerCell",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotUMIsPerCell,bcbioSingleCell`
+    f = "plotCountsPerCell",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotCountsPerCell,SingleCellExperiment`
 )

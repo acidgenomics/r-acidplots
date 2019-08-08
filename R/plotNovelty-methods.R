@@ -1,7 +1,3 @@
-## FIXME Move to acidplots.
-
-
-
 #' @name plotNovelty
 #' @author Michael Steinbaugh
 #' @include globals.R
@@ -28,7 +24,7 @@ NULL
 
 
 ## Updated 2019-07-27.
-`plotNovelty,bcbioSingleCell` <-  # nolint
+`plotNovelty,SingleCellExperiment` <-  # nolint
     function(
         object,
         geom,
@@ -44,7 +40,7 @@ NULL
             what = .plotQCMetric,
             args = list(
                 object = object,
-                metricCol = "log10GenesPerUMI",
+                metricCol = "log10FeaturesPerCount",
                 geom = geom,
                 interestingGroups = interestingGroups,
                 min = min,
@@ -57,9 +53,9 @@ NULL
         )
     }
 
-formals(`plotNovelty,bcbioSingleCell`)[["fill"]] <-
+formals(`plotNovelty,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotNovelty,bcbioSingleCell`)[["geom"]] <- geom
+formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- geom
 
 
 
@@ -67,6 +63,6 @@ formals(`plotNovelty,bcbioSingleCell`)[["geom"]] <- geom
 #' @export
 setMethod(
     f = "plotNovelty",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotNovelty,bcbioSingleCell`
+    signature = signature("SingleCellExperiment"),
+    definition = `plotNovelty,SingleCellExperiment`
 )

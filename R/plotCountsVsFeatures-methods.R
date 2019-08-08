@@ -1,11 +1,6 @@
-## FIXME Rename to plotCountsVsFeatures
-## FIXME Move to acidplots.
-
-
-
-#' @name plotUMIsVsGenes
+#' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotUMIsVsGenes
+#' @inherit bioverbs::plotCountsVsFeatures
 #' @note Updated 2019-08-08.
 #'
 #' @inheritParams acidroxygen::params
@@ -13,29 +8,29 @@
 #'
 #' @examples
 #' data(indrops)
-#' plotUMIsVsGenes(indrops)
+#' plotCountsVsFeatures(indrops)
 NULL
 
 
 
-#' @rdname plotUMIsVsGenes
-#' @name plotUMIsVsGenes
-#' @importFrom bioverbs plotUMIsVsGenes
-#' @usage plotUMIsVsGenes(object, ...)
+#' @rdname plotCountsVsFeatures
+#' @name plotCountsVsFeatures
+#' @importFrom bioverbs plotCountsVsFeatures
+#' @usage plotCountsVsFeatures(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-07-24.
-`plotUMIsVsGenes,bcbioSingleCell` <-  # nolint
+`plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
         trendline = FALSE,
         color,
         trans = "log2",
-        title = "UMIs vs. genes"
+        title = "Counts vs. features"
     ) {
         do.call(
             what = .plotQCScatterplot,
@@ -55,15 +50,15 @@ NULL
         )
     }
 
-formals(`plotUMIsVsGenes,bcbioSingleCell`)[["color"]] <-
+formals(`plotCountsVsFeatures,SingleCellExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
 
 
 
-#' @rdname plotUMIsVsGenes
+#' @rdname plotCountsVsFeatures
 #' @export
 setMethod(
-    f = "plotUMIsVsGenes",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotUMIsVsGenes,bcbioSingleCell`
+    f = "plotCountsVsFeatures",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotCountsVsFeatures,SingleCellExperiment`
 )

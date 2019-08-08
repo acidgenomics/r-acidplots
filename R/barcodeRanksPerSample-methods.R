@@ -1,7 +1,3 @@
-## FIXME Move to acidplots.
-
-
-
 #' @name barcodeRanksPerSample
 #' @author Michael Steinbaugh
 #' @inherit bioverbs::barcodeRanksPerSample

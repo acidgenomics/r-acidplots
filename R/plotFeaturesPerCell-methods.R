@@ -1,12 +1,7 @@
-## FIXME Move to acidplots.
-## FIXME Rename to plotFeaturesPerCell
-
-
-
-#' @name plotGenesPerCell
+#' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
-#' @inherit bioverbs::plotGenesPerCell
+#' @inherit bioverbs::plotFeaturesPerCell
 #' @note Updated 2019-07-24.
 #'
 #' @inheritParams acidroxygen::params
@@ -14,22 +9,22 @@
 #'
 #' @examples
 #' data(indrops)
-#' plotGenesPerCell(indrops)
+#' plotFeaturesPerCell(indrops)
 NULL
 
 
 
-#' @rdname plotGenesPerCell
-#' @name plotGenesPerCell
-#' @importFrom bioverbs plotGenesPerCell
-#' @usage plotGenesPerCell(object, ...)
+#' @rdname plotFeaturesPerCell
+#' @name plotFeaturesPerCell
+#' @importFrom bioverbs plotFeaturesPerCell
+#' @usage plotFeaturesPerCell(object, ...)
 #' @export
 NULL
 
 
 
 ## Updated 2019-07-24.
-`plotGenesPerCell,bcbioSingleCell` <-  # nolint
+`plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
         geom,
@@ -57,16 +52,16 @@ NULL
         )
     }
 
-formals(`plotGenesPerCell,bcbioSingleCell`)[["fill"]] <-
+formals(`plotFeaturesPerCell,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotGenesPerCell,bcbioSingleCell`)[["geom"]] <- geom
+formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- geom
 
 
 
-#' @rdname plotGenesPerCell
+#' @rdname plotFeaturesPerCell
 #' @export
 setMethod(
-    f = "plotGenesPerCell",
-    signature = signature("bcbioSingleCell"),
-    definition = `plotGenesPerCell,bcbioSingleCell`
+    f = "plotFeaturesPerCell",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotFeaturesPerCell,SingleCellExperiment`
 )
