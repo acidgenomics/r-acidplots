@@ -56,18 +56,18 @@ The upper bound is set to the point at which the first derivative is closest to 
 Note that only points with total counts above \code{lower} will be considered, regardless of how \code{fit.bounds} is defined.
 }
 \note{
-Updated 2019-07-24.
+Updated 2019-08-08.
 }
 \examples{
-data(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
 if (packageVersion("DropletUtils") >= "1.4") {
-    x <- barcodeRanksPerSample(indrops)
+    object <- SingleCellExperiment
+    x <- barcodeRanksPerSample(object)
     names(x)
 }
 }
 \seealso{
 \code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.
-}
-\author{
-Michael Steinbaugh
 }
