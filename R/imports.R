@@ -6,8 +6,8 @@
 #' @importFrom DropletUtils barcodeRanks
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom SummarizedExperiment SummarizedExperiment assays assays<- colData
-#'   rowData
+#' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
+#'   assays<- colData rowData
 #' @importFrom S4Vectors DataFrame aggregate metadata
 #' @importFrom UpSetR upset
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples

@@ -9,6 +9,8 @@ test_that("grid", {
 
 context("plotQC : SingleCellExperiment")
 
+sce <- calculateMetrics(sce)
+
 test_that("grid", {
     p <- plotQC(sce)
     expect_s3_class(p, "ggplot")

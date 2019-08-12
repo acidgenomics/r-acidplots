@@ -4,6 +4,7 @@
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams base::apply
+#' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
