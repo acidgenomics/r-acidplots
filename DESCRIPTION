@@ -1,8 +1,8 @@
 Package: acidplots
 Title: Functions for plotting genomic data
 Description: Extension of the basejump toolkit for bioinformatics.
-Version: 0.2.10
-Date: 2019-08-06
+Version: 0.2.11
+Date: 2019-08-12
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,11 +23,13 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.5),
-    basejump (>= 0.11.4)
+    basejump (>= 0.11.6)
 Imports:
-    bioverbs (>= 0.2.1),
-    goalie (>= 0.3.1),
+    bioverbs (>= 0.2.5),
+    goalie (>= 0.3.4),
     BiocGenerics,
+    DropletUtils,
+    IRanges,
     SingleCellExperiment,
     SummarizedExperiment,
     S4Vectors,
@@ -38,6 +40,7 @@ Imports:
     dplyr (>= 0.8),
     ggplot2 (>= 3.2),
     ggrepel (>= 0.8),
+    ggridges (>= 0.5),
     magrittr (>= 1.5),
     matrixStats (>= 0.54),
     pheatmap (>= 1.0),
@@ -51,7 +54,7 @@ Imports:
     stats,
     utils
 Suggests:
-    acidroxygen (>= 0.0.1),
+    acidroxygen (>= 0.1),
     acidtest (>= 0.2.2),
     BiocStyle,
     knitr (>= 1.23),
@@ -68,3 +71,45 @@ biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
+Collate: 
+    'barcodeRanksPerSample-methods.R'
+    'breaks.R'
+    'data.R'
+    'deprecated.R'
+    'geoms.R'
+    'ggplot2-internal.R'
+    'ggplot2-transforms.R'
+    'globals.R'
+    'gradient.R'
+    'heatmap-internal.R'
+    'imports.R'
+    'package.R'
+    'pheatmap-internal.R'
+    'plotBarcodeRanks-methods.R'
+    'plotCellCounts-methods.R'
+    'plotCorrelationHeatmap-methods.R'
+    'plotCounts-methods.R'
+    'plotCountsCorrelation-methods.R'
+    'plotCountsCorrelationHeatmap-methods.R'
+    'plotCountsPerBiotype-methods.R'
+    'plotCountsPerBroadClass-methods.R'
+    'plotCountsPerCell-methods.R'
+    'plotCountsPerFeature-methods.R'
+    'plotCountsVsFeatures-methods.R'
+    'plotFeaturesDetected-methods.R'
+    'plotFeaturesPerCell-methods.R'
+    'plotGenderMarkers-methods.R'
+    'plotHeatmap-methods.R'
+    'plotMitoRatio-methods.R'
+    'plotMitoVsCoding-methods.R'
+    'plotNovelty-methods.R'
+    'plotPCA-methods.R'
+    'plotQC-internal.R'
+    'plotQC-methods.R'
+    'plotQuantileHeatmap-methods.R'
+    'plotSums-methods.R'
+    'plotTotalCounts-methods.R'
+    'plotZerosVsDepth-methods.R'
+    'synesthesia.R'
+    'themes.R'
+    'upset.R'

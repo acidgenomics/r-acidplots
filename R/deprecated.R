@@ -30,19 +30,6 @@ plotGenesDetected <- function(...) {
     .Defunct("plotFeaturesDetected")
 }
 
-#' @rdname deprecated
-#' @export
-theme_midnight <- function(...) {
-    .Deprecated("acid_theme_dark")
-    acid_theme_dark(...)
-}
-
-#' @rdname deprecated
-#' @export
-theme_paperwhite <- function(...) {
-    .Deprecated("acid_theme_light")
-    acid_theme_light(...)
-}
 
 
 ## nocov end

@@ -78,7 +78,7 @@ NULL
 
         ## Wrap samples by `aggregate` column, if defined.
         facets <- NULL
-        if (isTRUE("aggregate" %in% colnames(data))) {
+        if (isSubset("aggregate", colnames(data))) {
             facets <- "aggregate"
         }
         if (is.character(facets)) {
