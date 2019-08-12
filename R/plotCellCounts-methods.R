@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -92,7 +92,7 @@ NULL
 
         ## Facets
         facets <- NULL
-        if (.isAggregate(data)) {
+        if (.hasAggregate(data)) {
             facets <- c(facets, "aggregate")
         }
         if (is.character(facets)) {

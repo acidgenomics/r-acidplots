@@ -56,7 +56,7 @@ The upper bound is set to the point at which the first derivative is closest to 
 Note that only points with total counts above \code{lower} will be considered, regardless of how \code{fit.bounds} is defined.
 }
 \note{
-Updated 2019-08-08.
+Updated 2019-08-12.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

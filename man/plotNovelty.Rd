@@ -57,8 +57,12 @@ Title.}
 Updated 2019-07-27.
 }
 \examples{
-data(indrops)
-plotNovelty(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calculateMetrics(object)
+plotNovelty(object)
 }
 \author{
 Michael Steinbaugh

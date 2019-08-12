@@ -2,14 +2,20 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
 #' @inherit bioverbs::plotMitoRatio
-#' @note Updated 2019-07-27.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotMitoRatio(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' if (!anyNA(object$mitoRatio)) {
+#'     plotMitoRatio(object)
+#' }
 NULL
 
 
@@ -23,7 +29,7 @@ NULL
 
 
 
-## Updated 2019-07-27.
+## Updated 2019-08-12.
 `plotMitoRatio,SingleCellExperiment` <-  # nolint
     function(
         object,

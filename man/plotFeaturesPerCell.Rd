@@ -12,7 +12,7 @@ plotFeaturesPerCell(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL, min = 0L, max = Inf, trans = "log2",
   fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d()), title = "genes per cell")
+  acidplots::scale_fill_synesthesia_d()), title = "Features per cell")
 }
 \arguments{
 \item{object}{Object.}
@@ -57,11 +57,15 @@ Title.}
 Plot features per cell
 }
 \note{
-Updated 2019-07-24.
+Updated 2019-08-12.
 }
 \examples{
-data(indrops)
-plotFeaturesPerCell(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calculateMetrics(object)
+plotFeaturesPerCell(object)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

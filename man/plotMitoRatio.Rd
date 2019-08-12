@@ -54,11 +54,17 @@ Title.}
 Plot mitochondrial transcript abundance
 }
 \note{
-Updated 2019-07-27.
+Updated 2019-08-12.
 }
 \examples{
-data(indrops)
-plotMitoRatio(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calculateMetrics(object)
+if (!anyNA(object$mitoRatio)) {
+    plotMitoRatio(object)
+}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

@@ -7,8 +7,14 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotMitoVsCoding(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' if (!anyNA(object$nMito)) {
+#'     plotMitoVsCoding(object)
+#' }
 NULL
 
 

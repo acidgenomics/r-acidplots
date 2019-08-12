@@ -23,15 +23,18 @@
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
 #'   expand_limits expand_scale facet_wrap geom_bar geom_boxplot geom_density
-#'   geom_hline geom_jitter geom_label geom_line geom_point geom_violin geom_vline ggplot
-#'   guides labs position_jitterdodge scale_x_continuous scale_x_discrete
-#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver
+#'   geom_histogram geom_hline geom_jitter geom_label geom_line geom_point
+#'   geom_smooth geom_step geom_violin geom_vline ggplot guides labs
+#'   position_jitterdodge scale_x_continuous scale_x_discrete scale_y_continuous
+#'   stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert hasDims hasLength
-#'   hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames hasUniqueCols
-#'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
-#'   isInClosedRange isInLeftOpenRange isInt isNonNegative isNumber isPositive
-#'   isScalar isString isSubset
+#' @importFrom ggridges geom_density_ridges
+#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert hasDims
+#'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames
+#'   hasUniqueCols isCharacter isFlag isGGScale isGreaterThanOrEqualTo
+#'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
+#'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
+#'   isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
@@ -39,8 +42,8 @@
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
 #' @importFrom rlang := UQ quo_text sym syms
-#' @importFrom scales gradient_n_pal log_breaks pretty_breaks
-#' @importFrom stats as.formula dist hclust prcomp quantile
+#' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
+#' @importFrom stats as.formula dist ecdf hclust prcomp quantile
 #' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather
 #' @importFrom utils data globalVariables
