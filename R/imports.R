@@ -30,11 +30,11 @@
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom ggridges geom_density_ridges
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert hasDims
-#'   hasLength hasNames hasNoDuplicates hasNonZeroRowsAndCols hasRownames
-#'   hasUniqueCols isCharacter isFlag isGGScale isGreaterThanOrEqualTo
-#'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
-#'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
-#'   isString isSubset
+#'   hasLength hasNames hasNoDuplicates hasMetrics hasNonZeroRowsAndCols
+#'   hasRownames hasSubset hasUniqueCols isCharacter isFlag isGGScale
+#'   isGreaterThanOrEqualTo isHexColorFunction isInClosedRange isInLeftOpenRange
+#'   isInRange isInRightOpenRange isInt isNonNegative isNumber isPositive
+#'   isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom magrittr %>%
