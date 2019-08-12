@@ -23,7 +23,7 @@ barcodeRanksPerSample(object, ...)
 \item{...}{Additional arguments.}
 }
 \value{
-\code{list}.
+\code{DataFrameList}.
 }
 \description{
 Barcode ranks per sample

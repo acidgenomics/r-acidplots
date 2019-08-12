@@ -4,17 +4,30 @@
 \name{plotQC}
 \alias{plotQC}
 \alias{plotQC,SummarizedExperiment-method}
+\alias{plotQC,SingleCellExperiment-method}
 \title{Quality control}
 \usage{
 plotQC(object, ...)
 
-\S4method{plotQC}{SummarizedExperiment}(object, assay = 1L)
+\S4method{plotQC}{SummarizedExperiment}(object, assay = 1L,
+  legend = getOption(x = "acid.legend", default = TRUE))
+
+\S4method{plotQC}{SingleCellExperiment}(object, geom = c("histogram",
+  "ecdf", "violin", "ridgeline", "boxplot"), legend = getOption(x =
+  "acid.legend", default = TRUE))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
+
+\item{legend}{\code{logical(1)}.
+Include plot legend.}
+
+\item{geom}{\code{character(1)}.
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
 
 \item{...}{Additional arguments.}
 }
@@ -25,12 +38,21 @@ Assay name or index position.}
 Quality control
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-08-12.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment,
+    package = "acidtest"
+)
 
 ## SummarizedExperiment ====
-plotQC(rse)
+object <- RangedSummarizedExperiment
+plotQC(object)
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calculateMetrics(object)
+plotQC(object, legend = FALSE)
 }
