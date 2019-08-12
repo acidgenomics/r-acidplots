@@ -42,7 +42,10 @@ NULL
 
 ## Updated 2019-08-12.
 `plotSums,matrix` <-  # nolint
-    function(object, MARGIN = 1L) {
+    function(
+        object,
+        MARGIN = 1L  # nolint
+    ) {
         assert(isInt(MARGIN))
         fname <- switch(EXPR = MARGIN, "1" = "rowSums", "2" = "colSums")
         ## Providing method support here for sparse matrix.
@@ -93,7 +96,11 @@ setMethod(
 
 ## Updated 2019-08-12.
 `plotSums,SummarizedExperiment` <-  # nolint
-    function(object, assay = 1L, MARGIN) {
+    function(
+        object,
+        assay = 1L,
+        MARGIN = 1L  # nolint
+    ) {
         plotSums(
             object = assay(object, i = assay),
             MARGIN = MARGIN
