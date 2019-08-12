@@ -23,10 +23,10 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.5),
-    basejump (>= 0.11.5)
+    basejump (>= 0.11.6)
 Imports:
-    bioverbs (>= 0.2.4),
-    goalie (>= 0.3.2),
+    bioverbs (>= 0.2.5),
+    goalie (>= 0.3.4),
     BiocGenerics,
     DropletUtils,
     IRanges,
@@ -108,6 +108,7 @@ Collate:
     'plotQC-internal.R'
     'plotQC-methods.R'
     'plotQuantileHeatmap-methods.R'
+    'plotSums-methods.R'
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
     'synesthesia.R'

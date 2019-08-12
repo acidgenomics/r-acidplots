@@ -1,3 +1,11 @@
+## acidplots 0.2.11 (2019-08-12)
+
+### Major changes
+
+- Migrated some QC plotting functions previously defined in bcbioSingleCell
+  package. This makes it possible to share the code for new Chromium package,
+  designed for importing single cell RNA-seq data from 10X Genomics.
+
 ## acidplots 0.2.10 (2019-08-06)
 
 ### Minor changes
