@@ -34,6 +34,7 @@
     }
 
     data <- metrics(object)
+    ## nocov start
     if (!isSubset(metricCol, colnames(data))) {
         stop(sprintf("'%s' is not defined in 'colData()'.", metricCol))
     } else if (anyNA(data[[metricCol]])) {
@@ -41,6 +42,7 @@
     } else if (all(data[[metricCol]] == 0L)) {
         stop(sprintf("'%s' in 'colData()' contains only zeros.", metricCol))
     }
+    ## nocov end
 
     mapping <- aes(
         color = !!sym("interestingGroups"),
@@ -212,6 +214,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         matchInterestingGroups(object, interestingGroups)
 
     data <- metrics(object)
+    ## nocov start
     if (!isSubset(c(xCol, yCol), colnames(data))) {
         stop(sprintf(
             "%s are not defined in 'colData()'.",
@@ -226,6 +229,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
     } else if (all(data[[yCol]] == 0L)) {
         stop(sprintf("'%s' in 'colData()' contains only zeros.", yCol))
     }
+    ## nocov end
 
     p <- ggplot(
         data = data,
