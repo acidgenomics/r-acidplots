@@ -214,17 +214,17 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
     data <- metrics(object)
     if (!isSubset(c(xCol, yCol), colnames(data))) {
         stop(sprintf(
-            "%s are not defined in `colData()`.",
+            "%s are not defined in 'colData()'.",
             toString(c(xCol, yCol))
         ))
     } else if (anyNA(data[[xCol]])) {
-        stop(sprintf("`%s` in `colData()` contains NA values.", xCol))
+        stop(sprintf("'%s' in 'colData()' contains NA values.", xCol))
     } else if (anyNA(data[[yCol]])) {
-        stop(sprintf("`%s` in `colData()` contains NA values.", yCol))
+        stop(sprintf("'%s' in 'colData()' contains NA values.", yCol))
     } else if (all(data[[xCol]] == 0L)) {
-        stop(sprintf("`%s` in `colData()` contains only zeros.", xCol))
+        stop(sprintf("'%s' in 'colData()' contains only zeros.", xCol))
     } else if (all(data[[yCol]] == 0L)) {
-        stop(sprintf("`%s` in `colData()` contains only zeros.", yCol))
+        stop(sprintf("'%s' in 'colData()' contains only zeros.", yCol))
     }
 
     p <- ggplot(
