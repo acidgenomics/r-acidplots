@@ -2,17 +2,7 @@
 % Please edit documentation in R/deprecated.R
 \name{deprecated}
 \alias{deprecated}
-\alias{theme_midnight}
-\alias{theme_paperwhite}
 \title{Deprecated functions}
-\usage{
-theme_midnight(...)
-
-theme_paperwhite(...)
-}
-\arguments{
-\item{...}{Additional arguments.}
-}
 \value{
 \code{.Deprecated}.
 }

@@ -1,16 +1,25 @@
 #' @name plotQC
 #' @inherit bioverbs::plotQC
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment,
+#'     package = "acidtest"
+#' )
 #'
 #' ## SummarizedExperiment ====
-#' plotQC(rse)
+#' object <- RangedSummarizedExperiment
+#' plotQC(object)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' plotQC(object, legend = FALSE)
 NULL
 
 
@@ -24,58 +33,39 @@ NULL
 
 
 
-## Consider exporting this as a method?
-## Updated 2019-07-23.
-.plotSumsECDF <- function(object, fun) {
-    assert(is.function(fun))
-    data <- tibble(x = fun(object))
-    ggplot(
-        data = data,
-        mapping = aes(x = !!sym("x"))
-    ) +
-        stat_ecdf(size = 1L) +
-        scale_x_continuous(trans = "sqrt") +
-        labs(
-            x = makeLabel(deparse(substitute(fun))),
-            y = "ECDF"
-        )
-}
-
-
-
-## Updated 2019-07-23.
+## Updated 2019-08-12.
 `plotQC,SummarizedExperiment` <-  # nolint
-    function(object, assay = 1L) {
+    function(
+        object,
+        assay = 1L,
+        legend
+    ) {
         validObject(object)
-        assert(isScalar(assay))
-
-        ## Always coerce to dense matrix.
-        mat <- as.matrix(assays(object)[[assay]])
-
-        ## Total counts.
-        totalCounts <- plotTotalCounts(object, assay = assay)
-
-        ## Dropout rate.
-        zerosVsDepth <- plotZerosVsDepth(object, assay = assay)
-
-        ## Counts per row (gene).
-        rowSums <- .plotSumsECDF(mat, fun = rowSums) +
-            labs(title = "counts per row")
-
-        ## Counts per column (sample).
-        colSums <- .plotSumsECDF(mat, fun = colSums) +
-            labs(title = "counts per column")
-
-        ## Return paneled plot.
-        plot_grid(
-            plotlist = list(
-                totalCounts = totalCounts,
-                zerosVsDepth = zerosVsDepth,
-                rowSums = rowSums,
-                colSums = colSums
-            )
+        assert(
+            isScalar(assay),
+            isFlag(legend)
         )
+        totalCounts <- plotTotalCounts(object, assay = assay)
+        zerosVsDepth <- plotZerosVsDepth(object, assay = assay)
+        rowSums <- plotSums(object, assay = assay, MARGIN = 1L)
+        colSums <- plotSums(object, assay = assay, MARGIN = 2L)
+        plotlist <- list(
+            totalCounts = totalCounts,
+            zerosVsDepth = zerosVsDepth,
+            rowSums = rowSums,
+            colSums = colSums
+        )
+        plotlist <- Filter(f = Negate(is.null), x = plotlist)
+        ## Hide the legends, if desired.
+        if (identical(legend, FALSE)) {
+            plotlist <- .hideLegendsInPlotlist(plotlist)
+
+        }
+        ## Return as grid.
+        plot_grid(plotlist = plotlist)
     }
+
+formals(`plotQC,SummarizedExperiment`)[["legend"]] <- formalsList[["legend"]]
 
 
 
@@ -85,4 +75,72 @@ setMethod(
     f = "plotQC",
     signature = signature("SummarizedExperiment"),
     definition = `plotQC,SummarizedExperiment`
+)
+
+
+
+## Updated 2019-08-12.
+`plotQC,SingleCellExperiment` <-  # nolint
+    function(
+        object,
+        geom,
+        legend
+    ) {
+        validObject(object)
+        assert(
+            hasMetrics(object),
+            identical(assayNames(object)[[1L]], "counts"),
+            isFlag(legend)
+        )
+        geom <- match.arg(geom)
+        ## Don't show cell counts for unfiltered datasets.
+        if (hasSubset(object, metadata = "filterCells")) {
+            cellCounts <- plotCellCounts(object)
+            zerosVsDepth <- NULL
+        } else {
+            cellCounts <- NULL
+            zerosVsDepth <- plotZerosVsDepth(object)
+        }
+        countsPerCell <- plotCountsPerCell(object, geom = geom)
+        featuresPerCell <- plotFeaturesPerCell(object, geom = geom)
+        countsVsFeatures <- plotCountsVsFeatures(object)
+        novelty <- plotNovelty(object, geom = geom)
+        mitoRatio <-
+            tryCatch(
+                expr = plotMitoRatio(object, geom = geom),
+                error = function(e) NULL
+            )
+        rowSums <- plotSums(object, MARGIN = 1L)
+        colSums <- plotSums(object, MARGIN = 2L)
+        plotlist <- list(
+            cellCounts = cellCounts,
+            countsPerCell = countsPerCell,
+            featuresPerCell = featuresPerCell,
+            countsVsFeatures = countsVsFeatures,
+            novelty = novelty,
+            mitoRatio = mitoRatio,
+            zerosVsDepth = zerosVsDepth,
+            rowSums = rowSums,
+            colSums = colSums
+        )
+        plotlist <- Filter(f = Negate(is.null), x = plotlist)
+        ## Hide the legends, if desired.
+        if (identical(legend, FALSE)) {
+            plotlist <- .hideLegendsInPlotlist(plotlist)
+        }
+        ## Return as grid.
+        plot_grid(plotlist = plotlist)
+    }
+
+formals(`plotQC,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotQC,SingleCellExperiment`)[["legend"]] <- formalsList[["legend"]]
+
+
+
+#' @rdname plotQC
+#' @export
+setMethod(
+    f = "plotQC",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotQC,SingleCellExperiment`
 )
