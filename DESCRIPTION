@@ -72,7 +72,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
-    'assert-internal.R'
     'barcodeRanksPerSample-methods.R'
     'breaks.R'
     'data.R'
