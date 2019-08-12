@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.11</span>
       </span>
     </div>
 
@@ -223,7 +223,7 @@ Plot style.</p></td>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>rownames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='no'>rse</span>))
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"</div><div class='input'><span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>basejump</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/basejump/man/Gene2Symbol-class.html'>Gene2Symbol</a></span>(<span class='no'>rse</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>rownames</span>)</div><div class='output co'>#&gt; [1] "gene001" "gene002" "gene003" "gene004" "gene005" "gene006"</div><div class='input'><span class='no'>g2s</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>basejump</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/basejump/man/Gene2Symbol.html'>Gene2Symbol</a></span>(<span class='no'>rse</span>)
 <span class='no'>geneIDs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneID"</span>]])
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>geneIDs</span>)</div><div class='output co'>#&gt; [1] "ENSG00000000003" "ENSG00000000005" "ENSG00000000419" "ENSG00000000457"
 #&gt; [5] "ENSG00000000460" "ENSG00000000938"</div><div class='input'><span class='no'>geneNames</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>g2s</span><span class='kw'>[[</span><span class='st'>"geneName"</span>]])

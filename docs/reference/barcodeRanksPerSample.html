@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot sexually dimorphic gender marker genes — plotGenderMarkers • acidplots</title>
+<title>Barcode ranks per sample — barcodeRanksPerSample • acidplots</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -34,10 +34,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Plot sexually dimorphic gender marker genes — plotGenderMarkers" />
+<meta property="og:title" content="Barcode ranks per sample — barcodeRanksPerSample" />
 
-<meta property="og:description" content="This is a convenience function that quickly plots known sexually dimorphic
-genes, and overall gene experssion for the X and Y chromosomes." />
+<meta property="og:description" content="Barcode ranks per sample" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,27 +111,22 @@ genes, and overall gene experssion for the X and Y chromosomes." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot sexually dimorphic gender marker genes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotGenderMarkers-methods.R'><code>R/plotGenderMarkers-methods.R</code></a></small>
-    <div class="hidden name"><code>plotGenderMarkers.Rd</code></div>
+    <h1>Barcode ranks per sample</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/barcodeRanksPerSample-methods.R'><code>R/barcodeRanksPerSample-methods.R</code></a></small>
+    <div class="hidden name"><code>barcodeRanksPerSample.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a convenience function that quickly plots known sexually dimorphic
-genes, and overall gene experssion for the X and Y chromosomes.</p>
+    <p>Barcode ranks per sample</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
-  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>, <span class='kw'>medianLine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span>
-  <span class='kw'>=</span> <span class='st'>"acid.color.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>scale_colour_synesthesia_d</a></span>()), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='st'>"acid.legend"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"wide"</span>)</pre>
+<span class='co'># S4 method for SingleCellExperiment</span>
+<span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>,
+  <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>fit.bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,52 +136,16 @@ genes, and overall gene experssion for the X and Y chromosomes.</p>
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>assay</th>
-      <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector(1)</a></code>.
-Assay name or index position.</p></td>
+      <th>lower</th>
+      <td><p>A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.</p></td>
     </tr>
     <tr>
-      <th>interestingGroups</th>
-      <td><p><code>character</code>.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.</p></td>
+      <th>fit.bounds</th>
+      <td><p>A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.</p></td>
     </tr>
     <tr>
-      <th>trans</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Name of the axis scale transformation to apply.</p>
-<p>For more information:</p><pre>help(topic = "scale_x_continuous", package = "ggplot2")
-</pre></td>
-    </tr>
-    <tr>
-      <th>countsAxisLabel</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Label to use for the counts axis.</p></td>
-    </tr>
-    <tr>
-      <th>medianLine</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include median line for each group. Disabled if samples are colored by
-sample name.</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p><code>ScaleDiscrete</code>.
-Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
-<p>To set the discrete color palette globally, use:</p><pre>options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-</pre></td>
-    </tr>
-    <tr>
-      <th>legend</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include plot legend.</p></td>
-    </tr>
-    <tr>
-      <th>style</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Plot style.</p></td>
+      <th>df</th>
+      <td><p>Further arguments to pass to <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -197,32 +155,50 @@ Plot style.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>ggplot</code>.</p>
+    <p><code>list</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Analyses of droplet-based scRNA-seq data often show a plot of the log-total count against the log-rank of each barcode, where the highest ranks have the largest totals.
+This is equivalent to a transposed empirical cumulative density plot with log-transformed axes, which focuses on the barcodes with the largest counts.
+The <code>barcodeRanks</code> function will compute these ranks for all barcodes.
+Barcodes with the same total count receive the same average rank to avoid problems with discrete runs of the same total.</p>
+<p>The function will also identify a number of interesting points on the curve for downstream use, namely the inflection and knee points.
+Both of these points correspond to a sharp transition between two components of the total count distribution, 
+presumably reflecting the difference between empty droplets with little RNA and cell-containing droplets with much more RNA.</p><ul>
+<li><p>The inflection point is computed as the point on the rank/total curve where the first derivative is minimized.
+The derivative is computed directly from all points on the curve with total counts greater than <code>lower</code>.
+This avoids issues with erratic behaviour of the curve at lower totals.</p></li>
+<li><p>The knee point is defined as the point on the curve where the signed curvature is minimized.
+This requires calculation of the second derivative, which is much more sensitive to noise in the curve.
+To overcome this, a smooth spline is fitted to the log-total counts against the log-rank using the <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code> function.
+Derivatives are then calculated from the fitted spline using <code><a href='https://rdrr.io/r/stats/predict.html'>predict</a></code>.</p></li>
+</ul><p>We supply a default setting of <code>df</code> to avoid overfitting the spline, as this results in unstability in the higher derivatives (and thus the curvature).
+<code>df</code> and other arguments to <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code> can be tuned if the estimated knee point is not at an appropriate location.
+We also restrict the fit to lie within the bounds defined by <code>fit.bounds</code> to focus on the region containing the knee point.
+This allows us to obtain an accurate fit with low <code>df</code>, rather than attempting to model the entire curve.</p>
+<p>If <code>fit.bounds</code> is not specified, the lower bound is automatically set to the inflection point, which should lie after the knee point.
+The upper bound is set to the point at which the first derivative is closest to zero, i.e., the &#8220;plateau&#8221; region before the knee point.
+Note that only points with total counts above <code>lower</code> will be considered, regardless of how <code>fit.bounds</code> is defined.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-29.</p>
-<p>Currently only <em>Homo sapiens</em> and <em>Mus musculus</em> genomes are supported.</p>
+    <p>Updated 2019-08-12.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='plotCounts.html'>plotCounts()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/DropletUtils/man/barcodeRanks.html'>DropletUtils::barcodeRanks()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
-)
-<span class='no'>rse</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='no'>sce</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='co'>## &gt; plotGenderMarkers(rse)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='co'>## &gt; plotGenderMarkers(sce)</span></div></pre>
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span>(<span class='st'>"DropletUtils"</span>) <span class='kw'>&gt;=</span> <span class='st'>"1.4"</span>) {
+    <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
+    <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>)
+    <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>x</span>)
+}</div><div class='output co'>#&gt; <span class='error'>Error in barcodeRanksPerSample(object): could not find function "barcodeRanksPerSample"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -230,6 +206,8 @@ Plot style.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#note">Note</a></li>
 
