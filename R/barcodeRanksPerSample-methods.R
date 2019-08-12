@@ -1,7 +1,7 @@
 #' @name barcodeRanksPerSample
 #' @inherit bioverbs::barcodeRanksPerSample
 #' @inherit DropletUtils::barcodeRanks
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -30,23 +30,24 @@ NULL
 
 
 
-## FIXME Seeing this warning pop up on minimal example.
-## Warning in smooth.spline(x[new.keep], y[new.keep], df = df, ...) :
-## not using invalid df; must have 1 < df <= n := #{unique x} = 13
-## Calls: barcodeRanksPerSample ... lapply -> FUN -> do.call -> <Anonymous> -> smooth.spline
+## nolint start
+## Muffle this warning:
+## > Warning in smooth.spline(x[new.keep], y[new.keep], df = df, ...) :
+## > not using invalid df; must have 1 < df <= n := #{unique x} = 13
+## > Calls: barcodeRanksPerSample ... lapply -> FUN -> do.call -> <Anonymous>
+## > -> smooth.spline
+## nolint end
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-08-12.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object) {
         assert(packageVersion("DropletUtils") >= "1.4")
         which <- sys.parent()
-
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
-
         ## Subset the counts per sample into a list.
         countsPerSample <- lapply(
             X = samples,
@@ -57,19 +58,30 @@ NULL
             counts = counts
         )
         names(countsPerSample) <- samples
-
         ## Calculate the ranks per sample.
         ## Note that this now supports sparse matrices.
         DataFrameList(lapply(
             X = countsPerSample,
             FUN = function(counts) {
-                x <- do.call(
-                    what = barcodeRanks,
-                    args = matchArgsToDoCall(
-                        args = list(m = counts),
-                        removeFormals = "object",
-                        which = which
-                    )
+                x <- withCallingHandlers(
+                    expr = do.call(
+                        what = barcodeRanks,
+                        args = matchArgsToDoCall(
+                            args = list(m = counts),
+                            removeFormals = "object",
+                            which = which
+                        )
+                    ),
+                    warning = function(w) {
+                        if (isTRUE(grepl(
+                            pattern = "invalid df",
+                            x = as.character(w)
+                        ))) {
+                            invokeRestart("muffleWarning")
+                        } else {
+                            w
+                        }
+                    }
                 )
                 ## Check DropletUtils return.
                 assert(

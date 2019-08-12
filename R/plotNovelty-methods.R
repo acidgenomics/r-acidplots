@@ -8,8 +8,12 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotNovelty(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' plotNovelty(object)
 NULL
 
 

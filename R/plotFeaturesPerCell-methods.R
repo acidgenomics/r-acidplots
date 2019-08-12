@@ -2,14 +2,18 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
 #' @inherit bioverbs::plotFeaturesPerCell
-#' @note Updated 2019-07-24.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(indrops)
-#' plotFeaturesPerCell(indrops)
+#' data(SingleCellExperiment, package = "acidtest")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' object <- calculateMetrics(object)
+#' plotFeaturesPerCell(object)
 NULL
 
 
@@ -23,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## Updated 2019-08-12.
 `plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -33,14 +37,14 @@ NULL
         max = Inf,
         trans = "log2",
         fill,
-        title = "genes per cell"
+        title = "Features per cell"
     ) {
         geom <- match.arg(geom)
         do.call(
             what = .plotQCMetric,
             args = list(
                 object = object,
-                metricCol = "nGene",
+                metricCol = "nFeature",
                 geom = geom,
                 interestingGroups = interestingGroups,
                 min = min,

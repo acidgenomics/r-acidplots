@@ -53,8 +53,14 @@ Plot mitochondrial vs. coding counts
 Updated 2019-07-24.
 }
 \examples{
-data(indrops)
-plotMitoVsCoding(indrops)
+data(SingleCellExperiment, package = "acidtest")
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+object <- calculateMetrics(object)
+if (!anyNA(object$nMito)) {
+    plotMitoVsCoding(object)
+}
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

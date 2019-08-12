@@ -1,5 +1,5 @@
 ## Plot a single quality control metric.
-## Updated 2019-07-29.
+## Updated 2019-08-12.
 .plotQCMetric <- function(
     object,
     metricCol,
@@ -35,11 +35,11 @@
 
     data <- metrics(object)
     if (!isSubset(metricCol, colnames(data))) {
-        stop(sprintf("`%s` is not defined in `colData()`.", metricCol))
+        stop(sprintf("'%s' is not defined in 'colData()'.", metricCol))
     } else if (anyNA(data[[metricCol]])) {
-        stop(sprintf("`%s` in `colData()` contains NA values.", metricCol))
+        stop(sprintf("'%s' in 'colData()' contains NA values.", metricCol))
     } else if (all(data[[metricCol]] == 0L)) {
-        stop(sprintf("`%s` in `colData()` contains only zeros.", metricCol))
+        stop(sprintf("'%s' in 'colData()' contains only zeros.", metricCol))
     }
 
     mapping <- aes(
@@ -169,7 +169,7 @@
 
     ## Facets.
     facets <- NULL
-    if (.isAggregate(data)) {
+    if (.hasAggregate(data)) {
         facets <- "aggregate"
     }
     if (is.character(facets)) {
@@ -260,7 +260,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
 
     ## Facets.
     facets <- NULL
-    if (.isAggregate(data)) {
+    if (.hasAggregate(data)) {
         facets <- c(facets, "aggregate")
     }
     if (is.character(facets)) {

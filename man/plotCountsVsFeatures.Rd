@@ -62,7 +62,7 @@ data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
-object <- calcualteMetrics(object)
+object <- calculateMetrics(object)
 plotCountsVsFeatures(object)
 }
 \seealso{
