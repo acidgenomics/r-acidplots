@@ -1,6 +1,6 @@
 #' @name plotQC
 #' @inherit bioverbs::plotQC
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
