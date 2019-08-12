@@ -92,7 +92,7 @@ NULL
 
         ## Facets
         facets <- NULL
-        if (.hasAggregate(data)) {
+        if (isSubset("aggregate", colnames(data))) {
             facets <- c(facets, "aggregate")
         }
         if (is.character(facets)) {
