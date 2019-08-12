@@ -8,7 +8,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assays assays<- colData
 #'   rowData
-#' @importFrom S4Vectors DataFrame aggregate
+#' @importFrom S4Vectors DataFrame aggregate metadata
 #' @importFrom UpSetR upset
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
@@ -46,5 +46,5 @@
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile
 #' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather
-#' @importFrom utils data globalVariables
+#' @importFrom utils data globalVariables packageVersion
 NULL
