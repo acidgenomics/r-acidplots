@@ -6,8 +6,8 @@
 #'
 #' @inheritParams acidroxygen::params
 #' @param point `character(1)`.
-#'   Label either the "`knee`" or "`inflection`" points per sample. To disable,
-#'   use "`none`". Requires `geom = "ecdf"`.
+#'   Label either the knee or inflection points per sample.
+#'   Requires `geom = "ecdf"`.
 #' @param ... Additional arguments.
 #'
 #' @examples

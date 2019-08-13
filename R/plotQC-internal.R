@@ -244,7 +244,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         scale_y_continuous(trans = yTrans)
 
     if (isTRUE(trendline)) {
-        ## If `method = "gam"`, `mgcv` package is required.
+        ## If `method = "gam"`, mgcv package is required.
         ## Otherwise build checks will error.
         p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
     }

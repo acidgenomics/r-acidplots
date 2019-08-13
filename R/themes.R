@@ -26,13 +26,13 @@
 #'
 #' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.
-#' @param face `character(1)`. Font face ("`bold`", "`plain`").
+#' @param face `character(1)`. Font face (`"bold"`, `"plain"`).
 #' @param aspect_ratio `numeric(1)`. Aspect ratio, specifying the plot
 #'   proportions. Use `1` for a perfectly square plot (including the axis
 #'   labels).
 #' @param legend_position `character(1)`. Legend key position. We're being a
-#'   little more restrictive here, only allowing "`bottom`", "`right`", or
-#'   "`none`". Including the legend at the top or the left side of the plot
+#'   little more restrictive here, only allowing `"bottom"`, `"right"`, or
+#'   `"none"`. Including the legend at the top or the left side of the plot
 #'   rarely makes sense and is discouraged.
 #' @param grid `logical(1)`. Label the major panel grids with a gray accent.
 #' @param minimal `logical(1)`. Remove all axis lines, axis ticks, and

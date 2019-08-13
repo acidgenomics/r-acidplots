@@ -27,7 +27,7 @@
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `character(1)`.
-#'   Text color (e.g. `"orange"`).
+#'   Text color (e.g. orange).
 #' @param size `integer(1)`.
 #'   Font size.
 #' @param xintercept,yintercept `numeric(1)`.
@@ -37,8 +37,8 @@
 #' @param col `character(1)`.
 #'   Column name.
 #' @param fun `character(1)`.
-#'   Function name to use for average calculation. Currently supports "`mean`"
-#'   or "`median`".
+#'   Function name to use for average calculation.
+#'   Currently supports mean or median.
 #' @param digits `integer(1)`.
 #'   Number of significant digits to use. Defaults to rounded.
 #'
@@ -96,7 +96,7 @@ acid_geom_abline <-  # nolint
             (is.null(xintercept) && is.null(yintercept)) ||
             (is.numeric(xintercept) && is.numeric(yintercept))
         ) {
-            stop("Either `xintercept` or `yintercept` is required.")
+            stop("Either 'xintercept' or 'yintercept' is required.")
         } else if (is.numeric(xintercept)) {
             geom_vline(
                 xintercept = xintercept,

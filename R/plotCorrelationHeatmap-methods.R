@@ -5,9 +5,9 @@
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
 #' @param method `character(1)`.
-#'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
-#'   [stats::cor()] documentation for details.
+#'   Correlation coefficient (or covariance) method to be computed.
+#'   Defaults to pearson, but spearman or kendall can also be used.
+#'   Refer to the [`cor()`][stats::cor] documentation for details.
 #' @param ... Additional arguments.
 #'
 #' @return `pheatmap`.

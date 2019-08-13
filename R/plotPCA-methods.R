@@ -77,7 +77,7 @@ NULL
         call <- standardizeCall()
         ## genes
         if ("genes" %in% names(call)) {
-            stop("`genes` is defunct. Use `ntop` argument instead.")
+            stop("'genes' is defunct. Use 'ntop' argument instead.")
         }
         ## samples, censorSamples
         if (any(c("samples", "censorSamples") %in% names(call))) {
@@ -85,8 +85,14 @@ NULL
         }
         ## returnData
         if ("returnData" %in% names(call)) {
-            stop("`returnData` is defunct. Use `return` argument instead.")
+            stop("'returnData' is defunct. Use 'return' argument instead.")
         }
+        ## Error on unsupported arguments.
+        assert(isSubset(
+            x = setdiff(names(call), ""),
+            y = names(formals())
+        ))
+        rm(call)
         ## nocov end
 
         validObject(object)
