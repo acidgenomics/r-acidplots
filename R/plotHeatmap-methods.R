@@ -53,7 +53,7 @@
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
 #'   Whether the values should be centered and scaled in either the row or
-#'   column direction ("`row`", "`column`"), or remain unscaled ("`none`").
+#'   column direction, or remain unscaled.
 #' @param breaks `numeric` or `NULL`.
 #'   A sequence of numbers that covers the range of values in the matrix. Must
 #'   be 1 element longer than the color vector, which is handled internally
