@@ -90,16 +90,15 @@ NULL
 
         ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {
-            message(paste(
-                sum(is.na(mat)),
-                "NA values detected in matrix.",
-                "Replacing with zeros."
+            message(sprintf(
+                "%d NA detected in matrix. Replacing with zeros.",
+                sum(is.na(mat))
             ))
             mat[is.na(mat)] <- 0L
         }
 
-        message(paste(
-            "Calculating correlation matrix using", method, "method."
+        message(sprintf(
+            "Calculating correlation matrix using '%s' method.", method
         ))
         cor <- cor(x = mat, y = NULL, method = method)
 

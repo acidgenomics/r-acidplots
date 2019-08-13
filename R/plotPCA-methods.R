@@ -122,7 +122,7 @@ NULL
             nGene <- ntop
         }
 
-        message(paste("Plotting PCA using", nGene, "genes."))
+        message(sprintf("Plotting PCA using %d genes.", nGene))
 
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assays(object)[[assay]]

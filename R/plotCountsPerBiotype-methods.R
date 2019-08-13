@@ -91,9 +91,9 @@ NULL
         ## Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
             ## nocov start
-            warning(paste(
-                "rowData() does not contain biotypes defined in",
-                biotypeCol, "column."
+            warning(sprintf(
+                "'rowData()' does not contain biotypes defined in '%s' column.",
+                biotypeCol
             ))
             return(invisible())
             ## nocov end
