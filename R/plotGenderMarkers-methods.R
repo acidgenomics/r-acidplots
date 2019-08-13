@@ -56,10 +56,9 @@ NULL
             sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
             sub("_", " ", .)
         if (!organism %in% supportedOrganisms) {
-            stop(paste0(
-                organism, " is not supported.\n",
-                "Supported organisms: ",
-                toString(supportedOrganisms)
+            stop(sprintf(
+                "'%s' is not supported.\nSupported: %s.",
+                organism, toString(supportedOrganisms)
             ))
         }
         markers <- markers[[camelCase(organism)]]
