@@ -7,6 +7,8 @@ test_that("SingleCellExperiment", {
     expect_s3_class(p, "ggplot")
 })
 
+skip_if_not(packageVersion("DropletUtils") >= "1.4")
+
 point <- eval(formals(`plotCountsPerCell,SingleCellExperiment`)[["point"]])
 with_parameters_test_that(
     "Inflection/knee point labeling", {
