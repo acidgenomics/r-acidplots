@@ -20,9 +20,12 @@
     out <- list(rows = FALSE, cols = FALSE)
 
     if (isTRUE(rows) || isTRUE(cols)) {
-        message(paste0(
-            "Performing hierarchical clustering.\n",
-            "Using stats::hclust(method = ", deparse(method), ")."
+        message(sprintf(
+            fmt = paste0(
+                "Performing hierarchical clustering.\n",
+                "Using 'stats::hclust(method = %s)'."
+            ),
+            deparse(method)
         ))
     }
 
@@ -84,7 +87,7 @@
     }
 
     if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, " (z-score)."))
+        message(sprintf("Scaling matrix per %s (z-score).", scale))
     }
 
     ## Assert checks to look for sufficient variance when the user is attempting
