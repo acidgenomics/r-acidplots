@@ -19,15 +19,15 @@ acid_theme_dark(base_size = 14L, base_family = "", face = c("bold",
 
 \item{base_family}{\code{character(1)}. Base font family.}
 
-\item{face}{\code{character(1)}. Font face ("\code{bold}", "\code{plain}").}
+\item{face}{\code{character(1)}. Font face (\code{"bold"}, \code{"plain"}).}
 
 \item{aspect_ratio}{\code{numeric(1)}. Aspect ratio, specifying the plot
 proportions. Use \code{1} for a perfectly square plot (including the axis
 labels).}
 
 \item{legend_position}{\code{character(1)}. Legend key position. We're being a
-little more restrictive here, only allowing "\code{bottom}", "\code{right}", or
-"\code{none}". Including the legend at the top or the left side of the plot
+little more restrictive here, only allowing \code{"bottom"}, \code{"right"}, or
+\code{"none"}. Including the legend at the top or the left side of the plot
 rarely makes sense and is discouraged.}
 
 \item{grid}{\code{logical(1)}. Label the major panel grids with a gray accent.}

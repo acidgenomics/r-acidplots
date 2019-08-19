@@ -41,7 +41,7 @@ Corresponds to factors describing the columns of the object.}
 
 \item{scale}{\code{character(1)}.
 Whether the values should be centered and scaled in either the row or
-column direction ("\code{row}", "\code{column}"), or remain unscaled ("\code{none}").}
+column direction, or remain unscaled.}
 
 \item{clusteringMethod}{\code{character(1)}.
 Clustering method. Accepts the same values as \code{\link[stats:hclust]{hclust()}}.}
