@@ -1,3 +1,10 @@
+## acidplots 0.2.12 (2019-08-19)
+
+### Minor changes
+
+- Improved consistency of internal tibble handling inside plot functions.
+- Updated basejump dependency versions.
+
 ## acidplots 0.2.11 (2019-08-12)
 
 ### Major changes
