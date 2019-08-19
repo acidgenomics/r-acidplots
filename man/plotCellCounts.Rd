@@ -40,7 +40,7 @@ Title.}
 Plot cell counts
 }
 \note{
-Updated 2019-08-12.
+Updated 2019-08-19.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
