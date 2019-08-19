@@ -92,7 +92,7 @@ NULL
     )
 
     p <- ggplot(
-        data = data,
+        data = as_tibble(data),
         mapping = aes(
             x = !!sym("interestingGroups"),
             y = !!sym("counts"),
@@ -146,7 +146,7 @@ NULL
     )
 
     p <- ggplot(
-        data = data,
+        data = as_tibble(data),
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("counts"),

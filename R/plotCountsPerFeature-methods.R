@@ -85,7 +85,7 @@ NULL
         }
 
         ## Construct the ggplot.
-        p <- ggplot(data = data)
+        p <- ggplot(data = as_tibble(data))
 
         if (geom == "density") {
             p <- p +

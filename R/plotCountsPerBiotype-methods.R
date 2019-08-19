@@ -128,7 +128,7 @@ NULL
 
         ## SingleCellExperiment requires cell2sample mapping.
         if (is(object, "SingleCellExperiment")) {
-            c2s <- cell2sample(object, return = "tibble") %>%
+            c2s <- cell2sample(object, return = "tbl_df") %>%
                 rename(!!sym("colname") := !!sym("cellID"))
             data <- left_join(
                 x = as_tibble(data),
