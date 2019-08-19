@@ -74,11 +74,13 @@ NULL
         )
         xData <- x %>%
             meltCounts(minCounts = NULL) %>%
+            as_tibble() %>%
             ungroup() %>%
             mutate_if(is.factor, as.character) %>%
             mutate(!!sym("type") := xTitle)
         yData <- y %>%
             meltCounts(minCounts = NULL) %>%
+            as_tibble() %>%
             ungroup() %>%
             mutate_if(is.factor, as.character) %>%
             mutate(!!sym("type") := yTitle)
