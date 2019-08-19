@@ -136,17 +136,16 @@ NULL
             PC2 = pca[["x"]][, 2L],
             sampleData(object)
         )
-
         ## Note that we're assigning the percent variation values used
         ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[1L:2L]
-
         if (return == "DataFrame") {
             return(data)
         }
 
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = as_tibble(data),
+            data = data,
             mapping = aes(
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),

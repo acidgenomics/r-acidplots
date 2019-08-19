@@ -68,7 +68,7 @@ NULL
         featureCount <- colSums(counts >= minCounts)
 
         data <- metrics(object) %>%
-            as_tibble() %>%
+            as_tibble(rownames = NULL) %>%
             mutate(featureCount = !!featureCount)
 
         p <- ggplot(

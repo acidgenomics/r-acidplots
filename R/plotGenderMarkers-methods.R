@@ -63,7 +63,6 @@ NULL
         }
         markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
-
         ## Message the user instead of erroring, since many datasets don't
         ## contain the dimorphic gender markers.
         genes <- tryCatch(
@@ -79,7 +78,6 @@ NULL
         if (length(genes) == 0L) {
             return(invisible())
         }
-
         do.call(
             what = plotCounts,
             args = matchArgsToDoCall(

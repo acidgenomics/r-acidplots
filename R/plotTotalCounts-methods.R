@@ -60,7 +60,7 @@ NULL
             colSums <- Matrix::colSums
         }
         data <- sampleData(object) %>%
-            as_tibble() %>%
+            as_tibble(rownames = NULL) %>%
             mutate(totalCounts = colSums(!!counts))
 
         yLab <- "counts"

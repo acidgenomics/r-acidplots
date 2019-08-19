@@ -1,8 +1,8 @@
 Package: acidplots
 Title: Functions for plotting genomic data
 Description: Extension of the basejump toolkit for bioinformatics.
-Version: 0.2.11
-Date: 2019-08-12
+Version: 0.2.12
+Date: 2019-08-19
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,10 +23,10 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.5),
-    basejump (>= 0.11.6)
+    basejump (>= 0.11.8)
 Imports:
     bioverbs (>= 0.2.5),
-    goalie (>= 0.3.4),
+    goalie (>= 0.3.5),
     BiocGenerics,
     DropletUtils,
     IRanges,
@@ -55,7 +55,7 @@ Imports:
     utils
 Suggests:
     acidroxygen (>= 0.1),
-    acidtest (>= 0.2.2),
+    acidtest (>= 0.2.4),
     BiocStyle,
     knitr (>= 1.23),
     patrick (>= 0.0.1),

@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -25,7 +25,7 @@ NULL
 
 
 
-## Updated 2019-07-27.
+## Updated 2019-08-19.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -41,19 +41,18 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
 
-        metrics <- metrics(object)
+        colData <- colData(object)
+        assert(isSubset("sampleID", colnames(colData)))
         sampleData <- sampleData(object)
         metricCol <- "nCells"
-
         ## Remove user-defined column, if present.
-        metrics[[metricCol]] <- NULL
+        colData[[metricCol]] <- NULL
         sampleData[[metricCol]] <- NULL
-
+        colData <- as_tibble(colData, rownames = NULL)
         sampleData <- sampleData %>%
             as_tibble(rownames = "sampleID") %>%
             mutate_all(as.factor)
-
-        data <- metrics %>%
+        data <- colData %>%
             group_by(!!sym("sampleID")) %>%
             summarise(!!sym(metricCol) := n()) %>%
             left_join(sampleData, by = "sampleID")
