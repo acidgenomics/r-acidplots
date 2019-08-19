@@ -78,6 +78,7 @@ NULL
             minCountsMethod = minCountsMethod,
             trans = trans
         )
+        data <- as_tibble(data, rownames = NULL)
 
         ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {
@@ -85,7 +86,7 @@ NULL
         }
 
         ## Construct the ggplot.
-        p <- ggplot(data = as_tibble(data))
+        p <- ggplot(data = data)
 
         if (geom == "density") {
             p <- p +

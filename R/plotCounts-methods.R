@@ -90,9 +90,10 @@ NULL
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
+    data <- as_tibble(data, rownames = NULL)
 
     p <- ggplot(
-        data = as_tibble(data),
+        data = data,
         mapping = aes(
             x = !!sym("interestingGroups"),
             y = !!sym("counts"),

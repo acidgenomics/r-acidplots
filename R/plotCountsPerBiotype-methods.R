@@ -101,7 +101,7 @@ NULL
 
         ## Get the top biotypes from the row data.
         biotypes <- rowData %>%
-            as_tibble() %>%
+            as_tibble(rownames = NULL) %>%
             select(!!sym(biotypeCol)) %>%
             group_by(!!sym(biotypeCol)) %>%
             summarise(n = n()) %>%

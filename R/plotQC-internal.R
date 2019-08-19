@@ -34,6 +34,7 @@
     }
 
     data <- metrics(object)
+    data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(metricCol, colnames(data))) {
         stop(sprintf("'%s' is not defined in 'colData()'.", metricCol))
@@ -214,6 +215,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         matchInterestingGroups(object, interestingGroups)
 
     data <- metrics(object)
+    data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(c(xCol, yCol), colnames(data))) {
         stop(sprintf(
