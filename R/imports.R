@@ -1,9 +1,13 @@
+## DropletUtils isn't supported on R 3.5.
+## #' @importFrom DropletUtils barcodeRanks
+
+
+
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom basejump coerce
 #'
-#' @importFrom DropletUtils barcodeRanks
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays

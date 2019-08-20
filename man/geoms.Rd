@@ -31,7 +31,7 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 to the paired geom/stat.}
 
 \item{color}{\code{character(1)}.
-Text color (e.g. \code{"orange"}).}
+Text color (e.g. orange).}
 
 \item{stat}{The statistical transformation to use on the data for this
 layer, as a string.}
@@ -48,8 +48,8 @@ plot. You must supply \code{mapping} if there is no plot mapping.}
 Column name.}
 
 \item{fun}{\code{character(1)}.
-Function name to use for average calculation. Currently supports "\code{mean}"
-or "\code{median}".}
+Function name to use for average calculation.
+Currently supports mean or median.}
 
 \item{digits}{\code{integer(1)}.
 Number of significant digits to use. Defaults to rounded.}

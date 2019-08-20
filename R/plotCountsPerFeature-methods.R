@@ -78,6 +78,7 @@ NULL
             minCountsMethod = minCountsMethod,
             trans = trans
         )
+        data <- as_tibble(data, rownames = NULL)
 
         ## Counts axis label. Automatically add transformation, if necessary.
         if (trans != "identity") {

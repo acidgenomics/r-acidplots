@@ -90,6 +90,7 @@ NULL
     suppressMessages(
         data <- meltCounts(object, trans = trans)
     )
+    data <- as_tibble(data, rownames = NULL)
 
     p <- ggplot(
         data = data,
@@ -146,7 +147,7 @@ NULL
     )
 
     p <- ggplot(
-        data = data,
+        data = as_tibble(data),
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("counts"),

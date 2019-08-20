@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.12</span>
       </span>
     </div>
 
@@ -125,8 +125,7 @@
     <pre class="usage"><span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>,
-  <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>fit.bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
+<span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,20 +135,8 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>lower</th>
-      <td><p>A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.</p></td>
-    </tr>
-    <tr>
-      <th>fit.bounds</th>
-      <td><p>A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.</p></td>
-    </tr>
-    <tr>
-      <th>df</th>
-      <td><p>Further arguments to pass to <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Passthrough arguments to <code><a href='https://rdrr.io/pkg/DropletUtils/man/barcodeRanks.html'>DropletUtils::barcodeRanks()</a></code>.</p></td>
     </tr>
     </table>
     
@@ -183,7 +170,7 @@ Note that only points with total counts above <code>lower</code> will be conside
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-12.</p>
+    <p>Updated 2019-08-20.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

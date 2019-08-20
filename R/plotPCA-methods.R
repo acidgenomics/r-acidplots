@@ -77,7 +77,7 @@ NULL
         call <- standardizeCall()
         ## genes
         if ("genes" %in% names(call)) {
-            stop("`genes` is defunct. Use `ntop` argument instead.")
+            stop("'genes' is defunct. Use 'ntop' argument instead.")
         }
         ## samples, censorSamples
         if (any(c("samples", "censorSamples") %in% names(call))) {
@@ -85,8 +85,14 @@ NULL
         }
         ## returnData
         if ("returnData" %in% names(call)) {
-            stop("`returnData` is defunct. Use `return` argument instead.")
+            stop("'returnData' is defunct. Use 'return' argument instead.")
         }
+        ## Error on unsupported arguments.
+        assert(isSubset(
+            x = setdiff(names(call), ""),
+            y = names(formals())
+        ))
+        rm(call)
         ## nocov end
 
         validObject(object)
@@ -116,7 +122,7 @@ NULL
             nGene <- ntop
         }
 
-        message(paste("Plotting PCA using", nGene, "genes."))
+        message(sprintf("Plotting PCA using %d genes.", nGene))
 
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assays(object)[[assay]]
@@ -130,17 +136,16 @@ NULL
             PC2 = pca[["x"]][, 2L],
             sampleData(object)
         )
-
         ## Note that we're assigning the percent variation values used
         ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[1L:2L]
-
         if (return == "DataFrame") {
             return(data)
         }
 
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = as_tibble(data),
+            data = data,
             mapping = aes(
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),

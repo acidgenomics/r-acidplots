@@ -7,7 +7,7 @@ test_that("SingleCellExperiment", {
     expect_s3_class(p, "ggplot")
 })
 
-skip_if_not(packageVersion("DropletUtils") >= "1.4")
+skip_if_not_installed(pkg = "DropletUtils", minimum_version = "1.4")
 
 point <- eval(formals(`plotCountsPerCell,SingleCellExperiment`)[["point"]])
 with_parameters_test_that(

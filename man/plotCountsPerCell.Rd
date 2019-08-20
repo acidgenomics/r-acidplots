@@ -35,8 +35,8 @@ Recommended minimum value cutoff.}
 Recommended maximum value cutoff.}
 
 \item{point}{\code{character(1)}.
-Label either the "\code{knee}" or "\code{inflection}" points per sample. To disable,
-use "\code{none}". Requires \code{geom = "ecdf"}.}
+Label either the knee or inflection points per sample.
+Requires \code{geom = "ecdf"}.}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.

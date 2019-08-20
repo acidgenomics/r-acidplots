@@ -34,6 +34,7 @@
     }
 
     data <- metrics(object)
+    data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(metricCol, colnames(data))) {
         stop(sprintf("'%s' is not defined in 'colData()'.", metricCol))
@@ -214,6 +215,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         matchInterestingGroups(object, interestingGroups)
 
     data <- metrics(object)
+    data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(c(xCol, yCol), colnames(data))) {
         stop(sprintf(
@@ -244,7 +246,7 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         scale_y_continuous(trans = yTrans)
 
     if (isTRUE(trendline)) {
-        ## If `method = "gam"`, `mgcv` package is required.
+        ## If `method = "gam"`, mgcv package is required.
         ## Otherwise build checks will error.
         p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
     }

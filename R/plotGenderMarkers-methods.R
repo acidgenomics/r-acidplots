@@ -56,15 +56,13 @@ NULL
             sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
             sub("_", " ", .)
         if (!organism %in% supportedOrganisms) {
-            stop(paste0(
-                organism, " is not supported.\n",
-                "Supported organisms: ",
-                toString(supportedOrganisms)
+            stop(sprintf(
+                "'%s' is not supported.\nSupported: %s.",
+                organism, toString(supportedOrganisms)
             ))
         }
         markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
-
         ## Message the user instead of erroring, since many datasets don't
         ## contain the dimorphic gender markers.
         genes <- tryCatch(
@@ -80,7 +78,6 @@ NULL
         if (length(genes) == 0L) {
             return(invisible())
         }
-
         do.call(
             what = plotCounts,
             args = matchArgsToDoCall(

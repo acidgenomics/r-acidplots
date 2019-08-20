@@ -5,9 +5,9 @@
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
 #' @param method `character(1)`.
-#'   Correlation coefficient (or covariance) method to be computed. Defaults to
-#'   "`pearson`" but "`spearman`" or "`kendall`" can also be used. Refer to the
-#'   [stats::cor()] documentation for details.
+#'   Correlation coefficient (or covariance) method to be computed.
+#'   Defaults to pearson, but spearman or kendall can also be used.
+#'   Refer to the [`cor()`][stats::cor] documentation for details.
 #' @param ... Additional arguments.
 #'
 #' @return `pheatmap`.
@@ -90,16 +90,15 @@ NULL
 
         ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {
-            message(paste(
-                sum(is.na(mat)),
-                "NA values detected in matrix.",
-                "Replacing with zeros."
+            message(sprintf(
+                "%d NA detected in matrix. Replacing with zeros.",
+                sum(is.na(mat))
             ))
             mat[is.na(mat)] <- 0L
         }
 
-        message(paste(
-            "Calculating correlation matrix using", method, "method."
+        message(sprintf(
+            "Calculating correlation matrix using '%s' method.", method
         ))
         cor <- cor(x = mat, y = NULL, method = method)
 

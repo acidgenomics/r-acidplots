@@ -8,19 +8,12 @@
 \usage{
 barcodeRanksPerSample(object, ...)
 
-\S4method{barcodeRanksPerSample}{SingleCellExperiment}(object,
-  lower = 100, fit.bounds = NULL, df = 20)
+\S4method{barcodeRanksPerSample}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{lower}{A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.}
-
-\item{fit.bounds}{A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.}
-
-\item{df}{Further arguments to pass to \code{\link{smooth.spline}}.}
-
-\item{...}{Additional arguments.}
+\item{...}{Passthrough arguments to \code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.}
 }
 \value{
 \code{DataFrameList}.
@@ -56,13 +49,16 @@ The upper bound is set to the point at which the first derivative is closest to 
 Note that only points with total counts above \code{lower} will be considered, regardless of how \code{fit.bounds} is defined.
 }
 \note{
-Updated 2019-08-12.
+Not supported for R 3.5, due to DropletUtils dependency.
+
+Updated 2019-08-20.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
-if (packageVersion("DropletUtils") >= "1.4") {
+## Not supported for R < 3.6.
+if (requireNamespace("DropletUtils", quietly = TRUE)) {
     object <- SingleCellExperiment
     x <- barcodeRanksPerSample(object)
     names(x)
