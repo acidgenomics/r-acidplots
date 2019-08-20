@@ -1,10 +1,10 @@
 #' @name barcodeRanksPerSample
 #' @inherit bioverbs::barcodeRanksPerSample
 #' @inherit DropletUtils::barcodeRanks
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-20.
 #'
 #' @inheritParams acidroxygen::params
-#' @param ... Additional arguments.
+#' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
 #'
 #' @seealso [DropletUtils::barcodeRanks()].
 #'
@@ -40,11 +40,10 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-08-20.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
-    function(object) {
-        assert(packageVersion("DropletUtils") >= "1.4")
-        which <- sys.parent()
+    function(object, ...) {
+        requireNamespace("DropletUtils", quietly = TRUE)
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
@@ -64,14 +63,7 @@ NULL
             X = countsPerSample,
             FUN = function(counts) {
                 x <- withCallingHandlers(
-                    expr = do.call(
-                        what = barcodeRanks,
-                        args = matchArgsToDoCall(
-                            args = list(m = counts),
-                            removeFormals = "object",
-                            which = which
-                        )
-                    ),
+                    expr = DropletUtils::barcodeRanks(m = counts, ...),
                     warning = function(w) {
                         if (isTRUE(grepl(
                             pattern = "invalid df",
@@ -99,12 +91,6 @@ NULL
             }
         ))
     }
-
-f1 <- formals(`barcodeRanksPerSample,SingleCellExperiment`)
-f2 <- formals(barcodeRanks)
-f2 <- f2[setdiff(names(f2), c(names(f1), "m", "..."))]
-f <- c(f1, f2)
-formals(`barcodeRanksPerSample,SingleCellExperiment`) <- f
 
 
 
