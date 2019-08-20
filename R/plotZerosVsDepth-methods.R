@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-19.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -53,9 +53,10 @@ NULL
 
         data <- zerosVsDepth(object, assay = assay)
         assert(is(data, "DataFrame"))
+        data <- as_tibble(data, rownames = NULL)
 
         p <- ggplot(
-            data = as_tibble(data),
+            data = data,
             mapping = aes(
                 x = !!sym("depth"),
                 y = !!sym("dropout"),

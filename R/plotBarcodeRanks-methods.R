@@ -2,7 +2,8 @@
 #' @include barcodeRanksPerSample-methods.R
 #' @inherit bioverbs::plotBarcodeRanks
 #' @inherit barcodeRanksPerSample
-#' @note Updated 2019-08-08.
+#' @note Not supported for R 3.5, due to DropletUtils dependency.
+#' @note Updated 2019-08-20.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
@@ -13,7 +14,8 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' if (packageVersion("DropletUtils") >= "1.4") {
+#' ## Not supported for R < 3.6.
+#' if (requireNamespace("DropletUtils", quietly = TRUE)) {
 #'     object <- SingleCellExperiment
 #'     plotBarcodeRanks(object)
 #' }
@@ -30,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-08-19.
 `plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -48,7 +50,6 @@ NULL
                 y = c("fitline", "inflection", "knee")
             )
         )
-
         ranksPerSample <- do.call(
             what = barcodeRanksPerSample,
             args = matchArgsToDoCall(
@@ -56,7 +57,6 @@ NULL
                 removeFormals = "colors"
             )
         )
-
         sampleData <- sampleData(object)
         if (is.null(sampleData)) {
             sampleNames <- "unknown"
@@ -65,7 +65,6 @@ NULL
                 .[names(ranksPerSample), "sampleName", drop = TRUE] %>%
                 as.character()
         }
-
         plotlist <- mapply(
             sampleName = sampleNames,
             ranks = ranksPerSample,
@@ -73,7 +72,6 @@ NULL
                 data <- as_tibble(ranks, rownames = NULL)
                 inflection <- metadata(ranks)[["inflection"]]
                 knee <- metadata(ranks)[["knee"]]
-
                 p <- ggplot(data = data) +
                     geom_point(
                         mapping = aes(
@@ -87,7 +85,6 @@ NULL
                         title = sampleName,
                         y = "counts per cell"
                     )
-
                 ## Include the fit line (smooth.spline)
                 p <- p + geom_line(
                     data = filter(data, !is.na(!!sym("fitted"))),
@@ -98,7 +95,6 @@ NULL
                     colour = colors[["fitline"]],
                     size = 1L
                 )
-
                 p <- p +
                     geom_hline(
                         colour = colors[["knee"]],
@@ -110,7 +106,6 @@ NULL
                         linetype = "dashed",
                         yintercept = inflection
                     )
-
                 ## Label the knee and inflection points more clearly
                 knee <- which.min(abs(data[["total"]] - knee))
                 inflection <- which.min(abs(data[["total"]] - inflection))
@@ -133,10 +128,8 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
-
         ## Sort the plots by sample name
         plotlist <- plotlist[sort(names(plotlist))]
-
         plot_grid(plotlist = plotlist)
     }
 

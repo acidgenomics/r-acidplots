@@ -81,16 +81,16 @@ NULL
         ## Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
             ## nocov start
-            warning(paste(
-                "rowData() does not contain biotypes defined in",
-                biotypeCol, "column."
+            warning(sprintf(
+                "'rowData()' does not contain biotypes defined in '%s' column.",
+                biotypeCol
             ))
             return(invisible())
             ## nocov end
         }
 
         biotypes <- rowData %>%
-            as_tibble() %>%
+            as_tibble(rownames = NULL) %>%
             select(!!sym(biotypeCol)) %>%
             group_by(!!sym(biotypeCol)) %>%
             summarise(n = n()) %>%
@@ -115,7 +115,7 @@ NULL
 
         ## SingleCellExperiment requires cell2sample mapping.
         if (is(object, "SingleCellExperiment")) {
-            c2s <- cell2sample(object, return = "tibble") %>%
+            c2s <- cell2sample(object, return = "tbl_df") %>%
                 rename(!!sym("colname") := !!sym("cellID"))
             data <- left_join(
                 x = as_tibble(data),

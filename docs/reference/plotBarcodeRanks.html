@@ -68,7 +68,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.12</span>
       </span>
     </div>
 
@@ -127,7 +127,7 @@
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>plotBarcodeRanks</span>(<span class='no'>object</span>,
   <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fitline</span> <span class='kw'>=</span> <span class='st'>"dodgerblue"</span>, <span class='kw'>inflection</span> <span class='kw'>=</span> <span class='st'>"darkorchid3"</span>, <span class='kw'>knee</span> <span class='kw'>=</span>
-  <span class='st'>"darkorange2"</span>), <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>100</span>, <span class='kw'>fit.bounds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>df</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
+  <span class='st'>"darkorange2"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,18 +141,6 @@
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(3)</a></code>.
 Character vector denoting <code>fitline</code>, <code>inflection</code>, and <code>knee</code> point colors.
 Must pass in color names or hexadecimal values.</p></td>
-    </tr>
-    <tr>
-      <th>lower</th>
-      <td><p>A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.</p></td>
-    </tr>
-    <tr>
-      <th>fit.bounds</th>
-      <td><p>A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.</p></td>
-    </tr>
-    <tr>
-      <th>df</th>
-      <td><p>Further arguments to pass to <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -190,7 +178,7 @@ Note that only points with total counts above <code>lower</code> will be conside
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-08.</p>
+    <p>Updated 2019-08-19.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -204,7 +192,7 @@ Note that only points with total counts above <code>lower</code> will be conside
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/utils/packageDescription.html'>packageVersion</a></span>(<span class='st'>"DropletUtils"</span>) <span class='kw'>&gt;=</span> <span class='st'>"1.4"</span>) {
     <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
     <span class='fu'>plotBarcodeRanks</span>(<span class='no'>object</span>)
-}</div><div class='img'><img src='plotBarcodeRanks-1.png' alt='' width='700' height='433' /></div></pre>
+}</div><div class='output co'>#&gt; <span class='error'>Error in grid.Call.graphics(C_upviewport, as.integer(n)): cannot pop the top-level viewport ('grid' and 'graphics' output mixed?)</span></div><div class='img'><img src='plotBarcodeRanks-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

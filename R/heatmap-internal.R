@@ -20,9 +20,12 @@
     out <- list(rows = FALSE, cols = FALSE)
 
     if (isTRUE(rows) || isTRUE(cols)) {
-        message(paste0(
-            "Performing hierarchical clustering.\n",
-            "Using stats::hclust(method = ", deparse(method), ")."
+        message(sprintf(
+            fmt = paste0(
+                "Performing hierarchical clustering.\n",
+                "Using 'stats::hclust(method = %s)'."
+            ),
+            deparse(method)
         ))
     }
 
@@ -84,7 +87,7 @@
     }
 
     if (scale != "none") {
-        message(paste0("Scaling matrix per ", scale, " (z-score)."))
+        message(sprintf("Scaling matrix per %s (z-score).", scale))
     }
 
     ## Assert checks to look for sufficient variance when the user is attempting
@@ -101,13 +104,14 @@
             ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            message(paste(
-                sprintf(ngettext(
+            message(sprintf(
+                fmt = "%d %s have enough variance: %s.",
+                n,
+                ngettext(
                     n = n,
-                    msg1 = "%s row doesn't",
-                    msg2 = "%s rows don't"
-                ), n),
-                "have enough variance:",
+                    msg1 = "row doesn't",
+                    msg2 = "rows don't"
+                ),
                 toString(rownames(object)[which(fail)], width = 200L)
             ))
             object <- object[pass, , drop = FALSE]
@@ -119,13 +123,14 @@
             ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            stop(paste(
-                sprintf(ngettext(
+            stop(sprintf(
+                fmt = "%d %s have enough variance: %s.",
+                n,
+                ngettext(
                     n = n,
-                    msg1 = "%s column doesn't",
-                    msg2 = "%s columns don't"
-                ), n),
-                "have enough variance:",
+                    msg1 = "column doesn't",
+                    msg2 = "columns don't"
+                ),
                 toString(colnames(object)[which(fail)], width = 200L)
             ))
             ## nocov end
@@ -133,7 +138,10 @@
     }
 
     ## Require at least a 2x2 matrix.
-    assert(nrow(object) > 1L, ncol(object) > 1L)
+    assert(
+        nrow(object) > 1L,
+        ncol(object) > 1L
+    )
 
     switch(
         EXPR = scale,

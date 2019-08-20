@@ -10,7 +10,7 @@ plotBarcodeRanks(object, ...)
 
 \S4method{plotBarcodeRanks}{SingleCellExperiment}(object,
   colors = c(fitline = "dodgerblue", inflection = "darkorchid3", knee =
-  "darkorange2"), lower = 100, fit.bounds = NULL, df = 20)
+  "darkorange2"), ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -18,12 +18,6 @@ plotBarcodeRanks(object, ...)
 \item{colors}{\code{character(3)}.
 Character vector denoting \code{fitline}, \code{inflection}, and \code{knee} point colors.
 Must pass in color names or hexadecimal values.}
-
-\item{lower}{A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.}
-
-\item{fit.bounds}{A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.}
-
-\item{df}{Further arguments to pass to \code{\link{smooth.spline}}.}
 
 \item{...}{Additional arguments.}
 }
@@ -61,13 +55,16 @@ The upper bound is set to the point at which the first derivative is closest to 
 Note that only points with total counts above \code{lower} will be considered, regardless of how \code{fit.bounds} is defined.
 }
 \note{
-Updated 2019-08-08.
+Not supported for R 3.5, due to DropletUtils dependency.
+
+Updated 2019-08-20.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
-if (packageVersion("DropletUtils") >= "1.4") {
+## Not supported for R < 3.6.
+if (requireNamespace("DropletUtils", quietly = TRUE)) {
     object <- SingleCellExperiment
     plotBarcodeRanks(object)
 }
