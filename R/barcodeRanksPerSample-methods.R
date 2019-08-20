@@ -1,6 +1,7 @@
 #' @name barcodeRanksPerSample
 #' @inherit bioverbs::barcodeRanksPerSample
 #' @inherit DropletUtils::barcodeRanks
+#' @note Not supported for R 3.5, due to DropletUtils dependency.
 #' @note Updated 2019-08-20.
 #'
 #' @inheritParams acidroxygen::params
@@ -12,7 +13,8 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' if (packageVersion("DropletUtils") >= "1.4") {
+#' ## Not supported for R < 3.6.
+#' if (requireNamespace("DropletUtils", quietly = TRUE)) {
 #'     object <- SingleCellExperiment
 #'     x <- barcodeRanksPerSample(object)
 #'     names(x)
