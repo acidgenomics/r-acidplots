@@ -2,7 +2,8 @@
 #' @include barcodeRanksPerSample-methods.R
 #' @inherit bioverbs::plotBarcodeRanks
 #' @inherit barcodeRanksPerSample
-#' @note Updated 2019-08-19.
+#' @note Not supported for R 3.5, due to DropletUtils dependency.
+#' @note Updated 2019-08-20.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
@@ -13,7 +14,8 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' if (packageVersion("DropletUtils") >= "1.4") {
+#' ## Not supported for R < 3.6.
+#' if (requireNamespace("DropletUtils", quietly = TRUE)) {
 #'     object <- SingleCellExperiment
 #'     plotBarcodeRanks(object)
 #' }
