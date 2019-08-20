@@ -1,4 +1,4 @@
-## acidplots 0.2.12 (2019-08-19)
+## acidplots 0.2.12 (2019-08-20)
 
 ### Minor changes
 
