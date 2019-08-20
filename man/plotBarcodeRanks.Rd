@@ -10,7 +10,7 @@ plotBarcodeRanks(object, ...)
 
 \S4method{plotBarcodeRanks}{SingleCellExperiment}(object,
   colors = c(fitline = "dodgerblue", inflection = "darkorchid3", knee =
-  "darkorange2"), lower = 100, fit.bounds = NULL, df = 20)
+  "darkorange2"), ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -18,12 +18,6 @@ plotBarcodeRanks(object, ...)
 \item{colors}{\code{character(3)}.
 Character vector denoting \code{fitline}, \code{inflection}, and \code{knee} point colors.
 Must pass in color names or hexadecimal values.}
-
-\item{lower}{A numeric scalar specifying the lower bound on the total UMI count, at or below which all barcodes are assumed to correspond to empty droplets.}
-
-\item{fit.bounds}{A numeric vector of length 2, specifying the lower and upper bouunds on the total UMI count for spline fitting.}
-
-\item{df}{Further arguments to pass to \code{\link{smooth.spline}}.}
 
 \item{...}{Additional arguments.}
 }
