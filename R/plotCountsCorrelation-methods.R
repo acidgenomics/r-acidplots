@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -32,15 +32,15 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
         y,
         i = NULL,
         j = NULL,
-        xTitle = deparse(substitute(x)),
-        yTitle = deparse(substitute(y)),
+        xTitle = getNameInParent(x),
+        yTitle = getNameInParent(y),
         labs = list(
             colour = NULL,
             x = NULL,
@@ -72,19 +72,12 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- x %>%
-            meltCounts(minCounts = NULL) %>%
-            as_tibble(rownames = NULL) %>%
-            ungroup() %>%
-            mutate_if(is.factor, as.character) %>%
-            mutate(!!sym("type") := xTitle)
-        yData <- y %>%
-            meltCounts(minCounts = NULL) %>%
-            as_tibble(rownames = NULL) %>%
-            ungroup() %>%
-            mutate_if(is.factor, as.character) %>%
-            mutate(!!sym("type") := yTitle)
-        data <- bind_rows(xData, yData)
+        xData <- meltCounts(x, minCounts = NULL)
+        xData[["type"]] <- factor(xTitle)
+        yData <- meltCounts(y, minCounts = NULL)
+        yData[["type"]] <- factor(yTitle)
+        data <- rbind(xData, yData)
+        data <- as_tibble(data, rownames = NULL)
         ggplot(
             data = data,
             mapping = aes(

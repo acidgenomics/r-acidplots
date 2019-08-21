@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams basejump::meltCounts
 #' @inheritParams acidroxygen::params
@@ -36,7 +36,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -66,11 +66,12 @@ NULL
         minCountsMethod <- match.arg(minCountsMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
-
+        if (!identical(trans, "identity")) {
+            countsAxisLabel <- paste(trans, countsAxisLabel)
+        }
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-
         data <- meltCounts(
             object = object,
             assay = assay,
@@ -78,16 +79,9 @@ NULL
             minCountsMethod = minCountsMethod,
             trans = trans
         )
-        data <- as_tibble(data, rownames = NULL)
-
-        ## Counts axis label. Automatically add transformation, if necessary.
-        if (trans != "identity") {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
-
         ## Construct the ggplot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(data = data)
-
         if (geom == "density") {
             p <- p +
                 geom_density(
@@ -123,15 +117,13 @@ NULL
                 ) +
                 labs(x = NULL, y = countsAxisLabel)
         }
-
-        ## Subtitle
+        ## Subtitle.
         if (isString(title)) {
             count <- length(unique(data[["rowname"]]))
             subtitle <- paste("n", "=", count)
         } else {
             subtitle <- NULL
         }
-
         ## Add the axis and legend labels.
         p <- p +
             labs(
@@ -140,7 +132,6 @@ NULL
                 color = paste(interestingGroups, collapse = ":\n"),
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-
         if (geom == "boxplot") {
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
@@ -150,16 +141,15 @@ NULL
                 p <- p + color
             }
         }
-
         ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !geom %in% "density") {
             p <- acid_coord_flip(p)
         }
-
+        ## Hide sample name legend.
         if (identical(interestingGroups, "sampleName")) {
             p <- p + guides(color = FALSE, fill = FALSE)
         }
-
+        ## Return.
         p
     }
 
@@ -191,12 +181,11 @@ setMethod(
 ## Updated 2019-07-23.
 `plotCountsPerFeature,SingleCellExperiment` <-  # nolint
     function(object) {
+        object <- aggregateCellsToSamples(object)
         do.call(
             what = plotCountsPerFeature,
             args = matchArgsToDoCall(
-                args = list(
-                    object = aggregateCellsToSamples(object)
-                )
+                args = list(object = object)
             )
         )
     }
@@ -206,7 +195,8 @@ formals(`plotCountsPerFeature,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotCountsPerFeature
+#' @describeIn plotCountsPerFeature Applies [aggregateCellsToSamples()]
+#'   calculation to summarize at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotCountsPerFeature",

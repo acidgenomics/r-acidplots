@@ -1,6 +1,6 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams acidroxygen::params
@@ -14,14 +14,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' ## > plotGenderMarkers(rse)
+#' object <- RangedSummarizedExperiment
+#' plotGenderMarkers(object)
 #'
 #' ## SingleCellExperiment ====
-#' ## > plotGenderMarkers(sce)
+#' object <- SingleCellExperiment
+#' plotGenderMarkers(object)
 NULL
 
 
@@ -35,11 +35,10 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function() {
         validObject(object)
-
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
@@ -49,35 +48,24 @@ NULL
         )
         markers <- get("genderMarkers", inherits = FALSE)
         assert(is.list(markers))
+        supported <- names(markers)
+        supported <- snakeCase(supported)
+        supported <- sub("^([a-z])", "\\U\\1", supported, perl = TRUE)
+        supported <- sub("_", " ", supported)
         ## Error if the organism is not supported.
-        ## Convert from camel case back to full Latin.
-        supportedOrganisms <- names(markers) %>%
-            snakeCase() %>%
-            sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
-            sub("_", " ", .)
-        if (!organism %in% supportedOrganisms) {
+        if (!isSubset(organism, supported)) {
             stop(sprintf(
                 "'%s' is not supported.\nSupported: %s.",
-                organism, toString(supportedOrganisms)
+                organism, toString(supported)
             ))
         }
         markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
-        ## Message the user instead of erroring, since many datasets don't
-        ## contain the dimorphic gender markers.
-        genes <- tryCatch(
-            expr = mapGenesToRownames(
-                object = object,
-                genes = markers[["geneID"]]
-            ),
-            error = function(e) {
-                message(as.character(e))
-                character()
-            }
+        genes <- mapGenesToRownames(
+            object = object,
+            genes = markers[["geneID"]],
+            strict = FALSE
         )
-        if (length(genes) == 0L) {
-            return(invisible())
-        }
         do.call(
             what = plotCounts,
             args = matchArgsToDoCall(
@@ -103,13 +91,28 @@ setMethod(
 
 
 
-#' @rdname plotGenderMarkers
-#' @usage NULL
+## Updated 2019-08-21.
+`plotGenderMarkers,SingleCellExperiment` <-  # nolint
+    function(object) {
+        object <- pseudobulk(object)
+        do.call(
+            what = plotGenderMarkers,
+            args = matchArgsToDoCall(
+                args = list(object = object)
+            )
+        )
+    }
+
+formals(`plotGenderMarkers,SingleCellExperiment`) <-
+    formals(`plotGenderMarkers,SummarizedExperiment`)
+
+
+
+#' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
+#'   gene expression at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotGenderMarkers",
     signature = signature("SingleCellExperiment"),
-    definition = function(object, ...) {
-        stop("SingleCellExperiment is not currently supported.")
-    }
+    definition = `plotGenderMarkers,SingleCellExperiment`
 )

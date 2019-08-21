@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -201,7 +201,7 @@ NULL
         )
 
         ## Ensure we're always using a dense matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Ensure the user isn't passing in a matrix with any rows or columns
         ## containing all zeros when we're attempting to z-scale.
@@ -319,14 +319,14 @@ setMethod(
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
-        agg <- aggregateCellsToSamples(object, fun = "mean")
+        object <- pseudobulk(object)
         do.call(
             what = plotHeatmap,
             args = matchArgsToDoCall(
-                args = list(object = agg)
+                args = list(object = object)
             )
         )
     }
@@ -336,7 +336,8 @@ formals(`plotHeatmap,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotHeatmap
+#' @describeIn plotHeatmap Applies [pseudobulk()] calculation to average gene
+#'   expression at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotHeatmap",

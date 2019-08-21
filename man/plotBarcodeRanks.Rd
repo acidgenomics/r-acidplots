@@ -57,7 +57,7 @@ Note that only points with total counts above \code{lower} will be considered, r
 \note{
 Not supported for R 3.5, due to DropletUtils dependency.
 
-Updated 2019-08-20.
+Updated 2019-08-21.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

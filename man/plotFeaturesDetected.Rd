@@ -64,8 +64,14 @@ Counts axis label.}
 \description{
 Visualize the number of features (i.e. genes) detected.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{SingleCellExperiment}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
+calculation to summarize at sample level prior to plotting.
+}}
+
 \note{
-Updated 2019-07-29.
+Updated 2019-08-21.
 }
 \examples{
 data(

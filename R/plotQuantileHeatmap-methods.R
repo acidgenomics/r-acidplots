@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -112,7 +112,7 @@ NULL
         )
 
         ## Ensure we're using a dense matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Calculate the quantile breaks.
         breaks <- .quantileBreaks(mat, n = n)
@@ -201,14 +201,14 @@ setMethod(
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotQuantileHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
-        agg <- aggregateCellsToSamples(object, fun = "mean")
+        object <- pseudobulk(object)
         do.call(
             what = plotQuantileHeatmap,
             args = matchArgsToDoCall(
-                args = list(object = agg)
+                args = list(object = object)
             )
         )
     }
@@ -218,7 +218,8 @@ formals(`plotQuantileHeatmap,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotQuantileHeatmap
+#' @describeIn plotQuantileHeatmap Applies [pseudobulk()] calculation to average
+#'   gene expression at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",
