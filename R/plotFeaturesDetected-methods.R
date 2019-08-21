@@ -59,7 +59,7 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
 
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
 
         ## Keep this calculation sparse, if necessary, for speed.
         if (is(counts, "sparseMatrix")) {

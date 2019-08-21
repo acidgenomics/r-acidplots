@@ -1,9 +1,11 @@
-## acidplots 0.2.12 (2019-08-20)
+## acidplots 0.2.12 (2019-08-21)
 
 ### Minor changes
 
 - Improved consistency of internal tibble handling inside plot functions.
 - Updated basejump dependency versions.
+- `plotPCA`: Improved automatic `ntop` argument handling when passing in a
+  value greater than the number or features (rows) defined in the object.
 
 ## acidplots 0.2.11 (2019-08-12)
 

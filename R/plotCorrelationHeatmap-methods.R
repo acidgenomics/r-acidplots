@@ -86,7 +86,7 @@ NULL
         }
 
         ## Correlation matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {

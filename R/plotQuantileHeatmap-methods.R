@@ -112,7 +112,7 @@ NULL
         )
 
         ## Ensure we're using a dense matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Calculate the quantile breaks.
         breaks <- .quantileBreaks(mat, n = n)

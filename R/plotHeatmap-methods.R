@@ -201,7 +201,7 @@ NULL
         )
 
         ## Ensure we're always using a dense matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Ensure the user isn't passing in a matrix with any rows or columns
         ## containing all zeros when we're attempting to z-scale.

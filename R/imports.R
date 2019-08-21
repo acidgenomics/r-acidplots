@@ -12,7 +12,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
-#' @importFrom S4Vectors DataFrame aggregate metadata
+#' @importFrom S4Vectors DataFrame SimpleList aggregate metadata
 #' @importFrom UpSetR upset
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
@@ -46,8 +46,5 @@
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile
 #' @importFrom utils data globalVariables packageVersion
 #'
-#'
-#'
-#' @importFrom dplyr mutate select
 #' @importFrom magrittr %>%
 NULL
