@@ -45,7 +45,6 @@ Imports:
     pheatmap (>= 1.0),
     rlang (>= 0.4),
     tibble (>= 2.1),
-    tidyr (>= 0.8),
     grDevices,
     grid,
     methods,
