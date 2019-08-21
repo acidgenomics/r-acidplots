@@ -65,7 +65,7 @@ Counts axis label.}
 Visualize the number of features (i.e. genes) detected.
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-08-21.
 }
 \examples{
 data(
