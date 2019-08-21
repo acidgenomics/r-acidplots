@@ -29,15 +29,12 @@ acid_coord_flip <-  # nolint
                 y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
             )
         )
-
         data <- object[["data"]]
         assert(is.data.frame(data))
-
         mapping <- .detectMapping(object)
         assert(is(mapping, "uneval"))
         xCol <- quo_text(mapping[["x"]])
         limits <- rev(levels(as.factor(data[[xCol]])))
-
         object +
             scale_x_discrete(limits = limits) +
             coord_flip()
