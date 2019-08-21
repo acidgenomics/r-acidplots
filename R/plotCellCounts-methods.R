@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-08-19.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -25,7 +25,7 @@ NULL
 
 
 
-## Updated 2019-08-19.
+## Updated 2019-08-21.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -40,23 +40,16 @@ NULL
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
-
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
+        metric <- table(colData[["sampleID"]])
         sampleData <- sampleData(object)
+        assert(identical(names(metric), rownames(sampleData)))
+        data <- sampleData
         metricCol <- "nCells"
-        ## Remove user-defined column, if present.
-        colData[[metricCol]] <- NULL
-        sampleData[[metricCol]] <- NULL
-        colData <- as_tibble(colData, rownames = NULL)
-        sampleData <- sampleData %>%
-            as_tibble(rownames = "sampleID") %>%
-            mutate_all(as.factor)
-        data <- colData %>%
-            group_by(!!sym("sampleID")) %>%
-            summarise(!!sym(metricCol) := n()) %>%
-            left_join(sampleData, by = "sampleID")
-
+        data[[metricCol]] <- as.integer(metric)
+        ## Plot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
@@ -73,13 +66,11 @@ NULL
                 y = makeLabel(metricCol),
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-
-        ## Color palette
+        ## Color palette.
         if (!is.null(fill)) {
             p <- p + fill
         }
-
-        ## Labels
+        ## Labels.
         if (nrow(data) <= 16L) {
             p <- p + acid_geom_label(
                 data = data,
@@ -88,8 +79,7 @@ NULL
                 vjust = 1.25
             )
         }
-
-        ## Facets
+        ## Facets.
         facets <- NULL
         if (isSubset("aggregate", colnames(data))) {
             facets <- c(facets, "aggregate")
@@ -97,7 +87,7 @@ NULL
         if (is.character(facets)) {
             p <- p + facet_wrap(facets = syms(facets), scales = "free")
         }
-
+        ## Return.
         p
     }
 

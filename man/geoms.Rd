@@ -65,7 +65,7 @@ Convenience functions with modified defaults for
 \href{http://ggplot2.org}{ggplot2}.
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-08-21.
 }
 \section{acid_geom_abline}{
 

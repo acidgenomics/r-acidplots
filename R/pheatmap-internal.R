@@ -1,3 +1,4 @@
+## Updated 2019-08-21.
 .emptyPheatmapAnnotations <- list(
     annotationCol = NA,
     annotationColors = NA
@@ -7,51 +8,39 @@
 
 ## Automatically handle the annotation data and colors.
 ## Factors with a single level are automatically dropped.
+## Updated 2019-08-21.
 .pheatmapAnnotations <- function(
     object,
     blacklist = "sampleName",
     legendColor
 ) {
-    validObject(object)
     assert(
+        is(object, "SummarizedExperiment"),
         isCharacter(blacklist),
         isHexColorFunction(legendColor, nullOK = TRUE)
     )
-
-    ## Annotation columns ------------------------------------------------------
+    ## Prepare the annotation columns.
     data <- colData(object)
     interestingGroups <- interestingGroups(object)
-
     ## pheatmap requires `NA` if annotations are empty.
     if (
         !hasDims(data) ||
-        length(interestingGroups) == 0L ||
+        !hasLength(interestingGroups) ||
         identical(interestingGroups, "sampleName")
     ) {
         return(.emptyPheatmapAnnotations)
     }
-
     assert(
         hasRownames(data),
         isSubset(interestingGroups, colnames(data))
     )
     data <- data[, interestingGroups, drop = FALSE]
-
-    ## Prepare the blacklist, always excluding sample names from labeling in
-    ## the pheatmap annotation columns.
+    ## Remove blacklisted columns (e.g. `sampleName`).
     blacklist <- unique(c("sampleName", blacklist))
-
-    data <- data %>%
-        as_tibble(rownames = "rowname") %>%
-        ## Remove blacklisted columns (e.g. `sampleName`).
-        .[, setdiff(colnames(.), blacklist), drop = FALSE] %>%
-        ## Ensure all strings are factors.
-        mutate_if(is.character, as.factor) %>%
-        ## Ensure unwanted numeric columns (e.g. sizeFactor) are dropped.
-        select_if(is.factor) %>%
-        as.data.frame() %>%
-        column_to_rownames("rowname")
-
+    data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
+    ## Select only factor columns.
+    keep <- which(bapply(data, is.factor))
+    data <- data[, keep, drop = FALSE]
     ## Drop any remaining factor columns that contain a single value. Note that
     ## we don't want to necessarily use `levels()` in place of `unique()` here,
     ## in case we have a situation where we're comparing a value against `NA`.
@@ -64,19 +53,14 @@
         },
         FUN.VALUE = logical(1L)
     )
-
     ## Return empty if there are no useful factor columns.
-    if (length(hasMultiple) == 0L) {
+    if (!hasLength(hasMultiple)) {
         return(.emptyPheatmapAnnotations)  # nocov
     } else {
         data <- data[, hasMultiple, drop = FALSE]
     }
-
-    ## Colors ------------------------------------------------------------------
-    if (
-        is.data.frame(data) &&
-        is.function(legendColor)
-    ) {
+    ## Automatically define colors.
+    if (is.function(legendColor)) {
         colors <- lapply(
             X = data,
             FUN = function(x) {
@@ -90,10 +74,9 @@
     } else {
         colors <- NA
     }
-
-    ## Return ------------------------------------------------------------------
+    ## Return.
     list(
-        annotationCol = data,
+        annotationCol = as.data.frame(data),
         annotationColors = colors
     )
 }
@@ -102,6 +85,7 @@
 
 ## Sanitize formals into snake case and abort on duplicates. Duplicates may
 ## arise if user is mixing and matching camel/snake case.
+## Updated 2019-08-21.
 .pheatmapArgs <- function(args) {
     assert(is.list(args), hasNames(args))
     ## Abort on snake case formatted formal args.
@@ -117,13 +101,13 @@
         isSubset(names(args), formalArgs(pheatmap)),
         hasNoDuplicates(names(args))
     )
-
     args
 }
 
 
 
 ## If `color = NULL`, use the pheatmap default palette.
+## Updated 2019-08-21.
 .pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {
         ## Hexadecimal color palette (e.g. RColorBrewer, viridis return).

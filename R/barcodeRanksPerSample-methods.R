@@ -45,7 +45,7 @@ NULL
 ## Updated 2019-08-20.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object, ...) {
-        requireNamespace("DropletUtils", quietly = TRUE)
+        assert(requireNamespace("DropletUtils", quietly = TRUE))
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)

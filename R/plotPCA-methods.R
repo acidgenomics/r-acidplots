@@ -10,7 +10,7 @@
 #' a way to look at how samples are clustering.
 #'
 #' @name plotPCA
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -58,7 +58,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -94,7 +94,6 @@ NULL
         ))
         rm(call)
         ## nocov end
-
         validObject(object)
         assert(
             isScalar(assay),
@@ -109,28 +108,30 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         return <- match.arg(return)
-
         ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
-
-        if (identical(ntop, Inf)) {
-            nGene <- nrow(object)
-        } else {
-            nGene <- ntop
+        ## Handle `ntop` definition automatically.
+        if (ntop > nrow(object)) {
+            ntop <- nrow(object)
         }
-
-        message(sprintf("Plotting PCA using %d genes.", nGene))
-
+        message(sprintf(
+            "Plotting PCA using %d %s.",
+            ntop,
+            ngettext(
+                n = ntop,
+                msg1 = "feature",
+                msg2 = "features"
+            )
+        ))
         ## Using a modified version of DESeq2 DESeqTransform method here.
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
-        percentVar <- pca[["sdev"]]^2L / sum(pca[["sdev"]]^2L)
-
+        percentVar <- (pca[["sdev"]] ^ 2L) / (sum(pca[["sdev"]] ^ 2L))
         data <- DataFrame(
             PC1 = pca[["x"]][, 1L],
             PC2 = pca[["x"]][, 2L],
@@ -142,7 +143,7 @@ NULL
         if (return == "DataFrame") {
             return(data)
         }
-
+        ## Plot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
@@ -165,17 +166,17 @@ NULL
                 ),
                 color = paste(interestingGroups, collapse = ":\n")
             )
-
+        ## Color.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
         }
-
+        ## Label.
         if (isTRUE(label)) {
             p <- p + acid_geom_label_repel(
                 mapping = aes(label = !!sym("sampleName"))
             )
         }
-
+        ## Return.
         p
     }
 

@@ -23,7 +23,7 @@
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name geoms
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams ggplot2::geom_label
 #' @param color `character(1)`.
@@ -170,19 +170,15 @@ acid_geom_label_average <-  # nolint
         fun <- match.arg(fun)
         fun <- get(fun)
         assert(is.function(fun))
-
         aggdata <- aggregate(
             formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
             data = data,
             FUN = fun
         )
         aggdata[["roundedAverage"]] <- round(aggdata[[col]], digits = digits)
-
         ## Add `aggregate` column for facet wrapping, if necessary
-        if ("aggregate" %in% colnames(data)) {
-            sampleFacet <- data %>%
-                .[, c("sampleName", "aggregate")] %>%
-                unique()
+        if (isSubset("aggregate", colnames(data))) {
+            sampleFacet <- unique(data[, c("sampleName", "aggregate")])
             data <- merge(
                 x = aggdata,
                 y = sampleFacet,
@@ -192,7 +188,6 @@ acid_geom_label_average <-  # nolint
         } else {
             data <- aggdata
         }
-
         acid_geom_label(
             data = data,
             mapping = aes(label = !!sym("roundedAverage")),

@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -86,7 +86,7 @@ NULL
         }
 
         ## Correlation matrix.
-        mat <- as.matrix(assays(object)[[assay]])
+        mat <- as.matrix(assay(object, i = assay))
 
         ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {
@@ -177,14 +177,14 @@ setMethod(
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotCorrelationHeatmap,SingleCellExperiment` <-  # nolint
     function(object) {
-        agg <- aggregateCellsToSamples(object, fun = "mean")
+        object <- pseudobulk(object)
         do.call(
             what = plotCorrelationHeatmap,
             args = matchArgsToDoCall(
-                args = list(object = agg)
+                args = list(object = object)
             )
         )
     }
@@ -194,7 +194,8 @@ formals(`plotCorrelationHeatmap,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotCorrelationHeatmap
+#' @describeIn plotCorrelationHeatmap Applies [pseudobulk()] calculation to
+#'   average gene expression at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
