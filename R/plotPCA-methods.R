@@ -114,7 +114,7 @@ NULL
             return(invisible())
         }
         ## Handle `ntop` definition automatically.
-        if (identical(ntop, Inf)) {
+        if (ntop > nrow(object)) {
             ntop <- nrow(object)
         }
         message(sprintf(
