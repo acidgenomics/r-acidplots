@@ -14,14 +14,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' ## > plotGenderMarkers(rse)
+#' object <- RangedSummarizedExperiment
+#' plotGenderMarkers(object)
 #'
 #' ## SingleCellExperiment ====
-#' ## > plotGenderMarkers(sce)
+#' object <- SingleCellExperiment
+#' plotGenderMarkers(object)
 NULL
 
 
@@ -48,13 +48,12 @@ NULL
         )
         markers <- get("genderMarkers", inherits = FALSE)
         assert(is.list(markers))
-        ## Error if the organism is not supported.
-        ## Convert from camel case back to full Latin.
         supported <- names(markers)
         supported <- snakeCase(supported)
         supported <- sub("^([a-z])", "\\U\\1", supported, perl = TRUE)
         supported <- sub("_", " ", supported)
-        if (!isSubset(organism, supportedOrganisms)) {
+        ## Error if the organism is not supported.
+        if (!isSubset(organism, supported)) {
             stop(sprintf(
                 "'%s' is not supported.\nSupported: %s.",
                 organism, toString(supported)
@@ -62,21 +61,11 @@ NULL
         }
         markers <- markers[[camelCase(organism)]]
         assert(is(markers, "tbl_df"))
-        ## Message the user instead of erroring, since many datasets don't
-        ## contain the dimorphic gender markers.
-        genes <- tryCatch(
-            expr = mapGenesToRownames(
-                object = object,
-                genes = markers[["geneID"]]
-            ),
-            error = function(e) {
-                message(as.character(e))
-                character()
-            }
+        genes <- mapGenesToRownames(
+            object = object,
+            genes = markers[["geneID"]],
+            strict = FALSE
         )
-        if (!hasLength(genes)) {
-            return(invisible())
-        }
         do.call(
             what = plotCounts,
             args = matchArgsToDoCall(
@@ -102,13 +91,27 @@ setMethod(
 
 
 
+## Updated 2019-08-21.
+`plotGenderMarkers,SingleCellExperiment` <-  # nolint
+    function(object) {
+        object <- pseudobulk(object)
+        do.call(
+            what = plotGenderMarkers,
+            args = matchArgsToDoCall(
+                args = list(object = object)
+            )
+        )
+    }
+
+formals(`plotGenderMarkers,SingleCellExperiment`) <-
+    formals(`plotGenderMarkers,SummarizedExperiment`)
+
+
+
 #' @rdname plotGenderMarkers
-#' @usage NULL
 #' @export
 setMethod(
     f = "plotGenderMarkers",
     signature = signature("SingleCellExperiment"),
-    definition = function(object, ...) {
-        stop("SingleCellExperiment is not currently supported.")
-    }
+    definition = `plotGenderMarkers,SingleCellExperiment`
 )
