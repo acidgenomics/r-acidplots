@@ -1,7 +1,7 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBroadClass
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -52,30 +52,26 @@ NULL
             isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
-
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-
-        ## Get the count matrix.
-        assay <- assays(object)[[assay]]
-        ## Ensure sparse matrix is coerced to dense.
-        assay <- as.matrix(assay)
-
-        ## Log transform, if necessary.
-        if (trans == "log2") {
-            assay <- log2(assay + 1L)
-        } else if (trans == "log10") {
-            assay <- log10(assay + 1L)
-        }
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
 
+        ## Melt the count matrix into long format.
+        data <- meltCounts(
+            object = object,
+            assay = assay,
+            minCounts = 1L,
+            trans = trans
+        )
+        data <- decode(data)
+
+        ## Get the row data and prepare for left join via "rowname" column.
         rowData <- rowData(object)
-        ## Ensure Rle columns get decoded.
         rowData <- decode(rowData)
-        rownames(rowData) <- rownames(object)
+        rowData[["rowname"]] <- rownames(object)
 
         biotypeCol <- "broadClass"
         ## Warn and early return if the biotypes are not defined in rowData.
@@ -89,57 +85,23 @@ NULL
             ## nocov end
         }
 
-        biotypes <- rowData %>%
-            as_tibble(rownames = NULL) %>%
-            select(!!sym(biotypeCol)) %>%
-            group_by(!!sym(biotypeCol)) %>%
-            summarise(n = n()) %>%
-            ## Require at least 10 genes.
-            filter(!!sym("n") >= 10L) %>%
-            arrange(desc(!!sym("n"))) %>%
-            pull(!!sym(biotypeCol)) %>%
-            as.character()
+        ## Get the top biotypes from the row data.
+        biotypes <- table(rowData[[biotypeCol]])
+        ## Requiring at least 10 genes per biotype.
+        biotypes <- biotypes[which(biotypes > 10L)]
+        biotypes <- sort(biotypes, decreasing = TRUE)
+        biotypes <- names(biotypes)
 
-        ## Coerce the sample data to a tibble.
-        sampleData <- sampleData(object) %>%
-            as_tibble(rownames = "sampleID") %>%
-            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID")))
+        ## Prepare the minimal data frame required for plotting.
+        data <- left_join(x = data, y = rowData, by = "rowname")
+        keep <- which(data[[biotypeCol]] %in% biotypes)
+        data <- data[keep, , drop = FALSE]
+        data <- data[, c("counts", "interestingGroups", biotypeCol)]
+        ## Sanitize the biotype column to appear nicer in plots.
+        data[[biotypeCol]] <- gsub("_", " ", data[[biotypeCol]])
 
-        data <- assay %>%
-            as_tibble(rownames = "rowname") %>%
-            gather(
-                key = "colname",
-                value = "counts",
-                -UQ(sym("rowname"))
-            )
-
-        ## SingleCellExperiment requires cell2sample mapping.
-        if (is(object, "SingleCellExperiment")) {
-            c2s <- cell2sample(object, return = "tbl_df") %>%
-                rename(!!sym("colname") := !!sym("cellID"))
-            data <- left_join(
-                x = as_tibble(data),
-                y = as_tibble(c2s),
-                by = "colname"
-            )
-        } else {
-            data <- rename(data, !!sym("sampleID") := !!sym("colname"))
-        }
-
-        ## Prepare the minimal tibble required for plotting.
-        data <- data %>%
-            filter(!!sym("counts") > 0L) %>%
-            left_join(
-                as_tibble(rowData, rownames = "rowname"),
-                by = "rowname"
-            ) %>%
-            filter(!!sym(biotypeCol) %in% !!biotypes) %>%
-            mutate(!!sym("sampleID") := as.factor(!!sym("sampleID"))) %>%
-            left_join(
-                y = as_tibble(sampleData),
-                by = "sampleID"
-            )
-
+        ## Plot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
@@ -169,11 +131,11 @@ NULL
                 axis.ticks.x = element_blank(),
                 axis.title.x = element_blank()
             )
-
+        ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
         }
-
+        ## Return.
         p
     }
 
