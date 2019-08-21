@@ -1,11 +1,19 @@
-## acidplots 0.2.12 (2019-08-21)
+## acidplots 0.2.13 (2019-08-21)
+
+### Minor changes
+
+- `plotPCA`: Improved automatic `ntop` argument handling when passing in a
+  value greater than the number or features (rows) defined in the object.
+- Improved documentation for `SingleCellExperiment` methods that need to average
+  or aggregate expression at sample level.
+- Removed dplyr and magrittr dependencies.
+
+## acidplots 0.2.12 (2019-08-20)
 
 ### Minor changes
 
 - Improved consistency of internal tibble handling inside plot functions.
 - Updated basejump dependency versions.
-- `plotPCA`: Improved automatic `ntop` argument handling when passing in a
-  value greater than the number or features (rows) defined in the object.
 
 ## acidplots 0.2.11 (2019-08-12)
 
