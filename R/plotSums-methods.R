@@ -1,6 +1,6 @@
 #' @name plotSums
 #' @inherit bioverbs::plotSums
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams base::apply
@@ -41,7 +41,7 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-08-21.
 `plotSums,matrix` <-  # nolint
     function(
         object,
@@ -57,7 +57,7 @@ NULL
         }
         fun <- get(x = fname, envir = asNamespace(pkg), inherits = FALSE)
         sums <- fun(object)
-        data <- tibble(x = sums)
+        data <- data.frame(x = sums)
         ggplot(
             data = data,
             mapping = aes(x = !!sym("x"))
