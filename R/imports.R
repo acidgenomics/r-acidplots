@@ -48,6 +48,6 @@
 #'
 #'
 #'
-#' @importFrom dplyr mutate mutate_all select
+#' @importFrom dplyr mutate select
 #' @importFrom magrittr %>%
 NULL
