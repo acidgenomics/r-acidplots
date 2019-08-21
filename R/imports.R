@@ -41,15 +41,13 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
-#' @importFrom rlang !! quo_text
+#' @importFrom rlang !! quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile
 #' @importFrom utils data globalVariables packageVersion
 #'
 #'
 #'
-#' @importFrom dplyr group_by mutate mutate_all n select summarise
+#' @importFrom dplyr group_by mutate mutate_all n select
 #' @importFrom magrittr %>%
-#' @importFrom rlang := sym syms
-#' @importFrom tibble column_to_rownames tibble
 NULL
