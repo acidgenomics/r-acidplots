@@ -17,7 +17,7 @@
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
-#'   interestingGroups<- makeLabel makeTitle matchArgsToDoCall
+#'   interestingGroups<- left_join makeLabel makeTitle matchArgsToDoCall
 #'   matchInterestingGroups mapGenesToRownames meltCounts methodFormals metrics
 #'   organism sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
@@ -48,7 +48,7 @@
 #'
 #'
 #'
-#' @importFrom dplyr arrange bind_rows case_when desc filter group_by left_join
+#' @importFrom dplyr arrange bind_rows case_when desc filter group_by
 #'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
 #'   summarise summarise_all top_n ungroup
 #' @importFrom magrittr %>%
