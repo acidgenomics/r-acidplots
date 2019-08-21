@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -58,19 +58,16 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-
         counts <- assay(object, i = assay)
-
         ## Keep this calculation sparse, if necessary, for speed.
         if (is(counts, "sparseMatrix")) {
             colSums <- Matrix::colSums
         }
         featureCount <- colSums(counts >= minCounts)
-
-        data <- metrics(object) %>%
-            as_tibble(rownames = NULL) %>%
-            mutate(featureCount = !!featureCount)
-
+        data <- metrics(object)
+        data[["featureCount"]] <- featureCount
+        ## Plot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
@@ -87,23 +84,23 @@ NULL
                 y = countsAxisLabel,
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-
+        ## Show limit line.
         if (isPositive(limit)) {
             p <- p + acid_geom_abline(yintercept = limit)
         }
-
+        ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
         }
-
+        ## Flip.
         if (isTRUE(flip)) {
             p <- acid_coord_flip(p)
         }
-
+        ## Hide sample name legend.
         if (identical(interestingGroups, "sampleName")) {
             p <- p + guides(fill = FALSE)
         }
-
+        ## Return.
         p
     }
 
@@ -122,13 +119,14 @@ setMethod(
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotFeaturesDetected,SingleCellExperiment` <-  # nolint
     function(object) {
+        object <- aggregateCellsToSamples(object)
         do.call(
             what = plotFeaturesDetected,
             args = matchArgsToDoCall(
-                args = list(object = aggregateCellsToSamples(object))
+                args = list(object = object)
             )
         )
     }
