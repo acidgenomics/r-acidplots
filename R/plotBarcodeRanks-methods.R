@@ -3,7 +3,7 @@
 #' @inherit bioverbs::plotBarcodeRanks
 #' @inherit barcodeRanksPerSample
 #' @note Not supported for R 3.5, due to DropletUtils dependency.
-#' @note Updated 2019-08-20.
+#' @note Updated 2019-08-21.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-19.
+## Updated 2019-08-21.
 `plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -61,9 +61,12 @@ NULL
         if (is.null(sampleData)) {
             sampleNames <- "unknown"
         } else {
-            sampleNames <- sampleData(object) %>%
-                .[names(ranksPerSample), "sampleName", drop = TRUE] %>%
-                as.character()
+            sampleNames <- sampleData(object)[
+                names(ranksPerSample),
+                "sampleName",
+                drop = TRUE
+                ]
+            sampleNames <- as.character(sampleNames)
         }
         plotlist <- mapply(
             sampleName = sampleNames,
@@ -85,9 +88,12 @@ NULL
                         title = sampleName,
                         y = "counts per cell"
                     )
-                ## Include the fit line (smooth.spline)
+                ## Include the fit line (smooth.spline).
+                fitData <- data
+                keep <- which(!is.na(fitData[["fitted"]]))
+                fitData <- fitData[keep, , drop = FALSE]
                 p <- p + geom_line(
-                    data = filter(data, !is.na(!!sym("fitted"))),
+                    data = fitData,
                     mapping = aes(
                         x = !!sym("rank"),
                         y = !!sym("fitted")
@@ -128,7 +134,7 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = TRUE
         )
-        ## Sort the plots by sample name
+        ## Sort the plots by sample name.
         plotlist <- plotlist[sort(names(plotlist))]
         plot_grid(plotlist = plotlist)
     }
