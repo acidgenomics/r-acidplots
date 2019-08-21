@@ -42,28 +42,14 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
+        metric <- table(colData[["sampleID"]])
         sampleData <- sampleData(object)
+        assert(identical(names(metric), rownames(sampleData)))
+        data <- sampleData
         metricCol <- "nCells"
-        ## Remove user-defined column, if present.
-        colData[[metricCol]] <- NULL
-        sampleData[[metricCol]] <- NULL
-
-
-
-        ## FIXME Rework this.
-        colData <- as_tibble(colData, rownames = NULL)
-        sampleData <- sampleData %>%
-            as_tibble(rownames = "sampleID") %>%
-            mutate_all(as.factor)
-        data <- colData %>%
-            group_by(!!sym("sampleID")) %>%
-            summarise(!!sym(metricCol) := n()) %>%
-            left_join(sampleData, by = "sampleID")
-
-
-
-
+        data[[metricCol]] <- as.integer(metric)
         ## Plot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
