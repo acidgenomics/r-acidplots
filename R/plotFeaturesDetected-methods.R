@@ -136,7 +136,8 @@ formals(`plotFeaturesDetected,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotFeaturesDetected
+#' @describeIn plotFeaturesDetected Applies [aggregateCellsToSamples()]
+#'   calculation to summarize at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotFeaturesDetected",

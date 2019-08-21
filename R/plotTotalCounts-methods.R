@@ -134,7 +134,8 @@ formals(`plotTotalCounts,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotTotalCounts
+#' @describeIn plotTotalCounts Applies [aggregateCellsToSamples()] calculation
+#'   to summarize at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotTotalCounts",

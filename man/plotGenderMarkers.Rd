@@ -15,6 +15,13 @@ plotGenderMarkers(object, ...)
   = "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
   "acid.legend", default = TRUE), style = "wide")
+
+\S4method{plotGenderMarkers}{SingleCellExperiment}(object, assay = 1L,
+  interestingGroups = NULL, trans = c("identity", "log2", "log10"),
+  countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
+  = "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
+  "acid.legend", default = TRUE), style = "wide")
 }
 \arguments{
 \item{object}{Object.}
@@ -62,8 +69,14 @@ Plot style.}
 This is a convenience function that quickly plots known sexually dimorphic
 genes, and overall gene experssion for the X and Y chromosomes.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
+gene expression at sample level prior to plotting.
+}}
+
 \note{
-Updated 2019-07-29.
+Updated 2019-08-21.
 
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 }
@@ -73,14 +86,14 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-## > plotGenderMarkers(rse)
+object <- RangedSummarizedExperiment
+plotGenderMarkers(object)
 
 ## SingleCellExperiment ====
-## > plotGenderMarkers(sce)
+object <- SingleCellExperiment
+plotGenderMarkers(object)
 }
 \seealso{
 \code{plotCounts()}.

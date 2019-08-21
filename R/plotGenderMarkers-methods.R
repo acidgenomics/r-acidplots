@@ -108,7 +108,8 @@ formals(`plotGenderMarkers,SingleCellExperiment`) <-
 
 
 
-#' @rdname plotGenderMarkers
+#' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
+#'   gene expression at sample level prior to plotting.
 #' @export
 setMethod(
     f = "plotGenderMarkers",
