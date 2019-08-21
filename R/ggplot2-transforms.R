@@ -5,8 +5,8 @@
 #' This function puts the samples that were near the left origin on the X at the
 #' top on the Y axis, making them more human readable.
 #'
-#' @note Updated 2019-07-29.
 #' @export
+#' @note Updated 2019-07-29.
 #'
 #' @param object `ggplot`.
 #'
@@ -44,8 +44,8 @@ acid_coord_flip <-  # nolint
 
 #' Remove Y axis padding
 #'
-#' @note Updated 2019-07-29.
 #' @export
+#' @note Updated 2019-07-29.
 #'
 #' @inheritParams ggplot2::scale_y_continuous
 #'

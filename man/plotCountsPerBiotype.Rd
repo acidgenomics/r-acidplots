@@ -4,11 +4,18 @@
 \name{plotCountsPerBiotype}
 \alias{plotCountsPerBiotype}
 \alias{plotCountsPerBiotype,SummarizedExperiment-method}
+\alias{plotCountsPerBiotype,SingleCellExperiment-method}
 \title{Plot counts per biotype}
 \usage{
 plotCountsPerBiotype(object, ...)
 
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(object, assay = 1L,
+  n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
+  "log10"), fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
+  title = "Counts per biotype")
+
+\S4method{plotCountsPerBiotype}{SingleCellExperiment}(object, assay = 1L,
   n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
@@ -56,7 +63,7 @@ Title.}
 Plot counts per biotype
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-08-20.
 }
 \examples{
 data(
