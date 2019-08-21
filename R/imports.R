@@ -21,9 +21,6 @@
 #'   matchInterestingGroups mapGenesToRownames meltCounts methodFormals metrics
 #'   organism sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
-#' @importFrom dplyr arrange bind_rows case_when desc filter group_by left_join
-#'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
-#'   summarise summarise_all top_n ungroup
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
 #'   expand_limits expand_scale facet_wrap geom_bar geom_boxplot geom_density
@@ -41,14 +38,20 @@
 #'   isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
-#' @importFrom magrittr %>%
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
-#' @importFrom rlang := UQ quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile
+#' @importFrom utils data globalVariables packageVersion
+#'
+#'
+#'
+#' @importFrom dplyr arrange bind_rows case_when desc filter group_by left_join
+#'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
+#'   summarise summarise_all top_n ungroup
+#' @importFrom magrittr %>%
+#' @importFrom rlang := UQ quo_text sym syms
 #' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather
-#' @importFrom utils data globalVariables packageVersion
 NULL
