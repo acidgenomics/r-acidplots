@@ -30,7 +30,7 @@
 #'   stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom ggridges geom_density_ridges
-#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert
+#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
 #'   hasNonZeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
 #'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
