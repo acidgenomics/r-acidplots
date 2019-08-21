@@ -1,7 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBiotype
-#' @note Updated 2019-08-20.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-08-20.
+## Updated 2019-08-21.
 `plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -62,14 +62,13 @@ NULL
         }
 
         ## Melt the count matrix into long format.
-        ## FIXME meltCounts is returning NA for SCE example metadata here.
-        ## FIXME I think this needs to be fixed in basejump.
         data <- meltCounts(
             object = object,
             assay = assay,
             minCounts = 1L,
             trans = trans
         )
+        data <- decode(data)
 
         ## Get the row data and prepare for left join via "rowname" column.
         rowData <- rowData(object)
@@ -102,7 +101,7 @@ NULL
         biotypes <- head(biotypes, n = n)
         biotypes <- names(biotypes)
 
-        ## Prepare the minimal tibble required for plotting.
+        ## Prepare the minimal data frame required for plotting.
         data <- left_join(x = data, y = rowData, by = "rowname")
         keep <- which(data[[biotypeCol]] %in% biotypes)
         data <- data[keep, , drop = FALSE]
