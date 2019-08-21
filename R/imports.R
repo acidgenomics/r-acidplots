@@ -30,12 +30,12 @@
 #'   stat_ecdf stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom ggridges geom_density_ridges
-#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert hasDims
-#'   hasLength hasNames hasNoDuplicates hasMetrics hasNonZeroRowsAndCols
-#'   hasRownames hasSubset hasUniqueCols isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHexColorFunction isInClosedRange isInLeftOpenRange
-#'   isInRange isInRightOpenRange isInt isNonNegative isNumber isPositive
-#'   isScalar isString isSubset
+#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert
+#'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
+#'   hasNonZeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
+#'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
+#'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
+#'   isPositive isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette
 #' @importFrom grid arrow unit
 #' @importFrom matrixStats colVars rowVars
@@ -48,9 +48,9 @@
 #'
 #'
 #'
-#' @importFrom dplyr arrange bind_rows desc filter group_by
-#'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
-#'   summarise top_n ungroup
+#' @importFrom dplyr arrange filter group_by
+#'   mutate mutate_all mutate_at mutate_if n rename select select_if slice
+#'   summarise ungroup
 #' @importFrom magrittr %>%
 #' @importFrom rlang := UQ sym syms
 #' @importFrom tibble column_to_rownames tibble
