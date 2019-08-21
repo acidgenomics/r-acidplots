@@ -41,6 +41,7 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
+#' @importFrom rlang !! quo_text
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile
 #' @importFrom utils data globalVariables packageVersion
@@ -51,7 +52,7 @@
 #'   mutate mutate_all mutate_at mutate_if n pull rename select select_if slice
 #'   summarise summarise_all top_n ungroup
 #' @importFrom magrittr %>%
-#' @importFrom rlang := UQ quo_text sym syms
+#' @importFrom rlang := UQ sym syms
 #' @importFrom tibble column_to_rownames tibble
 #' @importFrom tidyr gather
 NULL
