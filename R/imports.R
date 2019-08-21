@@ -50,6 +50,6 @@
 #'
 #' @importFrom dplyr group_by mutate mutate_all n select summarise
 #' @importFrom magrittr %>%
-#' @importFrom rlang := UQ sym syms
+#' @importFrom rlang := sym syms
 #' @importFrom tibble column_to_rownames tibble
 NULL
