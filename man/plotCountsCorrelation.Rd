@@ -9,9 +9,9 @@
 plotCountsCorrelation(x, y, ...)
 
 \S4method{plotCountsCorrelation}{matrix,matrix}(x, y, i = NULL,
-  j = NULL, xTitle = deparse(substitute(x)),
-  yTitle = deparse(substitute(y)), labs = list(colour = NULL, x = NULL,
-  y = NULL, title = NULL, subtitle = NULL))
+  j = NULL, xTitle = getNameInParent(x), yTitle = getNameInParent(y),
+  labs = list(colour = NULL, x = NULL, y = NULL, title = NULL, subtitle =
+  NULL))
 }
 \arguments{
 \item{x}{Object.}
@@ -82,7 +82,7 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-08-21.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
