@@ -55,7 +55,7 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
 
-        counts <- assays(object)[[assay]]
+        counts <- assay(object, i = assay)
         if (is(counts, "sparseMatrix")) {
             colSums <- Matrix::colSums
         }

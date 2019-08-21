@@ -224,8 +224,8 @@ NULL
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
 
         ## Minimize the SE object only contain the assay of our choice.
-        assay <- assays(object)[[assay]]
-        assays(object) <- list(assay = assay)
+        assay <- assay(object, i = assay)
+        assays(object) <- SimpleList(assay = assay)
 
         ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
