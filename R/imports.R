@@ -12,7 +12,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
-#' @importFrom S4Vectors DataFrame SimpleList aggregate merge metadata
+#' @importFrom S4Vectors DataFrame SimpleList aggregate head merge metadata
 #' @importFrom UpSetR upset
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
