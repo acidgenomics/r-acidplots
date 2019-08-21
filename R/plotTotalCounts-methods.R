@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit bioverbs::plotTotalCounts
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -54,26 +54,25 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-
+        metricCol <- "totalCounts"
         counts <- assay(object, i = assay)
         if (is(counts, "sparseMatrix")) {
             colSums <- Matrix::colSums
         }
-        data <- sampleData(object) %>%
-            as_tibble(rownames = NULL) %>%
-            mutate(totalCounts = colSums(!!counts))
-
+        data <- sampleData(object)
+        data[[metricCol]] <- colSums(counts)
         yLab <- "counts"
         if (isTRUE(perMillion)) {
-            data <- mutate(data, totalCounts = !!sym("totalCounts") / 1e6L)
+            data[[metricCol]] <- data[[metricCol]] / 1e6L
             yLab <- paste(yLab, "per million")
         }
-
+        ## Plot.
+        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
                 x = !!sym("sampleName"),
-                y = !!sym("totalCounts"),
+                y = !!sym(metricCol),
                 fill = !!sym("interestingGroups")
             )
         ) +
@@ -85,19 +84,19 @@ NULL
                 y = yLab,
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-
+        ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
         }
-
+        ## Flip.
         if (isTRUE(flip)) {
             p <- acid_coord_flip(p)
         }
-
+        ## Hide sample name legend.
         if (identical(interestingGroups, "sampleName")) {
             p <- p + guides(fill = FALSE)
         }
-
+        ## Return.
         p
     }
 
@@ -118,13 +117,14 @@ setMethod(
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotTotalCounts,SingleCellExperiment` <-  # nolint
     function(object) {
+        object <- aggregateCellsToSamples(object)
         do.call(
             what = plotTotalCounts,
             args = matchArgsToDoCall(
-                args = list(object = aggregateCellsToSamples(object))
+                args = list(object = object)
             )
         )
     }
