@@ -48,8 +48,7 @@
 #'
 #'
 #'
-#' @importFrom dplyr group_by mutate mutate_all mutate_at mutate_if n rename
-#'   select select_if slice summarise ungroup
+#' @importFrom dplyr group_by mutate mutate_all n select summarise
 #' @importFrom magrittr %>%
 #' @importFrom rlang := UQ sym syms
 #' @importFrom tibble column_to_rownames tibble
