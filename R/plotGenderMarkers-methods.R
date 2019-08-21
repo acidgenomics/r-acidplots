@@ -1,6 +1,6 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-21.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams acidroxygen::params
@@ -35,11 +35,10 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-21.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function() {
         validObject(object)
-
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
@@ -51,14 +50,14 @@ NULL
         assert(is.list(markers))
         ## Error if the organism is not supported.
         ## Convert from camel case back to full Latin.
-        supportedOrganisms <- names(markers) %>%
-            snakeCase() %>%
-            sub("^([a-z])", "\\U\\1", ., perl = TRUE) %>%
-            sub("_", " ", .)
-        if (!organism %in% supportedOrganisms) {
+        supported <- names(markers)
+        supported <- snakeCase(supported)
+        supported <- sub("^([a-z])", "\\U\\1", supported, perl = TRUE)
+        supported <- sub("_", " ", supported)
+        if (!isSubset(organism, supportedOrganisms)) {
             stop(sprintf(
                 "'%s' is not supported.\nSupported: %s.",
-                organism, toString(supportedOrganisms)
+                organism, toString(supported)
             ))
         }
         markers <- markers[[camelCase(organism)]]
@@ -75,7 +74,7 @@ NULL
                 character()
             }
         )
-        if (length(genes) == 0L) {
+        if (!hasLength(genes)) {
             return(invisible())
         }
         do.call(
