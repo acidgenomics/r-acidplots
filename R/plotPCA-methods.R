@@ -139,7 +139,7 @@ NULL
         )
         ## Note that we're assigning the percent variation values used
         ## for the axes into the object attributes.
-        attr(data, "percentVar") <- percentVar[1L:2L]
+        attr(data, "percentVar") <- percentVar[seq_len(2L)]
         if (return == "DataFrame") {
             return(data)
         }
