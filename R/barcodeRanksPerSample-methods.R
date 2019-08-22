@@ -14,7 +14,11 @@
 #'
 #' ## SingleCellExperiment ====
 #' ## Not supported for R < 3.6.
-#' if (requireNamespace("DropletUtils", quietly = TRUE)) {
+#' if (requireNamespace(
+#'     package = "DropletUtils",
+#'     versionCheck = list(op = ">=", version = "1.4"),
+#'     quietly = TRUE
+#' )) {
 #'     object <- SingleCellExperiment
 #'     x <- barcodeRanksPerSample(object)
 #'     names(x)
@@ -45,7 +49,11 @@ NULL
 ## Updated 2019-08-20.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object, ...) {
-        assert(requireNamespace("DropletUtils", quietly = TRUE))
+        assert(requireNamespace(
+            package = "DropletUtils",
+            versionCheck = list(op = ">=", version = "1.4"),
+            quietly = TRUE
+        ))
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
