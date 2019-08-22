@@ -64,7 +64,11 @@ data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
 ## Not supported for R < 3.6.
-if (requireNamespace("DropletUtils", quietly = TRUE)) {
+if (requireNamespace(
+    package = "DropletUtils",
+    versionCheck = list(op = ">=", version = "1.4"),
+    quietly = TRUE
+)) {
     object <- SingleCellExperiment
     plotBarcodeRanks(object)
 }
