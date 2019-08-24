@@ -72,9 +72,9 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- meltCounts(x, minCounts = NULL)
+        xData <- gather(x, minCounts = NULL)
         xData[["type"]] <- factor(xTitle)
-        yData <- meltCounts(y, minCounts = NULL)
+        yData <- gather(y, minCounts = NULL)
         yData[["type"]] <- factor(yTitle)
         data <- rbind(xData, yData)
         data <- as_tibble(data, rownames = NULL)

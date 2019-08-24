@@ -2,7 +2,7 @@
 #' @inherit bioverbs::plotCountsPerFeature
 #' @note Updated 2019-08-21.
 #'
-#' @inheritParams basejump::meltCounts
+#' @inheritParams basejump::gather
 #' @inheritParams acidroxygen::params
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
@@ -72,7 +72,7 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- meltCounts(
+        data <- gather(
             object = object,
             assay = assay,
             minCounts = minCounts,
@@ -161,7 +161,7 @@ formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
 formals(`plotCountsPerFeature,SummarizedExperiment`)[["minCountsMethod"]] <-
     methodFormals(
-        f = "meltCounts",
+        f = "gather",
         signature = "SummarizedExperiment",
         package = "basejump"
     )[["minCountsMethod"]]
