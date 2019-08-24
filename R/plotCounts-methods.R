@@ -88,7 +88,7 @@ NULL
 
     ## Coerce the data to a melted tibble.
     suppressMessages(
-        data <- meltCounts(object, trans = trans)
+        data <- gather(object, trans = trans)
     )
     data <- as_tibble(data, rownames = NULL)
 
@@ -140,14 +140,10 @@ NULL
 ) {
     assert(is(object, "SummarizedExperiment"))
     interestingGroups <- interestingGroups(object)
-
-    ## Coerce the data to a melted tibble.
-    suppressMessages(
-        data <- meltCounts(object, trans = trans)
-    )
-
+    data <- gather(object, trans = trans)
+    data <- as_tibble(data, rownames = NULL)
     p <- ggplot(
-        data = as_tibble(data),
+        data = data,
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("counts"),
@@ -161,18 +157,18 @@ NULL
             y = countsAxisLabel,
             color = paste(interestingGroups, collapse = ":\n")
         )
-
+    ## Median line.
     if (
         isTRUE(medianLine) &&
         !identical(interestingGroups, "sampleName")
     ) {
         p <- p + .geneMedianLine
     }
-
+    ## Color.
     if (is(color, "ScaleDiscrete")) {
         p <- p + color
     }
-
+    ## Return.
     p
 }
 

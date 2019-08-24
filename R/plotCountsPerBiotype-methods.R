@@ -62,7 +62,7 @@ NULL
         }
 
         ## Melt the count matrix into long format.
-        data <- meltCounts(
+        data <- gather(
             object = object,
             assay = assay,
             minCounts = 1L,
