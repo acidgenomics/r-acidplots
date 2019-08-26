@@ -63,7 +63,7 @@ Title.}
 Plot counts per biotype
 }
 \note{
-Updated 2019-08-21.
+Updated 2019-08-26.
 }
 \examples{
 data(
