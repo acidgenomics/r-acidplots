@@ -10,20 +10,18 @@
 plotCountsPerFeature(object, ...)
 
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
-  trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default =
+  minCounts = 1L, interestingGroups = NULL, geom = c("boxplot",
+  "density", "jitter"), trans = c("identity", "log2", "log10"),
+  color = getOption(x = "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
   "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
   flip = getOption(x = "acid.flip", default = TRUE),
   countsAxisLabel = "counts", title = "Counts per feature")
 
 \S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
-  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
-  trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default =
+  minCounts = 1L, interestingGroups = NULL, geom = c("boxplot",
+  "density", "jitter"), trans = c("identity", "log2", "log10"),
+  color = getOption(x = "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
   "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
   flip = getOption(x = "acid.flip", default = TRUE),
@@ -35,20 +33,8 @@ plotCountsPerFeature(object, ...)
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
-\item{minCounts}{\code{integer(1)} or \code{NULL}.
-Minimum count threshold to apply. Disable with \code{NULL}. Filters using
-"greater than or equal to" logic internally. Note that this threshold gets
-applied prior to logarithmic transformation, when \code{trans} argument applies.}
-
-\item{minCountsMethod}{\code{character(1)}.
-Uses \code{\link[base:match.arg]{match.arg()}}.
-\itemize{
-\item \code{perFeature}: \emph{Recommended}. Applies cutoff per row feature (i.e. gene).
-Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
-cutoff threshold prior to the melt operation.
-\item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
-operation. This applies to all counts, not per feature.
-}}
+\item{minCounts}{\code{integer(1)}.
+Minimum number of counts per feature (i.e. gene).}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.

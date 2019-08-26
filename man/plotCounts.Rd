@@ -4,6 +4,7 @@
 \name{plotCounts}
 \alias{plotCounts}
 \alias{plotCounts,SummarizedExperiment-method}
+\alias{plotCounts,DESeqDataSet-method}
 \title{Plot counts}
 \usage{
 plotCounts(object, ...)
@@ -14,6 +15,8 @@ plotCounts(object, ...)
   = "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
   "acid.legend", default = TRUE), style = c("facet", "wide"))
+
+\S4method{plotCounts}{DESeqDataSet}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -67,8 +70,15 @@ Plot style.}
 \description{
 Plot counts
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{DESeqDataSet}: Automatically plots normalized counts. Arguments pass
+through to \code{SummarizedExperiment} method, but \code{assay} and \code{countsAxisLabel}
+are automatic.
+}}
+
 \note{
-Updated 2019-07-29.
+Updated 2019-08-26.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")

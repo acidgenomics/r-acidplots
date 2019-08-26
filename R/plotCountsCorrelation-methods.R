@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-26.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -72,9 +72,9 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- gather(x, minCounts = NULL)
+        xData <- gather(x, min = NULL)
         xData[["type"]] <- factor(xTitle)
-        yData <- gather(y, minCounts = NULL)
+        yData <- gather(y, min = NULL)
         yData[["type"]] <- factor(yTitle)
         data <- rbind(xData, yData)
         data <- as_tibble(data, rownames = NULL)
