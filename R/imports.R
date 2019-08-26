@@ -18,7 +18,7 @@
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
 #'   convertGenesToSymbols counts decode formalsList gather interestingGroups
-#'   interestingGroups<- left_join makeLabel makeTitle matchArgsToDoCall
+#'   interestingGroups<- leftJoin makeLabel makeTitle matchArgsToDoCall
 #'   matchInterestingGroups mapGenesToRownames methodFormals metrics organism
 #'   pseudobulk sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid

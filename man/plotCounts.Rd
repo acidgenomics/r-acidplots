@@ -82,20 +82,20 @@ Updated 2019-08-26.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
-rownames <- head(rownames(rse))
+object <- RangedSummarizedExperiment
+rownames <- head(rownames(object))
 print(rownames)
-g2s <- basejump::Gene2Symbol(rse)
+g2s <- basejump::Gene2Symbol(object)
 geneIDs <- head(g2s[["geneID"]])
 print(geneIDs)
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Rownames, gene IDs, and gene names (symbols) are supported.
-plotCounts(rse, genes = geneIDs, style = "facet")
-plotCounts(rse, genes = geneNames, style = "wide")
+plotCounts(object, genes = geneIDs, style = "facet")
+plotCounts(object, genes = geneNames, style = "wide")
 }
 \seealso{
 \code{DESeq2::plotCounts()}.

@@ -41,8 +41,8 @@ NULL
     function(
         object,
         assay = 1L,
-        minCounts = 1L,
-        minCountsMethod,
+        min = 1L,
+        minMethod,
         interestingGroups = NULL,
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
@@ -55,15 +55,15 @@ NULL
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(minCounts),
-            isGreaterThanOrEqualTo(minCounts, 1L),
+            isInt(min),
+            isGreaterThanOrEqualTo(min, 1L),
             isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
             isString(countsAxisLabel, nullOK = TRUE),
             isString(title, nullOK = TRUE)
         )
-        minCountsMethod <- match.arg(minCountsMethod)
+        minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
         if (!identical(trans, "identity")) {
@@ -75,8 +75,8 @@ NULL
         data <- gather(
             object = object,
             assay = assay,
-            minCounts = minCounts,
-            minCountsMethod = minCountsMethod,
+            min = min,
+            minMethod = minMethod,
             trans = trans
         )
         ## Construct the ggplot.
@@ -159,12 +159,12 @@ formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["minCountsMethod"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["minMethod"]] <-
     methodFormals(
         f = "gather",
         signature = "SummarizedExperiment",
         package = "basejump"
-    )[["minCountsMethod"]]
+    )[["minMethod"]]
 
 
 
