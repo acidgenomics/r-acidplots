@@ -3,6 +3,7 @@
 
 
 
+#' @importClassesFrom DESeq2 DESeqDataSet
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'

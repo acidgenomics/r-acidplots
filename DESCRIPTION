@@ -23,11 +23,12 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.5),
-    basejump (>= 0.11.9)
+    basejump (>= 0.11.11)
 Imports:
-    bioverbs (>= 0.2.5),
-    goalie (>= 0.3.5),
+    bioverbs (>= 0.2.6),
+    goalie (>= 0.3.6),
     BiocGenerics,
+    DESeq2,
     IRanges,
     SingleCellExperiment,
     SummarizedExperiment,
