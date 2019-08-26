@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-08-26.
 #'
 #' @inheritParams acidroxygen::params
 #' @param countsAxisLabel `character(1)`.
@@ -19,20 +19,20 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## SummarizedExperiment ====
-#' rownames <- head(rownames(rse))
+#' object <- RangedSummarizedExperiment
+#' rownames <- head(rownames(object))
 #' print(rownames)
-#' g2s <- basejump::Gene2Symbol(rse)
+#' g2s <- basejump::Gene2Symbol(object)
 #' geneIDs <- head(g2s[["geneID"]])
 #' print(geneIDs)
 #' geneNames <- head(g2s[["geneName"]])
 #' print(geneNames)
 #'
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotCounts(rse, genes = geneIDs, style = "facet")
-#' plotCounts(rse, genes = geneNames, style = "wide")
+#' plotCounts(object, genes = geneIDs, style = "facet")
+#' plotCounts(object, genes = geneNames, style = "wide")
 NULL
 
 
@@ -74,29 +74,22 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-26.
 .plotCountsFacet <- function(
-    object,
-    trans,
+    data,
     countsAxisLabel,
     medianLine,
     color,
-    legend
+    legend,
+    interestingGroups
 ) {
-    assert(is(object, "SummarizedExperiment"))
-    interestingGroups <- interestingGroups(object)
-
-    ## Coerce the data to a melted tibble.
-    suppressMessages(
-        data <- gather(object, trans = trans)
-    )
-    data <- as_tibble(data, rownames = NULL)
-
+    assert(is(data, "tbl_df"))
+    ## Plot.
     p <- ggplot(
         data = data,
         mapping = aes(
             x = !!sym("interestingGroups"),
-            y = !!sym("counts"),
+            y = !!sym("value"),
             color = !!sym("interestingGroups")
         )
     ) +
@@ -108,22 +101,22 @@ NULL
             y = countsAxisLabel,
             color = paste(interestingGroups, collapse = ":\n")
         )
-
+    ## Median line.
     if (
         isTRUE(medianLine) &&
         !identical(interestingGroups, "sampleName")
     ) {
         p <- p + .geneMedianLine
     }
-
+    ## Color.
     if (is(color, "ScaleDiscrete")) {
         p <- p + color
     }
-
+    ## Hide sample name legend.
     if (identical(interestingGroups, "sampleName")) {
         p <- p + guides(color = FALSE)
     }
-
+    ## Return.
     p
 }
 
@@ -132,21 +125,19 @@ NULL
 ## Updated 2019-07-23.
 .plotCountsWide <- function(
     object,
-    trans,
     countsAxisLabel,
     medianLine,
     color,
-    legend
+    legend,
+    interestingGroups
 ) {
-    assert(is(object, "SummarizedExperiment"))
-    interestingGroups <- interestingGroups(object)
-    data <- gather(object, trans = trans)
-    data <- as_tibble(data, rownames = NULL)
+    assert(is(data, "tbl_df"))
+    ## Plot.
     p <- ggplot(
         data = data,
         mapping = aes(
             x = !!sym("rowname"),
-            y = !!sym("counts"),
+            y = !!sym("value"),
             color = !!sym("interestingGroups")
         )
     ) +
@@ -174,7 +165,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-08-26.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -188,15 +179,6 @@ NULL
         legend,
         style = c("facet", "wide")
     ) {
-        ## Detect DESeqDataSet and use normalized counts, if necessary.
-        if (is(object, "DESeqDataSet")) {
-            message("DESeqDataSet detected. Using normalized counts.")
-            assays <- list(normalized = counts(object, normalized = TRUE))
-            object <- as(object, "RangedSummarizedExperiment")
-            assays(object) <- assays
-            assay <- 1L
-            countsAxisLabel <- "normalized counts"
-        }
         validObject(object)
         assert(
             isCharacter(genes),
@@ -212,20 +194,15 @@ NULL
         style <- match.arg(style)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
-
-        ## Coercing to `SummarizedExperiment` for fast subsetting below.
+        ## Coercing to `SummarizedExperiment` for fast subsetting.
         object <- as.SummarizedExperiment(object)
-
         ## This will support objects that don't contain gene-to-symbol mappings.
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
-
         ## Minimize the SE object only contain the assay of our choice.
         assay <- assay(object, i = assay)
         assays(object) <- SimpleList(assay = assay)
-
         ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
-
         ## Now convert the row names to symbols, for visualization.
         object <- tryCatch(
             expr = {
@@ -237,28 +214,28 @@ NULL
                 object
             }
         )
-
         ## Counts axis label. Automatically add transformation, if necessary.
-        if (trans != "identity") {
+        if (!identical(trans, "identity")) {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
-
+        ## Generate a melted tibble.
+        data <- gather(object, min = 1L, trans = trans)
+        data <- as_tibble(data, rownames = NULL)
         ## Plot style.
-        if (style == "facet") {
-            what <- .plotCountsFacet
-        } else if (style == "wide") {
-            what <- .plotCountsWide
-        }
-
+        what <- switch(
+            EXPR = style,
+            "facet" = .plotCountsFacet,
+            "wide" = .plotCountsWide
+        )
         do.call(
             what = what,
             args = list(
-                object = object,
-                trans = trans,
+                data = data,
                 countsAxisLabel = countsAxisLabel,
                 medianLine = medianLine,
                 color = color,
-                legend = legend
+                legend = legend,
+                interestingGroups = interestingGroups(object)
             )
         )
     }
@@ -276,4 +253,32 @@ setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
     definition = `plotCounts,SummarizedExperiment`
+)
+
+
+
+## Updated 2019-08-26.
+`plotCounts,DESeqDataSet` <-  # nolint
+    function(object, ...) {
+        rse <- as(object, "RangedSummarizedExperiment")
+        assays <- SimpleList(normalized = counts(object, normalized = TRUE))
+        assays(rse) <- assays
+        plotCounts(
+            object = rse,
+            assay = "normalized",
+            countsAxisLabel = "normalized counts",
+            ...
+        )
+    }
+
+
+
+#' @describeIn plotCounts Automatically plots normalized counts. Arguments pass
+#'   through to `SummarizedExperiment` method, but `assay` and `countsAxisLabel`
+#'   are automatic.
+#' @export
+setMethod(
+    f = "plotCounts",
+    signature = signature("DESeqDataSet"),
+    definition = `plotCounts,DESeqDataSet`
 )
