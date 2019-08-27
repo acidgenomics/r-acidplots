@@ -33,7 +33,7 @@
 #' @importFrom ggridges geom_density_ridges
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
-#'   hasNonZeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
+#'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
 #'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
 #'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
 #'   isPositive isScalar isString isSubset
