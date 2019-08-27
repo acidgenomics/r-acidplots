@@ -99,7 +99,7 @@ NULL
                 geom_boxplot(
                     mapping = aes(
                         x = !!sym("sampleName"),
-                        y = !!sym("counts"),
+                        y = !!sym("value"),
                         fill = !!sym("interestingGroups")
                     ),
                     color = "black"
@@ -110,7 +110,7 @@ NULL
                 geom_jitter(
                     mapping = aes(
                         x = !!sym("sampleName"),
-                        y = !!sym("counts"),
+                        y = !!sym("value"),
                         color = !!sym("interestingGroups")
                     ),
                     size = 0.5
