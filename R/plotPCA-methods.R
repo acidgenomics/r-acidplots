@@ -73,7 +73,7 @@ NULL
         ## nocov start
         call <- standardizeCall()
         ## genes
-        if ("genes" %in% names(call)) {
+        if (isSubset("genes", names(call))) {
             stop("'genes' is defunct. Use 'ntop' argument instead.")
         }
         ## samples, censorSamples
@@ -81,14 +81,11 @@ NULL
             stop("Sample selection is defunct. Use bracket-based subsetting.")
         }
         ## returnData
-        if ("returnData" %in% names(call)) {
+        if (isSubset("returnData", names(call))) {
             stop("'returnData' is defunct. Use 'return' argument instead.")
         }
         ## Error on unsupported arguments.
-        assert(isSubset(
-            x = setdiff(names(call), ""),
-            y = names(formals())
-        ))
+        assert(isSubset(setdiff(names(call), ""), names(formals())))
         rm(call)
         ## nocov end
         validObject(object)
@@ -111,7 +108,7 @@ NULL
             return(invisible())
         }
         ## Handle `ntop` definition automatically.
-        if (ntop > nrow(object)) {
+        if (isTRUE(ntop > nrow(object))) {
             ntop <- nrow(object)
         }
         message(sprintf(
@@ -138,7 +135,7 @@ NULL
         ## Note that we're assigning the percent variation values used
         ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[seq_len(2L)]
-        if (return == "DataFrame") {
+        if (identical(return, "DataFrame")) {
             return(data)
         }
         ## Plot.

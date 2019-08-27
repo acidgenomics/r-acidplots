@@ -201,7 +201,7 @@ NULL
         mat <- as.matrix(assay(object, i = assay))
         ## Ensure the user isn't passing in a matrix with any rows or columns
         ## containing all zeros when we're attempting to z-scale.
-        if (scale != "none") {
+        if (!identical(scale, "none")) {
             assert(hasNonzeroRowsAndCols(mat))
         }
         ## Pre-process the matrix by applying row/column scaling, if desired.
@@ -244,12 +244,9 @@ NULL
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (length(sampleNames) > 0L) {
+        if (hasLength(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (
-                length(annotationCol) > 0L &&
-                !any(is.na(annotationCol))
-            ) {
+            if (!hasLength(annotationCol) && !any(is.na(annotationCol))) {
                 rownames(annotationCol) <- sampleNames
             }
         }
