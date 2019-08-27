@@ -55,7 +55,7 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        if (trans != "identity") {
+        if (!identical(trans, "identity")) {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
         ## Melt the count matrix into long format.
@@ -72,7 +72,7 @@ NULL
         rowData[["rowname"]] <- rownames(object)
         biotypeCol <- "broadClass"
         ## Warn and early return if the biotypes are not defined in rowData.
-        if (!biotypeCol %in% colnames(rowData)) {
+        if (!isSubset(biotypeCol, colnames(rowData))) {
             ## nocov start
             warning(sprintf(
                 "'rowData()' does not contain biotypes defined in '%s' column.",
