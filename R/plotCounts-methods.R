@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-08-26.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param countsAxisLabel `character(1)`.
@@ -74,7 +74,7 @@ NULL
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-08-27.
 .plotCountsFacet <- function(
     data,
     countsAxisLabel,
@@ -122,9 +122,9 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-07-27.
 .plotCountsWide <- function(
-    object,
+    data,
     countsAxisLabel,
     medianLine,
     color,
