@@ -29,7 +29,7 @@ Imports:
     goalie (>= 0.3.6),
     BiocGenerics,
     DESeq2,
-    IRanges,
+    IRanges (>= 2.18.2),
     SingleCellExperiment,
     SummarizedExperiment,
     S4Vectors,

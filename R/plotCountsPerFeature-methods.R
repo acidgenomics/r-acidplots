@@ -72,7 +72,7 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- gather(
+        data <- melt(
             object = object,
             assay = assay,
             min = min,
@@ -161,7 +161,7 @@ formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
 formals(`plotCountsPerFeature,SummarizedExperiment`)[["minMethod"]] <-
     methodFormals(
-        f = "gather",
+        f = "melt",
         signature = "SummarizedExperiment",
         package = "basejump"
     )[["minMethod"]]
