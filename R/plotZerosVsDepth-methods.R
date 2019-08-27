@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-08-19.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -11,14 +11,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotZerosVsDepth(rse)
+#' object <- RangedSummarizedExperiment
+#' plotZerosVsDepth(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotZerosVsDepth(sce)
+#' object <- SingleCellExperiment
+#' plotZerosVsDepth(object)
 NULL
 
 

@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -104,25 +104,25 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotHeatmap(rse)
+#' object <- RangedSummarizedExperiment
+#' plotHeatmap(object)
 #'
 #' ## Disable column clustering.
-#' plotHeatmap(rse, clusterCols = FALSE)
+#' plotHeatmap(object, clusterCols = FALSE)
 #'
 #' ## Using pheatmap default colors.
-#' plotHeatmap(rse, color = NULL, legendColor = NULL)
+#' plotHeatmap(object, color = NULL, legendColor = NULL)
 #'
 #' ## Using hexadecimal color input.
 #' color <- RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
 #' color <- grDevices::colorRampPalette(color)(256L)
-#' plotHeatmap(rse, color = color)
+#' plotHeatmap(object, color = color)
 #'
 #' ## SingleCellExperiment ====
-#' plotHeatmap(sce)
+#' object <- SingleCellExperiment
+#' plotHeatmap(object)
 NULL
 
 
@@ -136,7 +136,7 @@ NULL
 
 
 
-## Updated 2019-07-29.
+## Updated 2019-08-27.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -181,7 +181,6 @@ NULL
         if (!is.numeric(legendBreaks)) legendBreaks <- NA
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
-
         ## Warn and early return if any samples are duplicated.
         ## We've included this step here to work with the minimal bcbio RNA-seq
         ## test data set, which contains duplicate samples.
@@ -189,7 +188,6 @@ NULL
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
-
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object
         ## unmodified if gene symbols aren't defined.
@@ -199,21 +197,17 @@ NULL
             ),
             error = function(e) object
         )
-
         ## Ensure we're always using a dense matrix.
         mat <- as.matrix(assay(object, i = assay))
-
         ## Ensure the user isn't passing in a matrix with any rows or columns
         ## containing all zeros when we're attempting to z-scale.
         if (scale != "none") {
-            assert(hasNonZeroRowsAndCols(mat))
+            assert(hasNonzeroRowsAndCols(mat))
         }
-
         ## Pre-process the matrix by applying row/column scaling, if desired.
         ## Run this step before hierarchical clustering (i.e. calculating the
         ## distance matrix).
         mat <- .scaleMatrix(mat, scale = scale)
-
         ## Now we're ready to perform hierarchical clustering. Generate `hclust`
         ## objects for rows and columns that we'll pass to pheatmap. Note that
         ## pheatmap supports `clusterRows = TRUE` and `clusterCols = TRUE`, but
@@ -229,7 +223,6 @@ NULL
             is.list(hc),
             identical(names(hc), c("rows", "cols"))
         )
-
         ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(
@@ -241,13 +234,11 @@ NULL
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
-
         args <- list(color = color)
         if (is.numeric(breaks)) {
             args[["n"]] <- length(breaks) - 1L
         }
         color <- do.call(what = .pheatmapColorPalette, args = args)
-
         ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
@@ -262,7 +253,6 @@ NULL
                 rownames(annotationCol) <- sampleNames
             }
         }
-
         ## Return pretty heatmap with modified defaults.
         args <- list(
             mat = mat,

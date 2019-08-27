@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -18,13 +18,13 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
 #' plotQuantileHeatmap(rse)
 #'
 #' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
 #' plotQuantileHeatmap(sce)
 NULL
 

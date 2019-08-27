@@ -107,7 +107,7 @@ expression at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \section{Scaling}{
 
@@ -156,25 +156,25 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotHeatmap(rse)
+object <- RangedSummarizedExperiment
+plotHeatmap(object)
 
 ## Disable column clustering.
-plotHeatmap(rse, clusterCols = FALSE)
+plotHeatmap(object, clusterCols = FALSE)
 
 ## Using pheatmap default colors.
-plotHeatmap(rse, color = NULL, legendColor = NULL)
+plotHeatmap(object, color = NULL, legendColor = NULL)
 
 ## Using hexadecimal color input.
 color <- RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
 color <- grDevices::colorRampPalette(color)(256L)
-plotHeatmap(rse, color = color)
+plotHeatmap(object, color = color)
 
 ## SingleCellExperiment ====
-plotHeatmap(sce)
+object <- SingleCellExperiment
+plotHeatmap(object)
 }
 \seealso{
 \itemize{

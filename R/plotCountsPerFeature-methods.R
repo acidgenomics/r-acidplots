@@ -1,8 +1,8 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
-#' @inheritParams basejump::gather
+#' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.

@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -17,14 +17,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotCorrelationHeatmap(rse)
+#' object <- RangedSummarizedExperiment
+#' plotCorrelationHeatmap(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotCorrelationHeatmap(sce)
+#' object <- SingleCellExperiment
+#' plotCorrelationHeatmap(object)
 NULL
 
 

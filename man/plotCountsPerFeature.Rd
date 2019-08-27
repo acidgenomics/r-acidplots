@@ -103,7 +103,7 @@ calculation to summarize at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(

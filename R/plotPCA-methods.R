@@ -10,7 +10,9 @@
 #' a way to look at how samples are clustering.
 #'
 #' @name plotPCA
-#' @note Updated 2019-08-21.
+#' @note `SingleCellExperiment` method that visualizes dimension reduction data
+#'   slotted in `reducedDims()` is defined in pointillism package.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -35,16 +37,11 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "acidtest"
-#' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
-#' plotPCA(rse, label = FALSE)
+#' object <- RangedSummarizedExperiment
+#' plotPCA(object)
 NULL
 
 
@@ -58,7 +55,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -128,6 +125,7 @@ NULL
         ))
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assay(object, i = assay)
+        counts <- as.matrix(counts)
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
