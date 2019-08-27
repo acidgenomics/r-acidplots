@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -12,10 +12,9 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## matrix ====
-#' x <- SummarizedExperiment::assay(rse)
+#' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 #' x <- x[seq_len(4L), seq_len(2L)]
 #' y <- x * 2L
 #' plotCountsCorrelation(x, y)
@@ -32,7 +31,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
@@ -72,9 +71,9 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- meltCounts(x, minCounts = NULL)
+        xData <- melt(x, min = NULL)
         xData[["type"]] <- factor(xTitle)
-        yData <- meltCounts(y, minCounts = NULL)
+        yData <- melt(y, min = NULL)
         yData[["type"]] <- factor(yTitle)
         data <- rbind(xData, yData)
         data <- as_tibble(data, rownames = NULL)
@@ -82,7 +81,7 @@ NULL
             data = data,
             mapping = aes(
                 x = !!sym("colname"),
-                y = !!sym("counts"),
+                y = !!sym("value"),
                 colour = !!sym("type")
             )
         ) +

@@ -10,10 +10,9 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## matrix ====
-#' x <- SummarizedExperiment::assay(rse)
+#' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 #' y <- x + 1L
 #' plotCountsCorrelationHeatmap(x, y)
 NULL
@@ -75,7 +74,7 @@ setMethod(
     f = "plotCountsCorrelationHeatmap",
     signature = signature(
         x = "matrix",
-        y =  "matrix"
+        y = "matrix"
     ),
     definition = `plotCountsCorrelationHeatmap,matrix`
 )

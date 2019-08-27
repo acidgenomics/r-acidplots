@@ -43,7 +43,7 @@ Title.}
 Plot percentage of zeros vs. library depth
 }
 \note{
-Updated 2019-08-19.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -51,12 +51,12 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotZerosVsDepth(rse)
+object <- RangedSummarizedExperiment
+plotZerosVsDepth(object)
 
 ## SingleCellExperiment ====
-plotZerosVsDepth(sce)
+object <- SingleCellExperiment
+plotZerosVsDepth(object)
 }

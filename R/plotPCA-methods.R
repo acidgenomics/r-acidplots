@@ -10,7 +10,9 @@
 #' a way to look at how samples are clustering.
 #'
 #' @name plotPCA
-#' @note Updated 2019-08-21.
+#' @note `SingleCellExperiment` method that visualizes dimension reduction data
+#'   slotted in `reducedDims()` is defined in pointillism package.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -35,16 +37,11 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(
-#'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
-#'     package = "acidtest"
-#' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
+#' data(RangedSummarizedExperiment, package = "acidtest")
 #'
 #' ## SummarizedExperiment ====
-#' plotPCA(rse, label = FALSE)
+#' object <- RangedSummarizedExperiment
+#' plotPCA(object)
 NULL
 
 
@@ -58,7 +55,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -76,7 +73,7 @@ NULL
         ## nocov start
         call <- standardizeCall()
         ## genes
-        if ("genes" %in% names(call)) {
+        if (isSubset("genes", names(call))) {
             stop("'genes' is defunct. Use 'ntop' argument instead.")
         }
         ## samples, censorSamples
@@ -84,14 +81,11 @@ NULL
             stop("Sample selection is defunct. Use bracket-based subsetting.")
         }
         ## returnData
-        if ("returnData" %in% names(call)) {
+        if (isSubset("returnData", names(call))) {
             stop("'returnData' is defunct. Use 'return' argument instead.")
         }
         ## Error on unsupported arguments.
-        assert(isSubset(
-            x = setdiff(names(call), ""),
-            y = names(formals())
-        ))
+        assert(isSubset(setdiff(names(call), ""), names(formals())))
         rm(call)
         ## nocov end
         validObject(object)
@@ -114,7 +108,7 @@ NULL
             return(invisible())
         }
         ## Handle `ntop` definition automatically.
-        if (ntop > nrow(object)) {
+        if (isTRUE(ntop > nrow(object))) {
             ntop <- nrow(object)
         }
         message(sprintf(
@@ -128,6 +122,7 @@ NULL
         ))
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assay(object, i = assay)
+        counts <- as.matrix(counts)
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
@@ -140,7 +135,7 @@ NULL
         ## Note that we're assigning the percent variation values used
         ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[seq_len(2L)]
-        if (return == "DataFrame") {
+        if (identical(return, "DataFrame")) {
             return(data)
         }
         ## Plot.

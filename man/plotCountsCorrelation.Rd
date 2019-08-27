@@ -82,14 +82,13 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
 
 ## matrix ====
-x <- SummarizedExperiment::assay(rse)
+x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 x <- x[seq_len(4L), seq_len(2L)]
 y <- x * 2L
 plotCountsCorrelation(x, y)

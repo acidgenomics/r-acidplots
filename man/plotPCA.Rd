@@ -64,7 +64,10 @@ to the first argument in the \code{character} vector.}
 Principal component analysis plot
 }
 \note{
-Updated 2019-08-21.
+\code{SingleCellExperiment} method that visualizes dimension reduction data
+slotted in \code{reducedDims()} is defined in pointillism package.
+
+Updated 2019-08-27.
 }
 \section{Principal component analysis}{
 
@@ -78,16 +81,11 @@ a way to look at how samples are clustering.
 }
 
 \examples{
-data(
-    RangedSummarizedExperiment,
-    SingleCellExperiment,
-    package = "acidtest"
-)
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
+data(RangedSummarizedExperiment, package = "acidtest")
 
 ## SummarizedExperiment ====
-plotPCA(rse, label = FALSE)
+object <- RangedSummarizedExperiment
+plotPCA(object)
 }
 \references{
 Jolliffe, et al., 2002.

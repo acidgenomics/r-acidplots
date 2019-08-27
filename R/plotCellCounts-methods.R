@@ -71,7 +71,7 @@ NULL
             p <- p + fill
         }
         ## Labels.
-        if (nrow(data) <= 16L) {
+        if (isTRUE(nrow(data) <= 16L)) {
             p <- p + acid_geom_label(
                 data = data,
                 mapping = aes(label = !!sym(metricCol)),

@@ -104,7 +104,7 @@ gene expression at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -112,12 +112,12 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotQuantileHeatmap(rse)
+object <- RangedSummarizedExperiment
+plotQuantileHeatmap(object)
 
 ## SingleCellExperiment ====
-plotQuantileHeatmap(sce)
+object <- SingleCellExperiment
+plotQuantileHeatmap(object)
 }

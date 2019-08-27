@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-08-19.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -11,14 +11,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotZerosVsDepth(rse)
+#' object <- RangedSummarizedExperiment
+#' plotZerosVsDepth(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotZerosVsDepth(sce)
+#' object <- SingleCellExperiment
+#' plotZerosVsDepth(object)
 NULL
 
 
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-19.
+## Updated 2019-08-27.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -50,11 +50,8 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-
         data <- zerosVsDepth(object, assay = assay)
-        assert(is(data, "DataFrame"))
         data <- as_tibble(data, rownames = NULL)
-
         p <- ggplot(
             data = data,
             mapping = aes(
@@ -72,11 +69,10 @@ NULL
                 y = "dropout rate",
                 color = paste(interestingGroups, collapse = ":\n")
             )
-
+        ## Color.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
         }
-
         ## Wrap samples by `aggregate` column, if defined.
         facets <- NULL
         if (isSubset("aggregate", colnames(data))) {
@@ -85,7 +81,7 @@ NULL
         if (is.character(facets)) {
             p <- p + facet_wrap(facets = syms(facets), scales = "free")
         }
-
+        ## Return.
         p
     }
 

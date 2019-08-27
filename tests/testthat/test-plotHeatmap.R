@@ -96,7 +96,7 @@ test_that("Row and column scaling", {
     # Error if matrix counts any all zero rows.
     expect_error(
         object = plotHeatmap(object, scale = "row"),
-        regexp = "hasNonZeroRowsAndCols"
+        regexp = "hasNonzeroRowsAndCols"
     )
 
     # Drop zero rows and now can plot.

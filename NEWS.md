@@ -1,3 +1,13 @@
+## acidplots 0.2.14 (2019-08-27)
+
+### Minor changes
+
+- `plotCountsPerFeature`: Renamed formals to match conventions in new basejump
+  `melt` methods.
+- Updated basejump dependencies and NAMESPACE.
+- Tightened up if/then checks, ensuring boolean flag return.
+- Improved some working examples and unit tests.
+
 ## acidplots 0.2.13 (2019-08-21)
 
 ### Minor changes

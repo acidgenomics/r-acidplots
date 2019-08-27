@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -11,14 +11,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotFeaturesDetected(rse)
+#' object <- RangedSummarizedExperiment
+#' plotFeaturesDetected(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotFeaturesDetected(sce)
+#' object <- SingleCellExperiment
+#' plotFeaturesDetected(object)
 NULL
 
 
