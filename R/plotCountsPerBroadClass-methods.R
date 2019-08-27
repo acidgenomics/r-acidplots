@@ -1,7 +1,7 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBroadClass
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -12,14 +12,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotCountsPerBroadClass(rse)
+#' object <- RangedSummarizedExperiment
+#' plotCountsPerBroadClass(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotCountsPerBroadClass(sce)
+#' object <- SingleCellExperiment
+#' plotCountsPerBroadClass(object)
 NULL
 
 
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -58,7 +58,6 @@ NULL
         if (trans != "identity") {
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
-
         ## Melt the count matrix into long format.
         data <- melt(
             object = object,
@@ -67,12 +66,10 @@ NULL
             trans = trans
         )
         data <- decode(data)
-
         ## Get the row data and prepare for left join via "rowname" column.
         rowData <- rowData(object)
         rowData <- decode(rowData)
         rowData[["rowname"]] <- rownames(object)
-
         biotypeCol <- "broadClass"
         ## Warn and early return if the biotypes are not defined in rowData.
         if (!biotypeCol %in% colnames(rowData)) {
@@ -84,29 +81,26 @@ NULL
             return(invisible())
             ## nocov end
         }
-
         ## Get the top biotypes from the row data.
         biotypes <- table(rowData[[biotypeCol]])
         ## Requiring at least 10 genes per biotype.
         biotypes <- biotypes[which(biotypes > 10L)]
         biotypes <- sort(biotypes, decreasing = TRUE)
         biotypes <- names(biotypes)
-
         ## Prepare the minimal data frame required for plotting.
         data <- leftJoin(x = data, y = rowData, by = "rowname")
         keep <- which(data[[biotypeCol]] %in% biotypes)
         data <- data[keep, , drop = FALSE]
-        data <- data[, c("counts", "interestingGroups", biotypeCol)]
+        data <- data[, c("value", "interestingGroups", biotypeCol)]
         ## Sanitize the biotype column to appear nicer in plots.
         data[[biotypeCol]] <- gsub("_", " ", data[[biotypeCol]])
-
         ## Plot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
                 x = !!sym("interestingGroups"),
-                y = !!sym("counts")
+                y = !!sym("value")
             )
         ) +
             geom_violin(
