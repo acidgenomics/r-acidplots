@@ -219,7 +219,7 @@ NULL
             countsAxisLabel <- paste(trans, countsAxisLabel)
         }
         ## Generate a melted tibble.
-        data <- gather(object, min = 1L, trans = trans)
+        data <- melt(object, min = 1L, trans = trans)
         data <- as_tibble(data, rownames = NULL)
         ## Plot style.
         what <- switch(
