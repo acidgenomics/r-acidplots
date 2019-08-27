@@ -89,22 +89,18 @@ acid_theme_light <-  # nolint
             isFlag(grid),
             isFlag(minimal)
         )
-
         gray <- "gray95"
-
         text <- element_text(
             family = base_family,
             face = face,
             colour = "black"
         )
-
         ## Include the grid lines.
         if (isTRUE(grid)) {
             panel_grid_major <- element_line(colour = gray, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
-
         ## Remove panel border and axis ticks.
         if (isTRUE(minimal)) {
             axis_ticks <- element_blank()
@@ -113,7 +109,6 @@ acid_theme_light <-  # nolint
             axis_ticks <- element_line(colour = "black")
             panel_border <- element_rect(colour = "black", fill = NA)
         }
-
         theme_linedraw(
             base_size = base_size,
             base_family = base_family
@@ -156,25 +151,20 @@ acid_theme_dark <-  # nolint
         assert(isNumber(aspect_ratio, nullOK = TRUE))
         legend_position <- match.arg(legend_position)
         assert(isFlag(grid))
-
         ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = TRUE)
-
         gray <- "gray10"
-
         text <- element_text(
             family = base_family,
             face = face,
             colour = "white"
         )
-
         ## Include the grid lines.
         if (isTRUE(grid)) {
             panel_grid_major <- element_line(colour = gray, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
-
         ## Remove panel border and axis ticks.
         if (isTRUE(minimal)) {
             axis_ticks <- element_blank()
@@ -183,7 +173,6 @@ acid_theme_dark <-  # nolint
             axis_ticks <- element_line(colour = "white")
             panel_border <- element_rect(colour = "white", fill = NA)
         }
-
         theme_linedraw(
             base_size = base_size,
             base_family = base_family
