@@ -14,15 +14,15 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotCountsPerFeature(rse, geom = "boxplot")
-#' plotCountsPerFeature(rse, geom = "density")
+#' object <- RangedSummarizedExperiment
+#' plotCountsPerFeature(object, geom = "boxplot")
+#' plotCountsPerFeature(object, geom = "density")
 #'
 #' ## SingleCellExperiment ====
-#' plotCountsPerFeature(sce)
+#' object <- SingleCellExperiment
+#' plotCountsPerFeature(object)
 NULL
 
 
@@ -36,7 +36,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -82,11 +82,11 @@ NULL
         ## Construct the ggplot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(data = data)
-        if (geom == "density") {
+        if (identical(geom, "density")) {
             p <- p +
                 geom_density(
                     mapping = aes(
-                        x = !!sym("counts"),
+                        x = !!sym("value"),
                         group = !!sym("interestingGroups"),
                         color = !!sym("interestingGroups")
                     ),
@@ -94,7 +94,7 @@ NULL
                     size = 1L
                 ) +
                 labs(x = countsAxisLabel)
-        } else if (geom == "boxplot") {
+        } else if (identical(geom, "boxplot")) {
             p <- p +
                 geom_boxplot(
                     mapping = aes(
@@ -105,7 +105,7 @@ NULL
                     color = "black"
                 ) +
                 labs(x = NULL, y = countsAxisLabel)
-        } else if (geom == "jitter") {
+        } else if (identical(geom, "jitter")) {
             p <- p +
                 geom_jitter(
                     mapping = aes(
@@ -132,17 +132,17 @@ NULL
                 color = paste(interestingGroups, collapse = ":\n"),
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-        if (geom == "boxplot") {
+        if (identical(geom, "boxplot")) {
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
             }
-        } else if (geom %in% c("density", "jitter")) {
+        } else if (isSubset(geom, c("density", "jitter"))) {
             if (is(color, "ScaleDiscrete")) {
                 p <- p + color
             }
         }
         ## Flip the axis for plots with counts on y-axis, if desired.
-        if (isTRUE(flip) && !geom %in% "density") {
+        if (isTRUE(flip) && !identical(geom, "density")) {
             p <- acid_coord_flip(p)
         }
         ## Hide sample name legend.
