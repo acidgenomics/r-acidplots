@@ -55,23 +55,23 @@ Updated 2019-07-29.
 library(ggplot2)
 theme_set(acid_theme_light())
 
-## Colour, continuous
+## Colour, continuous.
 cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(colour = hwy))
 cc + scale_colour_synesthesia_c()
 
-## Colour, discrete
+## Colour, discrete.
 cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(colour = fl), fill = NA)
 cd + scale_colour_synesthesia_d()
 
-## Fill, continuous
+## Fill, continuous.
 fc <- ggplot(diamonds, aes(carat, price)) + geom_hex()
 fc + scale_fill_synesthesia_c()
 
-## Fill, discrete
+## Fill, discrete.
 fd <- ggplot(mpg, aes(fl)) + geom_bar(aes(fill = fl))
 fd + scale_fill_synesthesia_d()
 
-## Base color
+## Base color.
 par(mar = rep(2.5, times = 4L))
 image(
     matrix(data = seq_len(100L), nrow = 10, ncol = 10),

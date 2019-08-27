@@ -10,7 +10,7 @@
 plotCountsPerFeature(object, ...)
 
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
+  min = 1L, minMethod = c("perRow", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
   "acid.color.discrete", default =
@@ -20,7 +20,7 @@ plotCountsPerFeature(object, ...)
   countsAxisLabel = "counts", title = "Counts per feature")
 
 \S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
-  minCounts = 1L, minCountsMethod = c("perFeature", "absolute"),
+  min = 1L, minMethod = c("perRow", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
   "acid.color.discrete", default =
@@ -35,15 +35,16 @@ plotCountsPerFeature(object, ...)
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
-\item{minCounts}{\code{integer(1)} or \code{NULL}.
-Minimum count threshold to apply. Disable with \code{NULL}. Filters using
-"greater than or equal to" logic internally. Note that this threshold gets
-applied prior to logarithmic transformation, when \code{trans} argument applies.}
+\item{min}{\code{integer(1)} or \code{NULL}.
+Minimum count threshold to apply. Filters using "greater than or equal to"
+logic internally. Note that this threshold gets applied prior to
+logarithmic transformation, when \code{trans} argument applies.}
 
-\item{minCountsMethod}{\code{character(1)}.
+\item{minMethod}{\code{character(1)}.
+Only applies when \code{min} argument is numeric.
 Uses \code{\link[base:match.arg]{match.arg()}}.
 \itemize{
-\item \code{perFeature}: \emph{Recommended}. Applies cutoff per row feature (i.e. gene).
+\item \code{perRow}: \emph{Recommended}. Applies cutoff per row (i.e. gene).
 Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
 cutoff threshold prior to the melt operation.
 \item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
@@ -102,7 +103,7 @@ calculation to summarize at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -110,13 +111,13 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotCountsPerFeature(rse, geom = "boxplot")
-plotCountsPerFeature(rse, geom = "density")
+object <- RangedSummarizedExperiment
+plotCountsPerFeature(object, geom = "boxplot")
+plotCountsPerFeature(object, geom = "density")
 
 ## SingleCellExperiment ====
-plotCountsPerFeature(sce)
+object <- SingleCellExperiment
+plotCountsPerFeature(object)
 }

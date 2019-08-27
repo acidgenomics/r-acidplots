@@ -1,8 +1,8 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
-#' @inheritParams basejump::meltCounts
+#' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
@@ -14,15 +14,15 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotCountsPerFeature(rse, geom = "boxplot")
-#' plotCountsPerFeature(rse, geom = "density")
+#' object <- RangedSummarizedExperiment
+#' plotCountsPerFeature(object, geom = "boxplot")
+#' plotCountsPerFeature(object, geom = "density")
 #'
 #' ## SingleCellExperiment ====
-#' plotCountsPerFeature(sce)
+#' object <- SingleCellExperiment
+#' plotCountsPerFeature(object)
 NULL
 
 
@@ -36,13 +36,13 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
-        minCounts = 1L,
-        minCountsMethod,
+        min = 1L,
+        minMethod,
         interestingGroups = NULL,
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
@@ -55,15 +55,15 @@ NULL
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(minCounts),
-            isGreaterThanOrEqualTo(minCounts, 1L),
+            isInt(min),
+            isGreaterThanOrEqualTo(min, 1L),
             isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
             isString(countsAxisLabel, nullOK = TRUE),
             isString(title, nullOK = TRUE)
         )
-        minCountsMethod <- match.arg(minCountsMethod)
+        minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
         if (!identical(trans, "identity")) {
@@ -72,21 +72,21 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- meltCounts(
+        data <- melt(
             object = object,
             assay = assay,
-            minCounts = minCounts,
-            minCountsMethod = minCountsMethod,
+            min = min,
+            minMethod = minMethod,
             trans = trans
         )
         ## Construct the ggplot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(data = data)
-        if (geom == "density") {
+        if (identical(geom, "density")) {
             p <- p +
                 geom_density(
                     mapping = aes(
-                        x = !!sym("counts"),
+                        x = !!sym("value"),
                         group = !!sym("interestingGroups"),
                         color = !!sym("interestingGroups")
                     ),
@@ -94,23 +94,23 @@ NULL
                     size = 1L
                 ) +
                 labs(x = countsAxisLabel)
-        } else if (geom == "boxplot") {
+        } else if (identical(geom, "boxplot")) {
             p <- p +
                 geom_boxplot(
                     mapping = aes(
                         x = !!sym("sampleName"),
-                        y = !!sym("counts"),
+                        y = !!sym("value"),
                         fill = !!sym("interestingGroups")
                     ),
                     color = "black"
                 ) +
                 labs(x = NULL, y = countsAxisLabel)
-        } else if (geom == "jitter") {
+        } else if (identical(geom, "jitter")) {
             p <- p +
                 geom_jitter(
                     mapping = aes(
                         x = !!sym("sampleName"),
-                        y = !!sym("counts"),
+                        y = !!sym("value"),
                         color = !!sym("interestingGroups")
                     ),
                     size = 0.5
@@ -132,17 +132,17 @@ NULL
                 color = paste(interestingGroups, collapse = ":\n"),
                 fill = paste(interestingGroups, collapse = ":\n")
             )
-        if (geom == "boxplot") {
+        if (identical(geom, "boxplot")) {
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
             }
-        } else if (geom %in% c("density", "jitter")) {
+        } else if (isSubset(geom, c("density", "jitter"))) {
             if (is(color, "ScaleDiscrete")) {
                 p <- p + color
             }
         }
         ## Flip the axis for plots with counts on y-axis, if desired.
-        if (isTRUE(flip) && !geom %in% "density") {
+        if (isTRUE(flip) && !identical(geom, "density")) {
             p <- acid_coord_flip(p)
         }
         ## Hide sample name legend.
@@ -159,12 +159,12 @@ formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
     formalsList[["flip"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["minCountsMethod"]] <-
+formals(`plotCountsPerFeature,SummarizedExperiment`)[["minMethod"]] <-
     methodFormals(
-        f = "meltCounts",
+        f = "melt",
         signature = "SummarizedExperiment",
         package = "basejump"
-    )[["minCountsMethod"]]
+    )[["minMethod"]]
 
 
 

@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit bioverbs::plotTotalCounts
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -11,14 +11,14 @@
 #'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
-#' rse <- RangedSummarizedExperiment
-#' sce <- SingleCellExperiment
 #'
 #' ## SummarizedExperiment ====
-#' plotTotalCounts(rse)
+#' object <- RangedSummarizedExperiment
+#' plotTotalCounts(object)
 #'
 #' ## SingleCellExperiment ====
-#' plotTotalCounts(sce)
+#' object <- SingleCellExperiment
+#' plotTotalCounts(object)
 NULL
 
 

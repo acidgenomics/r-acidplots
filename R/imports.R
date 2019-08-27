@@ -3,6 +3,7 @@
 
 
 
+#' @importClassesFrom DESeq2 DESeqDataSet
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
@@ -17,8 +18,8 @@
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
-#'   interestingGroups<- left_join makeLabel makeTitle matchArgsToDoCall
-#'   matchInterestingGroups mapGenesToRownames meltCounts methodFormals metrics
+#'   interestingGroups<- leftJoin makeLabel makeTitle matchArgsToDoCall
+#'   matchInterestingGroups mapGenesToRownames methodFormals melt metrics
 #'   organism pseudobulk sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
@@ -32,7 +33,7 @@
 #' @importFrom ggridges geom_density_ridges
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
-#'   hasNonZeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
+#'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
 #'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
 #'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
 #'   isPositive isScalar isString isSubset

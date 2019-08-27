@@ -4,6 +4,7 @@
 \name{plotCounts}
 \alias{plotCounts}
 \alias{plotCounts,SummarizedExperiment-method}
+\alias{plotCounts,DESeqDataSet-method}
 \title{Plot counts}
 \usage{
 plotCounts(object, ...)
@@ -14,6 +15,8 @@ plotCounts(object, ...)
   = "acid.color.discrete", default =
   acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
   "acid.legend", default = TRUE), style = c("facet", "wide"))
+
+\S4method{plotCounts}{DESeqDataSet}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -67,25 +70,32 @@ Plot style.}
 \description{
 Plot counts
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{DESeqDataSet}: Automatically plots normalized counts. Arguments pass
+through to \code{SummarizedExperiment} method, but \code{assay} and \code{countsAxisLabel}
+are automatic.
+}}
+
 \note{
-Updated 2019-07-29.
+Updated 2019-08-27.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
 
 ## SummarizedExperiment ====
-rownames <- head(rownames(rse))
+object <- RangedSummarizedExperiment
+rownames <- head(rownames(object))
 print(rownames)
-g2s <- basejump::Gene2Symbol(rse)
+g2s <- basejump::Gene2Symbol(object)
 geneIDs <- head(g2s[["geneID"]])
 print(geneIDs)
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Rownames, gene IDs, and gene names (symbols) are supported.
-plotCounts(rse, genes = geneIDs, style = "facet")
-plotCounts(rse, genes = geneNames, style = "wide")
+plotCounts(object, genes = geneIDs, style = "facet")
+plotCounts(object, genes = geneNames, style = "wide")
 }
 \seealso{
 \code{DESeq2::plotCounts()}.

@@ -63,7 +63,7 @@ Title.}
 Plot counts per biotype
 }
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -71,14 +71,14 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotCountsPerBiotype(rse)
+object <- RangedSummarizedExperiment
+plotCountsPerBiotype(object)
 
 ## SingleCellExperiment ====
-plotCountsPerBiotype(sce)
+object <- SingleCellExperiment
+plotCountsPerBiotype(object)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
