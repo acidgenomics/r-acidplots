@@ -257,14 +257,14 @@ setMethod(
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-08-27.
 `plotCounts,DESeqDataSet` <-  # nolint
     function(object, ...) {
-        rse <- as(object, "RangedSummarizedExperiment")
-        assays <- SimpleList(normalized = counts(object, normalized = TRUE))
-        assays(rse) <- assays
+        normalized <- counts(object, normalized = TRUE)
+        object <- as(object, "RangedSummarizedExperiment")
+        assays(object) <- SimpleList(normalized = normalized)
         plotCounts(
-            object = rse,
+            object = object,
             assay = "normalized",
             countsAxisLabel = "normalized counts",
             ...

@@ -12,10 +12,9 @@
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "acidtest")
-#' rse <- RangedSummarizedExperiment
 #'
 #' ## matrix ====
-#' x <- SummarizedExperiment::assay(rse)
+#' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 #' x <- x[seq_len(4L), seq_len(2L)]
 #' y <- x * 2L
 #' plotCountsCorrelation(x, y)

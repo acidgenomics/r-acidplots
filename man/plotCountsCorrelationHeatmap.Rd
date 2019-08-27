@@ -81,10 +81,9 @@ Updated 2019-07-29.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
-rse <- RangedSummarizedExperiment
 
 ## matrix ====
-x <- SummarizedExperiment::assay(rse)
+x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 y <- x + 1L
 plotCountsCorrelationHeatmap(x, y)
 }

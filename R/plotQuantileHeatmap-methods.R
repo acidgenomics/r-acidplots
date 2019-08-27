@@ -21,11 +21,11 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotQuantileHeatmap(rse)
+#' plotQuantileHeatmap(object)
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
-#' plotQuantileHeatmap(sce)
+#' plotQuantileHeatmap(object)
 NULL
 
 
