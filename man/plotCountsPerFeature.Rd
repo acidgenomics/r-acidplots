@@ -111,13 +111,13 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotCountsPerFeature(rse, geom = "boxplot")
-plotCountsPerFeature(rse, geom = "density")
+object <- RangedSummarizedExperiment
+plotCountsPerFeature(object, geom = "boxplot")
+plotCountsPerFeature(object, geom = "density")
 
 ## SingleCellExperiment ====
-plotCountsPerFeature(sce)
+object <- SingleCellExperiment
+plotCountsPerFeature(object)
 }
