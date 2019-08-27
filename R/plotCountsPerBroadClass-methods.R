@@ -60,7 +60,7 @@ NULL
         }
 
         ## Melt the count matrix into long format.
-        data <- gather(
+        data <- melt(
             object = object,
             assay = assay,
             minCounts = 1L,
@@ -93,7 +93,7 @@ NULL
         biotypes <- names(biotypes)
 
         ## Prepare the minimal data frame required for plotting.
-        data <- left_join(x = data, y = rowData, by = "rowname")
+        data <- leftJoin(x = data, y = rowData, by = "rowname")
         keep <- which(data[[biotypeCol]] %in% biotypes)
         data <- data[keep, , drop = FALSE]
         data <- data[, c("counts", "interestingGroups", biotypeCol)]
