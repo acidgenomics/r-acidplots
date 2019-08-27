@@ -2,7 +2,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include globals.R
 #' @inherit bioverbs::plotCountsPerCell
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
 #' @param point `character(1)`.
@@ -34,7 +34,7 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## Updated 2019-08-27.
 `plotCountsPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -51,12 +51,11 @@ NULL
         assert(isString(title, nullOK = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
-
         ## Override `interestingGroups` argument when labeling points.
-        if (point != "none") {
+        if (!identical(point, "none")) {
             interestingGroups <- "sampleName"
         }
-
+        ## Plot.
         p <- do.call(
             what = .plotQCMetric,
             args = list(
@@ -73,18 +72,14 @@ NULL
                 fill = fill
             )
         )
-
         ## Calculate barcode ranks and label inflection or knee points.
-        if (point != "none") {
-            ## Require ecdf geom for now
+        if (!identical(point, "none")) {
+            ## Require ecdf geom for now.
             assert(identical(geom, "ecdf"))
-
             if (length(title)) {
                 p <- p + labs(subtitle = paste(point, "point per sample"))
             }
-
             sampleNames <- sampleNames(object)
-
             ranks <- barcodeRanksPerSample(object)
             ## Inflection or knee points per sample.
             points <- lapply(
@@ -98,10 +93,8 @@ NULL
             )
             points <- unlist(points)
             names(points) <- names(ranks)
-
             assert(identical(names(sampleNames), names(points)))
-
-            if (geom == "ecdf") {
+            if (identical(geom, "ecdf")) {
                 ## Calculate the y-intercept per sample.
                 freq <- mapply(
                     sampleID = names(points),
@@ -147,9 +140,8 @@ NULL
                     )
             }
         }
-
+        ## Return.
         p <- p + labs(title = title)
-
         p
     }
 
