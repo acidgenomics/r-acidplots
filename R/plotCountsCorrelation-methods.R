@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-08-26.
+#' @note Updated 2019-08-27.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-08-27.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
@@ -82,7 +82,7 @@ NULL
             data = data,
             mapping = aes(
                 x = !!sym("colname"),
-                y = !!sym("counts"),
+                y = !!sym("value"),
                 colour = !!sym("type")
             )
         ) +
