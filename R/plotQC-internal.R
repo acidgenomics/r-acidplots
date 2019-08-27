@@ -1,5 +1,5 @@
 ## Plot a single quality control metric.
-## Updated 2019-08-12.
+## Updated 2019-08-27.
 .plotQCMetric <- function(
     object,
     metricCol,
@@ -25,14 +25,12 @@
     geom <- match.arg(geom)
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
-
     ## Support for per sample filtering cutoffs.
     min <- min(min)
     max <- max(max)
     if (isTRUE(ratio)) {
         assert(all(isInRange(c(min, max), lower = 0L, upper = 1L)))
     }
-
     data <- metrics(object)
     data <- as_tibble(data, rownames = NULL)
     ## nocov start
@@ -44,26 +42,22 @@
         stop(sprintf("'%s' in 'colData()' contains only zeros.", metricCol))
     }
     ## nocov end
-
     mapping <- aes(
         color = !!sym("interestingGroups"),
         fill = !!sym("interestingGroups")
     )
-
-    if (geom %in% c("boxplot", "violin")) {
+    if (isSubset(geom, c("boxplot", "violin"))) {
         mapping[["x"]] <- as.symbol("sampleName")
         mapping[["y"]] <- as.symbol(metricCol)
-    } else if (geom == "ridgeline") {
+    } else if (identical(geom, "ridgeline")) {
         ## Ridgeline flips the axes.
         mapping[["x"]] <- as.symbol(metricCol)
         mapping[["y"]] <- as.symbol("sampleName")
-    } else if (geom %in% c("ecdf", "histogram")) {
+    } else if (isSubset(geom, c("ecdf", "histogram"))) {
         mapping[["x"]] <- as.symbol(metricCol)
     }
-
     p <- ggplot(data = data, mapping = mapping)
-
-    if (geom == "boxplot") {
+    if (identical(geom, "boxplot")) {
         p <- p +
             geom_boxplot(color = "black", outlier.shape = NA) +
             scale_y_continuous(trans = trans) +
@@ -71,7 +65,7 @@
                 x = NULL,
                 y = makeLabel(metricCol)
             )
-    } else if (geom == "ecdf") {
+    } else if (identical(geom, "ecdf")) {
         p <- p +
             stat_ecdf(geom = "step", size = 1L) +
             scale_x_continuous(trans = trans) +
@@ -79,7 +73,7 @@
                 x = makeLabel(metricCol),
                 y = "frequency"
             )
-    } else if (geom == "histogram") {
+    } else if (identical(geom, "histogram")) {
         p <- p +
             geom_histogram(
                 bins = 200L,
@@ -90,7 +84,7 @@
             labs(
                 x = makeLabel(metricCol)
             )
-    } else if (geom == "ridgeline") {
+    } else if (identical(geom, "ridgeline")) {
         p <- p +
             geom_density_ridges(
                 alpha = 0.75,
@@ -103,7 +97,7 @@
                 x = makeLabel(metricCol),
                 y = NULL
             )
-    } else if (geom == "violin") {
+    } else if (identical(geom, "violin")) {
         p <- p +
             geom_violin(
                 color = "black",
@@ -116,30 +110,28 @@
                 y = makeLabel(metricCol)
             )
     }
-
     ## Cutoff lines.
-    if (geom %in% c("boxplot", "violin")) {
-        if (min > 0L) {
+    if (isSubset(geom, c("boxplot", "violin"))) {
+        if (isTRUE(min > 0L)) {
             p <- p + acid_geom_abline(yintercept = min)
         }
         if (
-            (max < Inf && identical(ratio, FALSE)) ||
-            (max < 1L && identical(ratio, TRUE))
+            (isTRUE(max < Inf) && identical(ratio, FALSE)) ||
+            (isTRUE(max < 1L) && identical(ratio, TRUE))
         ) {
             p <- p + acid_geom_abline(yintercept = max)
         }
     } else {
-        if (min > 0L) {
+        if (isTRUE(min > 0L)) {
             p <- p + acid_geom_abline(xintercept = min)
         }
         if (
-            (max < Inf && identical(ratio, FALSE)) ||
-            (max < 1L && identical(ratio, TRUE))
+            (isTRUE(max < Inf) && identical(ratio, FALSE)) ||
+            (isTRUE(max < 1L) && identical(ratio, TRUE))
         ) {
             p <- p + acid_geom_abline(xintercept = max)
         }
     }
-
     ## Label interesting groups.
     p <- p +
         labs(
@@ -149,7 +141,7 @@
         )
 
     ## Color palette.
-    if (geom == "ecdf") {
+    if (identical(geom, "ecdf")) {
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
         }
@@ -158,10 +150,9 @@
             p <- p + fill
         }
     }
-
     ## Median labels.
-    if (!geom %in% c("ecdf", "histogram")) {
-        if (metricCol %in% c("log10GenesPerUMI", "mitoRatio")) {
+    if (!isSubset(geom, c("ecdf", "histogram"))) {
+        if (isSubset(metricCol, c("log10GenesPerUMI", "mitoRatio"))) {
             digits <- 2L
         } else {
             digits <- 0L
@@ -178,7 +169,7 @@
     if (is.character(facets)) {
         p <- p + facet_wrap(facets = syms(facets), scales = "free")
     }
-
+    ## Return.
     p
 }
 
@@ -213,7 +204,6 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
     )
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
-
     data <- metrics(object)
     data <- as_tibble(data, rownames = NULL)
     ## nocov start
@@ -232,7 +222,6 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         stop(sprintf("'%s' in 'colData()' contains only zeros.", yCol))
     }
     ## nocov end
-
     p <- ggplot(
         data = data,
         mapping = aes(
@@ -244,13 +233,12 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         geom_point(alpha = 0.5, size = 1L) +
         scale_x_continuous(trans = xTrans) +
         scale_y_continuous(trans = yTrans)
-
+    ## Trendline.
     if (isTRUE(trendline)) {
         ## If `method = "gam"`, mgcv package is required.
         ## Otherwise build checks will error.
         p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
     }
-
     ## Set the labels.
     p <- p + labs(
         x = makeLabel(xCol),
@@ -258,12 +246,10 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
         title = title,
         colour = paste(interestingGroups, collapse = ":\n")
     )
-
     ## Color palette.
     if (is(color, "ScaleDiscrete")) {
         p <- p + color
     }
-
     ## Facets.
     facets <- NULL
     if (isSubset("aggregate", colnames(data))) {
@@ -272,6 +258,6 @@ formals(`.plotQCMetric`)[["geom"]] <- geom
     if (is.character(facets)) {
         p <- p + facet_wrap(facets = syms(facets), scales = "free")
     }
-
+    ## Return.
     p
 }
