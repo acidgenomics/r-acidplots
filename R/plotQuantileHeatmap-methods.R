@@ -87,20 +87,17 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         n <- as.integer(n)
-
         if (!isString(borderColor)) {
             borderColor <- NA
         }
         if (!isString(title)) {
             title <- NA
         }
-
         ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             warning("Non-unique samples detected. Skipping plot.")
             return(invisible())
         }
-
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object
         ## unmodified if gene symbols aren't defined.
@@ -110,13 +107,10 @@ NULL
             ),
             error = function(e) object
         )
-
         ## Ensure we're using a dense matrix.
         mat <- as.matrix(assay(object, i = assay))
-
         ## Calculate the quantile breaks.
         breaks <- .quantileBreaks(mat, n = n)
-
         ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(
@@ -125,10 +119,8 @@ NULL
         )
         annotationCol <- x[["annotationCol"]]
         annotationColors <- x[["annotationColors"]]
-
         ## Note the number of breaks here.
         color <- .pheatmapColorPalette(color = color, n = length(breaks) - 1L)
-
         ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
@@ -143,7 +135,6 @@ NULL
                 rownames(annotationCol) <- sampleNames
             }
         }
-
         ## Return pretty heatmap with modified defaults.
         args <- list(
             mat = mat,
