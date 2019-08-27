@@ -15,10 +15,8 @@
         isFlag(rows),
         isFlag(cols)
     )
-
     ## Prepare our skeleton return list.
     out <- list(rows = FALSE, cols = FALSE)
-
     if (isTRUE(rows) || isTRUE(cols)) {
         message(sprintf(
             fmt = paste0(
@@ -28,7 +26,6 @@
             deparse(method)
         ))
     }
-
     if (isTRUE(rows)) {
         message("Arranging rows using hclust().")
         out[["rows"]] <- tryCatch(
@@ -44,7 +41,6 @@
             }
         )
     }
-
     if (isTRUE(cols)) {
         message("Arranging columns using hclust().")
         out[["cols"]] <- tryCatch(
@@ -78,27 +74,23 @@
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
     assert(is.matrix(object), is.numeric(object))
     scale <- match.arg(scale)
-
     ## Inform the user if NA values are present. Note that we're including
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
     if (any(is.na(object))) {
         warning("NA values detected in matrix.")  # nocov
     }
-
-    if (scale != "none") {
+    if (!identical(scale, "none")) {
         message(sprintf("Scaling matrix per %s (z-score).", scale))
     }
-
     ## Assert checks to look for sufficient variance when the user is attempting
     ## to apply scaling (z-score). Currently we're keeping this very strict and
     ## only looking to see if there is non-zero variance.
     varThreshold <- 0L
-
     ## Here we're dropping rows (features) without sufficient variation
     ## automatically. The function errors out intentionally if columns (samples)
     ## don't have sufficient variation.
-    if (scale == "row") {
+    if (identical(scale, "row")) {
         pass <- rowVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
             ## nocov start
@@ -117,7 +109,7 @@
             object <- object[pass, , drop = FALSE]
             ## nocov end
         }
-    } else if (scale == "column") {
+    } else if (identical(scale, "column")) {
         pass <- colVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
             ## nocov start
@@ -136,13 +128,8 @@
             ## nocov end
         }
     }
-
     ## Require at least a 2x2 matrix.
-    assert(
-        nrow(object) > 1L,
-        ncol(object) > 1L
-    )
-
+    assert(nrow(object) > 1L, ncol(object) > 1L)
     switch(
         EXPR = scale,
         none = object,

@@ -246,7 +246,7 @@ NULL
         )
         if (hasLength(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (!hasLength(annotationCol) && !any(is.na(annotationCol))) {
+            if (hasLength(annotationCol) && !any(is.na(annotationCol))) {
                 rownames(annotationCol) <- sampleNames
             }
         }
