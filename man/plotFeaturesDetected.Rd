@@ -71,7 +71,7 @@ calculation to summarize at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -79,12 +79,12 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotFeaturesDetected(rse)
+object <- RangedSummarizedExperiment
+plotFeaturesDetected(object)
 
 ## SingleCellExperiment ====
-plotFeaturesDetected(sce)
+object <- SingleCellExperiment
+plotFeaturesDetected(object)
 }

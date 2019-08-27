@@ -53,7 +53,7 @@ Plot.
 Plot counts per broad class definition
 }
 \note{
-Updated 2019-08-21.
+Updated 2019-08-27.
 }
 \examples{
 data(
@@ -61,14 +61,14 @@ data(
     SingleCellExperiment,
     package = "acidtest"
 )
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
 
 ## SummarizedExperiment ====
-plotCountsPerBroadClass(rse)
+object <- RangedSummarizedExperiment
+plotCountsPerBroadClass(object)
 
 ## SingleCellExperiment ====
-plotCountsPerBroadClass(sce)
+object <- SingleCellExperiment
+plotCountsPerBroadClass(object)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
