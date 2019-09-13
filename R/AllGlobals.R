@@ -99,7 +99,7 @@ macOSDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
 draculaPalette <- c(
     background = .rgb(40L, 42L, 54L),
     foreground = .rgb(248L, 248L, 242L),
-    border = .rgb(54, 57, 72),
+    border = .rgb(54L, 57L, 72L),
     blue = .rgb(0L, 122L, 255L),
     green = .rgb(52L, 199L, 89L),
     orange = .rgb(255L, 149L, 0L),
