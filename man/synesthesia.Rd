@@ -68,6 +68,9 @@ See \code{\link[ggplot2:guides]{guides()}} for details.}
 \description{
 Four color gradient defined by purple, blue, green, orange.
 }
+\details{
+A little bit of an acid trip, especially when used for heatmaps.
+}
 \note{
 Updated 2019-09-13.
 }
