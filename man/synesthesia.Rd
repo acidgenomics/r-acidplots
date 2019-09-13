@@ -11,31 +11,47 @@
 \alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
 \usage{
-synesthesia(n = 256L, scheme = c("light", "dark"))
+synesthesia(n = 256L, palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-synesthesia_pal(scheme = c("light", "dark"))
+synesthesia_pal(palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
 scale_colour_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar", scheme = c("light", "dark"))
+  guide = "colourbar", palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
 scale_color_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar", scheme = c("light", "dark"))
+  guide = "colourbar", palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-scale_colour_synesthesia_d(..., scheme = c("light", "dark"))
+scale_colour_synesthesia_d(..., palette = c("lightPalette",
+  "darkPalette", "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-scale_color_synesthesia_d(..., scheme = c("light", "dark"))
+scale_color_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
 scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar",
-  scheme = c("light", "dark"))
+  palette = c("lightPalette", "darkPalette", "draculaPalette",
+  "macOSLightPalette", "macOSDarkPalette", "iOSLightPalette",
+  "iOSDarkPalette"))
 
-scale_fill_synesthesia_d(..., scheme = c("light", "dark"))
+scale_fill_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 }
 \arguments{
 \item{n}{\code{integer(1)}.
 The number of colors (>= 1) to be in the palette.}
 
-\item{scheme}{\code{character(1)}.
-Color scheme. Currently supports either "light" or "dark" mode.}
+\item{palette}{\code{character(1)}.
+Color palette name.}
 
 \item{...}{Additional arguments.}
 
@@ -50,7 +66,7 @@ See \code{\link[ggplot2:guides]{guides()}} for details.}
 \code{character} or \code{ggproto}.
 }
 \description{
-Synesthesia color palette
+Four color gradient defined by purple, blue, green, orange.
 }
 \note{
 Updated 2019-09-13.
