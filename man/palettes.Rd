@@ -3,16 +3,22 @@
 \docType{data}
 \name{palettes}
 \alias{palettes}
+\alias{lightPalette}
+\alias{darkPalette}
+\alias{draculaPalette}
 \alias{iOSLightPalette}
 \alias{iOSDarkPalette}
 \alias{macOSLightPalette}
 \alias{macOSDarkPalette}
-\alias{draculaPalette}
-\alias{darkPalette}
-\alias{lightPalette}
 \title{Color palettes}
-\format{An object of class \code{character} of length 11.}
+\format{An object of class \code{character} of length 12.}
 \usage{
+lightPalette
+
+darkPalette
+
+draculaPalette
+
 iOSLightPalette
 
 iOSDarkPalette
@@ -20,12 +26,6 @@ iOSDarkPalette
 macOSLightPalette
 
 macOSDarkPalette
-
-draculaPalette
-
-darkPalette
-
-lightPalette
 }
 \value{
 \code{character}.
@@ -38,7 +38,6 @@ Updated 2019-09-13.
 }
 \examples{
 lightPalette
-darkPalette
 }
 \seealso{
 \itemize{

@@ -40,7 +40,7 @@ allowing \code{"bottom"}, \code{"right"}, or \code{"none"}. Including the legend
 top or the left side of the plot rarely makes sense and is discouraged.}
 
 \item{grid}{\code{logical(1)}.
-Label the major panel grids with a gray accent.}
+Label the major panel grids.}
 
 \item{minimal}{\code{logical(1)}.
 Remove all axis lines, axis ticks, and panel borders.}
