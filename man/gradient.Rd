@@ -27,7 +27,7 @@ Hexadecimal colors in RGB space.
 Hex color gradient generator
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-09-13.
 }
 \examples{
 purpleOrange(n = 3L)

@@ -1,6 +1,5 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotFeaturesPerCell
 #' @note Updated 2019-08-12.
 #'
@@ -58,7 +57,7 @@ NULL
 
 formals(`plotFeaturesPerCell,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 

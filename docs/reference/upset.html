@@ -8,11 +8,13 @@
 
 <title>UpSetR plot — upset • acidplots</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,10 +36,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="UpSetR plot — upset" />
 
+<meta property="og:title" content="UpSetR plot — upset" />
 <meta property="og:description" content="Wrapper for UpSetR::upset() with improved default aesthetics." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -68,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.15</span>
       </span>
     </div>
 
@@ -90,7 +93,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/acidgenomics/acidplots">
@@ -117,9 +119,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Wrapper for <code><a href='https://rdrr.io/pkg/UpSetR/man/upset.html'>UpSetR::upset()</a></code> with improved default aesthetics.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>upset</span>(<span class='no'>...</span>, <span class='kw'>line.size</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>main.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
@@ -127,7 +127,7 @@
   <span class='fl'>0.4</span>), <span class='kw'>point.size</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>sets.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>shade.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>shade.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>text.scale</span> <span class='kw'>=</span> <span class='fl'>1.5</span>, <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
   <span class='kw'>keep.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -185,11 +185,10 @@ in the following format: c(intersection size title, intersection size tick label
       <td><p>Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Graphical output, no return.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Visualization of set data in the layout described by Lex and Gehlenborg in <a href='http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html'>http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html</a>.
@@ -198,17 +197,14 @@ Hadley Wickham's apply function. To further analyze the data contained in the in
 to be displayed alongside the UpSet plot. The user also has the the ability to pass their own plots into the function to further analyze
 data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
 Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.</p>
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Updated 2019-07-29.</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Lex et al. (2014). UpSet: Visualization of Intersecting Sets
 IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis 2014), vol 20, pp. 1983-1992, (2014). <a href='http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf'>http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf</a></p>
 <p>Lex and Gehlenborg (2014). Points of view: Sets and intersections. Nature Methods 11, 779 (2014). <a href='http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html'>http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html</a></p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Refer to UpSetR::upset() documentation for more examples.</span>
@@ -223,15 +219,10 @@ IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#note">Note</a></li>
-
       <li><a href="#references">References</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -245,7 +236,7 @@ IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
 
       </footer>

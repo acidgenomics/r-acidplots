@@ -1,6 +1,5 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
-#' @include globals.R
 #' @inherit bioverbs::plotNovelty
 #' @note Updated 2019-07-27.
 #'
@@ -59,7 +58,7 @@ NULL
 
 formals(`plotNovelty,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 
