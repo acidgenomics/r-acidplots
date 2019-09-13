@@ -4,6 +4,7 @@
 \alias{themes}
 \alias{acid_theme_light}
 \alias{acid_theme_dark}
+\alias{acid_theme_dracula}
 \title{ggplot2 themes}
 \usage{
 acid_theme_light(base_size = 14L, base_family = "", face = c("bold",
@@ -13,27 +14,36 @@ acid_theme_light(base_size = 14L, base_family = "", face = c("bold",
 acid_theme_dark(base_size = 14L, base_family = "", face = c("bold",
   "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
   "top", "none"), grid = FALSE, minimal = FALSE)
+
+acid_theme_dracula(base_size = 14L, base_family = "",
+  face = c("bold", "plain"), aspect_ratio = NULL,
+  legend_position = c("right", "bottom", "top", "none"), grid = FALSE,
+  minimal = FALSE)
 }
 \arguments{
-\item{base_size}{\code{numeric(1)}. Base font size.}
+\item{base_size}{\code{numeric(1)}.
+Base font size.}
 
-\item{base_family}{\code{character(1)}. Base font family.}
+\item{base_family}{\code{character(1)}.
+Base font family.}
 
-\item{face}{\code{character(1)}. Font face (\code{"bold"}, \code{"plain"}).}
+\item{face}{\code{character(1)}.
+Font face (\code{"bold"}, \code{"plain"}).}
 
-\item{aspect_ratio}{\code{numeric(1)}. Aspect ratio, specifying the plot
-proportions. Use \code{1} for a perfectly square plot (including the axis
-labels).}
+\item{aspect_ratio}{\code{numeric(1)}.
+Aspect ratio, specifying the plot proportions. Use \code{1} for a perfectly
+square plot (including the axis labels).}
 
-\item{legend_position}{\code{character(1)}. Legend key position. We're being a
-little more restrictive here, only allowing \code{"bottom"}, \code{"right"}, or
-\code{"none"}. Including the legend at the top or the left side of the plot
-rarely makes sense and is discouraged.}
+\item{legend_position}{\code{character(1)}.
+Legend key position. We're being a little more restrictive here, only
+allowing \code{"bottom"}, \code{"right"}, or \code{"none"}. Including the legend at the
+top or the left side of the plot rarely makes sense and is discouraged.}
 
-\item{grid}{\code{logical(1)}. Label the major panel grids with a gray accent.}
+\item{grid}{\code{logical(1)}.
+Label the major panel grids with a gray accent.}
 
-\item{minimal}{\code{logical(1)}. Remove all axis lines, axis ticks, and
-panel borders.}
+\item{minimal}{\code{logical(1)}.
+Remove all axis lines, axis ticks, and panel borders.}
 }
 \value{
 \code{theme}.
@@ -42,28 +52,28 @@ panel borders.}
 Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
 }
 \details{
-Both themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with
-modifications and extra user-definable parameters.
+Themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_linedraw()}}, but with modifications
+and extra user-definable parameters.
 }
+\section{Functions}{
+\itemize{
+\item \code{acid_theme_light}: Light theme that has a white background and black text.\cr
+Optimized for print and recommended for scientific manuscripts.\cr
+See \code{lightPalette} for color values.
+
+\item \code{acid_theme_dark}: Dark theme that has a black background and white text.\cr
+Inspired by \code{Seurat::DarkTheme()}, with some color modifications.\cr
+Useful for visualizing many points with a high dynamic color range, such
+dimension reduction plots.\cr
+See \code{darkPalette} for color values.
+
+\item \code{acid_theme_dracula}: Dark theme that uses Dracula color palette.\cr
+See \code{draculaPalette} for color values.
+}}
+
 \note{
 Updated 2019-09-13.
 }
-\section{Light}{
-
-
-High contrast black and white theme optimized for print. Recommended for
-scientific manuscripts and website tutorials.
-}
-
-\section{Dark}{
-
-
-Blackout theme that sets the plot background as black, with white text.
-Inspired by \code{Seurat::DarkTheme()}, with some color modifications. Useful
-for visualizing many points with a high dynamic color range, such as t-SNE
-expression plots.
-}
-
 \examples{
 library(ggplot2)
 p <- ggplot(
@@ -77,11 +87,14 @@ p <- ggplot(
 ) +
     geom_point()
 
-## Paperwhite theme.
+## Light theme.
 p + acid_theme_light(legend_position = "none")
 
-## Midnight theme.
+## Dark theme.
 p + acid_theme_dark(legend_position = "none")
+
+## Dracula theme.
+p + acid_theme_dracula(legend_position = "none")
 }
 \seealso{
 \code{ggplot2::theme()}.

@@ -6,37 +6,29 @@
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
-#' Both themes are based off of [ggplot2::theme_linedraw()], but with
-#' modifications and extra user-definable parameters.
-#'
-#' @section Light:
-#'
-#' High contrast black and white theme optimized for print. Recommended for
-#' scientific manuscripts and website tutorials.
-#'
-#' @section Dark:
-#'
-#' Blackout theme that sets the plot background as black, with white text.
-#' Inspired by `Seurat::DarkTheme()`, with some color modifications. Useful
-#' for visualizing many points with a high dynamic color range, such as t-SNE
-#' expression plots.
+#' Themes are based off of [ggplot2::theme_linedraw()], but with modifications
+#' and extra user-definable parameters.
 #'
 #' @name themes
 #' @note Updated 2019-09-13.
 #'
-#' @param base_size `numeric(1)`. Base font size.
-#' @param base_family `character(1)`. Base font family.
-#' @param face `character(1)`. Font face (`"bold"`, `"plain"`).
-#' @param aspect_ratio `numeric(1)`. Aspect ratio, specifying the plot
-#'   proportions. Use `1` for a perfectly square plot (including the axis
-#'   labels).
-#' @param legend_position `character(1)`. Legend key position. We're being a
-#'   little more restrictive here, only allowing `"bottom"`, `"right"`, or
-#'   `"none"`. Including the legend at the top or the left side of the plot
-#'   rarely makes sense and is discouraged.
-#' @param grid `logical(1)`. Label the major panel grids with a gray accent.
-#' @param minimal `logical(1)`. Remove all axis lines, axis ticks, and
-#'   panel borders.
+#' @param base_size `numeric(1)`.
+#'   Base font size.
+#' @param base_family `character(1)`.
+#'   Base font family.
+#' @param face `character(1)`.
+#'   Font face (`"bold"`, `"plain"`).
+#' @param aspect_ratio `numeric(1)`.
+#'   Aspect ratio, specifying the plot proportions. Use `1` for a perfectly
+#'   square plot (including the axis labels).
+#' @param legend_position `character(1)`.
+#'   Legend key position. We're being a little more restrictive here, only
+#'   allowing `"bottom"`, `"right"`, or `"none"`. Including the legend at the
+#'   top or the left side of the plot rarely makes sense and is discouraged.
+#' @param grid `logical(1)`.
+#'   Label the major panel grids with a gray accent.
+#' @param minimal `logical(1)`.
+#'   Remove all axis lines, axis ticks, and panel borders.
 #'
 #' @return `theme`.
 #'
@@ -55,16 +47,21 @@
 #' ) +
 #'     geom_point()
 #'
-#' ## Paperwhite theme.
+#' ## Light theme.
 #' p + acid_theme_light(legend_position = "none")
 #'
-#' ## Midnight theme.
+#' ## Dark theme.
 #' p + acid_theme_dark(legend_position = "none")
+#'
+#' ## Dracula theme.
+#' p + acid_theme_dracula(legend_position = "none")
 NULL
 
 
 
-#' @rdname themes
+#' @describeIn themes Light theme that has a white background and black text.\cr
+#'   Optimized for print and recommended for scientific manuscripts.\cr
+#'   See `lightPalette` for color values.
 #' @export
 acid_theme_light <-  # nolint
     function(
@@ -76,6 +73,9 @@ acid_theme_light <-  # nolint
         grid = FALSE,
         minimal = FALSE
     ) {
+        palette <- lightPalette
+        ## Set dark mode global variable that we can access inside functions.
+        options(acid.dark = FALSE)
         assert(
             isNumber(base_size),
             is.character(base_family),
@@ -88,9 +88,6 @@ acid_theme_light <-  # nolint
             isFlag(grid),
             isFlag(minimal)
         )
-        ## Set dark mode global variable that we can access inside functions.
-        options(acid.dark = FALSE)
-        palette <- lightPalette
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
         gray <- palette[["gray"]]
@@ -141,10 +138,17 @@ acid_theme_light <-  # nolint
 
 
 
-#' @rdname themes
+#' @describeIn themes Dark theme that has a black background and white text.\cr
+#'   Inspired by `Seurat::DarkTheme()`, with some color modifications.\cr
+#'   Useful for visualizing many points with a high dynamic color range, such
+#'   dimension reduction plots.\cr
+#'   See `darkPalette` for color values.
 #' @export
 acid_theme_dark <-  # nolint
     function() {
+        palette <- darkPalette
+        ## Set dark mode global variable that we can access inside functions.
+        options(acid.dark = TRUE)
         assert(
             isNumber(base_size),
             is.character(base_family),
@@ -154,9 +158,6 @@ acid_theme_dark <-  # nolint
         assert(isNumber(aspect_ratio, nullOK = TRUE))
         legend_position <- match.arg(legend_position)
         assert(isFlag(grid))
-        ## Set dark mode global variable that we can access inside functions.
-        options(acid.dark = TRUE)
-        palette <- darkPalette
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
         gray <- palette[["gray"]]
@@ -212,8 +213,15 @@ formals(acid_theme_dark) <- formals(acid_theme_light)
 
 
 
+#' @describeIn themes Dark theme that uses Dracula color palette.\cr
+#'   See `draculaPalette` for color values.
+#' @export
+acid_theme_dracula <- acid_theme_dark
+## Change the first line of function body to import dracula palette.
+b <- body(acid_theme_dracula)
+b[[2L]] <- quote(palette <- draculaPalette)
+body(acid_theme_dracula) <- b
 
-## FIXME acid_theme_dracula
 
 
 ## nolint end
