@@ -99,7 +99,7 @@ synesthesia <- function(n, palette) {
     colors <- get(palette)
     colorNames <- c("purple", "blue", "green", "orange")
     assert(isSubset(colorNames, names(colors)))
-    colors <- colors[colors]
+    colors <- colors[colorNames]
     gradient(colors = colors, n = n)
 }
 
