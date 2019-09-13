@@ -71,6 +71,7 @@ RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
     'AllGlobals.R'
+    'assert.R'
     'barcodeRanksPerSample-methods.R'
     'breaks.R'
     'data.R'
