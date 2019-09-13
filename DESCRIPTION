@@ -70,6 +70,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
 Collate: 
+    'AllGlobals.R'
     'barcodeRanksPerSample-methods.R'
     'breaks.R'
     'data.R'
@@ -77,7 +78,6 @@ Collate:
     'geoms.R'
     'ggplot2-internal.R'
     'ggplot2-transforms.R'
-    'globals.R'
     'gradient.R'
     'heatmap-internal.R'
     'imports.R'
