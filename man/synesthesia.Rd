@@ -49,7 +49,7 @@ See \code{\link[ggplot2:guides]{guides()}} for details.}
 Synesthesia color palette
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-09-13.
 }
 \examples{
 library(ggplot2)
@@ -96,6 +96,7 @@ Useful color palette URLs:
 \item http://colorbrewer2.org/
 \item http://colorspace.r-forge.r-project.org/
 \item http://hclwizard.org/
+\item https://developer.apple.com/design/human-interface-guidelines/
 }
 
 Additional color palette functions that may be relevant:
