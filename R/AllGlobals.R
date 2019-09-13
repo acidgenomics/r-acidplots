@@ -14,8 +14,17 @@ acidplotsTestsURL <- paste0(
 
 
 
-## This is also defined in acidplots.
-geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
+.geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
+.n <- 256L
+.palette <- c(
+    "lightPalette",
+    "darkPalette",
+    "draculaPalette",
+    "macOSLightPalette",
+    "macOSDarkPalette",
+    "iOSLightPalette",
+    "iOSDarkPalette"
+)
 
 
 
@@ -47,31 +56,14 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
 #'
 #' @examples
 #' lightPalette
-#' darkPalette
 NULL
 
 ## nolint end
 
-
-
-.n <- 256L
-.palette <- c(
-    "lightPalette",
-    "darkPalette",
-    "draculaPalette",
-    "macOSLightPalette",
-    "macOSDarkPalette",
-    "iOSLightPalette",
-    "iOSDarkPalette"
-)
-
-
-
-#' @rdname palettes
-#' @export
 iOSLightPalette <- c(
     background = .rgb(255L, 255L, 255L),
     foreground = .rgb(0L, 0L, 0L),
+    border = .rgb(142L, 142L, 147L),
     blue = .rgb(0L, 122L, 255L),
     gray = .rgb(142L, 142L, 147L),
     green = .rgb(52L, 199L, 89L),
@@ -83,13 +75,10 @@ iOSLightPalette <- c(
     yellow = .rgb(255L, 204L, 0L)
 )
 
-
-
-#' @rdname palettes
-#' @export
 iOSDarkPalette <- c(
     background = .rgb(23L, 23L, 23L),
     foreground = .rgb(153L, 153L, 153L),
+    border = .rgb(152L, 152L, 157L),
     blue = .rgb(10L, 132L, 255L),
     gray = .rgb(152L, 152L, 157L),
     green = .rgb(48L, 209L, 88L),
@@ -101,27 +90,16 @@ iOSDarkPalette <- c(
     yellow = .rgb(255L, 214L, 10L)
 )
 
-
-
-#' @rdname palettes
-#' @export
 macOSLightPalette <- iOSLightPalette
 macOSLightPalette[["green"]] <- .rgb(40L, 205L, 65L)
 
-
-
-#' @rdname palettes
-#' @export
 macOSDarkPalette <- iOSDarkPalette
 macOSDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
 
-
-
-#' @rdname palettes
-#' @export
 draculaPalette <- c(
     background = .rgb(40L, 42L, 54L),
     foreground = .rgb(248L, 248L, 242L),
+    border = .rgb(54, 57, 72),
     blue = .rgb(0L, 122L, 255L),
     green = .rgb(52L, 199L, 89L),
     orange = .rgb(255L, 149L, 0L),
@@ -133,20 +111,37 @@ draculaPalette <- c(
 )
 draculaPalette[["gray"]] <- macOSDarkPalette[["gray"]]
 
-
-
-#' @rdname palettes
-#' @export
-darkPalette <- macOSDarkPalette
-darkPalette[c("background", "foreground", "gray")] <-
-    list(
-        .rgb(0L, 0L, 0L),
-        .rgb(255L, 255L, 255L),
-        .rgb(26L, 26L, 26L)  ## gray10
-    )
-
-
-
-#' @rdname palettes
-#' @export
 lightPalette <- macOSLightPalette
+
+darkPalette <- macOSDarkPalette
+darkPalette[["background"]] <- .rgb(0L, 0L, 0L)
+darkPalette[["foreground"]] <- .rgb(255L, 255L, 255L)
+darkPalette[["gray"]] <- .rgb(26L, 26L, 26L)  ## gray10
+
+#' @rdname palettes
+#' @export
+lightPalette <- lightPalette[sort(names(lightPalette))]
+
+#' @rdname palettes
+#' @export
+darkPalette <- darkPalette[sort(names(darkPalette))]
+
+#' @rdname palettes
+#' @export
+draculaPalette <- draculaPalette[sort(names(draculaPalette))]
+
+#' @rdname palettes
+#' @export
+iOSLightPalette <- iOSLightPalette[sort(names(iOSLightPalette))]
+
+#' @rdname palettes
+#' @export
+iOSDarkPalette <- iOSDarkPalette[sort(names(iOSDarkPalette))]
+
+#' @rdname palettes
+#' @export
+macOSLightPalette <- macOSLightPalette[sort(names(macOSLightPalette))]
+
+#' @rdname palettes
+#' @export
+macOSDarkPalette <- macOSDarkPalette[sort(names(macOSDarkPalette))]
