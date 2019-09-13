@@ -94,7 +94,7 @@ NULL
 #' @export
 synesthesia <- function(n, scheme) {
     scheme <- match.arg(scheme)
-    colors <- get(paste0(".", scheme, "Palette"))
+    colors <- get(paste0(scheme, "Palette"))
     colors <- colors[c("purple", "blue", "green", "orange")]
     gradient(colors = colors, n = n)
 }

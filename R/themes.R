@@ -88,7 +88,7 @@ acid_theme_light <-  # nolint
             isFlag(grid),
             isFlag(minimal)
         )
-        palette <- .lightPalette
+        palette <- lightPalette
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
         gray <- palette[["gray"]]
@@ -154,7 +154,7 @@ acid_theme_dark <-  # nolint
         assert(isFlag(grid))
         ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = TRUE)
-        palette <- .lightPalette
+        palette <- darkPalette
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
         gray <- palette[["gray"]]

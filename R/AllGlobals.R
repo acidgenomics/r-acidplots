@@ -29,6 +29,8 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
 
 ## Color palettes ==============================================================
 
+## FIXME Export these as actual globals.
+
 ## nolint start
 ##
 ## See also:
@@ -41,7 +43,7 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
 ##
 ## nolint end
 
-.iosLightPalette <- c(
+iOSLightPalette <- c(
     background = .rgb(255L, 255L, 255L),
     foreground = .rgb(0L, 0L, 0L),
     blue = .rgb(0L, 122L, 255L),
@@ -55,7 +57,7 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
     yellow = .rgb(255L, 204L, 0L)
 )
 
-.iosDarkPalette <- c(
+iOSDarkPalette <- c(
     background = .rgb(23L, 23L, 23L),
     foreground = .rgb(153L, 153L, 153L),
     blue = .rgb(10L, 132L, 255L),
@@ -69,14 +71,14 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
     yellow = .rgb(255L, 214L, 10L)
 )
 
-.macosLightPalette <- .iosLightPalette
-.macosLightPalette[["green"]] <- .rgb(40L, 205L, 65L)
+macOSLightPalette <- iOSLightPalette
+macOSLightPalette[["green"]] <- .rgb(40L, 205L, 65L)
 
-.macosDarkPalette <- .iosDarkPalette
-.macosDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
+macOSDarkPalette <- iOSDarkPalette
+macOSDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
 
 ## Dracula always prefers the dark.
-.draculaPalette <- c(
+draculaPalette <- c(
     background = .rgb(40L, 42L, 54L),
     foreground = .rgb(248L, 248L, 242L),
     blue = .rgb(0L, 122L, 255L),
@@ -90,8 +92,8 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
     yellow = .rgb(255L, 204L, 0L)
 )
 
-.darkPalette <- .draculaPalette
-.lightPalette <- .macosLightPalette
+darkPalette <- draculaPalette
+lightPalette <- macOSLightPalette
 
 .n <- 256L
 .scheme <- c("light", "dark")
