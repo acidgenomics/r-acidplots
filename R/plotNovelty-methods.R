@@ -58,7 +58,7 @@ NULL
 
 formals(`plotNovelty,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 

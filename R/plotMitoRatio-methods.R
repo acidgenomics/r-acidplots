@@ -59,7 +59,7 @@ NULL
 
 formals(`plotMitoRatio,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 
