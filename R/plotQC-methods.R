@@ -132,7 +132,7 @@ setMethod(
         plot_grid(plotlist = plotlist)
     }
 
-formals(`plotQC,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotQC,SingleCellExperiment`)[["geom"]] <- .geom
 formals(`plotQC,SingleCellExperiment`)[["legend"]] <- formalsList[["legend"]]
 
 

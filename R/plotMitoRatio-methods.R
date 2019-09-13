@@ -1,6 +1,5 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotMitoRatio
 #' @note Updated 2019-08-12.
 #'
@@ -60,7 +59,7 @@ NULL
 
 formals(`plotMitoRatio,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 

@@ -37,7 +37,7 @@
 #'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
 #'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
 #'   isPositive isScalar isString isSubset
-#' @importFrom grDevices axisTicks colorRampPalette
+#' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject

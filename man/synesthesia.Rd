@@ -11,27 +11,47 @@
 \alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
 \usage{
-synesthesia(n = 256L)
+synesthesia(n = 256L, palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-synesthesia_pal()
+synesthesia_pal(palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
 scale_colour_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar")
+  guide = "colourbar", palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
 scale_color_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar")
+  guide = "colourbar", palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-scale_colour_synesthesia_d(...)
+scale_colour_synesthesia_d(..., palette = c("lightPalette",
+  "darkPalette", "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-scale_color_synesthesia_d(...)
+scale_color_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 
-scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar")
+scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar",
+  palette = c("lightPalette", "darkPalette", "draculaPalette",
+  "macOSLightPalette", "macOSDarkPalette", "iOSLightPalette",
+  "iOSDarkPalette"))
 
-scale_fill_synesthesia_d(...)
+scale_fill_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
+  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
+  "iOSLightPalette", "iOSDarkPalette"))
 }
 \arguments{
 \item{n}{\code{integer(1)}.
 The number of colors (>= 1) to be in the palette.}
+
+\item{palette}{\code{character(1)}.
+Color palette name.}
 
 \item{...}{Additional arguments.}
 
@@ -46,10 +66,13 @@ See \code{\link[ggplot2:guides]{guides()}} for details.}
 \code{character} or \code{ggproto}.
 }
 \description{
-Synesthesia color palette
+Four color gradient defined by purple, blue, green, orange.
+}
+\details{
+A little bit of an acid trip, especially when used for heatmaps.
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-09-13.
 }
 \examples{
 library(ggplot2)
@@ -96,6 +119,7 @@ Useful color palette URLs:
 \item http://colorbrewer2.org/
 \item http://colorspace.r-forge.r-project.org/
 \item http://hclwizard.org/
+\item https://developer.apple.com/design/human-interface-guidelines/
 }
 
 Additional color palette functions that may be relevant:

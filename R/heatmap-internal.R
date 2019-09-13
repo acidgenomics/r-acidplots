@@ -27,7 +27,7 @@
         ))
     }
     if (isTRUE(rows)) {
-        message("Arranging rows using hclust().")
+        message("Arranging rows using 'hclust()'.")
         out[["rows"]] <- tryCatch(
             expr = hclust(
                 d = dist(object),
@@ -35,14 +35,14 @@
             ),
             error = function(e) {
                 ## nocov start
-                warning("hclust() row calculation failed. Skipping.")
+                warning("'hclust()' row calculation failed. Skipping.")
                 FALSE
                 ## nocov end
             }
         )
     }
     if (isTRUE(cols)) {
-        message("Arranging columns using hclust().")
+        message("Arranging columns using 'hclust()'.")
         out[["cols"]] <- tryCatch(
             expr = hclust(
                 ## Note the use of `t()` here.
@@ -51,7 +51,7 @@
             ),
             error = function(e) {
                 ## nocov start
-                warning("hclust() column calculation failed. Skipping.")
+                warning("'hclust()' column calculation failed. Skipping.")
                 FALSE
                 ## nocov end
             }

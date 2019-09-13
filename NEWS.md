@@ -1,3 +1,20 @@
+## acidplots 0.2.15 (2019-09-13)
+
+### Major changes
+
+- `acid_theme_dracula`: New dark mode theme supporting Dracula color palette.
+- Exporting color palette vectors: `lightPalette`, `darkPalette`,
+  `draculaPalette`, `iOSLightPalette`, `iOSDarkPalette`, `macOSLightPalette`,
+  `macOSDarkPalette`.
+- `synesthesia`: Simplified color palette to use purple, blue, green, orange.
+  User can tweak the palette using a new `palette` argument.
+
+### Minor changes
+
+
+
+
+
 ## acidplots 0.2.14 (2019-08-27)
 
 ### Minor changes

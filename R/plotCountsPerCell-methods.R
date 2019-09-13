@@ -1,6 +1,5 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotCountsPerCell
 #' @note Updated 2019-08-27.
 #'
@@ -147,7 +146,7 @@ NULL
 
 formals(`plotCountsPerCell,SingleCellExperiment`)[c("color", "fill")] <-
     formalsList[c("color.discrete", "fill.discrete")]
-formals(`plotCountsPerCell,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotCountsPerCell,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 

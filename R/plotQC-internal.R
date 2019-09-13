@@ -1,5 +1,7 @@
+## Note that this is causing default `cyclocomp_lintr(15)` check to fail.
+
 ## Plot a single quality control metric.
-## Updated 2019-08-27.
+## Updated 2019-09-13.
 .plotQCMetric <- function(
     object,
     metricCol,
@@ -139,7 +141,6 @@
             color = paste(interestingGroups, collapse = ":\n"),
             fill = paste(interestingGroups, collapse = ":\n")
         )
-
     ## Color palette.
     if (identical(geom, "ecdf")) {
         if (is(color, "ScaleDiscrete")) {
@@ -160,7 +161,6 @@
         p <- p +
             acid_geom_label_average(data, col = metricCol, digits = digits)
     }
-
     ## Facets.
     facets <- NULL
     if (isSubset("aggregate", colnames(data))) {
@@ -175,7 +175,7 @@
 
 formals(`.plotQCMetric`)[c("color", "fill")] <-
     formalsList[c("color.discrete", "fill.discrete")]
-formals(`.plotQCMetric`)[["geom"]] <- geom
+formals(`.plotQCMetric`)[["geom"]] <- .geom
 
 
 
