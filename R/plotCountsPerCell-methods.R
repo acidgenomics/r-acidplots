@@ -1,6 +1,5 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotCountsPerCell
 #' @note Updated 2019-08-27.
 #'

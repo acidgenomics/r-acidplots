@@ -1,6 +1,5 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotFeaturesPerCell
 #' @note Updated 2019-08-12.
 #'
