@@ -11,8 +11,8 @@
 #'   The number of colors (>= 1) to be in the palette.
 #' @param na.value `character(1)`.
 #'   Missing values will be replaced with this value.
-#' @param scheme `character(1)`.
-#'   Color scheme. Currently supports either "light" or "dark" mode.
+#' @param palette `character(1)`.
+#'   Color palette name.
 #'
 #' @return `character` or `ggproto`.
 #'
@@ -92,28 +92,30 @@ NULL
 
 #' @rdname synesthesia
 #' @export
-synesthesia <- function(n, scheme) {
-    scheme <- match.arg(scheme)
-    colors <- get(paste0(scheme, "Palette"))
-    colors <- colors[c("purple", "blue", "green", "orange")]
+synesthesia <- function(n, palette) {
+    palette <- match.arg(palette)
+    colors <- get(palette)
+    colorNames <- c("purple", "blue", "green", "orange")
+    assert(isSubset(colorNames, names(colors)))
+    colors <- colors[colors]
     gradient(colors = colors, n = n)
 }
 
-formals(synesthesia)[c("n", "scheme")] <- list(.n, .scheme)
+formals(synesthesia)[c("n", "palette")] <- list(.n, .palette)
 
 
 
 #' @rdname synesthesia
 #' @export
 synesthesia_pal <-  # nolint
-    function(scheme) {
-        scheme <- match.arg(scheme)
+    function(palette) {
+        palette <- match.arg(palette)
         function(n) {
-            synesthesia(n, scheme = scheme)
+            synesthesia(n, palette = palette)
         }
     }
 
-formals(synesthesia_pal)[["scheme"]] <- .scheme
+formals(synesthesia_pal)[["palette"]] <- .palette
 
 
 
@@ -124,10 +126,10 @@ scale_colour_synesthesia_c <-  # nolint
         ...,
         na.value = "grey50",  # nolint
         guide = "colourbar",
-        scheme
+        palette
     ) {
-        scheme <- match.arg(scheme)
-        colours <- synesthesia(scheme = scheme)
+        palette <- match.arg(palette)
+        colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
         continuous_scale(
             aesthetics = "colour",
@@ -139,7 +141,7 @@ scale_colour_synesthesia_c <-  # nolint
         )
     }
 
-formals(scale_colour_synesthesia_c)[["scheme"]] <- .scheme
+formals(scale_colour_synesthesia_c)[["palette"]] <- .palette
 
 
 
@@ -153,9 +155,9 @@ scale_color_synesthesia_c <-  # nolint
 #' @rdname synesthesia
 #' @export
 scale_colour_synesthesia_d <-  # nolint
-    function(..., scheme) {
-        scheme <- match.arg(scheme)
-        palette <- synesthesia_pal(scheme = scheme)
+    function(..., palette) {
+        palette <- match.arg(palette)
+        palette <- synesthesia_pal(palette = palette)
         discrete_scale(
             aesthetics = "colour",
             scale_name = "synesthesia",
@@ -164,7 +166,7 @@ scale_colour_synesthesia_d <-  # nolint
         )
     }
 
-formals(scale_colour_synesthesia_d)[["scheme"]] <- .scheme
+formals(scale_colour_synesthesia_d)[["palette"]] <- .palette
 
 
 
@@ -182,10 +184,10 @@ scale_fill_synesthesia_c <-  # nolint
         ...,
         na.value = "grey50",  # nolint
         guide = "colourbar",
-        scheme
+        palette
     ) {
-        scheme <- match.arg(scheme)
-        colours <- synesthesia(scheme = scheme)
+        palette <- match.arg(palette)
+        colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
         continuous_scale(
             aesthetics = "fill",
@@ -197,16 +199,16 @@ scale_fill_synesthesia_c <-  # nolint
         )
     }
 
-formals(scale_fill_synesthesia_c)[["scheme"]] <- .scheme
+formals(scale_fill_synesthesia_c)[["palette"]] <- .palette
 
 
 
 #' @rdname synesthesia
 #' @export
 scale_fill_synesthesia_d <-  # nolint
-    function(..., scheme) {
-        scheme <- match.arg(scheme)
-        palette <- synesthesia_pal(scheme = scheme)
+    function(..., palette) {
+        palette <- match.arg(palette)
+        palette <- synesthesia_pal(palette = palette)
         discrete_scale(
             aesthetics = "fill",
             scale_name = "synesthesia",
@@ -215,4 +217,4 @@ scale_fill_synesthesia_d <-  # nolint
         )
     }
 
-formals(scale_fill_synesthesia_d)[["scheme"]] <- .scheme
+formals(scale_fill_synesthesia_d)[["palette"]] <- .palette
