@@ -46,7 +46,7 @@ Both themes are based off of \code{\link[ggplot2:theme_linedraw]{ggplot2::theme_
 modifications and extra user-definable parameters.
 }
 \note{
-Updated 2019-07-29.
+Updated 2019-09-13.
 }
 \section{Light}{
 
