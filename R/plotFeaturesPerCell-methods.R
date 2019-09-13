@@ -57,7 +57,7 @@ NULL
 
 formals(`plotFeaturesPerCell,SingleCellExperiment`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 

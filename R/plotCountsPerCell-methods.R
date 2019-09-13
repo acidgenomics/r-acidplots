@@ -146,7 +146,7 @@ NULL
 
 formals(`plotCountsPerCell,SingleCellExperiment`)[c("color", "fill")] <-
     formalsList[c("color.discrete", "fill.discrete")]
-formals(`plotCountsPerCell,SingleCellExperiment`)[["geom"]] <- geom
+formals(`plotCountsPerCell,SingleCellExperiment`)[["geom"]] <- .geom
 
 
 
