@@ -1,6 +1,5 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include globals.R
 #' @inherit bioverbs::plotMitoRatio
 #' @note Updated 2019-08-12.
 #'
