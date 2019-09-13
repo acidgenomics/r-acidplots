@@ -115,7 +115,6 @@ draculaPalette <- c(
     background = .rgb(40L, 42L, 54L),
     foreground = .rgb(248L, 248L, 242L),
     blue = .rgb(0L, 122L, 255L),
-    gray = .rgb(26L, 26L, 26L),  ## gray10
     green = .rgb(52L, 199L, 89L),
     orange = .rgb(255L, 149L, 0L),
     pink = .rgb(255L, 45L, 85L),
@@ -124,12 +123,19 @@ draculaPalette <- c(
     teal = .rgb(90L, 200L, 250L),
     yellow = .rgb(255L, 204L, 0L)
 )
+draculaPalette[["gray"]] <- macOSDarkPalette[["gray"]]
 
 
 
 #' @rdname palettes
 #' @export
-darkPalette <- draculaPalette
+darkPalette <- macOSDarkPalette
+darkPalette[c("background", "foreground", "gray")] <-
+    list(
+        .rgb(0L, 0L, 0L),
+        .rgb(255L, 255L, 255L),
+        .rgb(26L, 26L, 26L)  ## gray10
+    )
 
 
 

@@ -88,6 +88,8 @@ acid_theme_light <-  # nolint
             isFlag(grid),
             isFlag(minimal)
         )
+        ## Set dark mode global variable that we can access inside functions.
+        options(acid.dark = FALSE)
         palette <- lightPalette
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
