@@ -11,6 +11,8 @@
 #'   The number of colors (>= 1) to be in the palette.
 #' @param na.value `character(1)`.
 #'   Missing values will be replaced with this value.
+#' @param scheme `character(1)`.
+#'   Color scheme. Currently supports either "light" or "dark" mode.
 #'
 #' @return `character` or `ggproto`.
 #'
@@ -88,38 +90,30 @@ NULL
 
 
 
-## Improve the `rgb()` default to use 0:255, as expected.
-## Updated 2019-09-13.
-.rgb <- function(...) {
-    rgb(..., maxColorValue = 255L)
-}
-
-
-
 #' @rdname synesthesia
 #' @export
-synesthesia <- function(n = 256L) {
-    gradient(
-        colors = c(
-            purple = .rgb(88L, 86L, 214L),
-            blue = .rgb(0L, 122L, 255L),
-            green = .rgb(52L, 199L, 89L),
-            orange = .rgb(255L, 149L, 0L)
-        ),
-        n = n
-    )
+synesthesia <- function(n, scheme) {
+    scheme <- match.arg(scheme)
+    colors <- get(paste0(".", scheme, "Palette"))
+    colors <- colors[c("purple", "blue", "green", "orange")]
+    gradient(colors = colors, n = n)
 }
+
+formals(synesthesia)[c("n", "scheme")] <- list(.n, .scheme)
 
 
 
 #' @rdname synesthesia
 #' @export
 synesthesia_pal <-  # nolint
-    function() {
+    function(scheme) {
+        scheme <- match.arg(scheme)
         function(n) {
-            synesthesia(n)
+            synesthesia(n, scheme = scheme)
         }
     }
+
+formals(synesthesia_pal)[["scheme"]] <- .scheme
 
 
 
@@ -129,17 +123,23 @@ scale_colour_synesthesia_c <-  # nolint
     function(
         ...,
         na.value = "grey50",  # nolint
-        guide = "colourbar"
+        guide = "colourbar",
+        scheme
     ) {
+        scheme <- match.arg(scheme)
+        colours <- synesthesia(scheme = scheme)
+        palette <- gradient_n_pal(colours = colours)
         continuous_scale(
             aesthetics = "colour",
             scale_name = "synesthesia",
-            palette = gradient_n_pal(colours = synesthesia()),
+            palette = palette,
             na.value = na.value,
             guide = guide,
             ...
         )
     }
+
+formals(scale_colour_synesthesia_c)[["scheme"]] <- .scheme
 
 
 
@@ -153,14 +153,18 @@ scale_color_synesthesia_c <-  # nolint
 #' @rdname synesthesia
 #' @export
 scale_colour_synesthesia_d <-  # nolint
-    function(...) {
+    function(..., scheme) {
+        scheme <- match.arg(scheme)
+        palette <- synesthesia_pal(scheme = scheme)
         discrete_scale(
             aesthetics = "colour",
             scale_name = "synesthesia",
-            palette = synesthesia_pal(),
+            palette = palette,
             ...
         )
     }
+
+formals(scale_colour_synesthesia_d)[["scheme"]] <- .scheme
 
 
 
@@ -177,28 +181,38 @@ scale_fill_synesthesia_c <-  # nolint
     function(
         ...,
         na.value = "grey50",  # nolint
-        guide = "colourbar"
+        guide = "colourbar",
+        scheme
     ) {
+        scheme <- match.arg(scheme)
+        colours <- synesthesia(scheme = scheme)
+        palette <- gradient_n_pal(colours = colours)
         continuous_scale(
             aesthetics = "fill",
             scale_name = "synesthesia",
-            palette = gradient_n_pal(colours = synesthesia()),
+            palette = palette,
             na.value = na.value,
             guide = guide,
             ...
         )
     }
 
+formals(scale_fill_synesthesia_c)[["scheme"]] <- .scheme
+
 
 
 #' @rdname synesthesia
 #' @export
 scale_fill_synesthesia_d <-  # nolint
-    function(...) {
+    function(..., scheme) {
+        scheme <- match.arg(scheme)
+        palette <- synesthesia_pal(scheme = scheme)
         discrete_scale(
             aesthetics = "fill",
             scale_name = "synesthesia",
-            palette = synesthesia_pal(),
+            palette = palette,
             ...
         )
     }
+
+formals(scale_fill_synesthesia_d)[["scheme"]] <- .scheme
