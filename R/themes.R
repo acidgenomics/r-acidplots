@@ -22,7 +22,7 @@
 #' expression plots.
 #'
 #' @name themes
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-09-13.
 #'
 #' @param base_size `numeric(1)`. Base font size.
 #' @param base_family `character(1)`. Base font family.
@@ -78,9 +78,8 @@ acid_theme_light <-  # nolint
     ) {
         assert(
             isNumber(base_size),
-            ## Don't use `isString()` check on `base_family`, since empty string
-            ## is allowed by ggplot2.
-            is.character(base_family) && length(base_family) == 1L
+            is.character(base_family),
+            isScalar(base_family)
         )
         face <- match.arg(face)
         assert(isNumber(aspect_ratio, nullOK = TRUE))
@@ -89,11 +88,14 @@ acid_theme_light <-  # nolint
             isFlag(grid),
             isFlag(minimal)
         )
-        gray <- "gray95"
+        palette <- .lightPalette
+        bg <- palette[["background"]]
+        fg <- palette[["foreground"]]
+        gray <- palette[["gray"]]
         text <- element_text(
             family = base_family,
             face = face,
-            colour = "black"
+            colour = fg
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
@@ -106,8 +108,8 @@ acid_theme_light <-  # nolint
             axis_ticks <- element_blank()
             panel_border <- element_blank()
         } else {
-            axis_ticks <- element_line(colour = "black")
-            panel_border <- element_rect(colour = "black", fill = NA)
+            axis_ticks <- element_line(colour = fg)
+            panel_border <- element_rect(colour = fg, fill = NA)
         }
         theme_linedraw(
             base_size = base_size,
@@ -128,7 +130,7 @@ acid_theme_light <-  # nolint
                 panel.grid.minor = element_blank(),
                 legend.background = element_blank(),
                 legend.position = legend_position,
-                strip.background = element_rect(colour = NA, fill = "white"),
+                strip.background = element_rect(colour = NA, fill = bg),
                 strip.text = text,
                 complete = TRUE,
                 validate = TRUE
@@ -143,9 +145,8 @@ acid_theme_dark <-  # nolint
     function() {
         assert(
             isNumber(base_size),
-            ## Don't use `isString()` check on `base_family`, since empty string
-            ## is allowed by ggplot2.
-            is.character(base_family) && length(base_family) == 1L
+            is.character(base_family),
+            isScalar(base_family)
         )
         face <- match.arg(face)
         assert(isNumber(aspect_ratio, nullOK = TRUE))
@@ -153,11 +154,14 @@ acid_theme_dark <-  # nolint
         assert(isFlag(grid))
         ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = TRUE)
-        gray <- "gray10"
+        palette <- .lightPalette
+        bg <- palette[["background"]]
+        fg <- palette[["foreground"]]
+        gray <- palette[["gray"]]
         text <- element_text(
             family = base_family,
             face = face,
-            colour = "white"
+            colour = fg
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
@@ -170,9 +174,10 @@ acid_theme_dark <-  # nolint
             axis_ticks <- element_blank()
             panel_border <- element_blank()
         } else {
-            axis_ticks <- element_line(colour = "white")
-            panel_border <- element_rect(colour = "white", fill = NA)
+            axis_ticks <- element_line(colour = fg)
+            panel_border <- element_rect(colour = fg, fill = NA)
         }
+        ## FIXME Can we consolidate with `theme_light()` better here?
         theme_linedraw(
             base_size = base_size,
             base_family = base_family
@@ -193,7 +198,7 @@ acid_theme_dark <-  # nolint
                 panel.border = panel_border,
                 panel.grid.major = panel_grid_major,
                 panel.grid.minor = element_blank(),
-                plot.background = element_rect(colour = NA, fill = "black"),
+                plot.background = element_rect(colour = NA, fill = bg),
                 strip.text = text,
                 complete = TRUE,
                 validate = TRUE
