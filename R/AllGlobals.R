@@ -55,7 +55,15 @@ NULL
 
 
 .n <- 256L
-.scheme <- c("light", "dark")
+.palette <- c(
+    "lightPalette",
+    "darkPalette",
+    "draculaPalette",
+    "macOSLightPalette",
+    "macOSDarkPalette",
+    "iOSLightPalette",
+    "iOSDarkPalette"
+)
 
 
 
