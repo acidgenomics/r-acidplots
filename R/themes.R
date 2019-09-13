@@ -26,7 +26,7 @@
 #'   allowing `"bottom"`, `"right"`, or `"none"`. Including the legend at the
 #'   top or the left side of the plot rarely makes sense and is discouraged.
 #' @param grid `logical(1)`.
-#'   Label the major panel grids with a gray accent.
+#'   Label the major panel grids.
 #' @param minimal `logical(1)`.
 #'   Remove all axis lines, axis ticks, and panel borders.
 #'
@@ -90,7 +90,7 @@ acid_theme_light <-  # nolint
         )
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
-        gray <- palette[["gray"]]
+        border <- palette[["border"]]
         text <- element_text(
             family = base_family,
             face = face,
@@ -98,7 +98,7 @@ acid_theme_light <-  # nolint
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
-            panel_grid_major <- element_line(colour = gray, size = 0.5)
+            panel_grid_major <- element_line(colour = border, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
@@ -160,7 +160,7 @@ acid_theme_dark <-  # nolint
         assert(isFlag(grid))
         bg <- palette[["background"]]
         fg <- palette[["foreground"]]
-        gray <- palette[["gray"]]
+        border <- palette[["border"]]
         text <- element_text(
             family = base_family,
             face = face,
@@ -168,7 +168,7 @@ acid_theme_dark <-  # nolint
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
-            panel_grid_major <- element_line(colour = gray, size = 0.5)
+            panel_grid_major <- element_line(colour = border, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
@@ -194,7 +194,7 @@ acid_theme_dark <-  # nolint
                     angle = 90L, hjust = 1L, vjust = 0.5
                 ),
                 axis.ticks = axis_ticks,
-                legend.key = element_rect(colour = NA, fill = gray),
+                legend.key = element_rect(colour = NA, fill = border),
                 legend.background = element_blank(),
                 legend.position = legend_position,
                 panel.background = element_blank(),
