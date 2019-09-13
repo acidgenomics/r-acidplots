@@ -2,6 +2,8 @@
 #'
 #' Four color gradient defined by purple, blue, green, orange.
 #'
+#' A little bit of an acid trip, especially when used for heatmaps.
+#'
 #' @name synesthesia
 #' @note Updated 2019-09-13.
 #'
