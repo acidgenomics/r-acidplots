@@ -1,5 +1,7 @@
 #' Synesthesia color palette
 #'
+#' Four color gradient defined by purple, blue, green, orange.
+#'
 #' @name synesthesia
 #' @note Updated 2019-09-13.
 #'
