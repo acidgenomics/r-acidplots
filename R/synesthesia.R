@@ -1,7 +1,7 @@
 #' Synesthesia color palette
 #'
 #' @name synesthesia
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-09-13.
 #'
 #' @inheritParams acidroxygen::params
 #' @param guide `character(1)` or `function`.
@@ -31,6 +31,7 @@
 #' - http://colorbrewer2.org/
 #' - http://colorspace.r-forge.r-project.org/
 #' - http://hclwizard.org/
+#' - https://developer.apple.com/design/human-interface-guidelines/
 #'
 #' Additional color palette functions that may be relevant:
 #'
@@ -73,15 +74,37 @@ NULL
 
 
 
+## Previously:
+## nolint start
+## > colors = c(
+## >     "darkorchid3",
+## >     "purple1",
+## >     "dodgerblue",
+## >     "green2",
+## >     "orange1",
+## >     "darkorange2"
+## > )
+## nolint end
+
+
+
+## Improve the `rgb()` default to use 0:255, as expected.
+## Updated 2019-09-13.
+.rgb <- function(...) {
+    rgb(..., maxColorValue = 255L)
+}
+
+
+
 #' @rdname synesthesia
 #' @export
 synesthesia <- function(n = 256L) {
     gradient(
         colors = c(
-            "darkorchid3", "purple1",
-            "dodgerblue",
-            "green2",
-            "orange1", "darkorange2"
+            purple = .rgb(88L, 86L, 214L),
+            blue = .rgb(0L, 122L, 255L),
+            green = .rgb(52L, 199L, 89L),
+            orange = .rgb(255L, 149L, 0L)
         ),
         n = n
     )
