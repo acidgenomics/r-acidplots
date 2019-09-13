@@ -1,6 +1,6 @@
 #' Hex color gradient generator
 #'
-#' @note Updated 2019-07-29.
+#' @note Updated 2019-09-13.
 #' @export
 #'
 #' @param colors `character`.
@@ -26,28 +26,34 @@ gradient <- function(colors, n) {
 
 #' @rdname gradient
 #' @export
-purpleOrange <- function(n = 256L) {
+purpleOrange <- function(n) {
+    palette <- lightPalette
     gradient(
         colors = c(
-            low = "purple",
-            mid = "gray80",
-            high = "darkorange"
+            low = palette[["purple"]],
+            mid = palette[["gray"]],
+            high = palette[["orange"]]
         ),
         n = n
     )
 }
+
+formals(purpleOrange)[["n"]] <- .n
 
 
 
 #' @rdname gradient
 #' @export
-blueYellow <- function(n = 256L) {
+blueYellow <- function(n) {
+    palette <- lightPalette
     gradient(
         colors = c(
-            low = "dodgerblue",
+            low = palette[["blue"]],
             mid = "black",
-            high = "yellow"
+            high = palette[["yellow"]]
         ),
         n = n
     )
 }
+
+formals(blueYellow)[["n"]] <- .n
