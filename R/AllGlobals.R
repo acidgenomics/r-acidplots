@@ -29,20 +29,38 @@ geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
 
 ## Color palettes ==============================================================
 
-## FIXME Export these as actual globals.
-
 ## nolint start
-##
-## See also:
-## - iOS palette
-##   https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/
-## - macOS palette
-##   https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/
-## - Dracula palette
-##   https://github.com/dracula/dracula-theme
-##
+
+#' Color palettes
+#'
+#' Color palette hexadecimal character vectors.
+#'
+#' @name palettes
+#' @note Updated 2019-09-13.
+#'
+#' @return `character`.
+#'
+#' @seealso
+#' - [iOS palette](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/color/)
+#' - [macOS palette](https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/color/)
+#' - [Dracula palette](https://github.com/dracula/dracula-theme)
+#'
+#' @examples
+#' lightPalette
+#' darkPalette
+NULL
+
 ## nolint end
 
+
+
+.n <- 256L
+.scheme <- c("light", "dark")
+
+
+
+#' @rdname palettes
+#' @export
 iOSLightPalette <- c(
     background = .rgb(255L, 255L, 255L),
     foreground = .rgb(0L, 0L, 0L),
@@ -57,6 +75,10 @@ iOSLightPalette <- c(
     yellow = .rgb(255L, 204L, 0L)
 )
 
+
+
+#' @rdname palettes
+#' @export
 iOSDarkPalette <- c(
     background = .rgb(23L, 23L, 23L),
     foreground = .rgb(153L, 153L, 153L),
@@ -71,13 +93,24 @@ iOSDarkPalette <- c(
     yellow = .rgb(255L, 214L, 10L)
 )
 
+
+
+#' @rdname palettes
+#' @export
 macOSLightPalette <- iOSLightPalette
 macOSLightPalette[["green"]] <- .rgb(40L, 205L, 65L)
 
+
+
+#' @rdname palettes
+#' @export
 macOSDarkPalette <- iOSDarkPalette
 macOSDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
 
-## Dracula always prefers the dark.
+
+
+#' @rdname palettes
+#' @export
 draculaPalette <- c(
     background = .rgb(40L, 42L, 54L),
     foreground = .rgb(248L, 248L, 242L),
@@ -92,8 +125,14 @@ draculaPalette <- c(
     yellow = .rgb(255L, 204L, 0L)
 )
 
-darkPalette <- draculaPalette
-lightPalette <- macOSLightPalette
 
-.n <- 256L
-.scheme <- c("light", "dark")
+
+#' @rdname palettes
+#' @export
+darkPalette <- draculaPalette
+
+
+
+#' @rdname palettes
+#' @export
+lightPalette <- macOSLightPalette
