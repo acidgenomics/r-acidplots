@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-14.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -31,17 +31,18 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-14.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
         y,
         i = NULL,
         j = NULL,
+        color,
         xTitle = getNameInParent(x),
         yTitle = getNameInParent(y),
         labs = list(
-            colour = NULL,
+            color = NULL,
             x = NULL,
             y = NULL,
             title = NULL,
@@ -76,9 +77,8 @@ NULL
         yData <- melt(y, min = NULL)
         yData[["type"]] <- factor(yTitle)
         data <- rbind(xData, yData)
-        data <- as_tibble(data, rownames = NULL)
-        ggplot(
-            data = data,
+        p <- ggplot(
+            data = as_tibble(data, rownames = NULL),
             mapping = aes(
                 x = !!sym("colname"),
                 y = !!sym("value"),
@@ -88,7 +88,16 @@ NULL
             geom_point() +
             facet_wrap(facets = sym("rowname"), scales = "free_y") +
             do.call(what = ggplot2::labs, args = labs)
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Return.
+        p
     }
+
+formals(`plotCountsCorrelation,matrix`)[["color"]] <-
+    formalsList[["color.discrete"]]
 
 
 
