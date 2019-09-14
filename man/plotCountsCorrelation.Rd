@@ -9,9 +9,10 @@
 plotCountsCorrelation(x, y, ...)
 
 \S4method{plotCountsCorrelation}{matrix,matrix}(x, y, i = NULL,
-  j = NULL, xTitle = getNameInParent(x), yTitle = getNameInParent(y),
-  labs = list(colour = NULL, x = NULL, y = NULL, title = NULL, subtitle =
-  NULL))
+  j = NULL, color = getOption(x = "acid.color.discrete", default =
+  acidplots::scale_colour_synesthesia_d()), xTitle = getNameInParent(x),
+  yTitle = getNameInParent(y), labs = list(color = NULL, x = NULL, y =
+  NULL, title = NULL, subtitle = NULL))
 }
 \arguments{
 \item{x}{Object.}
@@ -64,6 +65,14 @@ plotCountsCorrelation(x, y, ...)
     An index value of \code{NULL} is treated as if it were \code{integer(0)}.
   }
 
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
+
+To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
+}}
+
 \item{xTitle}{\code{character(1)}.
 Name of object defined in \code{x}.}
 
@@ -82,7 +91,7 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2019-08-27.
+Updated 2019-09-14.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
