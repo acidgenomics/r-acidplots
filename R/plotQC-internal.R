@@ -199,7 +199,7 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         isString(yCol),
         isString(xTrans),
         isString(yTrans),
-        isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+        isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
         isString(title, nullOK = TRUE)
     )
     interestingGroups(object) <-
@@ -227,7 +227,7 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         mapping = aes(
             x = !!sym(xCol),
             y = !!sym(yCol),
-            colour = !!sym("interestingGroups")
+            color = !!sym("interestingGroups")
         )
     ) +
         geom_point(alpha = 0.5, size = 1L) +
@@ -244,7 +244,7 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         x = makeLabel(xCol),
         y = makeLabel(yCol),
         title = title,
-        colour = paste(interestingGroups, collapse = ":\n")
+        color = paste(interestingGroups, collapse = ":\n")
     )
     ## Color palette.
     if (is(color, "ScaleDiscrete")) {

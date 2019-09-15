@@ -44,7 +44,7 @@ NULL
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isString(title, nullOK = TRUE)
         )
         interestingGroups(object) <-

@@ -94,11 +94,11 @@ acid_theme_light <-  # nolint
         text <- element_text(
             family = base_family,
             face = face,
-            colour = fg
+            color = fg
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
-            panel_grid_major <- element_line(colour = border, size = 0.5)
+            panel_grid_major <- element_line(color = border, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
@@ -107,8 +107,8 @@ acid_theme_light <-  # nolint
             axis_ticks <- element_blank()
             panel_border <- element_blank()
         } else {
-            axis_ticks <- element_line(colour = fg)
-            panel_border <- element_rect(colour = fg, fill = NA)
+            axis_ticks <- element_line(color = fg)
+            panel_border <- element_rect(color = fg, fill = NA)
         }
         theme_linedraw(
             base_size = base_size,
@@ -129,7 +129,7 @@ acid_theme_light <-  # nolint
                 panel.grid.minor = element_blank(),
                 legend.background = element_blank(),
                 legend.position = legend_position,
-                strip.background = element_rect(colour = NA, fill = bg),
+                strip.background = element_rect(color = NA, fill = bg),
                 strip.text = text,
                 complete = TRUE,
                 validate = TRUE
@@ -164,11 +164,11 @@ acid_theme_dark <-  # nolint
         text <- element_text(
             family = base_family,
             face = face,
-            colour = fg
+            color = fg
         )
         ## Include the grid lines.
         if (isTRUE(grid)) {
-            panel_grid_major <- element_line(colour = border, size = 0.5)
+            panel_grid_major <- element_line(color = border, size = 0.5)
         } else {
             panel_grid_major <- element_blank()
         }
@@ -177,8 +177,8 @@ acid_theme_dark <-  # nolint
             axis_ticks <- element_blank()
             panel_border <- element_blank()
         } else {
-            axis_ticks <- element_line(colour = fg)
-            panel_border <- element_rect(colour = fg, fill = NA)
+            axis_ticks <- element_line(color = fg)
+            panel_border <- element_rect(color = fg, fill = NA)
         }
         ## FIXME Can we consolidate with `theme_light()` better here?
         theme_linedraw(
@@ -194,14 +194,14 @@ acid_theme_dark <-  # nolint
                     angle = 90L, hjust = 1L, vjust = 0.5
                 ),
                 axis.ticks = axis_ticks,
-                legend.key = element_rect(colour = NA, fill = border),
+                legend.key = element_rect(color = NA, fill = border),
                 legend.background = element_blank(),
                 legend.position = legend_position,
                 panel.background = element_blank(),
                 panel.border = panel_border,
                 panel.grid.major = panel_grid_major,
                 panel.grid.minor = element_blank(),
-                plot.background = element_rect(colour = NA, fill = bg),
+                plot.background = element_rect(color = NA, fill = bg),
                 strip.text = text,
                 complete = TRUE,
                 validate = TRUE

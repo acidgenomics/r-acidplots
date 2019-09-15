@@ -93,7 +93,7 @@ NULL
             isScalar(assay),
             isInt(ntop),
             isFlag(label),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isInt(pointSize),
             isPositive(pointSize),
             isString(title, nullOK = TRUE)

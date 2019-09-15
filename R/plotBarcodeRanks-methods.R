@@ -3,7 +3,7 @@
 #' @inherit bioverbs::plotBarcodeRanks
 #' @inherit barcodeRanksPerSample
 #' @note Not supported for R 3.5, due to DropletUtils dependency.
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-09-13.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
@@ -107,17 +107,17 @@ NULL
                         x = !!sym("rank"),
                         y = !!sym("fitted")
                     ),
-                    colour = colors[["fitline"]],
+                    color = colors[["fitline"]],
                     size = 1L
                 )
                 p <- p +
                     geom_hline(
-                        colour = colors[["knee"]],
+                        color = colors[["knee"]],
                         linetype = "dashed",
                         yintercept = knee
                     ) +
                     geom_hline(
-                        colour = colors[["inflection"]],
+                        color = colors[["inflection"]],
                         linetype = "dashed",
                         yintercept = inflection
                     )
@@ -137,7 +137,7 @@ NULL
                             y = !!sym("total"),
                             label = !!sym("label")
                         ),
-                        colour = colors[c("knee", "inflection")]
+                        color = colors[c("knee", "inflection")]
                     )
             },
             SIMPLIFY = FALSE,
