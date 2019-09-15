@@ -1,25 +1,18 @@
 #' @name plotBarcodeRanks
-#' @include barcodeRanksPerSample-methods.R
 #' @inherit bioverbs::plotBarcodeRanks
-#' @inherit barcodeRanksPerSample
-#' @note Not supported for R 3.5, due to DropletUtils dependency.
-#' @note Updated 2019-09-13.
+#' @note Updated 2019-09-15.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
 #'   Must pass in color names or hexadecimal values.
-#' @param ... Additional arguments.
+#' @param ... Passthrough to [barcodeRanksPerSample()].
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
 #' ## Not supported for R < 3.6.
-#' if (requireNamespace(
-#'     package = "DropletUtils",
-#'     versionCheck = list(op = ">=", version = "1.4"),
-#'     quietly = TRUE
-#' )) {
+#' if (requireNamespace("DropletUtils", quietly = TRUE)) {
 #'     object <- SingleCellExperiment
 #'     plotBarcodeRanks(object)
 #' }
@@ -36,17 +29,19 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(
         object,
         colors = c(
-            fitline = "dodgerblue",
-            inflection = "darkorchid3",
-            knee = "darkorange2"
-        )
+            fitline = acidplots::lightPalette[["blue"]],
+            inflection = acidplots::lightPalette[["purple"]],
+            knee = acidplots::lightPalette[["orange"]]
+        ),
+        ...
     ) {
         validObject(object)
+        dots <- list(...)
         assert(
             requireNamespace(
                 package = "DropletUtils",
@@ -61,10 +56,7 @@ NULL
         )
         ranksPerSample <- do.call(
             what = barcodeRanksPerSample,
-            args = matchArgsToDoCall(
-                args = list(object = object),
-                removeFormals = "colors"
-            )
+            args = c(object = object, dots)
         )
         sampleData <- sampleData(object)
         if (is.null(sampleData)) {
@@ -147,12 +139,6 @@ NULL
         plotlist <- plotlist[sort(names(plotlist))]
         plot_grid(plotlist = plotlist)
     }
-
-f1 <- formals(`plotBarcodeRanks,SingleCellExperiment`)
-f2 <- formals(`barcodeRanksPerSample,SingleCellExperiment`)
-f2 <- f2[setdiff(names(f2), names(f1))]
-f <- c(f1, f2)
-formals(`plotBarcodeRanks,SingleCellExperiment`) <- f
 
 
 
