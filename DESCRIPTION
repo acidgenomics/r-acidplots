@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.6),
-    basejump (>= 0.11.14)
+    basejump (>= 0.11.15)
 Imports:
     bioverbs (>= 0.2.10),
     goalie (>= 0.3.7),
