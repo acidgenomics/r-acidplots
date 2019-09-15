@@ -10,7 +10,7 @@ plotCountsCorrelation(x, y, ...)
 
 \S4method{plotCountsCorrelation}{matrix,matrix}(x, y, i = NULL,
   j = NULL, color = getOption(x = "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), labels = list(title = NULL,
+  acidplots::scale_color_synesthesia_d()), labels = list(title = NULL,
   subtitle = NULL, color = NULL, x = NULL, y = "counts"),
   .xname = getNameInParent(x), .yname = getNameInParent(y))
 }

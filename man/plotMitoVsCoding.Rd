@@ -10,9 +10,8 @@ plotMitoVsCoding(object, ...)
 
 \S4method{plotMitoVsCoding}{SingleCellExperiment}(object,
   interestingGroups = NULL, trendline = FALSE, color = getOption(x =
-  "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), trans = "log2",
-  title = "Mito vs. coding")
+  "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
+  trans = "log2", title = "Mito vs. coding")
 }
 \arguments{
 \item{object}{Object.}
