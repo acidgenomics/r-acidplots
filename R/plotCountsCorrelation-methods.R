@@ -82,7 +82,7 @@ NULL
             mapping = aes(
                 x = !!sym("colname"),
                 y = !!sym("value"),
-                colour = !!sym("type")
+                color = !!sym("type")
             )
         ) +
             geom_point() +

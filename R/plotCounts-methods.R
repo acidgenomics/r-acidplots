@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-13.
 #'
 #' @inheritParams acidroxygen::params
 #' @param countsAxisLabel `character(1)`.
@@ -187,7 +187,7 @@ NULL
             isScalar(assay),
             isString(countsAxisLabel),
             isFlag(medianLine),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend)
         )
         trans <- match.arg(trans)

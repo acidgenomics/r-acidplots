@@ -57,7 +57,7 @@ NULL
             isScalar(assay),
             isInt(min),
             isGreaterThanOrEqualTo(min, 1L),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
             isString(countsAxisLabel, nullOK = TRUE),
