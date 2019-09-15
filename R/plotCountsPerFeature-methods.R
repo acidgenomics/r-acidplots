@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
@@ -36,49 +36,52 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-15.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
-        min = 1L,
-        minMethod,
         interestingGroups = NULL,
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
         color,
         fill,
-        flip,
-        countsAxisLabel = "counts",
-        title = "Counts per feature"
+        labels = list(
+            title = "Counts per feature",
+            subtitle = NULL,
+            samplesAxis = NULL,
+            countsAxis = "counts"
+        ),
+        flip
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(min),
-            isGreaterThanOrEqualTo(min, 1L),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isFlag(flip),
-            isString(countsAxisLabel, nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            is.list(labels),
+            areSetEqual(
+                x = names(labels),
+                y = names(eval(formals()[["labels"]]))
+            ),
+            isFlag(flip)
         )
         minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
-        if (!identical(trans, "identity")) {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- melt(
-            object = object,
-            assay = assay,
-            min = min,
-            minMethod = minMethod,
-            trans = trans
-        )
+        object <- nonzeroRowsAndCols(object)
+        data <- melt(object = object, assay = assay, trans = trans)
+        ## Add automatic subtitle, including feature count.
+        if (
+            isString(labels[["title"]]) &&
+            is.null(labels[["subtitle"]])
+        ) {
+            count <- length(unique(data[["rowname"]]))
+            labels[["subtitle"]] <- paste("n", "=", count)
+        }
         ## Construct the ggplot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(data = data)
@@ -92,8 +95,7 @@ NULL
                     ),
                     fill = NA,
                     size = 1L
-                ) +
-                labs(x = countsAxisLabel)
+                )
         } else if (identical(geom, "boxplot")) {
             p <- p +
                 geom_boxplot(
@@ -103,8 +105,7 @@ NULL
                         fill = !!sym("interestingGroups")
                     ),
                     color = "black"
-                ) +
-                labs(x = NULL, y = countsAxisLabel)
+                )
         } else if (identical(geom, "jitter")) {
             p <- p +
                 geom_jitter(
@@ -114,24 +115,25 @@ NULL
                         color = !!sym("interestingGroups")
                     ),
                     size = 0.5
-                ) +
-                labs(x = NULL, y = countsAxisLabel)
+                )
         }
-        ## Subtitle.
-        if (isString(title)) {
-            count <- length(unique(data[["rowname"]]))
-            subtitle <- paste("n", "=", count)
-        } else {
-            subtitle <- NULL
+        ## Labels.
+        if (is.list(labels)) {
+            if (!identical(trans, "identity")) {
+                labels[["countsAxis"]] <- paste(trans, labels[["countsAxis"]])
+            }
+            if (identical(geom, "density")) {
+                names(labels)[names(labels) == "countsAxis"] <- "x"
+                names(labels)[names(labels) == "samplesAxis"] <- "y"
+            } else {
+                names(labels)[names(labels) == "countsAxis"] <- "y"
+                names(labels)[names(labels) == "samplesAxis"] <- "x"
+            }
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["fill"]] <- labels[["color"]]
+            p <- p + do.call(what = labs, args = labels)
         }
-        ## Add the axis and legend labels.
-        p <- p +
-            labs(
-                title = title,
-                subtitle = subtitle,
-                color = paste(interestingGroups, collapse = ":\n"),
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+        ## Fill or color.
         if (identical(geom, "boxplot")) {
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
