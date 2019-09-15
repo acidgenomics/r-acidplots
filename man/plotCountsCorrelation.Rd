@@ -10,9 +10,9 @@ plotCountsCorrelation(x, y, ...)
 
 \S4method{plotCountsCorrelation}{matrix,matrix}(x, y, i = NULL,
   j = NULL, color = getOption(x = "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), xTitle = getNameInParent(x),
-  yTitle = getNameInParent(y), labs = list(color = NULL, x = NULL, y =
-  NULL, title = NULL, subtitle = NULL))
+  acidplots::scale_colour_synesthesia_d()), labels = list(title = NULL,
+  subtitle = NULL, color = NULL, x = NULL, y = "counts"),
+  .xname = getNameInParent(x), .yname = getNameInParent(y))
 }
 \arguments{
 \item{x}{Object.}
@@ -73,14 +73,15 @@ are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2:
 To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
 }}
 
-\item{xTitle}{\code{character(1)}.
-Name of object defined in \code{x}.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
-\item{yTitle}{\code{character(1)}.
-Name of object defined in \code{y}.}
+\item{.xname}{Name of object defined in \code{x}.
+\emph{Not intended to be used directly.}}
 
-\item{labs}{\code{list}.
-ggplot2 labels. See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+\item{.yname}{Name of object defined in \code{y}.
+\emph{Not intended to be used directly.}}
 
 \item{...}{Additional arguments.}
 }
