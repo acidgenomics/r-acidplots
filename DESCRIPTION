@@ -51,7 +51,7 @@ Imports:
     stats,
     utils
 Suggests:
-    acidroxygen (>= 0.1.2),
+    acidroxygen (>= 0.1.3),
     acidtest (>= 0.2.5),
     BiocStyle (>= 2.12),
     DropletUtils (>= 1.4),
