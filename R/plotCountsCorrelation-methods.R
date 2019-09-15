@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-09-14.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-09-14.
+## Updated 2019-09-15.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
