@@ -4,10 +4,6 @@
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
-#' @param xTitle `character(1)`.
-#'   Name of object defined in `x`.
-#' @param yTitle `character(1)`.
-#'   Name of object defined in `y`.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -39,15 +35,15 @@ NULL
         i = NULL,
         j = NULL,
         color,
-        xTitle = getNameInParent(x),
-        yTitle = getNameInParent(y),
-        labs = list(
+        labels = list(
+            title = NULL,
+            subtitle = NULL,
             color = NULL,
             x = NULL,
-            y = NULL,
-            title = NULL,
-            subtitle = NULL
-        )
+            y = "counts"
+        ),
+        .xname = getNameInParent(x),
+        .yname = getNameInParent(y)
     ) {
         validObject(x)
         validObject(y)
@@ -55,9 +51,13 @@ NULL
             identical(dimnames(x), dimnames(y)),
             !anyNA(x),
             !anyNA(y),
-            isString(xTitle),
-            isString(yTitle),
-            is.list(labs)
+            is.list(labels),
+            areSetEqual(
+                x = names(labels),
+                y = names(eval(formals()[["labels"]]))
+            ),
+            isString(.xname),
+            isString(.yname)
         )
         if (!is.null(i)) {
             x <- x[i, , drop = FALSE]
@@ -73,9 +73,9 @@ NULL
             ncol(x) >= 2L
         )
         xData <- melt(x, min = NULL)
-        xData[["type"]] <- factor(xTitle)
+        xData[["type"]] <- factor(.xname)
         yData <- melt(y, min = NULL)
-        yData[["type"]] <- factor(yTitle)
+        yData[["type"]] <- factor(.yname)
         data <- rbind(xData, yData)
         p <- ggplot(
             data = as_tibble(data, rownames = NULL),
@@ -86,11 +86,14 @@ NULL
             )
         ) +
             geom_point() +
-            facet_wrap(facets = sym("rowname"), scales = "free_y") +
-            do.call(what = ggplot2::labs, args = labs)
+            facet_wrap(facets = sym("rowname"), scales = "free_y")
         ## Color.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
+        }
+        ## Labels
+        if (is.list(labels)) {
+            p <- p + do.call(what = labs, args = labels)
         }
         ## Return.
         p
