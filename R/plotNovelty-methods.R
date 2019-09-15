@@ -1,7 +1,8 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
+#' @include plotQC-internal.R
 #' @inherit bioverbs::plotNovelty
-#' @note Updated 2019-07-27.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-07-27.
+## Updated 2019-09-15.
 `plotNovelty,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -35,7 +36,7 @@ NULL
         min = 0L,
         fill,
         trans = "identity",
-        title = "Novelty"
+        labels
     ) {
         assert(isInRightOpenRange(min, lower = 0L, upper = 1L))
         geom <- match.arg(geom)
@@ -51,14 +52,17 @@ NULL
                 trans = trans,
                 ratio = TRUE,
                 fill = fill,
-                title = title
+                labels = labels
             )
         )
     }
 
-formals(`plotNovelty,SingleCellExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotNovelty,SingleCellExperiment`)[["geom"]] <- .geom
+f <- formals(`plotNovelty,SingleCellExperiment`)
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["geom"]] <- .geom
+f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+f[["labels"]][["title"]] <- "Novelty"
+formals(`plotNovelty,SingleCellExperiment`) <- f
 
 
 

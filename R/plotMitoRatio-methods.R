@@ -1,7 +1,8 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @include plotQC-internal.R
 #' @inherit bioverbs::plotMitoRatio
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -28,7 +29,7 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-09-15.
 `plotMitoRatio,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -37,7 +38,7 @@ NULL
         max = 1L,
         fill,
         trans = "sqrt",
-        title = "Mito ratio"
+        labels
     ) {
         assert(isInLeftOpenRange(max, lower = 0L, upper = 1L))
         geom <- match.arg(geom)
@@ -52,14 +53,17 @@ NULL
                 trans = trans,
                 ratio = TRUE,
                 fill = fill,
-                title = title
+                labels = labels
             )
         )
     }
 
-formals(`plotMitoRatio,SingleCellExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotMitoRatio,SingleCellExperiment`)[["geom"]] <- .geom
+f <- formals(`plotMitoRatio,SingleCellExperiment`)
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["geom"]] <- .geom
+f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+f[["labels"]][["title"]] <- "Mito ratio"
+formals(`plotMitoRatio,SingleCellExperiment`) <- f
 
 
 
