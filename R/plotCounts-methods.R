@@ -116,8 +116,8 @@ NULL
         labels = list(
             title = NULL,
             subtitle = NULL,
-            samplesAxis = NULL,
-            countsAxis = "counts"
+            x = NULL,
+            y = "counts"
         )
     ) {
         validObject(object)
@@ -159,10 +159,6 @@ NULL
                 object
             }
         )
-        ## Counts axis label. Automatically add transformation, if necessary.
-        if (!identical(trans, "identity")) {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
         ## Generate a melted tibble.
         data <- melt(object, min = 1L, trans = trans)
         ## Plot.
@@ -188,8 +184,9 @@ NULL
         }
         ## Labels.
         if (is.list(labels)) {
-            names(labels)[names(labels) == "samplesAxis"] <- "x"
-            names(labels)[names(labels) == "countsAxis"] <- "y"
+            if (!identical(trans, "identity")) {
+                labels[["y"]] <- paste(trans, labels[["y"]])
+            }
             labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
             p <- p + do.call(what = labs, args = labels)
         }
