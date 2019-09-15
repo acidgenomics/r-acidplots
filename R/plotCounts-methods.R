@@ -1,13 +1,11 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-09-13.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
-#' @param countsAxisLabel `character(1)`.
-#'   Label to use for the counts axis.
 #' @param medianLine `logical(1)`.
-#'   Include median line for each group. Disabled if samples are colored by
-#'   sample name.
+#'   Include median line for each interesting group.
+#'   Disabled if samples are colored by sample name.
 #' @param style `character(1)`.
 #'   Plot style.
 #' @param ... Additional arguments.
@@ -74,18 +72,9 @@ NULL
 
 
 
-## Updated 2019-08-27.
-.plotCountsFacet <- function(
-    data,
-    countsAxisLabel,
-    medianLine,
-    color,
-    legend,
-    interestingGroups
-) {
-    assert(is(data, "tbl_df"))
-    ## Plot.
-    p <- ggplot(
+## Updated 2019-09-15.
+.plotCountsFacet <- function(data) {
+    ggplot(
         data = data,
         mapping = aes(
             x = !!sym("interestingGroups"),
@@ -93,74 +82,21 @@ NULL
             color = !!sym("interestingGroups")
         )
     ) +
-        .genePoint(show.legend = legend) +
-        scale_y_continuous() +
-        facet_wrap(facets = sym("rowname"), scales = "free_y") +
-        labs(
-            x = NULL,
-            y = countsAxisLabel,
-            color = paste(interestingGroups, collapse = ":\n")
-        )
-    ## Median line.
-    if (
-        isTRUE(medianLine) &&
-        !identical(interestingGroups, "sampleName")
-    ) {
-        p <- p + .geneMedianLine
-    }
-    ## Color.
-    if (is(color, "ScaleDiscrete")) {
-        p <- p + color
-    }
-    ## Hide sample name legend.
-    if (identical(interestingGroups, "sampleName")) {
-        p <- p + guides(color = FALSE)
-    }
-    ## Return.
-    p
+        facet_wrap(facets = sym("rowname"), scales = "free_y")
 }
 
 
 
-## Updated 2019-07-27.
-.plotCountsWide <- function(
-    data,
-    countsAxisLabel,
-    medianLine,
-    color,
-    legend,
-    interestingGroups
-) {
-    assert(is(data, "tbl_df"))
-    ## Plot.
-    p <- ggplot(
+## Updated 2019-09-15.
+.plotCountsWide <- function(data) {
+    ggplot(
         data = data,
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("value"),
             color = !!sym("interestingGroups")
         )
-    ) +
-        .genePoint(show.legend = legend) +
-        scale_y_continuous() +
-        labs(
-            x = NULL,
-            y = countsAxisLabel,
-            color = paste(interestingGroups, collapse = ":\n")
-        )
-    ## Median line.
-    if (
-        isTRUE(medianLine) &&
-        !identical(interestingGroups, "sampleName")
-    ) {
-        p <- p + .geneMedianLine
-    }
-    ## Color.
-    if (is(color, "ScaleDiscrete")) {
-        p <- p + color
-    }
-    ## Return.
-    p
+    )
 }
 
 
@@ -173,11 +109,16 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
-        countsAxisLabel = "counts",
         medianLine = TRUE,
         color,
         legend,
-        style = c("facet", "wide")
+        style = c("facet", "wide"),
+        labels = list(
+            title = NULL,
+            subtitle = NULL,
+            samplesAxis = NULL,
+            countsAxis = "counts"
+        )
     ) {
         validObject(object)
         assert(
@@ -185,10 +126,14 @@ NULL
             ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
-            isString(countsAxisLabel),
             isFlag(medianLine),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-            isFlag(legend)
+            isFlag(legend),
+            is.list(labels),
+            areSetEqual(
+                x = names(labels),
+                y = names(eval(formals()[["labels"]]))
+            )
         )
         trans <- match.arg(trans)
         style <- match.arg(style)
@@ -220,24 +165,40 @@ NULL
         }
         ## Generate a melted tibble.
         data <- melt(object, min = 1L, trans = trans)
-        data <- as_tibble(data, rownames = NULL)
-        ## Plot style.
-        what <- switch(
-            EXPR = style,
-            "facet" = .plotCountsFacet,
-            "wide" = .plotCountsWide
+        ## Plot.
+        p <- do.call(
+            what = switch(
+                EXPR = style,
+                "facet" = .plotCountsFacet,
+                "wide" = .plotCountsWide
+            ),
+            args = list(data = as_tibble(data, rownames = NULL))
         )
-        do.call(
-            what = what,
-            args = list(
-                data = data,
-                countsAxisLabel = countsAxisLabel,
-                medianLine = medianLine,
-                color = color,
-                legend = legend,
-                interestingGroups = interestingGroups(object)
-            )
-        )
+        p <- p + .genePoint(show.legend = legend)
+        ## Median line.
+        if (
+            isTRUE(medianLine) &&
+            !identical(interestingGroups, "sampleName")
+        ) {
+            p <- p + .geneMedianLine
+        }
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Labels.
+        if (is.list(labels)) {
+            names(labels)[names(labels) == "samplesAxis"] <- "x"
+            names(labels)[names(labels) == "countsAxis"] <- "y"
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
+        ## Hide sample name legend.
+        if (identical(interestingGroups, "sampleName")) {
+            p <- p + guides(color = FALSE)
+        }
+        ## Return.
+        p
     }
 
 formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
