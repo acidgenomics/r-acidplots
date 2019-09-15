@@ -74,13 +74,13 @@ NULL
         interestingGroups <- interestingGroups(object)
         object <- nonzeroRowsAndCols(object)
         data <- melt(object = object, assay = assay, trans = trans)
+        assert(identical(length(unique(data[["rowname"]])), nrow(object)))
         ## Add automatic subtitle, including feature count.
         if (
             isString(labels[["title"]]) &&
             is.null(labels[["subtitle"]])
         ) {
-            count <- length(unique(data[["rowname"]]))
-            labels[["subtitle"]] <- paste("n", "=", count)
+            labels[["subtitle"]] <- paste("n", "=", nrow(object), "(non-zero)")
         }
         ## Construct the ggplot.
         data <- as_tibble(data, rownames = NULL)
