@@ -12,10 +12,9 @@ plotCounts(object, ...)
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
   medianLine = TRUE, color = getOption(x = "acid.color.discrete",
-  default = acidplots::scale_colour_synesthesia_d()),
-  legend = getOption(x = "acid.legend", default = TRUE),
-  style = c("facet", "wide"), labels = list(title = NULL, subtitle =
-  NULL, x = NULL, y = "counts"))
+  default = acidplots::scale_color_synesthesia_d()), legend = getOption(x
+  = "acid.legend", default = TRUE), style = c("facet", "wide"),
+  labels = list(title = NULL, subtitle = NULL, x = NULL, y = "counts"))
 
 \S4method{plotCounts}{DESeqDataSet}(object, ...)
 }

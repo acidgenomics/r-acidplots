@@ -12,10 +12,9 @@ plotCountsPerCell(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL, min = 0L, max = Inf, point = c("none",
   "inflection", "knee"), trans = "log10", color = getOption(x =
-  "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
-  title = "Counts per cell")
+  "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d()), title = "Counts per cell")
 }
 \arguments{
 \item{object}{Object.}

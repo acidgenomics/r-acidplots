@@ -11,10 +11,10 @@ plotPCA(object, ...)
 \S4method{plotPCA}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, ntop = 500L, label = getOption(x =
   "acid.label", default = FALSE), color = getOption(x =
-  "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), pointSize = getOption(x =
-  "acid.point.size", default = 3L), title = "PCA", subtitle = NULL,
-  return = c("ggplot", "DataFrame"), ...)
+  "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
+  pointSize = getOption(x = "acid.point.size", default = 3L),
+  title = "PCA", subtitle = NULL, return = c("ggplot", "DataFrame"),
+  ...)
 }
 \arguments{
 \item{object}{Object.}
