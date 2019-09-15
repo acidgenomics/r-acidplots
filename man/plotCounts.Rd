@@ -78,7 +78,7 @@ are automatic.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-09-13.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
