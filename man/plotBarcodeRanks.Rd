@@ -9,8 +9,9 @@
 plotBarcodeRanks(object, ...)
 
 \S4method{plotBarcodeRanks}{SingleCellExperiment}(object,
-  colors = c(fitline = "dodgerblue", inflection = "darkorchid3", knee =
-  "darkorange2"), ...)
+  colors = c(fitline = acidplots::lightPalette[["blue"]], inflection =
+  acidplots::lightPalette[["purple"]], knee =
+  acidplots::lightPalette[["orange"]]), ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -19,7 +20,7 @@ plotBarcodeRanks(object, ...)
 Character vector denoting \code{fitline}, \code{inflection}, and \code{knee} point colors.
 Must pass in color names or hexadecimal values.}
 
-\item{...}{Additional arguments.}
+\item{...}{Passthrough to \code{\link[=barcodeRanksPerSample]{barcodeRanksPerSample()}}.}
 }
 \value{
 \code{ggplot} grid.
@@ -27,52 +28,16 @@ Must pass in color names or hexadecimal values.}
 \description{
 Plot barcode ranks
 }
-\details{
-Analyses of droplet-based scRNA-seq data often show a plot of the log-total count against the log-rank of each barcode, where the highest ranks have the largest totals.
-This is equivalent to a transposed empirical cumulative density plot with log-transformed axes, which focuses on the barcodes with the largest counts.
-The \code{barcodeRanks} function will compute these ranks for all barcodes.
-Barcodes with the same total count receive the same average rank to avoid problems with discrete runs of the same total.
-
-The function will also identify a number of interesting points on the curve for downstream use, namely the inflection and knee points.
-Both of these points correspond to a sharp transition between two components of the total count distribution, 
-presumably reflecting the difference between empty droplets with little RNA and cell-containing droplets with much more RNA.
-\itemize{
-\item The inflection point is computed as the point on the rank/total curve where the first derivative is minimized.
-The derivative is computed directly from all points on the curve with total counts greater than \code{lower}.
-This avoids issues with erratic behaviour of the curve at lower totals.
-\item The knee point is defined as the point on the curve where the signed curvature is minimized.
-This requires calculation of the second derivative, which is much more sensitive to noise in the curve.
-To overcome this, a smooth spline is fitted to the log-total counts against the log-rank using the \code{\link{smooth.spline}} function.
-Derivatives are then calculated from the fitted spline using \code{\link{predict}}.
-}
-We supply a default setting of \code{df} to avoid overfitting the spline, as this results in unstability in the higher derivatives (and thus the curvature).
-\code{df} and other arguments to \code{\link{smooth.spline}} can be tuned if the estimated knee point is not at an appropriate location.
-We also restrict the fit to lie within the bounds defined by \code{fit.bounds} to focus on the region containing the knee point.
-This allows us to obtain an accurate fit with low \code{df}, rather than attempting to model the entire curve.
-
-If \code{fit.bounds} is not specified, the lower bound is automatically set to the inflection point, which should lie after the knee point.
-The upper bound is set to the point at which the first derivative is closest to zero, i.e., the \dQuote{plateau} region before the knee point.
-Note that only points with total counts above \code{lower} will be considered, regardless of how \code{fit.bounds} is defined.
-}
 \note{
-Not supported for R 3.5, due to DropletUtils dependency.
-
-Updated 2019-09-13.
+Updated 2019-09-15.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
 ## Not supported for R < 3.6.
-if (requireNamespace(
-    package = "DropletUtils",
-    versionCheck = list(op = ">=", version = "1.4"),
-    quietly = TRUE
-)) {
+if (requireNamespace("DropletUtils", quietly = TRUE)) {
     object <- SingleCellExperiment
     plotBarcodeRanks(object)
 }
-}
-\seealso{
-\code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.
 }
