@@ -1,12 +1,11 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
-#' @note Updated 2019-08-21.
-#'
-#' @inheritParams plotCounts
-#' @inheritParams acidroxygen::params
-#' @param ... Additional arguments.
-#'
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
+#' @note Updated 2019-09-15.
+#'
+#' @inheritParams acidroxygen::params
+#' @param ... Passthrough to [plotCounts()], with the `genes` argument
+#'   automatically defined.
 #'
 #' @examples
 #' data(
@@ -35,10 +34,9 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
-    function() {
-        validObject(object)
+    function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
@@ -66,18 +64,13 @@ NULL
             genes = markers[["geneID"]],
             strict = FALSE
         )
-        do.call(
-            what = plotCounts,
-            args = matchArgsToDoCall(
-                args = list(genes = genes)
-            )
+        plotCounts(
+            object = object,
+            genes = genes,
+            style = style,
+            ...
         )
     }
-
-f <- formals(`plotCounts,SummarizedExperiment`)
-f <- f[setdiff(names(f), "genes")]
-f[["style"]] <- "wide"
-formals(`plotGenderMarkers,SummarizedExperiment`) <- f
 
 
 
