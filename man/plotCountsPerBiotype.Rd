@@ -13,13 +13,15 @@ plotCountsPerBiotype(object, ...)
   n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
-  title = "Counts per biotype")
+  labels = list(title = "Counts per biotype", subtitle = NULL, x = NULL,
+  y = "counts"))
 
 \S4method{plotCountsPerBiotype}{SingleCellExperiment}(object, assay = 1L,
   n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), countsAxisLabel = "counts",
-  title = "Counts per biotype")
+  labels = list(title = "Counts per biotype", subtitle = NULL, x = NULL,
+  y = "counts"))
 }
 \arguments{
 \item{object}{Object.}
@@ -51,8 +53,9 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 \item{countsAxisLabel}{\code{character(1)}.
 Counts axis label.}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -63,7 +66,7 @@ Title.}
 Plot counts per biotype
 }
 \note{
-Updated 2019-08-27.
+Updated 2019-09-15.
 }
 \examples{
 data(
