@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit bioverbs::plotTotalCounts
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -53,12 +53,11 @@ NULL
             isScalar(assay),
             isFlag(perMillion),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            ),
             isFlag(flip)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -70,7 +69,6 @@ NULL
         }
         data <- sampleData(object)
         data[[metricCol]] <- colSums(counts)
-        yLab <- "counts"
         if (isTRUE(perMillion)) {
             data[[metricCol]] <- data[[metricCol]] / 1e6L
             labels[["y"]] <- paste(labels[["y"]], "(per million)")

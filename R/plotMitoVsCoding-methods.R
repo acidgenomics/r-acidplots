@@ -1,7 +1,7 @@
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotMitoVsCoding
-#' @note Updated 2019-07-24.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -28,7 +28,7 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## Updated 2019-09-16.
 `plotMitoVsCoding,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -54,7 +54,10 @@ NULL
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                labels = labels
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }

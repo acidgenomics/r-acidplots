@@ -12,9 +12,9 @@ plotFeaturesDetected
 \S4method{plotFeaturesDetected}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
   fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d()), flip = getOption(x =
-  "acid.flip", default = TRUE), labels = list(title =
-  "Features detected", subtitle = NULL, x = NULL, y = "features"))
+  acidplots::scale_fill_synesthesia_d()), labels = list(title =
+  "Features detected", subtitle = NULL, x = NULL, y = "features"),
+  flip = getOption(x = "acid.flip", default = TRUE))
 
 \S4method{plotFeaturesDetected}{SingleCellExperiment}(object, ...)
 }
@@ -42,12 +42,12 @@ definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manua
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
-\item{flip}{\code{logical(1)}.
-Flip x and y axes. Recommended for plots containing many samples.}
-
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
+\item{flip}{\code{logical(1)}.
+Flip x and y axes. Recommended for plots containing many samples.}
 
 \item{...}{Additional arguments.}
 }
@@ -65,7 +65,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-09-15.
+Updated 2019-09-16.
 }
 \examples{
 data(

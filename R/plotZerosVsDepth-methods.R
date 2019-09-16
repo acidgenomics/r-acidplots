@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -49,12 +49,11 @@ NULL
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            )
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
