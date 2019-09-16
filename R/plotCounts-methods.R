@@ -192,10 +192,6 @@ NULL
             names(labels)[names(labels) == "countsAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
-        ## Hide sample name legend.
-        if (identical(interestingGroups, "sampleName")) {
-            p <- p + guides(color = FALSE)
-        }
         ## Return.
         p
     }
