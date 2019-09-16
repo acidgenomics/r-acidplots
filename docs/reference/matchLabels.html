@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot row or column sums — plotSums • acidplots</title>
+<title>Match ggplot2 labels — matchLabels • acidplots</title>
 
 
 <!-- jquery -->
@@ -37,9 +37,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Plot row or column sums — plotSums" />
-<meta property="og:description" content="Visualize row or column sums using empirical cumulative distribution function
-(ECDF) plot." />
+<meta property="og:title" content="Match ggplot2 labels — matchLabels" />
+<meta property="og:description" content="Allow user to define ggplot labels, and populate missing values from the
+defaults specified in labels formal argument." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,87 +114,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot row or column sums</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotSums-methods.R'><code>R/plotSums-methods.R</code></a></small>
-    <div class="hidden name"><code>plotSums.Rd</code></div>
+    <h1>Match ggplot2 labels</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/matchLabels.R'><code>R/matchLabels.R</code></a></small>
+    <div class="hidden name"><code>matchLabels.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Visualize row or column sums using empirical cumulative distribution function
-(ECDF) plot.</p>
+    <p>Allow user to define ggplot labels, and populate missing values from the
+defaults specified in <code>labels</code> formal argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S4 method for matrix</span>
-<span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
-
-<span class='co'># S4 method for Matrix</span>
-<span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
-
-<span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</pre>
+    <pre class="usage"><span class='fu'>matchLabels</span>(<span class='no'>labels</span>, <span class='no'>choices</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object.</p></td>
+      <th>labels</th>
+      <td><p><code>list</code>.
+User-defined plot labels.</p></td>
     </tr>
     <tr>
-      <th>MARGIN</th>
-      <td><p>a vector giving the subscripts which the function will
-    be applied over.  E.g., for a matrix <code>1</code> indicates rows,
-    <code>2</code> indicates columns, <code><a href='https://rdrr.io/r/base/c.html'>c(1, 2)</a></code> indicates rows and
-    columns. Where <code>X</code> has named dimnames, it can be a character
-    vector selecting dimension names.</p></td>
-    </tr>
-    <tr>
-      <th>assay</th>
-      <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector(1)</a></code>.
-Assay name or index position.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <th>choices</th>
+      <td><p><code>list</code>.
+Default plot labels, defined in <code>labels</code> <code><a href='https://rdrr.io/r/base/formals.html'>formals()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>ggplot</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-09-15.</p>
+    <p>Attempting to follow a similar naming convention to
+<code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg()</a></code> here, using <code>choices</code> argument.</p>
+<p>Updated 2019-09-16.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::labs()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
-)
-
-<span class='co'>## matrix ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>RangedSummarizedExperiment</span>)
-<span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>1L</span>)</div><div class='img'><img src='plotSums-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Matrix ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>counts</span>(<span class='no'>SingleCellExperiment</span>)
-<span class='fu'>plotSums</span>(<span class='no'>object</span>, <span class='kw'>MARGIN</span> <span class='kw'>=</span> <span class='fl'>2L</span>)</div><div class='img'><img src='plotSums-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'>plotSums</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotSums-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## SingleCellExperiment</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotSums</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotSums-4.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchLabels</span>(
+    <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"XXX"</span>),
+    <span class='kw'>choices</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"AAA"</span>,
+        <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='st'>"BBB"</span>
+    )
+)</div><div class='output co'>#&gt; $title
+#&gt; [1] "XXX"
+#&gt; 
+#&gt; $subtitle
+#&gt; [1] "BBB"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#note">Note</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
