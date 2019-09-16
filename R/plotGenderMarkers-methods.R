@@ -3,6 +3,7 @@
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 #' @note Updated 2019-09-15.
 #'
+#' @inheritParams plotCounts
 #' @inheritParams acidroxygen::params
 #' @param ... Passthrough to [plotCounts()], with the `genes` argument
 #'   automatically defined.
