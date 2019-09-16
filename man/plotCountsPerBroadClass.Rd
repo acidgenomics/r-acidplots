@@ -12,7 +12,8 @@ plotCountsPerBroadClass(object, ...)
   assay = 1L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), labels = list(title =
-  "Counts per broad class", subtitle = NULL, x = NULL, y = "counts"))
+  "Counts per broad class", subtitle = NULL, samplesAxis = NULL, countsAxis
+  = "counts"))
 }
 \arguments{
 \item{object}{Object.}
@@ -51,7 +52,7 @@ Plot.
 Plot counts per broad class definition
 }
 \note{
-Updated 2019-09-15.
+Updated 2019-09-16.
 }
 \examples{
 data(

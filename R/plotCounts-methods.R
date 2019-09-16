@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param medianLine `logical(1)`.
@@ -101,7 +101,7 @@ NULL
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-09-16.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
