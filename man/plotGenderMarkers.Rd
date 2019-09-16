@@ -12,8 +12,7 @@ plotGenderMarkers(object, ...)
 \S4method{plotGenderMarkers}{SummarizedExperiment}(object,
   style = "wide", ...)
 
-\S4method{plotGenderMarkers}{SingleCellExperiment}(object,
-  style = "wide", ...)
+\S4method{plotGenderMarkers}{SingleCellExperiment}(object)
 }
 \arguments{
 \item{object}{Object.}
@@ -31,7 +30,8 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
-gene expression at sample level prior to plotting.
+gene expression at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{

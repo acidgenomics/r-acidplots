@@ -87,22 +87,17 @@ setMethod(
 ## Updated 2019-08-21.
 `plotGenderMarkers,SingleCellExperiment` <-  # nolint
     function(object) {
-        object <- pseudobulk(object)
-        do.call(
-            what = plotGenderMarkers,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+        plotGenderMarkers(
+            object = pseudobulk(object),
+            ...
         )
     }
-
-formals(`plotGenderMarkers,SingleCellExperiment`) <-
-    formals(`plotGenderMarkers,SummarizedExperiment`)
 
 
 
 #' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.
+#'   gene expression at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotGenderMarkers",

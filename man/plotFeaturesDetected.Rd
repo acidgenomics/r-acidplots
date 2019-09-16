@@ -16,12 +16,7 @@ plotFeaturesDetected
   "acid.flip", default = TRUE), labels = list(title =
   "Features detected", subtitle = NULL, x = NULL, y = "features"))
 
-\S4method{plotFeaturesDetected}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, limit = 0L, minCounts = 1L,
-  fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d()), flip = getOption(x =
-  "acid.flip", default = TRUE), labels = list(title =
-  "Features detected", subtitle = NULL, x = NULL, y = "features"))
+\S4method{plotFeaturesDetected}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -65,7 +60,8 @@ Visualize the number of features (i.e. genes) detected.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
-calculation to summarize at sample level prior to plotting.
+calculation to summarize at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
