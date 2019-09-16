@@ -160,7 +160,12 @@ NULL
             }
         )
         ## Generate a melted tibble.
-        data <- melt(object, min = 1L, trans = trans)
+        data <- melt(
+            object = object,
+            min = -Inf,
+            minMethod = "absolute",
+            trans = trans
+        )
         ## Plot.
         p <- do.call(
             what = switch(
