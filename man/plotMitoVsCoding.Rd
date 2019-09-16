@@ -11,7 +11,8 @@ plotMitoVsCoding(object, ...)
 \S4method{plotMitoVsCoding}{SingleCellExperiment}(object,
   interestingGroups = NULL, trendline = FALSE, color = getOption(x =
   "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
-  trans = "log2", title = "Mito vs. coding")
+  trans = "log2", labels = list(title = "Mito vs. coding", subtitle =
+  NULL, x = "coding", y = "mito"))
 }
 \arguments{
 \item{object}{Object.}
@@ -37,8 +38,9 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }

@@ -12,7 +12,8 @@ plotMitoRatio(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL, max = 1L, fill = getOption(x =
   "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
-  trans = "sqrt", title = "Mito ratio")
+  trans = "sqrt", labels = list(title = "Mito ratio", subtitle = NULL,
+  metricAxis = NULL, otherAxis = NULL))
 }
 \arguments{
 \item{object}{Object.}
@@ -42,8 +43,9 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -54,7 +56,7 @@ Title.}
 Plot mitochondrial transcript abundance
 }
 \note{
-Updated 2019-08-12.
+Updated 2019-09-15.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

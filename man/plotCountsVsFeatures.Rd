@@ -11,7 +11,8 @@ plotCountsVsFeatures(object, ...)
 \S4method{plotCountsVsFeatures}{SingleCellExperiment}(object,
   interestingGroups = NULL, trendline = FALSE, color = getOption(x =
   "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
-  trans = "log2", title = "Counts vs. features")
+  trans = "log2", labels = list(title = "Counts vs. features", subtitle
+  = NULL, x = "counts", y = "features"))
 }
 \arguments{
 \item{object}{Object.}
@@ -37,8 +38,9 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -54,7 +56,7 @@ transcripts) detected.
 droplet-based scRNA-seq data.
 }
 \note{
-Updated 2019-08-08.
+Updated 2019-09-15.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

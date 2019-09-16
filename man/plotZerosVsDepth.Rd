@@ -11,7 +11,8 @@ plotZerosVsDepth(object, ...)
 \S4method{plotZerosVsDepth}{SummarizedExperiment}(object, assay = 1L,
   interestingGroups = NULL, color = getOption(x =
   "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
-  title = "Zeros vs. depth")
+  labels = list(title = "Zeros vs. depth", subtitle = NULL, x =
+  "library size (depth)", y = "dropout rate"))
 }
 \arguments{
 \item{object}{Object.}
@@ -31,8 +32,9 @@ are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2:
 To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
 }}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -43,7 +45,7 @@ Title.}
 Plot percentage of zeros vs. library depth
 }
 \note{
-Updated 2019-08-27.
+Updated 2019-09-15.
 }
 \examples{
 data(
