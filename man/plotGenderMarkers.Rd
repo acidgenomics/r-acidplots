@@ -17,6 +17,9 @@ plotGenderMarkers(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{style}{\code{character(1)}.
+Plot style.}
+
 \item{...}{Passthrough to \code{\link[=plotCounts]{plotCounts()}}, with the \code{genes} argument
 automatically defined.}
 }
