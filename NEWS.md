@@ -1,9 +1,13 @@
-## acidplots 0.2.16 (2019-09-15)
+## acidplots 0.2.16 (2019-09-16)
 
 ### Major changes
 
 - Replaced `title` argument with `labels` argument for functions that render
   plots using ggplot2.
+- Now exporting `matchLabels` function, that handles internal ggplot2 label
+  matching, and auto-populates with defaults in formal argument.
+- Using "samplesAxis" and "countsAxis" labels for ggplot2 return that support
+  multiple geoms. Consider a similar approach for QC metric plots.
   
 ### Minor changes
 
