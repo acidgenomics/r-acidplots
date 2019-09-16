@@ -180,7 +180,6 @@ acid_theme_dark <-  # nolint
             axis_ticks <- element_line(color = fg)
             panel_border <- element_rect(color = fg, fill = NA)
         }
-        ## FIXME Can we consolidate with `theme_light()` better here?
         theme_linedraw(
             base_size = base_size,
             base_family = base_family
