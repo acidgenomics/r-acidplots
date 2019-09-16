@@ -15,7 +15,7 @@ plotCountsPerFeature(object, ...)
   "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
   fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), labels = list(title =
-  "Counts per feature", subtitle = NULL, samplesAxis = NULL, countsAxis =
+  "Counts per feature", subtitle = NULL, sampleAxis = NULL, countAxis =
   "counts"), flip = getOption(x = "acid.flip", default = TRUE),
   minMethod = c("absolute", "perRow"))
 

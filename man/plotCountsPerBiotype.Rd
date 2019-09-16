@@ -13,14 +13,14 @@ plotCountsPerBiotype(object, ...)
   n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), labels = list(title =
-  "Counts per biotype", subtitle = NULL, samplesAxis = NULL, countsAxis =
+  "Counts per biotype", subtitle = NULL, sampleAxis = NULL, countAxis =
   "counts"))
 
 \S4method{plotCountsPerBiotype}{SingleCellExperiment}(object, assay = 1L,
   n = 9L, interestingGroups = NULL, trans = c("identity", "log2",
   "log10"), fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), labels = list(title =
-  "Counts per biotype", subtitle = NULL, samplesAxis = NULL, countsAxis =
+  "Counts per biotype", subtitle = NULL, sampleAxis = NULL, countAxis =
   "counts"))
 }
 \arguments{

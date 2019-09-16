@@ -116,8 +116,8 @@ NULL
         labels = list(
             title = NULL,
             subtitle = NULL,
-            samplesAxis = NULL,
-            countsAxis = "counts"
+            sampleAxis = NULL,
+            countAxis = "counts"
         )
     ) {
         validObject(object)
@@ -190,11 +190,11 @@ NULL
         ## Labels.
         if (is.list(labels)) {
             if (!identical(trans, "identity")) {
-                labels[["countsAxis"]] <- paste(trans, labels[["countsAxis"]])
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
             }
-            labels[["colour"]] <- paste(interestingGroups, collapse = ":\n")
-            names(labels)[names(labels) == "samplesAxis"] <- "x"
-            names(labels)[names(labels) == "countsAxis"] <- "y"
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            names(labels)[names(labels) == "sampleAxis"] <- "x"
+            names(labels)[names(labels) == "countAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Return.
@@ -226,8 +226,10 @@ setMethod(
         assays(object) <- SimpleList(normalized = normalized)
         plotCounts(
             object = object,
+            ## FIXME Automatically label when assay isn't 1L...
             assay = "normalized",
-            countsAxisLabel = "normalized counts",
+            ## FIXME This needs a rework.
+            countAxisLabel = "normalized counts",
             ...
         )
     }
@@ -235,7 +237,7 @@ setMethod(
 
 
 #' @describeIn plotCounts Automatically plots normalized counts. Arguments pass
-#'   through to `SummarizedExperiment` method, but `assay` and `countsAxisLabel`
+#'   through to `SummarizedExperiment` method, but `assay` and `countAxisLabel`
 #'   are automatic.
 #' @export
 setMethod(

@@ -49,8 +49,8 @@ NULL
         labels = list(
             title = "Counts per feature",
             subtitle = NULL,
-            samplesAxis = NULL,
-            countsAxis = "counts"
+            sampleAxis = NULL,
+            countAxis = "counts"
         ),
         flip
     ) {
@@ -119,14 +119,14 @@ NULL
         ## Labels.
         if (is.list(labels)) {
             if (!identical(trans, "identity")) {
-                labels[["countsAxis"]] <- paste(trans, labels[["countsAxis"]])
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
             }
             if (identical(geom, "density")) {
-                names(labels)[names(labels) == "countsAxis"] <- "x"
-                names(labels)[names(labels) == "samplesAxis"] <- "y"
+                names(labels)[names(labels) == "countAxis"] <- "x"
+                names(labels)[names(labels) == "sampleAxis"] <- "y"
             } else {
-                names(labels)[names(labels) == "countsAxis"] <- "y"
-                names(labels)[names(labels) == "samplesAxis"] <- "x"
+                names(labels)[names(labels) == "countAxis"] <- "y"
+                names(labels)[names(labels) == "sampleAxis"] <- "x"
             }
             labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
             labels[["fill"]] <- labels[["color"]]
