@@ -125,25 +125,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotTotalCounts,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- aggregateCellsToSamples(object)
-        do.call(
-            what = plotTotalCounts,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotTotalCounts(
+            object = aggregateCellsToSamples(object),
+            ...
         )
     }
-
-formals(`plotTotalCounts,SingleCellExperiment`) <-
-    formals(`plotTotalCounts,SummarizedExperiment`)
 
 
 
 #' @describeIn plotTotalCounts Applies [aggregateCellsToSamples()] calculation
-#'   to summarize at sample level prior to plotting.
+#'   to summarize at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotTotalCounts",

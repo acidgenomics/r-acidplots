@@ -15,11 +15,7 @@ plotTotalCounts(object, ...)
   labels = list(title = "Total counts", subtitle = NULL, x = NULL, y =
   "counts"), flip = getOption(x = "acid.flip", default = TRUE))
 
-\S4method{plotTotalCounts}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, perMillion = FALSE, fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
-  labels = list(title = "Total counts", subtitle = NULL, x = NULL, y =
-  "counts"), flip = getOption(x = "acid.flip", default = TRUE))
+\S4method{plotTotalCounts}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -60,7 +56,8 @@ Plot total read counts
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} calculation
-to summarize at sample level prior to plotting.
+to summarize at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{

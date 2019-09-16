@@ -84,9 +84,9 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotGenderMarkers,SingleCellExperiment` <-  # nolint
-    function(object) {
+    function(object, ...) {
         plotGenderMarkers(
             object = pseudobulk(object),
             ...
