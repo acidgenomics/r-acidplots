@@ -66,6 +66,7 @@ NULL
             object = object,
             assay = assay,
             min = 1L,
+            minMethod = "perRow",
             trans = trans
         )
         data <- decode(data)
