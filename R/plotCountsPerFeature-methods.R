@@ -155,18 +155,17 @@ NULL
         p
     }
 
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
-    formalsList[["flip"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["minMethod"]] <-
+f <- formals(`plotCountsPerFeature,SummarizedExperiment`)
+f[["color"]] <- formalsList[["color.discrete"]]
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["flip"]] <- formalsList[["flip"]]
+f[["minMethod"]] <-
     methodFormals(
         f = "melt",
         signature = "SummarizedExperiment",
         package = "basejump"
     )[["minMethod"]]
+formals(`plotCountsPerFeature,SummarizedExperiment`) <- f
 
 
 
@@ -182,23 +181,18 @@ setMethod(
 
 ## Updated 2019-07-23.
 `plotCountsPerFeature,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- aggregateCellsToSamples(object)
-        do.call(
-            what = plotCountsPerFeature,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotCountsPerFeature(
+            object = aggregateCellsToSamples(object),
+            ...
         )
     }
-
-formals(`plotCountsPerFeature,SingleCellExperiment`) <-
-    formals(`plotCountsPerFeature,SummarizedExperiment`)
 
 
 
 #' @describeIn plotCountsPerFeature Applies [aggregateCellsToSamples()]
-#'   calculation to summarize at sample level prior to plotting.
+#'   calculation to summarize at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotCountsPerFeature",
