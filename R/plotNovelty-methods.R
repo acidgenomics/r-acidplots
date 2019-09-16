@@ -2,7 +2,7 @@
 #' @author Michael Steinbaugh
 #' @include plotQC-internal.R
 #' @inherit bioverbs::plotNovelty
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotNovelty,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -51,7 +51,10 @@ NULL
                 trans = trans,
                 ratio = TRUE,
                 fill = fill,
-                labels = labels
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }

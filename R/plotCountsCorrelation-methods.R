@@ -54,9 +54,9 @@ NULL
             isString(.xname),
             isString(.yname)
         )
-        labels <- .labels(
+        labels <- matchLabels(
             labels = labels,
-            labelsArgs = eval(formals()[["labels"]])
+            choices = eval(formals()[["labels"]])
         )
         if (!is.null(i)) {
             x <- x[i, , drop = FALSE]

@@ -2,7 +2,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include plotQC-internal.R
 #' @inherit bioverbs::plotCountsVsFeatures
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -53,7 +53,10 @@ NULL
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                labels = labels
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }

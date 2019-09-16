@@ -60,7 +60,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot features per cell
 }
 \note{
-Updated 2019-09-15.
+Updated 2019-09-16.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

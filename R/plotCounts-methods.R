@@ -132,9 +132,9 @@ NULL
         )
         trans <- match.arg(trans)
         style <- match.arg(style)
-        labels <- .labels(
+        labels <- matchLabels(
             labels = labels,
-            labelsArgs = eval(formals()[["labels"]])
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

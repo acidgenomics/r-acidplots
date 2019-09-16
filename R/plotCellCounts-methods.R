@@ -42,9 +42,9 @@ NULL
         assert(
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
-        labels <- .labels(
+        labels <- matchLabels(
             labels = labels,
-            labelsArgs = eval(formals()[["labels"]])
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

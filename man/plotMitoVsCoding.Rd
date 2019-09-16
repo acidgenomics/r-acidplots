@@ -51,7 +51,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot mitochondrial vs. coding counts
 }
 \note{
-Updated 2019-07-24.
+Updated 2019-09-16.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")

@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -41,13 +41,13 @@ NULL
         limit = 0L,
         minCounts = 1L,
         fill,
-        flip,
         labels = list(
             title = "Features detected",
             subtitle = NULL,
             x = NULL,
             y = "features"
-        )
+        ),
+        flip
     ) {
         validObject(object)
         assert(
@@ -55,12 +55,11 @@ NULL
             isInt(limit) && isNonNegative(limit),
             isInt(minCounts) && isNonNegative(minCounts),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isFlag(flip),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            )
+            isFlag(flip)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

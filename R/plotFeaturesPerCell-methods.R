@@ -1,7 +1,7 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotFeaturesPerCell
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +26,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -49,7 +49,10 @@ NULL
                 max = max,
                 trans = trans,
                 fill = fill,
-                labels = labels
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }
