@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
@@ -36,7 +36,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -59,16 +59,15 @@ NULL
             isScalar(assay),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            ),
             isFlag(flip)
         )
         minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
+        labels <- .labels(
+            labels = labels,
+            labelsArgs = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
