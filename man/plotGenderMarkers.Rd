@@ -12,7 +12,7 @@ plotGenderMarkers(object, ...)
 \S4method{plotGenderMarkers}{SummarizedExperiment}(object,
   style = "wide", ...)
 
-\S4method{plotGenderMarkers}{SingleCellExperiment}(object)
+\S4method{plotGenderMarkers}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
