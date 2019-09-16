@@ -19,15 +19,7 @@ plotCountsPerFeature(object, ...)
   "counts"), flip = getOption(x = "acid.flip", default = TRUE),
   minMethod = c("absolute", "perRow"))
 
-\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
-  trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
-  fill = getOption(x = "acid.fill.discrete", default =
-  acidplots::scale_fill_synesthesia_d()), labels = list(title =
-  "Counts per feature", subtitle = NULL, samplesAxis = NULL, countsAxis =
-  "counts"), flip = getOption(x = "acid.flip", default = TRUE),
-  minMethod = c("absolute", "perRow"))
+\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -92,7 +84,8 @@ unless the library sizes or total RNA expression are different.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
-calculation to summarize at sample level prior to plotting.
+calculation to summarize at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
