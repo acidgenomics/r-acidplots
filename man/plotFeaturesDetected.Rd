@@ -13,15 +13,15 @@ plotFeaturesDetected
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
   fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), flip = getOption(x =
-  "acid.flip", default = TRUE), title = "Features detected",
-  countsAxisLabel = "features")
+  "acid.flip", default = TRUE), labels = list(title =
+  "Features detected", subtitle = NULL, x = NULL, y = "features"))
 
 \S4method{plotFeaturesDetected}{SingleCellExperiment}(object, assay = 1L,
   interestingGroups = NULL, limit = 0L, minCounts = 1L,
   fill = getOption(x = "acid.fill.discrete", default =
   acidplots::scale_fill_synesthesia_d()), flip = getOption(x =
-  "acid.flip", default = TRUE), title = "Features detected",
-  countsAxisLabel = "features")
+  "acid.flip", default = TRUE), labels = list(title =
+  "Features detected", subtitle = NULL, x = NULL, y = "features"))
 }
 \arguments{
 \item{object}{Object.}
@@ -50,11 +50,9 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 \item{flip}{\code{logical(1)}.
 Flip x and y axes. Recommended for plots containing many samples.}
 
-\item{title}{\code{character(1)}.
-Title.}
-
-\item{countsAxisLabel}{\code{character(1)}.
-Counts axis label.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -71,7 +69,7 @@ calculation to summarize at sample level prior to plotting.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-09-15.
 }
 \examples{
 data(
