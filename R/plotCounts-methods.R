@@ -139,6 +139,7 @@ NULL
         style <- match.arg(style)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         ## Coercing to `SummarizedExperiment` for fast subsetting.
         object <- as.SummarizedExperiment(object)
         ## This will support objects that don't contain gene-to-symbol mappings.
@@ -187,7 +188,7 @@ NULL
             if (!identical(trans, "identity")) {
                 labels[["y"]] <- paste(trans, labels[["y"]])
             }
-            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["colour"]] <- paste(interestingGroups, collapse = ":\n")
             p <- p + do.call(what = labs, args = labels)
         }
         ## Hide sample name legend.
