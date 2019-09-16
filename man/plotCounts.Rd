@@ -14,7 +14,8 @@ plotCounts(object, ...)
   medianLine = TRUE, color = getOption(x = "acid.color.discrete",
   default = acidplots::scale_color_synesthesia_d()), legend = getOption(x
   = "acid.legend", default = TRUE), style = c("facet", "wide"),
-  labels = list(title = NULL, subtitle = NULL, x = NULL, y = "counts"))
+  labels = list(title = NULL, subtitle = NULL, samplesAxis = NULL,
+  countsAxis = "counts"))
 
 \S4method{plotCounts}{DESeqDataSet}(object, ...)
 }
