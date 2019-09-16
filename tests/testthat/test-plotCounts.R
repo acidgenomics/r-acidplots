@@ -8,7 +8,9 @@ test_that("default", {
         expected = list(
             x = NULL,
             y = "counts",
-            colour = "condition"
+            colour = "condition",
+            title = NULL,
+            subtitle = NULL
         )
     )
     expect_s3_class(
