@@ -39,13 +39,12 @@ NULL
         labels
     ) {
         assert(isInRightOpenRange(min, lower = 0L, upper = 1L))
-        geom <- match.arg(geom)
         do.call(
             what = .plotQCMetric,
             args = list(
                 object = object,
                 metricCol = "log10FeaturesPerCount",
-                geom = geom,
+                geom = match.arg(geom),
                 interestingGroups = interestingGroups,
                 min = min,
                 max = 1L,
