@@ -26,7 +26,7 @@ Depends:
     basejump (>= 0.11.15)
 Imports:
     bioverbs (>= 0.2.10),
-    goalie (>= 0.3.7),
+    goalie (>= 0.3.8),
     BiocGenerics (>= 0.30),
     DESeq2 (>= 1.24),
     IRanges (>= 2.18.2),
@@ -82,6 +82,7 @@ Collate:
     'gradient.R'
     'heatmap-internal.R'
     'imports.R'
+    'labels-internal.R'
     'package.R'
     'pheatmap-internal.R'
     'plotBarcodeRanks-methods.R'

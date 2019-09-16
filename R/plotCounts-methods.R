@@ -116,8 +116,8 @@ NULL
         labels = list(
             title = NULL,
             subtitle = NULL,
-            x = NULL,
-            y = "counts"
+            samplesAxis = NULL,
+            countsAxis = "counts"
         )
     ) {
         validObject(object)
@@ -128,15 +128,14 @@ NULL
             isScalar(assay),
             isFlag(medianLine),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-            isFlag(legend),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            )
+            isFlag(legend)
         )
         trans <- match.arg(trans)
         style <- match.arg(style)
+        labels <- .labels(
+            labels = labels,
+            labelsArgs = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
@@ -186,9 +185,11 @@ NULL
         ## Labels.
         if (is.list(labels)) {
             if (!identical(trans, "identity")) {
-                labels[["y"]] <- paste(trans, labels[["y"]])
+                labels[["countsAxis"]] <- paste(trans, labels[["countsAxis"]])
             }
             labels[["colour"]] <- paste(interestingGroups, collapse = ":\n")
+            names(labels)[names(labels) == "samplesAxis"] <- "x"
+            names(labels)[names(labels) == "countsAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Hide sample name legend.
