@@ -29,7 +29,10 @@ matchLabels <- function(labels, choices) {
         is.list(choices)
     )
     if (is.list(labels)) {
-        assert(isSubset(names(labels), names(choices)))
+        assert(
+            isSubset(names(labels), names(choices)),
+            all(bapply(X = labels, FUN = isString, nullOK = TRUE))
+        )
     }
     ## Allow the user to pass in a subset of labels, and populate the
     ## rest using the defaults.
