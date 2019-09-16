@@ -1,7 +1,3 @@
-## FIXME Improve the title, subtitle handling here.
-
-
-
 #' Plot a single quality control metric
 #'
 #' @note Updated 2019-09-15.
@@ -85,7 +81,7 @@
         p <- p +
             stat_ecdf(geom = "step", size = 1L) +
             scale_x_continuous(trans = trans)
-        labels[["otherAxis"]] <- "frequency"
+        labels[["otherAxis"]] <- "Fn(x)"
     } else if (identical(geom, "histogram")) {
         metricAxis <- "x"
         p <- p +
