@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -42,8 +42,12 @@ NULL
         minCounts = 1L,
         fill,
         flip,
-        title = "Features detected",
-        countsAxisLabel = "features"
+        labels = list(
+            title = "Features detected",
+            subtitle = NULL,
+            x = NULL,
+            y = "features"
+        )
     ) {
         validObject(object)
         assert(
@@ -52,8 +56,11 @@ NULL
             isInt(minCounts) && isNonNegative(minCounts),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip),
-            isString(title, nullOK = TRUE),
-            isString(countsAxisLabel)
+            is.list(labels),
+            areSetEqual(
+                x = names(labels),
+                y = names(eval(formals()[["labels"]]))
+            )
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -77,13 +84,12 @@ NULL
             )
         ) +
             acid_geom_bar() +
-            acid_scale_y_continuous_nopad() +
-            labs(
-                title = title,
-                x = NULL,
-                y = countsAxisLabel,
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+            acid_scale_y_continuous_nopad()
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Show limit line.
         if (isPositive(limit)) {
             p <- p + acid_geom_abline(yintercept = limit)
