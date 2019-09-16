@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -167,25 +167,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotCorrelationHeatmap,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- pseudobulk(object)
-        do.call(
-            what = plotCorrelationHeatmap,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotCorrelationHeatmap(
+            object = pseudobulk(object),
+            ...
         )
     }
-
-formals(`plotCorrelationHeatmap,SingleCellExperiment`) <-
-    formals(`plotCorrelationHeatmap,SummarizedExperiment`)
 
 
 
 #' @describeIn plotCorrelationHeatmap Applies [pseudobulk()] calculation to
-#'   average gene expression at sample level prior to plotting.
+#'   average gene expression at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
