@@ -1,7 +1,7 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotFeaturesPerCell
-#' @note Updated 2019-08-12.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +26,7 @@ NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2019-09-15.
 `plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -36,28 +36,31 @@ NULL
         max = Inf,
         trans = "log2",
         fill,
-        title = "Features per cell"
+        labels
     ) {
-        geom <- match.arg(geom)
         do.call(
             what = .plotQCMetric,
             args = list(
                 object = object,
                 metricCol = "nFeature",
-                geom = geom,
+                geom = match.arg(geom),
                 interestingGroups = interestingGroups,
                 min = min,
                 max = max,
                 trans = trans,
                 fill = fill,
-                title = title
+                labels = labels
             )
         )
     }
 
-formals(`plotFeaturesPerCell,SingleCellExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotFeaturesPerCell,SingleCellExperiment`)[["geom"]] <- .geom
+f <- formals(`plotFeaturesPerCell,SingleCellExperiment`)
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["geom"]] <- .geom
+f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+f[["labels"]][["title"]] <- "Features per cell"
+f[["labels"]][["metricAxis"]] <- "features"
+formals(`plotFeaturesPerCell,SingleCellExperiment`) <- f
 
 
 
