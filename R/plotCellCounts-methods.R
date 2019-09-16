@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -25,7 +25,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -40,15 +40,15 @@ NULL
     ) {
         validObject(object)
         assert(
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            )
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+        )
+        labels <- .labels(
+            labels = labels,
+            labelsArgs = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
         metric <- table(colData[["sampleID"]])
