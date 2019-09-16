@@ -36,7 +36,12 @@ NULL
         trendline = FALSE,
         color,
         trans = "log2",
-        title = "Mito vs. coding"
+        labels = list(
+            title = "Mito vs. coding",
+            subtitle = NULL,
+            x = "coding",
+            y = "mito"
+        )
     ) {
         do.call(
             what = .plotQCScatterplot,
@@ -49,13 +54,14 @@ NULL
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                title = title
+                labels = labels
             )
         )
     }
 
-formals(`plotMitoVsCoding,SingleCellExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
+f <- formals(`plotMitoVsCoding,SingleCellExperiment`)
+f[["color"]] <- formalsList[["color.discrete"]]
+formals(`plotMitoVsCoding,SingleCellExperiment`) <- f
 
 
 
