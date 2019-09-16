@@ -132,9 +132,9 @@
 <li>Renamed ggplot2 themes: <code>acid_theme_light</code>, <code>acid_theme_dark</code>.</li>
 </ul>
 </div>
-<div id="major-changes-5" class="section level3">
+<div id="major-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-6" class="anchor"></a>Major changes</h3>
 <ul>
 <li>All ggplot2 geoms and transformations (<code>ggproto</code> functions) now consistently use <code>acid_</code> as a prefix.</li>
 </ul>
@@ -170,9 +170,9 @@
 <li>Remove gplots package from imports.</li>
 </ul>
 </div>
-<div id="major-changes-4" class="section level3">
+<div id="major-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-5" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code> now supports automatic color calculation when <code>breaks</code> argument is defined. Also improved support for <code>legendBreaks</code>.</li>
@@ -193,9 +193,9 @@
     <div id="acidplots-0-2-2-2019-04-26" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-2-2019-04-26" class="anchor"></a>acidplots 0.2.2 (2019-04-26)</h2>
-<div id="major-changes-3" class="section level3">
+<div id="major-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-4" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now importing <code>upset</code> function from UpSetR, with modified formals, so we can easily call this from other packages, including <a href="https://deseqanalysis.acidgenomics.com/">DESeqAnalysis</a>.</li>
 </ul>
@@ -204,9 +204,9 @@
     <div id="acidplots-0-2-3-2019-05-05" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-3-2019-05-05" class="anchor"></a>acidplots 0.2.3 (2019-05-05)</h2>
-<div id="major-changes-2" class="section level3">
+<div id="major-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-3" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Now pinned against R &gt;= 3.5.</li>
 </ul>
@@ -310,9 +310,9 @@
     <div id="acidplots-0-2-11-2019-08-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-11-2019-08-12" class="anchor"></a>acidplots 0.2.11 (2019-08-12)</h2>
-<div id="major-changes-1" class="section level3">
+<div id="major-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-2" class="anchor"></a>Major changes</h3>
 <ul>
 <li>Migrated some QC plotting functions previously defined in bcbioSingleCell package. This makes it possible to share the code for new Chromium package, designed for importing single cell RNA-seq data from 10X Genomics.</li>
 </ul>
@@ -362,9 +362,9 @@
     <div id="acidplots-0-2-15-2019-09-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-15-2019-09-13" class="anchor"></a>acidplots 0.2.15 (2019-09-13)</h2>
-<div id="major-changes" class="section level3">
+<div id="major-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<a href="#major-changes-1" class="anchor"></a>Major changes</h3>
 <ul>
 <li>
 <code>acid_theme_dracula</code>: New dark mode theme supporting Dracula color palette.</li>
@@ -373,9 +373,24 @@
 <code>synesthesia</code>: Simplified color palette to use purple, blue, green, orange. User can tweak the palette using a new <code>palette</code> argument.</li>
 </ul>
 </div>
+</div>
+    <div id="acidplots-0-2-16-2019-09-15" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acidplots-0-2-16-2019-09-15" class="anchor"></a>acidplots 0.2.16 (2019-09-15)</h2>
+<div id="major-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-changes" class="anchor"></a>Major changes</h3>
+<ul>
+<li>Replaced <code>title</code> argument with <code>labels</code> argument for functions that render plots using ggplot2.</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>Simplified internal handoff from <code>SingleCellExperiment</code> S4 methods to <code>SummarizedExperiment</code>, using standard <code>...</code> passthrough instead of relying upon <code>matchArgsToDoCall</code>.</li>
+<li>Improved color palette consistency in plotting functions.</li>
+</ul>
 </div>
 </div>
   </div>
@@ -400,6 +415,7 @@
         <li><a href="#acidplots-0-2-13-2019-08-21">0.2.13</a></li>
         <li><a href="#acidplots-0-2-14-2019-08-27">0.2.14</a></li>
         <li><a href="#acidplots-0-2-15-2019-09-13">0.2.15</a></li>
+        <li><a href="#acidplots-0-2-16-2019-09-15">0.2.16</a></li>
       </ul>
     </div>
   </div>
@@ -413,7 +429,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
