@@ -71,9 +71,9 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- melt(x, min = NULL)
+        xData <- melt(x)
         xData[["type"]] <- factor(.xname)
-        yData <- melt(y, min = NULL)
+        yData <- melt(y)
         yData[["type"]] <- factor(.yname)
         data <- rbind(xData, yData)
         p <- ggplot(
@@ -92,7 +92,6 @@ NULL
         }
         ## Labels
         if (is.list(labels)) {
-            labels[["color"]] <- "object"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Return.
