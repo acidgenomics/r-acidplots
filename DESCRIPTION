@@ -82,7 +82,7 @@ Collate:
     'gradient.R'
     'heatmap-internal.R'
     'imports.R'
-    'labels-internal.R'
+    'matchLabels.R'
     'package.R'
     'pheatmap-internal.R'
     'plotBarcodeRanks-methods.R'
