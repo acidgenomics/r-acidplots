@@ -18,14 +18,7 @@ plotQuantileHeatmap(object, ...)
   acidplots::synesthesia), legend = FALSE, borderColor = NULL,
   title = NULL, ...)
 
-\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, n = 10L, clusterRows = TRUE,
-  clusterCols = TRUE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 0L, treeheightCol = 50L, color = getOption(x =
-  "acid.heatmap.color", default = acidplots::synesthesia),
-  legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), legend = FALSE, borderColor = NULL,
-  title = NULL, ...)
+\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -100,7 +93,8 @@ Quantile heatmap
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
-gene expression at sample level prior to plotting.
+gene expression at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
