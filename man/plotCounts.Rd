@@ -14,8 +14,8 @@ plotCounts(object, ...)
   medianLine = TRUE, color = getOption(x = "acid.color.discrete",
   default = acidplots::scale_color_synesthesia_d()), legend = getOption(x
   = "acid.legend", default = TRUE), style = c("facet", "wide"),
-  labels = list(title = NULL, subtitle = NULL, samplesAxis = NULL,
-  countsAxis = "counts"))
+  labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL,
+  countAxis = "counts"))
 
 \S4method{plotCounts}{DESeqDataSet}(object, ...)
 }
@@ -75,7 +75,7 @@ Plot counts
 \section{Methods (by class)}{
 \itemize{
 \item \code{DESeqDataSet}: Automatically plots normalized counts. Arguments pass
-through to \code{SummarizedExperiment} method, but \code{assay} and \code{countsAxisLabel}
+through to \code{SummarizedExperiment} method, but \code{assay} and \code{countAxisLabel}
 are automatic.
 }}
 

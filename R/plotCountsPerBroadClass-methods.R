@@ -44,8 +44,8 @@ NULL
         labels = list(
             title = "Counts per broad class",
             subtitle = NULL,
-            samplesAxis = NULL,
-            countsAxis = "counts"
+            sampleAxis = NULL,
+            countAxis = "counts"
         )
     ) {
         validObject(object)
@@ -123,8 +123,8 @@ NULL
                 labels[["y"]] <- paste(trans, labels[["y"]])
             }
             labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
-            names(labels)[names(labels) == "samplesAxis"] <- "x"
-            names(labels)[names(labels) == "countsAxis"] <- "y"
+            names(labels)[names(labels) == "sampleAxis"] <- "x"
+            names(labels)[names(labels) == "countAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Fill.
