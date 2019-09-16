@@ -129,7 +129,7 @@ NULL
         ## Labels.
         if (is.list(labels)) {
             if (!identical(trans, "identity")) {
-                labels[["y"]] <- paste(trans, labels[["y"]])
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
             }
             labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
             names(labels)[names(labels) == "sampleAxis"] <- "x"
