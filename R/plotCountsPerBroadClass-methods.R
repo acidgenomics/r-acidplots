@@ -1,7 +1,7 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBroadClass
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -44,21 +44,20 @@ NULL
         labels = list(
             title = "Counts per broad class",
             subtitle = NULL,
-            x = NULL,
-            y = "counts"
+            samplesAxis = NULL,
+            countsAxis = "counts"
         )
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            )
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
         trans <- match.arg(trans)
+        labels <- .labels(
+            labels = labels,
+            labelsArgs = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
@@ -124,6 +123,8 @@ NULL
                 labels[["y"]] <- paste(trans, labels[["y"]])
             }
             labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            names(labels)[names(labels) == "samplesAxis"] <- "x"
+            names(labels)[names(labels) == "countsAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Fill.

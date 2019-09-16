@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-09-16.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
@@ -51,13 +51,12 @@ NULL
             identical(dimnames(x), dimnames(y)),
             !anyNA(x),
             !anyNA(y),
-            is.list(labels),
-            areSetEqual(
-                x = names(labels),
-                y = names(eval(formals()[["labels"]]))
-            ),
             isString(.xname),
             isString(.yname)
+        )
+        labels <- .labels(
+            labels = labels,
+            labelsArgs = eval(formals()[["labels"]])
         )
         if (!is.null(i)) {
             x <- x[i, , drop = FALSE]
@@ -93,6 +92,7 @@ NULL
         }
         ## Labels
         if (is.list(labels)) {
+            labels[["color"]] <- "object"
             p <- p + do.call(what = labs, args = labels)
         }
         ## Return.
