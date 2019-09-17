@@ -1,8 +1,9 @@
 # acidplots
 
+[![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Travis CI build status](https://travis-ci.com/acidgenomics/acidplots.svg?branch=master)](https://travis-ci.com/acidgenomics/acidplots)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/acidplots/branch/master)
-[![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Anaconda version](https://anaconda.org/bioconda/r-acidplots/badges/version.svg) ![Anaconda latest release date](https://anaconda.org/bioconda/r-acidplots/badges/latest_release_date.svg) ![Anaconda downloads](https://anaconda.org/bioconda/r-acidplots/badges/downloads.svg)](https://anaconda.org/bioconda/r-acidplots)
 
 Functions for plotting genomic data.
 
@@ -17,9 +18,19 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 Sys.setenv(R_REMOTES_UPGRADE = "always")
 # Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
 remotes::install_github("acidgenomics/acidplots")
-remotes::update_packages()
 ```
 
-[Bioconductor]: https://bioconductor.org/
+### [conda][] method
+
+Configure [conda][] to use the [bioconda][] channels.
+
+```bash
+conda install -c bioconda r-acidplots
+```
+
 [BiocManager]: https://cran.r-project.org/package=BiocManager
+[Bioconductor]: https://bioconductor.org/
+[Paperpile]: https://paperpile.com/
 [R]: https://www.r-project.org/
+[bioconda]: https://bioconda.github.io/
+[conda]: https://conda.io/
