@@ -1,5 +1,6 @@
 ## DropletUtils is a pretty heavy dependency that can fail to compile on some
-## Linux distros. Consider keeping as a suggested package instead.
+## Linux distros. Keep it as a suggested package, rather than importing.
+## > #' @importFrom DropletUtils barcodeRanks
 
 
 
@@ -8,7 +9,6 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
-#' @importFrom DropletUtils barcodeRanks
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
