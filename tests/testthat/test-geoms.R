@@ -16,7 +16,7 @@ test_that("acid_geom_label", {
 })
 
 test_that("acid_geom_label_average", {
-    data <- tibble(
+    data <- data.frame(
         sampleName = rep(c("sample1", "sample2"), times = 4L),
         counts = seq_len(8L)
     )
