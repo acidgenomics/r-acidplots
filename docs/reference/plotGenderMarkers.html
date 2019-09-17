@@ -72,7 +72,7 @@ genes, and overall gene experssion for the X and Y chromosomes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.16</span>
       </span>
     </div>
 
@@ -127,20 +127,11 @@ genes, and overall gene experssion for the X and Y chromosomes.</p>
     <pre class="usage"><span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
-  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>, <span class='kw'>medianLine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span>
-  <span class='kw'>=</span> <span class='st'>"acid.color.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>scale_colour_synesthesia_d</a></span>()), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='st'>"acid.legend"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"wide"</span>)
+<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>,
+  <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"wide"</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
-  <span class='kw'>countsAxisLabel</span> <span class='kw'>=</span> <span class='st'>"counts"</span>, <span class='kw'>medianLine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span>
-  <span class='kw'>=</span> <span class='st'>"acid.color.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>scale_colour_synesthesia_d</a></span>()), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='st'>"acid.legend"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='kw'>style</span> <span class='kw'>=</span> <span class='st'>"wide"</span>)</pre>
+<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,56 +141,14 @@ genes, and overall gene experssion for the X and Y chromosomes.</p>
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>assay</th>
-      <td><p><code><a href='https://rdrr.io/r/base/vector.html'>vector(1)</a></code>.
-Assay name or index position.</p></td>
-    </tr>
-    <tr>
-      <th>interestingGroups</th>
-      <td><p><code>character</code>.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.</p></td>
-    </tr>
-    <tr>
-      <th>trans</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Name of the axis scale transformation to apply.</p>
-<p>For more information:</p><pre>help(topic = "scale_x_continuous", package = "ggplot2")
-</pre></td>
-    </tr>
-    <tr>
-      <th>countsAxisLabel</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
-Label to use for the counts axis.</p></td>
-    </tr>
-    <tr>
-      <th>medianLine</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include median line for each group. Disabled if samples are colored by
-sample name.</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p><code>ScaleDiscrete</code>.
-Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
-<p>To set the discrete color palette globally, use:</p><pre>options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-</pre></td>
-    </tr>
-    <tr>
-      <th>legend</th>
-      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
-Include plot legend.</p></td>
-    </tr>
-    <tr>
       <th>style</th>
       <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
 Plot style.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments.</p></td>
+      <td><p>Passthrough to <code><a href='plotCounts.html'>plotCounts()</a></code>, with the <code>genes</code> argument
+automatically defined.</p></td>
     </tr>
     </table>
 
@@ -211,12 +160,13 @@ Plot style.</p></td>
     
 <ul>
 <li><p><code>SingleCellExperiment</code>: Applies <code>pseudobulk()</code> calculation to average
-gene expression at sample level prior to plotting.</p></li>
+gene expression at sample level prior to plotting.<br />
+Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 </ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-21.</p>
-<p>Currently only <em>Homo sapiens</em> and <em>Mus musculus</em> genomes are supported.</p>
+    <p>Currently only <em>Homo sapiens</em> and <em>Mus musculus</em> genomes are supported.</p>
+<p>Updated 2019-09-15.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='plotCounts.html'>plotCounts()</a></code>.</p></div>
@@ -230,10 +180,10 @@ gene expression at sample level prior to plotting.</p></li>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='output co'>#&gt; <span class='message'>1 / 1 feature passed 'perRow' &gt;= 1 cutoff.</span></div><div class='img'><img src='plotGenderMarkers-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='img'><img src='plotGenderMarkers-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'mean()'.</span></div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='output co'>#&gt; <span class='message'>1 / 1 feature passed 'perRow' &gt;= 1 cutoff.</span></div><div class='img'><img src='plotGenderMarkers-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'mean()'.</span></div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='img'><img src='plotGenderMarkers-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -256,7 +206,7 @@ gene expression at sample level prior to plotting.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

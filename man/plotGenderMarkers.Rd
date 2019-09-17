@@ -9,58 +9,19 @@
 \usage{
 plotGenderMarkers(object, ...)
 
-\S4method{plotGenderMarkers}{SummarizedExperiment}(object, assay = 1L,
-  interestingGroups = NULL, trans = c("identity", "log2", "log10"),
-  countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
-  = "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
-  "acid.legend", default = TRUE), style = "wide")
+\S4method{plotGenderMarkers}{SummarizedExperiment}(object,
+  style = "wide", ...)
 
-\S4method{plotGenderMarkers}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, trans = c("identity", "log2", "log10"),
-  countsAxisLabel = "counts", medianLine = TRUE, color = getOption(x
-  = "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), legend = getOption(x =
-  "acid.legend", default = TRUE), style = "wide")
+\S4method{plotGenderMarkers}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
-
-\item{trans}{\code{character(1)}.
-Name of the axis scale transformation to apply.
-
-For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
-
-\item{countsAxisLabel}{\code{character(1)}.
-Label to use for the counts axis.}
-
-\item{medianLine}{\code{logical(1)}.
-Include median line for each group. Disabled if samples are colored by
-sample name.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{\link[ggplot2:scale_color_manual]{ggplot2::scale_color_manual()}}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
-
-\item{legend}{\code{logical(1)}.
-Include plot legend.}
-
 \item{style}{\code{character(1)}.
 Plot style.}
 
-\item{...}{Additional arguments.}
+\item{...}{Passthrough to \code{\link[=plotCounts]{plotCounts()}}, with the \code{genes} argument
+automatically defined.}
 }
 \value{
 \code{ggplot}.
@@ -72,13 +33,14 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
-gene expression at sample level prior to plotting.
+gene expression at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-08-21.
-
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
+
+Updated 2019-09-15.
 }
 \examples{
 data(

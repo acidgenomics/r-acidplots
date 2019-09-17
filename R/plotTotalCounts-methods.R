@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit bioverbs::plotTotalCounts
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-16.
 `plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -40,16 +40,24 @@ NULL
         interestingGroups = NULL,
         perMillion = FALSE,
         fill,
-        flip,
-        title = "Total counts"
+        labels = list(
+            title = "Total counts",
+            subtitle = NULL,
+            x = NULL,
+            y = "counts"
+        ),
+        flip
     ) {
         validObject(object)
         assert(
             isScalar(assay),
             isFlag(perMillion),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isFlag(flip),
-            isString(title, nullOK = TRUE)
+            isFlag(flip)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -61,10 +69,9 @@ NULL
         }
         data <- sampleData(object)
         data[[metricCol]] <- colSums(counts)
-        yLab <- "counts"
         if (isTRUE(perMillion)) {
             data[[metricCol]] <- data[[metricCol]] / 1e6L
-            yLab <- paste(yLab, "per million")
+            labels[["y"]] <- paste(labels[["y"]], "(per million)")
         }
         ## Plot.
         data <- as_tibble(data, rownames = NULL)
@@ -77,13 +84,12 @@ NULL
             )
         ) +
             acid_geom_bar() +
-            acid_scale_y_continuous_nopad() +
-            labs(
-                title = title,
-                x = NULL,
-                y = yLab,
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+            acid_scale_y_continuous_nopad()
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
@@ -100,10 +106,10 @@ NULL
         p
     }
 
-formals(`plotTotalCounts,SummarizedExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotTotalCounts,SummarizedExperiment`)[["flip"]] <-
-    formalsList[["flip"]]
+f <- formals(`plotTotalCounts,SummarizedExperiment`)
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["flip"]] <- formalsList[["flip"]]
+formals(`plotTotalCounts,SummarizedExperiment`) <- f
 
 
 
@@ -117,25 +123,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotTotalCounts,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- aggregateCellsToSamples(object)
-        do.call(
-            what = plotTotalCounts,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotTotalCounts(
+            object = aggregateCellsToSamples(object),
+            ...
         )
     }
-
-formals(`plotTotalCounts,SingleCellExperiment`) <-
-    formals(`plotTotalCounts,SummarizedExperiment`)
 
 
 
 #' @describeIn plotTotalCounts Applies [aggregateCellsToSamples()] calculation
-#'   to summarize at sample level prior to plotting.
+#'   to summarize at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotTotalCounts",

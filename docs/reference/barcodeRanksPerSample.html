@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.16</span>
       </span>
     </div>
 
@@ -168,8 +168,8 @@ The upper bound is set to the point at which the first derivative is closest to 
 Note that only points with total counts above <code>lower</code> will be considered, regardless of how <code>fit.bounds</code> is defined.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Not supported for R 3.5, due to DropletUtils dependency.</p>
-<p>Updated 2019-08-20.</p>
+    <p>Requires DropletUtils package to be installed.</p>
+<p>Updated 2019-09-17.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/DropletUtils/man/barcodeRanks.html'>DropletUtils::barcodeRanks()</a></code>.</p></div>
@@ -178,12 +178,7 @@ Note that only points with total counts above <code>lower</code> will be conside
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='co'>## Not supported for R &lt; 3.6.</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"DropletUtils"</span>,
-    <span class='kw'>versionCheck</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>op</span> <span class='kw'>=</span> <span class='st'>"&gt;="</span>, <span class='kw'>version</span> <span class='kw'>=</span> <span class='st'>"1.4"</span>),
-    <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)) {
+<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"DropletUtils"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
     <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
     <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>barcodeRanksPerSample</span>(<span class='no'>object</span>)
     <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>x</span>)
@@ -210,7 +205,7 @@ Note that only points with total counts above <code>lower</code> will be conside
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

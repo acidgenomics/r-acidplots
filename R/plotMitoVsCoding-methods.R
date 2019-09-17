@@ -1,7 +1,7 @@
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotMitoVsCoding
-#' @note Updated 2019-07-24.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -28,7 +28,7 @@ NULL
 
 
 
-## Updated 2019-07-24.
+## Updated 2019-09-16.
 `plotMitoVsCoding,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -36,7 +36,12 @@ NULL
         trendline = FALSE,
         color,
         trans = "log2",
-        title = "Mito vs. coding"
+        labels = list(
+            title = "Mito vs. coding",
+            subtitle = NULL,
+            x = "coding",
+            y = "mito"
+        )
     ) {
         do.call(
             what = .plotQCScatterplot,
@@ -49,13 +54,17 @@ NULL
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                title = title
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }
 
-formals(`plotMitoVsCoding,SingleCellExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
+f <- formals(`plotMitoVsCoding,SingleCellExperiment`)
+f[["color"]] <- formalsList[["color.discrete"]]
+formals(`plotMitoVsCoding,SingleCellExperiment`) <- f
 
 
 

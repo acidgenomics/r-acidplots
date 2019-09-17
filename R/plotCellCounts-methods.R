@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -25,21 +25,30 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-16.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
         fill,
-        title = "Cell counts"
+        labels = list(
+            title = "Cell counts",
+            subtitle = NULL,
+            x = NULL,
+            y = "cells"
+        )
     ) {
         validObject(object)
         assert(
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         colData <- colData(object)
         assert(isSubset("sampleID", colnames(colData)))
         metric <- table(colData[["sampleID"]])
@@ -59,13 +68,12 @@ NULL
             )
         ) +
             acid_geom_bar() +
-            acid_scale_y_continuous_nopad() +
-            labs(
-                title = title,
-                x = NULL,
-                y = makeLabel(metricCol),
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+            acid_scale_y_continuous_nopad()
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Color palette.
         if (!is.null(fill)) {
             p <- p + fill

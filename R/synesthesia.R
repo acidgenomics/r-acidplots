@@ -25,8 +25,8 @@
 #'
 #' - `viridis::viridis()`.
 #' - `viridis::viridis_pal()`.
-#' - `viridis::scale_colour_viridis_c()`.
-#' - `viridis::scale_colour_viridis_d()`.
+#' - `viridis::scale_color_viridis_c()`.
+#' - `viridis::scale_color_viridis_d()`.
 #' - `viridis::scale_fill_viridis_c()`.
 #' - `viridis::scale_fill_viridis_d()`.
 #'
@@ -54,13 +54,13 @@
 #' library(ggplot2)
 #' theme_set(acid_theme_light())
 #'
-#' ## Colour, continuous.
-#' cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(colour = hwy))
-#' cc + scale_colour_synesthesia_c()
+#' ## Color, continuous.
+#' cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(color = hwy))
+#' cc + scale_color_synesthesia_c()
 #'
-#' ## Colour, discrete.
-#' cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(colour = fl), fill = NA)
-#' cd + scale_colour_synesthesia_d()
+#' ## Color, discrete.
+#' cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(color = fl), fill = NA)
+#' cd + scale_color_synesthesia_d()
 #'
 #' ## Fill, continuous.
 #' fc <- ggplot(diamonds, aes(carat, price)) + geom_hex()

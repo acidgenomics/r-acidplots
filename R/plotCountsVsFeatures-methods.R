@@ -1,7 +1,8 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
+#' @include plotQC-internal.R
 #' @inherit bioverbs::plotCountsVsFeatures
-#' @note Updated 2019-08-08.
+#' @note Updated 2019-09-16
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -26,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-08-08.
+## Updated 2019-09-16.
 `plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -34,7 +35,12 @@ NULL
         trendline = FALSE,
         color,
         trans = "log2",
-        title = "Counts vs. features"
+        labels = list(
+            title = "Counts vs. features",
+            subtitle = NULL,
+            x = "counts",
+            y = "features"
+        )
     ) {
         do.call(
             what = .plotQCScatterplot,
@@ -42,20 +48,22 @@ NULL
                 object = object,
                 interestingGroups = interestingGroups,
                 trendline = trendline,
-                ## Note that these were renamed in v0.3.19 to better match
-                ## conventions used in Chromium and Seurat packages.
                 xCol = "nCount",
                 yCol = "nFeature",
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                title = title
+                labels = matchLabels(
+                    labels = labels,
+                    choices = eval(formals()[["labels"]])
+                )
             )
         )
     }
 
-formals(`plotCountsVsFeatures,SingleCellExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
+f <- formals(`plotCountsVsFeatures,SingleCellExperiment`)
+f[["color"]] <- formalsList[["color.discrete"]]
+formals(`plotCountsVsFeatures,SingleCellExperiment`) <- f
 
 
 

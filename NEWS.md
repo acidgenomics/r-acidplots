@@ -1,3 +1,22 @@
+## acidplots 0.2.16 (2019-09-17)
+
+### Major changes
+
+- Replaced `title` argument with `labels` argument for functions that render
+  plots using ggplot2.
+- Now exporting `matchLabels` function, that handles internal ggplot2 label
+  matching, and auto-populates with defaults in formal argument.
+- Using "samplesAxis" and "countsAxis" labels for ggplot2 return that support
+  multiple geoms. Consider a similar approach for QC metric plots.
+  
+### Minor changes
+
+- Simplified internal handoff from `SingleCellExperiment` S4 methods to
+  `SummarizedExperiment`, using standard `...` passthrough instead of relying
+  upon `matchArgsToDoCall`.
+- Improved color palette consistency in plotting functions.
+- `plotCounts`: Moved `DESeqDataSet` method to DESeqAnalysis package.
+
 ## acidplots 0.2.15 (2019-09-13)
 
 ### Major changes
@@ -8,12 +27,6 @@
   `macOSDarkPalette`.
 - `synesthesia`: Simplified color palette to use purple, blue, green, orange.
   User can tweak the palette using a new `palette` argument.
-
-### Minor changes
-
-
-
-
 
 ## acidplots 0.2.14 (2019-08-27)
 

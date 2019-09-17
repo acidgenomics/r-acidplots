@@ -306,25 +306,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-05-15.
 `plotHeatmap,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- pseudobulk(object)
-        do.call(
-            what = plotHeatmap,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotHeatmap(
+            object = pseudobulk(object),
+            ...
         )
     }
-
-formals(`plotHeatmap,SingleCellExperiment`) <-
-    formals(`plotHeatmap,SummarizedExperiment`)
 
 
 
 #' @describeIn plotHeatmap Applies [pseudobulk()] calculation to average gene
-#'   expression at sample level prior to plotting.
+#'   expression at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotHeatmap",

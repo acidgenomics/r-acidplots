@@ -1,12 +1,12 @@
 #' @name plotGenderMarkers
 #' @inherit bioverbs::plotGenderMarkers
-#' @note Updated 2019-08-21.
+#' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams acidroxygen::params
-#' @param ... Additional arguments.
-#'
-#' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
+#' @param ... Passthrough to [plotCounts()], with the `genes` argument
+#'   automatically defined.
 #'
 #' @examples
 #' data(
@@ -35,10 +35,9 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
-    function() {
-        validObject(object)
+    function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
         data(
@@ -66,18 +65,13 @@ NULL
             genes = markers[["geneID"]],
             strict = FALSE
         )
-        do.call(
-            what = plotCounts,
-            args = matchArgsToDoCall(
-                args = list(genes = genes)
-            )
+        plotCounts(
+            object = object,
+            genes = genes,
+            style = style,
+            ...
         )
     }
-
-f <- formals(`plotCounts,SummarizedExperiment`)
-f <- f[setdiff(names(f), "genes")]
-f[["style"]] <- "wide"
-formals(`plotGenderMarkers,SummarizedExperiment`) <- f
 
 
 
@@ -91,25 +85,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotGenderMarkers,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- pseudobulk(object)
-        do.call(
-            what = plotGenderMarkers,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotGenderMarkers(
+            object = pseudobulk(object),
+            ...
         )
     }
-
-formals(`plotGenderMarkers,SingleCellExperiment`) <-
-    formals(`plotGenderMarkers,SummarizedExperiment`)
 
 
 
 #' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.
+#'   gene expression at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotGenderMarkers",

@@ -1,6 +1,6 @@
 #' @name plotSums
 #' @inherit bioverbs::plotSums
-#' @note Updated 2019-08-21.
+#' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
 #' @inheritParams base::apply
@@ -41,7 +41,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotSums,matrix` <-  # nolint
     function(
         object,
@@ -64,7 +64,10 @@ NULL
         ) +
             stat_ecdf(size = 1L) +
             scale_x_continuous(trans = "sqrt") +
-            labs(x = makeLabel(fname), y = "ECDF")
+            labs(
+                x = fname,
+                y = "Fn(x)"
+            )
     }
 
 

@@ -18,14 +18,7 @@ plotCorrelationHeatmap(object, ...)
   "acid.heatmap.color", default = acidplots::synesthesia),
   borderColor = NULL, title = TRUE, ...)
 
-\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object,
-  assay = 1L, interestingGroups = NULL, method = c("pearson",
-  "kendall", "spearman"), clusteringMethod = "ward.D2",
-  showRownames = TRUE, showColnames = TRUE, treeheightRow = 0L,
-  treeheightCol = 50L, color = getOption(x = "acid.heatmap.color",
-  default = acidplots::synesthesia), legendColor = getOption(x =
-  "acid.heatmap.color", default = acidplots::synesthesia),
-  borderColor = NULL, title = TRUE, ...)
+\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -96,11 +89,12 @@ Correlation heatmap
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to
-average gene expression at sample level prior to plotting.
+average gene expression at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-09-15.
 }
 \examples{
 data(

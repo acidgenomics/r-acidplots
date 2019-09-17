@@ -1,13 +1,9 @@
 #' @name plotCountsCorrelation
 #' @inherit bioverbs::plotCountsCorrelation
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams acidroxygen::params
-#' @param xTitle `character(1)`.
-#'   Name of object defined in `x`.
-#' @param yTitle `character(1)`.
-#'   Name of object defined in `y`.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -31,22 +27,23 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-16.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
         y,
         i = NULL,
         j = NULL,
-        xTitle = getNameInParent(x),
-        yTitle = getNameInParent(y),
-        labs = list(
-            colour = NULL,
-            x = NULL,
-            y = NULL,
+        color,
+        labels = list(
             title = NULL,
-            subtitle = NULL
-        )
+            subtitle = NULL,
+            color = NULL,
+            x = NULL,
+            y = "counts"
+        ),
+        .xname = getNameInParent(x),
+        .yname = getNameInParent(y)
     ) {
         validObject(x)
         validObject(y)
@@ -54,9 +51,12 @@ NULL
             identical(dimnames(x), dimnames(y)),
             !anyNA(x),
             !anyNA(y),
-            isString(xTitle),
-            isString(yTitle),
-            is.list(labs)
+            isString(.xname),
+            isString(.yname)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         if (!is.null(i)) {
             x <- x[i, , drop = FALSE]
@@ -71,24 +71,35 @@ NULL
             nrow(x) > 0L && nrow(x) <= 10L,
             ncol(x) >= 2L
         )
-        xData <- melt(x, min = NULL)
-        xData[["type"]] <- factor(xTitle)
-        yData <- melt(y, min = NULL)
-        yData[["type"]] <- factor(yTitle)
+        xData <- melt(x)
+        xData[["type"]] <- factor(.xname)
+        yData <- melt(y)
+        yData[["type"]] <- factor(.yname)
         data <- rbind(xData, yData)
-        data <- as_tibble(data, rownames = NULL)
-        ggplot(
-            data = data,
+        p <- ggplot(
+            data = as_tibble(data, rownames = NULL),
             mapping = aes(
                 x = !!sym("colname"),
                 y = !!sym("value"),
-                colour = !!sym("type")
+                color = !!sym("type")
             )
         ) +
             geom_point() +
-            facet_wrap(facets = sym("rowname"), scales = "free_y") +
-            do.call(what = ggplot2::labs, args = labs)
+            facet_wrap(facets = sym("rowname"), scales = "free_y")
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Labels
+        if (is.list(labels)) {
+            p <- p + do.call(what = labs, args = labels)
+        }
+        ## Return.
+        p
     }
+
+formals(`plotCountsCorrelation,matrix`)[["color"]] <-
+    formalsList[["color.discrete"]]
 
 
 
