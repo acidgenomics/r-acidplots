@@ -1,8 +1,7 @@
 #' @name barcodeRanksPerSample
 #' @inherit bioverbs::barcodeRanksPerSample
 #' @inherit DropletUtils::barcodeRanks
-#' @note Not supported for R 3.5, due to DropletUtils dependency.
-#' @note Updated 2019-08-20.
+#' @note Updated 2019-09-17.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
@@ -13,16 +12,9 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' ## Not supported for R < 3.6.
-#' if (requireNamespace(
-#'     package = "DropletUtils",
-#'     versionCheck = list(op = ">=", version = "1.4"),
-#'     quietly = TRUE
-#' )) {
-#'     object <- SingleCellExperiment
-#'     x <- barcodeRanksPerSample(object)
-#'     names(x)
-#' }
+#' object <- SingleCellExperiment
+#' x <- barcodeRanksPerSample(object)
+#' names(x)
 NULL
 
 
@@ -46,14 +38,9 @@ NULL
 
 
 
-## Updated 2019-08-20.
+## Updated 2019-09-17.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object, ...) {
-        assert(requireNamespace(
-            package = "DropletUtils",
-            versionCheck = list(op = ">=", version = "1.4"),
-            quietly = TRUE
-        ))
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
@@ -73,7 +60,7 @@ NULL
             X = countsPerSample,
             FUN = function(counts) {
                 x <- withCallingHandlers(
-                    expr = DropletUtils::barcodeRanks(m = counts, ...),
+                    expr = barcodeRanks(m = counts, ...),
                     warning = function(w) {
                         if (isTRUE(grepl(
                             pattern = "invalid df",

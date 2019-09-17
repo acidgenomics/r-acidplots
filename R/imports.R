@@ -1,14 +1,14 @@
-## DropletUtils isn't supported on R 3.5.
-## #' @importFrom DropletUtils barcodeRanks
+## DropletUtils is a pretty heavy dependency that can fail to compile on some
+## Linux distros. Consider keeping as a suggested package instead.
 
 
 
-#' @importClassesFrom DESeq2 DESeqDataSet
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom DropletUtils barcodeRanks
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
