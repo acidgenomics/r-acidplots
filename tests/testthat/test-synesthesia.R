@@ -12,8 +12,8 @@ with_parameters_test_that(
         expect_s3_class(f(), "Scale")
     },
     f = list(
-        scale_colour_synesthesia_c,
-        scale_colour_synesthesia_d,
+        scale_color_synesthesia_c,
+        scale_color_synesthesia_d,
         scale_fill_synesthesia_c,
         scale_fill_synesthesia_d
     )

@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-16.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -41,9 +41,13 @@ NULL
         limit = 0L,
         minCounts = 1L,
         fill,
-        flip,
-        title = "Features detected",
-        countsAxisLabel = "features"
+        labels = list(
+            title = "Features detected",
+            subtitle = NULL,
+            x = NULL,
+            y = "features"
+        ),
+        flip
     ) {
         validObject(object)
         assert(
@@ -51,9 +55,11 @@ NULL
             isInt(limit) && isNonNegative(limit),
             isInt(minCounts) && isNonNegative(minCounts),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isFlag(flip),
-            isString(title, nullOK = TRUE),
-            isString(countsAxisLabel)
+            isFlag(flip)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -77,13 +83,12 @@ NULL
             )
         ) +
             acid_geom_bar() +
-            acid_scale_y_continuous_nopad() +
-            labs(
-                title = title,
-                x = NULL,
-                y = countsAxisLabel,
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+            acid_scale_y_continuous_nopad()
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Show limit line.
         if (isPositive(limit)) {
             p <- p + acid_geom_abline(yintercept = limit)
@@ -119,25 +124,20 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2019-09-15.
 `plotFeaturesDetected,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- aggregateCellsToSamples(object)
-        do.call(
-            what = plotFeaturesDetected,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotFeaturesDetected(
+            object = aggregateCellsToSamples(object),
+            ...
         )
     }
-
-formals(`plotFeaturesDetected,SingleCellExperiment`) <-
-    formals(`plotFeaturesDetected,SummarizedExperiment`)
 
 
 
 #' @describeIn plotFeaturesDetected Applies [aggregateCellsToSamples()]
-#'   calculation to summarize at sample level prior to plotting.
+#'   calculation to summarize at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotFeaturesDetected",

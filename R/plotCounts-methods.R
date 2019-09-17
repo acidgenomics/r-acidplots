@@ -1,13 +1,11 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
-#' @param countsAxisLabel `character(1)`.
-#'   Label to use for the counts axis.
 #' @param medianLine `logical(1)`.
-#'   Include median line for each group. Disabled if samples are colored by
-#'   sample name.
+#'   Include median line for each interesting group.
+#'   Disabled if samples are colored by sample name.
 #' @param style `character(1)`.
 #'   Plot style.
 #' @param ... Additional arguments.
@@ -74,18 +72,9 @@ NULL
 
 
 
-## Updated 2019-08-27.
-.plotCountsFacet <- function(
-    data,
-    countsAxisLabel,
-    medianLine,
-    color,
-    legend,
-    interestingGroups
-) {
-    assert(is(data, "tbl_df"))
-    ## Plot.
-    p <- ggplot(
+## Updated 2019-09-15.
+.plotCountsFacet <- function(data) {
+    ggplot(
         data = data,
         mapping = aes(
             x = !!sym("interestingGroups"),
@@ -93,79 +82,26 @@ NULL
             color = !!sym("interestingGroups")
         )
     ) +
-        .genePoint(show.legend = legend) +
-        scale_y_continuous() +
-        facet_wrap(facets = sym("rowname"), scales = "free_y") +
-        labs(
-            x = NULL,
-            y = countsAxisLabel,
-            color = paste(interestingGroups, collapse = ":\n")
-        )
-    ## Median line.
-    if (
-        isTRUE(medianLine) &&
-        !identical(interestingGroups, "sampleName")
-    ) {
-        p <- p + .geneMedianLine
-    }
-    ## Color.
-    if (is(color, "ScaleDiscrete")) {
-        p <- p + color
-    }
-    ## Hide sample name legend.
-    if (identical(interestingGroups, "sampleName")) {
-        p <- p + guides(color = FALSE)
-    }
-    ## Return.
-    p
+        facet_wrap(facets = sym("rowname"), scales = "free_y")
 }
 
 
 
-## Updated 2019-07-27.
-.plotCountsWide <- function(
-    data,
-    countsAxisLabel,
-    medianLine,
-    color,
-    legend,
-    interestingGroups
-) {
-    assert(is(data, "tbl_df"))
-    ## Plot.
-    p <- ggplot(
+## Updated 2019-09-15.
+.plotCountsWide <- function(data) {
+    ggplot(
         data = data,
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("value"),
             color = !!sym("interestingGroups")
         )
-    ) +
-        .genePoint(show.legend = legend) +
-        scale_y_continuous() +
-        labs(
-            x = NULL,
-            y = countsAxisLabel,
-            color = paste(interestingGroups, collapse = ":\n")
-        )
-    ## Median line.
-    if (
-        isTRUE(medianLine) &&
-        !identical(interestingGroups, "sampleName")
-    ) {
-        p <- p + .geneMedianLine
-    }
-    ## Color.
-    if (is(color, "ScaleDiscrete")) {
-        p <- p + color
-    }
-    ## Return.
-    p
+    )
 }
 
 
 
-## Updated 2019-08-26.
+## Updated 2019-09-16.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -173,11 +109,16 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
-        countsAxisLabel = "counts",
         medianLine = TRUE,
         color,
         legend,
-        style = c("facet", "wide")
+        style = c("facet", "wide"),
+        labels = list(
+            title = NULL,
+            subtitle = NULL,
+            sampleAxis = NULL,
+            countAxis = "counts"
+        )
     ) {
         validObject(object)
         assert(
@@ -185,15 +126,19 @@ NULL
             ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
-            isString(countsAxisLabel),
             isFlag(medianLine),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend)
         )
         trans <- match.arg(trans)
         style <- match.arg(style)
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         ## Coercing to `SummarizedExperiment` for fast subsetting.
         object <- as.SummarizedExperiment(object)
         ## This will support objects that don't contain gene-to-symbol mappings.
@@ -214,30 +159,46 @@ NULL
                 object
             }
         )
-        ## Counts axis label. Automatically add transformation, if necessary.
-        if (!identical(trans, "identity")) {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
         ## Generate a melted tibble.
-        data <- melt(object, min = 1L, trans = trans)
-        data <- as_tibble(data, rownames = NULL)
-        ## Plot style.
-        what <- switch(
-            EXPR = style,
-            "facet" = .plotCountsFacet,
-            "wide" = .plotCountsWide
+        data <- melt(
+            object = object,
+            min = -Inf,
+            minMethod = "absolute",
+            trans = trans
         )
-        do.call(
-            what = what,
-            args = list(
-                data = data,
-                countsAxisLabel = countsAxisLabel,
-                medianLine = medianLine,
-                color = color,
-                legend = legend,
-                interestingGroups = interestingGroups(object)
-            )
+        ## Plot.
+        p <- do.call(
+            what = switch(
+                EXPR = style,
+                "facet" = .plotCountsFacet,
+                "wide" = .plotCountsWide
+            ),
+            args = list(data = as_tibble(data, rownames = NULL))
         )
+        p <- p + .genePoint(show.legend = legend)
+        ## Median line.
+        if (
+            isTRUE(medianLine) &&
+            !identical(interestingGroups, "sampleName")
+        ) {
+            p <- p + .geneMedianLine
+        }
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Labels.
+        if (is.list(labels)) {
+            if (!identical(trans, "identity")) {
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
+            }
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            names(labels)[names(labels) == "sampleAxis"] <- "x"
+            names(labels)[names(labels) == "countAxis"] <- "y"
+            p <- p + do.call(what = labs, args = labels)
+        }
+        ## Return.
+        p
     }
 
 formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
@@ -253,32 +214,4 @@ setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
     definition = `plotCounts,SummarizedExperiment`
-)
-
-
-
-## Updated 2019-08-27.
-`plotCounts,DESeqDataSet` <-  # nolint
-    function(object, ...) {
-        normalized <- counts(object, normalized = TRUE)
-        object <- as(object, "RangedSummarizedExperiment")
-        assays(object) <- SimpleList(normalized = normalized)
-        plotCounts(
-            object = object,
-            assay = "normalized",
-            countsAxisLabel = "normalized counts",
-            ...
-        )
-    }
-
-
-
-#' @describeIn plotCounts Automatically plots normalized counts. Arguments pass
-#'   through to `SummarizedExperiment` method, but `assay` and `countsAxisLabel`
-#'   are automatic.
-#' @export
-setMethod(
-    f = "plotCounts",
-    signature = signature("DESeqDataSet"),
-    definition = `plotCounts,DESeqDataSet`
 )

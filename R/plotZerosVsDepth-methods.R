@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,20 +32,28 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-16.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
         color,
-        title = "Zeros vs. depth"
+        labels = list(
+            title = "Zeros vs. depth",
+            subtitle = NULL,
+            x = "library size (depth)",
+            y = "dropout rate"
+        )
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -62,13 +70,12 @@ NULL
         ) +
             geom_point(size = 0.8, alpha = 0.8) +
             expand_limits(y = c(0L, 1L)) +
-            scale_x_continuous(trans = "log10") +
-            labs(
-                title = title,
-                x = "library size (depth)",
-                y = "dropout rate",
-                color = paste(interestingGroups, collapse = ":\n")
-            )
+            scale_x_continuous(trans = "log10")
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Color.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color

@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
@@ -36,49 +36,51 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-16.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
-        min = 1L,
-        minMethod,
         interestingGroups = NULL,
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
         color,
         fill,
-        flip,
-        countsAxisLabel = "counts",
-        title = "Counts per feature"
+        labels = list(
+            title = "Counts per feature",
+            subtitle = NULL,
+            sampleAxis = NULL,
+            countAxis = "counts"
+        ),
+        flip
     ) {
         validObject(object)
         assert(
             isScalar(assay),
-            isInt(min),
-            isGreaterThanOrEqualTo(min, 1L),
-            isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isFlag(flip),
-            isString(countsAxisLabel, nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            isFlag(flip)
         )
         minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
-        if (!identical(trans, "identity")) {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- melt(
-            object = object,
-            assay = assay,
-            min = min,
-            minMethod = minMethod,
-            trans = trans
-        )
+        object <- nonzeroRowsAndCols(object)
+        data <- melt(object = object, assay = assay, trans = trans)
+        assert(identical(length(unique(data[["rowname"]])), nrow(object)))
+        ## Add automatic subtitle, including feature count.
+        if (
+            isString(labels[["title"]]) &&
+            is.null(labels[["subtitle"]])
+        ) {
+            labels[["subtitle"]] <- paste("n", "=", nrow(object), "(non-zero)")
+        }
         ## Construct the ggplot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(data = data)
@@ -92,8 +94,7 @@ NULL
                     ),
                     fill = NA,
                     size = 1L
-                ) +
-                labs(x = countsAxisLabel)
+                )
         } else if (identical(geom, "boxplot")) {
             p <- p +
                 geom_boxplot(
@@ -103,8 +104,7 @@ NULL
                         fill = !!sym("interestingGroups")
                     ),
                     color = "black"
-                ) +
-                labs(x = NULL, y = countsAxisLabel)
+                )
         } else if (identical(geom, "jitter")) {
             p <- p +
                 geom_jitter(
@@ -114,24 +114,25 @@ NULL
                         color = !!sym("interestingGroups")
                     ),
                     size = 0.5
-                ) +
-                labs(x = NULL, y = countsAxisLabel)
+                )
         }
-        ## Subtitle.
-        if (isString(title)) {
-            count <- length(unique(data[["rowname"]]))
-            subtitle <- paste("n", "=", count)
-        } else {
-            subtitle <- NULL
+        ## Labels.
+        if (is.list(labels)) {
+            if (!identical(trans, "identity")) {
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
+            }
+            if (identical(geom, "density")) {
+                names(labels)[names(labels) == "countAxis"] <- "x"
+                names(labels)[names(labels) == "sampleAxis"] <- "y"
+            } else {
+                names(labels)[names(labels) == "countAxis"] <- "y"
+                names(labels)[names(labels) == "sampleAxis"] <- "x"
+            }
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["fill"]] <- labels[["color"]]
+            p <- p + do.call(what = labs, args = labels)
         }
-        ## Add the axis and legend labels.
-        p <- p +
-            labs(
-                title = title,
-                subtitle = subtitle,
-                color = paste(interestingGroups, collapse = ":\n"),
-                fill = paste(interestingGroups, collapse = ":\n")
-            )
+        ## Fill or color.
         if (identical(geom, "boxplot")) {
             if (is(fill, "ScaleDiscrete")) {
                 p <- p + fill
@@ -153,18 +154,17 @@ NULL
         p
     }
 
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["color"]] <-
-    formalsList[["color.discrete"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["flip"]] <-
-    formalsList[["flip"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`)[["minMethod"]] <-
+f <- formals(`plotCountsPerFeature,SummarizedExperiment`)
+f[["color"]] <- formalsList[["color.discrete"]]
+f[["fill"]] <- formalsList[["fill.discrete"]]
+f[["flip"]] <- formalsList[["flip"]]
+f[["minMethod"]] <-
     methodFormals(
         f = "melt",
         signature = "SummarizedExperiment",
         package = "basejump"
     )[["minMethod"]]
+formals(`plotCountsPerFeature,SummarizedExperiment`) <- f
 
 
 
@@ -180,23 +180,18 @@ setMethod(
 
 ## Updated 2019-07-23.
 `plotCountsPerFeature,SingleCellExperiment` <-  # nolint
-    function(object) {
-        object <- aggregateCellsToSamples(object)
-        do.call(
-            what = plotCountsPerFeature,
-            args = matchArgsToDoCall(
-                args = list(object = object)
-            )
+    function(object, ...) {
+        plotCountsPerFeature(
+            object = aggregateCellsToSamples(object),
+            ...
         )
     }
-
-formals(`plotCountsPerFeature,SingleCellExperiment`) <-
-    formals(`plotCountsPerFeature,SummarizedExperiment`)
 
 
 
 #' @describeIn plotCountsPerFeature Applies [aggregateCellsToSamples()]
-#'   calculation to summarize at sample level prior to plotting.
+#'   calculation to summarize at sample level prior to plotting.\cr
+#'   Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotCountsPerFeature",

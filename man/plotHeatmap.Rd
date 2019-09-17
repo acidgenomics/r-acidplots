@@ -19,15 +19,7 @@ plotHeatmap(object, ...)
   acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
   borderColor = NULL, title = NULL, ...)
 
-\S4method{plotHeatmap}{SingleCellExperiment}(object, assay = 1L,
-  interestingGroups = NULL, scale = c("none", "row", "column"),
-  clusteringMethod = "ward.D2", clusterRows = FALSE,
-  clusterCols = FALSE, showRownames = FALSE, showColnames = TRUE,
-  treeheightRow = 50L, treeheightCol = 50L, color = getOption(x =
-  "acid.heatmap.color", default = acidplots::synesthesia),
-  legendColor = getOption(x = "acid.heatmap.color", default =
-  acidplots::synesthesia), breaks = NULL, legendBreaks = NULL,
-  borderColor = NULL, title = NULL, ...)
+\S4method{plotHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -103,7 +95,8 @@ Construct a simple heatmap.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average gene
-expression at sample level prior to plotting.
+expression at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{

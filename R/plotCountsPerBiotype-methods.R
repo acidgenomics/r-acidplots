@@ -1,7 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBiotype
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-09-16.
 `plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -42,29 +42,33 @@ NULL
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
         fill,
-        countsAxisLabel = "counts",
-        title = "Counts per biotype"
+        labels = list(
+            title = "Counts per biotype",
+            subtitle = NULL,
+            sampleAxis = NULL,
+            countAxis = "counts"
+        )
     ) {
         validObject(object)
         assert(
             isScalar(assay),
             isInt(n),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-            isString(countsAxisLabel),
-            isString(title, nullOK = TRUE)
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
         trans <- match.arg(trans)
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        if (!identical(trans, "identity")) {
-            countsAxisLabel <- paste(trans, countsAxisLabel)
-        }
         ## Melt the count matrix into long format.
         data <- melt(
             object = object,
             assay = assay,
             min = 1L,
+            minMethod = "perRow",
             trans = trans
         )
         data <- decode(data)
@@ -121,18 +125,17 @@ NULL
                 breaks = pretty_breaks(),
                 labels = prettyNum
             ) +
-            facet_wrap(facets = sym(biotypeCol), scales = "free_y") +
-            labs(
-                title = title,
-                x = NULL,
-                y = countsAxisLabel,
-                fill = paste(interestingGroups, collapse = ":\n")
-            ) +
-            theme(
-                axis.text.x = element_blank(),
-                axis.ticks.x = element_blank(),
-                axis.title.x = element_blank()
-            )
+            facet_wrap(facets = sym(biotypeCol), scales = "free_y")
+        ## Labels.
+        if (is.list(labels)) {
+            if (!identical(trans, "identity")) {
+                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
+            }
+            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+            names(labels)[names(labels) == "sampleAxis"] <- "x"
+            names(labels)[names(labels) == "countAxis"] <- "y"
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill

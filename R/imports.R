@@ -1,9 +1,9 @@
-## DropletUtils isn't supported on R 3.5.
-## #' @importFrom DropletUtils barcodeRanks
+## DropletUtils is a pretty heavy dependency that can fail to compile on some
+## Linux distros. Keep it as a suggested package, rather than importing.
+## > #' @importFrom DropletUtils barcodeRanks
 
 
 
-#' @importClassesFrom DESeq2 DESeqDataSet
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
@@ -18,9 +18,9 @@
 #' @importFrom basejump Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
-#'   interestingGroups<- leftJoin makeLabel makeTitle matchArgsToDoCall
-#'   matchInterestingGroups mapGenesToRownames methodFormals melt metrics
-#'   organism pseudobulk sampleData snakeCase standardizeCall zerosVsDepth
+#'   interestingGroups<- leftJoin makeLabel makeTitle matchInterestingGroups
+#'   mapGenesToRownames methodFormals melt metrics nonzeroRowsAndCols organism
+#'   pseudobulk sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text

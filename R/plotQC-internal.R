@@ -1,7 +1,7 @@
-## Note that this is causing default `cyclocomp_lintr(15)` check to fail.
-
-## Plot a single quality control metric.
-## Updated 2019-09-13.
+#' Plot a single quality control metric
+#'
+#' @note Updated 2019-09-15.
+#' @noRd
 .plotQCMetric <- function(
     object,
     metricCol,
@@ -13,7 +13,12 @@
     ratio = FALSE,
     color,
     fill,
-    title = NULL
+    labels = list(
+        title = NULL,
+        subtitle = NULL,
+        metricAxis = NULL,
+        otherAxis = NULL
+    )
 ) {
     validObject(object)
     assert(
@@ -22,9 +27,16 @@
         all(isNonNegative(c(min, max))),
         isString(trans),
         isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-        isString(title, nullOK = TRUE)
+        is.list(labels),
+        areSetEqual(
+            x = names(labels),
+            y = names(eval(formals()[["labels"]]))
+        )
     )
     geom <- match.arg(geom)
+    if (is.null(labels[["metricAxis"]])) {
+        labels[["metricAxis"]] <- makeLabel(metricCol)
+    }
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
     ## Support for per sample filtering cutoffs.
@@ -59,46 +71,37 @@
         mapping[["x"]] <- as.symbol(metricCol)
     }
     p <- ggplot(data = data, mapping = mapping)
+    metricAxis <- "y"
     if (identical(geom, "boxplot")) {
         p <- p +
             geom_boxplot(color = "black", outlier.shape = NA) +
-            scale_y_continuous(trans = trans) +
-            labs(
-                x = NULL,
-                y = makeLabel(metricCol)
-            )
+            scale_y_continuous(trans = trans)
     } else if (identical(geom, "ecdf")) {
+        metricAxis <- "x"
         p <- p +
             stat_ecdf(geom = "step", size = 1L) +
-            scale_x_continuous(trans = trans) +
-            labs(
-                x = makeLabel(metricCol),
-                y = "frequency"
-            )
+            scale_x_continuous(trans = trans)
+        labels[["otherAxis"]] <- "Fn(x)"
     } else if (identical(geom, "histogram")) {
+        metricAxis <- "x"
         p <- p +
             geom_histogram(
                 bins = 200L,
                 color = FALSE
             ) +
             scale_x_continuous(trans = trans) +
-            scale_y_continuous() +
-            labs(
-                x = makeLabel(metricCol)
-            )
+            scale_y_continuous()
+        labels[["otherAxis"]] <- "count"
     } else if (identical(geom, "ridgeline")) {
+        metricAxis <- "x"
         p <- p +
             geom_density_ridges(
-                alpha = 0.75,
+                alpha = 0.8,
                 color = "black",
                 panel_scaling = TRUE,
                 scale = 10L
             ) +
-            scale_x_continuous(trans = trans) +
-            labs(
-                x = makeLabel(metricCol),
-                y = NULL
-            )
+            scale_x_continuous(trans = trans)
     } else if (identical(geom, "violin")) {
         p <- p +
             geom_violin(
@@ -106,11 +109,7 @@
                 scale = "area",
                 trim = TRUE
             ) +
-            scale_y_continuous(trans = trans) +
-            labs(
-                x = NULL,
-                y = makeLabel(metricCol)
-            )
+            scale_y_continuous(trans = trans)
     }
     ## Cutoff lines.
     if (isSubset(geom, c("boxplot", "violin"))) {
@@ -134,13 +133,19 @@
             p <- p + acid_geom_abline(xintercept = max)
         }
     }
-    ## Label interesting groups.
-    p <- p +
-        labs(
-            title = title,
-            color = paste(interestingGroups, collapse = ":\n"),
-            fill = paste(interestingGroups, collapse = ":\n")
+    ## Labels.
+    if (is.list(labels)) {
+        names(labels)[names(labels) == "metricAxis"] <- metricAxis
+        otherAxis <- ifelse(
+            test = identical(metricAxis, "y"),
+            yes = "x",
+            no = "y"
         )
+        names(labels)[names(labels) == "otherAxis"] <- otherAxis
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        labels[["fill"]] <- labels[["color"]]
+        p <- p + do.call(what = labs, args = labels)
+    }
     ## Color palette.
     if (identical(geom, "ecdf")) {
         if (is(color, "ScaleDiscrete")) {
@@ -159,7 +164,11 @@
             digits <- 0L
         }
         p <- p +
-            acid_geom_label_average(data, col = metricCol, digits = digits)
+            acid_geom_label_average(
+                data = data,
+                col = metricCol,
+                digits = digits
+            )
     }
     ## Facets.
     facets <- NULL
@@ -173,14 +182,15 @@
     p
 }
 
-formals(`.plotQCMetric`)[c("color", "fill")] <-
-    formalsList[c("color.discrete", "fill.discrete")]
-formals(`.plotQCMetric`)[["geom"]] <- .geom
+f <- formals(`.plotQCMetric`)
+f[c("color", "fill")] <- formalsList[c("color.discrete", "fill.discrete")]
+f[["geom"]] <- .geom
+formals(`.plotQCMetric`) <- f
 
 
 
 ## Compare two quality control metrics.
-## Updated 2019-07-27.
+## Updated 2019-09-15.
 .plotQCScatterplot <- function(
     object,
     xCol,
@@ -190,7 +200,12 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
     interestingGroups = NULL,
     trendline = FALSE,
     color = getOption("basejump.discrete.color", NULL),
-    title = NULL
+    labels = list(
+        title = NULL,
+        subtitle = NULL,
+        x = NULL,
+        y = NULL
+    )
 ) {
     validObject(object)
     assert(
@@ -199,9 +214,20 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         isString(yCol),
         isString(xTrans),
         isString(yTrans),
-        isGGScale(color, scale = "discrete", aes = "colour", nullOK = TRUE),
-        isString(title, nullOK = TRUE)
+        isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
+        is.list(labels),
+        areSetEqual(
+            x = names(labels),
+            y = names(eval(formals()[["labels"]]))
+        )
     )
+    ## Generate x- and y-axis labels automatically.
+    if (is.null(labels[["x"]])) {
+        labels[["x"]] <- makeLabel(xCol)
+    }
+    if (is.null(labels[["y"]])) {
+        labels[["y"]] <- makeLabel(yCol)
+    }
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
     data <- metrics(object)
@@ -227,7 +253,7 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         mapping = aes(
             x = !!sym(xCol),
             y = !!sym(yCol),
-            colour = !!sym("interestingGroups")
+            color = !!sym("interestingGroups")
         )
     ) +
         geom_point(alpha = 0.5, size = 1L) +
@@ -239,13 +265,11 @@ formals(`.plotQCMetric`)[["geom"]] <- .geom
         ## Otherwise build checks will error.
         p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
     }
-    ## Set the labels.
-    p <- p + labs(
-        x = makeLabel(xCol),
-        y = makeLabel(yCol),
-        title = title,
-        colour = paste(interestingGroups, collapse = ":\n")
-    )
+    ## Labels.
+    if (is.list(labels)) {
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        p <- p + do.call(what = labs, args = labels)
+    }
     ## Color palette.
     if (is(color, "ScaleDiscrete")) {
         p <- p + color

@@ -10,46 +10,22 @@
 plotCountsPerFeature(object, ...)
 
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(object, assay = 1L,
-  min = 1L, minMethod = c("perRow", "absolute"),
   interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
-  flip = getOption(x = "acid.flip", default = TRUE),
-  countsAxisLabel = "counts", title = "Counts per feature")
+  "acid.color.discrete", default = acidplots::scale_color_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default =
+  acidplots::scale_fill_synesthesia_d()), labels = list(title =
+  "Counts per feature", subtitle = NULL, sampleAxis = NULL, countAxis =
+  "counts"), flip = getOption(x = "acid.flip", default = TRUE),
+  minMethod = c("absolute", "perRow"))
 
-\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, assay = 1L,
-  min = 1L, minMethod = c("perRow", "absolute"),
-  interestingGroups = NULL, geom = c("boxplot", "density", "jitter"),
-  trans = c("identity", "log2", "log10"), color = getOption(x =
-  "acid.color.discrete", default =
-  acidplots::scale_colour_synesthesia_d()), fill = getOption(x =
-  "acid.fill.discrete", default = acidplots::scale_fill_synesthesia_d()),
-  flip = getOption(x = "acid.flip", default = TRUE),
-  countsAxisLabel = "counts", title = "Counts per feature")
+\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
-
-\item{min}{\code{integer(1)} or \code{NULL}.
-Minimum count threshold to apply. Filters using "greater than or equal to"
-logic internally. Note that this threshold gets applied prior to
-logarithmic transformation, when \code{trans} argument applies.}
-
-\item{minMethod}{\code{character(1)}.
-Only applies when \code{min} argument is numeric.
-Uses \code{\link[base:match.arg]{match.arg()}}.
-\itemize{
-\item \code{perRow}: \emph{Recommended}. Applies cutoff per row (i.e. gene).
-Internally, \code{\link[base:rowSums]{rowSums()}} values are checked against this
-cutoff threshold prior to the melt operation.
-\item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
-operation. This applies to all counts, not per feature.
-}}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
@@ -78,14 +54,23 @@ definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manua
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{flip}{\code{logical(1)}.
 Flip x and y axes. Recommended for plots containing many samples.}
 
-\item{countsAxisLabel}{\code{character(1)}.
-Counts axis label.}
-
-\item{title}{\code{character(1)}.
-Title.}
+\item{minMethod}{\code{character(1)}.
+Only applies when \code{min} argument is numeric.
+Uses \code{\link[base:match.arg]{match.arg()}}.
+\itemize{
+\item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
+operation. This applies to all counts, not per feature.
+\item \code{perRow}: Applies cutoff per row (i.e. gene). Internally,
+\code{\link[base:rowSums]{rowSums()}} values are checked against this cutoff
+threshold prior to the melt operation.
+}}
 
 \item{...}{Additional arguments.}
 }
@@ -99,11 +84,12 @@ unless the library sizes or total RNA expression are different.
 \section{Methods (by class)}{
 \itemize{
 \item \code{SingleCellExperiment}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
-calculation to summarize at sample level prior to plotting.
+calculation to summarize at sample level prior to plotting.\cr
+Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-09-16.
 }
 \examples{
 data(
