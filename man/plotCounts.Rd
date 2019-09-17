@@ -4,7 +4,6 @@
 \name{plotCounts}
 \alias{plotCounts}
 \alias{plotCounts,SummarizedExperiment-method}
-\alias{plotCounts,DESeqDataSet-method}
 \title{Plot counts}
 \usage{
 plotCounts(object, ...)
@@ -16,8 +15,6 @@ plotCounts(object, ...)
   = "acid.legend", default = TRUE), style = c("facet", "wide"),
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL,
   countAxis = "counts"))
-
-\S4method{plotCounts}{DESeqDataSet}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -72,13 +69,6 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 \description{
 Plot counts
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{DESeqDataSet}: Automatically plots normalized counts. Arguments pass
-through to \code{SummarizedExperiment} method, but \code{assay} and \code{countAxisLabel}
-are automatic.
-}}
-
 \note{
 Updated 2019-09-16.
 }

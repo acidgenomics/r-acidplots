@@ -215,33 +215,3 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `plotCounts,SummarizedExperiment`
 )
-
-
-
-## Updated 2019-08-27.
-`plotCounts,DESeqDataSet` <-  # nolint
-    function(object, ...) {
-        normalized <- counts(object, normalized = TRUE)
-        object <- as(object, "RangedSummarizedExperiment")
-        assays(object) <- SimpleList(normalized = normalized)
-        plotCounts(
-            object = object,
-            ## FIXME Automatically label when assay isn't 1L...
-            assay = "normalized",
-            ## FIXME This needs a rework.
-            countAxisLabel = "normalized counts",
-            ...
-        )
-    }
-
-
-
-#' @describeIn plotCounts Automatically plots normalized counts. Arguments pass
-#'   through to `SummarizedExperiment` method, but `assay` and `countAxisLabel`
-#'   are automatic.
-#' @export
-setMethod(
-    f = "plotCounts",
-    signature = signature("DESeqDataSet"),
-    definition = `plotCounts,DESeqDataSet`
-)
