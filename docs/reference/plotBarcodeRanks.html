@@ -154,13 +154,13 @@ Must pass in color names or hexadecimal values.</p></td>
     <p><code>ggplot</code> grid.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-09-15.</p>
+    <p>Requires DropletUtils package to be installed.</p>
+<p>Updated 2019-09-15.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>SingleCellExperiment</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>)
 
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='co'>## Not supported for R &lt; 3.6.</span>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"DropletUtils"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
     <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
     <span class='fu'>plotBarcodeRanks</span>(<span class='no'>object</span>)
