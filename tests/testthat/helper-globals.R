@@ -32,5 +32,4 @@ allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
 `assay<-` <- SummarizedExperiment::`assay<-`
 `rowData<-` <- SummarizedExperiment::`rowData<-`
-tibble <- tibble::tibble
 ## nolint end
