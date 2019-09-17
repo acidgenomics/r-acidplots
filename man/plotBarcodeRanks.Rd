@@ -29,13 +29,14 @@ Must pass in color names or hexadecimal values.}
 Plot barcode ranks
 }
 \note{
+Requires DropletUtils package to be installed.
+
 Updated 2019-09-15.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
 
 ## SingleCellExperiment ====
-## Not supported for R < 3.6.
 if (requireNamespace("DropletUtils", quietly = TRUE)) {
     object <- SingleCellExperiment
     plotBarcodeRanks(object)

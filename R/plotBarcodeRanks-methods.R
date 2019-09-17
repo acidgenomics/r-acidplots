@@ -1,5 +1,6 @@
 #' @name plotBarcodeRanks
 #' @inherit bioverbs::plotBarcodeRanks
+#' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-09-15.
 #'
 #' @param colors `character(3)`.
@@ -11,7 +12,6 @@
 #' data(SingleCellExperiment, package = "acidtest")
 #'
 #' ## SingleCellExperiment ====
-#' ## Not supported for R < 3.6.
 #' if (requireNamespace("DropletUtils", quietly = TRUE)) {
 #'     object <- SingleCellExperiment
 #'     plotBarcodeRanks(object)
@@ -43,11 +43,7 @@ NULL
         validObject(object)
         dots <- list(...)
         assert(
-            requireNamespace(
-                package = "DropletUtils",
-                versionCheck = list(op = ">=", version = "1.4"),
-                quietly = TRUE
-            ),
+            requireNamespace("DropletUtils", quietly = TRUE),
             isCharacter(colors),
             areSetEqual(
                 x = names(colors),
