@@ -1,4 +1,4 @@
-## acidplots 0.2.16 (2019-09-16)
+## acidplots 0.2.16 (2019-09-17)
 
 ### Major changes
 
@@ -15,6 +15,7 @@
   `SummarizedExperiment`, using standard `...` passthrough instead of relying
   upon `matchArgsToDoCall`.
 - Improved color palette consistency in plotting functions.
+- `plotCounts`: Moved `DESeqDataSet` method to DESeqAnalysis package.
 
 ## acidplots 0.2.15 (2019-09-13)
 
