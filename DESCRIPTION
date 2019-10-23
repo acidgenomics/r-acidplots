@@ -26,7 +26,7 @@ Depends:
     basejump (>= 0.11.15)
 Imports:
     bioverbs (>= 0.2.10),
-    goalie (>= 0.3.8),
+    goalie (>= 0.4.0),
     BiocGenerics (>= 0.30),
     IRanges (>= 2.18.2),
     SingleCellExperiment (>= 1.6),
@@ -50,7 +50,7 @@ Imports:
     utils
 Suggests:
     acidroxygen (>= 0.1.3),
-    acidtest (>= 0.2.5),
+    acidtest (>= 0.2.6),
     BiocStyle (>= 2.12),
     DropletUtils (>= 1.4),
     knitr (>= 1.24),
