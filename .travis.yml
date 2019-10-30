@@ -13,8 +13,8 @@ install:
 jobs:
   include:
     - stage: test
-      name: "bioc-3.9"
-      script: image="rnaseq" tag="bioc-3.9" ./.Rcheck/docker
+      name: "bioc-release"
+      script: image="rnaseq" tag="bioc-release" ./.Rcheck/docker
     - stage: test
       name: "bioc-devel"
       script: image="rnaseq" tag="bioc-devel" ./.Rcheck/docker
