@@ -32,7 +32,10 @@
 #'
 #' @return `theme`.
 #'
-#' @seealso `ggplot2::theme()`.
+#' @seealso
+#' - `ggplot2::theme()`.
+#' - https://cran.r-project.org/web/packages/ggplot2/vignettes/
+#'       extending-ggplot2.html
 #'
 #' @examples
 #' library(ggplot2)
