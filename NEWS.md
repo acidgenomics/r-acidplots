@@ -1,3 +1,10 @@
+## acidplots 0.2.17 (2019-11-07)
+
+### Minor changes
+
+- Updated dependencies to require Bioconductor 3.10 release.
+- Added return value for `matchLabels` in documentation.
+
 ## acidplots 0.2.16 (2019-09-17)
 
 ### Major changes
