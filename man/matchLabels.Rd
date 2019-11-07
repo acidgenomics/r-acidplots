@@ -13,6 +13,9 @@ User-defined plot labels.}
 \item{choices}{\code{list}.
 Default plot labels, defined in \code{labels} \code{\link[base:formals]{formals()}}.}
 }
+\value{
+\code{list}.
+}
 \description{
 Allow user to define ggplot labels, and populate missing values from the
 defaults specified in \code{labels} formal argument.
@@ -21,7 +24,7 @@ defaults specified in \code{labels} formal argument.
 Attempting to follow a similar naming convention to
 \code{\link[base:match.arg]{match.arg()}} here, using \code{choices} argument.
 
-Updated 2019-09-16.
+Updated 2019-11-07.
 }
 \examples{
 matchLabels(
