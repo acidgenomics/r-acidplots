@@ -70,7 +70,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2019-09-16.
+Updated 2019-11-07.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
