@@ -1,11 +1,11 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-11-07.
 #'
 #' @inheritParams acidroxygen::params
-#' @param medianLine `logical(1)`.
-#'   Include median line for each interesting group.
-#'   Disabled if samples are colored by sample name.
+#' @param line `character(1)`.
+#'   Include average (median, mean, or geometric mean) line for each interesting
+#'   group. Disabled by default and if samples are colored by sample name.
 #' @param style `character(1)`.
 #'   Plot style.
 #' @param ... Additional arguments.
@@ -41,18 +41,6 @@ NULL
 #' @usage plotCounts(object, ...)
 #' @export
 NULL
-
-
-
-## Updated 2019-07-23.
-.geneMedianLine <- stat_summary(
-    fun.y = median,
-    fun.ymin = median,
-    fun.ymax = median,
-    geom = "crossbar",
-    show.legend = FALSE,
-    width = 0.5
-)
 
 
 
@@ -101,7 +89,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2019-11-07.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -109,7 +97,9 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
-        medianLine = TRUE,
+        ## FIXME Rework to line mode.
+        ## FIXME Enable the user to disable the points in line mode.
+        line = c("none", "median", "mean", "geometricMean"),
         color,
         legend,
         style = c("facet", "wide"),
@@ -118,19 +108,34 @@ NULL
             subtitle = NULL,
             sampleAxis = NULL,
             countAxis = "counts"
-        )
+        ),
+        ...
     ) {
+        ## nocov start
+        call <- match.call()
+        ## medianLine
+        if ("medianLine" %in% names(call)) {
+            stop("'medianLine' is defunct. Use 'line = \"median\"' instead.")
+        }
+        ## Error on unsupported arguments.
+        assert(isSubset(
+            x = setdiff(names(call), ""),
+            y = names(formals())
+        ))
+        rm(call)
+        ## nocov end
+
         validObject(object)
         assert(
             isCharacter(genes),
             ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
-            isFlag(medianLine),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend)
         )
         trans <- match.arg(trans)
+        line <- match.arg(line)
         style <- match.arg(style)
         labels <- matchLabels(
             labels = labels,
@@ -176,12 +181,22 @@ NULL
             args = list(data = as_tibble(data, rownames = NULL))
         )
         p <- p + .genePoint(show.legend = legend)
-        ## Median line.
+        ## Average (mean/median) line.
         if (
-            isTRUE(medianLine) &&
+            !identical(line, "none") &&
             !identical(interestingGroups, "sampleName")
         ) {
-            p <- p + .geneMedianLine
+            message("Line denotes '", line, "()'.")
+            lineFun <- get(x = line, inherits = TRUE)
+            assert(is.function(lineFun))
+            p <- p + stat_summary(
+                fun.y = lineFun,
+                fun.ymin = lineFun,
+                fun.ymax = lineFun,
+                geom = "crossbar",
+                show.legend = FALSE,
+                width = 0.5
+            )
         }
         ## Color.
         if (is(color, "ScaleDiscrete")) {
