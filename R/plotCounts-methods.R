@@ -97,8 +97,6 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
-        ## FIXME Rework to line mode.
-        ## FIXME Enable the user to disable the points in line mode.
         line = c("none", "median", "mean", "geometricMean"),
         color,
         legend,
@@ -124,7 +122,6 @@ NULL
         ))
         rm(call)
         ## nocov end
-
         validObject(object)
         assert(
             isCharacter(genes),
