@@ -1,8 +1,8 @@
 Package: acidplots
 Title: Functions for plotting genomic data
 Description: Extension of the basejump toolkit for bioinformatics.
-Version: 0.2.17
-Date: 2019-11-07
+Version: 0.2.18
+Date: 2019-11-12
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.6),
-    basejump (>= 0.11.21)
+    basejump (>= 0.11.22)
 Imports:
     BiocGenerics (>= 0.32),
     IRanges (>= 2.20),
@@ -33,13 +33,13 @@ Imports:
     SingleCellExperiment (>= 1.8),
     SummarizedExperiment (>= 1.16),
     UpSetR (>= 1.4),
-    bioverbs (>= 0.2.10),
+    bioverbs (>= 0.2.11),
     cowplot (>= 1.0),
     ggplot2 (>= 3.2),
     ggrepel (>= 0.8),
     ggridges (>= 0.5),
     goalie (>= 0.4.0),
-    matrixStats (>= 0.54),
+    matrixStats (>= 0.55),
     pheatmap (>= 1.0),
     rlang (>= 0.4),
     grDevices,
@@ -49,13 +49,13 @@ Imports:
     stats,
     utils
 Suggests:
-    BiocStyle (>= 2.12),
-    DropletUtils (>= 1.4),
+    BiocStyle (>= 2.14),
+    DropletUtils (>= 1.6),
     acidroxygen (>= 0.1.3),
     acidtest (>= 0.2.6),
-    knitr (>= 1.24),
+    knitr (>= 1.25),
     patrick (>= 0.0.1),
-    testthat (>= 2.2),
+    testthat (>= 2.3),
     viridis (>= 0.5)
 Remotes:
     acidgenomics/acidroxygen,
@@ -71,17 +71,19 @@ Collate:
     'AllGlobals.R'
     'assert.R'
     'barcodeRanksPerSample-methods.R'
-    'breaks.R'
+    'base-breaks.R'
+    'base-gradients.R'
+    'base-matchLabels.R'
     'data.R'
     'deprecated.R'
-    'geoms.R'
     'ggplot2-internal.R'
+    'ggplot2-layers.R'
+    'ggplot2-themes.R'
     'ggplot2-transforms.R'
-    'gradient.R'
     'heatmap-internal.R'
     'imports.R'
-    'matchLabels.R'
     'package.R'
+    'palettes-synesthesia.R'
     'pheatmap-internal.R'
     'plotBarcodeRanks-methods.R'
     'plotCellCounts-methods.R'
@@ -108,6 +110,4 @@ Collate:
     'plotSums-methods.R'
     'plotTotalCounts-methods.R'
     'plotZerosVsDepth-methods.R'
-    'synesthesia.R'
-    'themes.R'
     'upset.R'
