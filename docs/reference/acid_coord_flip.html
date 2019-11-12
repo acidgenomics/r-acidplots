@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.17</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
       </span>
     </div>
 
@@ -142,19 +142,33 @@
 top on the Y axis, making them more human readable.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-29.</p>
+    <p>To my knowledge, there's not an easy way to create a <code>ggproto</code> object
+(via CoordFlip ggproto call internally) that lets you reorder the samples
+on the Y-axis to be reversed. So this function works directly on the
+<code>ggplot</code> object instead of a <code>ggproto</code>, and therefore doesn't currently
+support the <code>+</code> operator.</p>
+<p>Updated 2019-11-07.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
 <ul>
 <li><p><code><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip()</a></code>.</p></li>
+<li><p><code><a href='https://ggplot2.tidyverse.org/reference/ggproto.html'>ggplot2::ggproto()</a></code>.</p></li>
+<li><p><code>ggplot2:::add_ggplot</code>.</p></li>
+<li><p><code>ggplot2:::+.gg</code>.</p></li>
+<li><p>https://stackoverflow.com/questions/40450904</p></li>
+<li><p>https://cran.r-project.org/web/packages/ggplot2/vignettes/
+extending-ggplot2.html</p></li>
+<li><p>https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r</p></li>
 </ul>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>class</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>()
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>g</span>)</div><div class='img'><img src='acid_coord_flip-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>acid_coord_flip</span>(<span class='no'>g</span>)</div><div class='img'><img src='acid_coord_flip-2.png' alt='' width='700' height='433' /></div></pre>
+
+<span class='co'>## Notice the difference in Y axis sample order.</span>
+<span class='no'>g</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span>()</div><div class='img'><img src='acid_coord_flip-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>g</span> <span class='kw'>%&gt;%</span> <span class='fu'>acid_coord_flip</span>()</div><div class='img'><img src='acid_coord_flip-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

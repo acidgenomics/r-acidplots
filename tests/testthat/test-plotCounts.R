@@ -1,7 +1,11 @@
 context("plotCounts")
 
 test_that("default", {
-    x <- plotCounts(object = object, genes = genes)
+    x <- plotCounts(
+        object = object,
+        genes = genes,
+        line = "median"
+    )
     expect_s3_class(x, "ggplot")
     expect_identical(
         object = x[["labels"]],

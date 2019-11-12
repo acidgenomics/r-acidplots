@@ -20,16 +20,31 @@ This function puts the samples that were near the left origin on the X at the
 top on the Y axis, making them more human readable.
 }
 \note{
-Updated 2019-07-29.
+To my knowledge, there's not an easy way to create a \code{ggproto} object
+(via CoordFlip ggproto call internally) that lets you reorder the samples
+on the Y-axis to be reversed. So this function works directly on the
+\code{ggplot} object instead of a \code{ggproto}, and therefore doesn't currently
+support the \code{+} operator.
+
+Updated 2019-11-07.
 }
 \examples{
 library(ggplot2)
 g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
-print(g)
-acid_coord_flip(g)
+
+## Notice the difference in Y axis sample order.
+g + coord_flip()
+g \%>\% acid_coord_flip()
 }
 \seealso{
 \itemize{
 \item \code{coord_flip()}.
+\item \code{ggplot2::ggproto()}.
+\item \code{ggplot2:::add_ggplot}.
+\item \code{ggplot2:::+.gg}.
+\item https://stackoverflow.com/questions/40450904
+\item https://cran.r-project.org/web/packages/ggplot2/vignettes/
+extending-ggplot2.html
+\item https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r
 }
 }

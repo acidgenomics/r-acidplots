@@ -10,11 +10,12 @@ plotCounts(object, ...)
 
 \S4method{plotCounts}{SummarizedExperiment}(object, genes, assay = 1L,
   interestingGroups = NULL, trans = c("identity", "log2", "log10"),
-  medianLine = TRUE, color = getOption(x = "acid.color.discrete",
-  default = acidplots::scale_color_synesthesia_d()), legend = getOption(x
-  = "acid.legend", default = TRUE), style = c("facet", "wide"),
+  line = c("none", "median", "mean", "geometricMean"),
+  color = getOption(x = "acid.color.discrete", default =
+  acidplots::scale_color_synesthesia_d()), legend = getOption(x =
+  "acid.legend", default = TRUE), style = c("facet", "wide"),
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL,
-  countAxis = "counts"))
+  countAxis = "counts"), ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -35,9 +36,9 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{medianLine}{\code{logical(1)}.
-Include median line for each interesting group.
-Disabled if samples are colored by sample name.}
+\item{line}{\code{character(1)}.
+Include average (median, mean, or geometric mean) line for each interesting
+group. Disabled by default and if samples are colored by sample name.}
 
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
@@ -70,7 +71,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2019-09-16.
+Updated 2019-11-07.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
