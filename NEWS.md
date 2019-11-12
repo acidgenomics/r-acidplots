@@ -1,3 +1,11 @@
+## acidplots 0.2.18 (2019-11-12)
+
+### Minor changes
+
+- `plotCounts`: Reworked `medianLine` argument  and renamed to simply `line`.
+  Now supports mean and geometric mean in addition to median now.
+  Line is now disabled by default.
+
 ## acidplots 0.2.17 (2019-11-07)
 
 ### Minor changes
