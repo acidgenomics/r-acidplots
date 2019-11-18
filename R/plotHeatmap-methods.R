@@ -1,3 +1,9 @@
+## FIXME Set this up to use row scaling with defined breaks by deafult?
+## Refer to code in pfgsea and DESeqAnalysis (plotDEGHeatmap)
+## Improve the code consistency and use the blue/yellow color palette here.
+
+
+
 #' Heatmap
 #'
 #' Construct a simple heatmap.

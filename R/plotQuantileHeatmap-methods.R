@@ -1,3 +1,7 @@
+## FIXME Ensure we set the breaks, and color here by default.
+
+
+
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
 #' @note Updated 2019-08-27.

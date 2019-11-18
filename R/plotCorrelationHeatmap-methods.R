@@ -1,3 +1,7 @@
+## FIXME Ensure we set the breaks, and color here by default.
+
+
+
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
 #' @note Updated 2019-09-15.
