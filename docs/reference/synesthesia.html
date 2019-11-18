@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -122,40 +122,58 @@
     <p>Four color gradient defined by purple, blue, green, orange.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>synesthesia</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>256L</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+    <pre class="usage"><span class='fu'>synesthesia</span>(
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>256L</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>synesthesia_pal</span>(<span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>synesthesia_pal</span>(
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_colour_synesthesia_c</span>(<span class='no'>...</span>, <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>,
-  <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>scale_colour_synesthesia_c</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>,
+  <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_color_synesthesia_c</span>(<span class='no'>...</span>, <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>,
-  <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>scale_color_synesthesia_c</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>,
+  <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_colour_synesthesia_d</span>(<span class='no'>...</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>,
-  <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>scale_colour_synesthesia_d</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_color_synesthesia_d</span>(<span class='no'>...</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>scale_color_synesthesia_d</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_fill_synesthesia_c</span>(<span class='no'>...</span>, <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>, <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>,
-  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>,
-  <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>,
-  <span class='st'>"iOSDarkPalette"</span>))
+<span class='fu'>scale_fill_synesthesia_c</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>na.value</span> <span class='kw'>=</span> <span class='st'>"grey50"</span>,
+  <span class='kw'>guide</span> <span class='kw'>=</span> <span class='st'>"colourbar"</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)
 
-<span class='fu'>scale_fill_synesthesia_d</span>(<span class='no'>...</span>, <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>,
-  <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>, <span class='st'>"macOSDarkPalette"</span>,
-  <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>))</pre>
+<span class='fu'>scale_fill_synesthesia_d</span>(
+  <span class='no'>...</span>,
+  <span class='kw'>palette</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lightPalette"</span>, <span class='st'>"darkPalette"</span>, <span class='st'>"draculaPalette"</span>, <span class='st'>"macOSLightPalette"</span>,
+    <span class='st'>"macOSDarkPalette"</span>, <span class='st'>"iOSLightPalette"</span>, <span class='st'>"iOSDarkPalette"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

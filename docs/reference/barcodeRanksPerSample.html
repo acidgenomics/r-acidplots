@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -157,10 +157,10 @@ The derivative is computed directly from all points on the curve with total coun
 This avoids issues with erratic behaviour of the curve at lower totals.</p></li>
 <li><p>The knee point is defined as the point on the curve where the signed curvature is minimized.
 This requires calculation of the second derivative, which is much more sensitive to noise in the curve.
-To overcome this, a smooth spline is fitted to the log-total counts against the log-rank using the <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code> function.
-Derivatives are then calculated from the fitted spline using <code><a href='https://rdrr.io/r/stats/predict.html'>predict</a></code>.</p></li>
+To overcome this, a smooth spline is fitted to the log-total counts against the log-rank using the <code>smooth.spline</code> function.
+Derivatives are then calculated from the fitted spline using <code>predict</code>.</p></li>
 </ul><p>We supply a default setting of <code>df</code> to avoid overfitting the spline, as this results in unstability in the higher derivatives (and thus the curvature).
-<code>df</code> and other arguments to <code><a href='https://rdrr.io/r/stats/smooth.spline.html'>smooth.spline</a></code> can be tuned if the estimated knee point is not at an appropriate location.
+<code>df</code> and other arguments to <code>smooth.spline</code> can be tuned if the estimated knee point is not at an appropriate location.
 We also restrict the fit to lie within the bounds defined by <code>fit.bounds</code> to focus on the region containing the knee point.
 This allows us to obtain an accurate fit with low <code>df</code>, rather than attempting to model the entire curve.</p>
 <p>If <code>fit.bounds</code> is not specified, the lower bound is automatically set to the inflection point, which should lie after the knee point.
@@ -195,6 +195,8 @@ Note that only points with total counts above <code>lower</code> will be conside
       <li><a href="#examples">Examples</a></li>
     </ul>
 
+    <h2>Author</h2>
+    <p>Aaron Lun</p>
   </div>
 </div>
 
