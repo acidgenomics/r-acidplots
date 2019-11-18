@@ -4,11 +4,21 @@
 \alias{upset}
 \title{UpSetR plot}
 \usage{
-upset(..., line.size = 1L, main.bar.color = "black",
-  matrix.color = "black", matrix.dot.alpha = 1L, mb.ratio = c(0.6,
-  0.4), point.size = 3L, sets.bar.color = "black", shade.alpha = 1L,
-  shade.color = NA, text.scale = 1.5, decreasing = c(TRUE, FALSE),
-  keep.order = FALSE)
+upset(
+  ...,
+  line.size = 1L,
+  main.bar.color = "black",
+  matrix.color = "black",
+  matrix.dot.alpha = 1L,
+  mb.ratio = c(0.6, 0.4),
+  point.size = 3L,
+  sets.bar.color = "black",
+  shade.alpha = 1L,
+  shade.color = NA,
+  text.scale = 1.5,
+  decreasing = c(TRUE, FALSE),
+  keep.order = FALSE
+)
 }
 \arguments{
 \item{...}{Additional arguments.}
