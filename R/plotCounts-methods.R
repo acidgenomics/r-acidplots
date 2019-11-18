@@ -1,8 +1,15 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-11-07.
+#' @note Updated 2019-11-18.
 #'
 #' @inheritParams acidroxygen::params
+#' @param genes `character` or `missing`.
+#'   Gene identifiers. The function will automatically match identifiers
+#'   corresponding to the rownames of the object, or gene symbols defined in
+#'   `rowData(object)[["geneName"]]`. This is handled internally by
+#'   [`matchGenesToRownames()`][basejump::matchGenesToRownames]. Currently a
+#'   maximum of 20 genes is supported. If missing, the object should contain a
+#'   subset of rows corresponding to the desired genes.
 #' @param line `character(1)`.
 #'   Include average (median, mean, or geometric mean) line for each interesting
 #'   group. Disabled by default and if samples are colored by sample name.
@@ -89,7 +96,7 @@ NULL
 
 
 
-## Updated 2019-11-07.
+## Updated 2019-11-18.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -123,6 +130,9 @@ NULL
         rm(call)
         ## nocov end
         validObject(object)
+        if (missing(genes)) {
+            genes <- rownames(object)
+        }
         assert(
             isCharacter(genes),
             ## Limit the number of genes that can be plotted at once.
