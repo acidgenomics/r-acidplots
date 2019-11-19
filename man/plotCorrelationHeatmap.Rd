@@ -18,8 +18,9 @@ plotCorrelationHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 0L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
-  legendColor = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
+  color = getOption(x = "acid.heatmap.correlation.color", default = viridis::viridis),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    acidplots::synesthesia),
   borderColor = NULL,
   title = TRUE,
   ...
@@ -101,7 +102,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-09-15.
+Updated 2019-11-19.
 }
 \examples{
 data(
