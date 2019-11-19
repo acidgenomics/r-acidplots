@@ -1,10 +1,6 @@
-## FIXME Ensure we set the breaks, and color here by default.
-
-
-
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -42,7 +38,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-11-19.
 `plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -151,18 +147,15 @@ NULL
             ...
         )
         args <- .pheatmapArgs(args)
-        assert(areDisjointSets(names(args), "scale"))
         do.call(what = pheatmap, args = args)
     }
 
-color <- formalsList[["heatmap.correlation.color"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
     formals(stats::cor)[["method"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["color"]] <-
-    color
+    formalsList[["heatmap.correlation.color"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    color
-rm(color)
+    formalsList[["heatmap.legend.color"]]
 
 
 
