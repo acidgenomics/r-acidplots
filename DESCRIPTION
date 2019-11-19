@@ -109,5 +109,5 @@ Collate:
     'plotQuantileHeatmap-methods.R'
     'plotSums-methods.R'
     'plotTotalCounts-methods.R'
+    'plotUpset-methods.R'
     'plotZerosVsDepth-methods.R'
-    'upset.R'
