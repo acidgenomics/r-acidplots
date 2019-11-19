@@ -1,15 +1,11 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-11-18.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams acidroxygen::params
-#' @param genes `character` or `missing`.
-#'   Gene identifiers. The function will automatically match identifiers
-#'   corresponding to the rownames of the object, or gene symbols defined in
-#'   `rowData(object)[["geneName"]]`. This is handled internally by
-#'   [`matchGenesToRownames()`][basejump::matchGenesToRownames]. Currently a
-#'   maximum of 20 genes is supported. If missing, the object should contain a
-#'   subset of rows corresponding to the desired genes.
+#' @param genes `character` or `missing`. Gene identifiers. The function will
+#'   automatically match identifiers corresponding to the rownames of the
+#'   object, or gene symbols defined in the object.
 #' @param line `character(1)`.
 #'   Include average (median, mean, or geometric mean) line for each interesting
 #'   group. Disabled by default and if samples are colored by sample name.

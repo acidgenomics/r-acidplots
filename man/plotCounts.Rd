@@ -25,13 +25,9 @@ plotCounts(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{genes}{\code{character} or \code{missing}.
-Gene identifiers. The function will automatically match identifiers
-corresponding to the rownames of the object, or gene symbols defined in
-\code{rowData(object)[["geneName"]]}. This is handled internally by
-\code{\link[basejump:matchGenesToRownames]{matchGenesToRownames()}}. Currently a
-maximum of 20 genes is supported. If missing, the object should contain a
-subset of rows corresponding to the desired genes.}
+\item{genes}{\code{character} or \code{missing}. Gene identifiers. The function will
+automatically match identifiers corresponding to the rownames of the
+object, or gene symbols defined in the object.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -81,7 +77,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2019-11-18.
+Updated 2019-11-19.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
