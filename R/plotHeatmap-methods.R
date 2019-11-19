@@ -1,9 +1,3 @@
-## FIXME Set this up to use row scaling with defined breaks by deafult?
-## Refer to code in pfgsea and DESeqAnalysis (plotDEGHeatmap)
-## Improve the code consistency and use the blue/yellow color palette here.
-
-
-
 #' Heatmap
 #'
 #' Construct a simple heatmap.
@@ -54,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -142,16 +136,16 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-11-19.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
-        scale = c("none", "row", "column"),
+        scale = c("row", "column", "none"),
         clusteringMethod = "ward.D2",
-        clusterRows = FALSE,
-        clusterCols = FALSE,
+        clusterRows = TRUE,
+        clusterCols = TRUE,
         showRownames = FALSE,
         showColnames = TRUE,
         ## Set to `0L` to disable.
@@ -160,8 +154,8 @@ NULL
         treeheightCol = 50L,
         color,
         legendColor,
-        breaks = NULL,
-        legendBreaks = NULL,
+        breaks = seq(from = -2L, to = 2L, by = 0.25),
+        legendBreaks = seq(from = -2L, to = 2L, by = 1L),
         borderColor = NULL,
         title = NULL,
         ...
