@@ -95,7 +95,11 @@ remotes::<span class="kw">install_github</span>(<span class="st">"acidgenomics/a
 <h3 class="hasAnchor">
 <a href="#conda-method" class="anchor"></a><a href="https://conda.io/">conda</a> method</h3>
 <p>Configure <a href="https://conda.io/">conda</a> to use the <a href="https://bioconda.github.io/">bioconda</a> channels.</p>
-<pre class="sh"><code>conda install -c bioconda r-acidplots</code></pre>
+<pre class="sh"><code># Don't install recipe into base environment.
+name="r-acidplots"
+conda create --name="$name" "$name"
+conda activate "$name"
+R</code></pre>
 </div>
 </div>
 </div>
