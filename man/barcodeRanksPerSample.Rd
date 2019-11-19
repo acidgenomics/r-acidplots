@@ -23,7 +23,7 @@ Barcode ranks per sample
 \note{
 Requires DropletUtils package to be installed.
 
-Updated 2019-09-17.
+Updated 2019-11-19.
 }
 \examples{
 data(SingleCellExperiment, package = "acidtest")
