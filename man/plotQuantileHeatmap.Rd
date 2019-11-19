@@ -113,15 +113,10 @@ Updated 2019-11-19.
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
     package = "acidtest"
 )
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-plotQuantileHeatmap(object)
-
-## SingleCellExperiment ====
-object <- SingleCellExperiment
 plotQuantileHeatmap(object)
 }

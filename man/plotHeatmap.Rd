@@ -157,28 +157,33 @@ hclust <- hclust(dist, method = "ward.D2")
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
     package = "acidtest"
 )
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-plotHeatmap(object)
+## Row scaling requires non-zero rows.
+object <- nonzeroRowsAndCols(object)
 
-## Disable column clustering.
-plotHeatmap(object, clusterCols = FALSE)
+## Symmetric row-scaled breaks (recommended).
+plotHeatmap(
+    object,
+    scale = "row",
+    color = acidplots::blueYellow,
+    breaks = seq(from = -2L, to = 2L, by = 0.25),
+    legendBreaks = seq(from = -2L, to = 2L, by = 1L)
+)
 
-## Using pheatmap default colors.
-plotHeatmap(object, color = NULL, legendColor = NULL)
-
-## Using hexadecimal color input.
-color <- RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
-color <- grDevices::colorRampPalette(color)(256L)
-plotHeatmap(object, color = color)
-
-## SingleCellExperiment ====
-object <- SingleCellExperiment
-plotHeatmap(object)
+## Using custom hexadecimal color input.
+color <- rev(RColorBrewer::brewer.pal(n = 11L, name = "PuOr"))
+color <- grDevices::colorRampPalette(color)
+plotHeatmap(
+    object,
+    scale = "row",
+    color = color,
+    breaks = seq(from = -2L, to = 2L, by = 0.25),
+    legendBreaks = seq(from = -2L, to = 2L, by = 1L)
+)
 }
 \seealso{
 \itemize{
