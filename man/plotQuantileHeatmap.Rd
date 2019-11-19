@@ -17,10 +17,11 @@ plotQuantileHeatmap(object, ...)
   clusterCols = TRUE,
   showRownames = FALSE,
   showColnames = TRUE,
-  treeheightRow = 0L,
+  treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
-  legendColor = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
+  color = getOption(x = "acid.heatmap.quantile.color", default = viridis::viridis),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    acidplots::synesthesia),
   legend = FALSE,
   borderColor = NULL,
   title = NULL,
@@ -107,7 +108,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-11-19.
 }
 \examples{
 data(

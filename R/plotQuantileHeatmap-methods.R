@@ -1,10 +1,6 @@
-## FIXME Ensure we set the breaks, and color here by default.
-
-
-
 #' @name plotQuantileHeatmap
 #' @inherit bioverbs::plotQuantileHeatmap
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -67,7 +63,7 @@ NULL
         clusterCols = TRUE,
         showRownames = FALSE,
         showColnames = TRUE,
-        treeheightRow = 0L,
+        treeheightRow = 50L,
         treeheightCol = 50L,
         color,
         legendColor,
@@ -180,9 +176,9 @@ NULL
     }
 
 formals(`plotQuantileHeatmap,SummarizedExperiment`)[["color"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.quantile.color"]]
 formals(`plotQuantileHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.legend.color"]]
 
 
 
