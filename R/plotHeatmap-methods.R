@@ -292,7 +292,7 @@ NULL
 formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
 formals(`plotHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.legend.color"]]
 
 
 

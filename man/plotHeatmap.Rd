@@ -21,7 +21,8 @@ plotHeatmap(object, ...)
   treeheightRow = 50L,
   treeheightCol = 50L,
   color = getOption(x = "acid.heatmap.color", default = acidplots::blueYellow),
-  legendColor = getOption(x = "acid.heatmap.color", default = acidplots::blueYellow),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    acidplots::synesthesia),
   breaks = seq(from = -2L, to = 2L, by = 0.25),
   legendBreaks = seq(from = -2L, to = 2L, by = 1L),
   borderColor = NULL,
