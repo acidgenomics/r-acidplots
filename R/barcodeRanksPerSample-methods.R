@@ -1,10 +1,10 @@
 #' @name barcodeRanksPerSample
 #' @inherit bioverbs::barcodeRanksPerSample
-#' @inherit DropletUtils::barcodeRanks
 #' @note Requires DropletUtils package to be installed.
-#' @note Updated 2019-09-17.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams acidroxygen::params
+#' @inheritParams DropletUtils::barcodeRanks
 #' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
 #'
 #' @seealso [DropletUtils::barcodeRanks()].
