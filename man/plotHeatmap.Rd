@@ -12,18 +12,18 @@ plotHeatmap(object, ...)
   object,
   assay = 1L,
   interestingGroups = NULL,
-  scale = c("none", "row", "column"),
+  scale = c("row", "column", "none"),
   clusteringMethod = "ward.D2",
-  clusterRows = FALSE,
-  clusterCols = FALSE,
+  clusterRows = TRUE,
+  clusterCols = TRUE,
   showRownames = FALSE,
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
-  legendColor = getOption(x = "acid.heatmap.color", default = acidplots::synesthesia),
-  breaks = NULL,
-  legendBreaks = NULL,
+  color = getOption(x = "acid.heatmap.color", default = acidplots::blueYellow),
+  legendColor = getOption(x = "acid.heatmap.color", default = acidplots::blueYellow),
+  breaks = seq(from = -2L, to = 2L, by = 0.25),
+  legendBreaks = seq(from = -2L, to = 2L, by = 1L),
   borderColor = NULL,
   title = NULL,
   ...
@@ -110,7 +110,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-08-27.
+Updated 2019-11-19.
 }
 \section{Scaling}{
 
