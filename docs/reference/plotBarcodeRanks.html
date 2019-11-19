@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -125,10 +125,12 @@
     <pre class="usage"><span class='fu'>plotBarcodeRanks</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
-<span class='fu'>plotBarcodeRanks</span>(<span class='no'>object</span>,
+<span class='fu'>plotBarcodeRanks</span>(
+  <span class='no'>object</span>,
   <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>fitline</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/palettes.html'>lightPalette</a></span><span class='kw'>[[</span><span class='st'>"blue"</span>]], <span class='kw'>inflection</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/palettes.html'>lightPalette</a></span><span class='kw'>[[</span><span class='st'>"purple"</span>]], <span class='kw'>knee</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/palettes.html'>lightPalette</a></span><span class='kw'>[[</span><span class='st'>"orange"</span>]]), <span class='no'>...</span>)</pre>
+    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/palettes.html'>lightPalette</a></span><span class='kw'>[[</span><span class='st'>"purple"</span>]], <span class='kw'>knee</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/palettes.html'>lightPalette</a></span><span class='kw'>[[</span><span class='st'>"orange"</span>]]),
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -101,28 +101,33 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotHeatmap(object)
+#' ## Row scaling requires non-zero rows.
+#' object <- nonzeroRowsAndCols(object)
 #'
-#' ## Disable column clustering.
-#' plotHeatmap(object, clusterCols = FALSE)
+#' ## Symmetric row-scaled breaks (recommended).
+#' plotHeatmap(
+#'     object,
+#'     scale = "row",
+#'     color = acidplots::blueYellow,
+#'     breaks = seq(from = -2L, to = 2L, by = 0.25),
+#'     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
+#' )
 #'
-#' ## Using pheatmap default colors.
-#' plotHeatmap(object, color = NULL, legendColor = NULL)
-#'
-#' ## Using hexadecimal color input.
-#' color <- RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
-#' color <- grDevices::colorRampPalette(color)(256L)
-#' plotHeatmap(object, color = color)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
-#' plotHeatmap(object)
+#' ## Using custom hexadecimal color input.
+#' color <- rev(RColorBrewer::brewer.pal(n = 11L, name = "PuOr"))
+#' color <- grDevices::colorRampPalette(color)
+#' plotHeatmap(
+#'     object,
+#'     scale = "row",
+#'     color = color,
+#'     breaks = seq(from = -2L, to = 2L, by = 0.25),
+#'     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
+#' )
 NULL
 
 
@@ -136,16 +141,16 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-11-19.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
-        scale = c("none", "row", "column"),
+        scale = c("row", "column", "none"),
         clusteringMethod = "ward.D2",
-        clusterRows = FALSE,
-        clusterCols = FALSE,
+        clusterRows = TRUE,
+        clusterCols = TRUE,
         showRownames = FALSE,
         showColnames = TRUE,
         ## Set to `0L` to disable.
@@ -154,8 +159,8 @@ NULL
         treeheightCol = 50L,
         color,
         legendColor,
-        breaks = NULL,
-        legendBreaks = NULL,
+        breaks = seq(from = -2L, to = 2L, by = 0.25),
+        legendBreaks = seq(from = -2L, to = 2L, by = 1L),
         borderColor = NULL,
         title = NULL,
         ...
@@ -292,7 +297,7 @@ NULL
 formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
     formalsList[["heatmap.color"]]
 formals(`plotHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.legend.color"]]
 
 
 

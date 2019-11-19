@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -95,7 +95,11 @@
 <h3 class="hasAnchor">
 <a href="#conda-method" class="anchor"></a><a href="https://conda.io/">conda</a> method</h3>
 <p>Configure <a href="https://conda.io/">conda</a> to use the <a href="https://bioconda.github.io/">bioconda</a> channels.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="ex">conda</span> install -c bioconda r-acidplots</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Don't install recipe into base environment.</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="va">name=</span><span class="st">"r-acidplots"</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="ex">conda</span> create --name=<span class="st">"</span><span class="va">$name</span><span class="st">"</span> <span class="st">"</span><span class="va">$name</span><span class="st">"</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="ex">conda</span> activate <span class="st">"</span><span class="va">$name</span><span class="st">"</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="ex">R</span></a></code></pre></div>
 </div>
 </div>
 </div>

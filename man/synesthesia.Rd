@@ -11,40 +11,58 @@
 \alias{scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
 \usage{
-synesthesia(n = 256L, palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+synesthesia(
+  n = 256L,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-synesthesia_pal(palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+synesthesia_pal(
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_colour_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar", palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+scale_colour_synesthesia_c(
+  ...,
+  na.value = "grey50",
+  guide = "colourbar",
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_color_synesthesia_c(..., na.value = "grey50",
-  guide = "colourbar", palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+scale_color_synesthesia_c(
+  ...,
+  na.value = "grey50",
+  guide = "colourbar",
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_colour_synesthesia_d(..., palette = c("lightPalette",
-  "darkPalette", "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+scale_colour_synesthesia_d(
+  ...,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_color_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+scale_color_synesthesia_d(
+  ...,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_fill_synesthesia_c(..., na.value = "grey50", guide = "colourbar",
-  palette = c("lightPalette", "darkPalette", "draculaPalette",
-  "macOSLightPalette", "macOSDarkPalette", "iOSLightPalette",
-  "iOSDarkPalette"))
+scale_fill_synesthesia_c(
+  ...,
+  na.value = "grey50",
+  guide = "colourbar",
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-scale_fill_synesthesia_d(..., palette = c("lightPalette", "darkPalette",
-  "draculaPalette", "macOSLightPalette", "macOSDarkPalette",
-  "iOSLightPalette", "iOSDarkPalette"))
+scale_fill_synesthesia_d(
+  ...,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 }
 \arguments{
 \item{n}{\code{integer(1)}.
@@ -58,7 +76,7 @@ Color palette name.}
 \item{na.value}{\code{character(1)}.
 Missing values will be replaced with this value.}
 
-\item{guide}{\code{character(1)} or \code{function}.
+\item{guide}{\code{character(1)} or \verb{function}.
 A function used to create a guide or its name.
 See \code{\link[ggplot2:guides]{guides()}} for details.}
 }
