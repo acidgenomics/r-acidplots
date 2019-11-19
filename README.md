@@ -25,7 +25,11 @@ remotes::install_github("acidgenomics/acidplots")
 Configure [conda][] to use the [bioconda][] channels.
 
 ```sh
-conda install -c bioconda r-acidplots
+# Don't install recipe into base environment.
+name="r-acidplots"
+conda create --name="$name" "$name"
+conda activate "$name"
+R
 ```
 
 [BiocManager]: https://cran.r-project.org/package=BiocManager

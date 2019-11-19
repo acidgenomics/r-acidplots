@@ -1,4 +1,4 @@
-## acidplots 0.2.19 (UNRELEASED)
+## acidplots 0.2.19 (2019-11-19)
 
 ### Minor changes
 
@@ -6,6 +6,8 @@
   `SummarizedExperiment` objects. Currently a maximum of 20 genes (rows) are
   allowed to pass through in the method.
 - Updated documentation to support roxygen2 7.0 release.
+- Improved default color palettes for `plotHeatmap`, `plotCorrelationHeatmap`,
+  and `plotQuantileHeatmap`.
 
 ## acidplots 0.2.18 (2019-11-12)
 
