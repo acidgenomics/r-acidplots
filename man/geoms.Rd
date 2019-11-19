@@ -15,11 +15,15 @@ acid_geom_bar(..., color = NA, stat = "identity")
 
 acid_geom_label(data = NULL, mapping = NULL, ...)
 
-acid_geom_label_average(data, col, fun = c("mean", "median"),
-  digits = 0L, ...)
+acid_geom_label_average(data, col, fun = c("mean", "median"), digits = 0L, ...)
 
-acid_geom_label_repel(data = NULL, mapping = NULL, color = NULL,
-  size = 4L, ...)
+acid_geom_label_repel(
+  data = NULL,
+  mapping = NULL,
+  color = NULL,
+  size = 4L,
+  ...
+)
 }
 \arguments{
 \item{xintercept, yintercept}{\code{numeric(1)}.

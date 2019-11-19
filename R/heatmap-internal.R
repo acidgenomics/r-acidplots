@@ -141,18 +141,18 @@
 
 
 ## Updated 2019-07-29.
+.scaleCols <- function(object) {
+    assert(is.matrix(object), is.numeric(object))
+    t(.scaleRows(t(object)))
+}
+
+
+
+## Updated 2019-07-29.
 .scaleRows <- function(object) {
     assert(is.matrix(object), is.numeric(object))
     mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
     sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
     out <- (object - mean) / sd
     out
-}
-
-
-
-## Updated 2019-07-29.
-.scaleCols <- function(object) {
-    assert(is.matrix(object), is.numeric(object))
-    t(.scaleRows(t(object)))
 }

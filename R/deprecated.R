@@ -4,14 +4,14 @@
 
 
 #' @name defunct
-#' @inherit basejump::defunct
+#' @inherit basejump::defunct description return title
 #' @keywords internal
 NULL
 
 
 
 #' @name deprecated
-#' @inherit basejump::deprecated
+#' @inherit basejump::deprecated description return title
 #' @keywords internal
 NULL
 

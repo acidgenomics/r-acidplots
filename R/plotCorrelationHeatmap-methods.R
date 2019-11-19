@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit bioverbs::plotCorrelationHeatmap
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-11-19.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -14,16 +14,11 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotCorrelationHeatmap(object)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' plotCorrelationHeatmap(object)
 NULL
 
@@ -38,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2019-11-19.
 `plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -132,11 +127,14 @@ NULL
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
+            breaks = NULL,
             clusteringMethod = clusteringMethod,
             clusteringDistanceCols = "correlation",
             clusteringDistanceRows = "correlation",
             color = color,
+            legendBreaks = NULL,
             main = title,
+            scale = "none",
             showColnames = showColnames,
             showRownames = showRownames,
             treeheightCol = treeheightCol,
@@ -144,16 +142,15 @@ NULL
             ...
         )
         args <- .pheatmapArgs(args)
-        assert(areDisjointSets(names(args), "scale"))
         do.call(what = pheatmap, args = args)
     }
 
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
     formals(stats::cor)[["method"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["color"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.correlation.color"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    formalsList[["heatmap.color"]]
+    formalsList[["heatmap.legend.color"]]
 
 
 

@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -125,12 +125,17 @@
     <pre class="usage"><span class='no'>plotFeaturesDetected</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotFeaturesDetected</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>0L</span>, <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+<span class='fu'>plotFeaturesDetected</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>limit</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
+  <span class='kw'>minCounts</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>scale_fill_synesthesia_d</a></span>()), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span>
-  <span class='st'>"Features detected"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"features"</span>),
-  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>scale_fill_synesthesia_d</a></span>()),
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Features detected"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"features"</span>),
+  <span class='kw'>flip</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.flip"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>plotFeaturesDetected</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
@@ -192,11 +197,11 @@ Flip x and y axes. Recommended for plots containing many samples.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>ggplot</code>.</p>
-    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
 <ul>
-<li><p><code>SingleCellExperiment</code>: Applies <code>aggregateCellsToSamples()</code>
+<li><p><code>plotFeaturesDetected,SingleCellExperiment-method</code>: Applies <code>aggregateCellsToSamples()</code>
 calculation to summarize at sample level prior to plotting.<br />
 Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 </ul>
@@ -223,7 +228,7 @@ Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#methods-by-class-">Methods (by class)</a></li>
+      <li><a href="#functions">Functions</a></li>
       <li><a href="#note">Note</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

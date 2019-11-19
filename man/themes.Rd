@@ -7,18 +7,35 @@
 \alias{acid_theme_dracula}
 \title{ggplot2 themes}
 \usage{
-acid_theme_light(base_size = 14L, base_family = "", face = c("bold",
-  "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "top", "none"), grid = FALSE, minimal = FALSE)
+acid_theme_light(
+  base_size = 14L,
+  base_family = "",
+  face = c("bold", "plain"),
+  aspect_ratio = NULL,
+  legend_position = c("right", "bottom", "top", "none"),
+  grid = FALSE,
+  minimal = FALSE
+)
 
-acid_theme_dark(base_size = 14L, base_family = "", face = c("bold",
-  "plain"), aspect_ratio = NULL, legend_position = c("right", "bottom",
-  "top", "none"), grid = FALSE, minimal = FALSE)
+acid_theme_dark(
+  base_size = 14L,
+  base_family = "",
+  face = c("bold", "plain"),
+  aspect_ratio = NULL,
+  legend_position = c("right", "bottom", "top", "none"),
+  grid = FALSE,
+  minimal = FALSE
+)
 
-acid_theme_dracula(base_size = 14L, base_family = "",
-  face = c("bold", "plain"), aspect_ratio = NULL,
-  legend_position = c("right", "bottom", "top", "none"), grid = FALSE,
-  minimal = FALSE)
+acid_theme_dracula(
+  base_size = 14L,
+  base_family = "",
+  face = c("bold", "plain"),
+  aspect_ratio = NULL,
+  legend_position = c("right", "bottom", "top", "none"),
+  grid = FALSE,
+  minimal = FALSE
+)
 }
 \arguments{
 \item{base_size}{\code{numeric(1)}.

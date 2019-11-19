@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.18</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
       </span>
     </div>
 
@@ -125,15 +125,27 @@
     <pre class="usage"><span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"row"</span>, <span class='st'>"column"</span>),
-  <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>, <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>showRownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>showColnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-  <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>synesthesia</a></span>),
-  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-  <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>synesthesia</a></span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>plotHeatmap</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
+  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"row"</span>, <span class='st'>"column"</span>, <span class='st'>"none"</span>),
+  <span class='kw'>clusteringMethod</span> <span class='kw'>=</span> <span class='st'>"ward.D2"</span>,
+  <span class='kw'>clusterRows</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>showRownames</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>showColnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>treeheightRow</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>treeheightCol</span> <span class='kw'>=</span> <span class='fl'>50L</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.heatmap.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/gradient.html'>blueYellow</a></span>),
+  <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.heatmap.legend.color"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
+    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/synesthesia.html'>synesthesia</a></span>),
+  <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.25</span>),
+  <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>1L</span>),
+  <span class='kw'>borderColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for SingleCellExperiment</span>
 <span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
@@ -238,17 +250,17 @@ The argument names must be formatted in camel case, not snake case.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>pheatmap</code>.</p>
-    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
 <ul>
-<li><p><code>SingleCellExperiment</code>: Applies <code>pseudobulk()</code> calculation to average gene
+<li><p><code>plotHeatmap,SingleCellExperiment-method</code>: Applies <code>pseudobulk()</code> calculation to average gene
 expression at sample level prior to plotting.<br />
 Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 </ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-08-27.</p>
+    <p>Updated 2019-11-19.</p>
     <h2 class="hasAnchor" id="scaling"><a class="anchor" href="#scaling"></a>Scaling</h2>
 
     
@@ -303,31 +315,41 @@ hclust &lt;- hclust(dist, method = "ward.D2")
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
     <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
     <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
 )
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Disable column clustering.</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>clusterCols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plotHeatmap-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Using pheatmap default colors.</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>legendColor</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='img'><img src='plotHeatmap-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## Using hexadecimal color input.</span>
-<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>)
-<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>grDevices</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRampPalette</a></span>(<span class='no'>color</span>)(<span class='fl'>256L</span>)
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>color</span>)</div><div class='img'><img src='plotHeatmap-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'>plotHeatmap</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Aggregating counts using 'mean()'.</span></div><div class='img'><img src='plotHeatmap-5.png' alt='' width='700' height='433' /></div></pre>
+<span class='co'>## Row scaling requires non-zero rows.</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>nonzeroRowsAndCols</span>(<span class='no'>object</span>)
+
+<span class='co'>## Symmetric row-scaled breaks (recommended).</span>
+<span class='fu'>plotHeatmap</span>(
+    <span class='no'>object</span>,
+    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/acidplots/man/gradient.html'>blueYellow</a></span>,
+    <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.25</span>),
+    <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
+)</div><div class='output co'>#&gt; <span class='message'>Scaling matrix per row (z-score).</span></div><div class='output co'>#&gt; <span class='message'>Performing hierarchical clustering.</span>
+#&gt; <span class='message'>Using 'stats::hclust(method = "ward.D2")'.</span></div><div class='output co'>#&gt; <span class='message'>Arranging rows using 'hclust()'.</span></div><div class='output co'>#&gt; <span class='message'>Arranging columns using 'hclust()'.</span></div><div class='img'><img src='plotHeatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'>## Using custom hexadecimal color input.</span>
+<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>11L</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"PuOr"</span>))
+<span class='no'>color</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>grDevices</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRampPalette</a></span>(<span class='no'>color</span>)
+<span class='fu'>plotHeatmap</span>(
+    <span class='no'>object</span>,
+    <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+    <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>color</span>,
+    <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>0.25</span>),
+    <span class='kw'>legendBreaks</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> -<span class='fl'>2L</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2L</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
+)</div><div class='output co'>#&gt; <span class='message'>Scaling matrix per row (z-score).</span></div><div class='output co'>#&gt; <span class='message'>Performing hierarchical clustering.</span>
+#&gt; <span class='message'>Using 'stats::hclust(method = "ward.D2")'.</span></div><div class='output co'>#&gt; <span class='message'>Arranging rows using 'hclust()'.</span></div><div class='output co'>#&gt; <span class='message'>Arranging columns using 'hclust()'.</span></div><div class='img'><img src='plotHeatmap-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#methods-by-class-">Methods (by class)</a></li>
+      <li><a href="#functions">Functions</a></li>
       <li><a href="#note">Note</a></li>
       <li><a href="#scaling">Scaling</a></li>
       <li><a href="#hierarchical-clustering">Hierarchical clustering</a></li>
