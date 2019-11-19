@@ -136,11 +136,14 @@ NULL
             annotationCol = annotationCol,
             annotationColors = annotationColors,
             borderColor = borderColor,
+            breaks = NULL,
             clusteringMethod = clusteringMethod,
             clusteringDistanceCols = "correlation",
             clusteringDistanceRows = "correlation",
             color = color,
+            legendBreaks = NULL,
             main = title,
+            scale = "none",
             showColnames = showColnames,
             showRownames = showRownames,
             treeheightCol = treeheightCol,
@@ -152,12 +155,14 @@ NULL
         do.call(what = pheatmap, args = args)
     }
 
+color <- formalsList[["heatmap.correlation.color"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
     formals(stats::cor)[["method"]]
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["color"]] <-
-    formalsList[["heatmap.color"]]
+    color
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
-    formalsList[["heatmap.color"]]
+    color
+rm(color)
 
 
 
