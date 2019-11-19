@@ -75,3 +75,18 @@ setMethod(
     signature = signature("data.frame"),
     definition = `plotUpset,data.frame`
 )
+
+
+
+`plotUpset,DataFrame` <-  # nolint
+    `plotUpset,data.frame`
+
+
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("DataFrame"),
+    definition = `plotUpset,DataFrame`
+)

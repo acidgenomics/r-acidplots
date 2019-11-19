@@ -3,11 +3,29 @@
 \name{plotUpset}
 \alias{plotUpset}
 \alias{plotUpset,data.frame-method}
+\alias{plotUpset,DataFrame-method}
 \title{UpSet plot}
 \usage{
 plotUpset(object, ...)
 
 \S4method{plotUpset}{data.frame}(
+  object,
+  line.size = 1L,
+  main.bar.color = "black",
+  matrix.color = "black",
+  matrix.dot.alpha = 1L,
+  mb.ratio = c(0.6, 0.4),
+  point.size = 3L,
+  sets.bar.color = "black",
+  shade.alpha = 1L,
+  shade.color = NA,
+  text.scale = 1.5,
+  decreasing = c(TRUE, FALSE),
+  keep.order = FALSE,
+  ...
+)
+
+\S4method{plotUpset}{DataFrame}(
   object,
   line.size = 1L,
   main.bar.color = "black",
