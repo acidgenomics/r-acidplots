@@ -15,16 +15,11 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotQuantileHeatmap(object)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' plotQuantileHeatmap(object)
 NULL
 

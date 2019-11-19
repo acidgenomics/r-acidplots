@@ -14,16 +14,11 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
 #'     package = "acidtest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotCorrelationHeatmap(object)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
 #' plotCorrelationHeatmap(object)
 NULL
 
