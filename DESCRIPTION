@@ -42,7 +42,7 @@ Imports:
     matrixStats (>= 0.55),
     pheatmap (>= 1.0),
     rlang (>= 0.4),
-    stringi (>= 1.4.3),
+    stringr (>= 1.4.0),
     grDevices,
     grid,
     methods,
