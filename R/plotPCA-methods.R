@@ -147,9 +147,7 @@ NULL
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),
                 ## Protect against NA value input.
-                color = as.factor(str_replace_na(as.character(
-                    !!sym("interestingGroups")
-                )))
+                color = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
             geom_point(size = 4L) +
