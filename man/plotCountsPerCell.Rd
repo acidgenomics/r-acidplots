@@ -96,7 +96,7 @@ plotCountsPerCell(object, geom = "histogram")
 plotCountsPerCell(object, geom = "boxplot")
 }
 \seealso{
-\code{\link[=plotCountsVsFeatures]{plotCountsVsFeatures()}}.
+\code{\link[bioverbs:plotCountsVsFeatures]{plotCountsVsFeatures()}}.
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

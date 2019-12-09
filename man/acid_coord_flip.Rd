@@ -24,7 +24,7 @@ To my knowledge, there's not an easy way to create a \code{ggproto} object
 (via CoordFlip ggproto call internally) that lets you reorder the samples
 on the Y-axis to be reversed. So this function works directly on the
 \code{ggplot} object instead of a \code{ggproto}, and therefore doesn't currently
-support the \verb{+} operator.
+support the \code{+} operator.
 
 Updated 2019-11-07.
 }

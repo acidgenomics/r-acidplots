@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit bioverbs::plotCounts
-#' @note Updated 2019-11-19.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -68,9 +68,9 @@ NULL
     ggplot(
         data = data,
         mapping = aes(
-            x = !!sym("interestingGroups"),
+            x = str_replace_na(!!sym("interestingGroups")),
             y = !!sym("value"),
-            color = !!sym("interestingGroups")
+            color = str_replace_na(!!sym("interestingGroups"))
         )
     ) +
         facet_wrap(facets = sym("rowname"), scales = "free_y")
@@ -85,7 +85,7 @@ NULL
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("value"),
-            color = !!sym("interestingGroups")
+            color = str_replace_na(!!sym("interestingGroups"))
         )
     )
 }

@@ -11,7 +11,7 @@ acid_pretty_breaks(n = 5L)
 Desired number of breaks.}
 }
 \value{
-\verb{function}.
+\code{function}.
 }
 \description{
 Pretty breaks that resemble the base plotting engine

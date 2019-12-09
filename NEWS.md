@@ -1,3 +1,14 @@
+## acidplots 0.2.20 (2019-12-09)
+
+- Hardened user-defined `interestingGroups` input against `NA` values causing
+  values to drop in plots. This was discovered with `plotPCA` calling
+  `geom_point` internally, which caused removal of rows. If we coerce `NA` value
+  to `"NA"` first, then removal no longer occurs. This is accomplished
+  internally using `str_remove_na` (see also `stringi_remove_na`). The change
+  applies to these functions: `plotCellCounts`, `plotCounts`,
+  `plotCountsPerBiotype`, `plotCountsPerBroadClass`, `plotCountsPerFeature`,
+  `plotFeaturesDetected`, `plotPCA`, `plotTotalCounts`, `plotZerosVsDepth`.
+
 ## acidplots 0.2.19 (2019-11-19)
 
 ### Minor changes
