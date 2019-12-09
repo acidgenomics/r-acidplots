@@ -73,7 +73,7 @@ Principal component analysis plot
 \code{SingleCellExperiment} method that visualizes dimension reduction data
 slotted in \code{reducedDims()} is defined in pointillism package.
 
-Updated 2019-08-27.
+Updated 2019-12-09.
 }
 \section{Principal component analysis}{
 

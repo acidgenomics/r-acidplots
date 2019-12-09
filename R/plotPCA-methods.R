@@ -12,7 +12,7 @@
 #' @name plotPCA
 #' @note `SingleCellExperiment` method that visualizes dimension reduction data
 #'   slotted in `reducedDims()` is defined in pointillism package.
-#' @note Updated 2019-08-27.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -55,7 +55,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2019-12-09.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -85,7 +85,7 @@ NULL
             stop("'returnData' is defunct. Use 'return' argument instead.")
         }
         ## Error on unsupported arguments.
-        assert(isSubset(setdiff(names(call), ""), names(formals())))
+        assert(isSubset(x = setdiff(names(call), ""), y = names(formals())))
         rm(call)
         ## nocov end
         validObject(object)
@@ -122,6 +122,7 @@ NULL
         ))
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assay(object, i = assay)
+        ## Make dense, if necessary, so we can calculate `rowVars`.
         counts <- as.matrix(counts)
         rv <- rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
@@ -145,7 +146,10 @@ NULL
             mapping = aes(
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),
-                color = !!sym("interestingGroups")
+                color = !!sym("interestingGroups") %>%
+                    as.character() %>%
+                    str_replace_na() %>%
+                    as.factor()
             )
         ) +
             geom_point(size = 4L) +
