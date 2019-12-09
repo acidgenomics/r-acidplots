@@ -1,3 +1,11 @@
+## acidplots 0.2.20 (2019-12-09)
+
+- `plotPCA`: Protect against `NA` values defined in `interestingGroups`. The
+  `geom_point` geom will remove NA rows when a color is manually defined via
+  the `color` argument, which we want to avoid. This is corrected internally
+  by coercing to character, substituting `NA` to `"NA"`, and coercing back to
+  a factor internally.
+
 ## acidplots 0.2.19 (2019-11-19)
 
 ### Minor changes
