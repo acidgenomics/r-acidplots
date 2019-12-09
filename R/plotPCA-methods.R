@@ -146,10 +146,10 @@ NULL
             mapping = aes(
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),
-                color = !!sym("interestingGroups") %>%
-                    as.character() %>%
-                    str_replace_na() %>%
-                    as.factor()
+                ## Protect against NA value input.
+                color = as.factor(str_replace_na(as.character(
+                    !!sym("interestingGroups")
+                )))
             )
         ) +
             geom_point(size = 4L) +
