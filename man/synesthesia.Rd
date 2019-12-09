@@ -76,7 +76,7 @@ Color palette name.}
 \item{na.value}{\code{character(1)}.
 Missing values will be replaced with this value.}
 
-\item{guide}{\code{character(1)} or \verb{function}.
+\item{guide}{\code{character(1)} or \code{function}.
 A function used to create a guide or its name.
 See \code{\link[ggplot2:guides]{guides()}} for details.}
 }

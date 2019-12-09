@@ -61,7 +61,7 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 \item{treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
 
-\item{color}{\verb{function}, \code{character}, or \code{NULL}.
+\item{color}{\code{function}, \code{character}, or \code{NULL}.
 Hexadecimal color function or values to use for plot.
 
 We generally recommend these hexadecimal functions from the viridis
@@ -78,7 +78,7 @@ Alternatively, colors can be defined manually using hexadecimal values
 Refer to the RColorBrewer package for hexadecimal color palettes that may
 be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 
-\item{legendColor}{\verb{function} or \code{NULL}.
+\item{legendColor}{\code{function} or \code{NULL}.
 Hexadecimal color function to use for legend labels. Note that hexadecimal
 values are not supported. If set \code{NULL}, will use the default pheatmap
 colors.}
