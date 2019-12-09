@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit bioverbs::plotZerosVsDepth
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2019-12-09.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -65,7 +65,7 @@ NULL
             mapping = aes(
                 x = !!sym("depth"),
                 y = !!sym("dropout"),
-                color = !!sym("interestingGroups")
+                color = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
             geom_point(size = 0.8, alpha = 0.8) +

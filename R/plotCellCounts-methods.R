@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCellCounts
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -25,7 +25,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2019-12-09.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -64,7 +64,7 @@ NULL
             mapping = aes(
                 x = !!sym("sampleName"),
                 y = !!sym(metricCol),
-                fill = !!sym("interestingGroups")
+                fill = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
             acid_geom_bar() +

@@ -71,7 +71,7 @@ object <- calculateMetrics(object)
 plotCountsVsFeatures(object)
 }
 \seealso{
-\code{\link[=plotCountsPerCell]{plotCountsPerCell()}}.
+\code{\link[bioverbs:plotCountsPerCell]{plotCountsPerCell()}}.
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

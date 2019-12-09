@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.19</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.20</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
 <li>
 <code>acid_coord_flip</code>: Intelligently puts samples at the top of the Y axis when flipped. Particularly useful for barplots.</li>
 <li>
-<code>acid_pretty_breaks</code>: Attempt to improve <code><a href="https://scales.r-lib.org//reference/pretty_breaks.html">scales::pretty_breaks</a></code>, using an approach more similar to the base plot engine.</li>
+<code>acid_pretty_breaks</code>: Attempt to improve <code><a href="https://scales.r-lib.org//reference/breaks_pretty.html">scales::pretty_breaks</a></code>, using an approach more similar to the base plot engine.</li>
 <li>Renamed ggplot2 themes: <code>acid_theme_light</code>, <code>acid_theme_dark</code>.</li>
 </ul>
 </div>
@@ -435,6 +435,13 @@
 </ul>
 </div>
 </div>
+    <div id="acidplots-0-2-20-2019-12-09" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acidplots-0-2-20-2019-12-09" class="anchor"></a>acidplots 0.2.20 (2019-12-09)</h2>
+<ul>
+<li>Hardened user-defined <code>interestingGroups</code> input against <code>NA</code> values causing values to drop in plots. This was discovered with <code>plotPCA</code> calling <code>geom_point</code> internally, which caused removal of rows. If we coerce <code>NA</code> value to <code>"NA"</code> first, then removal no longer occurs. This is accomplished internally using <code>str_remove_na</code> (see also <code>stringi_remove_na</code>). The change applies to these functions: <code>plotCellCounts</code>, <code>plotCounts</code>, <code>plotCountsPerBiotype</code>, <code>plotCountsPerBroadClass</code>, <code>plotCountsPerFeature</code>, <code>plotFeaturesDetected</code>, <code>plotPCA</code>, <code>plotTotalCounts</code>, <code>plotZerosVsDepth</code>.</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -461,6 +468,7 @@
         <li><a href="#acidplots-0-2-17-2019-11-07">0.2.17</a></li>
         <li><a href="#acidplots-0-2-18-2019-11-12">0.2.18</a></li>
         <li><a href="#acidplots-0-2-19-2019-11-19">0.2.19</a></li>
+        <li><a href="#acidplots-0-2-20-2019-12-09">0.2.20</a></li>
       </ul>
     </div>
   </div>

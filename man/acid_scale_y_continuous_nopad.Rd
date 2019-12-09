@@ -11,7 +11,7 @@ acid_scale_y_continuous_nopad(..., expand = expand_scale(mult = c(0L, 0.025)))
 
 \item{expand}{Vector of range expansion constants used to add some
 padding around the data, to ensure that they are placed some distance
-away from the axes. Use the convenience function \code{\link[=expand_scale]{expand_scale()}}
+away from the axes. Use the convenience function \code{\link[ggplot2:expand_scale]{expand_scale()}}
 to generate the values for the \code{expand} argument. The defaults are to
 expand the scale by 5\% on each side for continuous variables, and by
 0.6 units on each side for discrete variables.}
