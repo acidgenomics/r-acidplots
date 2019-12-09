@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit bioverbs::plotCountsPerFeature
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams basejump::melt
 #' @inheritParams acidroxygen::params
@@ -89,8 +89,8 @@ NULL
                 geom_density(
                     mapping = aes(
                         x = !!sym("value"),
-                        group = !!sym("interestingGroups"),
-                        color = !!sym("interestingGroups")
+                        group = str_replace_na(!!sym("interestingGroups")),
+                        color = str_replace_na(!!sym("interestingGroups"))
                     ),
                     fill = NA,
                     size = 1L
@@ -101,7 +101,7 @@ NULL
                     mapping = aes(
                         x = !!sym("sampleName"),
                         y = !!sym("value"),
-                        fill = !!sym("interestingGroups")
+                        fill = str_replace_na(!!sym("interestingGroups"))
                     ),
                     color = "black"
                 )
@@ -111,7 +111,7 @@ NULL
                     mapping = aes(
                         x = !!sym("sampleName"),
                         y = !!sym("value"),
-                        color = !!sym("interestingGroups")
+                        color = str_replace_na(!!sym("interestingGroups"))
                     ),
                     size = 0.5
                 )

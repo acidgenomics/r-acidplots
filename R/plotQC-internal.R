@@ -1,6 +1,6 @@
 #' Plot a single quality control metric
 #'
-#' @note Updated 2019-09-15.
+#' @note Updated 2019-12-09.
 #' @noRd
 .plotQCMetric <- function(
     object,
@@ -57,8 +57,8 @@
     }
     ## nocov end
     mapping <- aes(
-        color = !!sym("interestingGroups"),
-        fill = !!sym("interestingGroups")
+        color = str_replace_na(!!sym("interestingGroups")),
+        fill = str_replace_na(!!sym("interestingGroups"))
     )
     if (isSubset(geom, c("boxplot", "violin"))) {
         mapping[["x"]] <- as.symbol("sampleName")
@@ -253,7 +253,7 @@ formals(`.plotQCMetric`) <- f
         mapping = aes(
             x = !!sym(xCol),
             y = !!sym(yCol),
-            color = !!sym("interestingGroups")
+            color = str_replace_na(!!sym("interestingGroups"))
         )
     ) +
         geom_point(alpha = 0.5, size = 1L) +
