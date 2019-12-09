@@ -65,7 +65,7 @@ Remotes:
     acidgenomics/goalie
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 Collate: 
     'AllGlobals.R'
