@@ -146,7 +146,6 @@ NULL
             mapping = aes(
                 x = !!sym("PC1"),
                 y = !!sym("PC2"),
-                ## Protect against NA value input.
                 color = str_replace_na(!!sym("interestingGroups"))
             )
         ) +

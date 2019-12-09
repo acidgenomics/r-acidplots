@@ -55,7 +55,7 @@ Plot.
 Plot counts per broad class definition
 }
 \note{
-Updated 2019-09-16.
+Updated 2019-12-09.
 }
 \examples{
 data(

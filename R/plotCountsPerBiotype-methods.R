@@ -1,7 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit bioverbs::plotCountsPerBiotype
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -33,7 +33,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2019-12-09.
 `plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -111,12 +111,14 @@ NULL
         p <- ggplot(
             data = data,
             mapping = aes(
-                x = !!sym("interestingGroups"),
+                x = str_replace_na(!!sym("interestingGroups")),
                 y = !!sym("value")
             )
         ) +
             geom_violin(
-                mapping = aes(fill = !!sym("interestingGroups")),
+                mapping = aes(
+                    fill = str_replace_na(!!sym("interestingGroups"))
+                ),
                 color = NA,
                 scale = "area",
                 trim = TRUE

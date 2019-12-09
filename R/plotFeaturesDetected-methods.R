@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit bioverbs::plotFeaturesDetected
-#' @note Updated 2019-09-16.
+#' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +32,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2019-12-09.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -79,7 +79,7 @@ NULL
             mapping = aes(
                 x = !!sym("sampleName"),
                 y = !!sym("featureCount"),
-                fill = !!sym("interestingGroups")
+                fill = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
             acid_geom_bar() +

@@ -1,7 +1,7 @@
 Package: acidplots
 Title: Functions for plotting genomic data
 Description: Extension of the basejump toolkit for bioinformatics.
-Version: 0.2.19.9000
+Version: 0.2.20
 Date: 2019-12-09
 Authors@R: c(
     person(
