@@ -442,6 +442,14 @@
 <li>Hardened user-defined <code>interestingGroups</code> input against <code>NA</code> values causing values to drop in plots. This was discovered with <code>plotPCA</code> calling <code>geom_point</code> internally, which caused removal of rows. If we coerce <code>NA</code> value to <code>"NA"</code> first, then removal no longer occurs. This is accomplished internally using <code>str_remove_na</code> (see also <code>stringi_remove_na</code>). The change applies to these functions: <code>plotCellCounts</code>, <code>plotCounts</code>, <code>plotCountsPerBiotype</code>, <code>plotCountsPerBroadClass</code>, <code>plotCountsPerFeature</code>, <code>plotFeaturesDetected</code>, <code>plotPCA</code>, <code>plotTotalCounts</code>, <code>plotZerosVsDepth</code>.</li>
 </ul>
 </div>
+    <div id="acidplots-0-2-21-2019-12-13" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acidplots-0-2-21-2019-12-13" class="anchor"></a>acidplots 0.2.21 (2019-12-13)</h2>
+<ul>
+<li>
+<code>plotHeatmap</code>: Increased the default break range from <code>-2:2</code> up to <code>-3:3</code>. This helps improve the dynamic range a bit for some RNA-seq plots.</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -469,6 +477,7 @@
         <li><a href="#acidplots-0-2-18-2019-11-12">0.2.18</a></li>
         <li><a href="#acidplots-0-2-19-2019-11-19">0.2.19</a></li>
         <li><a href="#acidplots-0-2-20-2019-12-09">0.2.20</a></li>
+        <li><a href="#acidplots-0-2-21-2019-12-13">0.2.21</a></li>
       </ul>
     </div>
   </div>
