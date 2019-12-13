@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-11-19.
+#' @note Updated 2019-12-13.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -141,7 +141,7 @@ NULL
 
 
 
-## Updated 2019-11-19.
+## Updated 2019-12-13.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -159,8 +159,8 @@ NULL
         treeheightCol = 50L,
         color,
         legendColor,
-        breaks = seq(from = -2L, to = 2L, by = 0.25),
-        legendBreaks = seq(from = -2L, to = 2L, by = 1L),
+        breaks = seq(from = -3L, to = 3L, by = 0.25),
+        legendBreaks = seq(from = -3L, to = 3L, by = 1L),
         borderColor = NULL,
         title = NULL,
         ...
