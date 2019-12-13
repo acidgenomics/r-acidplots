@@ -1,3 +1,8 @@
+## acidplots 0.2.21 (2019-12-13)
+
+- `plotHeatmap`: Increased the default break range from `-2:2` up to `-3:3`.
+  This helps improve the dynamic range a bit for some RNA-seq plots.
+
 ## acidplots 0.2.20 (2019-12-09)
 
 - Hardened user-defined `interestingGroups` input against `NA` values causing
