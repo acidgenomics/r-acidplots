@@ -112,3 +112,4 @@ Collate:
     'plotTotalCounts-methods.R'
     'plotUpset-methods.R'
     'plotZerosVsDepth-methods.R'
+    'reexports.R'
