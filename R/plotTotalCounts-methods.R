@@ -1,5 +1,5 @@
 #' @name plotTotalCounts
-#' @inherit bioverbs::plotTotalCounts
+#' @inherit acidgenerics::plotTotalCounts
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -25,7 +25,7 @@ NULL
 
 #' @rdname plotTotalCounts
 #' @name plotTotalCounts
-#' @importFrom bioverbs plotTotalCounts
+#' @importFrom acidgenerics plotTotalCounts
 #' @usage plotTotalCounts(object, ...)
 #' @export
 NULL

@@ -1,6 +1,6 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotCountsPerBiotype
+#' @inherit acidgenerics::plotCountsPerBiotype
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBiotype
-#' @importFrom bioverbs plotCountsPerBiotype
+#' @importFrom acidgenerics plotCountsPerBiotype
 #' @usage plotCountsPerBiotype(object, ...)
 #' @export
 NULL

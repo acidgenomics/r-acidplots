@@ -21,7 +21,7 @@ NULL
 
 #' @rdname plotUpset
 #' @name plotUpset
-#' @importFrom bioverbs plotUpset
+#' @importFrom acidgenerics plotUpset
 #' @usage plotUpset(object, ...)
 #' @export
 NULL

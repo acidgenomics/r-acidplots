@@ -1,5 +1,5 @@
 #' @name plotQC
-#' @inherit bioverbs::plotQC
+#' @inherit acidgenerics::plotQC
 #' @note Updated 2019-08-12.
 #'
 #' @inheritParams acidroxygen::params
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotQC
 #' @name plotQC
-#' @importFrom bioverbs plotQC
+#' @importFrom acidgenerics plotQC
 #' @usage plotQC(object, ...)
 #' @export
 NULL

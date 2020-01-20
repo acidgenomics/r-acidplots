@@ -1,5 +1,5 @@
 #' @name plotSums
-#' @inherit bioverbs::plotSums
+#' @inherit acidgenerics::plotSums
 #' @note Updated 2019-09-15.
 #'
 #' @inheritParams acidroxygen::params
@@ -34,7 +34,7 @@ NULL
 
 #' @rdname plotSums
 #' @name plotSums
-#' @importFrom bioverbs plotSums
+#' @importFrom acidgenerics plotSums
 #' @usage plotSums(object, ...)
 #' @export
 NULL

@@ -1,7 +1,7 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
 #' @include plotQC-internal.R
-#' @inherit bioverbs::plotNovelty
+#' @inherit acidgenerics::plotNovelty
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname plotNovelty
 #' @name plotNovelty
-#' @importFrom bioverbs plotNovelty
+#' @importFrom acidgenerics plotNovelty
 #' @usage plotNovelty(object, ...)
 #' @export
 NULL

@@ -1,6 +1,6 @@
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotMitoVsCoding
+#' @inherit acidgenerics::plotMitoVsCoding
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
@@ -21,7 +21,7 @@ NULL
 
 #' @rdname plotMitoVsCoding
 #' @name plotMitoVsCoding
-#' @importFrom bioverbs plotMitoVsCoding
+#' @importFrom acidgenerics plotMitoVsCoding
 #' @usage plotMitoVsCoding(object, ...)
 #' @export
 NULL
