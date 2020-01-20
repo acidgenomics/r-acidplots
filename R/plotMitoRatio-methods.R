@@ -1,7 +1,7 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include plotQC-internal.R
-#' @inherit bioverbs::plotMitoRatio
+#' @inherit acidgenerics::plotMitoRatio
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
@@ -22,7 +22,7 @@ NULL
 
 #' @rdname plotMitoRatio
 #' @name plotMitoRatio
-#' @importFrom bioverbs plotMitoRatio
+#' @importFrom acidgenerics plotMitoRatio
 #' @usage plotMitoRatio(object, ...)
 #' @export
 NULL

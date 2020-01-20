@@ -1,9 +1,19 @@
+## acidplots 0.2.22 (2020-01-20)
+
+### Minor changes
+
+- Updated bioverbs dependency to renamed acidgenerics package.
+
 ## acidplots 0.2.21 (2019-12-13)
+
+### Minor changes
 
 - `plotHeatmap`: Increased the default break range from `-2:2` up to `-3:3`.
   This helps improve the dynamic range a bit for some RNA-seq plots.
 
 ## acidplots 0.2.20 (2019-12-09)
+
+### Minor changes
 
 - Hardened user-defined `interestingGroups` input against `NA` values causing
   values to drop in plots. This was discovered with `plotPCA` calling

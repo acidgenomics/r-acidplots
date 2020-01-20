@@ -1,6 +1,6 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotCountsPerBroadClass
+#' @inherit acidgenerics::plotCountsPerBroadClass
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCountsPerBroadClass
 #' @name plotCountsPerBroadClass
-#' @importFrom bioverbs plotCountsPerBroadClass
+#' @importFrom acidgenerics plotCountsPerBroadClass
 #' @usage plotCountsPerBroadClass(object, ...)
 #' @export
 NULL

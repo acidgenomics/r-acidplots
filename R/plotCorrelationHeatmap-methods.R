@@ -1,5 +1,5 @@
 #' @name plotCorrelationHeatmap
-#' @inherit bioverbs::plotCorrelationHeatmap
+#' @inherit acidgenerics::plotCorrelationHeatmap
 #' @note Updated 2019-11-19.
 #'
 #' @inheritParams plotHeatmap
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCorrelationHeatmap
 #' @name plotCorrelationHeatmap
-#' @importFrom bioverbs plotCorrelationHeatmap
+#' @importFrom acidgenerics plotCorrelationHeatmap
 #' @usage plotCorrelationHeatmap(object, ...)
 #' @export
 NULL

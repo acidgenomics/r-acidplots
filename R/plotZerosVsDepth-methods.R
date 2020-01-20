@@ -1,5 +1,5 @@
 #' @name plotZerosVsDepth
-#' @inherit bioverbs::plotZerosVsDepth
+#' @inherit acidgenerics::plotZerosVsDepth
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -25,7 +25,7 @@ NULL
 
 #' @rdname plotZerosVsDepth
 #' @name plotZerosVsDepth
-#' @importFrom bioverbs plotZerosVsDepth
+#' @importFrom acidgenerics plotZerosVsDepth
 #' @usage plotZerosVsDepth(object, ...)
 #' @export
 NULL
