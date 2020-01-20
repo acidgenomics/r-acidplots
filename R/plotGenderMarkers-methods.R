@@ -1,5 +1,5 @@
 #' @name plotGenderMarkers
-#' @inherit bioverbs::plotGenderMarkers
+#' @inherit acidgenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 #' @note Updated 2019-09-15.
 #'
@@ -28,7 +28,7 @@ NULL
 
 #' @rdname plotGenderMarkers
 #' @name plotGenderMarkers
-#' @importFrom bioverbs plotGenderMarkers
+#' @importFrom acidgenerics plotGenderMarkers
 #' @usage plotGenderMarkers(object, ...)
 #' @export
 NULL

@@ -1,6 +1,6 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotFeaturesPerCell
+#' @inherit acidgenerics::plotFeaturesPerCell
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams acidroxygen::params
@@ -19,7 +19,7 @@ NULL
 
 #' @rdname plotFeaturesPerCell
 #' @name plotFeaturesPerCell
-#' @importFrom bioverbs plotFeaturesPerCell
+#' @importFrom acidgenerics plotFeaturesPerCell
 #' @usage plotFeaturesPerCell(object, ...)
 #' @export
 NULL

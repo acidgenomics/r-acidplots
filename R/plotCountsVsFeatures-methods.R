@@ -1,7 +1,7 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @include plotQC-internal.R
-#' @inherit bioverbs::plotCountsVsFeatures
+#' @inherit acidgenerics::plotCountsVsFeatures
 #' @note Updated 2019-09-16
 #'
 #' @inheritParams acidroxygen::params
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname plotCountsVsFeatures
 #' @name plotCountsVsFeatures
-#' @importFrom bioverbs plotCountsVsFeatures
+#' @importFrom acidgenerics plotCountsVsFeatures
 #' @usage plotCountsVsFeatures(object, ...)
 #' @export
 NULL

@@ -1,5 +1,5 @@
 #' @name plotCountsPerFeature
-#' @inherit bioverbs::plotCountsPerFeature
+#' @inherit acidgenerics::plotCountsPerFeature
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams basejump::melt
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname plotCountsPerFeature
 #' @name plotCountsPerFeature
-#' @importFrom bioverbs plotCountsPerFeature
+#' @importFrom acidgenerics plotCountsPerFeature
 #' @usage plotCountsPerFeature(object, ...)
 #' @export
 NULL
