@@ -1,5 +1,5 @@
 #' @name plotFeaturesDetected
-#' @inherit bioverbs::plotFeaturesDetected
+#' @inherit acidgenerics::plotFeaturesDetected
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -25,7 +25,7 @@ NULL
 
 #' @rdname plotFeaturesDetected
 #' @name plotFeaturesDetected
-#' @importFrom bioverbs plotFeaturesDetected
+#' @importFrom acidgenerics plotFeaturesDetected
 #' @usage plotFeaturesDetected
 #' @export
 NULL

@@ -1,5 +1,5 @@
 #' @name plotQuantileHeatmap
-#' @inherit bioverbs::plotQuantileHeatmap
+#' @inherit acidgenerics::plotQuantileHeatmap
 #' @note Updated 2019-11-19.
 #'
 #' @inheritParams plotHeatmap
@@ -27,7 +27,7 @@ NULL
 
 #' @rdname plotQuantileHeatmap
 #' @name plotQuantileHeatmap
-#' @importFrom bioverbs plotQuantileHeatmap
+#' @importFrom acidgenerics plotQuantileHeatmap
 #' @usage plotQuantileHeatmap(object, ...)
 #' @export
 NULL

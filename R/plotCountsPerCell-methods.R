@@ -1,6 +1,6 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotCountsPerCell
+#' @inherit acidgenerics::plotCountsPerCell
 #' @note Updated 2019-08-27.
 #'
 #' @inheritParams acidroxygen::params
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCountsPerCell
 #' @name plotCountsPerCell
-#' @importFrom bioverbs plotCountsPerCell
+#' @importFrom acidgenerics plotCountsPerCell
 #' @usage plotCountsPerCell(object, ...)
 #' @export
 NULL

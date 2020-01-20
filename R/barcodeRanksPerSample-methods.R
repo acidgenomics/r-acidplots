@@ -1,5 +1,5 @@
 #' @name barcodeRanksPerSample
-#' @inherit bioverbs::barcodeRanksPerSample
+#' @inherit acidgenerics::barcodeRanksPerSample
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-11-19.
 #'
@@ -24,7 +24,7 @@ NULL
 
 #' @rdname barcodeRanksPerSample
 #' @name barcodeRanksPerSample
-#' @importFrom bioverbs barcodeRanksPerSample
+#' @importFrom acidgenerics barcodeRanksPerSample
 #' @usage barcodeRanksPerSample(object, ...)
 #' @export
 NULL

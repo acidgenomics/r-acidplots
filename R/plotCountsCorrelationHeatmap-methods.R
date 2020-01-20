@@ -1,5 +1,5 @@
 #' @name plotCountsCorrelationHeatmap
-#' @inherit bioverbs::plotCountsCorrelationHeatmap
+#' @inherit acidgenerics::plotCountsCorrelationHeatmap
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams base::Extract
@@ -21,7 +21,7 @@ NULL
 
 #' @rdname plotCountsCorrelationHeatmap
 #' @name plotCountsCorrelationHeatmap
-#' @importFrom bioverbs plotCountsCorrelationHeatmap
+#' @importFrom acidgenerics plotCountsCorrelationHeatmap
 #' @usage plotCountsCorrelationHeatmap(x, y, ...)
 #' @export
 NULL

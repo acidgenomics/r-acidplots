@@ -1,5 +1,5 @@
 #' @name plotCountsCorrelation
-#' @inherit bioverbs::plotCountsCorrelation
+#' @inherit acidgenerics::plotCountsCorrelation
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams base::Extract
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname plotCountsCorrelation
 #' @name plotCountsCorrelation
-#' @importFrom bioverbs plotCountsCorrelation
+#' @importFrom acidgenerics plotCountsCorrelation
 #' @usage plotCountsCorrelation(x, y, ...)
 #' @export
 NULL

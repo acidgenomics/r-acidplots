@@ -1,6 +1,6 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit bioverbs::plotCellCounts
+#' @inherit acidgenerics::plotCellCounts
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams acidroxygen::params
@@ -18,7 +18,7 @@ NULL
 
 #' @rdname plotCellCounts
 #' @name plotCellCounts
-#' @importFrom bioverbs plotCellCounts
+#' @importFrom acidgenerics plotCellCounts
 #' @usage plotCellCounts(object, ...)
 #' @export
 NULL
