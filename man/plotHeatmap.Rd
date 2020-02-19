@@ -111,7 +111,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2019-12-13.
+Updated 2020-02-19.
 }
 \section{Scaling}{
 

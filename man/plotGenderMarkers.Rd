@@ -38,7 +38,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 
-Updated 2019-09-15.
+Updated 2020-02-19.
 }
 \examples{
 data(
