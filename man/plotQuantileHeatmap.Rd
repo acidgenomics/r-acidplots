@@ -100,13 +100,6 @@ Title.}
 \description{
 Quantile heatmap
 }
-\section{Functions}{
-\itemize{
-\item \code{plotQuantileHeatmap,SingleCellExperiment-method}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
-gene expression at sample level prior to plotting.\cr
-Passes \code{...} to \code{SummarizedExperiment} method.
-}}
-
 \note{
 Updated 2020-02-19.
 }

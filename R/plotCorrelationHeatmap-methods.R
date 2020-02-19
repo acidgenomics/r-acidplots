@@ -175,9 +175,7 @@ setMethod(
 
 
 
-#' @describeIn plotCorrelationHeatmap Applies [pseudobulk()] calculation to
-#'   average gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",

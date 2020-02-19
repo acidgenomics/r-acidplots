@@ -28,13 +28,6 @@ automatically defined.}
 This is a convenience function that quickly plots known sexually dimorphic
 genes, and overall gene experssion for the X and Y chromosomes.
 }
-\section{Functions}{
-\itemize{
-\item \code{plotGenderMarkers,SingleCellExperiment-method}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average
-gene expression at sample level prior to plotting.\cr
-Passes \code{...} to \code{SummarizedExperiment} method.
-}}
-
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 

@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.23</span>
       </span>
     </div>
 
@@ -239,17 +239,9 @@ Title.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>pheatmap</code>.</p>
-    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
-
-    
-<ul>
-<li><p><code>plotCorrelationHeatmap,SingleCellExperiment-method</code>: Applies <code>pseudobulk()</code> calculation to
-average gene expression at sample level prior to plotting.<br />
-Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
-</ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-11-19.</p>
+    <p>Updated 2020-02-19.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
@@ -259,14 +251,13 @@ Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating correlation matrix using 'pearson' method.</span></div><div class='img'><img src='plotCorrelationHeatmap-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotCorrelationHeatmap</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Calculating correlation matrix using 'pearson' method.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: partial match of 'just' to 'justification'</span></div><div class='img'><img src='plotCorrelationHeatmap-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#functions">Functions</a></li>
       <li><a href="#note">Note</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
