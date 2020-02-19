@@ -96,9 +96,7 @@ setMethod(
 
 
 
-#' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotGenderMarkers
 #' @export
 setMethod(
     f = "plotGenderMarkers",

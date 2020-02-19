@@ -198,9 +198,7 @@ setMethod(
 
 
 
-#' @describeIn plotQuantileHeatmap Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotQuantileHeatmap
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",
