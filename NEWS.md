@@ -1,3 +1,11 @@
+## acidplots 0.2.23 (2020-02-22)
+
+### Minor changes
+
+- Updated internal code to use `aggregateCellsToSamples` instead of
+  `pseudobulk`, which has migrated to pointillism and will be reworked in an
+  upcoming release.
+
 ## acidplots 0.2.22 (2020-01-20)
 
 ### Minor changes
