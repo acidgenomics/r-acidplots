@@ -476,7 +476,9 @@
 <h3 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h3>
 <ul>
+<li>Changed license from MIT to GPL-3.</li>
 <li>Updated internal code to use <code>aggregateCellsToSamples</code> instead of <code>pseudobulk</code>, which has migrated to pointillism and will be reworked in an upcoming release.</li>
+<li>Updated documentation for <code>SingleCellExperiment</code> methods, where <code>aggregateCellsToSamples</code> is called internally. This was propagating to other packages where <code>SingleCellExperiment</code> methods are not defined, making the documentation confusing.</li>
 </ul>
 </div>
 </div>
