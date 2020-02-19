@@ -7,7 +7,7 @@
 \title{acidplots
 Functions for plotting genomic data.}
 \description{
-Extension of the basejump toolkit for bioinformatics.
+Functions for plotting genomic data.
 }
 \seealso{
 Useful links:

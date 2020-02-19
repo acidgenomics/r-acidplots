@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-12-13.
+#' @note Updated 2020-02-19.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -311,11 +311,11 @@ setMethod(
 
 
 
-## Updated 2019-05-15.
+## Updated 2020-02-19.
 `plotHeatmap,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         plotHeatmap(
-            object = pseudobulk(object),
+            object = aggregateCellsToSamples(object),
             ...
         )
     }
