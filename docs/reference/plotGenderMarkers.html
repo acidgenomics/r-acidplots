@@ -72,7 +72,7 @@ genes, and overall gene experssion for the X and Y chromosomes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.23</span>
       </span>
     </div>
 
@@ -154,18 +154,10 @@ automatically defined.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>ggplot</code>.</p>
-    <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
-
-    
-<ul>
-<li><p><code>plotGenderMarkers,SingleCellExperiment-method</code>: Applies <code>pseudobulk()</code> calculation to average
-gene expression at sample level prior to plotting.<br />
-Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
-</ul>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Currently only <em>Homo sapiens</em> and <em>Mus musculus</em> genomes are supported.</p>
-<p>Updated 2019-09-15.</p>
+<p>Updated 2020-02-19.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='plotCounts.html'>plotCounts()</a></code>.</p></div>
@@ -182,14 +174,13 @@ Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 <span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='img'><img src='plotGenderMarkers-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Aggregating counts using 'mean()'.</span></div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='img'><img src='plotGenderMarkers-2.png' alt='' width='700' height='433' /></div></span></pre>
+<span class='fu'>plotGenderMarkers</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>Some genes failed to map: ENSG00000173674, ENSG00000229807, ENSG00000067048, ENSG00000114374, ENSG00000183878.</span></div><div class='img'><img src='plotGenderMarkers-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#functions">Functions</a></li>
       <li><a href="#note">Note</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>

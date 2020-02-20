@@ -1,7 +1,7 @@
 #' @name plotGenderMarkers
 #' @inherit acidgenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#' @note Updated 2019-09-15.
+#' @note Updated 2020-02-19.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams acidroxygen::params
@@ -85,20 +85,18 @@ setMethod(
 
 
 
-## Updated 2019-09-15.
+## Updated 2020-02-19.
 `plotGenderMarkers,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         plotGenderMarkers(
-            object = pseudobulk(object),
+            object = aggregateCellsToSamples(object),
             ...
         )
     }
 
 
 
-#' @describeIn plotGenderMarkers Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotGenderMarkers
 #' @export
 setMethod(
     f = "plotGenderMarkers",

@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit acidgenerics::plotQuantileHeatmap
-#' @note Updated 2019-11-19.
+#' @note Updated 2020-02-19.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -187,20 +187,18 @@ setMethod(
 
 
 
-## Updated 2019-08-21.
+## Updated 2020-02-19.
 `plotQuantileHeatmap,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         plotQuantileHeatmap(
-            object = pseudobulk(object),
+            object = aggregateCellsToSamples(object),
             ...
         )
     }
 
 
 
-#' @describeIn plotQuantileHeatmap Applies [pseudobulk()] calculation to average
-#'   gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotQuantileHeatmap
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",

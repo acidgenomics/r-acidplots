@@ -20,7 +20,7 @@
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
 #'   interestingGroups<- leftJoin makeLabel makeTitle matchInterestingGroups
 #'   mapGenesToRownames methodFormals melt metrics nonzeroRowsAndCols organism
-#'   pseudobulk sampleData snakeCase standardizeCall zerosVsDepth
+#'   sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text

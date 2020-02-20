@@ -103,15 +103,8 @@ The argument names must be formatted in camel case, not snake case.}
 \description{
 Construct a simple heatmap.
 }
-\section{Functions}{
-\itemize{
-\item \code{plotHeatmap,SingleCellExperiment-method}: Applies \code{\link[=pseudobulk]{pseudobulk()}} calculation to average gene
-expression at sample level prior to plotting.\cr
-Passes \code{...} to \code{SummarizedExperiment} method.
-}}
-
 \note{
-Updated 2019-12-13.
+Updated 2020-02-19.
 }
 \section{Scaling}{
 
