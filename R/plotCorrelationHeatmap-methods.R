@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit acidgenerics::plotCorrelationHeatmap
-#' @note Updated 2019-11-19.
+#' @note Updated 2020-02-19.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -164,20 +164,18 @@ setMethod(
 
 
 
-## Updated 2019-09-15.
+## Updated 2020-02-19.
 `plotCorrelationHeatmap,SingleCellExperiment` <-  # nolint
     function(object, ...) {
         plotCorrelationHeatmap(
-            object = pseudobulk(object),
+            object = aggregateCellsToSamples(object),
             ...
         )
     }
 
 
 
-#' @describeIn plotCorrelationHeatmap Applies [pseudobulk()] calculation to
-#'   average gene expression at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",

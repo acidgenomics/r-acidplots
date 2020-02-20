@@ -1,3 +1,16 @@
+## acidplots 0.2.23 (2020-02-22)
+
+### Minor changes
+
+- Changed license from MIT to GPL-3.
+- Updated internal code to use `aggregateCellsToSamples` instead of
+  `pseudobulk`, which has migrated to pointillism and will be reworked in an
+  upcoming release.
+- Updated documentation for `SingleCellExperiment` methods, where
+  `aggregateCellsToSamples` is called internally. This was propagating to other
+  packages where `SingleCellExperiment` methods are not defined, making the
+  documentation confusing.
+
 ## acidplots 0.2.22 (2020-01-20)
 
 ### Minor changes
