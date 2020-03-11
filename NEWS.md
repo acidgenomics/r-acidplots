@@ -1,3 +1,11 @@
+## acidplots 0.2.24 (2020-03-11)
+
+### Minor changes
+
+- `acid_coord_flip`: Fix for breaking change introduced by ggplot2 v3.3.0,
+  which renamed `object[["layers"]][[1L]][["geom"]][["required_aes"]]` from
+  "x" to "x|y". The package now requires this new version of ggplot2.
+
 ## acidplots 0.2.23 (2020-02-22)
 
 ### Minor changes

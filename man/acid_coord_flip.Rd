@@ -26,7 +26,7 @@ on the Y-axis to be reversed. So this function works directly on the
 \code{ggplot} object instead of a \code{ggproto}, and therefore doesn't currently
 support the \code{+} operator.
 
-Updated 2019-11-07.
+Updated 2020-03-11.
 }
 \examples{
 library(ggplot2)
