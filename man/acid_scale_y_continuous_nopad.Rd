@@ -4,7 +4,10 @@
 \alias{acid_scale_y_continuous_nopad}
 \title{Remove Y axis padding}
 \usage{
-acid_scale_y_continuous_nopad(..., expand = expand_scale(mult = c(0L, 0.025)))
+acid_scale_y_continuous_nopad(
+  ...,
+  expand = ggplot2::expansion(mult = c(0L, 0.025))
+)
 }
 \arguments{
 \item{...}{Other arguments passed on to \verb{scale_(x|y)_continuous()}}
