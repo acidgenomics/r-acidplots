@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.24</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@ top on the Y axis, making them more human readable.</p>
 on the Y-axis to be reversed. So this function works directly on the
 <code>ggplot</code> object instead of a <code>ggproto</code>, and therefore doesn't currently
 support the <code>+</code> operator.</p>
-<p>Updated 2019-11-07.</p>
+<p>Updated 2020-03-11.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'>
@@ -168,7 +168,9 @@ extending-ggplot2.html</p></li>
 <span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>class</span>)) + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>()
 
 <span class='co'>## Notice the difference in Y axis sample order.</span>
-<span class='no'>g</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span>()</div><div class='img'><img src='acid_coord_flip-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>g</span> <span class='kw'>%&gt;%</span> <span class='fu'>acid_coord_flip</span>()</div><div class='img'><img src='acid_coord_flip-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>g</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span>()</div><div class='img'><img src='acid_coord_flip-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>g</span> <span class='kw'>%&gt;%</span> <span class='fu'>acid_coord_flip</span>()</div><div class='output co'>#&gt; <span class='error'>Error in acid_coord_flip(.): Assert failure.</span>
+#&gt; <span class='error'>[2] isSubset(x = "x|y", y = object[["layers"]][[1L]][["geom"]][["required_aes"]]) is not TRUE.</span>
+#&gt; <span class='error'>Cause: '"x|y"' has elements not in 'object[["layers"]][[1L]][["geom"]][["required_aes"]]': x|y</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
