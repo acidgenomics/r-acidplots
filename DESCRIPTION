@@ -1,8 +1,8 @@
 Package: acidplots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.2.23
-Date: 2020-02-19
+Version: 0.2.24
+Date: 2020-03-11
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 3.6),
-    basejump (>= 0.12.2)
+    basejump (>= 0.12.3)
 Imports:
     BiocGenerics (>= 0.32),
     IRanges (>= 2.20),
@@ -35,14 +35,14 @@ Imports:
     UpSetR (>= 1.4),
     acidgenerics (>= 0.3.4),
     cowplot (>= 1.0),
-    ggplot2 (>= 3.2),
+    ggplot2 (>= 3.3),
     ggrepel (>= 0.8),
     ggridges (>= 0.5),
     goalie (>= 0.4.0),
     matrixStats (>= 0.55),
     pheatmap (>= 1.0),
     rlang (>= 0.4),
-    stringr (>= 1.4.0),
+    stringr (>= 1.4),
     grDevices,
     grid,
     methods,
@@ -52,7 +52,6 @@ Imports:
 Suggests:
     BiocStyle (>= 2.14),
     DropletUtils (>= 1.6),
-    acidroxygen (>= 0.1.8),
     acidtest (>= 0.2.14),
     knitr (>= 1.25),
     patrick (>= 0.0.1),
@@ -60,7 +59,6 @@ Suggests:
     viridis (>= 0.5)
 Remotes:
     acidgenomics/acidgenerics,
-    acidgenomics/acidroxygen,
     acidgenomics/acidtest,
     acidgenomics/basejump,
     acidgenomics/goalie
