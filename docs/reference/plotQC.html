@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.24</span>
       </span>
     </div>
 
@@ -183,10 +183,12 @@ the first argument in the <code>character</code> vector.</p></td>
 
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotQC</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotQC-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'>plotQC</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `expand_scale()` is deprecated; use `expansion()` instead.</span></div><div class='output co'>#&gt; <span class='error'>Error in acid_coord_flip(p): Assert failure.</span>
+#&gt; <span class='error'>[2] isSubset(x = "x|y", y = object[["layers"]][[1L]][["geom"]][["required_aes"]]) is not TRUE.</span>
+#&gt; <span class='error'>Cause: '"x|y"' has elements not in 'object[["layers"]][[1L]][["geom"]][["required_aes"]]': x|y</span></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='input'><span class='fu'>plotQC</span>(<span class='no'>object</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plotQC-2.png' alt='' width='700' height='433' /></div></span></pre>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'>calculateMetrics</span>(<span class='no'>object</span>)</div><div class='output co'>#&gt; <span class='message'>→ Calculating 100 sample metrics.</span></div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> 497 coding features detected.</span></div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> 0 mitochondrial features detected.</span></div><div class='input'><span class='fu'>plotQC</span>(<span class='no'>object</span>, <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='plotQC-1.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

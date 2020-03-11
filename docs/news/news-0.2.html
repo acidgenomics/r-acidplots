@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.24</span>
       </span>
     </div>
 
@@ -139,9 +139,9 @@
 <li>All ggplot2 geoms and transformations (<code>ggproto</code> functions) now consistently use <code>acid_</code> as a prefix.</li>
 </ul>
 </div>
-<div id="minor-changes-19" class="section level3">
+<div id="minor-changes-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-20" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotCountsPerBiotype</code> and <code>plotCountsPerBroadClass</code> now support <code>title</code>.</li>
@@ -178,9 +178,9 @@
 <code>plotHeatmap</code> now supports automatic color calculation when <code>breaks</code> argument is defined. Also improved support for <code>legendBreaks</code>.</li>
 </ul>
 </div>
-<div id="minor-changes-18" class="section level3">
+<div id="minor-changes-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-19" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Fix <code>.pheatmapColorPalette</code> internal check for <code>color</code>, which requires <code>n</code> argument, rather than assuming positional variable.</li>
 <li>
@@ -215,9 +215,9 @@
     <div id="acidplots-0-2-4-2019-05-08" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-4-2019-05-08" class="anchor"></a>acidplots 0.2.4 (2019-05-08)</h2>
-<div id="minor-changes-17" class="section level3">
+<div id="minor-changes-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-18" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved log2 and log10 axis scale handling for <code>plotCountsPerBiotype</code> and <code>plotCountsPerBroadClass</code>. Previously, the <code>breaks</code> argument was defined in internal <code>scale_y_continuous</code> ggplot2 call, but this doesn’t perform well for many RNA-seq datasets at log2 scale. Instead, it’s better to log2 scale the data first and then simplify indicate log2 on the y axis title.</li>
 <li>
@@ -228,9 +228,9 @@
     <div id="acidplots-0-2-5-2019-07-17" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-5-2019-07-17" class="anchor"></a>acidplots 0.2.5 (2019-07-17)</h2>
-<div id="minor-changes-16" class="section level3">
+<div id="minor-changes-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-17" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>upset</code>: Compatibility update for UpSetR v1.4 release.</li>
@@ -241,9 +241,9 @@
     <div id="acidplots-0-2-6-2019-07-18" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-6-2019-07-18" class="anchor"></a>acidplots 0.2.6 (2019-07-18)</h2>
-<div id="minor-changes-15" class="section level3">
+<div id="minor-changes-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-16" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotCountsPerBiotype</code>: Internal tidyeval bug fix for call to <code><a href="https://dplyr.tidyverse.org/reference/top_n.html">dplyr::top_n</a></code>. Previously, the <code>n</code> argument supported direct variable input, but now it must be unquoted, due to change in underlying rlang engine following the 0.4 update.</li>
@@ -261,9 +261,9 @@
 <code>plotCountsCorrelation</code> and <code>plotCountsCorrelationHeatmap</code>: New functions optimized for plotting correlation between gene expression matrices. Particularly useful for comparing pseudoaligned vs. aligned counts, which is implemented in the new bcbioRNASeq package update.</li>
 </ul>
 </div>
-<div id="minor-changes-14" class="section level3">
+<div id="minor-changes-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-15" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved naming consistency of internal S4 functions.</li>
 <li>Updated basejump dependencies.</li>
@@ -273,9 +273,9 @@
     <div id="acidplots-0-2-8-2019-07-29" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-8-2019-07-29" class="anchor"></a>acidplots 0.2.8 (2019-07-29)</h2>
-<div id="minor-changes-13" class="section level3">
+<div id="minor-changes-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-14" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved warning suppression for partial match in <code>pheatmap</code> calls.</li>
 <li>Improved documentation.</li>
@@ -286,9 +286,9 @@
     <div id="acidplots-0-2-9-2019-07-30" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-9-2019-07-30" class="anchor"></a>acidplots 0.2.9 (2019-07-30)</h2>
-<div id="minor-changes-12" class="section level3">
+<div id="minor-changes-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-13" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated basejump dependency versions.</li>
 <li>Updated some unit tests to reflect RangedSummarizedExperiment example update in acidtest package.</li>
@@ -298,9 +298,9 @@
     <div id="acidplots-0-2-10-2019-08-06" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-10-2019-08-06" class="anchor"></a>acidplots 0.2.10 (2019-08-06)</h2>
-<div id="minor-changes-11" class="section level3">
+<div id="minor-changes-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-12" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved documentation consistency by importing shared parameter roxygen from the new acidroxygen package.</li>
 <li>Updated basejump dependency versions.</li>
@@ -321,9 +321,9 @@
     <div id="acidplots-0-2-12-2019-08-20" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-12-2019-08-20" class="anchor"></a>acidplots 0.2.12 (2019-08-20)</h2>
-<div id="minor-changes-10" class="section level3">
+<div id="minor-changes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-11" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Improved consistency of internal tibble handling inside plot functions.</li>
 <li>Updated basejump dependency versions.</li>
@@ -333,9 +333,9 @@
     <div id="acidplots-0-2-13-2019-08-21" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-13-2019-08-21" class="anchor"></a>acidplots 0.2.13 (2019-08-21)</h2>
-<div id="minor-changes-9" class="section level3">
+<div id="minor-changes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-10" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotPCA</code>: Improved automatic <code>ntop</code> argument handling when passing in a value greater than the number or features (rows) defined in the object.</li>
@@ -347,9 +347,9 @@
     <div id="acidplots-0-2-14-2019-08-27" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-14-2019-08-27" class="anchor"></a>acidplots 0.2.14 (2019-08-27)</h2>
-<div id="minor-changes-8" class="section level3">
+<div id="minor-changes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-9" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotCountsPerFeature</code>: Renamed formals to match conventions in new basejump <code>melt</code> methods.</li>
@@ -386,9 +386,9 @@
 <li>Using “samplesAxis” and “countsAxis” labels for ggplot2 return that support multiple geoms. Consider a similar approach for QC metric plots.</li>
 </ul>
 </div>
-<div id="minor-changes-7" class="section level3">
+<div id="minor-changes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-8" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Simplified internal handoff from <code>SingleCellExperiment</code> S4 methods to <code>SummarizedExperiment</code>, using standard <code>...</code> passthrough instead of relying upon <code>matchArgsToDoCall</code>.</li>
 <li>Improved color palette consistency in plotting functions.</li>
@@ -400,9 +400,9 @@
     <div id="acidplots-0-2-17-2019-11-07" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-17-2019-11-07" class="anchor"></a>acidplots 0.2.17 (2019-11-07)</h2>
-<div id="minor-changes-6" class="section level3">
+<div id="minor-changes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-7" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated dependencies to require Bioconductor 3.10 release.</li>
 <li>Added return value for <code>matchLabels</code> in documentation.</li>
@@ -412,9 +412,9 @@
     <div id="acidplots-0-2-18-2019-11-12" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-18-2019-11-12" class="anchor"></a>acidplots 0.2.18 (2019-11-12)</h2>
-<div id="minor-changes-5" class="section level3">
+<div id="minor-changes-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-6" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotCounts</code>: Reworked <code>medianLine</code> argument and renamed to simply <code>line</code>. Now supports mean and geometric mean in addition to median now. Line is now disabled by default.</li>
@@ -424,9 +424,9 @@
     <div id="acidplots-0-2-19-2019-11-19" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-19-2019-11-19" class="anchor"></a>acidplots 0.2.19 (2019-11-19)</h2>
-<div id="minor-changes-4" class="section level3">
+<div id="minor-changes-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-5" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotCounts</code>: The <code>gene</code> argument is now optional, supporting subset <code>SummarizedExperiment</code> objects. Currently a maximum of 20 genes (rows) are allowed to pass through in the method.</li>
@@ -438,9 +438,9 @@
     <div id="acidplots-0-2-20-2019-12-09" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-20-2019-12-09" class="anchor"></a>acidplots 0.2.20 (2019-12-09)</h2>
-<div id="minor-changes-3" class="section level3">
+<div id="minor-changes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Hardened user-defined <code>interestingGroups</code> input against <code>NA</code> values causing values to drop in plots. This was discovered with <code>plotPCA</code> calling <code>geom_point</code> internally, which caused removal of rows. If we coerce <code>NA</code> value to <code>"NA"</code> first, then removal no longer occurs. This is accomplished internally using <code>str_remove_na</code> (see also <code>stringi_remove_na</code>). The change applies to these functions: <code>plotCellCounts</code>, <code>plotCounts</code>, <code>plotCountsPerBiotype</code>, <code>plotCountsPerBroadClass</code>, <code>plotCountsPerFeature</code>, <code>plotFeaturesDetected</code>, <code>plotPCA</code>, <code>plotTotalCounts</code>, <code>plotZerosVsDepth</code>.</li>
 </ul>
@@ -449,9 +449,9 @@
     <div id="acidplots-0-2-21-2019-12-13" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-21-2019-12-13" class="anchor"></a>acidplots 0.2.21 (2019-12-13)</h2>
-<div id="minor-changes-2" class="section level3">
+<div id="minor-changes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>
 <code>plotHeatmap</code>: Increased the default break range from <code>-2:2</code> up to <code>-3:3</code>. This helps improve the dynamic range a bit for some RNA-seq plots.</li>
@@ -461,9 +461,9 @@
     <div id="acidplots-0-2-22-2020-01-20" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-22-2020-01-20" class="anchor"></a>acidplots 0.2.22 (2020-01-20)</h2>
-<div id="minor-changes-1" class="section level3">
+<div id="minor-changes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Updated bioverbs dependency to renamed acidgenerics package.</li>
 </ul>
@@ -472,13 +472,25 @@
     <div id="acidplots-0-2-23-2020-02-22" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acidplots-0-2-23-2020-02-22" class="anchor"></a>acidplots 0.2.23 (2020-02-22)</h2>
-<div id="minor-changes" class="section level3">
+<div id="minor-changes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h3>
 <ul>
 <li>Changed license from MIT to GPL-3.</li>
 <li>Updated internal code to use <code>aggregateCellsToSamples</code> instead of <code>pseudobulk</code>, which has migrated to pointillism and will be reworked in an upcoming release.</li>
 <li>Updated documentation for <code>SingleCellExperiment</code> methods, where <code>aggregateCellsToSamples</code> is called internally. This was propagating to other packages where <code>SingleCellExperiment</code> methods are not defined, making the documentation confusing.</li>
+</ul>
+</div>
+</div>
+    <div id="acidplots-0-2-24-2020-03-11" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acidplots-0-2-24-2020-03-11" class="anchor"></a>acidplots 0.2.24 (2020-03-11)</h2>
+<div id="minor-changes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h3>
+<ul>
+<li>
+<code>acid_coord_flip</code>: Fix for breaking change introduced by ggplot2 v3.3.0, which renamed <code>object[["layers"]][[1L]][["geom"]][["required_aes"]]</code> from “x” to “x|y”. The package now requires this new version of ggplot2.</li>
 </ul>
 </div>
 </div>
@@ -512,6 +524,7 @@
         <li><a href="#acidplots-0-2-21-2019-12-13">0.2.21</a></li>
         <li><a href="#acidplots-0-2-22-2020-01-20">0.2.22</a></li>
         <li><a href="#acidplots-0-2-23-2020-02-22">0.2.23</a></li>
+        <li><a href="#acidplots-0-2-24-2020-03-11">0.2.24</a></li>
       </ul>
     </div>
   </div>
