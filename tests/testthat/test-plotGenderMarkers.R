@@ -5,7 +5,7 @@ test_that("SummarizedExperiment", {
     data(genderMarkers, envir = environment())
     organism <- "Homo sapiens"
     expect_identical(organism(object), organism)
-    markers <- genderMarkers[[camel(organism(object))]]
+    markers <- genderMarkers[[camelCase(organism(object))]]
     geneIDs <- markers[["geneID"]]
     geneNames <- markers[["geneName"]]
     seq <- seq_len(nrow(markers))
