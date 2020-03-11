@@ -36,13 +36,7 @@
 #' g %>% acid_coord_flip()
 acid_coord_flip <-  # nolint
     function(object) {
-        assert(
-            is(object, "ggplot"),
-            isSubset(
-                x = "x|y",
-                y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
-            )
-        )
+        assert(is(object, "ggplot"))
         data <- object[["data"]]
         assert(is.data.frame(data))
         mapping <- .detectMapping(object)
@@ -70,7 +64,7 @@ acid_coord_flip <-  # nolint
 acid_scale_y_continuous_nopad <-  # nolint
     function(
         ...,
-        expand = expand_scale(mult = c(0L, 0.025))
+        expand = ggplot2::expansion(mult = c(0L, 0.025))
     ) {
         scale_y_continuous(..., expand = expand)
     }

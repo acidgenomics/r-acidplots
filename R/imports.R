@@ -24,11 +24,11 @@
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
-#'   expand_limits expand_scale facet_wrap geom_bar geom_boxplot geom_density
-#'   geom_histogram geom_hline geom_jitter geom_label geom_line geom_point
-#'   geom_smooth geom_step geom_violin geom_vline ggplot guides labs
-#'   position_jitterdodge scale_x_continuous scale_x_discrete scale_y_continuous
-#'   stat_ecdf stat_summary theme theme_linedraw waiver
+#'   expand_limits facet_wrap geom_bar geom_boxplot geom_density geom_histogram
+#'   geom_hline geom_jitter geom_label geom_line geom_point geom_smooth
+#'   geom_step geom_violin geom_vline ggplot guides labs position_jitterdodge
+#'   scale_x_continuous scale_x_discrete scale_y_continuous stat_ecdf
+#'   stat_summary theme theme_linedraw waiver
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom ggridges geom_density_ridges
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
