@@ -11,7 +11,7 @@
 #'   on the Y-axis to be reversed. So this function works directly on the
 #'   `ggplot` object instead of a `ggproto`, and therefore doesn't currently
 #'   support the `+` operator.
-#' @note Updated 2019-11-07.
+#' @note Updated 2020-03-11.
 #'
 #' @param object `ggplot`.
 #'
@@ -39,7 +39,7 @@ acid_coord_flip <-  # nolint
         assert(
             is(object, "ggplot"),
             isSubset(
-                x = "x",
+                x = "x|y",
                 y = object[["layers"]][[1L]][["geom"]][["required_aes"]]
             )
         )
