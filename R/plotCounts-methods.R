@@ -193,9 +193,9 @@ NULL
             lineFun <- get(x = line, inherits = TRUE)
             assert(is.function(lineFun))
             p <- p + stat_summary(
-                fun.y = lineFun,
-                fun.ymin = lineFun,
-                fun.ymax = lineFun,
+                fun = lineFun,
+                fun.min = lineFun,
+                fun.max = lineFun,
                 geom = "crossbar",
                 show.legend = FALSE,
                 width = 0.5
