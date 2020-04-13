@@ -4,7 +4,9 @@
 \name{genderMarkers}
 \alias{genderMarkers}
 \title{Sexually dimorphic gender marker genes}
-\format{An object of class \code{list} of length 2.}
+\format{
+An object of class \code{list} of length 2.
+}
 \usage{
 genderMarkers
 }
