@@ -1,3 +1,15 @@
+## acidplots 0.2.25 (2020-04-13)
+
+### Minor changes
+
+- Updated documentation and roxygen dependency to v7.1.0.
+- Updated ggplot2 and other graphical R package dependencies.
+- Fixed `plotHeatmap` unit tests to harden against `SummarizedExperiment` and
+  `SingleCellExperiment` objects defined in acidtest package that contain
+  rows and/or columns with all zeros. Refer to `nonzeroRowsAndCols` function
+  in basejump for details.
+- Rebuilt pkgdown website using v1.5 update.
+
 ## acidplots 0.2.24 (2020-03-11)
 
 ### Minor changes
