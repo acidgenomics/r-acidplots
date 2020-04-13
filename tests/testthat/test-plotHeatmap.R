@@ -6,15 +6,20 @@ funs <- list(
     plotQuantileHeatmap
 )
 
+## These plotting functions intentionally error out for datasets containing
+## rows or columns containing all zeros.
+rse <- basejump::nonzeroRowsAndCols(rse)
+sce <- basejump::nonzeroRowsAndCols(sce)
+
 with_parameters_test_that(
     "SummarizedExperiment", {
+        object <- rse
         p <- fun(object)
         expect_is(p, "pheatmap")
         ## Plot should contain annotation data.
         expect_true(
             "annotation_legend" %in% p[["gtable"]][["layout"]][["name"]]
         )
-
         ## Test color and title support.
         expect_is(
             object = fun(
@@ -25,7 +30,6 @@ with_parameters_test_that(
             ),
             class = "pheatmap"
         )
-
         ## Hexadecimal color functions (e.g. viridis).
         expect_is(
             object = fun(
@@ -35,7 +39,6 @@ with_parameters_test_that(
             ),
             class = "pheatmap"
         )
-
         ## Hexadecimal color palettes (e.g. RColorBrewer).
         color <- colorRampPalette(
             RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
@@ -44,7 +47,6 @@ with_parameters_test_that(
             object = fun(object = object, color = color),
             class = "pheatmap"
         )
-
         ## Disable interesting groups.
         expect_is(
             object = fun(
@@ -58,47 +60,36 @@ with_parameters_test_that(
 )
 
 with_parameters_test_that(
-    "SingleCellExperiment", {
-        p <- fun(object)
-        expect_s3_class(p, "pheatmap")
-    },
-    fun = funs
-)
-
-with_parameters_test_that(
-    "Non-unique samples", {
-        assay(rse)[, 2L] <- assay(rse)[, 1L]
+    "SummarizedExperiment : Non-unique samples", {
+        object <- rse
+        assay(object)[, 2L] <- assay(object)[, 1L]
         expect_warning(
-            object = fun(rse),
+            object = fun(object),
             regexp = "Non-unique samples detected. Skipping plot."
         )
     },
     fun = funs
 )
 
-test_that("Invalid pheatmap passthrough", {
+test_that("SummarizedExperiment : Invalid pheatmap passthrough", {
+    object <- rse
     expect_error(
         object = plotHeatmap(object, show_colnames = FALSE),
         regexp = "Specify arguments in camel case: show_colnames"
     )
 })
 
-test_that("Row and column scaling", {
+test_that("SummarizedExperiment : Row and column scaling", {
     object <- rse
-
     ## Introduce zero rows, so we can check handling.
     assay(object)[seq_len(2L), ] <- 0L
-
-
     expect_true(any(rowSums(assay(object)) == 0L))
     expect_false(any(colSums(assay(object)) == 0L))
-
     # Error if matrix counts any all zero rows.
     expect_error(
         object = plotHeatmap(object, scale = "row"),
         regexp = "hasNonzeroRowsAndCols"
     )
-
     # Drop zero rows and now can plot.
     keep <- rowSums(assay(object)) > 0L
     object <- object[keep, ]
@@ -117,3 +108,11 @@ test_that("Row and column scaling", {
     )
     expect_s3_class(p, "pheatmap")
 })
+
+with_parameters_test_that(
+    "SingleCellExperiment", {
+        p <- fun(sce)
+        expect_s3_class(p, "pheatmap")
+    },
+    fun = funs
+)

@@ -15,7 +15,8 @@ plotNovelty(object, ...)
   fill = getOption(x = "acid.fill.discrete", default =
     acidplots::scale_fill_synesthesia_d()),
   trans = "identity",
-  labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis = NULL)
+  labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis =
+    NULL)
 )
 }
 \arguments{
