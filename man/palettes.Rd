@@ -11,7 +11,21 @@
 \alias{macOSLightPalette}
 \alias{macOSDarkPalette}
 \title{Color palettes}
-\format{An object of class \code{character} of length 12.}
+\format{
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+
+An object of class \code{character} of length 12.
+}
 \usage{
 lightPalette
 
