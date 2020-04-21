@@ -1,3 +1,14 @@
+## acidplots 0.2.26 (2020-04-21)
+
+### Minor changes
+
+- `plotCounts`, `plotHeatmap`, `plotQuantileHeatmap`: Added
+  `convertGenesToSymbols` support to override automatic mapping of genes to
+  symbols, which is enabled by default.
+- `plotHeatmap`, `plotQuantileHeatmap`: Improved `showRownames` handling for
+  automatic visualization of rows, which are now enabled by default for heatmaps
+  with <= 50 features.
+
 ## acidplots 0.2.25 (2020-04-13)
 
 ### Minor changes
