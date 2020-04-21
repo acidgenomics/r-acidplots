@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit acidgenerics::plotCounts
-#' @note Updated 2019-12-09.
+#' @note Updated 2020-04-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -92,13 +92,14 @@ NULL
 
 
 
-## Updated 2019-11-18.
+## Updated 2020-04-21.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
         genes,
         assay = 1L,
         interestingGroups = NULL,
+        convertGenesToSymbols = TRUE,
         trans = c("identity", "log2", "log10"),
         line = c("none", "median", "mean", "geometricMean"),
         color,
@@ -134,6 +135,7 @@ NULL
             ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
+            isFlag(convertGenesToSymbols),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend)
         )
@@ -157,16 +159,18 @@ NULL
         ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
         ## Now convert the row names to symbols, for visualization.
-        object <- tryCatch(
-            expr = {
-                suppressMessages(
-                    object <- convertGenesToSymbols(object)
-                )
-            },
-            error = function(e) {
-                object
-            }
-        )
+        if (isTRUE(convertGenesToSymbols)) {
+            object <- tryCatch(
+                expr = {
+                    suppressMessages({
+                        object <- convertGenesToSymbols(object)
+                    })
+                },
+                error = function(e) {
+                    object
+                }
+            )
+        }
         ## Generate a melted tibble.
         data <- melt(
             object = object,
