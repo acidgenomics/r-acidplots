@@ -95,6 +95,10 @@ Border color.}
 \item{title}{\code{character(1)}.
 Title.}
 
+\item{convertGenesToSymbols}{\code{logical(1)}.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in \code{rowRanges}.}
+
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}
 }

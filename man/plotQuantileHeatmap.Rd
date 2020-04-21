@@ -15,7 +15,7 @@ plotQuantileHeatmap(object, ...)
   n = 10L,
   clusterRows = TRUE,
   clusterCols = TRUE,
-  showRownames = FALSE,
+  showRownames = isTRUE(nrow(object) <= 50L),
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
@@ -25,6 +25,7 @@ plotQuantileHeatmap(object, ...)
   legend = FALSE,
   borderColor = NULL,
   title = NULL,
+  convertGenesToSymbols = showRownames,
   ...
 )
 
@@ -92,6 +93,10 @@ Border color.}
 \item{title}{\code{character(1)}.
 Title.}
 
+\item{convertGenesToSymbols}{\code{logical(1)}.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in \code{rowRanges}.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -101,7 +106,7 @@ Title.}
 Quantile heatmap
 }
 \note{
-Updated 2020-02-19.
+Updated 2020-04-21.
 }
 \examples{
 data(
