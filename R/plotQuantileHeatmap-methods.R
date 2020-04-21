@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit acidgenerics::plotQuantileHeatmap
-#' @note Updated 2020-02-19.
+#' @note Updated 2020-04-21.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -47,7 +47,7 @@ NULL
 
 
 
-## Updated 2019-07-23.
+## Updated 2020-04-21.
 `plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -56,7 +56,7 @@ NULL
         n = 10L,
         clusterRows = TRUE,
         clusterCols = TRUE,
-        showRownames = FALSE,
+        showRownames = isTRUE(nrow(object) <= 50L),
         showColnames = TRUE,
         treeheightRow = 50L,
         treeheightCol = 50L,
@@ -65,6 +65,8 @@ NULL
         legend = FALSE,
         borderColor = NULL,
         title = NULL,
+        ## Attept to map genes to symbols automatically only when shown.
+        convertGenesToSymbols = showRownames,
         ...
     ) {
         validObject(object)
@@ -77,7 +79,8 @@ NULL
             isFlag(clusterRows),
             isFlag(legend),
             isString(borderColor, nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            isString(title, nullOK = TRUE),
+            isFlag(convertGenesToSymbols)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -96,12 +99,14 @@ NULL
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object
         ## unmodified if gene symbols aren't defined.
-        object <- tryCatch(
-            expr = suppressMessages(
-                convertGenesToSymbols(object)
-            ),
-            error = function(e) object
-        )
+        if (isTRUE(convertGenesToSymbols)) {
+            object <- tryCatch(
+                expr = suppressMessages(
+                    convertGenesToSymbols(object)
+                ),
+                error = function(e) object
+            )
+        }
         ## Ensure we're using a dense matrix.
         mat <- as.matrix(assay(object, i = assay))
         ## Calculate the quantile breaks.
@@ -121,12 +126,9 @@ NULL
             expr = sampleNames(object),
             error = function(e) NULL
         )
-        if (length(sampleNames) > 0L) {
+        if (hasLength(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (
-                length(annotationCol) > 0L &&
-                !any(is.na(annotationCol))
-            ) {
+            if (hasLength(annotationCol) && !any(is.na(annotationCol))) {
                 rownames(annotationCol) <- sampleNames
             }
         }
