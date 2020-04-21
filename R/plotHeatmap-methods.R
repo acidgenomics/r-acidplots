@@ -77,6 +77,9 @@
 #'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
 #'   Refer to the RColorBrewer package for hexadecimal color palettes that may
 #'   be suitable. If set `NULL`, will use the default pheatmap colors.
+#' @param convertGenesToSymbols `logical(1)`.
+#'   Attempt to automatically convert gene identifiers to gene symbols.
+#'   Only applies when object contains mappings defined in `rowRanges`.
 #' @param legendBreaks `numeric` or `NULL`.
 #'   Numeric vector of breakpoints for the color legend.
 #' @param legendColor `function` or `NULL`.
