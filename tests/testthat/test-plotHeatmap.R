@@ -71,6 +71,25 @@ with_parameters_test_that(
     fun = funs
 )
 
+## Note that this is not supported for correlation heatmap.
+with_parameters_test_that(
+    "SummarizedExperiment : Convert genes to symbols", {
+        object <- rse
+        expect_is(
+            object = fun(
+                object = object,
+                convertGenesToSymbols = TRUE,
+                showRownames = TRUE
+            ),
+            class = "pheatmap"
+        )
+    },
+    fun = list(
+        plotHeatmap,
+        plotQuantileHeatmap
+    )
+)
+
 test_that("SummarizedExperiment : Invalid pheatmap passthrough", {
     object <- rse
     expect_error(

@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.25</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.26</span>
       </span>
     </div>
 
@@ -133,10 +133,11 @@
   <span class='no'>genes</span>,
   <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>convertGenesToSymbols</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"identity"</span>, <span class='st'>"log2"</span>, <span class='st'>"log10"</span>),
   <span class='kw'>line</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"none"</span>, <span class='st'>"median"</span>, <span class='st'>"mean"</span>, <span class='st'>"geometricMean"</span>),
   <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.color.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
-    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'>scale_color_synesthesia_d</span>()),
+    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='synesthesia.html'>scale_color_synesthesia_d</a></span>()),
   <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.legend"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
   <span class='kw'>style</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"facet"</span>, <span class='st'>"wide"</span>),
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sampleAxis</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>countAxis</span> <span class='kw'>=</span> <span class='st'>"counts"</span>),
@@ -166,6 +167,12 @@ Assay name or index position.</p></td>
       <td><p><code>character</code>.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.</p></td>
+    </tr>
+    <tr>
+      <th>convertGenesToSymbols</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in <code>rowRanges</code>.</p></td>
     </tr>
     <tr>
       <th>trans</th>
@@ -220,7 +227,7 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
 
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-12-09.</p>
+    <p>Updated 2020-04-21.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/DESeq2/man/plotCounts.html'>DESeq2::plotCounts()</a></code>.</p></div>

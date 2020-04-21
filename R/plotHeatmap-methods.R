@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-02-19.
+#' @note Updated 2020-04-21.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
@@ -141,7 +141,7 @@ NULL
 
 
 
-## Updated 2019-12-13.
+## Updated 2020-04-21.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -151,7 +151,7 @@ NULL
         clusteringMethod = "ward.D2",
         clusterRows = TRUE,
         clusterCols = TRUE,
-        showRownames = FALSE,
+        showRownames = isTRUE(nrow(object) <= 50L),
         showColnames = TRUE,
         ## Set to `0L` to disable.
         treeheightRow = 50L,
@@ -163,6 +163,8 @@ NULL
         legendBreaks = seq(from = -3L, to = 3L, by = 1L),
         borderColor = NULL,
         title = NULL,
+        ## Attept to map genes to symbols automatically only when shown.
+        convertGenesToSymbols = showRownames,
         ...
     ) {
         validObject(object)
@@ -177,7 +179,8 @@ NULL
             isInt(treeheightRow),
             isInt(treeheightCol),
             isString(borderColor, nullOK = TRUE),
-            isString(title, nullOK = TRUE)
+            isString(title, nullOK = TRUE),
+            isFlag(convertGenesToSymbols)
         )
         scale <- match.arg(scale)
         if (!isString(borderColor)) borderColor <- NA
@@ -196,12 +199,14 @@ NULL
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object
         ## unmodified if gene symbols aren't defined.
-        object <- tryCatch(
-            expr = suppressMessages(
-                convertGenesToSymbols(object)
-            ),
-            error = function(e) object
-        )
+        if (isTRUE(convertGenesToSymbols)) {
+            object <- tryCatch(
+                expr = suppressMessages(
+                    convertGenesToSymbols(object)
+                ),
+                error = function(e) object
+            )
+        }
         ## Ensure we're always using a dense matrix.
         mat <- as.matrix(assay(object, i = assay))
         ## Ensure the user isn't passing in a matrix with any rows or columns

@@ -12,6 +12,7 @@ plotCounts(object, ...)
   genes,
   assay = 1L,
   interestingGroups = NULL,
+  convertGenesToSymbols = TRUE,
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
   color = getOption(x = "acid.color.discrete", default =
@@ -35,6 +36,10 @@ Assay name or index position.}
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
+
+\item{convertGenesToSymbols}{\code{logical(1)}.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in \code{rowRanges}.}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
@@ -77,7 +82,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2019-12-09.
+Updated 2020-04-21.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
