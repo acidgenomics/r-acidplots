@@ -37,6 +37,10 @@ Assay name or index position.}
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
 
+\item{convertGenesToSymbols}{\code{logical(1)}.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in \code{rowRanges}.}
+
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
 
