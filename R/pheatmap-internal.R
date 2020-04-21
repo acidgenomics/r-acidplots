@@ -90,7 +90,7 @@
     assert(is.list(args), hasNames(args))
     ## Abort on snake case formatted formal args.
     invalidNames <- grep("[._]", names(args), value = TRUE)
-    if (length(invalidNames) > 0L) {
+    if (hasLength(invalidNames)) {
         stop(sprintf(
             "Specify arguments in camel case: %s.",
             toString(invalidNames, width = 100L)
