@@ -12,6 +12,7 @@ plotCounts(object, ...)
   genes,
   assay = 1L,
   interestingGroups = NULL,
+  convertGenesToSymbols = TRUE,
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
   color = getOption(x = "acid.color.discrete", default =
@@ -77,7 +78,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2019-12-09.
+Updated 2020-04-21.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
