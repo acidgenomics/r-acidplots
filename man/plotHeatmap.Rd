@@ -16,7 +16,7 @@ plotHeatmap(object, ...)
   clusteringMethod = "ward.D2",
   clusterRows = TRUE,
   clusterCols = TRUE,
-  showRownames = FALSE,
+  showRownames = isTRUE(nrow(object) <= 50L),
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
@@ -27,6 +27,7 @@ plotHeatmap(object, ...)
   legendBreaks = seq(from = -3L, to = 3L, by = 1L),
   borderColor = NULL,
   title = NULL,
+  convertGenesToSymbols = showRownames,
   ...
 )
 
@@ -94,6 +95,10 @@ Border color.}
 \item{title}{\code{character(1)}.
 Title.}
 
+\item{convertGenesToSymbols}{\code{logical(1)}.
+Attempt to automatically convert gene identifiers to gene symbols.
+Only applies when object contains mappings defined in \code{rowRanges}.}
+
 \item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap()}}.
 The argument names must be formatted in camel case, not snake case.}
 }
@@ -104,7 +109,7 @@ The argument names must be formatted in camel case, not snake case.}
 Construct a simple heatmap.
 }
 \note{
-Updated 2020-02-19.
+Updated 2020-04-21.
 }
 \section{Scaling}{
 
