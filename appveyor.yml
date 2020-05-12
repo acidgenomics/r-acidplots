@@ -21,8 +21,10 @@ environment:
     R_ARCH: x64
     USE_RTOOLS: true
   matrix:
-    - configuration: 3.6
-      R_VERSION: 3.6.1
+    - configuration: release
+      R_VERSION: release
+    - configuration: oldrel
+      R_VERSION: oldrel
 
 matrix:
   fast_finish: true
