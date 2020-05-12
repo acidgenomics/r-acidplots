@@ -3,7 +3,7 @@
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Travis CI build status](https://travis-ci.com/acidgenomics/acidplots.svg?branch=master)](https://travis-ci.com/acidgenomics/acidplots)
 [![AppVeyor CI build status](https://ci.appveyor.com/api/projects/status/ykti8ek8gj2i7g5r/branch/master?svg=true)](https://ci.appveyor.com/project/mjsteinbaugh/acidplots/branch/master)
-[![Anaconda version](https://anaconda.org/bioconda/r-acidplots/badges/version.svg) ![Anaconda latest release date](https://anaconda.org/bioconda/r-acidplots/badges/latest_release_date.svg) ![Anaconda downloads](https://anaconda.org/bioconda/r-acidplots/badges/downloads.svg)](https://anaconda.org/bioconda/r-acidplots)
+[![Install with bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/r-acidplots/README.html)
 
 Functions for plotting genomic data.
 
