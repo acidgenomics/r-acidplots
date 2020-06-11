@@ -1,7 +1,8 @@
 context("plotUpset")
 
 test_that("data.frame", {
-    movies <- import(system.file("extdata", "movies.csv", package = "UpSetR"))
-    p <- plotUpset(movies)
+    file <- system.file("extdata", "movies.csv", package = "acidplots")
+    data <- import(file)
+    p <- plotUpset(data)
     expect_s3_class(p, "upset")
 })

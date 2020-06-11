@@ -4,7 +4,7 @@
 #'
 #' @name plotUpset
 #' @inherit UpSetR::upset details params references
-#' @note Updated 2019-11-19.
+#' @note Updated 2020-06-11.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Handoff to [UpSetR::upset()].
@@ -13,8 +13,9 @@
 #'
 #' @examples
 #' ## Refer to 'UpSetR::upset()' documentation for more examples.
-#' movies <- import(system.file("extdata", "movies.csv", package = "UpSetR"))
-#' plotUpset(movies)
+#' file <- system.file("extdata", "movies.csv", package = "acidplots")
+#' data <- import(file)
+#' plotUpset(data)
 NULL
 
 
