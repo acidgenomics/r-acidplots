@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.27</span>
       </span>
     </div>
 
@@ -238,7 +238,7 @@ data belonging to queries of interest. Most aspects of the UpSet plot are custom
 Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-11-19.</p>
+    <p>Updated 2020-06-11.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Lex et al. (2014). UpSet: Visualization of Intersecting Sets
@@ -247,7 +247,8 @@ IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Refer to 'UpSetR::upset()' documentation for more examples.</span>
-<span class='no'>movies</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"movies.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"UpSetR"</span>))</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>movies.csv</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'>plotUpset</span>(<span class='no'>movies</span>)</div><div class='output co'>#&gt; <span class='error'>Error in start_col:end_col: argument of length 0</span></div></span></pre>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"movies.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidplots"</span>)
+<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>movies.csv</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'>plotUpset</span>(<span class='no'>data</span>)</div><div class='img'><img src='plotUpset-1.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

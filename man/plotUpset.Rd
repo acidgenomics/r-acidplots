@@ -87,12 +87,13 @@ data belonging to queries of interest. Most aspects of the UpSet plot are custom
 Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
 }
 \note{
-Updated 2019-11-19.
+Updated 2020-06-11.
 }
 \examples{
 ## Refer to 'UpSetR::upset()' documentation for more examples.
-movies <- import(system.file("extdata", "movies.csv", package = "UpSetR"))
-plotUpset(movies)
+file <- system.file("extdata", "movies.csv", package = "acidplots")
+data <- import(file)
+plotUpset(data)
 }
 \references{
 Lex et al. (2014). UpSet: Visualization of Intersecting Sets
