@@ -1,3 +1,11 @@
+## acidplots 0.2.27 (2020-06-10)
+
+### Minor changes
+
+- `matchLabels` now returns an empty list for a `NULL` argument. This approach
+  is used in the upcoming pointillism update, in the `plotStackedBarPlot`
+  function.
+
 ## acidplots 0.2.26 (2020-04-21)
 
 ### Minor changes
