@@ -8,7 +8,7 @@
 #' @export
 #' @note Attempting to follow a similar naming convention to
 #'   [`match.arg()`][base::match.arg] here, using `choices` argument.
-#' @note Updated 2020-06-10.
+#' @note Updated 2020-06-24.
 #'
 #' @param labels `list`.
 #'   User-defined plot labels.
@@ -28,14 +28,17 @@
 #'     )
 #' )
 matchLabels <- function(labels, choices) {
-    ## Early return on NULL input.
     if (is.null(labels)) return(list())
     assert(
         is.list(labels),
-        is.list(choices),
-        isSubset(names(labels), names(choices)),
         all(bapply(X = labels, FUN = isString, nullOK = TRUE))
     )
+    if (!is.null(choices)) {
+        assert(
+            is.list(choices),
+            isSubset(names(labels), names(choices)),
+        )
+    }
     ## Allow the user to pass in a subset of labels, and populate the rest
     ## using the defaults.
     if (!areSetEqual(names(labels), names(choices))) {
