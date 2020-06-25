@@ -128,7 +128,16 @@
     <pre class="usage"><span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>xCol</span>, <span class='no'>yCol</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>plotWaterfall</span>(
+  <span class='no'>object</span>,
+  <span class='no'>sampleCol</span>,
+  <span class='no'>valueCol</span>,
+  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
+    <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='synesthesia.html'>scale_fill_synesthesia_d</a></span>()),
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,10 +147,33 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
+      <th>sampleCol</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Column name of discrete samples to plot on X axis.</p></td>
+    </tr>
+    <tr>
+      <th>valueCol</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Column name of continues values to plot on Y axis.</p></td>
+    </tr>
+    <tr>
       <th>interestingGroups</th>
       <td><p><code>character</code>.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>.
+Include text labels showing the values above each bar.</p></td>
+    </tr>
+    <tr>
+      <th>fill</th>
+      <td><p><code>ggproto</code>/<code>ScaleDiscrete</code>.
+Desired ggplot2 fill scale. Must supply discrete values. When set to
+<code>NULL</code>, the default ggplot2 color palette will be used. If manual color
+definitions are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_fill_manual()</a></code>.</p>
+<p>To set the discrete fill palette globally, use:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.fill.discrete</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_fill_viridis_d</a></span>())</pre></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -182,17 +214,18 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
 )
 <span class='fu'>plotWaterfall</span>(
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
-    <span class='kw'>xCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
-    <span class='kw'>yCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
+    <span class='kw'>sampleCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
+    <span class='kw'>valueCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
     <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tumor_type"</span>, <span class='st'>"tumor_subtype"</span>),
     <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Effect of compound on cell survival"</span>
     )
-)</div><div class='output co'>#&gt; <span class='error'>Error in !sym("facet"): invalid argument type</span></div><div class='input'><span class='fu'>plotWaterfall</span>(
+)</div><div class='img'><img src='plotWaterfall-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotWaterfall</span>(
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
-    <span class='kw'>xCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
-    <span class='kw'>yCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>
-)</div><div class='img'><img src='plotWaterfall-1.png' alt='' width='700' height='433' /></div></pre>
+    <span class='kw'>sampleCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
+    <span class='kw'>valueCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
+    <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='img'><img src='plotWaterfall-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

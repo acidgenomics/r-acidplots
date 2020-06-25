@@ -12,6 +12,9 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
+  label = TRUE,
+  fill = getOption(x = "acid.fill.discrete", default =
+    acidplots::scale_fill_synesthesia_d()),
   labels = NULL
 )
 }
@@ -27,6 +30,17 @@ Column name of continues values to plot on Y axis.}
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
+
+\item{label}{\code{logical(1)}.
+Include text labels showing the values above each bar.}
+
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
+Desired ggplot2 fill scale. Must supply discrete values. When set to
+\code{NULL}, the default ggplot2 color palette will be used. If manual color
+definitions are desired, we recommend using \code{\link[ggplot2:scale_fill_manual]{ggplot2::scale_fill_manual()}}.
+
+To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
+}}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
@@ -73,6 +87,7 @@ plotWaterfall(
 plotWaterfall(
     object = object,
     sampleCol = "cell_id",
-    valueCol = "ic50"
+    valueCol = "ic50",
+    label = FALSE
 )
 }

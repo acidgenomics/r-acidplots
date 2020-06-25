@@ -7,6 +7,8 @@
 #'   Column name of discrete samples to plot on X axis.
 #' @param valueCol `character(1)`.
 #'   Column name of continues values to plot on Y axis.
+#' @param label `logical(1)`.
+#'   Include text labels showing the values above each bar.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -39,7 +41,8 @@
 #' plotWaterfall(
 #'     object = object,
 #'     sampleCol = "cell_id",
-#'     valueCol = "ic50"
+#'     valueCol = "ic50",
+#'     label = FALSE
 #' )
 NULL
 
@@ -60,10 +63,20 @@ NULL
     sampleCol,
     valueCol,
     interestingGroups = NULL,
+    label = TRUE,
+    fill,
     labels = NULL
 ) {
     validObject(object)
     object <- as.data.frame(object)
+    assert(
+        isString(sampleCol),
+        isString(valueCol),
+        isSubset(c(sampleCol, valueCol), colnames(object)),
+        isCharacter(interestingGroups, nullOK = TRUE),
+        isFlag(label),
+        isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+    )
     labels <- matchLabels(
         labels = labels,
         choices = eval(formals()[["labels"]])
@@ -93,13 +106,18 @@ NULL
         data = data,
         mapping = mapping
     ) +
-        geom_bar(stat = "identity") +
-        geom_text(
+        geom_bar(stat = "identity")
+    if (isTRUE(label)) {
+        p <- p + geom_text(
             angle = 90L,
             hjust = 0L,
             nudge_y = 0.1
-        ) +
-        scale_fill_synesthesia_d()
+        )
+    }
+    ## Fill.
+    if (is(fill, "ScaleDiscrete")) {
+        p <- p + fill
+    }
     if (!is.null(interestingGroups)) {
         p <- p + facet_grid(
             cols = vars(!!sym("facet")),
@@ -129,6 +147,10 @@ NULL
     }
     p
 }
+
+f <- formals(`plotWaterfall,data.frame`)
+f[["fill"]] <- formalsList[["fill.discrete"]]
+formals(`plotWaterfall,data.frame`) <- f
 
 
 
