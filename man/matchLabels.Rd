@@ -27,7 +27,7 @@ Returns an empty list on \code{NULL} input.
 Attempting to follow a similar naming convention to
 \code{\link[base:match.arg]{match.arg()}} here, using \code{choices} argument.
 
-Updated 2020-06-10.
+Updated 2020-06-24.
 }
 \examples{
 matchLabels(
