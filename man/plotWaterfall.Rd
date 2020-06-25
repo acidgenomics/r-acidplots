@@ -29,7 +29,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot waterfall
 }
 \note{
-Updated 2019-12-09.
+Updated 2020-06-25.
 }
 \examples{
 class(plotWaterfall)
