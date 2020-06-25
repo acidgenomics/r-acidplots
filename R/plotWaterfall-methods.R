@@ -3,6 +3,10 @@
 #' @note Updated 2020-06-25.
 #'
 #' @inheritParams acidroxygen::params
+#' @param sampleCol `character(1)`.
+#'   Column name of discrete samples to plot on X axis.
+#' @param valueCol `character(1)`.
+#'   Column name of continues values to plot on Y axis.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -25,12 +29,17 @@
 #' )
 #' plotWaterfall(
 #'     object = object,
-#'     xCol = "cell_id",
-#'     yCol = "ic50",
+#'     sampleCol = "cell_id",
+#'     valueCol = "ic50",
 #'     interestingGroups = c("tumor_type", "tumor_subtype"),
 #'     labels = list(
 #'         title = "Effect of compound on cell survival"
 #'     )
+#' )
+#' plotWaterfall(
+#'     object = object,
+#'     sampleCol = "cell_id",
+#'     valueCol = "ic50"
 #' )
 NULL
 
@@ -48,38 +57,41 @@ NULL
 ## Updated 2020-06-25.
 `plotWaterfall,data.frame` <- function(
     object,
-    xCol, yCol,
-    interestingGroups,
+    sampleCol,
+    valueCol,
+    interestingGroups = NULL,
     labels = NULL
 ) {
     validObject(object)
     object <- as.data.frame(object)
-    assert(isSubset(interestingGroups, colnames(object)))
     labels <- matchLabels(
         labels = labels,
         choices = eval(formals()[["labels"]])
     )
-    facet <- do.call(
-        what = paste,
-        args = c(
-            object[, interestingGroups, drop = FALSE],
-            sep = ":"
-        )
-    )
     data <- data.frame(
-        x = reorder(object[[xCol]], -object[[yCol]]),
-        y = object[[yCol]],
-        facet = facet,
-        label = sprintf("%.2f", round(object[[yCol]], 2L))
+        x = reorder(object[[sampleCol]], -object[[valueCol]]),
+        y = object[[valueCol]],
+        label = sprintf("%.2f", round(object[[valueCol]], 2L))
     )
+    mapping <- aes(
+        x = !!sym("x"),
+        y = !!sym("y"),
+        label = !!sym("label")
+    )
+    if (!is.null(interestingGroups)) {
+        assert(isSubset(interestingGroups, colnames(object)))
+        data[["facet"]] <- do.call(
+            what = paste,
+            args = c(
+                object[, interestingGroups, drop = FALSE],
+                sep = ":"
+            )
+        )
+        mapping[["fill"]] <- quo(!!sym("facet"))
+    }
     p <- ggplot(
         data = data,
-        mapping = aes(
-            x = !!sym("x"),
-            y = !!sym("y"),
-            fill = !!sym("facet"),
-            label = !!sym("label")
-        )
+        mapping = mapping
     ) +
         geom_bar(stat = "identity") +
         geom_text(
@@ -87,28 +99,30 @@ NULL
             hjust = 0L,
             nudge_y = 0.1
         ) +
-        scale_fill_synesthesia_d() +
-        facet_grid(
+        scale_fill_synesthesia_d()
+    if (!is.null(interestingGroups)) {
+        p <- p + facet_grid(
             cols = vars(!!sym("facet")),
             scales = "free_x",
             space = "free_x"
-        ) +
-        theme(
-            strip.text.x = element_text(
-                angle = 90L,
-                hjust = 0L,
-                margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
-            ),
-            axis.text.x = element_text(
-                angle = 90,
-                hjust = 1L
-            )
         )
+    }
+    p <- p + theme(
+        strip.text.x = element_text(
+            angle = 90L,
+            hjust = 0L,
+            margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+        ),
+        axis.text.x = element_text(
+            angle = 90,
+            hjust = 1L
+        )
+    )
     ## Labels.
     if (is.list(labels)) {
-        if (is.null(labels[["x"]])) labels[["x"]] <- xCol
-        if (is.null(labels[["y"]])) labels[["y"]] <- yCol
-        if (is.null(labels[["fill"]])) {
+        if (is.null(labels[["x"]])) labels[["x"]] <- sampleCol
+        if (is.null(labels[["y"]])) labels[["y"]] <- valueCol
+        if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
             labels[["fill"]] <- paste(interestingGroups, sep = "\n")
         }
         p <- p + do.call(what = labs, args = labels)
