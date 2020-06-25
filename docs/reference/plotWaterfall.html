@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sexually dimorphic gender marker genes — genderMarkers • acidplots</title>
+<title>Plot waterfall — plotWaterfall • acidplots</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Sexually dimorphic gender marker genes — genderMarkers" />
-<meta property="og:description" content="Sexually dimorphic gender marker genes" />
+<meta property="og:title" content="Plot waterfall — plotWaterfall" />
+<meta property="og:description" content="Plot waterfall" />
 
 
 
@@ -116,47 +116,79 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sexually dimorphic gender marker genes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>genderMarkers.Rd</code></div>
+    <h1>Plot waterfall</h1>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotWaterfall-methods.R'><code>R/plotWaterfall-methods.R</code></a></small>
+    <div class="hidden name"><code>plotWaterfall.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Sexually dimorphic gender marker genes</p>
+    <p>Plot waterfall</p>
     </div>
 
-    <pre class="usage"><span class='no'>genderMarkers</span></pre>
+    <pre class="usage"><span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for data.frame</span>
+<span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>xCol</span>, <span class='no'>yCol</span>, <span class='no'>interestingGroups</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>object</th>
+      <td><p>Object.</p></td>
+    </tr>
+    <tr>
+      <th>interestingGroups</th>
+      <td><p><code>character</code>.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.</p></td>
+    </tr>
+    <tr>
+      <th>labels</th>
+      <td><p><code>list</code>.
+ggplot2 labels.
+See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::labs()</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Additional arguments.</p></td>
+    </tr>
+    </table>
 
-    <p>An object of class <code>list</code> of length 2.</p>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>ggplot</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2019-07-29.</p>
+    <p>Updated 2020-06-25.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>genderMarkers</span>)
-<span class='no'>genderMarkers</span></div><div class='output co'>#&gt; $homoSapiens
-#&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
-#&gt;   geneID          geneName chromosome
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> ENSG00000173674 EIF1AX   X         
-#&gt; </span><span style='color: #555555;'>2</span><span> ENSG00000229807 XIST     X         
-#&gt; </span><span style='color: #555555;'>3</span><span> ENSG00000067048 DDX3Y    Y         
-#&gt; </span><span style='color: #555555;'>4</span><span> ENSG00000012817 KDM5D    Y         
-#&gt; </span><span style='color: #555555;'>5</span><span> ENSG00000114374 USP9Y    Y         
-#&gt; </span><span style='color: #555555;'>6</span><span> ENSG00000183878 UTY      Y         
-#&gt; 
-#&gt; $musMusculus
-#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
-#&gt;   geneID             geneName chromosome
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #555555;'>1</span><span> ENSMUSG00000086503 Xist     X         
-#&gt; </span><span style='color: #555555;'>2</span><span> ENSMUSG00000069045 Ddx3y    Y         
-#&gt; </span><span style='color: #555555;'>3</span><span> ENSMUSG00000056673 Kdm5d    Y         
-#&gt; </span><span style='color: #555555;'>4</span><span> ENSMUSG00000068457 Uty      Y         
-#&gt; </div></span></pre>
+    <pre class="examples"><div class='input'><span class='co'>## data.frame ====</span>
+<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+    <span class='kw'>cell_id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"cell"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>12L</span>), <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"_"</span>),
+    <span class='kw'>ic50</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(
+        <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+        <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>10L</span>,
+        <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>12L</span>
+    ),
+    <span class='kw'>tumor_type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(
+        <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"breast"</span>, <span class='st'>"bladder"</span>),
+        <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>6L</span>
+    ),
+    <span class='kw'>tumor_subtype</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(
+        <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"benign"</span>, <span class='st'>"malignant"</span>),
+        <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>6L</span>
+    )
+)
+<span class='fu'>plotWaterfall</span>(
+    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
+    <span class='kw'>xCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
+    <span class='kw'>yCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
+    <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tumor_type"</span>, <span class='st'>"tumor_subtype"</span>),
+    <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+        <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Effect of compound on cell survival"</span>
+    )
+)</div><div class='img'><img src='plotWaterfall-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
