@@ -36,7 +36,7 @@ matchLabels <- function(labels, choices) {
     if (!is.null(choices)) {
         assert(
             is.list(choices),
-            isSubset(names(labels), names(choices)),
+            isSubset(names(labels), names(choices))
         )
     }
     ## Allow the user to pass in a subset of labels, and populate the rest
