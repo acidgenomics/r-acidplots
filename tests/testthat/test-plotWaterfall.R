@@ -19,8 +19,8 @@ test_that("data.frame", {
     )
     p <- plotWaterfall(
         object = object,
-        xCol = "cell_id",
-        yCol = "ic50",
+        sampleCol = "cell_id",
+        valueCol = "ic50",
         interestingGroups = c("tumor_type", "tumor_subtype"),
         labels = list(
             title = "Effect of compound on cell survival"

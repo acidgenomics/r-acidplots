@@ -128,7 +128,7 @@
     <pre class="usage"><span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>xCol</span>, <span class='no'>yCol</span>, <span class='no'>interestingGroups</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>plotWaterfall</span>(<span class='no'>object</span>, <span class='no'>xCol</span>, <span class='no'>yCol</span>, <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,6 +188,10 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
     <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Effect of compound on cell survival"</span>
     )
+)</div><div class='output co'>#&gt; <span class='error'>Error in !sym("facet"): invalid argument type</span></div><div class='input'><span class='fu'>plotWaterfall</span>(
+    <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
+    <span class='kw'>xCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
+    <span class='kw'>yCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>
 )</div><div class='img'><img src='plotWaterfall-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

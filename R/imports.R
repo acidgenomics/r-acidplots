@@ -42,9 +42,9 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
-#' @importFrom rlang !! quo_text sym syms
+#' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
-#' @importFrom stats as.formula dist ecdf hclust prcomp quantile
+#' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder
 #' @importFrom stringr str_replace_na
 #' @importFrom utils data globalVariables packageVersion
 NULL

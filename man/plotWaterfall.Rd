@@ -7,10 +7,22 @@
 \usage{
 plotWaterfall(object, ...)
 
-\S4method{plotWaterfall}{data.frame}(object, xCol, yCol, interestingGroups, labels = NULL)
+\S4method{plotWaterfall}{data.frame}(
+  object,
+  sampleCol,
+  valueCol,
+  interestingGroups = NULL,
+  labels = NULL
+)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{sampleCol}{\code{character(1)}.
+Column name of discrete samples to plot on X axis.}
+
+\item{valueCol}{\code{character(1)}.
+Column name of continues values to plot on Y axis.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
@@ -51,11 +63,16 @@ object <- data.frame(
 )
 plotWaterfall(
     object = object,
-    xCol = "cell_id",
-    yCol = "ic50",
+    sampleCol = "cell_id",
+    valueCol = "ic50",
     interestingGroups = c("tumor_type", "tumor_subtype"),
     labels = list(
         title = "Effect of compound on cell survival"
     )
+)
+plotWaterfall(
+    object = object,
+    sampleCol = "cell_id",
+    valueCol = "ic50"
 )
 }
