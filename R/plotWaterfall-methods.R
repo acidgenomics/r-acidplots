@@ -58,95 +58,96 @@ NULL
 
 
 ## Updated 2020-06-25.
-`plotWaterfall,data.frame` <- function(
-    object,
-    sampleCol,
-    valueCol,
-    interestingGroups = NULL,
-    label = TRUE,
-    fill,
-    labels = NULL
-) {
-    validObject(object)
-    object <- as.data.frame(object)
-    assert(
-        isString(sampleCol),
-        isString(valueCol),
-        isSubset(c(sampleCol, valueCol), colnames(object)),
-        isCharacter(interestingGroups, nullOK = TRUE),
-        isFlag(label),
-        isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
-    )
-    labels <- matchLabels(
-        labels = labels,
-        choices = eval(formals()[["labels"]])
-    )
-    data <- data.frame(
-        x = reorder(object[[sampleCol]], -object[[valueCol]]),
-        y = object[[valueCol]],
-        label = sprintf("%.2f", round(object[[valueCol]], 2L))
-    )
-    mapping <- aes(
-        x = !!sym("x"),
-        y = !!sym("y"),
-        label = !!sym("label")
-    )
-    if (!is.null(interestingGroups)) {
-        assert(isSubset(interestingGroups, colnames(object)))
-        data[["facet"]] <- do.call(
-            what = paste,
-            args = c(
-                object[, interestingGroups, drop = FALSE],
-                sep = ":"
+`plotWaterfall,data.frame` <-  # nolint
+    function(
+        object,
+        sampleCol,
+        valueCol,
+        interestingGroups = NULL,
+        label = TRUE,
+        fill,
+        labels = NULL
+    ) {
+        validObject(object)
+        object <- as.data.frame(object)
+        assert(
+            isString(sampleCol),
+            isString(valueCol),
+            isSubset(c(sampleCol, valueCol), colnames(object)),
+            isCharacter(interestingGroups, nullOK = TRUE),
+            isFlag(label),
+            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
+        data <- data.frame(
+            x = reorder(object[[sampleCol]], -object[[valueCol]]),
+            y = object[[valueCol]],
+            label = sprintf("%.2f", round(object[[valueCol]], 2L))
+        )
+        mapping <- aes(
+            x = !!sym("x"),
+            y = !!sym("y"),
+            label = !!sym("label")
+        )
+        if (!is.null(interestingGroups)) {
+            assert(isSubset(interestingGroups, colnames(object)))
+            data[["facet"]] <- do.call(
+                what = paste,
+                args = c(
+                    object[, interestingGroups, drop = FALSE],
+                    sep = ":"
+                )
+            )
+            mapping[["fill"]] <- quo(!!sym("facet"))
+        }
+        p <- ggplot(
+            data = data,
+            mapping = mapping
+        ) +
+            geom_bar(stat = "identity")
+        if (isTRUE(label)) {
+            p <- p + geom_text(
+                angle = 90L,
+                hjust = 0L,
+                nudge_y = 0.1
+            )
+        }
+        ## Fill.
+        if (is(fill, "ScaleDiscrete")) {
+            p <- p + fill
+        }
+        if (!is.null(interestingGroups)) {
+            p <- p + facet_grid(
+                cols = vars(!!sym("facet")),
+                scales = "free_x",
+                space = "free_x"
+            )
+        }
+        p <- p + theme(
+            strip.text.x = element_text(
+                angle = 90L,
+                hjust = 0L,
+                margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+            ),
+            axis.text.x = element_text(
+                angle = 90L,
+                hjust = 1L
             )
         )
-        mapping[["fill"]] <- quo(!!sym("facet"))
-    }
-    p <- ggplot(
-        data = data,
-        mapping = mapping
-    ) +
-        geom_bar(stat = "identity")
-    if (isTRUE(label)) {
-        p <- p + geom_text(
-            angle = 90L,
-            hjust = 0L,
-            nudge_y = 0.1
-        )
-    }
-    ## Fill.
-    if (is(fill, "ScaleDiscrete")) {
-        p <- p + fill
-    }
-    if (!is.null(interestingGroups)) {
-        p <- p + facet_grid(
-            cols = vars(!!sym("facet")),
-            scales = "free_x",
-            space = "free_x"
-        )
-    }
-    p <- p + theme(
-        strip.text.x = element_text(
-            angle = 90L,
-            hjust = 0L,
-            margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
-        ),
-        axis.text.x = element_text(
-            angle = 90,
-            hjust = 1L
-        )
-    )
-    ## Labels.
-    if (is.list(labels)) {
-        if (is.null(labels[["x"]])) labels[["x"]] <- sampleCol
-        if (is.null(labels[["y"]])) labels[["y"]] <- valueCol
-        if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
-            labels[["fill"]] <- paste(interestingGroups, sep = "\n")
+        ## Labels.
+        if (is.list(labels)) {
+            if (is.null(labels[["x"]])) labels[["x"]] <- sampleCol
+            if (is.null(labels[["y"]])) labels[["y"]] <- valueCol
+            if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
+                labels[["fill"]] <- paste(interestingGroups, sep = "\n")
+            }
+            p <- p + do.call(what = labs, args = labels)
         }
-        p <- p + do.call(what = labs, args = labels)
+        p
     }
-    p
-}
 
 f <- formals(`plotWaterfall,data.frame`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
