@@ -66,7 +66,7 @@ plotCountsCorrelationHeatmap(x, y, ...)
     can be abbreviated.}
 
 \item{...}{Passthrough arguments to
-\code{\link[acidplots:plotHeatmap]{plotHeatmap()}}.}
+\code{\link[=plotHeatmap]{plotHeatmap()}}.}
 }
 \value{
 Graphical output.

@@ -80,7 +80,7 @@ Horizontal or vertical cutoff line.
 \section{acid_geom_label}{
 
 
-Modified version of \code{\link[ggplot2:geom_label]{ggplot2::geom_label()}}.
+Modified version of \code{\link[ggplot2:geom_text]{ggplot2::geom_label()}}.
 }
 
 \section{acid_geom_label_average}{
@@ -94,7 +94,7 @@ mean values are always calculated per sample (\code{sampleName}).
 
 
 Repulsive textual annotations. Modified basejump version of
-\code{\link[ggrepel:geom_label_repel]{ggrepel::geom_label_repel()}}. If advanced customization of the text labels
+\code{\link[ggrepel:geom_text_repel]{ggrepel::geom_label_repel()}}. If advanced customization of the text labels
 is required, simply use the ggrepel version instead.
 }
 
