@@ -1,3 +1,18 @@
+## acidplots 0.2.29 (2020-07-09)
+
+### Minor changes
+
+- `plotWaterfall`: Now supports log transformations, defaulting to log10.
+  Labels are disabled by default, and now only supported for non-log plots.
+  For log transformed data, a line is now shown at the y intercept.
+
+## acidplots 0.2.28 (2020-06-25)
+
+### New functions
+
+- `plotWaterfall`: Easily plot concentration curve (e.g. IC50) waterfall
+  plots.
+
 ## acidplots 0.2.27 (2020-06-10)
 
 ### Minor changes
