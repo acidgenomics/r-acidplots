@@ -13,7 +13,6 @@ plotWaterfall(object, ...)
   valueCol,
   interestingGroups = NULL,
   trans = c("log10", "log2", "identity"),
-  label = identical(trans, "identity"),
   fill = getOption(x = "acid.fill.discrete", default =
     acidplots::scale_fill_synesthesia_d()),
   labels = NULL
@@ -37,9 +36,6 @@ Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
-
-\item{label}{\code{logical(1)}.
-Include text labels showing the values above each bar.}
 
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
