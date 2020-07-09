@@ -1,6 +1,6 @@
 #' @name plotWaterfall
 #' @inherit acidgenerics::plotWaterfall
-#' @note Updated 2020-06-25.
+#' @note Updated 2020-07-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sampleCol `character(1)`.
@@ -57,14 +57,14 @@ NULL
 
 
 
-## Updated 2020-06-25.
+## Updated 2020-07-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
         object,
         sampleCol,
         valueCol,
         interestingGroups = NULL,
-        label = TRUE,
+        label = FALSE,
         fill,
         labels = NULL
     ) {
@@ -103,35 +103,52 @@ NULL
             )
             mapping[["fill"]] <- quo(!!sym("facet"))
         }
-        p <- ggplot(
-            data = data,
-            mapping = mapping
-        ) +
-            geom_bar(stat = "identity")
+        p <- ggplot(data = data, mapping = mapping)
         if (isTRUE(label)) {
-            p <- p + geom_text(
-                angle = 90L,
-                hjust = 0L,
-                nudge_y = 0.1
-            )
+            p <- p +
+                geom_bar(
+                    color = "black",
+                    stat = "identity",
+                    width = 0.9
+                ) +
+                geom_text(
+                    angle = 90L,
+                    hjust = 0L,
+                    nudge_y = 0.1
+                )
+        } else {
+            p <- p +
+                geom_bar(
+                    color = NA,
+                    stat = "identity",
+                    width = 1L
+                )
         }
         ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
         }
         if (!is.null(interestingGroups)) {
-            p <- p + facet_grid(
-                cols = vars(!!sym("facet")),
-                scales = "free_x",
-                space = "free_x"
-            )
+            if (length(unique(data[["facet"]])) <= 4L) {
+                angle <- 0L
+            } else {
+                angle <- 90L
+            }
+            p <- p +
+                facet_grid(
+                    cols = vars(!!sym("facet")),
+                    scales = "free_x",
+                    space = "free_x"
+                ) +
+                theme(
+                    strip.text.x = element_text(
+                        angle = 0L,
+                        hjust = 0L,
+                        margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+                    )
+                )
         }
         p <- p + theme(
-            strip.text.x = element_text(
-                angle = 90L,
-                hjust = 0L,
-                margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
-            ),
             axis.text.x = element_text(
                 angle = 90L,
                 hjust = 1L

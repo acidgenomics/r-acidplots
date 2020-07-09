@@ -12,7 +12,7 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
-  label = TRUE,
+  label = FALSE,
   fill = getOption(x = "acid.fill.discrete", default =
     acidplots::scale_fill_synesthesia_d()),
   labels = NULL
@@ -55,7 +55,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot waterfall
 }
 \note{
-Updated 2020-06-25.
+Updated 2020-07-09.
 }
 \examples{
 ## data.frame ====
