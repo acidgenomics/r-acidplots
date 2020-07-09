@@ -7,8 +7,6 @@
 #'   Column name of discrete samples to plot on X axis.
 #' @param valueCol `character(1)`.
 #'   Column name of continues values to plot on Y axis.
-#' @param label `logical(1)`.
-#'   Include text labels showing the values above each bar.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -66,7 +64,6 @@ NULL
         valueCol,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
-        label = identical(trans, "identity"),
         fill,
         labels = NULL
     ) {
@@ -77,22 +74,17 @@ NULL
             isString(valueCol),
             isSubset(c(sampleCol, valueCol), colnames(object)),
             isCharacter(interestingGroups, nullOK = TRUE),
-            isFlag(label),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
-        if (isTRUE(isLog) && isTRUE(label)) {
-            stop("Bar labeling only supported for `trans = \"identity\"`.")
-        }
         labels <- matchLabels(
             labels = labels,
             choices = eval(formals()[["labels"]])
         )
         data <- data.frame(
             x = reorder(object[[sampleCol]], -object[[valueCol]]),
-            y = object[[valueCol]],
-            label = sprintf("%.1f", round(object[[valueCol]], 2L))
+            y = object[[valueCol]]
         )
         if (isTRUE(isLog)) {
             logFun <- get(trans, inherits = TRUE)
@@ -101,8 +93,7 @@ NULL
         }
         mapping <- aes(
             x = !!sym("x"),
-            y = !!sym("y"),
-            label = !!sym("label")
+            y = !!sym("y")
         )
         if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
@@ -112,14 +103,8 @@ NULL
             )
             mapping[["fill"]] <- quo(!!sym("facet"))
         }
-        p <- ggplot(data = data, mapping = mapping)
-        if (isTRUE(label)) {
-            p <- p +
-                geom_bar(color = "black", stat = "identity", width = 0.9) +
-                geom_text(angle = 90L, hjust = 0L, nudge_y = 0.1)
-        } else {
-            p <- p + geom_bar(color = NA, stat = "identity", width = 1L)
-        }
+        p <- ggplot(data = data, mapping = mapping) +
+            geom_bar(color = NA, stat = "identity", width = 1L)
         if (isTRUE(isLog)) {
             p <- p + geom_hline(
                 color = "black",
