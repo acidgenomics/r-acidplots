@@ -12,7 +12,7 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
-  label = TRUE,
+  trans = c("log10", "log2", "identity"),
   fill = getOption(x = "acid.fill.discrete", default =
     acidplots::scale_fill_synesthesia_d()),
   labels = NULL
@@ -31,8 +31,11 @@ Column name of continues values to plot on Y axis.}
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
 
-\item{label}{\code{logical(1)}.
-Include text labels showing the values above each bar.}
+\item{trans}{\code{character(1)}.
+Name of the axis scale transformation to apply.
+
+For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
 
 \item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
 Desired ggplot2 fill scale. Must supply discrete values. When set to
@@ -55,7 +58,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot waterfall
 }
 \note{
-Updated 2020-06-25.
+Updated 2020-07-09.
 }
 \examples{
 ## data.frame ====
@@ -80,6 +83,7 @@ plotWaterfall(
     sampleCol = "cell_id",
     valueCol = "ic50",
     interestingGroups = c("tumor_type", "tumor_subtype"),
+    trans = "log10",
     labels = list(
         title = "Effect of compound on cell survival"
     )
@@ -88,6 +92,6 @@ plotWaterfall(
     object = object,
     sampleCol = "cell_id",
     valueCol = "ic50",
-    label = FALSE
+    trans = "identity"
 )
 }

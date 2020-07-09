@@ -1,14 +1,12 @@
 #' @name plotWaterfall
 #' @inherit acidgenerics::plotWaterfall
-#' @note Updated 2020-06-25.
+#' @note Updated 2020-07-09.
 #'
 #' @inheritParams acidroxygen::params
 #' @param sampleCol `character(1)`.
 #'   Column name of discrete samples to plot on X axis.
 #' @param valueCol `character(1)`.
 #'   Column name of continues values to plot on Y axis.
-#' @param label `logical(1)`.
-#'   Include text labels showing the values above each bar.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -34,6 +32,7 @@
 #'     sampleCol = "cell_id",
 #'     valueCol = "ic50",
 #'     interestingGroups = c("tumor_type", "tumor_subtype"),
+#'     trans = "log10",
 #'     labels = list(
 #'         title = "Effect of compound on cell survival"
 #'     )
@@ -42,7 +41,7 @@
 #'     object = object,
 #'     sampleCol = "cell_id",
 #'     valueCol = "ic50",
-#'     label = FALSE
+#'     trans = "identity"
 #' )
 NULL
 
@@ -57,14 +56,14 @@ NULL
 
 
 
-## Updated 2020-06-25.
+## Updated 2020-07-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
         object,
         sampleCol,
         valueCol,
         interestingGroups = NULL,
-        label = TRUE,
+        trans = c("log10", "log2", "identity"),
         fill,
         labels = NULL
     ) {
@@ -75,44 +74,43 @@ NULL
             isString(valueCol),
             isSubset(c(sampleCol, valueCol), colnames(object)),
             isCharacter(interestingGroups, nullOK = TRUE),
-            isFlag(label),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
+        trans <- match.arg(trans)
+        isLog <- !identical(trans, "identity")
         labels <- matchLabels(
             labels = labels,
             choices = eval(formals()[["labels"]])
         )
         data <- data.frame(
             x = reorder(object[[sampleCol]], -object[[valueCol]]),
-            y = object[[valueCol]],
-            label = sprintf("%.2f", round(object[[valueCol]], 2L))
+            y = object[[valueCol]]
         )
+        if (isTRUE(isLog)) {
+            logFun <- get(trans, inherits = TRUE)
+            assert(is.function(logFun))
+            data[["y"]] <- logFun(data[["y"]])
+        }
         mapping <- aes(
             x = !!sym("x"),
-            y = !!sym("y"),
-            label = !!sym("label")
+            y = !!sym("y")
         )
         if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
             data[["facet"]] <- do.call(
                 what = paste,
-                args = c(
-                    object[, interestingGroups, drop = FALSE],
-                    sep = ":"
-                )
+                args = c(object[, interestingGroups, drop = FALSE], sep = ":")
             )
             mapping[["fill"]] <- quo(!!sym("facet"))
         }
-        p <- ggplot(
-            data = data,
-            mapping = mapping
-        ) +
-            geom_bar(stat = "identity")
-        if (isTRUE(label)) {
-            p <- p + geom_text(
-                angle = 90L,
-                hjust = 0L,
-                nudge_y = 0.1
+        p <- ggplot(data = data, mapping = mapping) +
+            geom_bar(color = NA, stat = "identity", width = 1L)
+        if (isTRUE(isLog)) {
+            p <- p + geom_hline(
+                color = "black",
+                linetype = "solid",
+                size = 0.5,
+                yintercept = 0L
             )
         }
         ## Fill.
@@ -120,27 +118,45 @@ NULL
             p <- p + fill
         }
         if (!is.null(interestingGroups)) {
-            p <- p + facet_grid(
-                cols = vars(!!sym("facet")),
-                scales = "free_x",
-                space = "free_x"
+            if (length(unique(data[["facet"]])) <= 4L) {
+                angle <- 0L
+            } else {
+                angle <- 90L
+            }
+            p <- p +
+                facet_grid(
+                    cols = vars(!!sym("facet")),
+                    scales = "free_x",
+                    space = "free_x"
+                ) +
+                theme(
+                    legend.position = "none",
+                    strip.text.x = element_text(
+                        angle = 0L,
+                        hjust = 0L,
+                        margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+                    )
+                )
+        }
+        ## Dynamically hide x-axis labels if there are a lot of samples.
+        if (length(unique(data[["x"]])) <= 50L) {
+            p <- p + theme(axis.text.x = element_text(angle = 90L, hjust = 1L))
+        } else {
+            p <- p + theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                axis.title.x = element_blank()
             )
         }
-        p <- p + theme(
-            strip.text.x = element_text(
-                angle = 90L,
-                hjust = 0L,
-                margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
-            ),
-            axis.text.x = element_text(
-                angle = 90L,
-                hjust = 1L
-            )
-        )
         ## Labels.
         if (is.list(labels)) {
-            if (is.null(labels[["x"]])) labels[["x"]] <- sampleCol
-            if (is.null(labels[["y"]])) labels[["y"]] <- valueCol
+            xLab <- sampleCol
+            yLab <- valueCol
+            if (isTRUE(isLog)) {
+                yLab <- paste(trans, yLab)
+            }
+            if (is.null(labels[["x"]])) labels[["x"]] <- xLab
+            if (is.null(labels[["y"]])) labels[["y"]] <- yLab
             if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
                 labels[["fill"]] <- paste(interestingGroups, sep = "\n")
             }

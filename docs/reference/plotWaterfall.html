@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.28</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.29</span>
       </span>
     </div>
 
@@ -133,7 +133,8 @@
   <span class='no'>sampleCol</span>,
   <span class='no'>valueCol</span>,
   <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>trans</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"log10"</span>, <span class='st'>"log2"</span>, <span class='st'>"identity"</span>),
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>trans</span>, <span class='st'>"identity"</span>),
   <span class='kw'>fill</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.fill.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span>
     <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='synesthesia.html'>scale_fill_synesthesia_d</a></span>()),
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
@@ -161,6 +162,12 @@ Column name of continues values to plot on Y axis.</p></td>
       <td><p><code>character</code>.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.</p></td>
+    </tr>
+    <tr>
+      <th>trans</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>.
+Name of the axis scale transformation to apply.</p>
+<p>For more information:</p><pre><span class='fu'><a href='https://rdrr.io/r/utils/help.html'>help</a></span>(<span class='kw'>topic</span> <span class='kw'>=</span> <span class='st'>"scale_x_continuous"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"ggplot2"</span>)</pre></td>
     </tr>
     <tr>
       <th>label</th>
@@ -192,7 +199,7 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
     <p><code>ggplot</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-06-25.</p>
+    <p>Updated 2020-07-09.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## data.frame ====</span>
@@ -217,6 +224,7 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
     <span class='kw'>sampleCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
     <span class='kw'>valueCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
     <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tumor_type"</span>, <span class='st'>"tumor_subtype"</span>),
+    <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"log10"</span>,
     <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
         <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Effect of compound on cell survival"</span>
     )
@@ -224,7 +232,7 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
     <span class='kw'>object</span> <span class='kw'>=</span> <span class='no'>object</span>,
     <span class='kw'>sampleCol</span> <span class='kw'>=</span> <span class='st'>"cell_id"</span>,
     <span class='kw'>valueCol</span> <span class='kw'>=</span> <span class='st'>"ic50"</span>,
-    <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    <span class='kw'>trans</span> <span class='kw'>=</span> <span class='st'>"identity"</span>
 )</div><div class='img'><img src='plotWaterfall-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
