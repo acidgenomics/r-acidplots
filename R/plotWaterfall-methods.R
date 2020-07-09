@@ -34,6 +34,7 @@
 #'     sampleCol = "cell_id",
 #'     valueCol = "ic50",
 #'     interestingGroups = c("tumor_type", "tumor_subtype"),
+#'     trans = "log10",
 #'     labels = list(
 #'         title = "Effect of compound on cell survival"
 #'     )
@@ -42,7 +43,7 @@
 #'     object = object,
 #'     sampleCol = "cell_id",
 #'     valueCol = "ic50",
-#'     label = FALSE
+#'     trans = "identity"
 #' )
 NULL
 
@@ -64,7 +65,8 @@ NULL
         sampleCol,
         valueCol,
         interestingGroups = NULL,
-        label = FALSE,
+        trans = c("log10", "log2", "identity"),
+        label = identical(trans, "identity"),
         fill,
         labels = NULL
     ) {
@@ -78,6 +80,11 @@ NULL
             isFlag(label),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
+        trans <- match.arg(trans)
+        isLog <- !identical(trans, "identity")
+        if (isTRUE(isLog) && isTRUE(label)) {
+            stop("Bar labeling only supported for `trans = \"identity\"`.")
+        }
         labels <- matchLabels(
             labels = labels,
             choices = eval(formals()[["labels"]])
@@ -85,8 +92,13 @@ NULL
         data <- data.frame(
             x = reorder(object[[sampleCol]], -object[[valueCol]]),
             y = object[[valueCol]],
-            label = sprintf("%.2f", round(object[[valueCol]], 2L))
+            label = sprintf("%.1f", round(object[[valueCol]], 2L))
         )
+        if (isTRUE(isLog)) {
+            logFun <- get(trans, inherits = TRUE)
+            assert(is.function(logFun))
+            data[["y"]] <- logFun(data[["y"]])
+        }
         mapping <- aes(
             x = !!sym("x"),
             y = !!sym("y"),
@@ -124,6 +136,14 @@ NULL
                     width = 1L
                 )
         }
+        if (isTRUE(isLog)) {
+            p <- p + geom_hline(
+                color = "black",
+                linetype = "solid",
+                size = 1L,
+                yintercept = 0L
+            )
+        }
         ## Fill.
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
@@ -156,8 +176,13 @@ NULL
         )
         ## Labels.
         if (is.list(labels)) {
-            if (is.null(labels[["x"]])) labels[["x"]] <- sampleCol
-            if (is.null(labels[["y"]])) labels[["y"]] <- valueCol
+            xLab <- sampleCol
+            yLab <- valueCol
+            if (isTRUE(isLog)) {
+                yLab <- paste(trans, yLab)
+            }
+            if (is.null(labels[["x"]])) labels[["x"]] <- xLab
+            if (is.null(labels[["y"]])) labels[["y"]] <- yLab
             if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
                 labels[["fill"]] <- paste(interestingGroups, sep = "\n")
             }
