@@ -108,39 +108,23 @@ NULL
             assert(isSubset(interestingGroups, colnames(object)))
             data[["facet"]] <- do.call(
                 what = paste,
-                args = c(
-                    object[, interestingGroups, drop = FALSE],
-                    sep = ":"
-                )
+                args = c(object[, interestingGroups, drop = FALSE], sep = ":")
             )
             mapping[["fill"]] <- quo(!!sym("facet"))
         }
         p <- ggplot(data = data, mapping = mapping)
         if (isTRUE(label)) {
             p <- p +
-                geom_bar(
-                    color = "black",
-                    stat = "identity",
-                    width = 0.9
-                ) +
-                geom_text(
-                    angle = 90L,
-                    hjust = 0L,
-                    nudge_y = 0.1
-                )
+                geom_bar(color = "black", stat = "identity", width = 0.9) +
+                geom_text(angle = 90L, hjust = 0L, nudge_y = 0.1)
         } else {
-            p <- p +
-                geom_bar(
-                    color = NA,
-                    stat = "identity",
-                    width = 1L
-                )
+            p <- p + geom_bar(color = NA, stat = "identity", width = 1L)
         }
         if (isTRUE(isLog)) {
             p <- p + geom_hline(
                 color = "black",
                 linetype = "solid",
-                size = 1L,
+                size = 0.5,
                 yintercept = 0L
             )
         }
@@ -161,6 +145,7 @@ NULL
                     space = "free_x"
                 ) +
                 theme(
+                    legend.position = "none",
                     strip.text.x = element_text(
                         angle = 0L,
                         hjust = 0L,
@@ -168,12 +153,16 @@ NULL
                     )
                 )
         }
-        p <- p + theme(
-            axis.text.x = element_text(
-                angle = 90L,
-                hjust = 1L
+        ## Dynamically hide x-axis labels if there are a lot of samples.
+        if (length(unique(data[["x"]])) <= 50L) {
+            p <- p + theme(axis.text.x = element_text(angle = 90L, hjust = 1L))
+        } else {
+            p <- p + theme(
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                axis.title.x = element_blank()
             )
-        )
+        }
         ## Labels.
         if (is.list(labels)) {
             xLab <- sampleCol
