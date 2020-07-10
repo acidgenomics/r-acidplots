@@ -132,7 +132,7 @@ NULL
                 theme(
                     legend.position = "none",
                     strip.text.x = element_text(
-                        angle = 0L,
+                        angle = angle,
                         hjust = 0L,
                         margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
                     )
