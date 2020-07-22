@@ -8,14 +8,12 @@
 \usage{
 plotUpset(object, ...)
 
-\S4method{plotUpset}{data.frame}(object, ...)
+\S4method{plotUpset}{data.frame}(object, cutoff = NULL)
 
-\S4method{plotUpset}{DataFrame}(object, ...)
+\S4method{plotUpset}{DataFrame}(object, cutoff = NULL)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{...}{Handoff to \code{\link[UpSetR:upset]{UpSetR::upset()}}.}
 }
 \value{
 Graphical output, no return.
