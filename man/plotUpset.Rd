@@ -9,11 +9,11 @@
 \usage{
 plotUpset(object, ...)
 
-\S4method{plotUpset}{matrix}(object, cutoff = NULL)
+\S4method{plotUpset}{matrix}(object)
 
-\S4method{plotUpset}{data.frame}(object, cutoff = NULL)
+\S4method{plotUpset}{data.frame}(object)
 
-\S4method{plotUpset}{DataFrame}(object, cutoff = NULL)
+\S4method{plotUpset}{DataFrame}(object)
 }
 \arguments{
 \item{object}{Object.}

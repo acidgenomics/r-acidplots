@@ -32,11 +32,7 @@ NULL
 
 
 `plotUpset,matrix` <-  # nolint
-    function(
-        object,
-        cutoff = NULL
-    ) {
-        assert(isInt(cutoff, nullOK = TRUE))
+    function(object) {
         args <- list(
             data = as.data.frame(object),
             decreasing = TRUE,
