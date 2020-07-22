@@ -87,7 +87,7 @@ data belonging to queries of interest. Most aspects of the UpSet plot are custom
 Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
 }
 \note{
-Updated 2020-06-11.
+Updated 2020-07-22.
 }
 \examples{
 ## Refer to 'UpSetR::upset()' documentation for more examples.
