@@ -4,7 +4,7 @@
 #'
 #' @name plotUpset
 #' @inherit UpSetR::upset details params references
-#' @note Updated 2020-06-11.
+#' @note Updated 2020-07-22.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Handoff to [UpSetR::upset()].
