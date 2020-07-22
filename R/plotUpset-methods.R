@@ -3,7 +3,6 @@
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @inherit UpSetR::upset details params references
 #' @note Updated 2020-07-22.
 #'
 #' @inheritParams acidroxygen::params
@@ -12,10 +11,14 @@
 #' @return Graphical output, no return.
 #'
 #' @examples
-#' ## Refer to 'UpSetR::upset()' documentation for more examples.
-#' file <- system.file("extdata", "movies.csv", package = "acidplots")
-#' data <- import(file)
-#' plotUpset(data)
+#' list <- list(
+#'     a = c("a", "b", "c", "d", "e", "f"),
+#'     b = c("b", "c", "d", "e", "f", "g"),
+#'     c = c("c", "d", "e", "f", "g", "h"),
+#'     d = c("d", "e", "f", "g", "h", "i")
+#' )
+#' df <- UpSetR::fromList(list)
+#' plotUpset(df)
 NULL
 
 
@@ -30,43 +33,26 @@ NULL
 
 
 `plotUpset,data.frame` <-  # nolint
-    function(
-        object,
-        ## nolint start
-        line.size = 1L,
-        main.bar.color = "black",
-        matrix.color = "black",
-        matrix.dot.alpha = 1L,
-        mb.ratio = c(0.6, 0.4),
-        point.size = 3L,
-        sets.bar.color = "black",
-        shade.alpha = 1L,
-        shade.color = NA,
-        text.scale = 1.5,
-        ## Fix for T/F usage in UpSetR package.
-        decreasing = c(TRUE, FALSE),
-        keep.order = FALSE,
-        ## nolint end
-        ...
-    ) {
-        UpSetR::upset(
+    function(object, ...) {
+        args <- list(
             data = object,
-            line.size = line.size,
-            main.bar.color = main.bar.color,
-            matrix.color = matrix.color,
-            matrix.dot.alpha = matrix.dot.alpha,
-            mb.ratio = mb.ratio,
-            nsets = NA,  # FIXME Have to hard code here?
+            nsets = ncol(object),
             nintersects = NA,
-            point.size = point.size,
-            sets.bar.color = sets.bar.color,
-            shade.alpha = shade.alpha,
-            shade.color = shade.color,
-            text.scale = text.scale,
-            decreasing = decreasing,
-            keep.order = keep.order,
+            line.size = 1L,
+            main.bar.color = "black",
+            matrix.color = "black",
+            matrix.dot.alpha = 1L,
+            mb.ratio = c(0.6, 0.4),
+            point.size = 3L,
+            sets.bar.color = "black",
+            shade.alpha = 1L,
+            shade.color = NA,
+            text.scale = 1.5,
+            decreasing = c(TRUE, FALSE),
+            keep.order = FALSE,
             ...
         )
+        do.call(what = UpSetR::upset, args = args)
     }
 
 

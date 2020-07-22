@@ -8,67 +8,12 @@
 \usage{
 plotUpset(object, ...)
 
-\S4method{plotUpset}{data.frame}(
-  object,
-  line.size = 1L,
-  main.bar.color = "black",
-  matrix.color = "black",
-  matrix.dot.alpha = 1L,
-  mb.ratio = c(0.6, 0.4),
-  point.size = 3L,
-  sets.bar.color = "black",
-  shade.alpha = 1L,
-  shade.color = NA,
-  text.scale = 1.5,
-  decreasing = c(TRUE, FALSE),
-  keep.order = FALSE,
-  ...
-)
+\S4method{plotUpset}{data.frame}(object, ...)
 
-\S4method{plotUpset}{DataFrame}(
-  object,
-  line.size = 1L,
-  main.bar.color = "black",
-  matrix.color = "black",
-  matrix.dot.alpha = 1L,
-  mb.ratio = c(0.6, 0.4),
-  point.size = 3L,
-  sets.bar.color = "black",
-  shade.alpha = 1L,
-  shade.color = NA,
-  text.scale = 1.5,
-  decreasing = c(TRUE, FALSE),
-  keep.order = FALSE,
-  ...
-)
+\S4method{plotUpset}{DataFrame}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{line.size}{Width of lines in matrix plot}
-
-\item{main.bar.color}{Color of the main bar plot}
-
-\item{matrix.color}{Color of the intersection points}
-
-\item{matrix.dot.alpha}{Transparency of the empty intersections points in the matrix}
-
-\item{mb.ratio}{Ratio between matrix plot and main bar plot (Keep in terms of hundredths)}
-
-\item{point.size}{Size of points in matrix plot}
-
-\item{sets.bar.color}{Color of set size bar plot}
-
-\item{shade.alpha}{Transparency of shading in matrix}
-
-\item{shade.color}{Color of row shading in matrix}
-
-\item{text.scale}{Numeric, value to scale the text sizes, applies to all axis labels, tick labels, and numbers above bar plot. Can be a universal scale, or a vector containing individual scales
-in the following format: c(intersection size title, intersection size tick labels, set size title, set size tick labels, set names, numbers above bars)}
-
-\item{decreasing}{How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)}
-
-\item{keep.order}{Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.}
 
 \item{...}{Handoff to \code{\link[UpSetR:upset]{UpSetR::upset()}}.}
 }
@@ -78,26 +23,16 @@ Graphical output, no return.
 \description{
 S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
-\details{
-Visualization of set data in the layout described by Lex and Gehlenborg in \url{http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html}.
-UpSet also allows for visualization of queries on intersections and elements, along with custom queries queries implemented using
-Hadley Wickham's apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
-to be displayed alongside the UpSet plot. The user also has the the ability to pass their own plots into the function to further analyze
-data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
-Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.
-}
 \note{
 Updated 2020-07-22.
 }
 \examples{
-## Refer to 'UpSetR::upset()' documentation for more examples.
-file <- system.file("extdata", "movies.csv", package = "acidplots")
-data <- import(file)
-plotUpset(data)
-}
-\references{
-Lex et al. (2014). UpSet: Visualization of Intersecting Sets
-IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis 2014), vol 20, pp. 1983-1992, (2014). \url{http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf}
-
-Lex and Gehlenborg (2014). Points of view: Sets and intersections. Nature Methods 11, 779 (2014). \url{http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html}
+list <- list(
+    a = c("a", "b", "c", "d", "e", "f"),
+    b = c("b", "c", "d", "e", "f", "g"),
+    c = c("c", "d", "e", "f", "g", "h"),
+    d = c("d", "e", "f", "g", "h", "i")
+)
+df <- UpSetR::fromList(list)
+plotUpset(df)
 }
