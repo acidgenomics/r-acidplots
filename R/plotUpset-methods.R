@@ -6,6 +6,7 @@
 #' @note Updated 2020-07-22.
 #'
 #' @inheritParams acidroxygen::params
+#' @param ... Additional arguments.
 #'
 #' @return Graphical output, no return.
 #'

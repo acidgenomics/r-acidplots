@@ -17,6 +17,8 @@ plotUpset(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 Graphical output, no return.
