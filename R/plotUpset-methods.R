@@ -56,6 +56,8 @@ NULL
             matrix.color = matrix.color,
             matrix.dot.alpha = matrix.dot.alpha,
             mb.ratio = mb.ratio,
+            nsets = NA,  # FIXME Have to hard code here?
+            nintersects = NA,
             point.size = point.size,
             sets.bar.color = sets.bar.color,
             shade.alpha = shade.alpha,
