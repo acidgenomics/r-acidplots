@@ -6,7 +6,6 @@
 #' @note Updated 2020-07-22.
 #'
 #' @inheritParams acidroxygen::params
-#' @param ... Handoff to [UpSetR::upset()].
 #'
 #' @return Graphical output, no return.
 #'
@@ -33,24 +32,28 @@ NULL
 
 
 `plotUpset,data.frame` <-  # nolint
-    function(object, ...) {
+    function(
+        object,
+        cutoff = NULL
+    ) {
+        assert(isInt(cutoff, nullOK = TRUE))
         args <- list(
             data = object,
-            nsets = ncol(object),
-            nintersects = NA,
+            decreasing = TRUE,
+            keep.order = FALSE,
             line.size = 1L,
             main.bar.color = "black",
             matrix.color = "black",
             matrix.dot.alpha = 1L,
-            mb.ratio = c(0.6, 0.4),
+            mb.ratio = c(0.7, 0.3),
+            nintersects = NA,
+            nsets = ncol(object),
+            order.by = "freq",
             point.size = 3L,
             sets.bar.color = "black",
             shade.alpha = 1L,
             shade.color = NA,
-            text.scale = 1.5,
-            decreasing = c(TRUE, FALSE),
-            keep.order = FALSE,
-            ...
+            text.scale = 1.5
         )
         do.call(what = UpSetR::upset, args = args)
     }
