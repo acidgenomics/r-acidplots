@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.28</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.30</span>
       </span>
     </div>
 
@@ -127,41 +127,14 @@
 
     <pre class="usage"><span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for matrix</span>
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>plotUpset</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>line.size</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>main.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>matrix.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>matrix.dot.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>mb.ratio</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6</span>, <span class='fl'>0.4</span>),
-  <span class='kw'>point.size</span> <span class='kw'>=</span> <span class='fl'>3L</span>,
-  <span class='kw'>sets.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>shade.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>shade.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>text.scale</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
-  <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
-  <span class='kw'>keep.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
-)
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>plotUpset</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>line.size</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>main.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>matrix.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>matrix.dot.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>mb.ratio</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.6</span>, <span class='fl'>0.4</span>),
-  <span class='kw'>point.size</span> <span class='kw'>=</span> <span class='fl'>3L</span>,
-  <span class='kw'>sets.bar.color</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
-  <span class='kw'>shade.alpha</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>shade.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>text.scale</span> <span class='kw'>=</span> <span class='fl'>1.5</span>,
-  <span class='kw'>decreasing</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>),
-  <span class='kw'>keep.order</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
-)</pre>
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,84 +144,27 @@
       <td><p>Object.</p></td>
     </tr>
     <tr>
-      <th>line.size</th>
-      <td><p>Width of lines in matrix plot</p></td>
-    </tr>
-    <tr>
-      <th>main.bar.color</th>
-      <td><p>Color of the main bar plot</p></td>
-    </tr>
-    <tr>
-      <th>matrix.color</th>
-      <td><p>Color of the intersection points</p></td>
-    </tr>
-    <tr>
-      <th>matrix.dot.alpha</th>
-      <td><p>Transparency of the empty intersections points in the matrix</p></td>
-    </tr>
-    <tr>
-      <th>mb.ratio</th>
-      <td><p>Ratio between matrix plot and main bar plot (Keep in terms of hundredths)</p></td>
-    </tr>
-    <tr>
-      <th>point.size</th>
-      <td><p>Size of points in matrix plot</p></td>
-    </tr>
-    <tr>
-      <th>sets.bar.color</th>
-      <td><p>Color of set size bar plot</p></td>
-    </tr>
-    <tr>
-      <th>shade.alpha</th>
-      <td><p>Transparency of shading in matrix</p></td>
-    </tr>
-    <tr>
-      <th>shade.color</th>
-      <td><p>Color of row shading in matrix</p></td>
-    </tr>
-    <tr>
-      <th>text.scale</th>
-      <td><p>Numeric, value to scale the text sizes, applies to all axis labels, tick labels, and numbers above bar plot. Can be a universal scale, or a vector containing individual scales
-in the following format: c(intersection size title, intersection size tick labels, set size title, set size tick labels, set names, numbers above bars)</p></td>
-    </tr>
-    <tr>
-      <th>decreasing</th>
-      <td><p>How the variables in order.by should be ordered. "freq" is decreasing (greatest to least) and "degree" is increasing (least to greatest)</p></td>
-    </tr>
-    <tr>
-      <th>keep.order</th>
-      <td><p>Keep sets in the order entered using the sets parameter. The default is FALSE, which orders the sets by their sizes.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Handoff to <code><a href='https://rdrr.io/pkg/UpSetR/man/upset.html'>UpSetR::upset()</a></code>.</p></td>
+      <td><p>Additional arguments.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Graphical output, no return.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Visualization of set data in the layout described by Lex and Gehlenborg in <a href='http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html'>http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html</a>.
-UpSet also allows for visualization of queries on intersections and elements, along with custom queries queries implemented using
-Hadley Wickham's apply function. To further analyze the data contained in the intersections, the user may select additional attribute plots
-to be displayed alongside the UpSet plot. The user also has the the ability to pass their own plots into the function to further analyze
-data belonging to queries of interest. Most aspects of the UpSet plot are customizable, allowing the user to select the plot that best suits their style.
-Depending on how the features are selected, UpSet can display between 25-65 sets and between 40-100 intersections.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-06-11.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Lex et al. (2014). UpSet: Visualization of Intersecting Sets
-IEEE Transactions on Visualization and Computer Graphics (Proceedings of InfoVis 2014), vol 20, pp. 1983-1992, (2014). <a href='http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf'>http://people.seas.harvard.edu/~alex/papers/2014_infovis_upset.pdf</a></p>
-<p>Lex and Gehlenborg (2014). Points of view: Sets and intersections. Nature Methods 11, 779 (2014). <a href='http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html'>http://www.nature.com/nmeth/journal/v11/n8/abs/nmeth.3033.html</a></p>
+    <p>Updated 2020-07-22.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Refer to 'UpSetR::upset()' documentation for more examples.</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"movies.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidplots"</span>)
-<span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>import</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span class='message'>→ Importing <span style='color: #0000BB;'>movies.csv</span><span> using </span><span style='color: #0000BB;'>vroom</span><span>::</span><span style='color: #000000;background-color: #BBBBBB;'>`vroom()`</span><span>.</span></div><div class='input'><span class='fu'>plotUpset</span>(<span class='no'>data</span>)</div><div class='img'><img src='plotUpset-1.png' alt='' width='700' height='433' /></div></span></pre>
+    <pre class="examples"><div class='input'><span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
+    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>),
+    <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>, <span class='st'>"g"</span>),
+    <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>, <span class='st'>"g"</span>, <span class='st'>"h"</span>),
+    <span class='kw'>d</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>, <span class='st'>"g"</span>, <span class='st'>"h"</span>, <span class='st'>"i"</span>)
+)
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>UpSetR</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/UpSetR/man/fromList.html'>fromList</a></span>(<span class='no'>list</span>)
+<span class='fu'>plotUpset</span>(<span class='no'>df</span>)</div><div class='img'><img src='plotUpset-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
