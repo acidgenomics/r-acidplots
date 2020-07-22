@@ -2,11 +2,14 @@
 % Please edit documentation in R/plotUpset-methods.R
 \name{plotUpset}
 \alias{plotUpset}
+\alias{plotUpset,matrix-method}
 \alias{plotUpset,data.frame-method}
 \alias{plotUpset,DataFrame-method}
 \title{UpSet plot}
 \usage{
 plotUpset(object, ...)
+
+\S4method{plotUpset}{matrix}(object, cutoff = NULL)
 
 \S4method{plotUpset}{data.frame}(object, cutoff = NULL)
 

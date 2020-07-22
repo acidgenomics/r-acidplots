@@ -31,14 +31,14 @@ NULL
 
 
 
-`plotUpset,data.frame` <-  # nolint
+`plotUpset,matrix` <-  # nolint
     function(
         object,
         cutoff = NULL
     ) {
         assert(isInt(cutoff, nullOK = TRUE))
         args <- list(
-            data = object,
+            data = as.data.frame(object),
             decreasing = TRUE,
             keep.order = FALSE,
             line.size = 1L,
@@ -57,6 +57,21 @@ NULL
         )
         do.call(what = UpSetR::upset, args = args)
     }
+
+
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("matrix"),
+    definition = `plotUpset,matrix`
+)
+
+
+
+`plotUpset,data.frame` <-  # nolint
+    `plotUpset,matrix`
 
 
 
