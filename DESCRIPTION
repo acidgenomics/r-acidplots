@@ -1,8 +1,8 @@
 Package: acidplots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.2.29
-Date: 2020-07-09
+Version: 0.2.30
+Date: 2020-07-23
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -22,16 +22,16 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: false
 Depends:
-    R (>= 3.6),
+    R (>= 4.0),
     basejump (>= 0.12.8)
 Imports:
-    BiocGenerics (>= 0.32),
-    IRanges (>= 2.20),
+    BiocGenerics,
+    IRanges,
     Matrix (>= 1.2),
     RColorBrewer (>= 1.1),
-    S4Vectors (>= 0.24),
-    SingleCellExperiment (>= 1.8),
-    SummarizedExperiment (>= 1.16),
+    S4Vectors,
+    SingleCellExperiment,
+    SummarizedExperiment,
     UpSetR (>= 1.4),
     acidgenerics (>= 0.3.7),
     cowplot (>= 1.0.0),
@@ -50,12 +50,12 @@ Imports:
     stats,
     utils
 Suggests:
-    BiocStyle (>= 2.14),
-    DropletUtils (>= 1.6),
+    BiocStyle,
+    DropletUtils,
     acidtest (>= 0.3.0),
-    knitr (>= 1.28),
-    patrick (>= 0.0.1),
-    testthat (>= 2.3),
+    knitr,
+    patrick,
+    testthat,
     viridis (>= 0.5.1)
 Remotes:
     acidgenomics/acidgenerics,
@@ -111,4 +111,3 @@ Collate:
     'plotUpset-methods.R'
     'plotWaterfall-methods.R'
     'plotZerosVsDepth-methods.R'
-    'reexports.R'
