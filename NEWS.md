@@ -1,3 +1,12 @@
+## acidplots 0.2.30 (2020-07-23)
+
+### Minor changes
+
+- Updated minimum R dependency to 4.0.
+- `plotUpset`: Added matrix and list method support. Simplified internal code,
+  reducing dependencies from UpSetR. Maybe consider switching to ggupset in a
+  future update.
+
 ## acidplots 0.2.29 (2020-07-09)
 
 ### Minor changes
