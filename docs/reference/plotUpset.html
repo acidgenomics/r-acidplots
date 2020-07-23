@@ -127,6 +127,9 @@
 
     <pre class="usage"><span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for list</span>
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for matrix</span>
 <span class='fu'>plotUpset</span>(<span class='no'>object</span>)
 
@@ -154,7 +157,7 @@
     <p>Graphical output, no return.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-07-22.</p>
+    <p>Updated 2020-07-23.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
@@ -163,8 +166,7 @@
     <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>, <span class='st'>"g"</span>, <span class='st'>"h"</span>),
     <span class='kw'>d</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"e"</span>, <span class='st'>"f"</span>, <span class='st'>"g"</span>, <span class='st'>"h"</span>, <span class='st'>"i"</span>)
 )
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>UpSetR</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/UpSetR/man/fromList.html'>fromList</a></span>(<span class='no'>list</span>)
-<span class='fu'>plotUpset</span>(<span class='no'>df</span>)</div><div class='img'><img src='plotUpset-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plotUpset</span>(<span class='no'>list</span>)</div><div class='img'><img src='plotUpset-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
