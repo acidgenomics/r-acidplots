@@ -2,12 +2,15 @@
 % Please edit documentation in R/plotUpset-methods.R
 \name{plotUpset}
 \alias{plotUpset}
+\alias{plotUpset,list-method}
 \alias{plotUpset,matrix-method}
 \alias{plotUpset,data.frame-method}
 \alias{plotUpset,DataFrame-method}
 \title{UpSet plot}
 \usage{
 plotUpset(object, ...)
+
+\S4method{plotUpset}{list}(object, ...)
 
 \S4method{plotUpset}{matrix}(object)
 
@@ -27,7 +30,7 @@ Graphical output, no return.
 S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
 \note{
-Updated 2020-07-22.
+Updated 2020-07-23.
 }
 \examples{
 list <- list(
@@ -36,6 +39,5 @@ list <- list(
     c = c("c", "d", "e", "f", "g", "h"),
     d = c("d", "e", "f", "g", "h", "i")
 )
-df <- UpSetR::fromList(list)
-plotUpset(df)
+plotUpset(list)
 }

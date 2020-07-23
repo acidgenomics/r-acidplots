@@ -3,7 +3,7 @@
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2020-07-22.
+#' @note Updated 2020-07-23.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -17,8 +17,7 @@
 #'     c = c("c", "d", "e", "f", "g", "h"),
 #'     d = c("d", "e", "f", "g", "h", "i")
 #' )
-#' df <- UpSetR::fromList(list)
-#' plotUpset(df)
+#' plotUpset(list)
 NULL
 
 
@@ -32,6 +31,42 @@ NULL
 
 
 
+## Modified version of `UpSetR::fromList()`.
+## Updated 2020-07-23.
+.upsetMatrixFromList <- function(list) {
+    elements <- unique(unlist(list))
+    data <- unlist(lapply(list, function(x) {
+        x <- as.vector(match(elements, x))
+    }))
+    data[is.na(data)] <- as.integer(0L)
+    data[data != 0L] <- as.integer(1L)
+    data <- matrix(data, ncol = length(list), byrow = FALSE)
+    data <- data[which(rowSums(data) != 0L), , drop = FALSE]
+    colnames(data) <- names(list)
+    data
+}
+
+
+
+## Updated 2020-07-23.
+`plotUpset,list` <- # nolint
+    function(object, ...) {
+        plotUpset(.upsetMatrixFromList(object))
+    }
+
+
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("list"),
+    definition = `plotUpset,list`
+)
+
+
+
+## Updated 2020-07-23.
 `plotUpset,matrix` <-  # nolint
     function(object) {
         args <- list(
@@ -67,6 +102,7 @@ setMethod(
 
 
 
+## Updated 2020-07-23.
 `plotUpset,data.frame` <-  # nolint
     `plotUpset,matrix`
 
@@ -82,6 +118,7 @@ setMethod(
 
 
 
+## Updated 2020-07-23.
 `plotUpset,DataFrame` <-  # nolint
     `plotUpset,data.frame`
 
