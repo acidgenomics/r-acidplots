@@ -52,11 +52,10 @@ Imports:
 Suggests:
     BiocStyle,
     DropletUtils,
-    acidtest (>= 0.3.0),
+    acidtest (>= 0.3.2),
     knitr,
-    patrick,
     testthat,
-    viridis (>= 0.5.1)
+    viridis
 Remotes:
     acidgenomics/acidgenerics,
     acidgenomics/acidtest,
