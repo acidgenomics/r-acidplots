@@ -1,7 +1,10 @@
 context("ggplot2 themes")
 
-with_parameters_test_that(
-    "themes", {
+test_that("themes", {
+    for (theme in list(
+        acid_theme_light,
+        acid_theme_dark
+    )) {
         p <- ggplot(
             data = mpg,
             mapping = aes(
@@ -14,9 +17,5 @@ with_parameters_test_that(
             geom_point() +
             theme()
         expect_s3_class(p, "ggplot")
-    },
-    theme = list(
-        acid_theme_light,
-        acid_theme_dark
-    )
-)
+    }
+})
