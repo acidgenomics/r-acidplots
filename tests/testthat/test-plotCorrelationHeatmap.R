@@ -1,12 +1,11 @@
 context("plotCorrelationHeatmap")
 
-with_parameters_test_that(
-    "plotCorrelationHeatmap", {
-        x <- plotCorrelationHeatmap(object)
-        expect_s3_class(x, "pheatmap")
-    },
-    object = list(
+test_that("plotCorrelationHeatmap", {
+    for (object in list(
         SummarizedExperiment = rse,
         SingleCellExperiment = sce
-    )
-)
+    )) {
+        x <- plotCorrelationHeatmap(object)
+        expect_s3_class(x, "pheatmap")
+    }
+})
