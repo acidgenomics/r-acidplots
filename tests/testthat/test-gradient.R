@@ -1,12 +1,8 @@
 context("gradient functions")
 
-with_parameters_test_that(
-    "gradient functions", {
+test_that("gradient functions", {
+    for (f in list(blueYellow, purpleOrange)) {
         x <- f(n = 3L)
         expect_true(allAreHexColors(x))
-    },
-    f = list(
-        blueYellow,
-        purpleOrange
-    )
-)
+    }
+})
