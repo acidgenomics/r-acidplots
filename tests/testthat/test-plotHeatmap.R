@@ -11,8 +11,8 @@ funs <- list(
 rse <- basejump::nonzeroRowsAndCols(rse)
 sce <- basejump::nonzeroRowsAndCols(sce)
 
-with_parameters_test_that(
-    "SummarizedExperiment", {
+test_that("SummarizedExperiment", {
+    for (fun in funs) {
         object <- rse
         p <- fun(object)
         expect_is(p, "pheatmap")
@@ -55,25 +55,26 @@ with_parameters_test_that(
             ),
             class = "pheatmap"
         )
-    },
-    fun = funs
-)
+    }
+})
 
-with_parameters_test_that(
-    "SummarizedExperiment : Non-unique samples", {
+test_that("SummarizedExperiment : Non-unique samples", {
+    for (fun in funs) {
         object <- rse
         assay(object)[, 2L] <- assay(object)[, 1L]
         expect_warning(
             object = fun(object),
             regexp = "Non-unique samples detected. Skipping plot."
         )
-    },
-    fun = funs
-)
+    }
+})
 
 ## Note that this is not supported for correlation heatmap.
-with_parameters_test_that(
-    "SummarizedExperiment : Convert genes to symbols", {
+test_that("SummarizedExperiment : Convert genes to symbols", {
+    for (fun in list(
+        plotHeatmap,
+        plotQuantileHeatmap
+    )) {
         object <- rse
         expect_is(
             object = fun(
@@ -83,12 +84,8 @@ with_parameters_test_that(
             ),
             class = "pheatmap"
         )
-    },
-    fun = list(
-        plotHeatmap,
-        plotQuantileHeatmap
-    )
-)
+    }
+})
 
 test_that("SummarizedExperiment : Invalid pheatmap passthrough", {
     object <- rse
@@ -128,10 +125,9 @@ test_that("SummarizedExperiment : Row and column scaling", {
     expect_s3_class(p, "pheatmap")
 })
 
-with_parameters_test_that(
-    "SingleCellExperiment", {
+test_that("SingleCellExperiment", {
+    for (fun in funs) {
         p <- fun(sce)
         expect_s3_class(p, "pheatmap")
-    },
-    fun = funs
-)
+    }
+})

@@ -1,40 +1,36 @@
 context("plotCountsPerBiotype")
 
-with_parameters_test_that(
-    "RSE, SCE", {
+test_that("RSE, SCE", {
+    for (object in list(rse, sce)) {
         x <- plotCountsPerBiotype(object)
         expect_s3_class(x, "ggplot")
-    },
-    object = list(rse, sce)
-)
+    }
+})
 
-trans <- eval(formals(`plotCountsPerBiotype,SummarizedExperiment`)[["trans"]])
-with_parameters_test_that(
-    "trans", {
+transes <- eval(formals(`plotCountsPerBiotype,SummarizedExperiment`)[["trans"]])
+test_that("trans", {
+    for (trans in transes) {
         x <- plotCountsPerBiotype(rse, trans = trans)
         expect_s3_class(x, "ggplot")
-    },
-    trans = trans
-)
+    }
+})
 
 
 
 context("plotCountsPerBroadClass")
 
-with_parameters_test_that(
-    "RSE, SCE", {
+test_that("RSE, SCE", {
+    for (object in list(rse, sce)) {
         x <- plotCountsPerBroadClass(object)
         expect_s3_class(x, "ggplot")
-    },
-    object = list(rse, sce)
-)
+    }
+})
 
-trans <-
+transes <-
     eval(formals(`plotCountsPerBroadClass,SummarizedExperiment`)[["trans"]])
-with_parameters_test_that(
-    "trans", {
+test_that("trans", {
+    for (trans in transes) {
         x <- plotCountsPerBroadClass(rse, trans = trans)
         expect_s3_class(x, "ggplot")
-    },
-    trans = trans
-)
+    }
+})
