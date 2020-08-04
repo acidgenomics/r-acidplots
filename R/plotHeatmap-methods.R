@@ -201,9 +201,9 @@ NULL
         ## unmodified if gene symbols aren't defined.
         if (isTRUE(convertGenesToSymbols)) {
             object <- tryCatch(
-                expr = suppressMessages(
+                expr = suppressMessages({
                     convertGenesToSymbols(object)
-                ),
+                }),
                 error = function(e) object
             )
         }
