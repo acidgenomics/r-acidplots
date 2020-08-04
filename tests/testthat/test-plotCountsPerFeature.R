@@ -1,18 +1,16 @@
 context("plotCountsPerFeature")
 
-with_parameters_test_that(
-    "RSE, SCE", {
+test_that("RSE, SCE", {
+    for (object in list(rse, sce)) {
         p <- plotCountsPerFeature(object)
         expect_s3_class(p, "ggplot")
-    },
-    object = list(rse, sce)
-)
+    }
+})
 
-geom <- eval(formals(`plotCountsPerFeature,SummarizedExperiment`)[["geom"]])
-with_parameters_test_that(
-    "geom", {
+geoms <- eval(formals(`plotCountsPerFeature,SummarizedExperiment`)[["geom"]])
+test_that("geom", {
+    for (geom in geoms) {
         p <- plotCountsPerFeature(rse, geom = geom)
         expect_s3_class(p, "ggplot")
-    },
-    geom = geom
-)
+    }
+})

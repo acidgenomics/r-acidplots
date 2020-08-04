@@ -27,47 +27,47 @@ test_that("default", {
     )
 })
 
-with_parameters_test_that(
-    "Gene IDs or names", {
+test_that("Gene IDs or names", {
+    for (genes in list(geneIDs, geneNames)) {
         x <- plotCounts(object = object, genes = genes)
         expect_s3_class(x, "ggplot")
-    },
-    genes = list(
-        geneIDs,
-        geneNames
-    )
-)
+    }
+})
 
 trans <- eval(formals(`plotCounts,SummarizedExperiment`)[["trans"]])
-
-with_parameters_test_that(
-    "trans", {
-        x <- plotCounts(object, genes = genes, trans = trans)
-        expect_s3_class(x, "ggplot")
-        expect_identical(
-            object = x[["labels"]][["y"]],
-            expected = ylab
-        )
-    },
-    trans = trans,
-    ylab = c(
-        identity = "counts",
-        log2 = "log2 counts",
-        log10 = "log10 counts"
+test_that("trans", {
+    mapply(
+        trans = trans,
+        ylab = c(
+            identity = "counts",
+            log2 = "log2 counts",
+            log10 = "log10 counts"
+        ),
+        FUN = function(trans, ylab) {
+            x <- plotCounts(object, genes = genes, trans = trans)
+            expect_s3_class(x, "ggplot")
+            expect_identical(
+                object = x[["labels"]][["y"]],
+                expected = ylab
+            )
+        },
+        SIMPLIFY = FALSE
     )
-)
+})
 
 style <- eval(formals(`plotCounts,SummarizedExperiment`)[["style"]])
-
-with_parameters_test_that(
-    "style", {
-        x <- plotCounts(object, genes = genes, style = style)
-        expect_s3_class(x, "ggplot")
-        expect_is(x[["facet"]], facetClass)
-    },
-    style = style,
-    facetClass = c(
-        facet = "FacetWrap",
-        wide = "FacetNull"
+test_that("style", {
+    mapply(
+        style = style,
+        facetClass = c(
+            facet = "FacetWrap",
+            wide = "FacetNull"
+        ),
+        FUN = function(style, facetClass) {
+            x <- plotCounts(object, genes = genes, style = style)
+            expect_s3_class(x, "ggplot")
+            expect_is(x[["facet"]], facetClass)
+        },
+        SIMPLIFY = FALSE
     )
-)
+})
