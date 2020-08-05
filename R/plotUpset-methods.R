@@ -3,7 +3,7 @@
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2020-07-23.
+#' @note Updated 2020-08-05.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ... Additional arguments.
@@ -66,7 +66,7 @@ setMethod(
 
 
 
-## Updated 2020-07-23.
+## Updated 2020-08-05.
 `plotUpset,matrix` <-  # nolint
     function(object) {
         args <- list(
@@ -77,7 +77,7 @@ setMethod(
             main.bar.color = "black",
             matrix.color = "black",
             matrix.dot.alpha = 1L,
-            mb.ratio = c(0.7, 0.3),
+            mb.ratio = c(0.5, 0.5),
             nintersects = NA,
             nsets = ncol(object),
             order.by = "freq",

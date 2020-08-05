@@ -1,3 +1,10 @@
+## acidplots 0.2.31 (2020-08-05)
+
+### Minor changes
+
+- `plotUpset`: Adjusted ratio of dot matrix to main barplot, to handle complex
+  multiple comparisons better.
+
 ## acidplots 0.2.30 (2020-07-23)
 
 ### Minor changes
