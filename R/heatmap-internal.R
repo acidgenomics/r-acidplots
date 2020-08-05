@@ -1,5 +1,5 @@
 #' Return hierarchical clustering rows and columns for heatmap return
-#' @note Updated 2019-07-29.
+#' @note Updated 2020-08-05.
 #' @return `hclust` object or `FALSE` (not `NULL`) to skip.
 #' @noRd
 .hclust <- function(
@@ -18,16 +18,16 @@
     ## Prepare our skeleton return list.
     out <- list(rows = FALSE, cols = FALSE)
     if (isTRUE(rows) || isTRUE(cols)) {
-        message(sprintf(
+        cli_alert(sprintf(
             fmt = paste0(
                 "Performing hierarchical clustering.\n",
-                "Using 'stats::hclust(method = %s)'."
+                "Using {.fun hclust} method {.arg %s}."
             ),
             deparse(method)
         ))
     }
     if (isTRUE(rows)) {
-        message("Arranging rows using 'hclust()'.")
+        cli_alert("Arranging rows using {.fun hclust}.")
         out[["rows"]] <- tryCatch(
             expr = hclust(
                 d = dist(object),
@@ -35,14 +35,14 @@
             ),
             error = function(e) {
                 ## nocov start
-                warning("'hclust()' row calculation failed. Skipping.")
+                cli_alert_warning("{.fun hclust} row calculation failed.")
                 FALSE
                 ## nocov end
             }
         )
     }
     if (isTRUE(cols)) {
-        message("Arranging columns using 'hclust()'.")
+        cli_alert("Arranging columns using {.fun hclust}.")
         out[["cols"]] <- tryCatch(
             expr = hclust(
                 ## Note the use of `t()` here.
@@ -51,13 +51,12 @@
             ),
             error = function(e) {
                 ## nocov start
-                warning("'hclust()' column calculation failed. Skipping.")
+                cli_alert_warning("{.fun hclust} column calculation failed.")
                 FALSE
                 ## nocov end
             }
         )
     }
-
     out
 }
 
@@ -78,10 +77,10 @@
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
     if (any(is.na(object))) {
-        warning("NA values detected in matrix.")  # nocov
+        cli_alert_warning("NA values detected in matrix.")  # nocov
     }
     if (!identical(scale, "none")) {
-        message(sprintf("Scaling matrix per %s (z-score).", scale))
+        cli_alert(sprintf("Scaling matrix per %s (z-score).", scale))
     }
     ## Assert checks to look for sufficient variance when the user is attempting
     ## to apply scaling (z-score). Currently we're keeping this very strict and
@@ -96,7 +95,7 @@
             ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            message(sprintf(
+            cli_alert_info(sprintf(
                 fmt = "%d %s have enough variance: %s.",
                 n,
                 ngettext(
