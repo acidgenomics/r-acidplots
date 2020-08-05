@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit acidgenerics::plotQuantileHeatmap
-#' @note Updated 2020-04-21.
+#' @note Updated 2020-08-05.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -47,7 +47,7 @@ NULL
 
 
 
-## Updated 2020-04-21.
+## Updated 2020-08-05.
 `plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -93,8 +93,8 @@ NULL
         }
         ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            warning("Non-unique samples detected. Skipping plot.")
-            return(invisible())
+            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            return()
         }
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object

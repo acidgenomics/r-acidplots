@@ -106,7 +106,7 @@ Only applies when object contains mappings defined in \code{rowRanges}.}
 Quantile heatmap
 }
 \note{
-Updated 2020-04-21.
+Updated 2020-08-05.
 }
 \examples{
 data(
