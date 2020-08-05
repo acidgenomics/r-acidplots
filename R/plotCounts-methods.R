@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit acidgenerics::plotCounts
-#' @note Updated 2020-04-21.
+#' @note Updated 2020-08-05.
 #'
 #' @inheritParams acidroxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -92,7 +92,7 @@ NULL
 
 
 
-## Updated 2020-04-21.
+## Updated 2020-08-05.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -110,22 +110,8 @@ NULL
             subtitle = NULL,
             sampleAxis = NULL,
             countAxis = "counts"
-        ),
-        ...
+        )
     ) {
-        ## nocov start
-        call <- match.call()
-        ## medianLine
-        if ("medianLine" %in% names(call)) {
-            stop("'medianLine' is defunct. Use 'line = \"median\"' instead.")
-        }
-        ## Error on unsupported arguments.
-        assert(isSubset(
-            x = setdiff(names(call), ""),
-            y = names(formals())
-        ))
-        rm(call)
-        ## nocov end
         validObject(object)
         if (missing(genes)) {
             genes <- rownames(object)
@@ -193,7 +179,7 @@ NULL
             !identical(line, "none") &&
             !identical(interestingGroups, "sampleName")
         ) {
-            message("Line denotes '", line, "()'.")
+            cli_alert_info(sprintf("Line denotes {.fun %s}.", line))
             lineFun <- get(x = line, inherits = TRUE)
             assert(is.function(lineFun))
             p <- p + stat_summary(

@@ -95,7 +95,7 @@ Title.}
 Correlation heatmap
 }
 \note{
-Updated 2020-02-19.
+Updated 2020-08-05.
 }
 \examples{
 data(

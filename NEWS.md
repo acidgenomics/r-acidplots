@@ -1,3 +1,9 @@
+## acidplots 0.2.32 (2020-08-05)
+
+### Minor changes
+
+- Now using cli package for improved message appearance.
+
 ## acidplots 0.2.31 (2020-08-05)
 
 ### Minor changes

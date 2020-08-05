@@ -30,7 +30,7 @@ Graphical output, no return.
 S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
 \note{
-Updated 2020-07-23.
+Updated 2020-08-05.
 }
 \examples{
 list <- list(
