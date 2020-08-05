@@ -56,7 +56,7 @@ NULL
         n = 10L,
         clusterRows = TRUE,
         clusterCols = TRUE,
-        showRownames = isTRUE(nrow(object) <= 50L),
+        showRownames = isTRUE(nrow(object) <= 30L),
         showColnames = TRUE,
         treeheightRow = 50L,
         treeheightCol = 50L,
