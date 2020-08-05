@@ -18,8 +18,7 @@ plotPCA(object, ...)
   pointSize = getOption(x = "acid.point.size", default = 3L),
   title = "PCA",
   subtitle = NULL,
-  return = c("ggplot", "DataFrame"),
-  ...
+  return = c("ggplot", "DataFrame")
 )
 }
 \arguments{
@@ -73,7 +72,7 @@ Principal component analysis plot
 \code{SingleCellExperiment} method that visualizes dimension reduction data
 slotted in \code{reducedDims()} is defined in pointillism package.
 
-Updated 2019-12-09.
+Updated 2020-08-05.
 }
 \section{Principal component analysis}{
 

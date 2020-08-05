@@ -1,6 +1,6 @@
 #' @name plotCorrelationHeatmap
 #' @inherit acidgenerics::plotCorrelationHeatmap
-#' @note Updated 2020-02-19.
+#' @note Updated 2020-08-05.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams acidroxygen::params
@@ -74,23 +74,24 @@ NULL
         } else if (!isString(title)) {
             title <- NA
         }
-        ## Warn and early return if any samples are duplicated.
+        ## Early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            warning("Non-unique samples detected. Skipping plot.")
-            return(invisible())
+            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            return()
         }
         ## Correlation matrix.
         mat <- as.matrix(assay(object, i = assay))
         ## Inform the user if NA values are present, and replace with zeros.
         if (any(is.na(mat))) {
-            message(sprintf(
+            cli_alert_warning(sprintf(
                 "%d NA detected in matrix. Replacing with zeros.",
                 sum(is.na(mat))
             ))
             mat[is.na(mat)] <- 0L
         }
-        message(sprintf(
-            "Calculating correlation matrix using '%s' method.", method
+        cli_alert(sprintf(
+            "Calculating correlation matrix using {.var %s} method.",
+            method
         ))
         cor <- cor(x = mat, y = NULL, method = method)
         ## Check for NA values in correlation matrix and error, if necessary.

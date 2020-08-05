@@ -12,7 +12,7 @@
 #' @name plotPCA
 #' @note `SingleCellExperiment` method that visualizes dimension reduction data
 #'   slotted in `reducedDims()` is defined in pointillism package.
-#' @note Updated 2019-12-09.
+#' @note Updated 2020-08-05.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -55,7 +55,7 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2020-08-05.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -67,27 +67,8 @@ NULL
         pointSize,
         title = "PCA",
         subtitle = NULL,
-        return = c("ggplot", "DataFrame"),
-        ...
+        return = c("ggplot", "DataFrame")
     ) {
-        ## nocov start
-        call <- standardizeCall()
-        ## genes
-        if (isSubset("genes", names(call))) {
-            stop("'genes' is defunct. Use 'ntop' argument instead.")
-        }
-        ## samples, censorSamples
-        if (any(c("samples", "censorSamples") %in% names(call))) {
-            stop("Sample selection is defunct. Use bracket-based subsetting.")
-        }
-        ## returnData
-        if (isSubset("returnData", names(call))) {
-            stop("'returnData' is defunct. Use 'return' argument instead.")
-        }
-        ## Error on unsupported arguments.
-        assert(isSubset(x = setdiff(names(call), ""), y = names(formals())))
-        rm(call)
-        ## nocov end
         validObject(object)
         assert(
             isScalar(assay),
@@ -102,16 +83,16 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         return <- match.arg(return)
-        ## Warn and early return if any samples are duplicated.
+        ## Early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            warning("Non-unique samples detected. Skipping plot.")
-            return(invisible())
+            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            return()
         }
         ## Handle `ntop` definition automatically.
         if (isTRUE(ntop > nrow(object))) {
             ntop <- nrow(object)
         }
-        message(sprintf(
+        cli_alert_info(sprintf(
             "Plotting PCA using %d %s.",
             ntop,
             ngettext(
