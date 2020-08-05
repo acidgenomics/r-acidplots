@@ -62,7 +62,7 @@ test_that("SummarizedExperiment : Non-unique samples", {
     for (fun in funs) {
         object <- rse
         assay(object)[, 2L] <- assay(object)[, 1L]
-        expect_warning(
+        expect_message(
             object = fun(object),
             regexp = "Non-unique samples detected. Skipping plot."
         )

@@ -19,8 +19,7 @@ plotCounts(object, ...)
     acidplots::scale_color_synesthesia_d()),
   legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
-  labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts"),
-  ...
+  labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")
 )
 }
 \arguments{
@@ -82,7 +81,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2020-04-21.
+Updated 2020-08-05.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
