@@ -20,9 +20,9 @@ Sys.setenv(R_REMOTES_UPGRADE = "always")
 remotes::install_github("acidgenomics/acidplots")
 ```
 
-### [conda][] method
+### [Conda][] method
 
-Configure [conda][] to use the [bioconda][] channels.
+Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
@@ -32,9 +32,20 @@ conda activate "$name"
 R
 ```
 
-[BiocManager]: https://cran.r-project.org/package=BiocManager
-[Bioconductor]: https://bioconductor.org/
-[Paperpile]: https://paperpile.com/
-[R]: https://www.r-project.org/
+### [Docker][] method
+
+```sh
+image="acidgenomics/r-rnaseq"
+workdir="/mnt/work"
+docker pull "$image"
+docker run -it \
+    --volume="${PWD}:${workdir}" \
+    --workdir="$workdir" \
+    "$image" \
+    R
+```
+
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
+[docker]: https://www.docker.com/
+[r]: https://www.r-project.org/
