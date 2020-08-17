@@ -12,17 +12,21 @@ Functions for plotting genomic data.
 ### [R][] method
 
 ```r
-if (!requireNamespace("remotes", quietly = TRUE)) {
-    install.packages("remotes")
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
 }
-Sys.setenv(R_REMOTES_UPGRADE = "always")
-# Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
-remotes::install_github("acidgenomics/acidplots")
+install.packages(
+    pkgs = "basejump",
+    repos = c(
+        "r.acidgenomics.com",
+        BiocManager::repositories()
+    )
+)
 ```
 
-### [conda][] method
+### [Conda][] method
 
-Configure [conda][] to use the [bioconda][] channels.
+Configure [Conda][] to use the [Bioconda][] channels.
 
 ```sh
 # Don't install recipe into base environment.
@@ -32,9 +36,6 @@ conda activate "$name"
 R
 ```
 
-[BiocManager]: https://cran.r-project.org/package=BiocManager
-[Bioconductor]: https://bioconductor.org/
-[Paperpile]: https://paperpile.com/
-[R]: https://www.r-project.org/
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
+[r]: https://www.r-project.org/

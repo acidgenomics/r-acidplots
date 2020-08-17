@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.31</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.32</span>
       </span>
     </div>
 
@@ -84,17 +84,21 @@
 <div id="r-method" class="section level3">
 <h3 class="hasAnchor">
 <a href="#r-method" class="anchor"></a><a href="https://www.r-project.org/">R</a> method</h3>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span>(<span class="st">"remotes"</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) {
-    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
+<div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span>(<span class="st">"BiocManager"</span>, <span class="kw">quietly</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) {
+    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"BiocManager"</span>)
 }
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span>(<span class="kw">R_REMOTES_UPGRADE</span> <span class="kw">=</span> <span class="st">"always"</span>)
-<span class="co"># Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"acidgenomics/acidplots"</span>)</pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(
+    <span class="kw">pkgs</span> <span class="kw">=</span> <span class="st">"basejump"</span>,
+    <span class="kw">repos</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(
+        <span class="st">"r.acidgenomics.com"</span>,
+        <span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/repositories.html">repositories</a></span>()
+    )
+)</pre></div>
 </div>
 <div id="conda-method" class="section level3">
 <h3 class="hasAnchor">
-<a href="#conda-method" class="anchor"></a><a href="https://conda.io/">conda</a> method</h3>
-<p>Configure <a href="https://conda.io/">conda</a> to use the <a href="https://bioconda.github.io/">bioconda</a> channels.</p>
+<a href="#conda-method" class="anchor"></a><a href="https://conda.io/">Conda</a> method</h3>
+<p>Configure <a href="https://conda.io/">Conda</a> to use the <a href="https://bioconda.github.io/">Bioconda</a> channels.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Don't install recipe into base environment.</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="va">name=</span><span class="st">"r-acidplots"</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">conda</span> create --name=<span class="st">"</span><span class="va">$name</span><span class="st">"</span> <span class="st">"</span><span class="va">$name</span><span class="st">"</span></span>
