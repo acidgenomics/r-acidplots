@@ -16,7 +16,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 install.packages(
-    pkgs = "basejump",
+    pkgs = "acidplots",
     repos = c(
         "r.acidgenomics.com",
         BiocManager::repositories()
