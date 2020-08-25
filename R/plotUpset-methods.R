@@ -147,6 +147,7 @@ setMethod(
             stop("Data frame does not contain any columns with 0, 1 values.")
         }
         mat <- as.matrix(object[, keep, drop = FALSE])
+        mode(mat) <- "integer"
         plotUpset(mat, ...)
     }
 
