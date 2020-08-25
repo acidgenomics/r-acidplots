@@ -1,3 +1,11 @@
+## acidplots 0.2.34 (2020-08-25)
+
+### Minor changes
+
+- `plotHeatmap`: Improved internal factor and NA handling of pheatmap annotation
+  metadata, which can otherwise cause some legends to not render correctly.
+  Note that we're ensuring factors get releveled correctly here.
+
 ## acidplots 0.2.33 (2020-08-25)
 
 ### Major changes

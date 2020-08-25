@@ -1,4 +1,7 @@
-## Updated 2019-08-21.
+#' Empty pheatmap annotations
+#'
+#' @note Updated 2019-08-21.
+#' @noRd
 .emptyPheatmapAnnotations <- list(
     annotationCol = NA,
     annotationColors = NA
@@ -6,9 +9,22 @@
 
 
 
+#' Generate pheatmap annotation data
+#'
 ## Automatically handle the annotation data and colors.
-## Factors with a single level are automatically dropped.
-## Updated 2019-08-21.
+#'
+#' @note Updated 2020-08-25.
+#' @noRd
+#'
+#' Factors with a single level are automatically dropped.
+#'
+#' pheatmap requires `NA` if annotations are empty.
+#'
+#' Drop any remaining factor columns that contain a single value. Note that
+#' we don't want to necessarily use `levels()` in place of `unique()` here,
+#' in case we have a situation where we're comparing a value against `NA`.
+#' Here this will a level of 1, even though we have 2 unique values. This
+#' approach handles NA values better than using `levels()`.
 .pheatmapAnnotations <- function(
     object,
     blacklist = "sampleName",
@@ -19,47 +35,44 @@
         isCharacter(blacklist),
         isHexColorFunction(legendColor, nullOK = TRUE)
     )
-    ## Prepare the annotation columns.
+    empty <- .emptyPheatmapAnnotations
     data <- colData(object)
     interestingGroups <- interestingGroups(object)
-    ## pheatmap requires `NA` if annotations are empty.
-    if (
-        !hasDims(data) ||
-        !hasLength(interestingGroups) ||
-        identical(interestingGroups, "sampleName")
-    ) {
-        return(.emptyPheatmapAnnotations)
-    }
+    ok <- hasDims(data) &&
+        hasLength(interestingGroups) &&
+        !identical(interestingGroups, "sampleName")
+    if (!isTRUE(ok)) return(empty)
     assert(
         hasRownames(data),
         isSubset(interestingGroups, colnames(data))
     )
     data <- data[, interestingGroups, drop = FALSE]
-    ## Remove blacklisted columns (e.g. `sampleName`).
     blacklist <- unique(c("sampleName", blacklist))
-    data <- data[, setdiff(colnames(data), blacklist), drop = FALSE]
-    ## Select only factor columns.
-    keep <- which(bapply(data, is.factor))
+    cols <- setdiff(colnames(data), blacklist)
+    if (!hasLength(cols)) return(empty)
+    data <- data[, cols, drop = FALSE]
+    keep <- bapply(X = data, FUN = is.factor)
+    if (!any(keep)) return(empty)
     data <- data[, keep, drop = FALSE]
-    ## Drop any remaining factor columns that contain a single value. Note that
-    ## we don't want to necessarily use `levels()` in place of `unique()` here,
-    ## in case we have a situation where we're comparing a value against `NA`.
-    ## Here this will a level of 1, even though we have 2 unique values.
-    hasMultiple <- vapply(
+    rownames <- rownames(data)
+    data <- as.data.frame(lapply(
         X = data,
         FUN = function(x) {
-            ## This handles NA values better than using `levels()`.
+            x <- as.character(x)
+            x <- str_replace_na(x)
+            x <- as.factor(x)
+            x
+        }
+    ))
+    rownames(data) <- rownames
+    hasMultiple <- bapply(
+        X = data,
+        FUN = function(x) {
             length(unique(x)) > 1L
-        },
-        FUN.VALUE = logical(1L)
+        }
     )
-    ## Return empty if there are no useful factor columns.
-    if (!hasLength(hasMultiple)) {
-        return(.emptyPheatmapAnnotations)  # nocov
-    } else {
-        data <- data[, hasMultiple, drop = FALSE]
-    }
-    ## Automatically define colors.
+    if (!hasLength(hasMultiple)) return(empty)
+    data <- data[, hasMultiple, drop = FALSE]
     if (is.function(legendColor)) {
         colors <- lapply(
             X = data,
@@ -74,7 +87,6 @@
     } else {
         colors <- NA
     }
-    ## Return.
     list(
         annotationCol = as.data.frame(data),
         annotationColors = colors
@@ -83,9 +95,13 @@
 
 
 
-## Sanitize formals into snake case and abort on duplicates. Duplicates may
-## arise if user is mixing and matching camel/snake case.
-## Updated 2019-08-21.
+#' Generate pheatmap arguments
+#'
+#' @note Updated 2019-08-21.
+#' @noRd
+#'
+#' Sanitize formals into snake case and abort on duplicates. Duplicates may
+#' arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
     assert(is.list(args), hasNames(args))
     ## Abort on snake case formatted formal args.
@@ -106,8 +122,12 @@
 
 
 
-## If `color = NULL`, use the pheatmap default palette.
-## Updated 2019-08-21.
+#' Generate pheatmap color palette
+#'
+#' @note Updated 2019-08-21.
+#' @noRd
+#'
+#' If `color = NULL`, use the pheatmap default palette.
 .pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {
         ## Hexadecimal color palette (e.g. RColorBrewer, viridis return).
