@@ -1,5 +1,13 @@
 ## acidplots 0.2.33 (2020-08-25)
 
+### Major changes
+
+- `plotUpset`: reworked default formals to now include `nIntersects` and
+  `orderBySize` arguments. Improved internal argument handling and assert
+  checks, ensuring user is passing in an integer matrix containing only 0,1
+  values. Improved the data.frame method to drop non-0,1 columns automatically,
+  which supports the UpSetR movies working example.
+
 ### Minor changes
 
 - Updated default `color` and `fill` arguments to inherit better from ggplot2
