@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-08-05.
+#' @note Updated 2020-08-25.
 #'
 #' @inheritParams acidroxygen::params
 #' @param scale `character(1)`.
