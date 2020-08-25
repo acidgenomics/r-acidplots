@@ -27,7 +27,6 @@
         ))
     }
     if (isTRUE(rows)) {
-        cli_alert("Arranging rows using {.fun hclust}.")
         out[["rows"]] <- tryCatch(
             expr = hclust(
                 d = dist(object),
@@ -42,7 +41,6 @@
         )
     }
     if (isTRUE(cols)) {
-        cli_alert("Arranging columns using {.fun hclust}.")
         out[["cols"]] <- tryCatch(
             expr = hclust(
                 ## Note the use of `t()` here.
