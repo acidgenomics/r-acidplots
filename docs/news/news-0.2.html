@@ -607,6 +607,8 @@
 <ul>
 <li>
 <code>plotUpset</code>: reworked default formals to now include <code>nIntersects</code> and <code>orderBySize</code> arguments. Improved internal argument handling and assert checks, ensuring user is passing in an integer matrix containing only 0,1 values. Improved the data.frame method to drop non-0,1 columns automatically, which supports the UpSetR movies working example.</li>
+<li>
+<code>plotPCA</code>: Reworked <code>subtitle</code> and <code>title</code> formals to instead use the standardized <code>labels</code> approach instead. Now automatically plots the number of genes used, which defaults to the top 500 most variable.</li>
 </ul>
 </div>
 <div id="minor-changes" class="section level3">
