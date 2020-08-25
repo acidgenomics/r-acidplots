@@ -77,7 +77,7 @@ NULL
         ## Early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             cli_alert_warning("Non-unique samples detected. Skipping plot.")
-            return()
+            return(invisible())
         }
         ## Correlation matrix.
         mat <- as.matrix(assay(object, i = assay))

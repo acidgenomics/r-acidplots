@@ -12,12 +12,16 @@ Functions for plotting genomic data.
 ### [R][] method
 
 ```r
-if (!requireNamespace("remotes", quietly = TRUE)) {
-    install.packages("remotes")
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
 }
-Sys.setenv(R_REMOTES_UPGRADE = "always")
-# Set `GITHUB_PAT` in `~/.Renviron` if you get a rate limit error.
-remotes::install_github("acidgenomics/acidplots")
+install.packages(
+    pkgs = "acidplots",
+    repos = c(
+        "r.acidgenomics.com",
+        BiocManager::repositories()
+    )
+)
 ```
 
 ### [Conda][] method
@@ -32,20 +36,6 @@ conda activate "$name"
 R
 ```
 
-### [Docker][] method
-
-```sh
-image="acidgenomics/r-rnaseq"
-workdir="/mnt/work"
-docker pull "$image"
-docker run -it \
-    --volume="${PWD}:${workdir}" \
-    --workdir="$workdir" \
-    "$image" \
-    R
-```
-
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
-[docker]: https://www.docker.com/
 [r]: https://www.r-project.org/
