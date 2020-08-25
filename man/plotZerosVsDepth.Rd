@@ -11,8 +11,8 @@ plotZerosVsDepth(object, ...)
   object,
   assay = 1L,
   interestingGroups = NULL,
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
   labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)",
     y = "dropout rate")
 )

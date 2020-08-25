@@ -13,8 +13,8 @@ plotPCA(object, ...)
   interestingGroups = NULL,
   ntop = 500L,
   label = getOption(x = "acid.label", default = FALSE),
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
   pointSize = getOption(x = "acid.point.size", default = 3L),
   title = "PCA",
   subtitle = NULL,

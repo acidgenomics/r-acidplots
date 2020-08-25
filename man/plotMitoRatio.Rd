@@ -12,8 +12,8 @@ plotMitoRatio(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL,
   max = 1L,
-  fill = getOption(x = "acid.fill.discrete", default =
-    acidplots::scale_fill_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   trans = "sqrt",
   labels = list(title = "Mito ratio", subtitle = NULL, metricAxis = NULL, otherAxis =
     NULL)
