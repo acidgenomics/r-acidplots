@@ -1,3 +1,16 @@
+## acidplots 0.2.33 (2020-08-25)
+
+### Minor changes
+
+- Updated default `color` and `fill` arguments to inherit better from ggplot2
+  defaults:
+  [scale_colour_continuous](https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html)
+  and
+  [scale_colour_discrete](https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html).
+  The defaults still inherit from `acid.color.continuous` and
+  `acid.color.discrete` first but then fall back to the ggplot2 default global
+  options `ggplot2.continuous.colour` and `ggplot2.discrete.colour`.
+
 ## acidplots 0.2.32 (2020-08-05)
 
 ### Minor changes
