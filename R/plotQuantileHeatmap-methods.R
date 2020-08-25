@@ -94,7 +94,7 @@ NULL
         ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             cli_alert_warning("Non-unique samples detected. Skipping plot.")
-            return()
+            return(invisible())
         }
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object
