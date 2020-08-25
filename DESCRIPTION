@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 4.0),
-    basejump (>= 0.12.10)
+    basejump (>= 0.12.13)
 Imports:
     BiocGenerics,
     IRanges,
@@ -33,13 +33,13 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     UpSetR (>= 1.4),
-    acidgenerics (>= 0.3.9),
+    acidgenerics (>= 0.3.10),
     cli (>= 2.0),
     cowplot (>= 1.0.0),
     ggplot2 (>= 3.3.0),
     ggrepel (>= 0.8.2),
     ggridges (>= 0.5.2),
-    goalie (>= 0.4.5),
+    goalie (>= 0.4.8),
     matrixStats (>= 0.55),
     pheatmap (>= 1.0.12),
     rlang (>= 0.4),
