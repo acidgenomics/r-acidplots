@@ -15,7 +15,7 @@ plotUpset(object, ...)
 \S4method{plotUpset}{matrix}(
   object,
   nIntersects = 40L,
-  orderBySize = c(bars = FALSE, matrix = FALSE)
+  orderBySize = c(bars = TRUE, matrix = TRUE)
 )
 
 \S4method{plotUpset}{data.frame}(object, ...)
