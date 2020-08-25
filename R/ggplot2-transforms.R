@@ -1,3 +1,7 @@
+## FIXME How to rework the ggproto object here, supporting `+` instead of `%>%`?
+
+
+
 #' Flip coordinates
 #'
 #' Intelligently flip a plot with discrete data on the X axis.
