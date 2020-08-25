@@ -1,7 +1,3 @@
-## FIXME How to rework the ggproto object here, supporting `+` instead of `%>%`?
-
-
-
 #' Flip coordinates
 #'
 #' Intelligently flip a plot with discrete data on the X axis.
@@ -27,6 +23,7 @@
 #' - `ggplot2:::add_ggplot`.
 #' - `ggplot2:::+.gg`.
 #' - https://stackoverflow.com/questions/40450904
+#' - https://stackoverflow.com/questions/34227967
 #' - https://cran.r-project.org/web/packages/ggplot2/vignettes/
 #'       extending-ggplot2.html
 #' - https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r
