@@ -7,7 +7,10 @@
   checks, ensuring user is passing in an integer matrix containing only 0,1
   values. Improved the data.frame method to drop non-0,1 columns automatically,
   which supports the UpSetR movies working example.
-
+- `plotPCA`: Reworked `subtitle` and `title` formals to instead use the
+  standardized `labels` approach instead. Now automatically plots the number
+  of genes used, which defaults to the top 500 most variable.
+  
 ### Minor changes
 
 - Updated default `color` and `fill` arguments to inherit better from ggplot2
