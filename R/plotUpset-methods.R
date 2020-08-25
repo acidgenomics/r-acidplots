@@ -124,7 +124,9 @@ setMethod(
             args[["order.by"]] <- c("freq", "degree")
             args[["decreasing"]] <- c(TRUE, FALSE)
         }
-        do.call(what = UpSetR::upset, args = args)
+        suppressMessages({
+            do.call(what = UpSetR::upset, args = args)
+        })
     }
 
 
