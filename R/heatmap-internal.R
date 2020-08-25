@@ -1,5 +1,5 @@
 #' Return hierarchical clustering rows and columns for heatmap return
-#' @note Updated 2020-08-05.
+#' @note Updated 2020-08-25.
 #' @return `hclust` object or `FALSE` (not `NULL`) to skip.
 #' @noRd
 .hclust <- function(
@@ -20,8 +20,8 @@
     if (isTRUE(rows) || isTRUE(cols)) {
         cli_alert(sprintf(
             fmt = paste0(
-                "Performing hierarchical clustering.\n",
-                "Using {.fun hclust} method {.arg %s}."
+                "Performing hierarchical clustering with ",
+                "{.fun hclust} method {.arg %s}."
             ),
             deparse(method)
         ))
