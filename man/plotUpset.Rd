@@ -12,16 +12,23 @@ plotUpset(object, ...)
 
 \S4method{plotUpset}{list}(object, ...)
 
-\S4method{plotUpset}{matrix}(object)
+\S4method{plotUpset}{matrix}(object, sets = NULL, orderBySize = c(matrix = TRUE, mainBar = TRUE))
 
-\S4method{plotUpset}{data.frame}(object)
+\S4method{plotUpset}{data.frame}(object, sets = NULL, orderBySize = c(matrix = TRUE, mainBar = TRUE))
 
-\S4method{plotUpset}{DataFrame}(object)
+\S4method{plotUpset}{DataFrame}(object, sets = NULL, orderBySize = c(matrix = TRUE, mainBar = TRUE))
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{sets}{\code{character} or \code{NULL}.
+Specific sets to include in plot.
+If left \code{NULL}, all sets will be included.}
+
+\item{orderBySize}{\code{logical}.
+Whether to order matrix and/or main bar plot by size.}
 }
 \value{
 Graphical output, no return.

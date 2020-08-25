@@ -6,6 +6,11 @@
 #' @note Updated 2020-08-05.
 #'
 #' @inheritParams acidroxygen::params
+#' @param sets `character` or `NULL`.
+#'   Specific sets to include in plot.
+#'   If left `NULL`, all sets will be included.
+#' @param orderBySize `logical`.
+#'   Whether to order matrix and/or main bar plot by size.
 #' @param ... Additional arguments.
 #'
 #' @return Graphical output, no return.
@@ -66,13 +71,27 @@ setMethod(
 
 
 
-## Updated 2020-08-05.
+## Updated 2020-08-25.
 `plotUpset,matrix` <-  # nolint
-    function(object) {
+    function(
+        object,
+        sets = NULL,
+        orderBySize = c(matrix = TRUE, mainBar = TRUE)
+    ) {
+        assert(
+            is.logical(orderBySize),
+            areSetEqual(
+                x = names(orderBySize),
+                y = names(eval(formals()[["orderBySize"]]))
+            )
+        )
+        if (!is.null(sets)) {
+            assert(isSubset(sets, colnames(object)))
+        }
         args <- list(
             data = as.data.frame(object),
             decreasing = TRUE,
-            keep.order = FALSE,
+            keep.order = !isTRUE(orderBySize[["mainBar"]]),
             line.size = 1L,
             main.bar.color = "black",
             matrix.color = "black",
@@ -80,8 +99,13 @@ setMethod(
             mb.ratio = c(0.5, 0.5),
             nintersects = NA,
             nsets = ncol(object),
-            order.by = "freq",
+            order.by = ifelse(
+                test = isTRUE(orderBySize[["matrix"]]),
+                yes = "freq",
+                no = "degree"
+            ),
             point.size = 3L,
+            sets = sets,
             sets.bar.color = "black",
             shade.alpha = 1L,
             shade.color = NA,
