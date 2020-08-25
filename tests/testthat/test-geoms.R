@@ -1,13 +1,17 @@
 context("geoms")
 
 test_that("acid_geom_abline", {
-    ## x-axis line
+    ## x-axis line.
     geom <- acid_geom_abline(xintercept = 1L)
     expect_s3_class(geom, "ggproto")
-
-    ## y-axis line
+    ## y-axis line.
     geom <- acid_geom_abline(yintercept = 1L)
     expect_s3_class(geom, "ggproto")
+    ## An intercept is required.
+    expect_error(
+        object = acid_geom_abline(),
+        regexp = "Either 'xintercept' or 'yintercept' is required."
+    )
 })
 
 test_that("acid_geom_label", {

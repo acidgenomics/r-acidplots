@@ -43,26 +43,28 @@ NULL
 
 
 ## Modified version of `UpSetR::fromList()`.
-## Updated 2020-07-23.
+## Updated 2020-08-25.
 .upsetMatrixFromList <- function(list) {
     elements <- unique(unlist(list))
-    data <- unlist(lapply(list, function(x) {
+    x <- unlist(lapply(list, function(x) {
         x <- as.vector(match(elements, x))
     }))
-    data[is.na(data)] <- as.integer(0L)
-    data[data != 0L] <- as.integer(1L)
-    data <- matrix(data, ncol = length(list), byrow = FALSE)
-    data <- data[which(rowSums(data) != 0L), , drop = FALSE]
-    colnames(data) <- names(list)
-    data
+    x[is.na(x)] <- as.integer(0L)
+    x[x != 0L] <- as.integer(1L)
+    mat <- matrix(x, ncol = length(list), byrow = FALSE)
+    mode(mat) <- "integer"
+    mat <- mat[which(rowSums(mat) != 0L), , drop = FALSE]
+    colnames(mat) <- names(list)
+    mat
 }
 
 
 
-## Updated 2020-07-23.
+## Updated 2020-08-25.
 `plotUpset,list` <- # nolint
     function(object, ...) {
-        plotUpset(.upsetMatrixFromList(object))
+        mat <- .upsetMatrixFromList(object)
+        plotUpset(mat, ...)
     }
 
 
@@ -99,7 +101,7 @@ setMethod(
                 y = names(eval(formals()[["orderBySize"]]))
             )
         )
-        if (!isInt(nIntersects)) nIntersects <- NA
+        if (!is.finite(nIntersects)) nIntersects <- NA
         args <- list(
             data = as.data.frame(object),
             keep.order = !isTRUE(orderBySize[["matrix"]]),
