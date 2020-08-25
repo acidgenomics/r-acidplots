@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.32</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.33</span>
       </span>
     </div>
 
@@ -104,18 +104,6 @@
 <span id="cb2-3"><a href="#cb2-3"></a><span class="ex">conda</span> create --name=<span class="st">"</span><span class="va">$name</span><span class="st">"</span> <span class="st">"</span><span class="va">$name</span><span class="st">"</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="ex">conda</span> activate <span class="st">"</span><span class="va">$name</span><span class="st">"</span></span>
 <span id="cb2-5"><a href="#cb2-5"></a><span class="ex">R</span></span></code></pre></div>
-</div>
-<div id="docker-method" class="section level3">
-<h3 class="hasAnchor">
-<a href="#docker-method" class="anchor"></a><a href="https://www.docker.com/">Docker</a> method</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="va">image=</span><span class="st">"acidgenomics/r-rnaseq"</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="va">workdir=</span><span class="st">"/mnt/work"</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="ex">docker</span> pull <span class="st">"</span><span class="va">$image</span><span class="st">"</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">docker</span> run -it \</span>
-<span id="cb3-5"><a href="#cb3-5"></a>    --volume=<span class="st">"</span><span class="va">${PWD}</span><span class="st">:</span><span class="va">${workdir}</span><span class="st">"</span> \</span>
-<span id="cb3-6"><a href="#cb3-6"></a>    --workdir=<span class="st">"</span><span class="va">$workdir</span><span class="st">"</span> \</span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="st">"</span><span class="va">$image</span><span class="st">"</span> \</span>
-<span id="cb3-8"><a href="#cb3-8"></a>    R</span></code></pre></div>
 </div>
 </div>
 </div>
