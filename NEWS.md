@@ -1,3 +1,27 @@
+## acidplots 0.2.33 (2020-08-25)
+
+### Major changes
+
+- `plotUpset`: reworked default formals to now include `nIntersects` and
+  `orderBySize` arguments. Improved internal argument handling and assert
+  checks, ensuring user is passing in an integer matrix containing only 0,1
+  values. Improved the data.frame method to drop non-0,1 columns automatically,
+  which supports the UpSetR movies working example.
+- `plotPCA`: Reworked `subtitle` and `title` formals to instead use the
+  standardized `labels` approach instead. Now automatically plots the number
+  of genes used, which defaults to the top 500 most variable.
+  
+### Minor changes
+
+- Updated default `color` and `fill` arguments to inherit better from ggplot2
+  defaults:
+  [scale_colour_continuous](https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html)
+  and
+  [scale_colour_discrete](https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html).
+  The defaults still inherit from `acid.color.continuous` and
+  `acid.color.discrete` first but then fall back to the ggplot2 default global
+  options `ggplot2.continuous.colour` and `ggplot2.discrete.colour`.
+
 ## acidplots 0.2.32 (2020-08-05)
 
 ### Minor changes

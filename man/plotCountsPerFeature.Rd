@@ -14,10 +14,10 @@ plotCountsPerFeature(object, ...)
   interestingGroups = NULL,
   geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"),
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
-  fill = getOption(x = "acid.fill.discrete", default =
-    acidplots::scale_fill_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per feature", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts"),
   flip = getOption(x = "acid.flip", default = TRUE),

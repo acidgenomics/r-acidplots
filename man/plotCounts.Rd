@@ -15,8 +15,8 @@ plotCounts(object, ...)
   convertGenesToSymbols = TRUE,
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
   legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")

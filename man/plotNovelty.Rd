@@ -12,8 +12,8 @@ plotNovelty(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL,
   min = 0L,
-  fill = getOption(x = "acid.fill.discrete", default =
-    acidplots::scale_fill_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   trans = "identity",
   labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis =
     NULL)

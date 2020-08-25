@@ -12,8 +12,8 @@ plotCountsCorrelation(x, y, ...)
   y,
   i = NULL,
   j = NULL,
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
   labels = list(title = NULL, subtitle = NULL, color = NULL, x = NULL, y = "counts"),
   .xname = getNameInParent(x),
   .yname = getNameInParent(y)
