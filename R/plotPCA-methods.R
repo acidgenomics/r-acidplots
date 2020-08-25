@@ -12,7 +12,7 @@
 #' @name plotPCA
 #' @note `SingleCellExperiment` method that visualizes dimension reduction data
 #'   slotted in `reducedDims()` is defined in pointillism package.
-#' @note Updated 2020-08-05.
+#' @note Updated 2020-08-25.
 #'
 #' @inheritParams acidroxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -55,7 +55,7 @@ NULL
 
 
 
-## Updated 2020-08-05.
+## Updated 2020-08-25.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -65,9 +65,10 @@ NULL
         label,
         color,
         pointSize,
-        title = "PCA",
-        subtitle = NULL,
-        return = c("ggplot", "DataFrame")
+        labels = list(
+            title = "PCA",
+            subtitle = NULL
+        )
     ) {
         validObject(object)
         assert(
@@ -76,31 +77,24 @@ NULL
             isFlag(label),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isInt(pointSize),
-            isPositive(pointSize),
-            isString(title, nullOK = TRUE)
+            isPositive(pointSize)
+        )
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        return <- match.arg(return)
         ## Early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
             cli_alert_warning("Non-unique samples detected. Skipping plot.")
-            return(invisible())
+            return(invisible(NULL))
         }
         ## Handle `ntop` definition automatically.
         if (isTRUE(ntop > nrow(object))) {
             ntop <- nrow(object)
         }
-        cli_alert_info(sprintf(
-            "Plotting PCA using %d %s.",
-            ntop,
-            ngettext(
-                n = ntop,
-                msg1 = "feature",
-                msg2 = "features"
-            )
-        ))
         ## Using a modified version of DESeq2 DESeqTransform method here.
         counts <- assay(object, i = assay)
         ## Make dense, if necessary, so we can calculate `rowVars`.
@@ -109,40 +103,38 @@ NULL
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
         percentVar <- (pca[["sdev"]] ^ 2L) / (sum(pca[["sdev"]] ^ 2L))
-        data <- DataFrame(
-            PC1 = pca[["x"]][, 1L],
-            PC2 = pca[["x"]][, 2L],
+        data <- data.frame(
+            "pc1" = pca[["x"]][, 1L],
+            "pc2" = pca[["x"]][, 2L],
             sampleData(object)
         )
-        ## Note that we're assigning the percent variation values used
-        ## for the axes into the object attributes.
         attr(data, "percentVar") <- percentVar[seq_len(2L)]
-        if (identical(return, "DataFrame")) {
-            return(data)
-        }
         ## Plot.
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
             data = data,
             mapping = aes(
-                x = !!sym("PC1"),
-                y = !!sym("PC2"),
+                x = !!sym("pc1"),
+                y = !!sym("pc2"),
                 color = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
             geom_point(size = 4L) +
-            coord_fixed() +
-            labs(
-                title = title,
-                subtitle = subtitle,
-                x = paste0(
-                    "PC1: ", round(percentVar[[1L]] * 100L), "% variance"
-                ),
-                y = paste0(
-                    "PC2: ", round(percentVar[[2L]] * 100L), "% variance"
-                ),
-                color = paste(interestingGroups, collapse = ":\n")
+            coord_fixed()
+        ## Labels.
+        if (is.list(labels)) {
+            if (is.null(labels[["subtitle"]])) {
+                labels[["subtitle"]] <- paste0("n = ", ntop)
+            }
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["fill"]] <- labels[["color"]]
+            labels[["x"]] <- paste0(
+                "PC1: ", round(percentVar[[1L]] * 100L), "% variance"
             )
+            labels[["y"]] <- paste0(
+                "PC2: ", round(percentVar[[2L]] * 100L), "% variance"
+            )
+            p <- p + do.call(what = labs, args = labels)
+        }
         ## Color.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
