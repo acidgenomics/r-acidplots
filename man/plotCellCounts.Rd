@@ -10,8 +10,8 @@ plotCellCounts(object, ...)
 \S4method{plotCellCounts}{SingleCellExperiment}(
   object,
   interestingGroups = NULL,
-  fill = getOption(x = "acid.fill.discrete", default =
-    acidplots::scale_fill_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   labels = list(title = "Cell counts", subtitle = NULL, x = NULL, y = "cells")
 )
 }

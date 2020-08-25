@@ -11,8 +11,8 @@ plotMitoVsCoding(object, ...)
   object,
   interestingGroups = NULL,
   trendline = FALSE,
-  color = getOption(x = "acid.color.discrete", default =
-    acidplots::scale_color_synesthesia_d()),
+  color = getOption(x = "acid.color.discrete", default = getOption(x =
+    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
   trans = "log2",
   labels = list(title = "Mito vs. coding", subtitle = NULL, x = "coding", y = "mito")
 )
