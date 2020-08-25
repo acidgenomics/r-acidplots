@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.31</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.33</span>
       </span>
     </div>
 
@@ -131,13 +131,17 @@
 <span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for matrix</span>
-<span class='fu'>plotUpset</span>(<span class='no'>object</span>)
+<span class='fu'>plotUpset</span>(
+  <span class='no'>object</span>,
+  <span class='kw'>nIntersects</span> <span class='kw'>=</span> <span class='fl'>40L</span>,
+  <span class='kw'>orderBySize</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>bars</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+)
 
 <span class='co'># S4 method for data.frame</span>
-<span class='fu'>plotUpset</span>(<span class='no'>object</span>)
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DataFrame</span>
-<span class='fu'>plotUpset</span>(<span class='no'>object</span>)</pre>
+<span class='fu'>plotUpset</span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +154,23 @@
       <th>...</th>
       <td><p>Additional arguments.</p></td>
     </tr>
+    <tr>
+      <th>nIntersects</th>
+      <td><p><code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> or <code>Inf</code>.
+Maximum number of intersections to plot.
+Set <code>Inf</code> to plot all intersections.</p></td>
+    </tr>
+    <tr>
+      <th>orderBySize</th>
+      <td><p><code>logical</code>.
+Whether to order main bar plot and/or intersection matrix by set size.</p><ul>
+<li><p>"bars" refers to main bar plot.</p></li>
+<li><p>"matrix" refers to intersection matrix, shown as connected dots.</p></li>
+</ul>
+
+<p>Can pass in <code>TRUE</code>/<code>FALSE</code> boolean flag and both "bars" and "matrix"
+settings will inherit.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -157,7 +178,7 @@
     <p>Graphical output, no return.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Updated 2020-08-05.</p>
+    <p>Updated 2020-08-25.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(

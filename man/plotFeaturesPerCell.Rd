@@ -14,8 +14,8 @@ plotFeaturesPerCell(object, ...)
   min = 0L,
   max = Inf,
   trans = "log2",
-  fill = getOption(x = "acid.fill.discrete", default =
-    acidplots::scale_fill_synesthesia_d()),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   labels = list(title = "Features per cell", subtitle = NULL, metricAxis = "features",
     otherAxis = NULL)
 )

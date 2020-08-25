@@ -141,7 +141,7 @@ NULL
 
 
 
-## Updated 2020-04-21.
+## Updated 2020-08-05.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -151,7 +151,7 @@ NULL
         clusteringMethod = "ward.D2",
         clusterRows = TRUE,
         clusterCols = TRUE,
-        showRownames = isTRUE(nrow(object) <= 50L),
+        showRownames = isTRUE(nrow(object) <= 30L),
         showColnames = TRUE,
         ## Set to `0L` to disable.
         treeheightRow = 50L,
@@ -194,7 +194,7 @@ NULL
         ## test data set, which contains duplicate samples.
         if (!hasUniqueCols(object)) {
             cli_alert_warning("Non-unique samples detected. Skipping plot.")
-            return(invisible())
+            return(invisible(NULL))
         }
         ## Modify the object to use gene symbols in the row names automatically,
         ## if possible. We're using `tryCatch()` call here to return the object

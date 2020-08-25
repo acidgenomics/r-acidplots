@@ -12,16 +12,34 @@ plotUpset(object, ...)
 
 \S4method{plotUpset}{list}(object, ...)
 
-\S4method{plotUpset}{matrix}(object)
+\S4method{plotUpset}{matrix}(
+  object,
+  nIntersects = 40L,
+  orderBySize = c(bars = TRUE, matrix = TRUE)
+)
 
-\S4method{plotUpset}{data.frame}(object)
+\S4method{plotUpset}{data.frame}(object, ...)
 
-\S4method{plotUpset}{DataFrame}(object)
+\S4method{plotUpset}{DataFrame}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{nIntersects}{\code{integer(1)} or \code{Inf}.
+Maximum number of intersections to plot.
+Set \code{Inf} to plot all intersections.}
+
+\item{orderBySize}{\code{logical}.
+Whether to order main bar plot and/or intersection matrix by set size.
+\itemize{
+\item "bars" refers to main bar plot.
+\item "matrix" refers to intersection matrix, shown as connected dots.
+}
+
+Can pass in \code{TRUE}/\code{FALSE} boolean flag and both "bars" and "matrix"
+settings will inherit.}
 }
 \value{
 Graphical output, no return.
@@ -30,7 +48,7 @@ Graphical output, no return.
 S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
 \note{
-Updated 2020-08-05.
+Updated 2020-08-25.
 }
 \examples{
 list <- list(

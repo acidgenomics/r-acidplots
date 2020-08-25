@@ -3,9 +3,20 @@
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2020-08-05.
+#' @note Updated 2020-08-25.
 #'
 #' @inheritParams acidroxygen::params
+#' @param orderBySize `logical`.
+#'   Whether to order main bar plot and/or intersection matrix by set size.
+#'
+#'   - "bars" refers to main bar plot.
+#'   - "matrix" refers to intersection matrix, shown as connected dots.
+#'
+#'   Can pass in `TRUE`/`FALSE` boolean flag and both "bars" and "matrix"
+#'   settings will inherit.
+#' @param nIntersects `integer(1)` or `Inf`.
+#'   Maximum number of intersections to plot.
+#'   Set `Inf` to plot all intersections.
 #' @param ... Additional arguments.
 #'
 #' @return Graphical output, no return.
@@ -66,28 +77,56 @@ setMethod(
 
 
 
-## Updated 2020-08-05.
+## Updated 2020-08-25.
 `plotUpset,matrix` <-  # nolint
-    function(object) {
+    function(
+        object,
+        nIntersects = 40L,
+        orderBySize = c(bars = TRUE, matrix = TRUE)
+    ) {
+        if (isFlag(orderBySize)) {
+            orderBySize <- c(bars = orderBySize, matrix = orderBySize)
+        }
+        assert(
+            is.integer(object),
+            all(object %in% c(0L, 1L)),
+            isInt(nIntersects) ||
+                is.infinite(nIntersects) ||
+                is.na(nIntersects),
+            is.logical(orderBySize),
+            areSetEqual(
+                x = names(orderBySize),
+                y = names(eval(formals()[["orderBySize"]]))
+            )
+        )
+        if (!isInt(nIntersects)) nIntersects <- NA
         args <- list(
             data = as.data.frame(object),
-            decreasing = TRUE,
-            keep.order = FALSE,
+            keep.order = !isTRUE(orderBySize[["matrix"]]),
             line.size = 1L,
             main.bar.color = "black",
             matrix.color = "black",
             matrix.dot.alpha = 1L,
             mb.ratio = c(0.5, 0.5),
-            nintersects = NA,
+            nintersects = nIntersects,
             nsets = ncol(object),
-            order.by = "freq",
             point.size = 3L,
+            sets = rev(colnames(object)),
             sets.bar.color = "black",
             shade.alpha = 1L,
             shade.color = NA,
             text.scale = 1.5
         )
-        do.call(what = UpSetR::upset, args = args)
+        if (isTRUE(orderBySize[["bars"]])) {
+            args[["order.by"]] <- "freq"
+            args[["decreasing"]] <- TRUE
+        } else {
+            args[["order.by"]] <- c("freq", "degree")
+            args[["decreasing"]] <- c(TRUE, FALSE)
+        }
+        suppressMessages({
+            do.call(what = UpSetR::upset, args = args)
+        })
     }
 
 
@@ -102,9 +141,17 @@ setMethod(
 
 
 
-## Updated 2020-07-23.
+## Updated 2020-08-25.
 `plotUpset,data.frame` <-  # nolint
-    `plotUpset,matrix`
+    function(object, ...) {
+        keep <- bapply(X = object, FUN = function(x) all(x %in% c(0L, 1L)))
+        if (!any(keep)) {
+            stop("Data frame does not contain any columns with 0, 1 values.")
+        }
+        mat <- as.matrix(object[, keep, drop = FALSE])
+        mode(mat) <- "integer"
+        plotUpset(mat, ...)
+    }
 
 
 

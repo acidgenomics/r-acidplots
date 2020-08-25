@@ -82,7 +82,7 @@ NULL
                 "'rowData()' does not contain biotypes defined in '%s' column.",
                 biotypeCol
             ))
-            return(invisible())
+            return(invisible(NULL))
             ## nocov end
         }
         ## Get the top biotypes from the row data.
