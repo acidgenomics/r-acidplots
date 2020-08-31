@@ -13,10 +13,13 @@ plotCounts(object, ...)
   assay = 1L,
   interestingGroups = NULL,
   convertGenesToSymbols = TRUE,
+  geom = c("point", "violin", "boxplot", "bar"),
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
   color = getOption(x = "acid.color.discrete", default = getOption(x =
     "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")
@@ -40,6 +43,10 @@ Corresponds to factors describing the columns of the object.}
 Attempt to automatically convert gene identifiers to gene symbols.
 Only applies when object contains mappings defined in \code{rowRanges}.}
 
+\item{geom}{\code{character(1)}.
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
+
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
 
@@ -56,6 +63,14 @@ the default ggplot2 color palette will be used. If manual color definitions
 are desired, we recommend using \code{ggplot2::scale_color_manual()}.
 
 To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
+}}
+
+\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
+Desired ggplot2 fill scale. Must supply discrete values. When set to
+\code{NULL}, the default ggplot2 color palette will be used. If manual color
+definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
+
+To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
 \item{legend}{\code{logical(1)}.
@@ -81,7 +96,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2020-08-05.
+Updated 2020-08-28.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
