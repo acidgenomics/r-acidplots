@@ -1,3 +1,10 @@
+## acidplots 0.2.35 (2020-08-31)
+
+### Minor changes
+
+- `plotCounts`: Added `geom` argument to support additional visualization types
+  other than dots. Can now plot boxplot, violin, or bar plot.
+
 ## acidplots 0.2.34 (2020-08-25)
 
 ### Minor changes
