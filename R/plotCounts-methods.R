@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit acidgenerics::plotCounts
-#' @note Updated 2020-08-05.
+#' @note Updated 2020-08-28.
 #'
 #' @inheritParams acidroxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -63,14 +63,15 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2019-08-28.
 .plotCountsFacet <- function(data) {
     ggplot(
         data = data,
         mapping = aes(
             x = str_replace_na(!!sym("interestingGroups")),
             y = !!sym("value"),
-            color = str_replace_na(!!sym("interestingGroups"))
+            color = str_replace_na(!!sym("interestingGroups")),
+            fill = str_replace_na(!!sym("interestingGroups"))
         )
     ) +
         facet_wrap(facets = sym("rowname"), scales = "free_y")
@@ -78,21 +79,43 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2020-08-28.
 .plotCountsWide <- function(data) {
     ggplot(
         data = data,
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("value"),
-            color = str_replace_na(!!sym("interestingGroups"))
+            color = str_replace_na(!!sym("interestingGroups")),
+            fill = str_replace_na(!!sym("interestingGroups"))
         )
     )
 }
 
 
 
-## Updated 2020-08-05.
+#' Calculate standard error of the mean
+#'
+#' @note Updated 2020-08-31.
+#' @noRd
+#'
+#' @details
+#' Alternatively, can use: `sd(x) / sqrt(length(x))`.
+#'
+#' @seealso
+#' - https://stackoverflow.com/questions/2676554/
+.se <- function(x) {
+    sqrt(var(x) / length(x))
+}
+
+
+
+## Useful posts regarding error bars:
+## - https://stackoverflow.com/a/32091916/3911732
+## - http://environmentalcomputing.net/
+##       plotting-with-ggplot-bar-plots-with-error-bars/
+##
+## Updated 2020-08-28.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -100,9 +123,11 @@ NULL
         assay = 1L,
         interestingGroups = NULL,
         convertGenesToSymbols = TRUE,
+        geom = c("point", "violin", "boxplot", "bar"),
         trans = c("identity", "log2", "log10"),
         line = c("none", "median", "mean", "geometricMean"),
         color,
+        fill,
         legend,
         style = c("facet", "wide"),
         labels = list(
@@ -125,6 +150,7 @@ NULL
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend)
         )
+        geom <- match.arg(geom)
         trans <- match.arg(trans)
         line <- match.arg(line)
         style <- match.arg(style)
@@ -173,7 +199,26 @@ NULL
             ),
             args = list(data = as_tibble(data, rownames = NULL))
         )
-        p <- p + .genePoint(show.legend = legend)
+        p <- switch(
+            EXPR = geom,
+            "point" = p + .genePoint(show.legend = legend),
+            "violin" = p + geom_violin(color = NA),
+            "boxplot" = p + geom_boxplot(color = "black"),
+            "bar" = p +
+                stat_summary(
+                    fun = mean,
+                    geom = "bar",
+                    color = NA
+                ) +
+                stat_summary(
+                    fun.min = function(x) mean(x) - .se(x),
+                    fun.max = function(x) mean(x) + .se(x),
+                    fun = mean,
+                    geom = "errorbar",
+                    color = "black",
+                    width = 0.15
+                )
+        )
         ## Average (mean/median) line.
         if (
             !identical(line, "none") &&
@@ -191,9 +236,12 @@ NULL
                 width = 0.5
             )
         }
-        ## Color.
+        ## Color or fill.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
+        }
+        if (is(fill, "ScaleDiscrete")) {
+            p <- p + fill
         }
         ## Labels.
         if (is.list(labels)) {
@@ -201,6 +249,7 @@ NULL
                 labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
             }
             labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["fill"]] <- labels[["color"]]
             names(labels)[names(labels) == "sampleAxis"] <- "x"
             names(labels)[names(labels) == "countAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
@@ -211,6 +260,8 @@ NULL
 
 formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
     formalsList[["color.discrete"]]
+formals(`plotCounts,SummarizedExperiment`)[["fill"]] <-
+    formalsList[["fill.discrete"]]
 formals(`plotCounts,SummarizedExperiment`)[["legend"]] <-
     formalsList[["legend"]]
 

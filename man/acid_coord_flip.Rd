@@ -43,6 +43,7 @@ g \%>\% acid_coord_flip()
 \item \code{ggplot2:::add_ggplot}.
 \item \verb{ggplot2:::+.gg}.
 \item https://stackoverflow.com/questions/40450904
+\item https://stackoverflow.com/questions/34227967
 \item https://cran.r-project.org/web/packages/ggplot2/vignettes/
 extending-ggplot2.html
 \item https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r
