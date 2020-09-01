@@ -16,6 +16,7 @@
 #' @note Updated 2020-08-25.
 #' @noRd
 #'
+#' @details
 #' Factors with a single level are automatically dropped.
 #'
 #' pheatmap requires `NA` if annotations are empty.
@@ -100,6 +101,7 @@
 #' @note Updated 2019-08-21.
 #' @noRd
 #'
+#' @details
 #' Sanitize formals into snake case and abort on duplicates. Duplicates may
 #' arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
@@ -127,6 +129,7 @@
 #' @note Updated 2019-08-21.
 #' @noRd
 #'
+#' @details
 #' If `color = NULL`, use the pheatmap default palette.
 .pheatmapColorPalette <- function(color = NULL, n = 256L) {
     if (is.character(color)) {

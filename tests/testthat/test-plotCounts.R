@@ -13,6 +13,7 @@ test_that("default", {
             x = NULL,
             y = "counts",
             colour = "condition",
+            fill = "condition",
             title = NULL,
             subtitle = NULL
         )
