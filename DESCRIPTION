@@ -2,7 +2,7 @@ Package: acidplots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
 Version: 0.2.35
-Date: 2020-08-31
+Date: 2020-09-01
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",

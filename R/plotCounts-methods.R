@@ -236,7 +236,7 @@ NULL
                 width = 0.5
             )
         }
-        ## Color/fill.
+        ## Color or fill.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
         }
