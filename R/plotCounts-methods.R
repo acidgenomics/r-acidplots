@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit acidgenerics::plotCounts
-#' @note Updated 2020-08-28.
+#' @note Updated 2020-09-02.
 #'
 #' @inheritParams acidroxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -11,6 +11,10 @@
 #'   group. Disabled by default and if samples are colored by sample name.
 #' @param style `character(1)`.
 #'   Plot style.
+#' @param sort `logical(1)`.
+#'   Sort the genes alphabetically.
+#'   This setting applies to the gene symbols rather than the gene identifiers
+#'   when `convertGenesToSymbols` is `TRUE`.
 #' @param ... Additional arguments.
 #'
 #' @return
@@ -116,6 +120,8 @@ NULL
 
 
 
+## Coercing to `SummarizedExperiment` internally for fast subsetting.
+##
 ## Useful posts regarding error bars:
 ## - https://stackoverflow.com/a/32091916/3911732
 ## - http://environmentalcomputing.net/
@@ -136,6 +142,7 @@ NULL
         fill,
         legend,
         style = c("facet", "wide"),
+        sort = FALSE,
         labels = list(
             title = NULL,
             subtitle = NULL,
@@ -149,12 +156,12 @@ NULL
         }
         assert(
             isCharacter(genes),
-            ## Limit the number of genes that can be plotted at once.
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
             isFlag(convertGenesToSymbols),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-            isFlag(legend)
+            isFlag(legend),
+            isFlag(sort)
         )
         geom <- match.arg(geom)
         trans <- match.arg(trans)
@@ -170,16 +177,12 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        ## Coercing to `SummarizedExperiment` for fast subsetting.
         object <- as.SummarizedExperiment(object)
-        ## This will support objects that don't contain gene-to-symbol mappings.
+        ## This supports objects that don't contain gene-to-symbol mappings.
         genes <- mapGenesToRownames(object, genes = genes, strict = FALSE)
-        ## Minimize the SE object only contain the assay of our choice.
         assay <- assay(object, i = assay)
         assays(object) <- SimpleList(assay = assay)
-        ## Subset to match the genes, which have been mapped to the rownames.
         object <- object[genes, , drop = FALSE]
-        ## Now convert the row names to symbols, for visualization.
         if (isTRUE(convertGenesToSymbols)) {
             object <- tryCatch(
                 expr = {
@@ -192,21 +195,25 @@ NULL
                 }
             )
         }
-        ## Generate a melted tibble.
         data <- melt(
             object = object,
             min = -Inf,
             minMethod = "absolute",
             trans = trans
         )
-        ## Plot.
+        data <- as_tibble(data, rownames = NULL)
+        if (isTRUE(sort)) {
+            data[["rowname"]] <- as.character(data[["rowname"]])
+        } else {
+            assert(is.factor(data[["rowname"]]))
+        }
         p <- do.call(
             what = switch(
                 EXPR = style,
                 "facet" = .plotCountsFacet,
                 "wide" = .plotCountsWide
             ),
-            args = list(data = as_tibble(data, rownames = NULL))
+            args = list(data = data)
         )
         p <- switch(
             EXPR = geom,
@@ -228,7 +235,6 @@ NULL
                     width = 0.15
                 )
         )
-        ## Average (mean/median) line.
         if (
             !identical(line, "none") &&
             !identical(interestingGroups, "sampleName")
@@ -245,14 +251,12 @@ NULL
                 width = 0.5
             )
         }
-        ## Color or fill.
         if (is(color, "ScaleDiscrete")) {
             p <- p + color
         }
         if (is(fill, "ScaleDiscrete")) {
             p <- p + fill
         }
-        ## Labels.
         if (is.list(labels)) {
             if (!identical(trans, "identity")) {
                 labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
@@ -263,7 +267,6 @@ NULL
             names(labels)[names(labels) == "countAxis"] <- "y"
             p <- p + do.call(what = labs, args = labels)
         }
-        ## Return.
         p
     }
 

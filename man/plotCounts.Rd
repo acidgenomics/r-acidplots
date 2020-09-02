@@ -22,6 +22,7 @@ plotCounts(object, ...)
     "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
   legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
+  sort = FALSE,
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")
 )
 }
@@ -79,6 +80,11 @@ Include plot legend.}
 \item{style}{\code{character(1)}.
 Plot style.}
 
+\item{sort}{\code{logical(1)}.
+Sort the genes alphabetically.
+This setting applies to the gene symbols rather than the gene identifiers
+when \code{convertGenesToSymbols} is \code{TRUE}.}
+
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
@@ -96,7 +102,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2020-08-28.
+Updated 2020-09-02.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "acidtest")
