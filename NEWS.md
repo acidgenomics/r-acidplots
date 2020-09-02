@@ -1,3 +1,11 @@
+## acidplots 0.2.36 (2020-09-02)
+
+### Minor changes
+
+- `plotCounts`: Added an assert to check for user attempting to use bar geom
+  with `style = "wide"`. Also added `sort` argument, which allows the user
+  to easily plot the genes alphabetically instead of by vector order.
+
 ## acidplots 0.2.35 (2020-09-01)
 
 ### Minor changes
