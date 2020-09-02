@@ -47,7 +47,9 @@ NULL
 
 
 
-## Updated 2019-07-23.
+#' Improved gene point geom
+#' @note Updated 2019-07-23.
+#' @noRd
 .genePoint <- function(
     size = 3L,
     alpha = 1L,
@@ -63,7 +65,9 @@ NULL
 
 
 
-## Updated 2019-08-28.
+#' Facet wrap the counts plot
+#' @note Updated 2019-08-28.
+#' @noRd
 .plotCountsFacet <- function(data) {
     ggplot(
         data = data,
@@ -79,7 +83,9 @@ NULL
 
 
 
-## Updated 2020-08-28.
+#' Display the counts plot in wide format
+#' @note Updated 2020-08-28.
+#' @noRd
 .plotCountsWide <- function(data) {
     ggplot(
         data = data,
@@ -115,7 +121,7 @@ NULL
 ## - http://environmentalcomputing.net/
 ##       plotting-with-ggplot-bar-plots-with-error-bars/
 ##
-## Updated 2020-08-28.
+## Updated 2020-09-02.
 `plotCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -154,6 +160,9 @@ NULL
         trans <- match.arg(trans)
         line <- match.arg(line)
         style <- match.arg(style)
+        if (identical(geom, "bar")) {
+            assert(identical(style, "facet"))
+        }
         labels <- matchLabels(
             labels = labels,
             choices = eval(formals()[["labels"]])
