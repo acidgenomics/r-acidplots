@@ -26,15 +26,6 @@ NULL
 
 
 
-#' @rdname plotGenderMarkers
-#' @name plotGenderMarkers
-#' @importFrom AcidGenerics plotGenderMarkers
-#' @usage plotGenderMarkers(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-15.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function(object, style = "wide", ...) {

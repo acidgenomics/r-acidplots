@@ -24,15 +24,6 @@ NULL
 
 
 
-#' @rdname plotCountsPerBiotype
-#' @name plotCountsPerBiotype
-#' @importFrom AcidGenerics plotCountsPerBiotype
-#' @usage plotCountsPerBiotype(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
     function(

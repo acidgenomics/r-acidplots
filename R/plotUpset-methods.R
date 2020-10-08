@@ -33,15 +33,6 @@ NULL
 
 
 
-#' @rdname plotUpset
-#' @name plotUpset
-#' @importFrom AcidGenerics plotUpset
-#' @usage plotUpset(object, ...)
-#' @export
-NULL
-
-
-
 ## Modified version of `UpSetR::fromList()`.
 ## Updated 2020-08-25.
 .upsetMatrixFromList <- function(list) {

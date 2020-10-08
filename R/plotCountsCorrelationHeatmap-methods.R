@@ -19,15 +19,6 @@ NULL
 
 
 
-#' @rdname plotCountsCorrelationHeatmap
-#' @name plotCountsCorrelationHeatmap
-#' @importFrom AcidGenerics plotCountsCorrelationHeatmap
-#' @usage plotCountsCorrelationHeatmap(x, y, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-23.
 `plotCountsCorrelationHeatmap,matrix` <-  # nolint
     function(

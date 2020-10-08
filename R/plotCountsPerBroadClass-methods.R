@@ -24,15 +24,6 @@ NULL
 
 
 
-#' @rdname plotCountsPerBroadClass
-#' @name plotCountsPerBroadClass
-#' @importFrom AcidGenerics plotCountsPerBroadClass
-#' @usage plotCountsPerBroadClass(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
     function(

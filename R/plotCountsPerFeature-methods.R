@@ -27,15 +27,6 @@ NULL
 
 
 
-#' @rdname plotCountsPerFeature
-#' @name plotCountsPerFeature
-#' @importFrom AcidGenerics plotCountsPerFeature
-#' @usage plotCountsPerFeature(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotCountsPerFeature,SummarizedExperiment` <-  # nolint
     function(

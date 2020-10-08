@@ -42,15 +42,6 @@ NULL
 
 
 
-#' @rdname plotCounts
-#' @name plotCounts
-#' @importFrom AcidGenerics plotCounts
-#' @usage plotCounts(object, ...)
-#' @export
-NULL
-
-
-
 #' Improved gene point geom
 #' @note Updated 2019-07-23.
 #' @noRd

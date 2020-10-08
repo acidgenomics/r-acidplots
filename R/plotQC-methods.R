@@ -24,15 +24,6 @@ NULL
 
 
 
-#' @rdname plotQC
-#' @name plotQC
-#' @importFrom AcidGenerics plotQC
-#' @usage plotQC(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-12.
 `plotQC,SummarizedExperiment` <-  # nolint
     function(

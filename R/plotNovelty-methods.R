@@ -18,15 +18,6 @@ NULL
 
 
 
-#' @rdname plotNovelty
-#' @name plotNovelty
-#' @importFrom AcidGenerics plotNovelty
-#' @usage plotNovelty(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotNovelty,SingleCellExperiment` <-  # nolint
     function(

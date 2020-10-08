@@ -20,15 +20,6 @@ NULL
 
 
 
-#' @rdname plotMitoRatio
-#' @name plotMitoRatio
-#' @importFrom AcidGenerics plotMitoRatio
-#' @usage plotMitoRatio(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotMitoRatio,SingleCellExperiment` <-  # nolint
     function(

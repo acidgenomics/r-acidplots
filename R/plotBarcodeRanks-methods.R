@@ -20,15 +20,6 @@ NULL
 
 
 
-#' @rdname plotBarcodeRanks
-#' @name plotBarcodeRanks
-#' @importFrom AcidGenerics plotBarcodeRanks
-#' @usage plotBarcodeRanks(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-15.
 `plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(

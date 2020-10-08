@@ -23,15 +23,6 @@ NULL
 
 
 
-#' @rdname plotZerosVsDepth
-#' @name plotZerosVsDepth
-#' @importFrom AcidGenerics plotZerosVsDepth
-#' @usage plotZerosVsDepth(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotZerosVsDepth,SummarizedExperiment` <-  # nolint
     function(
