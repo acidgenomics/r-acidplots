@@ -113,7 +113,7 @@
 #' plotHeatmap(
 #'     object,
 #'     scale = "row",
-#'     color = acidplots::blueYellow,
+#'     color = AcidPlots::blueYellow,
 #'     breaks = seq(from = -2L, to = 2L, by = 0.25),
 #'     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
 #' )

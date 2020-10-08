@@ -13,7 +13,7 @@ plotCountsCorrelation(x, y, ...)
   i = NULL,
   j = NULL,
   color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   labels = list(title = NULL, subtitle = NULL, color = NULL, x = NULL, y = "counts"),
   .xname = getNameInParent(x),
   .yname = getNameInParent(y)
@@ -100,7 +100,7 @@ Compare feature expression correlation across two data sets.
 Updated 2019-09-16.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## matrix ====
 x <- SummarizedExperiment::assay(RangedSummarizedExperiment)

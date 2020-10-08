@@ -34,9 +34,9 @@ NULL
     function(
         object,
         colors = c(
-            fitline = acidplots::lightPalette[["blue"]],
-            inflection = acidplots::lightPalette[["purple"]],
-            knee = acidplots::lightPalette[["orange"]]
+            fitline = AcidPlots::lightPalette[["blue"]],
+            inflection = AcidPlots::lightPalette[["purple"]],
+            knee = AcidPlots::lightPalette[["orange"]]
         ),
         ...
     ) {

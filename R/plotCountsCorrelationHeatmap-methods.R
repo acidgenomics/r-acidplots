@@ -6,7 +6,7 @@
 #' @inheritParams stats::cor
 #' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough arguments to
-#'   [`plotHeatmap()`][acidplots::plotHeatmap].
+#'   [`plotHeatmap()`][AcidPlots::plotHeatmap].
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

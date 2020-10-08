@@ -20,9 +20,9 @@ plotHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.color", default = acidplots::blueYellow),
+  color = getOption(x = "acid.heatmap.color", default = AcidPlots::blueYellow),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
-    acidplots::synesthesia),
+    AcidPlots::synesthesia),
   breaks = seq(from = -3L, to = 3L, by = 0.25),
   legendBreaks = seq(from = -3L, to = 3L, by = 1L),
   borderColor = NULL,
@@ -155,7 +155,7 @@ hclust <- hclust(dist, method = "ward.D2")
 \examples{
 data(
     RangedSummarizedExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====
@@ -167,7 +167,7 @@ object <- nonzeroRowsAndCols(object)
 plotHeatmap(
     object,
     scale = "row",
-    color = acidplots::blueYellow,
+    color = AcidPlots::blueYellow,
     breaks = seq(from = -2L, to = 2L, by = 0.25),
     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
 )

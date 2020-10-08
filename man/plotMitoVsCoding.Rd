@@ -12,7 +12,7 @@ plotMitoVsCoding(object, ...)
   interestingGroups = NULL,
   trendline = FALSE,
   color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   trans = "log2",
   labels = list(title = "Mito vs. coding", subtitle = NULL, x = "coding", y = "mito")
 )
@@ -57,7 +57,7 @@ Plot mitochondrial vs. coding counts
 Updated 2019-09-16.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment

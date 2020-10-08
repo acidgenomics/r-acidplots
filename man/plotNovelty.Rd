@@ -13,7 +13,7 @@ plotNovelty(object, ...)
   interestingGroups = NULL,
   min = 0L,
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   trans = "identity",
   labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis =
     NULL)
@@ -63,7 +63,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Updated 2019-09-16.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
