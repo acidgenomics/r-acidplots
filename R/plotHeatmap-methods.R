@@ -50,7 +50,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @note Updated 2020-08-25.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
 #'   Whether the values should be centered and scaled in either the row or
 #'   column direction, or remain unscaled.
@@ -101,7 +101,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -113,7 +113,7 @@
 #' plotHeatmap(
 #'     object,
 #'     scale = "row",
-#'     color = acidplots::blueYellow,
+#'     color = AcidPlots::blueYellow,
 #'     breaks = seq(from = -2L, to = 2L, by = 0.25),
 #'     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
 #' )
@@ -128,15 +128,6 @@
 #'     breaks = seq(from = -2L, to = 2L, by = 0.25),
 #'     legendBreaks = seq(from = -2L, to = 2L, by = 1L)
 #' )
-NULL
-
-
-
-#' @rdname plotHeatmap
-#' @name plotHeatmap
-#' @importFrom acidgenerics plotHeatmap
-#' @usage plotHeatmap(object, ...)
-#' @export
 NULL
 
 

@@ -1,15 +1,15 @@
 #' @name plotZerosVsDepth
-#' @inherit acidgenerics::plotZerosVsDepth
+#' @inherit AcidGenerics::plotZerosVsDepth
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -19,15 +19,6 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' plotZerosVsDepth(object)
-NULL
-
-
-
-#' @rdname plotZerosVsDepth
-#' @name plotZerosVsDepth
-#' @importFrom acidgenerics plotZerosVsDepth
-#' @usage plotZerosVsDepth(object, ...)
-#' @export
 NULL
 
 

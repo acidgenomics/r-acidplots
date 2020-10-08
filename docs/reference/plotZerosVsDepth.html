@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot percentage of zeros vs. library depth — plotZerosVsDepth • acidplots</title>
+<title>Plot percentage of zeros vs. library depth — plotZerosVsDepth • AcidPlots</title>
 
 
 <!-- jquery -->
@@ -73,8 +73,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.34</span>
+        <a class="navbar-link" href="../index.html">AcidPlots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -87,10 +87,19 @@
   </a>
 </li>
 <li>
-  <a href="../articles/acidplots.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/acidplots.html">acidplots</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -117,7 +126,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot percentage of zeros vs. library depth</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotZerosVsDepth-methods.R'><code>R/plotZerosVsDepth-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotZerosVsDepth-methods.R'><code>R/plotZerosVsDepth-methods.R</code></a></small>
     <div class="hidden name"><code>plotZerosVsDepth.Rd</code></div>
     </div>
 
@@ -125,18 +134,18 @@
     <p>Plot percentage of zeros vs. library depth</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plotZerosVsDepth</span>(<span class='no'>object</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>plotZerosVsDepth</span><span class='op'>(</span><span class='va'>object</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S4 method for SummarizedExperiment</span>
-<span class='fu'>plotZerosVsDepth</span>(
-  <span class='no'>object</span>,
-  <span class='kw'>assay</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>interestingGroups</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"acid.color.discrete"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span>(<span class='kw'>x</span> <span class='kw'>=</span>
-    <span class='st'>"ggplot2.discrete.colour"</span>, <span class='kw'>default</span> <span class='kw'>=</span> <span class='kw pkg'>acidplots</span><span class='kw ns'>::</span><span class='fu'><a href='synesthesia.html'>scale_color_synesthesia_d</a></span>())),
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Zeros vs. depth"</span>, <span class='kw'>subtitle</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"library size (depth)"</span>,
-    <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"dropout rate"</span>)
-)</pre>
+<span class='fu'>plotZerosVsDepth</span><span class='op'>(</span>
+  <span class='va'>object</span>,
+  assay <span class='op'>=</span> <span class='fl'>1L</span>,
+  interestingGroups <span class='op'>=</span> <span class='cn'>NULL</span>,
+  color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"acid.color.discrete"</span>, default <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span>x <span class='op'>=</span>
+    <span class='st'>"ggplot2.discrete.colour"</span>, default <span class='op'>=</span> <span class='fu'>AcidPlots</span><span class='fu'>::</span><span class='fu'><a href='synesthesia.html'>scale_color_synesthesia_d</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Zeros vs. depth"</span>, subtitle <span class='op'>=</span> <span class='cn'>NULL</span>, x <span class='op'>=</span> <span class='st'>"library size (depth)"</span>,
+    y <span class='op'>=</span> <span class='st'>"dropout rate"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,7 +171,8 @@ Corresponds to factors describing the columns of the object.</p></td>
 Desired ggplot2 color scale. Must supply discrete values. When set <code>NULL</code>,
 the default ggplot2 color palette will be used. If manual color definitions
 are desired, we recommend using <code><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>ggplot2::scale_color_manual()</a></code>.</p>
-<p>To set the discrete color palette globally, use:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>acid.color.discrete</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_color_viridis_d</a></span>())</pre></td>
+<p>To set the discrete color palette globally, use:</p><pre><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>acid.color.discrete <span class='op'>=</span> <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_color_viridis_d</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</pre></td>
     </tr>
     <tr>
       <th>labels</th>
@@ -184,18 +194,20 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
     <p>Updated 2019-12-09.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(
-    <span class='no'>RangedSummarizedExperiment</span>,
-    <span class='no'>SingleCellExperiment</span>,
-    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"acidtest"</span>
-)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span>
+    <span class='va'>RangedSummarizedExperiment</span>,
+    <span class='va'>SingleCellExperiment</span>,
+    package <span class='op'>=</span> <span class='st'>"AcidTest"</span>
+<span class='op'>)</span>
 
 <span class='co'>## SummarizedExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>RangedSummarizedExperiment</span>
-<span class='fu'>plotZerosVsDepth</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotZerosVsDepth-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
+<span class='fu'>plotZerosVsDepth</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+</div><div class='img'><img src='plotZerosVsDepth-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
-<span class='no'>object</span> <span class='kw'>&lt;-</span> <span class='no'>SingleCellExperiment</span>
-<span class='fu'>plotZerosVsDepth</span>(<span class='no'>object</span>)</div><div class='img'><img src='plotZerosVsDepth-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
+<span class='fu'>plotZerosVsDepth</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
+</div><div class='img'><img src='plotZerosVsDepth-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -211,7 +223,7 @@ See <code><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggplot2::l
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

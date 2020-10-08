@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pretty breaks that resemble the base plotting engine — acid_pretty_breaks • acidplots</title>
+<title>Pretty breaks that resemble the base plotting engine — acid_pretty_breaks • AcidPlots</title>
 
 
 <!-- jquery -->
@@ -73,8 +73,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.34</span>
+        <a class="navbar-link" href="../index.html">AcidPlots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -87,10 +87,19 @@
   </a>
 </li>
 <li>
-  <a href="../articles/acidplots.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/acidplots.html">acidplots</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -125,7 +134,7 @@
     <p>Pretty breaks that resemble the base plotting engine</p>
     </div>
 
-    <pre class="usage"><span class='fu'>acid_pretty_breaks</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5L</span>)</pre>
+    <pre class="usage"><span class='fu'>acid_pretty_breaks</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>5L</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,13 +165,14 @@ https://stackoverflow.com/questions/14255533</p></li>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>acid_pretty_breaks</span>()</div><div class='output co'>#&gt; function (x) 
+    <pre class="examples"><div class='input'><span class='fu'>acid_pretty_breaks</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; function (x) 
 #&gt; {
 #&gt;     axisTicks(usr = log10(range(x, na.rm = TRUE)), log = TRUE, 
 #&gt;         axp = NULL, nint = n)
 #&gt; }
-#&gt; &lt;bytecode: 0x7fbe12c31118&gt;
-#&gt; &lt;environment: 0x7fbe12c34b90&gt;</div></pre>
+#&gt; &lt;bytecode: 0x7fe3a51e71b0&gt;
+#&gt; &lt;environment: 0x7fe3a51e6d18&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -178,7 +188,7 @@ https://stackoverflow.com/questions/14255533</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

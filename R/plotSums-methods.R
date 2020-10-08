@@ -1,8 +1,8 @@
 #' @name plotSums
-#' @inherit acidgenerics::plotSums
+#' @inherit AcidGenerics::plotSums
 #' @note Updated 2019-09-15.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams base::apply
 #' @param ... Additional arguments.
 #'
@@ -10,7 +10,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## matrix ====
@@ -28,15 +28,6 @@
 #' ## SingleCellExperiment
 #' object <- RangedSummarizedExperiment
 #' plotSums(object)
-NULL
-
-
-
-#' @rdname plotSums
-#' @name plotSums
-#' @importFrom acidgenerics plotSums
-#' @usage plotSums(object, ...)
-#' @export
 NULL
 
 

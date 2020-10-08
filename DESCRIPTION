@@ -1,8 +1,8 @@
-Package: acidplots
+Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.2.36
-Date: 2020-09-02
+Version: 0.3.0
+Date: 2020-10-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,8 +23,9 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 4.0),
-    basejump (>= 0.12.13)
+    basejump (>= 0.13.1)
 Imports:
+    AcidGenerics (>= 0.4.0),
     BiocGenerics,
     IRanges,
     Matrix (>= 1.2),
@@ -33,13 +34,12 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     UpSetR (>= 1.4),
-    acidgenerics (>= 0.3.10),
     cli (>= 2.0),
     cowplot (>= 1.0.0),
     ggplot2 (>= 3.3.0),
     ggrepel (>= 0.8.2),
     ggridges (>= 0.5.2),
-    goalie (>= 0.4.8),
+    goalie (>= 0.4.9),
     matrixStats (>= 0.55),
     pheatmap (>= 1.0.12),
     rlang (>= 0.4),
@@ -51,22 +51,18 @@ Imports:
     stats,
     utils
 Suggests:
+    AcidTest (>= 0.4.0),
     BiocStyle,
     DropletUtils,
-    acidtest (>= 0.3.2),
     knitr,
     testthat,
     viridis
-Remotes:
-    acidgenomics/acidgenerics,
-    acidgenomics/acidtest,
-    acidgenomics/basejump,
-    acidgenomics/goalie
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Collate: 
+    'AllGenerics.R'
     'AllGlobals.R'
     'assert.R'
     'barcodeRanksPerSample-methods.R'
@@ -75,15 +71,16 @@ Collate:
     'base-matchLabels.R'
     'data.R'
     'deprecated.R'
-    'ggplot2-internal.R'
     'ggplot2-layers.R'
     'ggplot2-themes.R'
     'ggplot2-transforms.R'
-    'heatmap-internal.R'
     'imports.R'
+    'internal-ggplot2.R'
+    'internal-heatmap.R'
+    'internal-pheatmap.R'
+    'internal-plotQC.R'
     'package.R'
     'palettes-synesthesia.R'
-    'pheatmap-internal.R'
     'plotBarcodeRanks-methods.R'
     'plotCellCounts-methods.R'
     'plotCorrelationHeatmap-methods.R'
@@ -94,7 +91,6 @@ Collate:
     'plotCountsPerBroadClass-methods.R'
     'plotCountsPerCell-methods.R'
     'plotCountsPerFeature-methods.R'
-    'plotQC-internal.R'
     'plotCountsVsFeatures-methods.R'
     'plotFeaturesDetected-methods.R'
     'plotFeaturesPerCell-methods.R'

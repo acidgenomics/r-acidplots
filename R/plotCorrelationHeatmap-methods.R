@@ -1,9 +1,9 @@
 #' @name plotCorrelationHeatmap
-#' @inherit acidgenerics::plotCorrelationHeatmap
+#' @inherit AcidGenerics::plotCorrelationHeatmap
 #' @note Updated 2020-08-05.
 #'
 #' @inheritParams plotHeatmap
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed.
 #'   Defaults to pearson, but spearman or kendall can also be used.
@@ -14,21 +14,12 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotCorrelationHeatmap(object)
-NULL
-
-
-
-#' @rdname plotCorrelationHeatmap
-#' @name plotCorrelationHeatmap
-#' @importFrom acidgenerics plotCorrelationHeatmap
-#' @usage plotCorrelationHeatmap(object, ...)
-#' @export
 NULL
 
 

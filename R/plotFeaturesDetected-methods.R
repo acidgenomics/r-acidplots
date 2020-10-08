@@ -1,15 +1,15 @@
 #' @name plotFeaturesDetected
-#' @inherit acidgenerics::plotFeaturesDetected
+#' @inherit AcidGenerics::plotFeaturesDetected
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -19,15 +19,6 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' plotFeaturesDetected(object)
-NULL
-
-
-
-#' @rdname plotFeaturesDetected
-#' @name plotFeaturesDetected
-#' @importFrom acidgenerics plotFeaturesDetected
-#' @usage plotFeaturesDetected
-#' @export
 NULL
 
 

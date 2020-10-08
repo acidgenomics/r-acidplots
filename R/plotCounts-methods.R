@@ -1,8 +1,8 @@
 #' @name plotCounts
-#' @inherit acidgenerics::plotCounts
+#' @inherit AcidGenerics::plotCounts
 #' @note Updated 2020-09-02.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
 #'   automatically match identifiers corresponding to the rownames of the
 #'   object, or gene symbols defined in the object.
@@ -23,7 +23,7 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
@@ -38,15 +38,6 @@
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
 #' plotCounts(object, genes = geneIDs, style = "facet")
 #' plotCounts(object, genes = geneNames, style = "wide")
-NULL
-
-
-
-#' @rdname plotCounts
-#' @name plotCounts
-#' @importFrom acidgenerics plotCounts
-#' @usage plotCounts(object, ...)
-#' @export
 NULL
 
 

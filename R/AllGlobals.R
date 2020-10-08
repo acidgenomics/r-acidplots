@@ -1,16 +1,23 @@
-globalVariables(".")
+#' Package version
+#'
+#' @note Updated 2020-10-07.
+#' @noRd
+.version <- packageVersion(packageName())
 
-.version <- packageVersion("acidplots")
 
-#' acidplots test data URL
+
+#' AcidPlots test data URL
+#'
 #' @keywords internal
 #' @export
+#'
 #' @examples
-#' acidplotsTestsURL
-acidplotsTestsURL <- paste0(
-    "https://tests.acidgenomics.com/acidplots/",
-    "v", .version$major, ".", .version$minor  # nolint
-)
+#' AcidPlotsTestsURL
+AcidPlotsTestsURL <-  # nolint
+    paste0(
+        "https://tests.acidgenomics.com/AcidPlots/",
+        "v", .version$major, ".", .version$minor  # nolint
+    )
 
 
 
@@ -28,8 +35,10 @@ acidplotsTestsURL <- paste0(
 
 
 
-## Improve the `rgb()` default to use 0:255, as expected.
-## Updated 2019-09-13.
+#' Improve the `rgb()` default to use 0:255, as expected
+#'
+#' @note Updated 2019-09-13.
+#' @noRd
 .rgb <- function(...) {
     rgb(..., maxColorValue = 255L)
 }

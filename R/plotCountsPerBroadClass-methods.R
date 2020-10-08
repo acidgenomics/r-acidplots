@@ -1,16 +1,16 @@
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::plotCountsPerBroadClass
+#' @inherit AcidGenerics::plotCountsPerBroadClass
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -20,15 +20,6 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' plotCountsPerBroadClass(object)
-NULL
-
-
-
-#' @rdname plotCountsPerBroadClass
-#' @name plotCountsPerBroadClass
-#' @importFrom acidgenerics plotCountsPerBroadClass
-#' @usage plotCountsPerBroadClass(object, ...)
-#' @export
 NULL
 
 

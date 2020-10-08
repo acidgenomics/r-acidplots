@@ -1,28 +1,19 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include plotQC-internal.R
-#' @inherit acidgenerics::plotCountsVsFeatures
+#' @include internal-plotQC.R
+#' @inherit AcidGenerics::plotCountsVsFeatures
 #' @note Updated 2019-09-16
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' object <- calculateMetrics(object)
 #' plotCountsVsFeatures(object)
-NULL
-
-
-
-#' @rdname plotCountsVsFeatures
-#' @name plotCountsVsFeatures
-#' @importFrom acidgenerics plotCountsVsFeatures
-#' @usage plotCountsVsFeatures(object, ...)
-#' @export
 NULL
 
 

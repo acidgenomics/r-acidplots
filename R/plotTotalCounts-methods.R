@@ -1,15 +1,15 @@
 #' @name plotTotalCounts
-#' @inherit acidgenerics::plotTotalCounts
+#' @inherit AcidGenerics::plotTotalCounts
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -19,15 +19,6 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' plotTotalCounts(object)
-NULL
-
-
-
-#' @rdname plotTotalCounts
-#' @name plotTotalCounts
-#' @importFrom acidgenerics plotTotalCounts
-#' @usage plotTotalCounts(object, ...)
-#' @export
 NULL
 
 
