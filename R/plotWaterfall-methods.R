@@ -1,8 +1,8 @@
 #' @name plotWaterfall
-#' @inherit acidgenerics::plotWaterfall
+#' @inherit AcidGenerics::plotWaterfall
 #' @note Updated 2020-07-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param sampleCol `character(1)`.
 #'   Column name of discrete samples to plot on X axis.
 #' @param valueCol `character(1)`.
@@ -49,7 +49,7 @@ NULL
 
 #' @rdname plotWaterfall
 #' @name plotWaterfall
-#' @importFrom acidgenerics plotWaterfall
+#' @importFrom AcidGenerics plotWaterfall
 #' @usage plotWaterfall(object, ...)
 #' @export
 NULL

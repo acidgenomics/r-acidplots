@@ -1,8 +1,8 @@
 #' @name plotSums
-#' @inherit acidgenerics::plotSums
+#' @inherit AcidGenerics::plotSums
 #' @note Updated 2019-09-15.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams base::apply
 #' @param ... Additional arguments.
 #'
@@ -34,7 +34,7 @@ NULL
 
 #' @rdname plotSums
 #' @name plotSums
-#' @importFrom acidgenerics plotSums
+#' @importFrom AcidGenerics plotSums
 #' @usage plotSums(object, ...)
 #' @export
 NULL

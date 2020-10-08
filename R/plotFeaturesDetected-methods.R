@@ -1,8 +1,8 @@
 #' @name plotFeaturesDetected
-#' @inherit acidgenerics::plotFeaturesDetected
+#' @inherit AcidGenerics::plotFeaturesDetected
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -25,7 +25,7 @@ NULL
 
 #' @rdname plotFeaturesDetected
 #' @name plotFeaturesDetected
-#' @importFrom acidgenerics plotFeaturesDetected
+#' @importFrom AcidGenerics plotFeaturesDetected
 #' @usage plotFeaturesDetected
 #' @export
 NULL

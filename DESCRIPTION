@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.2.36
-Date: 2020-09-02
+Version: 0.3.0
+Date: 2020-10-07
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -33,7 +33,7 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     UpSetR (>= 1.4),
-    acidgenerics (>= 0.3.10),
+    AcidGenerics (>= 0.3.10),
     cli (>= 2.0),
     cowplot (>= 1.0.0),
     ggplot2 (>= 3.3.0),
@@ -53,7 +53,7 @@ Imports:
 Suggests:
     BiocStyle,
     DropletUtils,
-    acidtest (>= 0.3.2),
+    AcidTest (>= 0.3.2),
     knitr,
     testthat,
     viridis
@@ -70,15 +70,16 @@ Collate:
     'base-matchLabels.R'
     'data.R'
     'deprecated.R'
-    'ggplot2-internal.R'
     'ggplot2-layers.R'
     'ggplot2-themes.R'
     'ggplot2-transforms.R'
-    'heatmap-internal.R'
     'imports.R'
+    'internal-ggplot2.R'
+    'internal-heatmap.R'
+    'internal-pheatmap.R'
+    'internal-plotQC.R'
     'package.R'
     'palettes-synesthesia.R'
-    'pheatmap-internal.R'
     'plotBarcodeRanks-methods.R'
     'plotCellCounts-methods.R'
     'plotCorrelationHeatmap-methods.R'
@@ -89,7 +90,6 @@ Collate:
     'plotCountsPerBroadClass-methods.R'
     'plotCountsPerCell-methods.R'
     'plotCountsPerFeature-methods.R'
-    'plotQC-internal.R'
     'plotCountsVsFeatures-methods.R'
     'plotFeaturesDetected-methods.R'
     'plotFeaturesPerCell-methods.R'

@@ -1,9 +1,9 @@
 #' @name barcodeRanksPerSample
-#' @inherit acidgenerics::barcodeRanksPerSample
+#' @inherit AcidGenerics::barcodeRanksPerSample
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-11-19.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams DropletUtils::barcodeRanks
 #' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
 #'
@@ -24,7 +24,7 @@ NULL
 
 #' @rdname barcodeRanksPerSample
 #' @name barcodeRanksPerSample
-#' @importFrom acidgenerics barcodeRanksPerSample
+#' @importFrom AcidGenerics barcodeRanksPerSample
 #' @usage barcodeRanksPerSample(object, ...)
 #' @export
 NULL

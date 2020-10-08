@@ -1,9 +1,9 @@
 #' @name plotCountsCorrelation
-#' @inherit acidgenerics::plotCountsCorrelation
+#' @inherit AcidGenerics::plotCountsCorrelation
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams base::Extract
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname plotCountsCorrelation
 #' @name plotCountsCorrelation
-#' @importFrom acidgenerics plotCountsCorrelation
+#' @importFrom AcidGenerics plotCountsCorrelation
 #' @usage plotCountsCorrelation(x, y, ...)
 #' @export
 NULL

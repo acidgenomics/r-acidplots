@@ -7,7 +7,7 @@
 #' @name synesthesia
 #' @note Updated 2019-09-13.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param guide `character(1)` or `function`.
 #'   A function used to create a guide or its name.
 #'   See [`guides()`][ggplot2::guides] for details.

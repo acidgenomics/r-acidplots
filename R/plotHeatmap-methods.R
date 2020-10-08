@@ -50,7 +50,7 @@
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @note Updated 2020-08-25.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
 #'   Whether the values should be centered and scaled in either the row or
 #'   column direction, or remain unscaled.
@@ -134,7 +134,7 @@ NULL
 
 #' @rdname plotHeatmap
 #' @name plotHeatmap
-#' @importFrom acidgenerics plotHeatmap
+#' @importFrom AcidGenerics plotHeatmap
 #' @usage plotHeatmap(object, ...)
 #' @export
 NULL

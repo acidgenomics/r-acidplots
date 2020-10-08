@@ -1,9 +1,9 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::plotCountsPerCell
+#' @inherit AcidGenerics::plotCountsPerCell
 #' @note Updated 2019-08-27.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param point `character(1)`.
 #'   Label either the knee or inflection points per sample.
 #'   Requires `geom = "ecdf"`.
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCountsPerCell
 #' @name plotCountsPerCell
-#' @importFrom acidgenerics plotCountsPerCell
+#' @importFrom AcidGenerics plotCountsPerCell
 #' @usage plotCountsPerCell(object, ...)
 #' @export
 NULL

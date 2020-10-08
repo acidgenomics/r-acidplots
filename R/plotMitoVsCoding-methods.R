@@ -1,9 +1,9 @@
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::plotMitoVsCoding
+#' @inherit AcidGenerics::plotMitoVsCoding
 #' @note Updated 2019-09-16.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -21,7 +21,7 @@ NULL
 
 #' @rdname plotMitoVsCoding
 #' @name plotMitoVsCoding
-#' @importFrom acidgenerics plotMitoVsCoding
+#' @importFrom AcidGenerics plotMitoVsCoding
 #' @usage plotMitoVsCoding(object, ...)
 #' @export
 NULL
