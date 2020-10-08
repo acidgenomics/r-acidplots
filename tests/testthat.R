@@ -1,3 +1,3 @@
 library(testthat)
-library(acidplots)
-test_check("acidplots")
+library(AcidPlots)
+test_check("AcidPlots")
