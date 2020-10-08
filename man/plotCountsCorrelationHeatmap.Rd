@@ -78,7 +78,7 @@ Compare feature expression correlation across two data sets.
 Updated 2019-07-29.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## matrix ====
 x <- SummarizedExperiment::assay(RangedSummarizedExperiment)

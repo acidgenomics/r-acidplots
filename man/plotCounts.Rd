@@ -17,9 +17,9 @@ plotCounts(object, ...)
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
   color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
   sort = FALSE,
@@ -105,7 +105,7 @@ Plot counts
 Updated 2020-09-02.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

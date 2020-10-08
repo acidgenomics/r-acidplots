@@ -9,8 +9,8 @@ plotBarcodeRanks(object, ...)
 
 \S4method{plotBarcodeRanks}{SingleCellExperiment}(
   object,
-  colors = c(fitline = acidplots::lightPalette[["blue"]], inflection =
-    acidplots::lightPalette[["purple"]], knee = acidplots::lightPalette[["orange"]]),
+  colors = c(fitline = AcidPlots::lightPalette[["blue"]], inflection =
+    AcidPlots::lightPalette[["purple"]], knee = AcidPlots::lightPalette[["orange"]]),
   ...
 )
 }
@@ -35,7 +35,7 @@ Requires DropletUtils package to be installed.
 Updated 2019-09-15.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 if (requireNamespace("DropletUtils", quietly = TRUE)) {

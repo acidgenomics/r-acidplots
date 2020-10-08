@@ -26,7 +26,7 @@ Requires DropletUtils package to be installed.
 Updated 2019-11-19.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 if (requireNamespace("DropletUtils", quietly = TRUE)) {

@@ -13,7 +13,7 @@ plotMitoRatio(object, ...)
   interestingGroups = NULL,
   max = 1L,
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   trans = "sqrt",
   labels = list(title = "Mito ratio", subtitle = NULL, metricAxis = NULL, otherAxis =
     NULL)
@@ -63,7 +63,7 @@ Plot mitochondrial transcript abundance
 Updated 2019-09-16.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment

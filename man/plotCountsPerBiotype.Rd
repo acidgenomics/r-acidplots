@@ -15,7 +15,7 @@ plotCountsPerBiotype(object, ...)
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts")
 )
@@ -27,7 +27,7 @@ plotCountsPerBiotype(object, ...)
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts")
 )
@@ -78,7 +78,7 @@ Updated 2019-12-09.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====

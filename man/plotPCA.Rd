@@ -14,7 +14,7 @@ plotPCA(object, ...)
   ntop = 500L,
   label = getOption(x = "acid.label", default = FALSE),
   color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   pointSize = getOption(x = "acid.point.size", default = 3L),
   labels = list(title = "PCA", subtitle = NULL)
 )
@@ -78,7 +78,7 @@ a way to look at how samples are clustering.
 }
 
 \examples{
-data(RangedSummarizedExperiment, package = "acidtest")
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

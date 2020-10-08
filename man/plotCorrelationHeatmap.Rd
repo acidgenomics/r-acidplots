@@ -20,7 +20,7 @@ plotCorrelationHeatmap(object, ...)
   treeheightCol = 50L,
   color = getOption(x = "acid.heatmap.correlation.color", default = viridis::viridis),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
-    acidplots::synesthesia),
+    AcidPlots::synesthesia),
   borderColor = NULL,
   title = TRUE,
   ...
@@ -100,7 +100,7 @@ Updated 2020-08-05.
 \examples{
 data(
     RangedSummarizedExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====

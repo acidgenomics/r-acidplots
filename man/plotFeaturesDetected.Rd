@@ -15,7 +15,7 @@ plotFeaturesDetected
   limit = 0L,
   minCounts = 1L,
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Features detected", subtitle = NULL, x = NULL, y = "features"),
   flip = getOption(x = "acid.flip", default = TRUE)
 )
@@ -75,7 +75,7 @@ Updated 2019-12-09.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## SummarizedExperiment ====

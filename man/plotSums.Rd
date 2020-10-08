@@ -43,7 +43,7 @@ Updated 2019-09-15.
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
-    package = "acidtest"
+    package = "AcidTest"
 )
 
 ## matrix ====

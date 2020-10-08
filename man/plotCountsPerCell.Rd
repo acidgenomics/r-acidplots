@@ -16,9 +16,9 @@ plotCountsPerCell(object, ...)
   point = c("none", "inflection", "knee"),
   trans = "log10",
   color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = acidplots::scale_color_synesthesia_d())),
+    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = acidplots::scale_fill_synesthesia_d())),
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   title = "Counts per cell"
 )
 }
@@ -84,7 +84,7 @@ droplet-based scRNA-seq data.
 Updated 2019-08-27.
 }
 \examples{
-data(SingleCellExperiment, package = "acidtest")
+data(SingleCellExperiment, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
@@ -96,7 +96,7 @@ plotCountsPerCell(object, geom = "histogram")
 plotCountsPerCell(object, geom = "boxplot")
 }
 \seealso{
-\code{\link[acidgenerics:plotCountsVsFeatures]{plotCountsVsFeatures()}}.
+\code{\link[AcidGenerics:plotCountsVsFeatures]{plotCountsVsFeatures()}}.
 }
 \author{
 Michael Steinbaugh, Rory Kirchner
