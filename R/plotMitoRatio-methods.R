@@ -1,14 +1,14 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include plotQC-internal.R
-#' @inherit acidgenerics::plotMitoRatio
+#' @include internal-plotQC.R
+#' @inherit AcidGenerics::plotMitoRatio
 #' @note Updated 2019-09-16.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
@@ -16,15 +16,6 @@
 #' if (!anyNA(object$mitoRatio)) {
 #'     plotMitoRatio(object)
 #' }
-NULL
-
-
-
-#' @rdname plotMitoRatio
-#' @name plotMitoRatio
-#' @importFrom acidgenerics plotMitoRatio
-#' @usage plotMitoRatio(object, ...)
-#' @export
 NULL
 
 

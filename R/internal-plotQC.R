@@ -117,8 +117,8 @@
             p <- p + acid_geom_abline(yintercept = min)
         }
         if (
-            (isTRUE(max < Inf) && identical(ratio, FALSE)) ||
-            (isTRUE(max < 1L) && identical(ratio, TRUE))
+            (isTRUE(max < Inf) && isFALSE(ratio)) ||
+            (isTRUE(max < 1L) && isTRUE(ratio))
         ) {
             p <- p + acid_geom_abline(yintercept = max)
         }

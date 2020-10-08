@@ -1,16 +1,16 @@
 #' @name barcodeRanksPerSample
-#' @inherit acidgenerics::barcodeRanksPerSample
+#' @inherit AcidGenerics::barcodeRanksPerSample
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-11-19.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @inheritParams DropletUtils::barcodeRanks
 #' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
 #'
 #' @seealso [DropletUtils::barcodeRanks()].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' if (requireNamespace("DropletUtils", quietly = TRUE)) {
@@ -18,15 +18,6 @@
 #'     x <- barcodeRanksPerSample(object)
 #'     names(x)
 #' }
-NULL
-
-
-
-#' @rdname barcodeRanksPerSample
-#' @name barcodeRanksPerSample
-#' @importFrom acidgenerics barcodeRanksPerSample
-#' @usage barcodeRanksPerSample(object, ...)
-#' @export
 NULL
 
 

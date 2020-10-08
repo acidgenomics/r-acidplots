@@ -16,7 +16,7 @@ test_that("list", {
 })
 
 test_that("data.frame", {
-    file <- system.file("extdata", "movies.csv", package = "acidplots")
+    file <- system.file("extdata", "movies.csv", package = "AcidPlots")
     data <- import(file)
     p <- plotUpset(data)
     expect_s3_class(p, "upset")

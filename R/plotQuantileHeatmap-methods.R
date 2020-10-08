@@ -1,9 +1,9 @@
 #' @name plotQuantileHeatmap
-#' @inherit acidgenerics::plotQuantileHeatmap
+#' @inherit AcidGenerics::plotQuantileHeatmap
 #' @note Updated 2020-08-05.
 #'
 #' @inheritParams plotHeatmap
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param legend `logical(1)`.
 #'   Show the color legend.
 #' @param n `integer(1)`.
@@ -15,21 +15,12 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotQuantileHeatmap(object)
-NULL
-
-
-
-#' @rdname plotQuantileHeatmap
-#' @name plotQuantileHeatmap
-#' @importFrom acidgenerics plotQuantileHeatmap
-#' @usage plotQuantileHeatmap(object, ...)
-#' @export
 NULL
 
 

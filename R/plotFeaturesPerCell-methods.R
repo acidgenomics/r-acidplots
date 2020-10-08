@@ -1,27 +1,18 @@
 #' @name plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::plotFeaturesPerCell
+#' @inherit AcidGenerics::plotFeaturesPerCell
 #' @note Updated 2019-09-16.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' object <- calculateMetrics(object)
 #' plotFeaturesPerCell(object)
-NULL
-
-
-
-#' @rdname plotFeaturesPerCell
-#' @name plotFeaturesPerCell
-#' @importFrom acidgenerics plotFeaturesPerCell
-#' @usage plotFeaturesPerCell(object, ...)
-#' @export
 NULL
 
 

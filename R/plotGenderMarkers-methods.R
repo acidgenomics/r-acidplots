@@ -1,10 +1,10 @@
 #' @name plotGenderMarkers
-#' @inherit acidgenerics::plotGenderMarkers
+#' @inherit AcidGenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
 #' @note Updated 2020-02-19.
 #'
 #' @inheritParams plotCounts
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough to [plotCounts()], with the `genes` argument
 #'   automatically defined.
 #'
@@ -12,7 +12,7 @@
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -26,15 +26,6 @@ NULL
 
 
 
-#' @rdname plotGenderMarkers
-#' @name plotGenderMarkers
-#' @importFrom acidgenerics plotGenderMarkers
-#' @usage plotGenderMarkers(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-15.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function(object, style = "wide", ...) {
@@ -42,7 +33,7 @@ NULL
         organism <- organism(object)
         data(
             list = "genderMarkers",
-            package = "acidplots",
+            package = packageName(),
             envir = environment()
         )
         markers <- get("genderMarkers", inherits = FALSE)

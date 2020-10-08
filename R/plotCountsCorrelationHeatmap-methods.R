@@ -1,29 +1,20 @@
 #' @name plotCountsCorrelationHeatmap
-#' @inherit acidgenerics::plotCountsCorrelationHeatmap
+#' @inherit AcidGenerics::plotCountsCorrelationHeatmap
 #' @note Updated 2019-07-29.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams stats::cor
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough arguments to
-#'   [`plotHeatmap()`][acidplots::plotHeatmap].
+#'   [`plotHeatmap()`][AcidPlots::plotHeatmap].
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## matrix ====
 #' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 #' y <- x + 1L
 #' plotCountsCorrelationHeatmap(x, y)
-NULL
-
-
-
-#' @rdname plotCountsCorrelationHeatmap
-#' @name plotCountsCorrelationHeatmap
-#' @importFrom acidgenerics plotCountsCorrelationHeatmap
-#' @usage plotCountsCorrelationHeatmap(x, y, ...)
-#' @export
 NULL
 
 

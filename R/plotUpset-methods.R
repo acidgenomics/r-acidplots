@@ -5,7 +5,7 @@
 #' @name plotUpset
 #' @note Updated 2020-08-25.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param orderBySize `logical`.
 #'   Whether to order main bar plot and/or intersection matrix by set size.
 #'
@@ -29,15 +29,6 @@
 #'     d = c("d", "e", "f", "g", "h", "i")
 #' )
 #' plotUpset(list)
-NULL
-
-
-
-#' @rdname plotUpset
-#' @name plotUpset
-#' @importFrom acidgenerics plotUpset
-#' @usage plotUpset(object, ...)
-#' @export
 NULL
 
 

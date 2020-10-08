@@ -1,28 +1,19 @@
 #' @name plotCountsCorrelation
-#' @inherit acidgenerics::plotCountsCorrelation
+#' @inherit AcidGenerics::plotCountsCorrelation
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams base::Extract
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## matrix ====
 #' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 #' x <- x[seq_len(4L), seq_len(2L)]
 #' y <- x * 2L
 #' plotCountsCorrelation(x, y)
-NULL
-
-
-
-#' @rdname plotCountsCorrelation
-#' @name plotCountsCorrelation
-#' @importFrom acidgenerics plotCountsCorrelation
-#' @usage plotCountsCorrelation(x, y, ...)
-#' @export
 NULL
 
 

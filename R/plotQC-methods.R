@@ -1,15 +1,15 @@
 #' @name plotQC
-#' @inherit acidgenerics::plotQC
+#' @inherit AcidGenerics::plotQC
 #' @note Updated 2019-08-12.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
 #'     SingleCellExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
@@ -20,15 +20,6 @@
 #' object <- SingleCellExperiment
 #' object <- calculateMetrics(object)
 #' plotQC(object, legend = FALSE)
-NULL
-
-
-
-#' @rdname plotQC
-#' @name plotQC
-#' @importFrom acidgenerics plotQC
-#' @usage plotQC(object, ...)
-#' @export
 NULL
 
 

@@ -1,5 +1,5 @@
 #' @name plotBarcodeRanks
-#' @inherit acidgenerics::plotBarcodeRanks
+#' @inherit AcidGenerics::plotBarcodeRanks
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-09-15.
 #'
@@ -9,7 +9,7 @@
 #' @param ... Passthrough to [barcodeRanksPerSample()].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' if (requireNamespace("DropletUtils", quietly = TRUE)) {
@@ -20,23 +20,14 @@ NULL
 
 
 
-#' @rdname plotBarcodeRanks
-#' @name plotBarcodeRanks
-#' @importFrom acidgenerics plotBarcodeRanks
-#' @usage plotBarcodeRanks(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-15.
 `plotBarcodeRanks,SingleCellExperiment` <-  # nolint
     function(
         object,
         colors = c(
-            fitline = acidplots::lightPalette[["blue"]],
-            inflection = acidplots::lightPalette[["purple"]],
-            knee = acidplots::lightPalette[["orange"]]
+            fitline = AcidPlots::lightPalette[["blue"]],
+            inflection = AcidPlots::lightPalette[["purple"]],
+            knee = AcidPlots::lightPalette[["orange"]]
         ),
         ...
     ) {

@@ -14,7 +14,7 @@
 #'   slotted in `reducedDims()` is defined in pointillism package.
 #' @note Updated 2020-08-25.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
 #'   Number of most variable genes to plot.
 #'   Use `Inf` to include all genes (*not recommended*).
@@ -37,20 +37,11 @@
 #' @return `ggplot` or `DataFrame`.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotPCA(object)
-NULL
-
-
-
-#' @rdname plotPCA
-#' @name plotPCA
-#' @importFrom BiocGenerics plotPCA
-#' @usage plotPCA(object, ...)
-#' @export
 NULL
 
 
