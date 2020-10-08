@@ -16,15 +16,6 @@ NULL
 
 
 
-#' @rdname plotCellCounts
-#' @name plotCellCounts
-#' @importFrom AcidGenerics plotCellCounts
-#' @usage plotCellCounts(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(

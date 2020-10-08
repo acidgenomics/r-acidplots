@@ -23,15 +23,6 @@ NULL
 
 
 
-#' @rdname plotFeaturesDetected
-#' @name plotFeaturesDetected
-#' @importFrom AcidGenerics plotFeaturesDetected
-#' @usage plotFeaturesDetected
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(

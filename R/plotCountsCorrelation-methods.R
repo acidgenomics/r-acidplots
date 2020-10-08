@@ -18,15 +18,6 @@ NULL
 
 
 
-#' @rdname plotCountsCorrelation
-#' @name plotCountsCorrelation
-#' @importFrom AcidGenerics plotCountsCorrelation
-#' @usage plotCountsCorrelation(x, y, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(

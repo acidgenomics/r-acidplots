@@ -132,15 +132,6 @@ NULL
 
 
 
-#' @rdname plotHeatmap
-#' @name plotHeatmap
-#' @importFrom AcidGenerics plotHeatmap
-#' @usage plotHeatmap(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-08-05.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(

@@ -24,15 +24,6 @@ NULL
 
 
 
-#' @rdname plotCountsPerCell
-#' @name plotCountsPerCell
-#' @importFrom AcidGenerics plotCountsPerCell
-#' @usage plotCountsPerCell(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-08-27.
 `plotCountsPerCell,SingleCellExperiment` <-  # nolint
     function(

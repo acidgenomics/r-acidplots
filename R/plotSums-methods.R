@@ -32,15 +32,6 @@ NULL
 
 
 
-#' @rdname plotSums
-#' @name plotSums
-#' @importFrom AcidGenerics plotSums
-#' @usage plotSums(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-15.
 `plotSums,matrix` <-  # nolint
     function(

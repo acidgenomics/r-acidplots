@@ -23,15 +23,6 @@ NULL
 
 
 
-#' @rdname plotTotalCounts
-#' @name plotTotalCounts
-#' @importFrom AcidGenerics plotTotalCounts
-#' @usage plotTotalCounts(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-12-09.
 `plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(

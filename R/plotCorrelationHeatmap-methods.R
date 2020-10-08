@@ -24,15 +24,6 @@ NULL
 
 
 
-#' @rdname plotCorrelationHeatmap
-#' @name plotCorrelationHeatmap
-#' @importFrom AcidGenerics plotCorrelationHeatmap
-#' @usage plotCorrelationHeatmap(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-11-19.
 `plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
     function(

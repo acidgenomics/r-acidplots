@@ -127,7 +127,7 @@ unless the library sizes or total RNA expression are different." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot counts per feature</h1>
-    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotCountsPerFeature-methods.R'><code>R/plotCountsPerFeature-methods.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/acidgenomics/acidplots/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/acidgenomics/acidplots/blob/master/R/plotCountsPerFeature-methods.R'><code>R/plotCountsPerFeature-methods.R</code></a></small>
     <div class="hidden name"><code>plotCountsPerFeature.Rd</code></div>
     </div>
 
@@ -259,12 +259,18 @@ Passes <code>...</code> to <code>SummarizedExperiment</code> method.</p></li>
 <span class='co'>## SummarizedExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>RangedSummarizedExperiment</span>
 <span class='fu'>plotCountsPerFeature</span><span class='op'>(</span><span class='va'>object</span>, geom <span class='op'>=</span> <span class='st'>"boxplot"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called 'acidplots'</span></div><div class='input'><span class='fu'>plotCountsPerFeature</span><span class='op'>(</span><span class='va'>object</span>, geom <span class='op'>=</span> <span class='st'>"density"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called 'acidplots'</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
+#&gt; <span class='message'>- 499 / 500 rows (100%)</span>
+#&gt; <span class='message'>- 12 / 12 columns (100%)</span></div><div class='img'><img src='plotCountsPerFeature-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plotCountsPerFeature</span><span class='op'>(</span><span class='va'>object</span>, geom <span class='op'>=</span> <span class='st'>"density"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
+#&gt; <span class='message'>- 499 / 500 rows (100%)</span>
+#&gt; <span class='message'>- 12 / 12 columns (100%)</span></div><div class='img'><img src='plotCountsPerFeature-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'>## SingleCellExperiment ====</span>
 <span class='va'>object</span> <span class='op'>&lt;-</span> <span class='va'>SingleCellExperiment</span>
 <span class='fu'>plotCountsPerFeature</span><span class='op'>(</span><span class='va'>object</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called 'acidplots'</span></div></pre>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BBBB;'>ℹ</span><span> Filtered zero count rows and columns:</span>
+#&gt; <span class='message'>- 483 / 500 rows (97%)</span>
+#&gt; <span class='message'>- 2 / 2 columns (100%)</span></div><div class='img'><img src='plotCountsPerFeature-3.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

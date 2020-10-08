@@ -18,15 +18,6 @@ NULL
 
 
 
-#' @rdname plotCountsVsFeatures
-#' @name plotCountsVsFeatures
-#' @importFrom AcidGenerics plotCountsVsFeatures
-#' @usage plotCountsVsFeatures(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
     function(

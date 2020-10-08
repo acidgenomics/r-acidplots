@@ -47,15 +47,6 @@ NULL
 
 
 
-#' @rdname plotWaterfall
-#' @name plotWaterfall
-#' @importFrom AcidGenerics plotWaterfall
-#' @usage plotWaterfall(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-07-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(

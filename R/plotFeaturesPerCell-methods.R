@@ -17,15 +17,6 @@ NULL
 
 
 
-#' @rdname plotFeaturesPerCell
-#' @name plotFeaturesPerCell
-#' @importFrom AcidGenerics plotFeaturesPerCell
-#' @usage plotFeaturesPerCell(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-09-16.
 `plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
     function(

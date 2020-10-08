@@ -46,15 +46,6 @@ NULL
 
 
 
-#' @rdname plotPCA
-#' @name plotPCA
-#' @importFrom BiocGenerics plotPCA
-#' @usage plotPCA(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2020-08-25.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(

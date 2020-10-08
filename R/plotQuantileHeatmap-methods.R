@@ -25,15 +25,6 @@ NULL
 
 
 
-#' @rdname plotQuantileHeatmap
-#' @name plotQuantileHeatmap
-#' @importFrom AcidGenerics plotQuantileHeatmap
-#' @usage plotQuantileHeatmap(object, ...)
-#' @export
-NULL
-
-
-
 ## Updated 2019-07-23.
 .quantileBreaks <- function(object, n = 10L) {
     assert(
