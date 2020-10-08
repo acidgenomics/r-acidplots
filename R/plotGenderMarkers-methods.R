@@ -42,7 +42,7 @@ NULL
         organism <- organism(object)
         data(
             list = "genderMarkers",
-            package = "acidplots",
+            package = packageName(),
             envir = environment()
         )
         markers <- get("genderMarkers", inherits = FALSE)
