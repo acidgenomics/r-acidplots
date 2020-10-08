@@ -14,7 +14,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     package = "acidtest"
+#'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====

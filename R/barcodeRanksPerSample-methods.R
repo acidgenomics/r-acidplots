@@ -10,7 +10,7 @@
 #' @seealso [DropletUtils::barcodeRanks()].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' if (requireNamespace("DropletUtils", quietly = TRUE)) {
