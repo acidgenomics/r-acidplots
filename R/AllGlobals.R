@@ -13,10 +13,11 @@
 #'
 #' @examples
 #' AcidPlotsTestsURL
-AcidPlotsTestsURL <- paste0(
-    "https://tests.acidgenomics.com/AcidPlots/",
-    "v", .version$major, ".", .version$minor  # nolint
-)
+AcidPlotsTestsURL <-  # nolint
+    paste0(
+        "https://tests.acidgenomics.com/AcidPlots/",
+        "v", .version$major, ".", .version$minor  # nolint
+    )
 
 
 
