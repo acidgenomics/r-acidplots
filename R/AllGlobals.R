@@ -1,6 +1,6 @@
 globalVariables(".")
 
-.version <- packageVersion("acidplots")
+.version <- packageVersion(packageName())
 
 #' acidplots test data URL
 #' @keywords internal

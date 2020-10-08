@@ -8,7 +8,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "acidtest")
+#' data(SingleCellExperiment, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment

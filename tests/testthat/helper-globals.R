@@ -10,7 +10,7 @@ data(
     SingleCellExperiment,
     matrix,
     matrix_lfc,
-    package = "acidtest",
+    package = "AcidTest",
     envir = environment()
 )
 

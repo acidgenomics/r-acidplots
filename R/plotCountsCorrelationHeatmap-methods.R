@@ -9,7 +9,7 @@
 #'   [`plotHeatmap()`][acidplots::plotHeatmap].
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "acidtest")
+#' data(RangedSummarizedExperiment, package = "AcidTest")
 #'
 #' ## matrix ====
 #' x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
