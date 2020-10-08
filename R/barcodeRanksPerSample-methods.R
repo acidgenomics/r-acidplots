@@ -22,15 +22,6 @@ NULL
 
 
 
-#' @rdname barcodeRanksPerSample
-#' @name barcodeRanksPerSample
-#' @importFrom AcidGenerics barcodeRanksPerSample
-#' @usage barcodeRanksPerSample(object, ...)
-#' @export
-NULL
-
-
-
 ## nolint start
 ## Muffle this warning:
 ## > Warning in smooth.spline(x[new.keep], y[new.keep], df = df, ...) :
