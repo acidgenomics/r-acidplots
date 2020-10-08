@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sexually dimorphic gender marker genes — genderMarkers • acidplots</title>
+<title>Sexually dimorphic gender marker genes — genderMarkers • AcidPlots</title>
 
 
 <!-- jquery -->
@@ -73,8 +73,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">acidplots</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.34</span>
+        <a class="navbar-link" href="../index.html">AcidPlots</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -87,10 +87,19 @@
   </a>
 </li>
 <li>
-  <a href="../articles/acidplots.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/acidplots.html">acidplots</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -125,7 +134,7 @@
     <p>Sexually dimorphic gender marker genes</p>
     </div>
 
-    <pre class="usage"><span class='no'>genderMarkers</span></pre>
+    <pre class="usage"><span class='va'>genderMarkers</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -136,8 +145,9 @@
     <p>Updated 2019-07-29.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>genderMarkers</span>)
-<span class='no'>genderMarkers</span></div><div class='output co'>#&gt; $homoSapiens
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>genderMarkers</span><span class='op'>)</span>
+<span class='va'>genderMarkers</span>
+</div><div class='output co'>#&gt; $homoSapiens
 #&gt; <span style='color: #555555;'># A tibble: 6 x 3</span><span>
 #&gt;   geneID          geneName chromosome
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
@@ -172,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
