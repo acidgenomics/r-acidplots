@@ -1,9 +1,9 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @inherit acidgenerics::plotCountsPerBiotype
+#' @inherit AcidGenerics::plotCountsPerBiotype
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -26,7 +26,7 @@ NULL
 
 #' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBiotype
-#' @importFrom acidgenerics plotCountsPerBiotype
+#' @importFrom AcidGenerics plotCountsPerBiotype
 #' @usage plotCountsPerBiotype(object, ...)
 #' @export
 NULL

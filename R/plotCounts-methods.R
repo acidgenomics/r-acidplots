@@ -1,8 +1,8 @@
 #' @name plotCounts
-#' @inherit acidgenerics::plotCounts
+#' @inherit AcidGenerics::plotCounts
 #' @note Updated 2020-09-02.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
 #'   automatically match identifiers corresponding to the rownames of the
 #'   object, or gene symbols defined in the object.
@@ -44,7 +44,7 @@ NULL
 
 #' @rdname plotCounts
 #' @name plotCounts
-#' @importFrom acidgenerics plotCounts
+#' @importFrom AcidGenerics plotCounts
 #' @usage plotCounts(object, ...)
 #' @export
 NULL

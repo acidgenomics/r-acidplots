@@ -1,5 +1,5 @@
 #' @name plotBarcodeRanks
-#' @inherit acidgenerics::plotBarcodeRanks
+#' @inherit AcidGenerics::plotBarcodeRanks
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2019-09-15.
 #'
@@ -22,7 +22,7 @@ NULL
 
 #' @rdname plotBarcodeRanks
 #' @name plotBarcodeRanks
-#' @importFrom acidgenerics plotBarcodeRanks
+#' @importFrom AcidGenerics plotBarcodeRanks
 #' @usage plotBarcodeRanks(object, ...)
 #' @export
 NULL

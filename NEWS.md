@@ -1,3 +1,7 @@
+## AcidPlots 0.3.0 (2020-10-07)
+
+- Renamed package from acidplots to AcidPlots.
+
 ## acidplots 0.2.36 (2020-09-02)
 
 ### Minor changes
@@ -108,7 +112,7 @@
 - Updated documentation and roxygen dependency to v7.1.0.
 - Updated ggplot2 and other graphical R package dependencies.
 - Fixed `plotHeatmap` unit tests to harden against `SummarizedExperiment` and
-  `SingleCellExperiment` objects defined in acidtest package that contain
+  `SingleCellExperiment` objects defined in AcidTest package that contain
   rows and/or columns with all zeros. Refer to `nonzeroRowsAndCols` function
   in basejump for details.
 - Rebuilt pkgdown website using v1.5 update.
@@ -138,7 +142,7 @@
 
 ### Minor changes
 
-- Updated bioverbs dependency to renamed acidgenerics package.
+- Updated bioverbs dependency to renamed AcidGenerics package.
 
 ## acidplots 0.2.21 (2019-12-13)
 
@@ -256,7 +260,7 @@
 ### Minor changes
 
 - Improved documentation consistency by importing shared parameter roxygen
-  from the new acidroxygen package.
+  from the new AcidRoxygen package.
 - Updated basejump dependency versions.
 
 ## acidplots 0.2.9 (2019-07-30)
@@ -265,7 +269,7 @@
 
 - Updated basejump dependency versions.
 - Updated some unit tests to reflect RangedSummarizedExperiment example update
-  in acidtest package.
+  in AcidTest package.
 
 ## acidplots 0.2.8 (2019-07-29)
 

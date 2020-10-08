@@ -14,7 +14,7 @@
 #'   slotted in `reducedDims()` is defined in pointillism package.
 #' @note Updated 2020-08-25.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
 #'   Number of most variable genes to plot.
 #'   Use `Inf` to include all genes (*not recommended*).

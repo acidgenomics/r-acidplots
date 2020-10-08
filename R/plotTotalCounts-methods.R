@@ -1,8 +1,8 @@
 #' @name plotTotalCounts
-#' @inherit acidgenerics::plotTotalCounts
+#' @inherit AcidGenerics::plotTotalCounts
 #' @note Updated 2019-12-09.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -25,7 +25,7 @@ NULL
 
 #' @rdname plotTotalCounts
 #' @name plotTotalCounts
-#' @importFrom acidgenerics plotTotalCounts
+#' @importFrom AcidGenerics plotTotalCounts
 #' @usage plotTotalCounts(object, ...)
 #' @export
 NULL

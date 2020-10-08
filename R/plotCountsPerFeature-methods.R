@@ -1,9 +1,9 @@
 #' @name plotCountsPerFeature
-#' @inherit acidgenerics::plotCountsPerFeature
+#' @inherit AcidGenerics::plotCountsPerFeature
 #' @note Updated 2019-12-09.
 #'
 #' @inheritParams basejump::melt
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param geom `character(1)`.
 #'   Type of ggplot2 geometric object to use.
 #' @param ... Additional arguments.
@@ -29,7 +29,7 @@ NULL
 
 #' @rdname plotCountsPerFeature
 #' @name plotCountsPerFeature
-#' @importFrom acidgenerics plotCountsPerFeature
+#' @importFrom AcidGenerics plotCountsPerFeature
 #' @usage plotCountsPerFeature(object, ...)
 #' @export
 NULL

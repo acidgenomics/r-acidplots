@@ -1,10 +1,10 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
-#' @include plotQC-internal.R
-#' @inherit acidgenerics::plotNovelty
+#' @include internal-plotQC.R
+#' @inherit AcidGenerics::plotNovelty
 #' @note Updated 2019-09-16.
 #'
-#' @inheritParams acidroxygen::params
+#' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -20,7 +20,7 @@ NULL
 
 #' @rdname plotNovelty
 #' @name plotNovelty
-#' @importFrom acidgenerics plotNovelty
+#' @importFrom AcidGenerics plotNovelty
 #' @usage plotNovelty(object, ...)
 #' @export
 NULL
