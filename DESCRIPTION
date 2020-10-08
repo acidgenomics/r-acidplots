@@ -23,8 +23,9 @@ Encoding: UTF-8
 LazyData: false
 Depends:
     R (>= 4.0),
-    basejump (>= 0.12.13)
+    basejump (>= 0.13.1)
 Imports:
+    AcidGenerics (>= 0.4.0),
     BiocGenerics,
     IRanges,
     Matrix (>= 1.2),
@@ -33,13 +34,12 @@ Imports:
     SingleCellExperiment,
     SummarizedExperiment,
     UpSetR (>= 1.4),
-    AcidGenerics (>= 0.3.10),
     cli (>= 2.0),
     cowplot (>= 1.0.0),
     ggplot2 (>= 3.3.0),
     ggrepel (>= 0.8.2),
     ggridges (>= 0.5.2),
-    goalie (>= 0.4.8),
+    goalie (>= 0.4.9),
     matrixStats (>= 0.55),
     pheatmap (>= 1.0.12),
     rlang (>= 0.4),
@@ -51,9 +51,9 @@ Imports:
     stats,
     utils
 Suggests:
+    AcidTest (>= 0.4.0),
     BiocStyle,
     DropletUtils,
-    AcidTest (>= 0.3.2),
     knitr,
     testthat,
     viridis
