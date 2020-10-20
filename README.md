@@ -15,7 +15,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
 install.packages(
-    pkgs = "acidplots",
+    pkgs = "AcidPlots",
     repos = c(
         "r.acidgenomics.com",
         BiocManager::repositories()
