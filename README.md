@@ -1,7 +1,7 @@
 # AcidPlots
 
 [![Repo status: active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Travis CI build status](https://travis-ci.com/acidgenomics/acidplots.svg?branch=master)](https://travis-ci.com/acidgenomics/acidplots)
+[![Travis CI build status](https://travis-ci.com/acidgenomics/AcidPlots.svg?branch=master)](https://travis-ci.com/acidgenomics/AcidPlots)
 [![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/r-acidplots/README.html)
 
 Functions for plotting genomic data.
@@ -17,7 +17,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) {
 install.packages(
     pkgs = "AcidPlots",
     repos = c(
-        "r.acidgenomics.com",
+        "https://r.acidgenomics.com",
         BiocManager::repositories()
     )
 )
