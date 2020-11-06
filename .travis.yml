@@ -1,4 +1,5 @@
 os: linux
+arch: arm64-graviton2
 language: shell
 
 services:
@@ -15,10 +16,13 @@ jobs:
   include:
     - stage: test
       name: "bioc-release"
-      script: image="acidgenomics/r-rnaseq" tag="bioc-release" ./.Rcheck/docker
+      script: image="acidgenomics/r-acidplots" tag="bioc-release" ./.Rcheck/docker
+    - stage: test
+      name: "bioc-oldrel"
+      script: image="acidgenomics/r-acidplots" tag="bioc-oldrel" ./.Rcheck/docker
     - stage: test
       name: "bioc-devel"
-      script: image="acidgenomics/r-rnaseq" tag="bioc-devel" ./.Rcheck/docker
+      script: image="acidgenomics/r-acidplots" tag="bioc-devel" ./.Rcheck/docker
   allow_failures:
     - name: "bioc-devel"
   fast_finish: true
@@ -29,6 +33,6 @@ after_failure:
 notifications:
   email:
     recipients:
-      - mike@steinbaugh.com
+      - travis-ci@acidgenomics.com
     on_success: change
     on_failure: change
