@@ -95,6 +95,8 @@ NULL
 
 
 
+## FIXME DEFINE THIS IN BASEJUMP AND UPDATE HERE.
+
 #' Calculate standard error of the mean
 #'
 #' @note Updated 2020-08-31.
