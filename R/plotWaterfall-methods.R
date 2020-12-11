@@ -11,6 +11,7 @@
 #'
 #' @seealso
 #' - [Ordering bars from lowest to highest value in each facet](https://stackoverflow.com/questions/43176546)
+#' - [Ordering bars within facets using tidytext](https://www.r-bloggers.com/2019/12/how-to-reorder-arrange-bars-with-in-each-facet-of-ggplot/)
 #'
 #' @examples
 #' ## data.frame ====
@@ -50,10 +51,7 @@ NULL
 
 
 
-## FIXME THIS ISNT RANKING HIGH-TO-LOW CORRECTLY. SOMETHING'S OFF HERE.
-## FIXME REVERSE AND SCALE MORE SENSITIVE ON THE LEFT.
-
-## Updated 2020-07-09.
+## Updated 2020-12-11.
 `plotWaterfall,data.frame` <-  # nolint
     function(
         object,
@@ -88,23 +86,23 @@ NULL
             assert(is.function(logFun))
             data[["y"]] <- logFun(data[["y"]])
         }
-        data <- data[order(data[["y"]], data[["x"]]), ]
         if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
             data[["facet"]] <- do.call(
                 what = paste,
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
             )
-            mapping[["fill"]] <- quo(!!sym("facet"))
-            data <- group_by(data, !!sym("facet"))
-            data <- mutate(data, !!sym("idx") := row_number())
+            ## > data <- data[order(data[["facet"]], data[["y"]], data[["x"]]), ]
+            data[["x"]] <- reorder_within(data[["x"]], data[["y"]], data[["facet"]])
         } else {
-            data[["idx"]] <- seq_len(nrow(data))
+            ## > data <- data[order(data[["y"]], data[["x"]]), ]
+            data[["x"]] <- reorder(data[["x"]], data[["y"]])
         }
-        mapping <- aes(
-            x = !!sym("x"),
-            y = !!sym("y")
-        )
+        ## > data[["idx"]] <- seq_len(nrow(data))
+        mapping <- aes(x = !!sym("x"), y = !!sym("y"))
+        if (!is.null(interestingGroups)) {
+            mapping[["fill"]] <- quo(!!sym("facet"))
+        }
         p <- ggplot(data = data, mapping = mapping) +
             geom_bar(color = NA, stat = "identity", width = 1L)
         if (isTRUE(isLog)) {
@@ -140,7 +138,7 @@ NULL
                 )
         }
         ## Dynamically hide x-axis labels if there are a lot of samples.
-        if (length(unique(data[["x"]])) <= 50L) {
+        if (length(unique(data[["x"]])) <= 100L) {
             p <- p + theme(axis.text.x = element_text(angle = 90L, hjust = 1L))
         } else {
             p <- p + theme(
@@ -150,17 +148,6 @@ NULL
             )
         }
         ## Labels.
-
-
-
-        ## FIXME RETHINK THIS.
-        # use named character vector to replace x-axis labels
-        scale_x_discrete(labels = molten[, setNames(as.character(id), ord)]) +
-        # replace x-axis title
-        xlab("id")
-
-
-
         if (is.list(labels)) {
             xLab <- sampleCol
             yLab <- valueCol
