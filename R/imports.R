@@ -23,6 +23,7 @@
 #'   sampleData snakeCase standardizeCall zerosVsDepth
 #' @importFrom cli cli_alert cli_alert_info cli_alert_warning
 #' @importFrom cowplot plot_grid
+#' @importFrom dplyr group_by mutate row_number
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
 #'   expand_limits facet_grid facet_wrap geom_bar geom_boxplot geom_density
@@ -43,7 +44,7 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
-#' @importFrom rlang !! quo quo_text sym syms
+#' @importFrom rlang !! := quo quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
 #' @importFrom stringr str_replace_na

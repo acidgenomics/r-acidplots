@@ -1,6 +1,6 @@
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2020-07-09.
+#' @note Updated 2020-12-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sampleCol `character(1)`.
@@ -8,6 +8,9 @@
 #' @param valueCol `character(1)`.
 #'   Column name of continues values to plot on Y axis.
 #' @param ... Additional arguments.
+#'
+#' @seealso
+#' - [Ordering bars from lowest to highest value in each facet](https://stackoverflow.com/questions/43176546)
 #'
 #' @examples
 #' ## data.frame ====
@@ -47,6 +50,9 @@ NULL
 
 
 
+## FIXME THIS ISNT RANKING HIGH-TO-LOW CORRECTLY. SOMETHING'S OFF HERE.
+## FIXME REVERSE AND SCALE MORE SENSITIVE ON THE LEFT.
+
 ## Updated 2020-07-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
@@ -74,7 +80,7 @@ NULL
             choices = eval(formals()[["labels"]])
         )
         data <- data.frame(
-            x = reorder(object[[sampleCol]], -object[[valueCol]]),
+            x = object[[sampleCol]],
             y = object[[valueCol]]
         )
         if (isTRUE(isLog)) {
@@ -82,10 +88,7 @@ NULL
             assert(is.function(logFun))
             data[["y"]] <- logFun(data[["y"]])
         }
-        mapping <- aes(
-            x = !!sym("x"),
-            y = !!sym("y")
-        )
+        data <- data[order(data[["y"]], data[["x"]]), ]
         if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
             data[["facet"]] <- do.call(
@@ -93,7 +96,15 @@ NULL
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
             )
             mapping[["fill"]] <- quo(!!sym("facet"))
+            data <- group_by(data, !!sym("facet"))
+            data <- mutate(data, !!sym("idx") := row_number())
+        } else {
+            data[["idx"]] <- seq_len(nrow(data))
         }
+        mapping <- aes(
+            x = !!sym("x"),
+            y = !!sym("y")
+        )
         p <- ggplot(data = data, mapping = mapping) +
             geom_bar(color = NA, stat = "identity", width = 1L)
         if (isTRUE(isLog)) {
@@ -115,10 +126,9 @@ NULL
                 angle <- 90L
             }
             p <- p +
-                facet_grid(
-                    cols = vars(!!sym("facet")),
-                    scales = "free_x",
-                    space = "free_x"
+                facet_wrap(
+                    facets = vars(!!sym("facet")),
+                    scales = "free_x"
                 ) +
                 theme(
                     legend.position = "none",
@@ -140,6 +150,17 @@ NULL
             )
         }
         ## Labels.
+
+
+
+        ## FIXME RETHINK THIS.
+        # use named character vector to replace x-axis labels
+        scale_x_discrete(labels = molten[, setNames(as.character(id), ord)]) +
+        # replace x-axis title
+        xlab("id")
+
+
+
         if (is.list(labels)) {
             xLab <- sampleCol
             yLab <- valueCol

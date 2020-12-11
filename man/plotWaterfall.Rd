@@ -58,7 +58,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot waterfall
 }
 \note{
-Updated 2020-07-09.
+Updated 2020-12-11.
 }
 \examples{
 ## data.frame ====
@@ -94,4 +94,9 @@ plotWaterfall(
     valueCol = "ic50",
     trans = "identity"
 )
+}
+\seealso{
+\itemize{
+\item \href{https://stackoverflow.com/questions/43176546}{Ordering bars from lowest to highest value in each facet}
+}
 }
