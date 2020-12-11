@@ -98,5 +98,6 @@ plotWaterfall(
 \seealso{
 \itemize{
 \item \href{https://stackoverflow.com/questions/43176546}{Ordering bars from lowest to highest value in each facet}
+\item \href{https://www.r-bloggers.com/2019/12/how-to-reorder-arrange-bars-with-in-each-facet-of-ggplot/}{Ordering bars within facets using tidytext}
 }
 }
