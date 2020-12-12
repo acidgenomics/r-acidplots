@@ -59,24 +59,18 @@ NULL
         valueCol,
         interestingGroups = NULL,
         trans = c("log10", "log2", "identity"),
-        fill,
-        labels = NULL
+        fill = purpleOrange(1L)
     ) {
         validObject(object)
-        object <- as.data.frame(object)
         assert(
             isString(sampleCol),
             isString(valueCol),
             isSubset(c(sampleCol, valueCol), colnames(object)),
             isCharacter(interestingGroups, nullOK = TRUE),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+            isString(fill)
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
         data <- data.frame(
             x = object[[sampleCol]],
             y = object[[valueCol]]
@@ -92,81 +86,71 @@ NULL
                 what = paste,
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
             )
-            ## > data <- data[order(data[["facet"]], data[["y"]], data[["x"]]), ]
-            data[["x"]] <- reorder_within(data[["x"]], data[["y"]], data[["facet"]])
+            list <- split(x = data, f = as.factor(data[["facet"]]))
         } else {
-            ## > data <- data[order(data[["y"]], data[["x"]]), ]
-            data[["x"]] <- reorder(data[["x"]], data[["y"]])
+            list <- list(data)
         }
-        ## > data[["idx"]] <- seq_len(nrow(data))
-        mapping <- aes(x = !!sym("x"), y = !!sym("y"))
-        if (!is.null(interestingGroups)) {
-            mapping[["fill"]] <- quo(!!sym("facet"))
-        }
-        p <- ggplot(data = data, mapping = mapping) +
-            geom_bar(color = NA, stat = "identity", width = 1L)
-        if (isTRUE(isLog)) {
-            p <- p + geom_hline(
-                color = "black",
-                linetype = "solid",
-                size = 0.5,
-                yintercept = 0L
-            )
-        }
-        ## Fill.
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
-        }
-        if (!is.null(interestingGroups)) {
-            if (length(unique(data[["facet"]])) <= 4L) {
-                angle <- 0L
-            } else {
-                angle <- 90L
-            }
-            p <- p +
-                facet_wrap(
-                    facets = vars(!!sym("facet")),
-                    scales = "free_x"
+        assert(hasLength(list))
+        plotlist <- mapply(
+            title = names(list),
+            data = list,
+            FUN = function(title, data) {
+                data[["x"]] <- reorder(data[["x"]], data[["y"]])
+                p <- ggplot(
+                    data = data,
+                    mapping = aes(x = !!sym("x"), y = !!sym("y"))
                 ) +
-                theme(
+                    geom_bar(
+                        color = NA,
+                        fill = fill,
+                        show.legend = FALSE,
+                        stat = "identity",
+                        width = 1L
+                    )
+                if (isTRUE(isLog)) {
+                    p <- p + geom_hline(
+                        color = "black",
+                        linetype = "solid",
+                        size = 0.5,
+                        yintercept = 0L
+                    )
+                }
+                ## Labels.
+                labels <- list(
+                    title = title,
+                    x = NULL,
+                    y = valueCol
+                )
+                if (isTRUE(isLog)) {
+                    labels[["y"]] <- paste(trans, labels[["y"]])
+                }
+                p <- p + do.call(what = labs, args = labels)
+                p <- p + theme(
                     legend.position = "none",
                     strip.text.x = element_text(
-                        angle = angle,
+                        angle = 90L,
                         hjust = 0L,
                         margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
                     )
                 )
-        }
-        ## Dynamically hide x-axis labels if there are a lot of samples.
-        if (length(unique(data[["x"]])) <= 100L) {
-            p <- p + theme(axis.text.x = element_text(angle = 90L, hjust = 1L))
-        } else {
-            p <- p + theme(
-                axis.text.x = element_blank(),
-                axis.ticks.x = element_blank(),
-                axis.title.x = element_blank()
-            )
-        }
-        ## Labels.
-        if (is.list(labels)) {
-            xLab <- sampleCol
-            yLab <- valueCol
-            if (isTRUE(isLog)) {
-                yLab <- paste(trans, yLab)
-            }
-            if (is.null(labels[["x"]])) labels[["x"]] <- xLab
-            if (is.null(labels[["y"]])) labels[["y"]] <- yLab
-            if (!is.null(interestingGroups) && is.null(labels[["fill"]])) {
-                labels[["fill"]] <- paste(interestingGroups, sep = "\n")
-            }
-            p <- p + do.call(what = labs, args = labels)
-        }
-        p
+                ## Dynamically hide x-axis labels if there are a lot of samples.
+                if (length(unique(data[["x"]])) <= 100L) {
+                    p <- p + theme(
+                        axis.text.x = element_text(angle = 90L, hjust = 1L)
+                    )
+                } else {
+                    p <- p + theme(
+                        axis.text.x = element_blank(),
+                        axis.ticks.x = element_blank(),
+                        axis.title.x = element_blank()
+                    )
+                }
+            },
+            SIMPLIFY = FALSE,
+            USE.NAMES = FALSE
+        )
+        plot_grid(plotlist = plotlist)
     }
-
-f <- formals(`plotWaterfall,data.frame`)
-f[["fill"]] <- formalsList[["fill.discrete"]]
-formals(`plotWaterfall,data.frame`) <- f
 
 
 

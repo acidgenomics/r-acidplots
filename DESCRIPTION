@@ -49,7 +49,6 @@ Imports:
     methods,
     scales,
     stats,
-    tidytext (>= 0.2.6),
     utils
 Suggests:
     AcidTest (>= 0.4.0),
