@@ -47,6 +47,5 @@
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
 #' @importFrom stringr str_replace_na
-#' @importFrom tidytext reorder_within scale_x_reordered
 #' @importFrom utils data packageVersion
 NULL

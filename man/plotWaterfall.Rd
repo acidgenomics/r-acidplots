@@ -13,9 +13,7 @@ plotWaterfall(object, ...)
   valueCol,
   interestingGroups = NULL,
   trans = c("log10", "log2", "identity"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
-  labels = NULL
+  fill = purpleOrange(1L)
 )
 }
 \arguments{
@@ -44,10 +42,6 @@ definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
 
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
-
-\item{labels}{\code{list}.
-ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{...}{Additional arguments.}
 }
