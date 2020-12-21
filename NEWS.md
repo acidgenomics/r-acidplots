@@ -1,3 +1,10 @@
+## AcidPlots 0.3.1 (2020-12-11)
+
+### Minor changes
+
+- `plotWaterfall`: Reworked internal code to better handle splitting out of
+  interesting groups into separate plots.
+
 ## AcidPlots 0.3.0 (2020-10-07)
 
 - Renamed package from acidplots to AcidPlots.
