@@ -15,9 +15,9 @@ Authors@R: c(
         role = c("cph", "fnd")
     ))
 URL:
-    https://acidplots.acidgenomics.com/,
-    https://github.com/acidgenomics/acidplots/
-BugReports: https://github.com/acidgenomics/acidplots/issues/
+    https://r.acidgenomics.com/packages/acidplots/,
+    https://github.com/acidgenomics/r-acidplots/
+BugReports: https://github.com/acidgenomics/r-acidplots/issues/
 License: GPL-3
 Encoding: UTF-8
 LazyData: false
