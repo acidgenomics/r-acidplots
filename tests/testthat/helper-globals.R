@@ -6,10 +6,11 @@ options(
 )
 
 ## nolint start
-allAreHexColors <- goalie::allAreHexColors
-assay <- SummarizedExperiment::assay
 `assay<-` <- SummarizedExperiment::`assay<-`
 `rowData<-` <- SummarizedExperiment::`rowData<-`
+allAreHexColors <- goalie::allAreHexColors
+assay <- SummarizedExperiment::assay
+mpg <- ggplot2::mpg
 ## nolint end
 
 data(
@@ -29,5 +30,3 @@ rownames <- head(rownames(rse))
 geneIds <- head(as.character(rowData(rse)[["geneId"]]))
 geneNames <- head(as.character(rowData(rse)[["geneName"]]))
 genes <- geneIds
-
-mpg <- ggplot2::mpg
