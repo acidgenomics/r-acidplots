@@ -38,7 +38,7 @@ Imports:
     ggplot2 (>= 3.3),
     ggrepel (>= 0.9),
     ggridges (>= 0.5),
-    goalie (>= 0.4.13),
+    goalie (>= 0.4.14),
     matrixStats (>= 0.57),
     pheatmap (>= 1.0.12),
     rlang (>= 0.4),
