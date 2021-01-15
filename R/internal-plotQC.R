@@ -1,3 +1,33 @@
+#' Match sample identifier column
+#'
+#' @note Updated 2021-01-15.
+#' @noRd
+#'
+#' @details
+#' Supports (in order of preference):
+#' - `sampleId` (preferred).
+#' - `sampleID` (legacy).
+#' - `sampleid` (unused).
+#' - `sample` (last resort).
+#'
+#' @return `character(1)` or `NULL` (on match failure).
+#'
+#' @examples
+#' data(SingleCellExperiment, package = "AcidTest")
+#' object <- SingleCellExperiment
+#' id <- .matchSampleIdCol(object)
+.matchSampleIdCol <- function(object) {
+    assert(is(object, "SummarizedExperiment"))
+    x <- colnames(colData(object))
+    table <- c("sampleId", "sampleID", "sampleid", "sample")
+    match <- match(x = x, table = table)
+    if (all(is.na(match))) return(NULL)
+    id <- table[min(na.omit(match))]
+    id
+}
+
+
+
 #' Plot a single quality control metric
 #'
 #' @note Updated 2019-12-09.
