@@ -19,11 +19,11 @@ sce <- SingleCellExperiment
 
 rownames <- head(rownames(rse))
 g2s <- basejump::Gene2Symbol(rse)
-geneIDs <- head(g2s[["geneID"]])
-geneNames <- head(g2s[["geneName"]])
+geneIds <- head(g2s[[1L]])
+geneNames <- head(g2s[[2L]])
 
 object <- rse
-genes <- geneIDs
+genes <- geneIds
 
 mpg <- ggplot2::mpg
 
