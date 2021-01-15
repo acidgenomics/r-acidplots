@@ -49,11 +49,11 @@ NULL
                 organism, toString(supported)
             ))
         }
-        markers <- markers[[camelCase(organism)]]
+        markers <- markers[[camelCase(organism, strict = TRUE)]]
         assert(is(markers, "tbl_df"))
         genes <- mapGenesToRownames(
             object = object,
-            genes = markers[["geneID"]],
+            genes = markers[["geneId"]],
             strict = FALSE
         )
         plotCounts(

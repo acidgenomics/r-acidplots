@@ -30,13 +30,13 @@
 #' rownames <- head(rownames(object))
 #' print(rownames)
 #' g2s <- basejump::Gene2Symbol(object)
-#' geneIDs <- head(g2s[["geneID"]])
-#' print(geneIDs)
-#' geneNames <- head(g2s[["geneName"]])
+#' geneIds <- head(g2s[[1L]])
+#' print(geneIds)
+#' geneNames <- head(g2s[[2L]])
 #' print(geneNames)
 #'
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
-#' plotCounts(object, genes = geneIDs, style = "facet")
+#' plotCounts(object, genes = geneIds, style = "facet")
 #' plotCounts(object, genes = geneNames, style = "wide")
 NULL
 

@@ -68,7 +68,10 @@ NULL
         rowData <- decode(rowData)
         rowData[["rowname"]] <- rownames(object)
         ## Determine whether to use transcripts or genes automatically.
-        if (isSubset("transcriptBiotype", colnames(rowData))) {
+        if (isSubset("txBiotype", colnames(rowData))) {
+            biotypeCol <- "txBiotype"
+        else if (isSubset("transcriptBiotype", colnames(rowData)))
+            ## Legacy approach used until 2021-01-15.
             biotypeCol <- "transcriptBiotype"
         } else {
             biotypeCol <- "geneBiotype"
