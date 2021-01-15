@@ -1,4 +1,4 @@
-## AcidPlots 0.3.1 (2020-12-11)
+## AcidPlots 0.3.1 (UNRELEASED)
 
 ### Minor changes
 
