@@ -6,12 +6,12 @@ test_that("SummarizedExperiment", {
     organism <- "Homo sapiens"
     expect_identical(organism(object), organism)
     markers <- genderMarkers[[camelCase(organism(object))]]
-    geneIDs <- markers[["geneID"]]
+    geneIds <- markers[["geneId"]]
     geneNames <- markers[["geneName"]]
     seq <- seq_len(nrow(markers))
-    rownames(object)[seq] <- geneIDs
-    rowData(object)[["geneID"]] <- as.character(rowData(object)[["geneID"]])
-    rowData(object)[["geneID"]][seq] <- geneIDs
+    rownames(object)[seq] <- geneIds
+    rowData(object)[["geneId"]] <- as.character(rowData(object)[["geneId"]])
+    rowData(object)[["geneId"]][seq] <- geneIds
     rowData(object)[["geneName"]] <-
         as.character(rowData(object)[["geneName"]])
     rowData(object)[["geneName"]][seq] <- geneNames

@@ -29,7 +29,7 @@ test_that("default", {
 })
 
 test_that("Gene IDs or names", {
-    for (genes in list(geneIDs, geneNames)) {
+    for (genes in list(geneIds, geneNames)) {
         x <- plotCounts(object = object, genes = genes)
         expect_s3_class(x, "ggplot")
     }
