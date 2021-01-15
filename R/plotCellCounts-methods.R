@@ -16,7 +16,7 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2021-01-15.
 `plotCellCounts,SingleCellExperiment` <-  # nolint
     function(
         object,
@@ -40,9 +40,10 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
+        idCol <- .matchSampleIdCol(object)
         colData <- colData(object)
-        assert(isSubset("sampleID", colnames(colData)))
-        metric <- table(colData[["sampleID"]])
+        assert(isSubset(idCol, colnames(colData)))
+        metric <- table(colData[[idCol]])
         sampleData <- sampleData(object)
         assert(identical(names(metric), rownames(sampleData)))
         data <- sampleData
