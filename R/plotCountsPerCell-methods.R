@@ -87,12 +87,15 @@ NULL
             if (identical(geom, "ecdf")) {
                 ## Calculate the y-intercept per sample.
                 freq <- mapply(
-                    sampleID = names(points),
+                    sampleId = names(points),
                     point = points,
-                    MoreArgs = list(metrics = metrics(object)),
-                    FUN = function(metrics, sampleID, point) {
+                    MoreArgs = list(
+                        idCol = .matchSampleIdCol(object),
+                        metrics = metrics(object)
+                    ),
+                    FUN = function(metrics, sampleId, idCol, point) {
                         nCount <- metrics[
-                            metrics[["sampleID"]] == sampleID,
+                            metrics[[idCol]] == sampleId,
                             "nCount",
                             drop = TRUE
                         ]
