@@ -4,6 +4,8 @@
 
 - `plotWaterfall`: Reworked internal code to better handle splitting out of
   interesting groups into separate plots.
+- Bug fixes to avoid issues with hard-coding `sampleID` internally as sample
+  identifier column, helping improve migrate to `sampleId` as preferred method.
 
 ## AcidPlots 0.3.0 (2020-10-07)
 

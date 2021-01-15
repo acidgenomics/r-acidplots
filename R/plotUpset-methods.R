@@ -1,3 +1,9 @@
+## FIXME How should we return a table of intersections to the user.
+## FIXME Consider migrating to ComplexUpset (https://github.com/krassowski/complex-upset),
+## which uses ggplot internally instead.
+
+
+
 #' UpSet plot
 #'
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
