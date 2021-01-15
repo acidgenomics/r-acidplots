@@ -5,6 +5,13 @@ options(
     warnPartialMatchDollar = FALSE
 )
 
+## nolint start
+allAreHexColors <- goalie::allAreHexColors
+assay <- SummarizedExperiment::assay
+`assay<-` <- SummarizedExperiment::`assay<-`
+`rowData<-` <- SummarizedExperiment::`rowData<-`
+## nolint end
+
 data(
     RangedSummarizedExperiment,
     SingleCellExperiment,
@@ -16,20 +23,11 @@ data(
 
 rse <- RangedSummarizedExperiment
 sce <- SingleCellExperiment
+object <- rse
 
 rownames <- head(rownames(rse))
-g2s <- basejump::Gene2Symbol(rse)
-geneIds <- head(g2s[[1L]])
-geneNames <- head(g2s[[2L]])
-
-object <- rse
+geneIds <- head(as.character(rowData(rse)[["geneId"]]))
+geneNames <- head(as.character(rowData(rse)[["geneName"]]))
 genes <- geneIds
 
 mpg <- ggplot2::mpg
-
-## nolint start
-allAreHexColors <- goalie::allAreHexColors
-assay <- SummarizedExperiment::assay
-`assay<-` <- SummarizedExperiment::`assay<-`
-`rowData<-` <- SummarizedExperiment::`rowData<-`
-## nolint end
