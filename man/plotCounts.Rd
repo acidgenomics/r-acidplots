@@ -112,13 +112,13 @@ object <- RangedSummarizedExperiment
 rownames <- head(rownames(object))
 print(rownames)
 g2s <- basejump::Gene2Symbol(object)
-geneIDs <- head(g2s[["geneID"]])
-print(geneIDs)
+geneIds <- head(g2s[["geneId"]])
+print(geneIds)
 geneNames <- head(g2s[["geneName"]])
 print(geneNames)
 
 ## Rownames, gene IDs, and gene names (symbols) are supported.
-plotCounts(object, genes = geneIDs, style = "facet")
+plotCounts(object, genes = geneIds, style = "facet")
 plotCounts(object, genes = geneNames, style = "wide")
 }
 \seealso{
