@@ -1,6 +1,7 @@
 ## FIXME How should we return a table of intersections to the user.
-## FIXME Consider migrating to ComplexUpset (https://github.com/krassowski/complex-upset),
-## which uses ggplot internally instead.
+## FIXME Consider migrating to ComplexUpset
+##       (https://github.com/krassowski/complex-upset),
+##       which uses ggplot internally instead.
 
 
 
@@ -9,7 +10,7 @@
 #' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-01-15.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param orderBySize `logical`.
@@ -27,6 +28,8 @@
 #'
 #' @return Graphical output, no return.
 #'
+#' @seealso `upsetMatrix()`.
+#'
 #' @examples
 #' list <- list(
 #'     a = c("a", "b", "c", "d", "e", "f"),
@@ -39,8 +42,15 @@ NULL
 
 
 
-## Modified version of `UpSetR::fromList()`.
-## Updated 2020-08-25.
+## FIXME RETURN THIS AS A LOGICAL MATRIX.
+## FIXME THEN CONVERT TO INTEGER MATRIX.
+
+#' Generate an upset matrix from a list
+#'
+#' @note Updated 2021-01-15.
+#' @noRd
+#'
+#' @seealso Modified version of `UpSetR::fromList()`.
 .upsetMatrixFromList <- function(list) {
     elements <- unique(unlist(list))
     x <- unlist(lapply(list, function(x) {
@@ -52,6 +62,7 @@ NULL
     mode(mat) <- "integer"
     mat <- mat[which(rowSums(mat) != 0L), , drop = FALSE]
     colnames(mat) <- names(list)
+    rownames(mat) <- elements
     mat
 }
 
