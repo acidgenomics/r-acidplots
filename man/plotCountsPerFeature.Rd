@@ -40,8 +40,10 @@ Corresponds to factors describing the columns of the object.}
 Type of ggplot2 geometric object to use.}
 
 \item{trans}{\code{character(1)}.
-Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
-to melting, if desired. Use \code{"identity"} to return unmodified (default).}
+Name of the axis scale transformation to apply.
+
+For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
 
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
@@ -65,17 +67,6 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{flip}{\code{logical(1)}.
 Flip x and y axes. Recommended for plots containing many samples.}
-
-\item{minMethod}{\code{character(1)}.
-Only applies when \code{min} argument is numeric.
-Uses \code{\link[base:match.arg]{match.arg()}}.
-\itemize{
-\item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
-operation. This applies to all counts, not per feature.
-\item \code{perRow}: Applies cutoff per row (i.e. gene). Internally,
-\code{\link[base:colSums]{rowSums()}} values are checked against this cutoff
-threshold prior to the melt operation.
-}}
 
 \item{...}{Additional arguments.}
 }

@@ -70,7 +70,6 @@ Collate:
     'base-gradients.R'
     'base-matchLabels.R'
     'data.R'
-    'deprecated.R'
     'ggplot2-layers.R'
     'ggplot2-themes.R'
     'ggplot2-transforms.R'
