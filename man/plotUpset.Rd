@@ -59,3 +59,6 @@ list <- list(
 )
 plotUpset(list)
 }
+\seealso{
+\code{upsetMatrix()}.
+}
