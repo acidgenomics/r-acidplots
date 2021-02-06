@@ -48,7 +48,7 @@ Graphical output, no return.
 S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
 }
 \note{
-Updated 2020-08-25.
+Updated 2021-01-15.
 }
 \examples{
 list <- list(
