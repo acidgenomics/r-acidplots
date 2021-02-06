@@ -153,7 +153,7 @@ f[["minMethod"]] <-
     methodFormals(
         f = "melt",
         signature = "SummarizedExperiment",
-        package = "basejump"
+        package = "AcidExperiment"
     )[["minMethod"]]
 formals(`plotCountsPerFeature,SummarizedExperiment`) <- f
 
