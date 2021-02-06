@@ -50,6 +50,7 @@ Imports:
     stats,
     utils
 Suggests:
+    AcidExperiment,
     AcidTest (>= 0.4.2),
     BiocStyle,
     DropletUtils,
