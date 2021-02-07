@@ -26,7 +26,7 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2021-02-07.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
@@ -48,12 +48,11 @@ NULL
             is(gr, "GRanges"),
             isSubset("geneId", names(mcols(gr)))
         )
-        genes <- sort(decode(mcols(gr)[["geneId"]]))
         ## NOTE We're allowing mapping of genes without a perfect identifier
         ## version match here (e.g. ENSG00000012817 to ENSG00000012817.16).
         genes <- mapGenesToRownames(
             object = object,
-            genes = genes,
+            genes = sort(decode(mcols(gr)[["geneId"]])),
             strict = FALSE
         )
         plotCounts(
