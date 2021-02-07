@@ -7,6 +7,9 @@
 
 
 
+## NOTE Consider reworking namespace here to import directly from Acid Genomics
+## packages, rather than using basejump?
+
 ## DropletUtils is a pretty heavy dependency that can fail to compile on some
 ## Linux distros. Keep it as a suggested package, rather than importing.
 ## > #' @importFrom DropletUtils barcodeRanks
