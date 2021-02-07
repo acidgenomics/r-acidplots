@@ -1,11 +1,13 @@
 context("plotGenderMarkers")
 
+data(genderMarkers, envir = environment())
+
 test_that("SummarizedExperiment", {
     object <- rse
-    data(genderMarkers, envir = environment())
     organism <- "Homo sapiens"
     expect_identical(organism(object), organism)
     markers <- genderMarkers[[camelCase(organism(object))]]
+    expect_true(isSubset(c("geneId", "geneName"), colnames(markers)))
     geneIds <- markers[["geneId"]]
     geneNames <- markers[["geneName"]]
     seq <- seq_len(nrow(markers))

@@ -40,7 +40,7 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        idCol <- matchSampleCol(object)
+        idCol <- matchSampleColumn(object)
         colData <- colData(object)
         assert(isSubset(idCol, colnames(colData)))
         metric <- table(colData[[idCol]])

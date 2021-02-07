@@ -19,7 +19,7 @@
 #'   as.SummarizedExperiment as_tibble camelCase cell2sample
 #'   convertGenesToSymbols counts decode formalsList interestingGroups
 #'   interestingGroups<- leftJoin makeLabel makeTitle matchInterestingGroups
-#'   mapGenesToRownames matchSampleCol methodFormals melt metrics
+#'   mapGenesToRownames matchSampleColumn methodFormals melt metrics
 #'   nonzeroRowsAndCols organism sampleData snakeCase standardizeCall
 #'   zerosVsDepth
 #' @importFrom cli cli_alert cli_alert_info cli_alert_warning
