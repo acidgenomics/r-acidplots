@@ -90,7 +90,7 @@ NULL
                     sampleId = names(points),
                     point = points,
                     MoreArgs = list(
-                        idCol = matchSampleCol(object),
+                        idCol = matchSampleColumn(object),
                         metrics = metrics(object)
                     ),
                     FUN = function(metrics, sampleId, idCol, point) {
