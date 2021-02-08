@@ -14,11 +14,11 @@
 #' )
 #'
 #' ## matrix ====
-#' object <- counts(RangedSummarizedExperiment)
+#' object <- AcidExperiment::counts(RangedSummarizedExperiment)
 #' plotSums(object, MARGIN = 1L)
 #'
 #' ## Matrix ====
-#' object <- counts(SingleCellExperiment)
+#' object <- AcidExperiment::counts(SingleCellExperiment)
 #' plotSums(object, MARGIN = 2L)
 #'
 #' ## SummarizedExperiment ====

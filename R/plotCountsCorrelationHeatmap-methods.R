@@ -45,7 +45,7 @@ NULL
             y <- y[, j, drop = FALSE]
         }
         cor <- cor(x = x, y = y, method = method)
-        se <- SummarizedExperiment(assays = list(cor = cor))
+        se <- SummarizedExperiment(assays = list("cor" = cor))
         plotHeatmap(
             object = se,
             scale = "none",
