@@ -21,10 +21,7 @@ test_that("data.frame", {
         object = object,
         sampleCol = "cell_id",
         valueCol = "ic50",
-        interestingGroups = c("tumor_type", "tumor_subtype"),
-        labels = list(
-            title = "Effect of compound on cell survival"
-        )
+        interestingGroups = c("tumor_type", "tumor_subtype")
     )
     expect_s3_class(p, "ggplot")
 })

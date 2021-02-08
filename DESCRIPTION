@@ -2,7 +2,7 @@ Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
 Version: 0.3.1
-Date: 2021-01-15
+Date: 2021-02-08
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -15,34 +15,30 @@ Authors@R: c(
         role = c("cph", "fnd")
     ))
 URL:
-    https://acidplots.acidgenomics.com/,
-    https://github.com/acidgenomics/acidplots/
-BugReports: https://github.com/acidgenomics/acidplots/issues/
+    https://r.acidgenomics.com/packages/acidplots/,
+    https://github.com/acidgenomics/r-acidplots/
+BugReports: https://github.com/acidgenomics/r-acidplots/issues/
 License: GPL-3
 Encoding: UTF-8
 LazyData: false
-Depends:
-    R (>= 4.0),
-    basejump (>= 0.13.4)
+Depends: R (>= 4.0)
 Imports:
-    AcidCLI (>= 0.0.4),
-    AcidGenerics (>= 0.5.0),
-    BiocGenerics,
+    AcidBase (>= 0.3.5),
+    AcidCLI (>= 0.0.6),
+    AcidGenerics (>= 0.5.6),
+    AcidPlyr (>= 0.1.8),
     IRanges,
     Matrix (>= 1.3),
     RColorBrewer (>= 1.1),
     S4Vectors,
     SingleCellExperiment,
     SummarizedExperiment,
-    UpSetR (>= 1.4),
-    cowplot (>= 1.1.1),
-    ggplot2 (>= 3.3.3),
-    ggrepel (>= 0.9),
-    ggridges (>= 0.5.3),
+    cowplot (>= 1.1),
+    ggplot2 (>= 3.3),
     goalie (>= 0.4.14),
-    matrixStats (>= 0.57),
-    pheatmap (>= 1.0.12),
-    rlang (>= 0.4.10),
+    matrixStats (>= 0.58),
+    pipette (>= 0.5.3),
+    rlang (>= 0.4),
     stringr (>= 1.4),
     grDevices,
     grid,
@@ -51,60 +47,16 @@ Imports:
     stats,
     utils
 Suggests:
-    AcidTest (>= 0.4.1),
-    BiocStyle,
+    AcidExperiment,
+    AcidTest (>= 0.4.2),
     DropletUtils,
-    knitr,
+    UpSetR (>= 1.4),
+    ggrepel (>= 0.9),
+    ggridges (>= 0.5),
+    pheatmap (>= 1.0.12),
     testthat,
     viridis
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
 Additional_repositories: https://r.acidgenomics.com
-Collate: 
-    'AllGenerics.R'
-    'AllGlobals.R'
-    'assert.R'
-    'barcodeRanksPerSample-methods.R'
-    'base-breaks.R'
-    'base-gradients.R'
-    'base-matchLabels.R'
-    'data.R'
-    'deprecated.R'
-    'ggplot2-layers.R'
-    'ggplot2-themes.R'
-    'ggplot2-transforms.R'
-    'imports.R'
-    'internal-ggplot2.R'
-    'internal-heatmap.R'
-    'internal-pheatmap.R'
-    'internal-plotQC.R'
-    'package.R'
-    'palettes-synesthesia.R'
-    'plotBarcodeRanks-methods.R'
-    'plotCellCounts-methods.R'
-    'plotCorrelationHeatmap-methods.R'
-    'plotCounts-methods.R'
-    'plotCountsCorrelation-methods.R'
-    'plotCountsCorrelationHeatmap-methods.R'
-    'plotCountsPerBiotype-methods.R'
-    'plotCountsPerBroadClass-methods.R'
-    'plotCountsPerCell-methods.R'
-    'plotCountsPerFeature-methods.R'
-    'plotCountsVsFeatures-methods.R'
-    'plotFeaturesDetected-methods.R'
-    'plotFeaturesPerCell-methods.R'
-    'plotGenderMarkers-methods.R'
-    'plotHeatmap-methods.R'
-    'plotMitoRatio-methods.R'
-    'plotMitoVsCoding-methods.R'
-    'plotNovelty-methods.R'
-    'plotPCA-methods.R'
-    'plotQC-methods.R'
-    'plotQuantileHeatmap-methods.R'
-    'plotSums-methods.R'
-    'plotTotalCounts-methods.R'
-    'plotUpset-methods.R'
-    'plotWaterfall-methods.R'
-    'plotZerosVsDepth-methods.R'

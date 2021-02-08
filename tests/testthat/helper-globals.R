@@ -14,22 +14,24 @@ data(
     envir = environment()
 )
 
-rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
-
-rownames <- head(rownames(rse))
-g2s <- basejump::Gene2Symbol(rse)
-geneIds <- head(g2s[[1L]])
-geneNames <- head(g2s[[2L]])
-
-object <- rse
-genes <- geneIds
-
-mpg <- ggplot2::mpg
-
 ## nolint start
+`assay<-` <- SummarizedExperiment::`assay<-`
+`colData<-` <- SummarizedExperiment::`colData<-`
+`rowData<-` <- SummarizedExperiment::`rowData<-`
+calculateMetrics <- AcidExperiment::calculateMetrics
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
-`assay<-` <- SummarizedExperiment::`assay<-`
-`rowData<-` <- SummarizedExperiment::`rowData<-`
+import <- pipette::import
+mpg <- ggplot2::mpg
+rowData <- SummarizedExperiment::rowData
+sampleNames <- AcidExperiment::sampleNames
 ## nolint end
+
+rse <- RangedSummarizedExperiment
+sce <- SingleCellExperiment
+object <- rse
+
+rownames <- head(rownames(rse))
+geneIds <- head(as.character(rowData(rse)[["geneId"]]))
+geneNames <- head(as.character(rowData(rse)[["geneName"]]))
+genes <- geneIds

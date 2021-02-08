@@ -1,5 +1,5 @@
 #' Return hierarchical clustering rows and columns for heatmap return
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-08.
 #' @return `hclust` object or `FALSE` (not `NULL`) to skip.
 #' @noRd
 .hclust <- function(
@@ -18,7 +18,7 @@
     ## Prepare our skeleton return list.
     out <- list(rows = FALSE, cols = FALSE)
     if (isTRUE(rows) || isTRUE(cols)) {
-        cli_alert(sprintf(
+        alert(sprintf(
             fmt = paste0(
                 "Performing hierarchical clustering with ",
                 "{.fun hclust} method {.arg %s}."
@@ -34,7 +34,7 @@
             ),
             error = function(e) {
                 ## nocov start
-                cli_alert_warning("{.fun hclust} row calculation failed.")
+                alertWarning("{.fun hclust} row calculation failed.")
                 FALSE
                 ## nocov end
             }
@@ -49,7 +49,7 @@
             ),
             error = function(e) {
                 ## nocov start
-                cli_alert_warning("{.fun hclust} column calculation failed.")
+                alertWarning("{.fun hclust} column calculation failed.")
                 FALSE
                 ## nocov end
             }
@@ -66,7 +66,7 @@
 #' Columns require sufficient variation and will error intentionally otherwise.
 #' Modified version of `pheatmap:::scale_mat()`.
 #'
-#' @note Updated 2019-07-29.
+#' @note Updated 2021-02-08.
 #' @noRd
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
     assert(is.matrix(object), is.numeric(object))
@@ -75,10 +75,10 @@
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
     if (any(is.na(object))) {
-        cli_alert_warning("NA values detected in matrix.")  # nocov
+        alertWarning("NA values detected in matrix.")  # nocov
     }
     if (!identical(scale, "none")) {
-        cli_alert(sprintf("Scaling matrix per %s (z-score).", scale))
+        alert(sprintf("Scaling matrix per %s (z-score).", scale))
     }
     ## Assert checks to look for sufficient variance when the user is attempting
     ## to apply scaling (z-score). Currently we're keeping this very strict and
@@ -93,7 +93,7 @@
             ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            cli_alert_info(sprintf(
+            alertInfo(sprintf(
                 fmt = "%d %s have enough variance: %s.",
                 n,
                 ngettext(

@@ -1,3 +1,14 @@
+## AcidPlots 0.3.1 (2021-02-08)
+
+### Minor changes
+
+- `plotWaterfall`: Reworked internal code to better handle splitting out of
+  interesting groups into separate plots.
+- Bug fixes to avoid issues with hard-coding `sampleID` internally as sample
+  identifier column, helping improve migrate to `sampleId` as preferred method.
+- Split out internal dependencies from basejump into individual Acid Genomics
+  packages. Package now no longer attaches basejump.
+
 ## AcidPlots 0.3.0 (2020-10-07)
 
 - Renamed package from acidplots to AcidPlots.
@@ -406,6 +417,6 @@ Updated packages depencies and switched to Docker for Travis CI.
 
 Initial release, migrating ggplot2 functions from [basejump][] package.
 
-[DESeqAnalysis]: https://deseqanalysis.acidgenomics.com/
-[basejump]: https://basejump.acidgenomics.com/
+[basejump]: https://r.acidgenomics.com/packages/basejump/
+[deseqanalysis]: https://r.acidgenomics.com/packages/deseqanalysis/
 [ggplot2]: https://ggplot2.tidyverse.org/

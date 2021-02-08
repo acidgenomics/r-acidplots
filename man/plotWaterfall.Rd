@@ -13,9 +13,7 @@ plotWaterfall(object, ...)
   valueCol,
   interestingGroups = NULL,
   trans = c("log10", "log2", "identity"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
-  labels = NULL
+  fill = purpleOrange(1L)
 )
 }
 \arguments{
@@ -45,10 +43,6 @@ definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
-\item{labels}{\code{list}.
-ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -58,7 +52,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot waterfall
 }
 \note{
-Updated 2020-07-09.
+Updated 2020-12-11.
 }
 \examples{
 ## data.frame ====
@@ -83,10 +77,7 @@ plotWaterfall(
     sampleCol = "cell_id",
     valueCol = "ic50",
     interestingGroups = c("tumor_type", "tumor_subtype"),
-    trans = "log10",
-    labels = list(
-        title = "Effect of compound on cell survival"
-    )
+    trans = "log10"
 )
 plotWaterfall(
     object = object,
@@ -94,4 +85,10 @@ plotWaterfall(
     valueCol = "ic50",
     trans = "identity"
 )
+}
+\seealso{
+\itemize{
+\item \href{https://stackoverflow.com/questions/43176546}{Ordering bars from lowest to highest value in each facet}
+\item \href{https://www.r-bloggers.com/2019/12/how-to-reorder-arrange-bars-with-in-each-facet-of-ggplot/}{Ordering bars within facets using tidytext}
+}
 }

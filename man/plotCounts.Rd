@@ -102,7 +102,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2020-09-02.
+Updated 2021-02-08.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
@@ -112,9 +112,9 @@ object <- RangedSummarizedExperiment
 rownames <- head(rownames(object))
 print(rownames)
 g2s <- basejump::Gene2Symbol(object)
-geneIds <- head(g2s[["geneId"]])
+geneIds <- head(g2s[[1L]])
 print(geneIds)
-geneNames <- head(g2s[["geneName"]])
+geneNames <- head(g2s[[2L]])
 print(geneNames)
 
 ## Rownames, gene IDs, and gene names (symbols) are supported.

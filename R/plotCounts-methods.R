@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2020-09-02.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -91,22 +91,6 @@ NULL
             fill = str_replace_na(!!sym("interestingGroups"))
         )
     )
-}
-
-
-
-#' Calculate standard error of the mean
-#'
-#' @note Updated 2020-08-31.
-#' @noRd
-#'
-#' @details
-#' Alternatively, can use: `sd(x) / sqrt(length(x))`.
-#'
-#' @seealso
-#' - https://stackoverflow.com/questions/2676554/
-.se <- function(x) {
-    sqrt(var(x) / length(x))
 }
 
 
@@ -218,8 +202,8 @@ NULL
                     color = NA
                 ) +
                 stat_summary(
-                    fun.min = function(x) mean(x) - .se(x),
-                    fun.max = function(x) mean(x) + .se(x),
+                    fun.min = function(x) mean(x) - sem(x),
+                    fun.max = function(x) mean(x) + sem(x),
                     fun = mean,
                     geom = "errorbar",
                     color = "black",
@@ -230,7 +214,7 @@ NULL
             !identical(line, "none") &&
             !identical(interestingGroups, "sampleName")
         ) {
-            cli_alert_info(sprintf("Line denotes {.fun %s}.", line))
+            alertInfo(sprintf("Line denotes {.fun %s}.", line))
             lineFun <- get(x = line, inherits = TRUE)
             assert(is.function(lineFun))
             p <- p + stat_summary(

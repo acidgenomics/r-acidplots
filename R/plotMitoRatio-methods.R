@@ -1,6 +1,5 @@
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include internal-plotQC.R
 #' @inherit AcidGenerics::plotMitoRatio
 #' @note Updated 2019-09-16.
 #'

@@ -3,8 +3,8 @@
 #' @note Updated 2019-08-21.
 #' @noRd
 .emptyPheatmapAnnotations <- list(
-    annotationCol = NA,
-    annotationColors = NA
+    "annotationCol" = NA,
+    "annotationColors" = NA
 )
 
 
@@ -89,8 +89,8 @@
         colors <- NA
     }
     list(
-        annotationCol = as.data.frame(data),
-        annotationColors = colors
+        "annotationCol" = as.data.frame(data),
+        "annotationColors" = colors
     )
 }
 
@@ -98,13 +98,14 @@
 
 #' Generate pheatmap arguments
 #'
-#' @note Updated 2019-08-21.
+#' @note Updated 2021-02-08.
 #' @noRd
 #'
 #' @details
 #' Sanitize formals into snake case and abort on duplicates. Duplicates may
 #' arise if user is mixing and matching camel/snake case.
 .pheatmapArgs <- function(args) {
+    requireNamespaces("pheatmap")
     assert(is.list(args), hasNames(args))
     ## Abort on snake case formatted formal args.
     invalidNames <- grep("[._]", names(args), value = TRUE)
@@ -116,7 +117,10 @@
     }
     names(args) <- snakeCase(names(args))
     assert(
-        isSubset(names(args), formalArgs(pheatmap)),
+        isSubset(
+            x = names(args),
+            y = formalArgs(pheatmap::pheatmap)
+        ),
         hasNoDuplicates(names(args))
     )
     args
@@ -126,7 +130,7 @@
 
 #' Generate pheatmap color palette
 #'
-#' @note Updated 2019-08-21.
+#' @note Updated 2021-02-08.
 #' @noRd
 #'
 #' @details
@@ -143,6 +147,7 @@
     } else {
         ## pheatmap default palette.
         ## Note that `n` argument won't get evaluated here.
-        eval(formals(pheatmap)[["color"]])
+        requireNamespaces("pheatmap")
+        eval(formals(pheatmap::pheatmap)[["color"]])
     }
 }

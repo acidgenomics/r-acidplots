@@ -1,42 +1,3 @@
-#' Match sample identifier column
-#'
-#' @note Updated 2021-01-15.
-#' @note Consider adding this into basejump in a future update.
-#' @noRd
-#'
-#' @details
-#' Supports (in order of preference):
-#' - `sampleId` (preferred).
-#' - `sampleID` (legacy).
-#' - `sampleid` (unused).
-#' - `sample` (last resort).
-#'
-#' @return `character(1)` or error on match failure.
-#'
-#' @examples
-#' data(SingleCellExperiment, package = "AcidTest")
-#' object <- SingleCellExperiment
-#' id <- .matchSampleIdCol(object)
-.matchSampleIdCol <- function(object) {
-    assert(is(object, "SummarizedExperiment"))
-    x <- colnames(colData(object))
-    table <- c("sampleId", "sampleID", "sampleid", "sample")
-    match <- match(x = x, table = table)
-    if (all(is.na(match))) {
-        stop(sprintf(
-            paste0(
-                "Failed to match sample identifier in '%s()'.\n",
-                "Expecting (in order of preference): %s."
-            ),
-            "colData", toString(table)
-        ))
-    }
-    id <- table[min(na.omit(match))]
-    id
-}
-
-
-
 #' Plot a single quality control metric
 #'
 #' @note Updated 2019-12-09.
@@ -132,9 +93,10 @@
             scale_y_continuous()
         labels[["otherAxis"]] <- "count"
     } else if (identical(geom, "ridgeline")) {
+        requireNamespaces("ggridges")
         metricAxis <- "x"
         p <- p +
-            geom_density_ridges(
+            ggridges::geom_density_ridges(
                 alpha = 0.8,
                 color = "black",
                 panel_scaling = TRUE,
@@ -229,7 +191,7 @@ formals(`.plotQCMetric`) <- f
 
 
 ## Compare two quality control metrics.
-## Updated 2019-09-15.
+## Updated 2021-02-08.
 .plotQCScatterplot <- function(
     object,
     xCol,
@@ -238,7 +200,7 @@ formals(`.plotQCMetric`) <- f
     yTrans = "identity",
     interestingGroups = NULL,
     trendline = FALSE,
-    color = getOption("basejump.discrete.color", NULL),
+    color = getOption("acid.discrete.color", NULL),
     labels = list(
         title = NULL,
         subtitle = NULL,

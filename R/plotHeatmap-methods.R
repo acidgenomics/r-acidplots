@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
@@ -107,7 +107,7 @@
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' ## Row scaling requires non-zero rows.
-#' object <- nonzeroRowsAndCols(object)
+#' object <- AcidExperiment::nonzeroRowsAndCols(object)
 #'
 #' ## Symmetric row-scaled breaks (recommended).
 #' plotHeatmap(
@@ -132,7 +132,7 @@ NULL
 
 
 
-## Updated 2020-08-05.
+## Updated 2021-02-08.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -158,6 +158,7 @@ NULL
         convertGenesToSymbols = showRownames,
         ...
     ) {
+        requireNamespaces("pheatmap")
         validObject(object)
         assert(
             nrow(object) > 1L,
@@ -184,7 +185,7 @@ NULL
         ## We've included this step here to work with the minimal bcbio RNA-seq
         ## test data set, which contains duplicate samples.
         if (!hasUniqueCols(object)) {
-            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            alertWarning("Non-unique samples detected. Skipping plot.")
             return(invisible(NULL))
         }
         ## Modify the object to use gene symbols in the row names automatically,
@@ -253,28 +254,28 @@ NULL
         }
         ## Return pretty heatmap with modified defaults.
         args <- list(
-            mat = mat,
-            annotationCol = annotationCol,
-            annotationColors = annotationColors,
-            borderColor = borderColor,
-            breaks = breaks,
-            clusterCols = hc[["cols"]],
-            clusterRows = hc[["rows"]],
-            color = color,
-            legendBreaks = legendBreaks,
-            main = title,
+            "mat" = mat,
+            "annotationCol" = annotationCol,
+            "annotationColors" = annotationColors,
+            "borderColor" = borderColor,
+            "breaks" = breaks,
+            "clusterCols" = hc[["cols"]],
+            "clusterRows" = hc[["rows"]],
+            "color" = color,
+            "legendBreaks" = legendBreaks,
+            "main" = title,
             ## We're already applied scaling manually (see above).
-            scale = "none",
-            showColnames = showColnames,
-            showRownames = showRownames,
-            treeheightCol = treeheightCol,
-            treeheightRow = treeheightRow,
+            "scale" = "none",
+            "showColnames" = showColnames,
+            "showRownames" = showRownames,
+            "treeheightCol" = treeheightCol,
+            "treeheightRow" = treeheightRow,
             ...
         )
         args <- .pheatmapArgs(args)
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
-            expr = do.call(what = pheatmap, args = args),
+            expr = do.call(what = pheatmap::pheatmap, args = args),
             ## nocov start
             warning = function(w) {
                 if (isTRUE(grepl(
