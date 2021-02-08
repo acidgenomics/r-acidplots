@@ -48,7 +48,7 @@
 #'
 #' @name plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
@@ -184,7 +184,7 @@ NULL
         ## We've included this step here to work with the minimal bcbio RNA-seq
         ## test data set, which contains duplicate samples.
         if (!hasUniqueCols(object)) {
-            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            alertWarning("Non-unique samples detected. Skipping plot.")
             return(invisible(NULL))
         }
         ## Modify the object to use gene symbols in the row names automatically,

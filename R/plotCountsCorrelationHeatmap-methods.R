@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelationHeatmap
 #' @inherit AcidGenerics::plotCountsCorrelationHeatmap
-#' @note Updated 2019-07-29.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams base::Extract
 #' @inheritParams stats::cor
