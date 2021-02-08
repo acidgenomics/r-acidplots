@@ -1,3 +1,5 @@
+## nolint start
+
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
 #' @note Updated 2020-12-11.
@@ -45,6 +47,8 @@
 #'     trans = "identity"
 #' )
 NULL
+
+## nolint end
 
 
 
