@@ -1,5 +1,4 @@
 suppressPackageStartupMessages({
-    library(usethis)
     library(AcidGenomes)
 })
 
