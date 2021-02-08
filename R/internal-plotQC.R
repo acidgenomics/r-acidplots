@@ -93,9 +93,10 @@
             scale_y_continuous()
         labels[["otherAxis"]] <- "count"
     } else if (identical(geom, "ridgeline")) {
+        requireNamespaces("ggridges")
         metricAxis <- "x"
         p <- p +
-            geom_density_ridges(
+            ggridges::geom_density_ridges(
                 alpha = 0.8,
                 color = "black",
                 panel_scaling = TRUE,
@@ -190,7 +191,7 @@ formals(`.plotQCMetric`) <- f
 
 
 ## Compare two quality control metrics.
-## Updated 2019-09-15.
+## Updated 2021-02-08.
 .plotQCScatterplot <- function(
     object,
     xCol,
@@ -199,7 +200,7 @@ formals(`.plotQCMetric`) <- f
     yTrans = "identity",
     interestingGroups = NULL,
     trendline = FALSE,
-    color = getOption("basejump.discrete.color", NULL),
+    color = getOption("acid.discrete.color", NULL),
     labels = list(
         title = NULL,
         subtitle = NULL,

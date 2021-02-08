@@ -415,6 +415,6 @@ Updated packages depencies and switched to Docker for Travis CI.
 
 Initial release, migrating ggplot2 functions from [basejump][] package.
 
-[DESeqAnalysis]: https://deseqanalysis.acidgenomics.com/
-[basejump]: https://basejump.acidgenomics.com/
+[basejump]: https://r.acidgenomics.com/packages/basejump/
+[deseqanalysis]: https://r.acidgenomics.com/packages/deseqanalysis/
 [ggplot2]: https://ggplot2.tidyverse.org/
