@@ -38,8 +38,4 @@ gr <- gr[genes]
 gr <- droplevels(gr)
 musMusculus <- gr
 
-genderMarkers <- list(
-    "homoSapiens" = homoSapiens,
-    "musMusculus" = musMusculus
-)
-use_data(genderMarkers)
+saveRDS(object = gr, file = "gender-markers.rds")
