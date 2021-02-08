@@ -21,9 +21,7 @@ BugReports: https://github.com/acidgenomics/r-acidplots/issues/
 License: GPL-3
 Encoding: UTF-8
 LazyData: false
-Depends:
-    R (>= 4.0),
-    basejump (>= 0.14.0)
+Depends: R (>= 4.0)
 Imports:
     AcidCLI (>= 0.0.6),
     AcidGenerics (>= 0.5.6),
@@ -41,6 +39,7 @@ Imports:
     goalie (>= 0.4.14),
     matrixStats (>= 0.58),
     pheatmap (>= 1.0.12),
+    pipette (>= 0.5.3),
     rlang (>= 0.4),
     stringr (>= 1.4),
     grDevices,
