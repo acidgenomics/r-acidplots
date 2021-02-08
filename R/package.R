@@ -7,6 +7,8 @@
 
 
 
+#' @importClassesFrom Matrix Matrix
+#' @importClassesFrom S4Vectors DataFrame
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
@@ -19,6 +21,7 @@
 #'   counts decode interestingGroups interestingGroups<- mapGenesToRownames
 #'   matchInterestingGroups matchSampleColumn metrics nonzeroRowsAndCols
 #'   sampleData
+#' @importFrom AcidGenerics aggregate head mcols merge metadata
 #' @importFrom AcidGenomes Gene2Symbol organism
 #' @importFrom AcidPlyr leftJoin melt
 #' @importFrom AcidSingleCell aggregateCellsToSamples cell2sample zerosVsDepth
@@ -26,8 +29,7 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
-#' @importFrom S4Vectors DataFrame SimpleList aggregate head mcols merge
-#'   metadata
+#' @importFrom S4Vectors DataFrame SimpleList
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
