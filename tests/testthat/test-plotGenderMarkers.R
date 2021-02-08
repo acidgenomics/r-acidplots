@@ -7,8 +7,8 @@ test_that("SummarizedExperiment", {
     object <- rse
     organism <- "Homo sapiens"
     expect_identical(organism(object), organism)
-    markers <- genderMarkers[[camelCase(organism(object))]]
-    expect_true(isSubset(c("geneId", "geneName"), colnames(markers)))
+    ## > markers <- genderMarkers[[camelCase(organism(object))]]
+    ## > expect_true(isSubset(c("geneId", "geneName"), colnames(markers)))
     geneIds <- markers[["geneId"]]
     geneNames <- markers[["geneName"]]
     seq <- seq_len(nrow(markers))

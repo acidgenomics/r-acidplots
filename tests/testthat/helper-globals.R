@@ -21,6 +21,7 @@ data(
 calculateMetrics <- AcidExperiment::calculateMetrics
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
+import <- pipette::import
 mpg <- ggplot2::mpg
 rowData <- SummarizedExperiment::rowData
 ## nolint end
