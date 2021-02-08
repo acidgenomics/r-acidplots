@@ -26,7 +26,6 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
 #' @importFrom S4Vectors DataFrame SimpleList aggregate head merge metadata
-#' @importFrom UpSetR upset
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
@@ -35,7 +34,6 @@
 #'   geom_smooth geom_step geom_text geom_violin geom_vline ggplot guides labs
 #'   margin position_jitterdodge scale_x_continuous scale_x_discrete
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
-#' @importFrom ggrepel geom_label_repel
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
 #'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter

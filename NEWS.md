@@ -1,4 +1,4 @@
-## AcidPlots 0.3.1 (2021-02-06)
+## AcidPlots 0.3.1 (2021-02-08)
 
 ### Minor changes
 
@@ -6,6 +6,8 @@
   interesting groups into separate plots.
 - Bug fixes to avoid issues with hard-coding `sampleID` internally as sample
   identifier column, helping improve migrate to `sampleId` as preferred method.
+- Split out internal dependencies from basejump into individual Acid Genomics
+  packages. Package now no longer attaches basejump.
 
 ## AcidPlots 0.3.0 (2020-10-07)
 

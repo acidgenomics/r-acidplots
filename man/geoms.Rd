@@ -94,7 +94,7 @@ mean values are always calculated per sample (\code{sampleName}).
 
 
 Repulsive textual annotations. Modified basejump version of
-\code{\link[ggrepel:geom_text_repel]{ggrepel::geom_label_repel()}}. If advanced customization of the text labels
+\code{ggrepel::geom_label_repel()}. If advanced customization of the text labels
 is required, simply use the ggrepel version instead.
 }
 
