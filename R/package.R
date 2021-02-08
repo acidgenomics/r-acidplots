@@ -7,34 +7,26 @@
 
 
 
-## NOTE Consider reworking namespace here to import directly from Acid Genomics
-## packages, rather than using basejump?
-
-## DropletUtils is a pretty heavy dependency that can fail to compile on some
-## Linux distros. Keep it as a suggested package, rather than importing.
-## > #' @importFrom DropletUtils barcodeRanks
-
-
-
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
 #' @importMethodsFrom pipette coerce
 #'
+#' @importFrom AcidBase formalsList methodFormals standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
+#' @importFrom AcidExperiment as.SummarizedExperiment convertGenesToSymbols
+#'   counts decode interestingGroups interestingGroups<- mapGenesToRownames
+#'   matchInterestingGroups matchSampleColumn metrics nonzeroRowsAndCols
+#'   sampleData
+#' @importFrom AcidGenomes Gene2Symbol organism
+#' @importFrom AcidPlyr leftJoin melt
+#' @importFrom AcidSingleCell aggregateCellsToSamples cell2sample zerosVsDepth
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
 #' @importFrom S4Vectors DataFrame SimpleList aggregate head merge metadata
 #' @importFrom UpSetR upset
-#' @importFrom basejump Gene2Symbol aggregateCellsToSamples
-#'   as.SummarizedExperiment as_tibble camelCase cell2sample
-#'   convertGenesToSymbols counts decode formalsList interestingGroups
-#'   interestingGroups<- leftJoin makeLabel makeTitle matchInterestingGroups
-#'   mapGenesToRownames matchSampleColumn methodFormals melt metrics
-#'   nonzeroRowsAndCols organism sampleData snakeCase standardizeCall
-#'   zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
@@ -44,7 +36,6 @@
 #'   margin position_jitterdodge scale_x_continuous scale_x_discrete
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
 #' @importFrom ggrepel geom_label_repel
-#' @importFrom ggridges geom_density_ridges
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
 #'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
@@ -61,5 +52,6 @@
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
 #' @importFrom stringr str_replace_na
+#' @importFrom syntactic camelCase makeLabel makeTitle snakeCase
 #' @importFrom utils data packageVersion
 NULL
