@@ -52,10 +52,10 @@ Updated 2021-02-08.
 }
 \examples{
 list <- list(
-    a = c("a", "b", "c", "d", "e", "f"),
-    b = c("b", "c", "d", "e", "f", "g"),
-    c = c("c", "d", "e", "f", "g", "h"),
-    d = c("d", "e", "f", "g", "h", "i")
+    "aaa" = c("a", "b", "c", "d", "e", "f"),
+    "bbb" = c("b", "c", "d", "e", "f", "g"),
+    "ccc" = c("c", "d", "e", "f", "g", "h"),
+    "ddd" = c("d", "e", "f", "g", "h", "i")
 )
 plotUpset(list)
 }

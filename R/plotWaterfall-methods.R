@@ -36,10 +36,7 @@
 #'     sampleCol = "cell_id",
 #'     valueCol = "ic50",
 #'     interestingGroups = c("tumor_type", "tumor_subtype"),
-#'     trans = "log10",
-#'     labels = list(
-#'         title = "Effect of compound on cell survival"
-#'     )
+#'     trans = "log10"
 #' )
 #' plotWaterfall(
 #'     object = object,
@@ -117,9 +114,9 @@ NULL
                 }
                 ## Labels.
                 labels <- list(
-                    title = title,
-                    x = NULL,
-                    y = valueCol
+                    "title" = title,
+                    "x" = NULL,
+                    "y" = valueCol
                 )
                 if (isTRUE(isLog)) {
                     labels[["y"]] <- paste(trans, labels[["y"]])

@@ -161,7 +161,7 @@ data(
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 ## Row scaling requires non-zero rows.
-object <- nonzeroRowsAndCols(object)
+object <- AcidExperiment::nonzeroRowsAndCols(object)
 
 ## Symmetric row-scaled breaks (recommended).
 plotHeatmap(
