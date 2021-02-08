@@ -24,7 +24,7 @@ NULL
 
 
 
-## Updated 2019-11-19.
+## Updated 2021-02-08.
 `plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -42,6 +42,7 @@ NULL
         title = TRUE,
         ...
     ) {
+        requireNamespaces("pheatmap")
         validObject(object)
         assert(
             isScalar(assay),
@@ -115,26 +116,26 @@ NULL
         }
         ## Return pretty heatmap with modified defaults.
         args <- list(
-            mat = cor,
-            annotationCol = annotationCol,
-            annotationColors = annotationColors,
-            borderColor = borderColor,
-            breaks = NULL,
-            clusteringMethod = clusteringMethod,
-            clusteringDistanceCols = "correlation",
-            clusteringDistanceRows = "correlation",
-            color = color,
-            legendBreaks = NULL,
-            main = title,
-            scale = "none",
-            showColnames = showColnames,
-            showRownames = showRownames,
-            treeheightCol = treeheightCol,
-            treeheightRow = treeheightRow,
+            "mat" = cor,
+            "annotationCol" = annotationCol,
+            "annotationColors" = annotationColors,
+            "borderColor" = borderColor,
+            "breaks" = NULL,
+            "clusteringMethod" = clusteringMethod,
+            "clusteringDistanceCols" = "correlation",
+            "clusteringDistanceRows" = "correlation",
+            "color" = color,
+            "legendBreaks" = NULL,
+            "main" = title,
+            "scale" = "none",
+            "showColnames" = showColnames,
+            "showRownames" = showRownames,
+            "treeheightCol" = treeheightCol,
+            "treeheightRow" = treeheightRow,
             ...
         )
         args <- .pheatmapArgs(args)
-        do.call(what = pheatmap, args = args)
+        do.call(what = pheatmap::pheatmap, args = args)
     }
 
 formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
