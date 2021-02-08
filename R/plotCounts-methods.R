@@ -95,24 +95,6 @@ NULL
 
 
 
-## FIXME DEFINE THIS IN BASEJUMP AND UPDATE HERE.
-
-#' Calculate standard error of the mean
-#'
-#' @note Updated 2020-08-31.
-#' @noRd
-#'
-#' @details
-#' Alternatively, can use: `sd(x) / sqrt(length(x))`.
-#'
-#' @seealso
-#' - https://stackoverflow.com/questions/2676554/
-.se <- function(x) {
-    sqrt(var(x) / length(x))
-}
-
-
-
 ## Coercing to `SummarizedExperiment` internally for fast subsetting.
 ##
 ## Useful posts regarding error bars:
@@ -220,8 +202,8 @@ NULL
                     color = NA
                 ) +
                 stat_summary(
-                    fun.min = function(x) mean(x) - .se(x),
-                    fun.max = function(x) mean(x) + .se(x),
+                    fun.min = function(x) mean(x) - sem(x),
+                    fun.max = function(x) mean(x) + sem(x),
                     fun = mean,
                     geom = "errorbar",
                     color = "black",
