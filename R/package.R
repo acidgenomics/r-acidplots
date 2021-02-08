@@ -19,7 +19,7 @@
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 #'
-#' @importMethodsFrom basejump coerce
+#' @importMethodsFrom pipette coerce
 #'
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom IRanges DataFrameList
@@ -56,6 +56,7 @@
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom methods as formalArgs is validObject
 #' @importFrom pheatmap pheatmap
+#' @importFrom pipette as_tibble
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
