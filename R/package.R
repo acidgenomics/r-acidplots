@@ -26,7 +26,8 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
 #'   assays<- colData rowData
-#' @importFrom S4Vectors DataFrame SimpleList aggregate head merge metadata
+#' @importFrom S4Vectors DataFrame SimpleList aggregate head mcols merge
+#'   metadata
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
@@ -51,5 +52,5 @@
 #' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
 #' @importFrom stringr str_replace_na
 #' @importFrom syntactic camelCase makeLabel makeTitle snakeCase
-#' @importFrom utils data packageVersion
+#' @importFrom utils packageName packageVersion
 NULL

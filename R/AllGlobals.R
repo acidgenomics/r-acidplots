@@ -1,8 +1,5 @@
-#' Package version
-#'
-#' @note Updated 2020-10-07.
-#' @noRd
-.version <- packageVersion(packageName())
+.pkgName <- packageName()
+.pkgVersion <- packageVersion(.pkgName)
 
 
 
@@ -16,7 +13,7 @@
 AcidPlotsTestsURL <-  # nolint
     paste0(
         "https://tests.acidgenomics.com/AcidPlots/",
-        "v", .version$major, ".", .version$minor  # nolint
+        "v", .pkgVersion$major, ".", .pkgVersion$minor  # nolint
     )
 
 

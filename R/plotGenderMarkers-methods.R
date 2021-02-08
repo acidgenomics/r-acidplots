@@ -1,7 +1,7 @@
 #' @name plotGenderMarkers
 #' @inherit AcidGenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#' @note Updated 2021-02-07.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams AcidRoxygen::params
@@ -33,12 +33,10 @@ NULL
         organism <- organism(object)
         assert(isString(organism))
         organism <- camelCase(organism, strict = TRUE)
-        data(
-            list = "genderMarkers",
-            package = packageName(),
-            envir = environment()
-        )
-        markers <- get("genderMarkers", inherits = FALSE)
+        markers <- readRDS(system.file(
+            "extdata", "gender-markers.rds",
+            package = .pkgName
+        ))
         assert(
             is.list(markers),
             isSubset(organism, names(markers))

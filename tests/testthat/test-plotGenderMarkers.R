@@ -1,5 +1,6 @@
 context("plotGenderMarkers")
 
+## FIXME RETHINK THIS APPROACH.
 data(genderMarkers, envir = environment())
 
 test_that("SummarizedExperiment", {
