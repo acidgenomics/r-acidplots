@@ -23,33 +23,15 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.5),
-    AcidCLI (>= 0.0.6),
-    AcidExperiment (>= 0.1.3),
-    AcidGenerics (>= 0.5.6),
-    AcidGenomes (>= 0.2.0),
-    AcidPlyr (>= 0.1.8),
-    AcidSingleCell (>= 0.1.1),
-    IRanges,
-    Matrix (>= 1.3),
+    basejump (>= 0.14.1),
     RColorBrewer (>= 1.1),
-    S4Vectors,
-    SingleCellExperiment,
-    SummarizedExperiment,
     cowplot (>= 1.1),
     ggplot2 (>= 3.3),
     goalie (>= 0.4.14),
-    grDevices,
-    grid,
     matrixStats (>= 0.58),
-    methods,
-    pipette (>= 0.5.3),
     rlang (>= 0.4),
-    scales,
-    stats,
-    stringr (>= 1.4),
-    syntactic (>= 0.4.4),
-    utils
+    scales (>= 1.1),
+    stringr (>= 1.4)
 Suggests:
     AcidTest (>= 0.4.2),
     DropletUtils,
@@ -58,7 +40,7 @@ Suggests:
     ggridges (>= 0.5),
     pheatmap (>= 1.0.12),
     testthat,
-    viridis
+    viridis (>= 0.5)
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
