@@ -1,24 +1,28 @@
 context("plotGenderMarkers")
 
-## FIXME RETHINK THIS APPROACH.
-data(genderMarkers, envir = environment())
-
 test_that("SummarizedExperiment", {
     object <- rse
-    organism <- "Homo sapiens"
-    expect_identical(organism(object), organism)
-    ## > markers <- genderMarkers[[camelCase(organism(object))]]
-    ## > expect_true(isSubset(c("geneId", "geneName"), colnames(markers)))
-    geneIds <- markers[["geneId"]]
-    geneNames <- markers[["geneName"]]
-    seq <- seq_len(nrow(markers))
+    markers <- readRDS(system.file(
+        "extdata", "gender-markers.rds",
+        package = "AcidPlots"
+    ))
+    gr <- markers[[camelCase(organism(object))]]
+    expect_s4_class(gr, "GRanges")
+    expect_true(isSubset(x = c("geneId", "geneName"), y = names(mcols(gr))))
+    geneIds <- mcols(gr)[["geneId"]]
+    geneNames <- mcols(gr)[["geneName"]]
+    seq <- seq_len(length(gr))
     rownames(object)[seq] <- geneIds
-    rowData(object)[["geneId"]] <- as.character(rowData(object)[["geneId"]])
+    rowData(object)[["geneId"]] <-
+        as.character(rowData(object)[["geneId"]])
     rowData(object)[["geneId"]][seq] <- geneIds
     rowData(object)[["geneName"]] <-
         as.character(rowData(object)[["geneName"]])
     rowData(object)[["geneName"]][seq] <- geneNames
     p <- plotGenderMarkers(object)
     expect_s3_class(p, "ggplot")
-    expect_true(all(geneNames %in% p[["data"]][["rowname"]]))
+    expect_true(isSubset(
+        x = as.character(geneNames),
+        y = p[["data"]][["rowname"]]
+    ))
 })
