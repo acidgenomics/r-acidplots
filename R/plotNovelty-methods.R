@@ -1,6 +1,5 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
-#' @include internal-plotQC.R
 #' @inherit AcidGenerics::plotNovelty
 #' @note Updated 2019-09-16.
 #'

@@ -31,7 +31,7 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 
-Updated 2020-02-19.
+Updated 2021-02-07.
 }
 \examples{
 data(

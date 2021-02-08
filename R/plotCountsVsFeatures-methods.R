@@ -1,6 +1,5 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @include internal-plotQC.R
 #' @inherit AcidGenerics::plotCountsVsFeatures
 #' @note Updated 2019-09-16
 #'

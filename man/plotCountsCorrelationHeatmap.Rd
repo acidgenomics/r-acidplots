@@ -76,7 +76,7 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2019-07-29.
+Updated 2021-02-08.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
