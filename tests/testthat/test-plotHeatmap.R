@@ -1,9 +1,9 @@
 context("plotHeatmap")
 
 funs <- list(
-    plotCorrelationHeatmap,
-    plotHeatmap,
-    plotQuantileHeatmap
+    "plotCorrelationHeatmap" = plotCorrelationHeatmap,
+    "plotHeatmap" = plotHeatmap,
+    "plotQuantileHeatmap" = plotQuantileHeatmap
 )
 
 ## These plotting functions intentionally error out for datasets containing

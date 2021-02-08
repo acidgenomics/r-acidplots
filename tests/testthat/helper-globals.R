@@ -24,6 +24,7 @@ assay <- SummarizedExperiment::assay
 import <- pipette::import
 mpg <- ggplot2::mpg
 rowData <- SummarizedExperiment::rowData
+sampleNames <- AcidExperiment::sampleNames
 ## nolint end
 
 rse <- RangedSummarizedExperiment

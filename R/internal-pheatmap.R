@@ -89,8 +89,8 @@
         colors <- NA
     }
     list(
-        annotationCol = as.data.frame(data),
-        annotationColors = colors
+        "annotationCol" = as.data.frame(data),
+        "annotationColors" = colors
     )
 }
 
@@ -130,7 +130,7 @@
 
 #' Generate pheatmap color palette
 #'
-#' @note Updated 2019-08-21.
+#' @note Updated 2021-02-08.
 #' @noRd
 #'
 #' @details
@@ -147,6 +147,7 @@
     } else {
         ## pheatmap default palette.
         ## Note that `n` argument won't get evaluated here.
-        eval(formals(pheatmap)[["color"]])
+        requireNamespaces("pheatmap")
+        eval(formals(pheatmap::pheatmap)[["color"]])
     }
 }
