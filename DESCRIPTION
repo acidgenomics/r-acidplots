@@ -51,13 +51,10 @@ Imports:
 Suggests:
     AcidExperiment,
     AcidTest (>= 0.4.2),
-    BiocStyle,
     DropletUtils,
-    knitr,
     testthat,
     viridis
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-VignetteBuilder: knitr
 Additional_repositories: https://r.acidgenomics.com
