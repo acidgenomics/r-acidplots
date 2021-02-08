@@ -37,7 +37,6 @@ Imports:
     ggplot2 (>= 3.3),
     goalie (>= 0.4.14),
     matrixStats (>= 0.58),
-    pheatmap (>= 1.0.12),
     pipette (>= 0.5.3),
     rlang (>= 0.4),
     stringr (>= 1.4),
@@ -54,6 +53,7 @@ Suggests:
     UpSetR (>= 1.4),
     ggrepel (>= 0.9),
     ggridges (>= 0.5),
+    pheatmap (>= 1.0.12),
     testthat,
     viridis
 biocViews: Visualization

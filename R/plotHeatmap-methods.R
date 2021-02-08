@@ -132,7 +132,7 @@ NULL
 
 
 
-## Updated 2020-08-05.
+## Updated 2021-02-08.
 `plotHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -158,6 +158,7 @@ NULL
         convertGenesToSymbols = showRownames,
         ...
     ) {
+        requireNamespaces("pheatmap")
         validObject(object)
         assert(
             nrow(object) > 1L,
@@ -253,28 +254,28 @@ NULL
         }
         ## Return pretty heatmap with modified defaults.
         args <- list(
-            mat = mat,
-            annotationCol = annotationCol,
-            annotationColors = annotationColors,
-            borderColor = borderColor,
-            breaks = breaks,
-            clusterCols = hc[["cols"]],
-            clusterRows = hc[["rows"]],
-            color = color,
-            legendBreaks = legendBreaks,
-            main = title,
+            "mat" = mat,
+            "annotationCol" = annotationCol,
+            "annotationColors" = annotationColors,
+            "borderColor" = borderColor,
+            "breaks" = breaks,
+            "clusterCols" = hc[["cols"]],
+            "clusterRows" = hc[["rows"]],
+            "color" = color,
+            "legendBreaks" = legendBreaks,
+            "main" = title,
             ## We're already applied scaling manually (see above).
-            scale = "none",
-            showColnames = showColnames,
-            showRownames = showRownames,
-            treeheightCol = treeheightCol,
-            treeheightRow = treeheightRow,
+            "scale" = "none",
+            "showColnames" = showColnames,
+            "showRownames" = showRownames,
+            "treeheightCol" = treeheightCol,
+            "treeheightRow" = treeheightRow,
             ...
         )
         args <- .pheatmapArgs(args)
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
-            expr = do.call(what = pheatmap, args = args),
+            expr = do.call(what = pheatmap::pheatmap, args = args),
             ## nocov start
             warning = function(w) {
                 if (isTRUE(grepl(

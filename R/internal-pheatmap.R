@@ -3,8 +3,8 @@
 #' @note Updated 2019-08-21.
 #' @noRd
 .emptyPheatmapAnnotations <- list(
-    annotationCol = NA,
-    annotationColors = NA
+    "annotationCol" = NA,
+    "annotationColors" = NA
 )
 
 
