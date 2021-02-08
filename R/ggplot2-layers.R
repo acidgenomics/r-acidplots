@@ -19,7 +19,7 @@
 #' @section acid_geom_label_repel:
 #'
 #' Repulsive textual annotations. Modified basejump version of
-#' [ggrepel::geom_label_repel()]. If advanced customization of the text labels
+#' `ggrepel::geom_label_repel()`. If advanced customization of the text labels
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name geoms
@@ -207,7 +207,8 @@ acid_geom_label_repel <-  # nolint
         size = 4L,
         ...
     ) {
-        geom <- geom_label_repel(
+        requireNamespaces("ggrepel")
+        geom <- ggrepel::geom_label_repel(
             data = data,
             mapping = mapping,
             arrow = arrow(length = unit(0.01, "npc")),

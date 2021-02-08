@@ -109,7 +109,7 @@ The argument names must be formatted in camel case, not snake case.}
 Construct a simple heatmap.
 }
 \note{
-Updated 2020-08-25.
+Updated 2021-02-08.
 }
 \section{Scaling}{
 
@@ -161,7 +161,7 @@ data(
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 ## Row scaling requires non-zero rows.
-object <- nonzeroRowsAndCols(object)
+object <- AcidExperiment::nonzeroRowsAndCols(object)
 
 ## Symmetric row-scaled breaks (recommended).
 plotHeatmap(

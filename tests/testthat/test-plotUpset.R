@@ -2,10 +2,10 @@ context("plotUpset")
 
 test_that("list", {
     list <- list(
-        a = c("a", "b", "c", "d", "e", "f"),
-        b = c("b", "c", "d", "e", "f", "g"),
-        c = c("c", "d", "e", "f", "g", "h"),
-        d = c("d", "e", "f", "g", "h", "i")
+        "aaa" = c("a", "b", "c", "d", "e", "f"),
+        "bbb" = c("b", "c", "d", "e", "f", "g"),
+        "ccc" = c("c", "d", "e", "f", "g", "h"),
+        "ddd" = c("d", "e", "f", "g", "h", "i")
     )
     p <- plotUpset(
         object = list,
@@ -23,8 +23,8 @@ test_that("data.frame", {
     expect_error(
         object = plotUpset(
             object = data.frame(
-                a = c("a", "b"),
-                b = c("c", "d")
+                "aaa" = c("a", "b"),
+                "bbb" = c("c", "d")
             )
         ),
         regexp = "Data frame does not contain any columns"

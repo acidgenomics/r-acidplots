@@ -1,9 +1,15 @@
+## NOTE Consider migrating to ComplexUpset
+##      (https://github.com/krassowski/complex-upset),
+##      which uses ggplot internally instead.
+
+
+
 #' UpSet plot
 #'
-#' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
+#' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param orderBySize `logical`.
@@ -21,41 +27,27 @@
 #'
 #' @return Graphical output, no return.
 #'
+#' @seealso `upsetMatrix()`.
+#'
 #' @examples
 #' list <- list(
-#'     a = c("a", "b", "c", "d", "e", "f"),
-#'     b = c("b", "c", "d", "e", "f", "g"),
-#'     c = c("c", "d", "e", "f", "g", "h"),
-#'     d = c("d", "e", "f", "g", "h", "i")
+#'     "aaa" = c("a", "b", "c", "d", "e", "f"),
+#'     "bbb" = c("b", "c", "d", "e", "f", "g"),
+#'     "ccc" = c("c", "d", "e", "f", "g", "h"),
+#'     "ddd" = c("d", "e", "f", "g", "h", "i")
 #' )
 #' plotUpset(list)
 NULL
 
 
 
-## Modified version of `UpSetR::fromList()`.
-## Updated 2020-08-25.
-.upsetMatrixFromList <- function(list) {
-    elements <- unique(unlist(list))
-    x <- unlist(lapply(list, function(x) {
-        x <- as.vector(match(elements, x))
-    }))
-    x[is.na(x)] <- as.integer(0L)
-    x[x != 0L] <- as.integer(1L)
-    mat <- matrix(x, ncol = length(list), byrow = FALSE)
-    mode(mat) <- "integer"
-    mat <- mat[which(rowSums(mat) != 0L), , drop = FALSE]
-    colnames(mat) <- names(list)
-    mat
-}
-
-
-
-## Updated 2020-08-25.
+## Updated 2021-02-08.
 `plotUpset,list` <- # nolint
     function(object, ...) {
-        mat <- .upsetMatrixFromList(object)
-        plotUpset(mat, ...)
+        plotUpset(
+            object = intersectionMatrix(object),
+            ...
+        )
     }
 
 
@@ -70,15 +62,19 @@ setMethod(
 
 
 
-## Updated 2020-08-25.
+## Updated 2021-02-08.
 `plotUpset,matrix` <-  # nolint
     function(
         object,
         nIntersects = 40L,
         orderBySize = c(bars = TRUE, matrix = TRUE)
     ) {
+        requireNamespaces("UpSetR")
+        if (is.logical(object)) {
+            mode(object) <- "integer"
+        }
         if (isFlag(orderBySize)) {
-            orderBySize <- c(bars = orderBySize, matrix = orderBySize)
+            orderBySize <- c("bars" = orderBySize, "matrix" = orderBySize)
         }
         assert(
             is.integer(object),

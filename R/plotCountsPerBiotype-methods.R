@@ -70,7 +70,7 @@ NULL
         ## Determine whether to use transcripts or genes automatically.
         if (isSubset("txBiotype", colnames(rowData))) {
             biotypeCol <- "txBiotype"
-        else if (isSubset("transcriptBiotype", colnames(rowData)))
+        } else if (isSubset("transcriptBiotype", colnames(rowData))) {
             ## Legacy approach used until 2021-01-15.
             biotypeCol <- "transcriptBiotype"
         } else {

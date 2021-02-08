@@ -12,7 +12,7 @@
 #' @name plotPCA
 #' @note `SingleCellExperiment` method that visualizes dimension reduction data
 #'   slotted in `reducedDims()` is defined in pointillism package.
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -79,7 +79,7 @@ NULL
         interestingGroups <- interestingGroups(object)
         ## Early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            alertWarning("Non-unique samples detected. Skipping plot.")
             return(invisible(NULL))
         }
         ## Handle `ntop` definition automatically.

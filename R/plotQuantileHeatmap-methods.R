@@ -1,6 +1,6 @@
 #' @name plotQuantileHeatmap
 #' @inherit AcidGenerics::plotQuantileHeatmap
-#' @note Updated 2020-08-05.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams AcidRoxygen::params
@@ -38,7 +38,7 @@ NULL
 
 
 
-## Updated 2020-08-05.
+## Updated 2021-02-08.
 `plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -60,6 +60,7 @@ NULL
         convertGenesToSymbols = showRownames,
         ...
     ) {
+        requireNamespaces("pheatmap")
         validObject(object)
         assert(
             nrow(object) > 1L,
@@ -84,7 +85,7 @@ NULL
         }
         ## Warn and early return if any samples are duplicated.
         if (!hasUniqueCols(object)) {
-            cli_alert_warning("Non-unique samples detected. Skipping plot.")
+            alertWarning("Non-unique samples detected. Skipping plot.")
             return(invisible(NULL))
         }
         ## Modify the object to use gene symbols in the row names automatically,
@@ -125,29 +126,29 @@ NULL
         }
         ## Return pretty heatmap with modified defaults.
         args <- list(
-            mat = mat,
-            annotationCol = annotationCol,
-            annotationColors = annotationColors,
-            borderColor = borderColor,
-            breaks = breaks,
-            clusterCols = clusterCols,
-            clusterRows = clusterRows,
-            color = color,
-            legend = legend,
-            legendBreaks = breaks,
-            legendLabels = round(breaks, digits = 2L),
-            main = title,
-            scale = "none",
-            showColnames = showColnames,
-            showRownames = showRownames,
-            treeheightCol = treeheightCol,
-            treeheightRow = treeheightRow,
+            "mat" = mat,
+            "annotationCol" = annotationCol,
+            "annotationColors" = annotationColors,
+            "borderColor" = borderColor,
+            "breaks" = breaks,
+            "clusterCols" = clusterCols,
+            "clusterRows" = clusterRows,
+            "color" = color,
+            "legend" = legend,
+            "legendBreaks" = breaks,
+            "legendLabels" = round(breaks, digits = 2L),
+            "main" = title,
+            "scale" = "none",
+            "showColnames" = showColnames,
+            "showRownames" = showRownames,
+            "treeheightCol" = treeheightCol,
+            "treeheightRow" = treeheightRow,
             ...
         )
         args <- .pheatmapArgs(args)
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
-            expr = do.call(what = pheatmap, args = args),
+            expr = do.call(what = pheatmap::pheatmap, args = args),
             ## nocov start
             warning = function(w) {
                 if (isTRUE(grepl(

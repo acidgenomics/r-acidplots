@@ -1,7 +1,7 @@
 #' @name plotGenderMarkers
 #' @inherit AcidGenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#' @note Updated 2020-02-19.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams AcidRoxygen::params
@@ -26,34 +26,31 @@ NULL
 
 
 
-## Updated 2019-09-15.
+## Updated 2021-02-07.
 `plotGenderMarkers,SummarizedExperiment` <-  # nolint
     function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
-        data(
-            list = "genderMarkers",
-            package = packageName(),
-            envir = environment()
+        assert(isString(organism))
+        organism <- camelCase(organism, strict = TRUE)
+        markers <- readRDS(system.file(
+            "extdata", "gender-markers.rds",
+            package = .pkgName
+        ))
+        assert(
+            is.list(markers),
+            isSubset(organism, names(markers))
         )
-        markers <- get("genderMarkers", inherits = FALSE)
-        assert(is.list(markers))
-        supported <- names(markers)
-        supported <- snakeCase(supported)
-        supported <- sub("^([a-z])", "\\U\\1", supported, perl = TRUE)
-        supported <- sub("_", " ", supported)
-        ## Error if the organism is not supported.
-        if (!isSubset(organism, supported)) {
-            stop(sprintf(
-                "'%s' is not supported.\nSupported: %s.",
-                organism, toString(supported)
-            ))
-        }
-        markers <- markers[[camelCase(organism, strict = TRUE)]]
-        assert(is(markers, "tbl_df"))
+        gr <- markers[[organism]]
+        assert(
+            is(gr, "GRanges"),
+            isSubset("geneId", names(mcols(gr)))
+        )
+        ## NOTE We're allowing mapping of genes without a perfect identifier
+        ## version match here (e.g. ENSG00000012817 to ENSG00000012817.16).
         genes <- mapGenesToRownames(
             object = object,
-            genes = markers[["geneId"]],
+            genes = sort(decode(mcols(gr)[["geneId"]])),
             strict = FALSE
         )
         plotCounts(

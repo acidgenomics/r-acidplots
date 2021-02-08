@@ -162,7 +162,7 @@ NULL
 
 #' @rdname plotPCA
 #' @name plotPCA
-#' @importFrom BiocGenerics plotPCA
+#' @importFrom AcidGenerics plotPCA
 #' @usage plotPCA(object, ...)
 #' @export
 NULL

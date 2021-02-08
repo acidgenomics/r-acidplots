@@ -45,17 +45,20 @@ settings will inherit.}
 Graphical output, no return.
 }
 \description{
-S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
+S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2020-08-25.
+Updated 2021-02-08.
 }
 \examples{
 list <- list(
-    a = c("a", "b", "c", "d", "e", "f"),
-    b = c("b", "c", "d", "e", "f", "g"),
-    c = c("c", "d", "e", "f", "g", "h"),
-    d = c("d", "e", "f", "g", "h", "i")
+    "aaa" = c("a", "b", "c", "d", "e", "f"),
+    "bbb" = c("b", "c", "d", "e", "f", "g"),
+    "ccc" = c("c", "d", "e", "f", "g", "h"),
+    "ddd" = c("d", "e", "f", "g", "h", "i")
 )
 plotUpset(list)
+}
+\seealso{
+\code{upsetMatrix()}.
 }
