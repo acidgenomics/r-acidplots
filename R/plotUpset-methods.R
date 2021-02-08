@@ -7,10 +7,10 @@
 
 #' UpSet plot
 #'
-#' S4 wrapper for [UpSetR::upset()] with improved default aesthetics.
+#' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
 #'
 #' @name plotUpset
-#' @note Updated 2021-01-15.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param orderBySize `logical`.
@@ -87,13 +87,14 @@ setMethod(
 
 
 
-## Updated 2020-08-25.
+## Updated 2021-02-08.
 `plotUpset,matrix` <-  # nolint
     function(
         object,
         nIntersects = 40L,
         orderBySize = c(bars = TRUE, matrix = TRUE)
     ) {
+        requireNamespaces("UpSetR")
         if (isFlag(orderBySize)) {
             orderBySize <- c(bars = orderBySize, matrix = orderBySize)
         }

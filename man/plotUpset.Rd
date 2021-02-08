@@ -45,10 +45,10 @@ settings will inherit.}
 Graphical output, no return.
 }
 \description{
-S4 wrapper for \code{\link[UpSetR:upset]{UpSetR::upset()}} with improved default aesthetics.
+S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2021-01-15.
+Updated 2021-02-08.
 }
 \examples{
 list <- list(
