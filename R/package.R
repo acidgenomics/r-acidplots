@@ -12,7 +12,8 @@
 #'
 #' @importMethodsFrom pipette coerce
 #'
-#' @importFrom AcidBase formalsList methodFormals sem standardizeCall
+#' @importFrom AcidBase formalsList intersectionMatrix methodFormals
+#'   requireNamespaces sem standardizeCall
 #' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom AcidExperiment as.SummarizedExperiment convertGenesToSymbols
 #'   counts decode interestingGroups interestingGroups<- mapGenesToRownames

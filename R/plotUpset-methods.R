@@ -41,36 +41,13 @@ NULL
 
 
 
-## FIXME NEED TO INHERIT THIS FROM ACIDBASE INSTEAD?
-
-#' Generate an upset matrix from a list
-#'
-#' @note Updated 2021-01-15.
-#' @noRd
-#'
-#' @seealso Modified version of `UpSetR::fromList()`.
-.upsetMatrixFromList <- function(list) {
-    elements <- unique(unlist(list))
-    x <- unlist(lapply(list, function(x) {
-        x <- as.vector(match(elements, x))
-    }))
-    x[is.na(x)] <- as.integer(0L)
-    x[x != 0L] <- as.integer(1L)
-    mat <- matrix(x, ncol = length(list), byrow = FALSE)
-    mode(mat) <- "integer"
-    mat <- mat[which(rowSums(mat) != 0L), , drop = FALSE]
-    colnames(mat) <- names(list)
-    rownames(mat) <- elements
-    mat
-}
-
-
-
-## Updated 2020-08-25.
+## Updated 2021-02-08.
 `plotUpset,list` <- # nolint
     function(object, ...) {
-        mat <- .upsetMatrixFromList(object)
-        plotUpset(mat, ...)
+        plotUpset(
+            object = intersectionMatrix(object),
+            ...
+        )
     }
 
 
@@ -85,6 +62,7 @@ setMethod(
 
 
 
+## FIXME ALLOW INPUT OF INTEGER 0/1 or LOGICAL MATRIX ONLY.
 ## Updated 2021-02-08.
 `plotUpset,matrix` <-  # nolint
     function(
@@ -93,8 +71,11 @@ setMethod(
         orderBySize = c(bars = TRUE, matrix = TRUE)
     ) {
         requireNamespaces("UpSetR")
+        if (is.logical(object)) {
+            mode(object) <- "integer"
+        }
         if (isFlag(orderBySize)) {
-            orderBySize <- c(bars = orderBySize, matrix = orderBySize)
+            orderBySize <- c("bars" = orderBySize, "matrix" = orderBySize)
         }
         assert(
             is.integer(object),
