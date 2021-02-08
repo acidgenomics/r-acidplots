@@ -8,8 +8,8 @@ funs <- list(
 
 ## These plotting functions intentionally error out for datasets containing
 ## rows or columns containing all zeros.
-rse <- basejump::nonzeroRowsAndCols(rse)
-sce <- basejump::nonzeroRowsAndCols(sce)
+rse <- nonzeroRowsAndCols(rse)
+sce <- nonzeroRowsAndCols(sce)
 
 test_that("SummarizedExperiment", {
     for (fun in funs) {
