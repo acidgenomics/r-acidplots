@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2020-09-02.
+#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -232,7 +232,7 @@ NULL
             !identical(line, "none") &&
             !identical(interestingGroups, "sampleName")
         ) {
-            cli_alert_info(sprintf("Line denotes {.fun %s}.", line))
+            alertInfo(sprintf("Line denotes {.fun %s}.", line))
             lineFun <- get(x = line, inherits = TRUE)
             assert(is.function(lineFun))
             p <- p + stat_summary(

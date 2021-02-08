@@ -21,6 +21,7 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom AcidCLI alert alertInfo alertWarning
 #' @importFrom IRanges DataFrameList
 #' @importFrom RColorBrewer brewer.pal
 #' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
@@ -34,7 +35,6 @@
 #'   mapGenesToRownames matchSampleColumn methodFormals melt metrics
 #'   nonzeroRowsAndCols organism sampleData snakeCase standardizeCall
 #'   zerosVsDepth
-#' @importFrom cli cli_alert cli_alert_info cli_alert_warning
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
