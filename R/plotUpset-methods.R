@@ -1,7 +1,6 @@
-## FIXME How should we return a table of intersections to the user.
-## FIXME Consider migrating to ComplexUpset
-##       (https://github.com/krassowski/complex-upset),
-##       which uses ggplot internally instead.
+## NOTE Consider migrating to ComplexUpset
+##      (https://github.com/krassowski/complex-upset),
+##      which uses ggplot internally instead.
 
 
 
@@ -42,8 +41,7 @@ NULL
 
 
 
-## FIXME RETURN THIS AS A LOGICAL MATRIX.
-## FIXME THEN CONVERT TO INTEGER MATRIX.
+## FIXME NEED TO INHERIT THIS FROM ACIDBASE INSTEAD?
 
 #' Generate an upset matrix from a list
 #'
