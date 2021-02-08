@@ -1,0 +1,5 @@
+#+TITLE: pipette
+#+STARTUP: content
+* Development
+** TODO Need to add improved support for X-Y scatterplot with correlation
+        information on the plot.
