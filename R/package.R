@@ -12,6 +12,7 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
 #'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
 #'   alertWarning arrow as as_tibble as.SummarizedExperiment as.formula
@@ -22,17 +23,8 @@
 #'   mapGenesToRownames matchInterestingGroups matchSampleColumn mcols melt
 #'   merge metadata methodFormals metrics organism packageName packageVersion
 #'   prcomp quantile reorder requireNamespaces sem nonzeroRowsAndCols rgb
-#'   rowData sampleData snakeCase standardizeCall tibble unit validObject var
-#'   zerosVsDepth
-#' @importFrom goalie allAreHexColors allArePositive areDisjointSets areSetEqual
-#'   assert bapply getNameInParent hasColnames hasDims hasLength hasNames
-#'   hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
-#'   hasSubset hasUniqueCols isCharacter isFlag isGGScale isGreaterThanOrEqualTo
-#'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
-#'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
-#'   isString isSubset
-#'
-#' @importFrom RColorBrewer brewer.pal
+#'   rowData sampleData setMethod signature snakeCase standardizeCall tibble
+#'   unit validObject var zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
@@ -42,6 +34,13 @@
 #'   guides labs margin position_jitterdodge scale_x_continuous scale_x_discrete
 #'   scale_y_continuous stat stat_ecdf stat_summary theme theme_linedraw waiver
 #'   vars
+#' @importFrom goalie allAreHexColors allArePositive areDisjointSets areSetEqual
+#'   assert bapply getNameInParent hasColnames hasDims hasLength hasNames
+#'   hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
+#'   hasSubset hasUniqueCols isCharacter isFlag isGGScale isGreaterThanOrEqualTo
+#'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
+#'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
+#'   isString isSubset
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
