@@ -17,6 +17,10 @@ NULL
 
 
 
+## FIXME NEED TO ADDRESS THESE: ..eq.label.. ..rr.label..
+
+
+
 ## Updated 2021-02-09.
 `plotCorrelation,matrix` <-  # nolint
     function(

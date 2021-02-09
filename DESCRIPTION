@@ -36,6 +36,7 @@ Imports:
 Suggests:
     AcidTest (>= 0.4.2),
     DropletUtils,
+    Matrix,
     UpSetR (>= 1.4),
     ggpmisc (>= 0.3.8),
     ggrepel (>= 0.9),
