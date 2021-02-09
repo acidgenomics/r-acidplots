@@ -2,7 +2,7 @@
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2020-12-11.
+#' @note Updated 2021-02-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sampleCol `character(1)`.
@@ -18,31 +18,31 @@
 #' @examples
 #' ## data.frame ====
 #' object <- data.frame(
-#'     cell_id = paste("cell", seq_len(12L), sep = "_"),
-#'     ic50 = seq(
+#'     "cellId" = paste("cell", seq_len(12L), sep = "_"),
+#'     "ic50" = seq(
 #'         from = 0.1,
 #'         to = 10L,
 #'         length.out = 12L
 #'     ),
-#'     tumor_type = rep(
+#'     "tumorType" = rep(
 #'         x = c("breast", "bladder"),
 #'         times = 6L
 #'     ),
-#'     tumor_subtype = rep(
+#'     "tumorSubtype" = rep(
 #'         x = c("benign", "malignant"),
 #'         each = 6L
 #'     )
 #' )
 #' plotWaterfall(
 #'     object = object,
-#'     sampleCol = "cell_id",
+#'     sampleCol = "cellId",
 #'     valueCol = "ic50",
-#'     interestingGroups = c("tumor_type", "tumor_subtype"),
+#'     interestingGroups = c("tumorType", "tumorSubtype"),
 #'     trans = "log10"
 #' )
 #' plotWaterfall(
 #'     object = object,
-#'     sampleCol = "cell_id",
+#'     sampleCol = "cellId",
 #'     valueCol = "ic50",
 #'     trans = "identity"
 #' )
@@ -52,7 +52,7 @@ NULL
 
 
 
-## Updated 2020-12-11.
+## Updated 2021-02-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
         object,
@@ -73,8 +73,8 @@ NULL
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
         data <- data.frame(
-            x = object[[sampleCol]],
-            y = object[[valueCol]]
+            "x" = object[[sampleCol]],
+            "y" = object[[valueCol]]
         )
         if (isTRUE(isLog)) {
             logFun <- get(trans, inherits = TRUE)
@@ -89,7 +89,7 @@ NULL
             )
             list <- split(x = data, f = as.factor(data[["facet"]]))
         } else {
-            list <- list(data)
+            list <- list("unknown" = data)
         }
         assert(hasLength(list))
         plotlist <- mapply(
@@ -118,10 +118,12 @@ NULL
                 }
                 ## Labels.
                 labels <- list(
-                    "title" = title,
                     "x" = NULL,
                     "y" = valueCol
                 )
+                if (!identical(title, "unknown")) {
+                    labels[["title"]] <- title
+                }
                 if (isTRUE(isLog)) {
                     labels[["y"]] <- paste(trans, labels[["y"]])
                 }

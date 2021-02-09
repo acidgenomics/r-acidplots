@@ -12,17 +12,17 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
-#' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList aggregate
-#'   aggregateCellsToSamples alert alertInfo alertWarning arrow as as_tibble
-#'   as.SummarizedExperiment as.formula assayNames assay assay<- assays assays<-
-#'   axisTicks camelCase cell2sample colData colorRampPalette
-#'   convertGenesToSymbols counts decode dist ecdf formalArgs formalsList hclust
-#'   head interestingGroups interestingGroups<- intersectionMatrix is leftJoin
-#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
-#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
-#'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
-#'   nonzeroRowsAndCols rgb rowData sampleData snakeCase standardizeCall unit
-#'   validObject var zerosVsDepth
+#' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
+#'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
+#'   alertWarning arrow as as_tibble as.SummarizedExperiment as.formula
+#'   assayNames assay assay<- assays assays<- axisTicks camelCase cell2sample
+#'   colData colorRampPalette convertGenesToSymbols counts decode dist ecdf
+#'   formalArgs formalsList hclust head interestingGroups interestingGroups<-
+#'   intersectionMatrix is leftJoin makeLabel makeTitle mapGenesToRownames
+#'   matchInterestingGroups matchSampleColumn mcols melt merge metadata
+#'   methodFormals metrics organism packageName packageVersion prcomp quantile
+#'   reorder requireNamespaces sem nonzeroRowsAndCols rgb rowData sampleData
+#'   snakeCase standardizeCall unit validObject var zerosVsDepth
 #' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
 #'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
 #'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
