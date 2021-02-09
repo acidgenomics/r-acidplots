@@ -1,4 +1,6 @@
-## AcidPlots 0.3.1 (2021-02-08)
+## AcidPlots 0.3.1 (2021-02-09)
+
+FIXME NEED TO ADD CORRELATION XY SCATTERPLOT HERE.
 
 ### Minor changes
 

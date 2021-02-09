@@ -34,7 +34,7 @@ g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 
 ## Notice the difference in Y axis sample order.
 g + coord_flip()
-g \%>\% acid_coord_flip()
+g <- acid_coord_flip(g)
 }
 \seealso{
 \itemize{

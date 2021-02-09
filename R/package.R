@@ -7,29 +7,33 @@
 
 
 
-#' @importClassesFrom Matrix Matrix
-#' @importClassesFrom S4Vectors DataFrame
-#' @importClassesFrom SingleCellExperiment SingleCellExperiment
-#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+## FIXME HEAD, SUMMARY, AND TAIL NEED TO BE REEXPORTED IN BASEJUMP.
+
+#' @importClassesFrom basejump DataFrame Matrix SingleCellExperiment
+#'   SummarizedExperiment
 #'
-#' @importMethodsFrom pipette coerce
+#' @importMethodsFrom basejump coerce
 #'
-#' @importFrom AcidBase formalsList intersectionMatrix methodFormals
-#'   requireNamespaces sem standardizeCall
-#' @importFrom AcidCLI alert alertInfo alertWarning
-#' @importFrom AcidExperiment as.SummarizedExperiment convertGenesToSymbols
-#'   counts decode interestingGroups interestingGroups<- mapGenesToRownames
-#'   matchInterestingGroups matchSampleColumn metrics nonzeroRowsAndCols
-#'   sampleData
-#' @importFrom AcidGenerics aggregate head mcols merge metadata
-#' @importFrom AcidGenomes Gene2Symbol organism
-#' @importFrom AcidPlyr leftJoin melt
-#' @importFrom AcidSingleCell aggregateCellsToSamples cell2sample zerosVsDepth
-#' @importFrom IRanges DataFrameList
+#' @importFrom AcidGenerics head
+#' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList aggregate
+#'   aggregateCellsToSamples alert alertInfo alertWarning arrow as as_tibble
+#'   as.SummarizedExperiment as.formula assayNames assay assay<- assays assays<-
+#'   axisTicks camelCase cell2sample colData colorRampPalette
+#'   convertGenesToSymbols counts decode dist ecdf formalArgs formalsList hclust
+#'   interestingGroups interestingGroups<- intersectionMatrix is leftJoin
+#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
+#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
+#'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
+#'   nonzeroRowsAndCols rgb rowData sampleData snakeCase standardizeCall unit
+#'   validObject var zerosVsDepth
+#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
+#'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
+#'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
+#'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
+#'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
+#'   isPositive isScalar isString isSubset
+#'
 #' @importFrom RColorBrewer brewer.pal
-#' @importFrom SummarizedExperiment SummarizedExperiment assayNames assays
-#'   assays<- colData rowData
-#' @importFrom S4Vectors DataFrame SimpleList
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes continuous_scale coord_fixed coord_flip
 #'   discrete_scale element_blank element_line element_rect element_text
@@ -38,21 +42,8 @@
 #'   geom_smooth geom_step geom_text geom_violin geom_vline ggplot guides labs
 #'   margin position_jitterdodge scale_x_continuous scale_x_discrete
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
-#' @importFrom goalie allAreHexColors areDisjointSets areSetEqual assert bapply
-#'   getNameInParent hasDims hasLength hasNames hasNoDuplicates hasMetrics
-#'   hasNonzeroRowsAndCols hasRownames hasSubset hasUniqueCols isCharacter
-#'   isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction isInClosedRange
-#'   isInLeftOpenRange isInRange isInRightOpenRange isInt isNonNegative isNumber
-#'   isPositive isScalar isString isSubset
-#' @importFrom grDevices axisTicks colorRampPalette rgb
-#' @importFrom grid arrow unit
 #' @importFrom matrixStats colVars rowVars
-#' @importFrom methods as formalArgs is validObject
-#' @importFrom pipette as_tibble
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
-#' @importFrom stats as.formula dist ecdf hclust prcomp quantile reorder var
 #' @importFrom stringr str_replace_na
-#' @importFrom syntactic camelCase makeLabel makeTitle snakeCase
-#' @importFrom utils packageName packageVersion
 NULL
