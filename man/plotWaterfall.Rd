@@ -27,7 +27,13 @@ plotWaterfall(object, ...)
   fill = purpleOrange(1L)
 )
 
-\S4method{plotWaterfall}{SummarizedExperiment}(object, assay = 1L, interestingGroups = NULL, ...)
+\S4method{plotWaterfall}{SummarizedExperiment}(
+  object,
+  assay = 1L,
+  fun = c("mean", "sum"),
+  interestingGroups = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{Object.}
@@ -58,6 +64,8 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
+
+\item{fun}{\code{function}.}
 
 \item{...}{Additional arguments.}
 }
