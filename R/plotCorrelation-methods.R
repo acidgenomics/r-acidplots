@@ -38,6 +38,7 @@ NULL
             isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
+        isLog <- !identical(trans, "identity")
         object <- as.data.frame(object[, c(xCol, yCol)])
         labels <- matchLabels(labels)
         if (is.null(labels[["x"]])) {
@@ -49,7 +50,7 @@ NULL
         labs <- do.call(what = labs, args = labels)
         assert(is(labs, "labels"))
         data <- tibble("x" = object[[xCol]], "y" = object[[yCol]])
-        if (!identical(trans, "identity")) {
+        if (isTRUE(isLog)) {
             assert(
                 allArePositive(data[["x"]]),
                 allArePositive(data[["y"]])
@@ -64,7 +65,7 @@ NULL
         }
         data <- data[complete.cases(data), ]
         assert(hasRows(data))
-        if (!identical(trans, "identity")) {
+        if (isTRUE(isLog)) {
             base <- switch(EXPR = trans, "log2" = 2L, "log10" = 10L)
             limits <- list(
                 "x" = c(
@@ -95,7 +96,6 @@ NULL
             args[["label"]] <- sym("label")
         }
         mapping <- do.call(what = aes, args = args)
-        assert(is(mapping, "uneval"))
         formula <- y ~ x
         p <- ggplot(data = data, mapping = mapping) +
             geom_point() +
@@ -111,7 +111,7 @@ NULL
                 parse = TRUE
             ) +
             labs
-        if (!identical(trans, "identity")) {
+        if (isTRUE(isLog)) {
             p <- p +
                 scale_x_continuous(
                     trans = trans,
