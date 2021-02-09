@@ -1,6 +1,7 @@
-#' Heatmap
-#'
-#' Construct a simple heatmap.
+#' @name plotHeatmap
+#' @inherit AcidGenerics::plotHeatmap
+#' @author Michael Steinbaugh, Rory Kirchner
+#' @note Updated 2021-02-09.
 #'
 #' @section Scaling:
 #'
@@ -45,10 +46,6 @@
 #' dist <- dist(mat)
 #' hclust <- hclust(dist, method = "ward.D2")
 #' ```
-#'
-#' @name plotHeatmap
-#' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
@@ -95,8 +92,6 @@
 #' - `RColorBrewer::brewer.pal()`.
 #' - `stats::cor()`.
 #' - `stats::hclust()`.
-#'
-#' @return `pheatmap`.
 #'
 #' @examples
 #' data(

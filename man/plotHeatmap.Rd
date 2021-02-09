@@ -103,13 +103,13 @@ Only applies when object contains mappings defined in \code{rowRanges}.}
 The argument names must be formatted in camel case, not snake case.}
 }
 \value{
-\code{pheatmap}.
+Plot.
 }
 \description{
-Construct a simple heatmap.
+Heatmap
 }
 \note{
-Updated 2021-02-08.
+Updated 2021-02-09.
 }
 \section{Scaling}{
 
