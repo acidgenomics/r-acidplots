@@ -16,7 +16,7 @@
 #'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
 #'   alertWarning arrow as as_tibble as.SummarizedExperiment as.formula
 #'   assayNames assay assay<- assays assays<- axisTicks camelCase cell2sample
-#'   colData colorRampPalette convertGenesToSymbols counts decode dist ecdf
+#'   colData colorRampPalette complete.cases convertGenesToSymbols counts decode dist ecdf
 #'   formalArgs formalsList hclust head interestingGroups interestingGroups<-
 #'   intersectionMatrix is leftJoin makeLabel makeTitle mapGenesToRownames
 #'   matchInterestingGroups matchSampleColumn mcols melt merge metadata
@@ -41,6 +41,6 @@
 #'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom rlang !! quo quo_text sym syms
-#' @importFrom scales gradient_n_pal log_breaks percent pretty_breaks
+#' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stringr str_replace_na
 NULL

@@ -2,11 +2,62 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCorrelation-methods.R
 \name{plotCorrelation}
 \alias{plotCorrelation}
+\alias{plotCorrelation,matrix-method}
+\alias{plotCorrelation,Matrix-method}
+\alias{plotCorrelation,data.frame-method}
 \title{Correlation X-Y scatterplot}
 \usage{
 plotCorrelation(object, ...)
+
+\S4method{plotCorrelation}{matrix}(
+  object,
+  x,
+  y,
+  formula = y ~ x,
+  label = FALSE,
+  title = NULL,
+  trans = c("identity", "log2", "log10")
+)
+
+\S4method{plotCorrelation}{Matrix}(
+  object,
+  x,
+  y,
+  formula = y ~ x,
+  label = FALSE,
+  title = NULL,
+  trans = c("identity", "log2", "log10")
+)
+
+\S4method{plotCorrelation}{data.frame}(
+  object,
+  x,
+  y,
+  formula = y ~ x,
+  label = FALSE,
+  title = NULL,
+  trans = c("identity", "log2", "log10")
+)
 }
 \arguments{
+\item{object}{Object.}
+
+\item{x}{Object.}
+
+\item{y}{Object.}
+
+\item{label}{\code{logical(1)}.
+Superimpose sample text labels on the plot.}
+
+\item{title}{\code{character(1)}.
+Title.}
+
+\item{trans}{\code{character(1)}.
+Name of the axis scale transformation to apply.
+
+For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -19,10 +70,7 @@ Correlation X-Y scatterplot
 Updated 2021-02-09.
 }
 \examples{
-data(
-    RangedSummarizedExperiment,
-    package = "AcidTest"
-)
+data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment

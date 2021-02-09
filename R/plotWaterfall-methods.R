@@ -63,6 +63,7 @@ NULL
         fill = purpleOrange(1L)
     ) {
         validObject(object)
+        object <- as.data.frame(object)
         assert(
             isString(sampleCol),
             isString(valueCol),
@@ -163,4 +164,20 @@ setMethod(
     f = "plotWaterfall",
     signature = signature("data.frame"),
     definition = `plotWaterfall,data.frame`
+)
+
+
+
+## Updated 2021-02-09.
+`plotWaterfall,DataFrame` <-  # nolint
+    `plotWaterfall,data.frame`
+
+
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
+    signature = signature("DataFrame"),
+    definition = `plotWaterfall,DataFrame`
 )
