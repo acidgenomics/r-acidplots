@@ -214,10 +214,14 @@ setMethod(
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         sd <- sampleData(object)
-        assert(isSubset(
-            x = c("interestingGroups", "sampleName"),
-            y = colnames(sd)
-        ))
+        assert(
+            ## Harden against SingleCellExperiment input.
+            identical(rownames(sd), colnames(object)),
+            isSubset(
+                x = c("interestingGroups", "sampleName"),
+                y = colnames(sd)
+            )
+        )
         data <- DataFrame(
             "sample" = sd[["sampleName"]],
             "interestingGroups" = sd[["interestingGroups"]],
