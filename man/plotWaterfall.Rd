@@ -52,36 +52,36 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 Plot waterfall
 }
 \note{
-Updated 2020-12-11.
+Updated 2021-02-09.
 }
 \examples{
 ## data.frame ====
 object <- data.frame(
-    cell_id = paste("cell", seq_len(12L), sep = "_"),
-    ic50 = seq(
+    "cellId" = paste("cell", seq_len(12L), sep = "_"),
+    "ic50" = seq(
         from = 0.1,
         to = 10L,
         length.out = 12L
     ),
-    tumor_type = rep(
+    "tumorType" = rep(
         x = c("breast", "bladder"),
         times = 6L
     ),
-    tumor_subtype = rep(
+    "tumorSubtype" = rep(
         x = c("benign", "malignant"),
         each = 6L
     )
 )
 plotWaterfall(
     object = object,
-    sampleCol = "cell_id",
+    sampleCol = "cellId",
     valueCol = "ic50",
-    interestingGroups = c("tumor_type", "tumor_subtype"),
+    interestingGroups = c("tumorType", "tumorSubtype"),
     trans = "log10"
 )
 plotWaterfall(
     object = object,
-    sampleCol = "cell_id",
+    sampleCol = "cellId",
     valueCol = "ic50",
     trans = "identity"
 )
