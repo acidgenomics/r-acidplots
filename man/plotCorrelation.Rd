@@ -11,46 +11,40 @@ plotCorrelation(object, ...)
 
 \S4method{plotCorrelation}{matrix}(
   object,
-  x,
-  y,
-  formula = y ~ x,
+  xCol,
+  yCol,
   label = FALSE,
-  title = NULL,
+  labels = NULL,
   trans = c("identity", "log2", "log10")
 )
 
 \S4method{plotCorrelation}{Matrix}(
   object,
-  x,
-  y,
-  formula = y ~ x,
+  xCol,
+  yCol,
   label = FALSE,
-  title = NULL,
+  labels = NULL,
   trans = c("identity", "log2", "log10")
 )
 
 \S4method{plotCorrelation}{data.frame}(
   object,
-  x,
-  y,
-  formula = y ~ x,
+  xCol,
+  yCol,
   label = FALSE,
-  title = NULL,
+  labels = NULL,
   trans = c("identity", "log2", "log10")
 )
 }
 \arguments{
 \item{object}{Object.}
 
-\item{x}{Object.}
-
-\item{y}{Object.}
-
 \item{label}{\code{logical(1)}.
 Superimpose sample text labels on the plot.}
 
-\item{title}{\code{character(1)}.
-Title.}
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
