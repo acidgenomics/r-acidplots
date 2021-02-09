@@ -10,8 +10,6 @@
 #'   The number of quantile breaks to create.
 #' @param ... Additional arguments.
 #'
-#' @return `pheatmap`.
-#'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,

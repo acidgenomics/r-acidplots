@@ -100,7 +100,7 @@ Only applies when object contains mappings defined in \code{rowRanges}.}
 \item{...}{Additional arguments.}
 }
 \value{
-\code{pheatmap}.
+Plot.
 }
 \description{
 Quantile heatmap

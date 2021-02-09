@@ -23,7 +23,7 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.0)
 Imports:
-    AcidGenerics (>= 0.5.8),
+    AcidGenerics (>= 0.5.9),
     basejump (>= 0.14.2),
     RColorBrewer (>= 1.1),
     cowplot (>= 1.1),

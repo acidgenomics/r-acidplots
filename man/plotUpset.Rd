@@ -42,9 +42,12 @@ Can pass in \code{TRUE}/\code{FALSE} boolean flag and both "bars" and "matrix"
 settings will inherit.}
 }
 \value{
-Graphical output, no return.
+Plot.
 }
 \description{
+UpSet plot
+}
+\details{
 S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
 }
 \note{
