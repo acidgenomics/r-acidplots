@@ -1,9 +1,3 @@
-## FIXME RETHINK THE METHOD SUPPORT HERE.
-## FIXME RETHINK THE SPLITTING APPROACH HERE? NEED TO RETURN GGPLOT INSTEAD OF
-## PLOTLIST?
-
-
-
 ## nolint start
 
 #' @name plotWaterfall
@@ -60,13 +54,6 @@ NULL
 
 
 
-## NOTE Consider adding an option here to reverse the waterfall direction.
-## NOTE NEED AN OPTION TO HIDE THE LABELS?
-
-## FIXME SEEING THIS WARNING WITH SE EXAMPLE:
-## Warning: Removed 271 rows containing missing
-## values (geom_bar).
-
 ## Updated 2021-02-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
@@ -107,8 +94,6 @@ NULL
             data[["facet"]] <- object[["interestingGroups"]]
         } else if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
-            ## FIXME RETHINK THIS...
-            ##       SIMPLIFY IF INTERESTINGGROUPS COLUMN IS ALREADY DEFINED.
             data[["facet"]] <- as.factor(do.call(
                 what = paste,
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
