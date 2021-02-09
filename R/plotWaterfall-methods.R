@@ -50,15 +50,10 @@
 #'     interestingGroups = c("tumorType", "tumorSubtype"),
 #'     trans = "log10"
 #' )
-#' plotWaterfall(
-#'     object = object,
-#'     sampleCol = "cellId",
-#'     valueCol = "ic50",
-#'     trans = "identity"
-#' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
+#' plotWaterfall(object, trans = "identity")
 NULL
 
 ## nolint end
@@ -97,18 +92,30 @@ NULL
             "x" = object[[sampleCol]],
             "y" = object[[valueCol]]
         )
+        assert(hasNoDuplicates(data[["x"]]))
         if (isTRUE(isLog)) {
+            assert(allArePositive(data[["y"]]))
             logFun <- get(trans, inherits = TRUE)
             assert(is.function(logFun))
             data[["y"]] <- logFun(data[["y"]])
         }
-        if (!is.null(interestingGroups)) {
+        if (isSubset("interestingGroups", colnames(object))) {
+            assert(
+                is.null(interestingGroups),
+                is.factor(object[["interestingGroups"]])
+            )
+            data[["facet"]] <- object[["interestingGroups"]]
+        } else if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
-            data[["facet"]] <- do.call(
+            ## FIXME RETHINK THIS...
+            ##       SIMPLIFY IF INTERESTINGGROUPS COLUMN IS ALREADY DEFINED.
+            data[["facet"]] <- as.factor(do.call(
                 what = paste,
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
-            )
-            list <- split(x = data, f = as.factor(data[["facet"]]))
+            ))
+        }
+        if (is.factor(data[["facet"]])) {
+            list <- split(x = data, f = data[["facet"]])
         } else {
             list <- list("unknown" = data)
         }
@@ -204,29 +211,37 @@ setMethod(
 
 
 
-## FIXME NEED A SUMMARIZEDEXPERIMENT METHOD HERE.
+## Updated 2021-02-09.
 `plotWaterfall,SE` <-  # nolint
     function(
         object,
         assay = 1L,
+        fun = c("mean", "sum"),
         interestingGroups = NULL,
         ...
     ) {
+        validObject(object)
+        fun <- switch(
+            EXPR = match.arg(fun),
+            "mean" = colMeans,
+            "sum" = colSums
+        )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         sd <- sampleData(object)
-        sd[["colname"]] <- rownames(sd)
-        rownames(sd) <- NULL
-        data <- leftJoin(
-            x = melt(assay(object, i = assay)),
-            y = sd,
-            by = "colname"
+        assert(isSubset(
+            x = c("interestingGroups", "sampleName"),
+            y = colnames(sd)
+        ))
+        data <- DataFrame(
+            "sample" = sd[["sampleName"]],
+            "interestingGroups" = sd[["interestingGroups"]],
+            "value" = fun(assay(object, i = assay))
         )
         plotWaterfall(
             object = data,
-            sampleCol = "sampleName",
+            sampleCol = "sample",
             valueCol = "value",
-            interestingGroups = interestingGroups(object),
             ...
         )
     }
