@@ -40,7 +40,8 @@
 #'   geom_density geom_histogram geom_hline geom_jitter geom_label geom_line
 #'   geom_point geom_smooth geom_step geom_text geom_violin geom_vline ggplot
 #'   guides labs margin position_jitterdodge scale_x_continuous scale_x_discrete
-#'   scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
+#'   scale_y_continuous stat stat_ecdf stat_summary theme theme_linedraw waiver
+#'   vars
 #' @importFrom matrixStats colVars rowVars
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks

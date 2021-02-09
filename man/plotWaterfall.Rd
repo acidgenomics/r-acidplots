@@ -107,15 +107,10 @@ plotWaterfall(
     interestingGroups = c("tumorType", "tumorSubtype"),
     trans = "log10"
 )
-plotWaterfall(
-    object = object,
-    sampleCol = "cellId",
-    valueCol = "ic50",
-    trans = "identity"
-)
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
+plotWaterfall(object, trans = "identity")
 }
 \seealso{
 \itemize{

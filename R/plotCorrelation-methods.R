@@ -11,6 +11,9 @@
 #' @inheritParams AcidRoxygen::params
 #' @param xCol,yCol `character(1)` or `integer(1)`.
 #'   X and Y column name or position.
+#' @param colors `list(3)`.
+#'   Named list defining the colors of `dots`, `line`, and `se`, for confidence
+#'   interval standard error.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -31,7 +34,12 @@ NULL
         yCol,
         label = FALSE,
         labels = NULL,
-        trans = c("identity", "log2", "log10")
+        trans = c("identity", "log2", "log10"),
+        colors = list(
+            "dots" = "black",
+            "line" = "black",
+            "se" = "gray"
+        )
     ) {
         requireNamespaces("ggpmisc")
         validObject(object)
@@ -40,7 +48,12 @@ NULL
             hasRows(object),
             isString(xCol) || isInt(xCol),
             isString(yCol) || isInt(yCol),
-            isFlag(label)
+            isFlag(label),
+            is.list(colors),
+            areSetEqual(
+                x = names(colors),
+                y = names(eval(formals()[["colors"]]))
+            )
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
@@ -103,7 +116,8 @@ NULL
         mapping <- do.call(what = aes, args = args)
         formula <- y ~ x
         p <- ggplot(data = data, mapping = mapping) +
-            geom_point() +
+            geom_point(color = colors[["dots"]]) +
+            ## This will show deviations from the fit line, but is too busy.
             ## > ggpmisc::stat_fit_deviations(
             ## >     method = "lm",
             ## >     formula = formula,
@@ -113,19 +127,12 @@ NULL
                 method = "lm",
                 formula = formula,
                 se = TRUE,
-                color = "black",
-                fill = "orange"  # for se
+                color = colors[["line"]],
+                fill = colors[["se"]]
             ) +
             ## Equation, p-value, R^2, AIC or BIC of fitted polynomial.
-            ## FIXME REWORK THE FIRST ARGUMENT HERE.
+            ## Can use "adj.rr.label" here instead of "rr.label".
             ggpmisc::stat_poly_eq(
-                ## Legacy method:
-                ## > mapping = aes(label = paste(
-                ## >     ..eq.label..,
-                ## >     ..rr.label..,
-                ## >     sep = "~~~"
-                ## > )),
-                ## NOTE Can use "adj.rr.label" here instead of "rr.label".
                 mapping = aes(label = paste(
                     stat(!!sym("eq.label")),
                     stat(!!sym("rr.label")),
