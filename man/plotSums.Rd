@@ -47,11 +47,11 @@ data(
 )
 
 ## matrix ====
-object <- AcidExperiment::counts(RangedSummarizedExperiment)
+object <- basejump::counts(RangedSummarizedExperiment)
 plotSums(object, MARGIN = 1L)
 
 ## Matrix ====
-object <- AcidExperiment::counts(SingleCellExperiment)
+object <- basejump::counts(SingleCellExperiment)
 plotSums(object, MARGIN = 2L)
 
 ## SummarizedExperiment ====

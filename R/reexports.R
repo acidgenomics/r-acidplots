@@ -1,3 +1,3 @@
-#' @importFrom AcidExperiment calculateMetrics
+#' @importFrom basejump calculateMetrics
 #' @export
-AcidExperiment::calculateMetrics
+basejump::calculateMetrics
