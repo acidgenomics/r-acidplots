@@ -34,8 +34,7 @@ NULL
             hasRows(object),
             isString(xCol) || isInt(xCol),
             isString(yCol) || isInt(yCol),
-            isFlag(label),
-            isString(title, nullOK = TRUE)
+            isFlag(label)
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
