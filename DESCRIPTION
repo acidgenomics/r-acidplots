@@ -37,6 +37,7 @@ Suggests:
     AcidTest (>= 0.4.2),
     DropletUtils,
     UpSetR (>= 1.4),
+    ggpmisc (>= 0.3.8),
     ggrepel (>= 0.9),
     ggridges (>= 0.5),
     pheatmap (>= 1.0.12),
