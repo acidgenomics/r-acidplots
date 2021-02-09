@@ -15,68 +15,88 @@ NULL
 
 
 
-## FIXME RENAME X, Y TO XCOL, YCOL?
-## FIXME REWORK THIS METHOD AS MATRIX.
+## FIXME HOW TO HANDLE ZERO VALUES HERE ON LOG SCALE?
 
 ## Updated 2021-02-09.
 `plotCorrelation,matrix` <-  # nolint
     function(
         object,
-        x, y,
-        formula = y ~ x,
+        xCol,
+        yCol,
         label = FALSE,
-        title = NULL,
+        labels = NULL,
         trans = c("identity", "log2", "log10")
     ) {
+        requireNamespaces("ggpmisc")
         validObject(object)
         assert(
             hasColnames(object),
             hasRows(object),
-            isString(x),
-            isString(y),
-            isSubset(c(x, y), colnames(object)),
-            is(formula, "formula"),
+            isString(xCol) || isInt(xCol),
+            isString(yCol) || isInt(yCol),
             isFlag(label),
             isString(title, nullOK = TRUE)
         )
         trans <- match.arg(trans)
-        data <- as.data.frame(object)
+        object <- as.data.frame(object[, c(xCol, yCol)])
+        labels <- matchLabels(labels)
+        if (is.null(labels[["x"]])) {
+            labels[["x"]] <- colnames(object)[[1L]]
+        }
+        if (is.null(labels[["y"]])) {
+            labels[["y"]] <- colnames(object)[[2L]]
+        }
+        labs <- do.call(what = labs, args = labels)
+        assert(is(labs, "labels"))
+        data <- tibble("x" = object[[xCol]], "y" = object[[yCol]])
         if (!identical(trans, "identity")) {
-            xy <- data[, c(x, y)]
-            xy <- xy[complete.cases(xy), , drop = FALSE]
+            assert(
+                allArePositive(data[["x"]]),
+                allArePositive(data[["y"]])
+            )
+        }
+        if (isTRUE(label)) {
+            assert(
+                hasRownames(object),
+                nrow(object) <= 50L
+            )
+            data[["label"]] <- rownames(object)
+        }
+        data <- data[complete.cases(data), ]
+        assert(hasRows(data))
+        if (!identical(trans, "identity")) {
             base <- switch(EXPR = trans, "log2" = 2L, "log10" = 10L)
-            x_limits <- c(
-                base ^ min(floor(log(na.omit(xy[[x]]), base = base))),
-                base ^ max(ceiling(log(na.omit(xy[[x]]), base = base)))
+            limits <- list(
+                "x" = c(
+                    base ^ min(floor(log(data[["x"]], base = base))),
+                    base ^ max(ceiling(log(data[["x"]], base = base)))
+                ),
+                "y" = c(
+                    base ^ min(floor(log(data[["y"]], base = base))),
+                    base ^ max(ceiling(log(data[["y"]], base = base)))
+                )
             )
-            y_limits <- c(
-                base ^ min(floor(log(na.omit(xy[[y]]), base = base))),
-                base ^ max(ceiling(log(na.omit(xy[[y]]), base = base)))
-            )
-            x_breaks <- base ^ seq(
-                from = log(x_limits[[1L]], base = base),
-                to = log(x_limits[[2L]], base = base),
-                by = 1L
-            )
-            y_breaks <- base ^ seq(
-                from = log(y_limits[[1L]], base = base),
-                to = log(y_limits[[2L]], base = base),
-                by = 1L
-            )
-        }
-        ## FIXME How to make this more efficient?
-        if (!is.null(label)) {
-            mapping = aes(
-                x = !!sym(x),
-                y = !!sym(y),
-                label = !!sym(label)
-            )
-        } else {
-            mapping = aes(
-                x = !!sym(x),
-                y = !!sym(y)
+            assert(!any(unlist(limits) == 0L))
+            breaks <- list(
+                "x" = base ^ seq(
+                    from = log(limits[["x"]][[1L]], base = base),
+                    to = log(limits[["x"]][[2L]], base = base),
+                    by = 1L
+                ),
+                "y" = base ^ seq(
+                    from = log(limits[["y"]][[1L]], base = base),
+                    to = log(limits[["y"]][[2L]], base = base),
+                    by = 1L
+                )
             )
         }
+        args <- list("x" = sym("x"), "y" = sym("y"))
+        if (isTRUE(label)) {
+            args[["label"]] <- sym("label")
+        }
+        mapping <- do.call(what = aes, args = args)
+        assert(is(mapping, "uneval"))
+        formula <- y ~ x
         p <- ggplot(data = data, mapping = mapping) +
             geom_point() +
             geom_smooth(
@@ -90,23 +110,19 @@ NULL
                 aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
                 parse = TRUE
             ) +
-            labs(
-                title = title,
-                x = makeLabel(x),
-                y = makeLabel(y)
-            )
+            labs
         if (!identical(trans, "identity")) {
             p <- p +
                 scale_x_continuous(
                     trans = trans,
-                    breaks = x_breaks,
-                    limits = x_limits,
+                    breaks = breaks[["x"]],
+                    limits = limits[["x"]],
                     labels = comma
                 ) +
                 scale_y_continuous(
                     trans = trans,
-                    breaks = y_breaks,
-                    limits = y_limits,
+                    breaks = breaks[["y"]],
+                    limits = limits[["y"]],
                     labels = comma
                 ) +
                 annotation_logticks(
@@ -114,7 +130,7 @@ NULL
                     sides = "bl"
                 )
         }
-        if (!is.null(label)) {
+        if (isTRUE(label)) {
             p <- p + acid_geom_label_repel()
         }
         p
@@ -187,8 +203,9 @@ setMethod(
         assay = 1L,
         ...
     ) {
-        assay <- assay(object, i = assay)
-        plotCorrelation(object = assay, ...)
+        validObject(object)
+        assert(isString(assay) || isInt(assay))
+        plotCorrelation(object = assay(x = object, i = assay), ...)
     }
 
 
