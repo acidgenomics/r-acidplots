@@ -4,6 +4,7 @@
 \alias{plotWaterfall}
 \alias{plotWaterfall,data.frame-method}
 \alias{plotWaterfall,DataFrame-method}
+\alias{plotWaterfall,SummarizedExperiment-method}
 \title{Plot waterfall}
 \usage{
 plotWaterfall(object, ...)
@@ -13,7 +14,7 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
-  trans = c("log10", "log2", "identity"),
+  trans = c("identity", "log2", "log10"),
   fill = purpleOrange(1L)
 )
 
@@ -22,9 +23,11 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
-  trans = c("log10", "log2", "identity"),
+  trans = c("identity", "log2", "log10"),
   fill = purpleOrange(1L)
 )
+
+\S4method{plotWaterfall}{SummarizedExperiment}(object, assay = 1L, interestingGroups = NULL, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -53,6 +56,9 @@ definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -65,9 +71,13 @@ Plot waterfall
 Updated 2021-02-09.
 }
 \examples{
+data(RangedSummarizedExperiment, package = "AcidTest")
+
 ## data.frame ====
 object <- data.frame(
-    "cellId" = paste("cell", seq_len(12L), sep = "_"),
+    "cellId" = basejump::autopadZeros(
+        object = paste("cell", seq_len(12L), sep = "_")
+    ),
     "ic50" = seq(
         from = 0.1,
         to = 10L,
@@ -95,6 +105,9 @@ plotWaterfall(
     valueCol = "ic50",
     trans = "identity"
 )
+
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
 }
 \seealso{
 \itemize{

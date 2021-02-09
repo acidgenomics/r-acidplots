@@ -1,4 +1,6 @@
 ## FIXME RETHINK THE METHOD SUPPORT HERE.
+## FIXME RETHINK THE SPLITTING APPROACH HERE? NEED TO RETURN GGPLOT INSTEAD OF
+## PLOTLIST?
 
 
 
@@ -20,9 +22,13 @@
 #' - [Ordering bars within facets using tidytext](https://www.r-bloggers.com/2019/12/how-to-reorder-arrange-bars-with-in-each-facet-of-ggplot/)
 #'
 #' @examples
+#' data(RangedSummarizedExperiment, package = "AcidTest")
+#'
 #' ## data.frame ====
 #' object <- data.frame(
-#'     "cellId" = paste("cell", seq_len(12L), sep = "_"),
+#'     "cellId" = basejump::autopadZeros(
+#'         object = paste("cell", seq_len(12L), sep = "_")
+#'     ),
 #'     "ic50" = seq(
 #'         from = 0.1,
 #'         to = 10L,
@@ -50,11 +56,21 @@
 #'     valueCol = "ic50",
 #'     trans = "identity"
 #' )
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
 NULL
 
 ## nolint end
 
 
+
+## NOTE Consider adding an option here to reverse the waterfall direction.
+## NOTE NEED AN OPTION TO HIDE THE LABELS?
+
+## FIXME SEEING THIS WARNING WITH SE EXAMPLE:
+## Warning: Removed 271 rows containing missing
+## values (geom_bar).
 
 ## Updated 2021-02-09.
 `plotWaterfall,data.frame` <-  # nolint
@@ -63,7 +79,7 @@ NULL
         sampleCol,
         valueCol,
         interestingGroups = NULL,
-        trans = c("log10", "log2", "identity"),
+        trans = c("identity", "log2", "log10"),
         fill = purpleOrange(1L)
     ) {
         validObject(object)
@@ -184,4 +200,43 @@ setMethod(
     f = "plotWaterfall",
     signature = signature("DataFrame"),
     definition = `plotWaterfall,DataFrame`
+)
+
+
+
+## FIXME NEED A SUMMARIZEDEXPERIMENT METHOD HERE.
+`plotWaterfall,SE` <-  # nolint
+    function(
+        object,
+        assay = 1L,
+        interestingGroups = NULL,
+        ...
+    ) {
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
+        sd <- sampleData(object)
+        sd[["colname"]] <- rownames(sd)
+        rownames(sd) <- NULL
+        data <- leftJoin(
+            x = melt(assay(object, i = assay)),
+            y = sd,
+            by = "colname"
+        )
+        plotWaterfall(
+            object = data,
+            sampleCol = "sampleName",
+            valueCol = "value",
+            interestingGroups = interestingGroups(object),
+            ...
+        )
+    }
+
+
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotWaterfall,SE`
 )
