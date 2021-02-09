@@ -1,3 +1,7 @@
+## FIXME RETHINK THE METHOD SUPPORT HERE.
+
+
+
 ## nolint start
 
 #' @name plotWaterfall
