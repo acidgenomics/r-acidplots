@@ -1,15 +1,19 @@
 ## AcidPlots 0.3.1 (2021-02-09)
 
-FIXME NEED TO ADD CORRELATION XY SCATTERPLOT HERE.
+
+### New functions
+
+- `plotCorrelation`: Quick X-Y correlation scatterplot that calculates the R2
+  value, similar to plots in GraphPad Prism.
 
 ### Minor changes
 
 - `plotWaterfall`: Reworked internal code to better handle splitting out of
   interesting groups into separate plots.
+- Added initial `SummarizedExperiment` method support to `plotWaterfall`.
 - Bug fixes to avoid issues with hard-coding `sampleID` internally as sample
   identifier column, helping improve migrate to `sampleId` as preferred method.
-- Split out internal dependencies from basejump into individual Acid Genomics
-  packages. Package now no longer attaches basejump.
+- Package no longer attaches basejump.
 
 ## AcidPlots 0.3.0 (2020-10-07)
 
