@@ -3,6 +3,8 @@
 #' @note Updated 2021-02-09.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param xCol,yCol `character(1)` or `integer(1)`.
+#'   X and Y column name or position.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -10,12 +12,10 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotCorrelationHeatmap(object)
+#' plotCorrelation(object, xCol = 1L, yCol = 2L)
 NULL
 
 
-
-## FIXME HOW TO HANDLE ZERO VALUES HERE ON LOG SCALE?
 
 ## Updated 2021-02-09.
 `plotCorrelation,matrix` <-  # nolint
@@ -186,7 +186,7 @@ setMethod(
 
 
 
-#' @rdname plotWaterfall
+#' @rdname plotCorrelation
 #' @export
 setMethod(
     f = "plotCorrelation",
@@ -210,7 +210,7 @@ setMethod(
 
 
 
-#' @rdname plotWaterfall
+#' @rdname plotCorrelation
 #' @export
 setMethod(
     f = "plotCorrelation",

@@ -5,6 +5,8 @@
 \alias{plotCorrelation,matrix-method}
 \alias{plotCorrelation,Matrix-method}
 \alias{plotCorrelation,data.frame-method}
+\alias{plotCorrelation,DataFrame-method}
+\alias{plotCorrelation,SummarizedExperiment-method}
 \title{Correlation X-Y scatterplot}
 \usage{
 plotCorrelation(object, ...)
@@ -35,9 +37,23 @@ plotCorrelation(object, ...)
   labels = NULL,
   trans = c("identity", "log2", "log10")
 )
+
+\S4method{plotCorrelation}{DataFrame}(
+  object,
+  xCol,
+  yCol,
+  label = FALSE,
+  labels = NULL,
+  trans = c("identity", "log2", "log10")
+)
+
+\S4method{plotCorrelation}{SummarizedExperiment}(object, assay = 1L, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{xCol, yCol}{\code{character(1)} or \code{integer(1)}.
+X and Y column name or position.}
 
 \item{label}{\code{logical(1)}.
 Superimpose sample text labels on the plot.}
@@ -51,6 +67,9 @@ Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }
@@ -68,5 +87,5 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-plotCorrelationHeatmap(object)
+plotCorrelation(object, xCol = 1L, yCol = 2L)
 }
