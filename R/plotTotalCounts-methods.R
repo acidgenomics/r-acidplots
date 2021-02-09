@@ -55,7 +55,8 @@ NULL
         interestingGroups <- interestingGroups(object)
         metricCol <- "totalCounts"
         counts <- assay(object, i = assay)
-        if (is(counts, "sparseMatrix")) {
+        if (is(counts, "Matrix")) {
+            requireNamespaces("Matrix")
             colSums <- Matrix::colSums
         }
         data <- sampleData(object)

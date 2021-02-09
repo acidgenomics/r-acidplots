@@ -57,7 +57,8 @@ NULL
         interestingGroups <- interestingGroups(object)
         counts <- assay(object, i = assay)
         ## Keep this calculation sparse, if necessary, for speed.
-        if (is(counts, "sparseMatrix")) {
+        if (is(counts, "Matrix")) {
+            requireNamespaces("Matrix")
             colSums <- Matrix::colSums
         }
         featureCount <- colSums(counts >= minCounts)
