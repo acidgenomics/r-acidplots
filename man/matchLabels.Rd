@@ -4,7 +4,7 @@
 \alias{matchLabels}
 \title{Match ggplot2 labels}
 \usage{
-matchLabels(labels, choices)
+matchLabels(labels, choices = NULL)
 }
 \arguments{
 \item{labels}{\code{list}.
@@ -27,7 +27,7 @@ Returns an empty list on \code{NULL} input.
 Attempting to follow a similar naming convention to
 \code{\link[base:match.arg]{match.arg()}} here, using \code{choices} argument.
 
-Updated 2020-06-24.
+Updated 2021-02-09.
 }
 \examples{
 matchLabels(
