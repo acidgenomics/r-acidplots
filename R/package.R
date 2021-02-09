@@ -7,20 +7,17 @@
 
 
 
-## FIXME HEAD, SUMMARY, AND TAIL NEED TO BE REEXPORTED IN BASEJUMP.
-
 #' @importClassesFrom basejump DataFrame Matrix SingleCellExperiment
 #'   SummarizedExperiment
 #'
 #' @importMethodsFrom basejump coerce
 #'
-#' @importFrom AcidGenerics head
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList aggregate
 #'   aggregateCellsToSamples alert alertInfo alertWarning arrow as as_tibble
 #'   as.SummarizedExperiment as.formula assayNames assay assay<- assays assays<-
 #'   axisTicks camelCase cell2sample colData colorRampPalette
 #'   convertGenesToSymbols counts decode dist ecdf formalArgs formalsList hclust
-#'   interestingGroups interestingGroups<- intersectionMatrix is leftJoin
+#'   head interestingGroups interestingGroups<- intersectionMatrix is leftJoin
 #'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
 #'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
 #'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
