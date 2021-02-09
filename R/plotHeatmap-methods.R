@@ -40,7 +40,7 @@
 #' [`pheatmap()`][pheatmap::pheatmap], which is called internally by our
 #' plotting code. Here's how this can be accomplished:
 #'
-#' ```
+#' ```r
 #' mat <- assay(mat)
 #' dist <- dist(mat)
 #' hclust <- hclust(dist, method = "ward.D2")

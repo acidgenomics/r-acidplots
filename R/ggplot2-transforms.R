@@ -34,7 +34,7 @@
 #'
 #' ## Notice the difference in Y axis sample order.
 #' g + coord_flip()
-#' g %>% acid_coord_flip()
+#' g <- acid_coord_flip(g)
 acid_coord_flip <-  # nolint
     function(object) {
         assert(is(object, "ggplot"))
