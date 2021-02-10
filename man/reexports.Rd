@@ -4,6 +4,11 @@
 \name{reexports}
 \alias{reexports}
 \alias{calculateMetrics}
+\alias{draw_plot}
+\alias{ggdraw}
+\alias{log_breaks}
+\alias{plot_grid}
+\alias{pretty_breaks}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -12,5 +17,9 @@ below to see their documentation.
 
 \describe{
   \item{basejump}{\code{\link[basejump:reexports]{calculateMetrics}}}
+
+  \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
+
+  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
 }}
 
