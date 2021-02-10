@@ -1,5 +1,11 @@
-## AcidPlots 0.3.1 (2021-02-09)
+## AcidPlots 0.3.2 (2021-02-10)
 
+### Minor changes
+
+- Including some reexports that are used in DESeqAnalysis: `draw_plot`,
+  `ggdraw`, `log_breaks`, `plot_grid`, and `pretty_breaks`.
+
+## AcidPlots 0.3.1 (2021-02-09)
 
 ### New functions
 
