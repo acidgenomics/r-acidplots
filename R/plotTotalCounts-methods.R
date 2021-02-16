@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit AcidGenerics::plotTotalCounts
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-02-16.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2021-02-16.
 `plotTotalCounts,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -55,10 +55,6 @@ NULL
         interestingGroups <- interestingGroups(object)
         metricCol <- "totalCounts"
         counts <- assay(object, i = assay)
-        if (is(counts, "Matrix")) {
-            requireNamespaces("Matrix")
-            colSums <- Matrix::colSums
-        }
         data <- sampleData(object)
         data[[metricCol]] <- colSums(counts)
         if (isTRUE(perMillion)) {

@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit AcidGenerics::plotFeaturesDetected
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-02-16.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2021-02-16.
 `plotFeaturesDetected,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -56,11 +56,6 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         counts <- assay(object, i = assay)
-        ## Keep this calculation sparse, if necessary, for speed.
-        if (is(counts, "Matrix")) {
-            requireNamespaces("Matrix")
-            colSums <- Matrix::colSums
-        }
         featureCount <- colSums(counts >= minCounts)
         data <- metrics(object)
         data[["featureCount"]] <- featureCount

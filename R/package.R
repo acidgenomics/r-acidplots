@@ -17,14 +17,14 @@
 #'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
 #'   alertWarning arrow as as_tibble as.SummarizedExperiment as.formula
 #'   assayNames assay assay<- assays assays<- axisTicks camelCase cell2sample
-#'   colData colorRampPalette complete.cases convertGenesToSymbols counts decode
-#'   dist ecdf formalArgs formalsList hclust head interestingGroups
-#'   interestingGroups<- intersectionMatrix is leftJoin makeLabel makeTitle
-#'   mapGenesToRownames matchInterestingGroups matchSampleColumn mcols melt
-#'   merge metadata methodFormals metrics organism packageName packageVersion
-#'   prcomp quantile reorder requireNamespaces sem nonzeroRowsAndCols rgb
-#'   rowData sampleData snakeCase standardizeCall tibble unit validObject var
-#'   zerosVsDepth
+#'   colData colSums colorRampPalette complete.cases convertGenesToSymbols
+#'   counts decode dist ecdf formalArgs formalsList hclust head
+#'   interestingGroups interestingGroups<- intersectionMatrix is leftJoin
+#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
+#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
+#'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
+#'   nonzeroRowsAndCols rgb rowData sampleData snakeCase standardizeCall tibble
+#'   unit validObject var zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
