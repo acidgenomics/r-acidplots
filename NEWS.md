@@ -1,3 +1,10 @@
+## AcidPlots 0.3.3 (2021-02-16)
+
+### Minor changes
+
+- Reexporting rlang functions that allow for standard evaluation within
+  ggplot object creation: `!!`, `!!!`, `sym`, and `syms`.
+
 ## AcidPlots 0.3.2 (2021-02-10)
 
 ### Minor changes

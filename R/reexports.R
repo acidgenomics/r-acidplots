@@ -1,3 +1,11 @@
+#' @importFrom rlang !!!
+#' @export
+rlang::`!!!`
+
+#' @importFrom rlang !!
+#' @export
+rlang::`!!`
+
 #' @importFrom basejump calculateMetrics
 #' @export
 basejump::calculateMetrics
@@ -21,3 +29,19 @@ cowplot::plot_grid
 #' @importFrom scales pretty_breaks
 #' @export
 scales::pretty_breaks
+
+#' @importFrom rlang quo
+#' @export
+rlang::quo
+
+#' @importFrom rlang quo_text
+#' @export
+rlang::quo_text
+
+#' @importFrom rlang sym
+#' @export
+rlang::sym
+
+#' @importFrom rlang syms
+#' @export
+rlang::syms

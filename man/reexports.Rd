@@ -3,12 +3,18 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{!!!}
+\alias{!!}
 \alias{calculateMetrics}
 \alias{draw_plot}
 \alias{ggdraw}
 \alias{log_breaks}
 \alias{plot_grid}
 \alias{pretty_breaks}
+\alias{quo}
+\alias{quo_text}
+\alias{sym}
+\alias{syms}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -19,6 +25,8 @@ below to see their documentation.
   \item{basejump}{\code{\link[basejump:reexports]{calculateMetrics}}}
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
+
+  \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
   \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
 }}
