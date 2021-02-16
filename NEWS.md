@@ -4,6 +4,8 @@
 
 - Reexporting rlang functions that allow for standard evaluation within
   ggplot object creation: `!!`, `!!!`, `sym`, and `syms`.
+- Removed need to use `Matrix::colSums` internally. Just inherit from the
+  regular S4 generic.
 
 ## AcidPlots 0.3.2 (2021-02-10)
 
