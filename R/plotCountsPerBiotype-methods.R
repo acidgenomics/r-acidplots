@@ -55,6 +55,8 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         ## Melt the count matrix into long format.
+        ## FIXME THIS STEP IS ERRORING OUT NOW...
+        ## FIXME Check definition in AcidSingleCell or AcidExperiment.
         data <- melt(
             object = object,
             assay = assay,

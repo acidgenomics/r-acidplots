@@ -13,7 +13,7 @@
 #'
 ## Automatically handle the annotation data and colors.
 #'
-#' @note Updated 2020-08-25.
+#' @note Updated 2021-02-26.
 #' @noRd
 #'
 #' @details
@@ -28,12 +28,12 @@
 #' approach handles NA values better than using `levels()`.
 .pheatmapAnnotations <- function(
     object,
-    blacklist = "sampleName",
+    denylist = "sampleName",
     legendColor
 ) {
     assert(
         is(object, "SummarizedExperiment"),
-        isCharacter(blacklist),
+        isCharacter(denylist),
         isHexColorFunction(legendColor, nullOK = TRUE)
     )
     empty <- .emptyPheatmapAnnotations
@@ -48,8 +48,8 @@
         isSubset(interestingGroups, colnames(data))
     )
     data <- data[, interestingGroups, drop = FALSE]
-    blacklist <- unique(c("sampleName", blacklist))
-    cols <- setdiff(colnames(data), blacklist)
+    denylist <- unique(c("sampleName", denylist))
+    cols <- setdiff(colnames(data), denylist)
     if (!hasLength(cols)) return(empty)
     data <- data[, cols, drop = FALSE]
     keep <- bapply(X = data, FUN = is.factor)
