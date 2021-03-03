@@ -10,6 +10,7 @@
 \alias{ggdraw}
 \alias{log_breaks}
 \alias{plot_grid}
+\alias{percent}
 \alias{pretty_breaks}
 \alias{quo}
 \alias{quo_text}
@@ -28,6 +29,6 @@ below to see their documentation.
 
   \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
-  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
+  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:label_percent]{percent}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
 }}
 

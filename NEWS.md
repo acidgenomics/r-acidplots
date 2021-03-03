@@ -1,3 +1,9 @@
+## AcidPlots 0.3.4 (2021-03-02)
+
+### Minor changes
+
+- Ensure we reexport `percent` from scales, which is used in pointillism.
+
 ## AcidPlots 0.3.3 (2021-02-16)
 
 ### Minor changes
