@@ -26,6 +26,10 @@ scales::log_breaks
 #' @export
 cowplot::plot_grid
 
+#' @importFrom scales percent
+#' @export
+scales::percent
+
 #' @importFrom scales pretty_breaks
 #' @export
 scales::pretty_breaks
