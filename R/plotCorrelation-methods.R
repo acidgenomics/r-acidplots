@@ -68,12 +68,6 @@ NULL
         labs <- do.call(what = labs, args = labels)
         assert(is(labs, "labels"))
         data <- tibble("x" = object[[xCol]], "y" = object[[yCol]])
-        if (isTRUE(isLog)) {
-            assert(
-                allArePositive(data[["x"]]),
-                allArePositive(data[["y"]])
-            )
-        }
         if (isTRUE(label)) {
             assert(
                 hasRownames(object),
@@ -83,6 +77,12 @@ NULL
         }
         data <- data[complete.cases(data), , drop = FALSE]
         assert(hasRows(data))
+        if (isTRUE(isLog)) {
+            assert(
+                allArePositive(data[["x"]]),
+                allArePositive(data[["y"]])
+            )
+        }
         if (isTRUE(isLog)) {
             base <- switch(EXPR = trans, "log2" = 2L, "log10" = 10L)
             limits <- list(
