@@ -1,8 +1,3 @@
-## FIXME NEED TO IMPROVE DOCUMENTATION REGARDING ARGUMENT PASSTHROUGH.
-## HOW TO ORDER THE COLUMNS AND ROWS FOR EXAMPLE?
-
-
-
 #' @name plotCorrelationHeatmap
 #' @inherit AcidGenerics::plotCorrelationHeatmap
 #' @note Updated 2021-02-08.

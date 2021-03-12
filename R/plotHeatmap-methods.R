@@ -1,7 +1,3 @@
-## FIXME Rework using ComplexHeatmap engine instead of pheatmap.
-
-
-
 #' @name plotHeatmap
 #' @inherit AcidGenerics::plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
