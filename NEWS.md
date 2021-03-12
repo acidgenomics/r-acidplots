@@ -1,3 +1,10 @@
+## AcidPlots 0.3.5 (2021-03-12)
+
+### Minor changes
+
+- Removed unnecessary stringr dependency, since these functions are now
+  reexported inside basejump.
+
 ## AcidPlots 0.3.4 (2021-03-02)
 
 ### Minor changes
