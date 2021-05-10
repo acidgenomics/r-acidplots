@@ -1,3 +1,7 @@
+## FIXME Allow the user to set labels via a column, rather than rownames.
+
+
+
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
 #' @note Updated 2021-02-09.
