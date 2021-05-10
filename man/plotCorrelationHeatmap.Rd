@@ -90,7 +90,7 @@ Title.}
 \item{...}{Additional arguments.}
 }
 \value{
-\code{pheatmap}.
+Plot.
 }
 \description{
 Correlation heatmap

@@ -18,11 +18,12 @@ data(
 `assay<-` <- SummarizedExperiment::`assay<-`
 `colData<-` <- SummarizedExperiment::`colData<-`
 `rowData<-` <- SummarizedExperiment::`rowData<-`
-calculateMetrics <- AcidExperiment::calculateMetrics
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
+calculateMetrics <- AcidExperiment::calculateMetrics
 import <- pipette::import
 mpg <- ggplot2::mpg
+nonzeroRowsAndCols <- AcidExperiment::nonzeroRowsAndCols
 rowData <- SummarizedExperiment::rowData
 sampleNames <- AcidExperiment::sampleNames
 ## nolint end

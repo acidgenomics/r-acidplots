@@ -1,6 +1,6 @@
 #' @name plotFeaturesPerCell
-#' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotFeaturesPerCell
+#' @author Michael Steinbaugh, Rory Kirchner
 #' @note Updated 2019-09-16.
 #'
 #' @inheritParams AcidRoxygen::params

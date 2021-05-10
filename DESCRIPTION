@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.3.1
-Date: 2021-02-08
+Version: 0.3.5
+Date: 2021-03-12
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -18,44 +18,31 @@ URL:
     https://r.acidgenomics.com/packages/acidplots/,
     https://github.com/acidgenomics/r-acidplots/
 BugReports: https://github.com/acidgenomics/r-acidplots/issues/
-License: GPL-3
+License: AGPL-3
 Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.0)
 Imports:
-    AcidBase (>= 0.3.5),
-    AcidCLI (>= 0.0.6),
-    AcidGenerics (>= 0.5.6),
-    AcidPlyr (>= 0.1.8),
-    IRanges,
-    Matrix (>= 1.3),
+    AcidGenerics (>= 0.5.17),
     RColorBrewer (>= 1.1),
-    S4Vectors,
-    SingleCellExperiment,
-    SummarizedExperiment,
+    basejump (>= 0.14.17),
     cowplot (>= 1.1),
     ggplot2 (>= 3.3),
-    goalie (>= 0.4.14),
+    goalie (>= 0.5.1),
     matrixStats (>= 0.58),
-    pipette (>= 0.5.3),
-    rlang (>= 0.4),
-    stringr (>= 1.4),
-    grDevices,
-    grid,
     methods,
-    scales,
-    stats,
-    utils
+    rlang (>= 0.4),
+    scales (>= 1.1)
 Suggests:
-    AcidExperiment,
-    AcidTest (>= 0.4.2),
-    DropletUtils,
+    AcidTest (>= 0.4.3),
+    DropletUtils (>= 1.10),
     UpSetR (>= 1.4),
+    ggpmisc (>= 0.3),
     ggrepel (>= 0.9),
     ggridges (>= 0.5),
-    pheatmap (>= 1.0.12),
+    pheatmap (>= 1.0),
     testthat,
-    viridis
+    viridis (>= 0.5)
 biocViews: Visualization
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

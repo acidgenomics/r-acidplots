@@ -25,6 +25,15 @@ NULL
 
 
 
+#' @rdname plotCorrelation
+#' @name plotCorrelation
+#' @importFrom AcidGenerics plotCorrelation
+#' @usage plotCorrelation(object, ...)
+#' @export
+NULL
+
+
+
 #' @rdname plotCorrelationHeatmap
 #' @name plotCorrelationHeatmap
 #' @importFrom AcidGenerics plotCorrelationHeatmap

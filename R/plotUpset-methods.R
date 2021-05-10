@@ -4,12 +4,12 @@
 
 
 
-#' UpSet plot
-#'
-#' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
-#'
 #' @name plotUpset
+#' @inherit AcidGenerics::plotUpset
 #' @note Updated 2021-02-08.
+#'
+#' @details
+#' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param orderBySize `logical`.
@@ -24,8 +24,6 @@
 #'   Maximum number of intersections to plot.
 #'   Set `Inf` to plot all intersections.
 #' @param ... Additional arguments.
-#'
-#' @return Graphical output, no return.
 #'
 #' @seealso `upsetMatrix()`.
 #'

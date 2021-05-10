@@ -1,6 +1,8 @@
+## nolint start
+
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2020-12-11.
+#' @note Updated 2021-02-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sampleCol `character(1)`.
@@ -14,51 +16,56 @@
 #' - [Ordering bars within facets using tidytext](https://www.r-bloggers.com/2019/12/how-to-reorder-arrange-bars-with-in-each-facet-of-ggplot/)
 #'
 #' @examples
+#' data(RangedSummarizedExperiment, package = "AcidTest")
+#'
 #' ## data.frame ====
 #' object <- data.frame(
-#'     cell_id = paste("cell", seq_len(12L), sep = "_"),
-#'     ic50 = seq(
+#'     "cellId" = basejump::autopadZeros(
+#'         object = paste("cell", seq_len(12L), sep = "_")
+#'     ),
+#'     "ic50" = seq(
 #'         from = 0.1,
 #'         to = 10L,
 #'         length.out = 12L
 #'     ),
-#'     tumor_type = rep(
+#'     "tumorType" = rep(
 #'         x = c("breast", "bladder"),
 #'         times = 6L
 #'     ),
-#'     tumor_subtype = rep(
+#'     "tumorSubtype" = rep(
 #'         x = c("benign", "malignant"),
 #'         each = 6L
 #'     )
 #' )
 #' plotWaterfall(
 #'     object = object,
-#'     sampleCol = "cell_id",
+#'     sampleCol = "cellId",
 #'     valueCol = "ic50",
-#'     interestingGroups = c("tumor_type", "tumor_subtype"),
+#'     interestingGroups = c("tumorType", "tumorSubtype"),
 #'     trans = "log10"
 #' )
-#' plotWaterfall(
-#'     object = object,
-#'     sampleCol = "cell_id",
-#'     valueCol = "ic50",
-#'     trans = "identity"
-#' )
+#'
+#' ## SummarizedExperiment ====
+#' object <- RangedSummarizedExperiment
+#' plotWaterfall(object, trans = "identity")
 NULL
 
+## nolint end
 
 
-## Updated 2020-12-11.
+
+## Updated 2021-02-09.
 `plotWaterfall,data.frame` <-  # nolint
     function(
         object,
         sampleCol,
         valueCol,
         interestingGroups = NULL,
-        trans = c("log10", "log2", "identity"),
+        trans = c("identity", "log2", "log10"),
         fill = purpleOrange(1L)
     ) {
         validObject(object)
+        object <- as.data.frame(object)
         assert(
             isString(sampleCol),
             isString(valueCol),
@@ -69,23 +76,33 @@ NULL
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
         data <- data.frame(
-            x = object[[sampleCol]],
-            y = object[[valueCol]]
+            "x" = object[[sampleCol]],
+            "y" = object[[valueCol]]
         )
+        assert(hasNoDuplicates(data[["x"]]))
         if (isTRUE(isLog)) {
+            assert(allArePositive(data[["y"]]))
             logFun <- get(trans, inherits = TRUE)
             assert(is.function(logFun))
             data[["y"]] <- logFun(data[["y"]])
         }
-        if (!is.null(interestingGroups)) {
+        if (isSubset("interestingGroups", colnames(object))) {
+            assert(
+                is.null(interestingGroups),
+                is.factor(object[["interestingGroups"]])
+            )
+            data[["facet"]] <- object[["interestingGroups"]]
+        } else if (!is.null(interestingGroups)) {
             assert(isSubset(interestingGroups, colnames(object)))
-            data[["facet"]] <- do.call(
+            data[["facet"]] <- as.factor(do.call(
                 what = paste,
                 args = c(object[, interestingGroups, drop = FALSE], sep = ":")
-            )
-            list <- split(x = data, f = as.factor(data[["facet"]]))
+            ))
+        }
+        if (is.factor(data[["facet"]])) {
+            list <- split(x = data, f = data[["facet"]])
         } else {
-            list <- list(data)
+            list <- list("unknown" = data)
         }
         assert(hasLength(list))
         plotlist <- mapply(
@@ -114,10 +131,12 @@ NULL
                 }
                 ## Labels.
                 labels <- list(
-                    "title" = title,
                     "x" = NULL,
                     "y" = valueCol
                 )
+                if (!identical(title, "unknown")) {
+                    labels[["title"]] <- title
+                }
                 if (isTRUE(isLog)) {
                     labels[["y"]] <- paste(trans, labels[["y"]])
                 }
@@ -157,4 +176,71 @@ setMethod(
     f = "plotWaterfall",
     signature = signature("data.frame"),
     definition = `plotWaterfall,data.frame`
+)
+
+
+
+## Updated 2021-02-09.
+`plotWaterfall,DataFrame` <-  # nolint
+    `plotWaterfall,data.frame`
+
+
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
+    signature = signature("DataFrame"),
+    definition = `plotWaterfall,DataFrame`
+)
+
+
+
+## Updated 2021-02-09.
+`plotWaterfall,SE` <-  # nolint
+    function(
+        object,
+        assay = 1L,
+        fun = c("mean", "sum"),
+        interestingGroups = NULL,
+        ...
+    ) {
+        validObject(object)
+        fun <- switch(
+            EXPR = match.arg(fun),
+            "mean" = colMeans,
+            "sum" = colSums
+        )
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
+        sd <- sampleData(object)
+        assert(
+            ## Harden against SingleCellExperiment input.
+            identical(rownames(sd), colnames(object)),
+            isSubset(
+                x = c("interestingGroups", "sampleName"),
+                y = colnames(sd)
+            )
+        )
+        data <- DataFrame(
+            "sample" = sd[["sampleName"]],
+            "interestingGroups" = sd[["interestingGroups"]],
+            "value" = fun(assay(object, i = assay))
+        )
+        plotWaterfall(
+            object = data,
+            sampleCol = "sample",
+            valueCol = "value",
+            ...
+        )
+    }
+
+
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotWaterfall,SE`
 )
