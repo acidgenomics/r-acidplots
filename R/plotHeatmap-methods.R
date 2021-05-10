@@ -1,6 +1,7 @@
-#' Heatmap
-#'
-#' Construct a simple heatmap.
+#' @name plotHeatmap
+#' @inherit AcidGenerics::plotHeatmap
+#' @author Michael Steinbaugh, Rory Kirchner
+#' @note Updated 2021-02-09.
 #'
 #' @section Scaling:
 #'
@@ -40,15 +41,11 @@
 #' [`pheatmap()`][pheatmap::pheatmap], which is called internally by our
 #' plotting code. Here's how this can be accomplished:
 #'
-#' ```
+#' ```r
 #' mat <- assay(mat)
 #' dist <- dist(mat)
 #' hclust <- hclust(dist, method = "ward.D2")
 #' ```
-#'
-#' @name plotHeatmap
-#' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param scale `character(1)`.
@@ -96,8 +93,6 @@
 #' - `stats::cor()`.
 #' - `stats::hclust()`.
 #'
-#' @return `pheatmap`.
-#'
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
@@ -107,7 +102,7 @@
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' ## Row scaling requires non-zero rows.
-#' object <- AcidExperiment::nonzeroRowsAndCols(object)
+#' object <- basejump::nonzeroRowsAndCols(object)
 #'
 #' ## Symmetric row-scaled breaks (recommended).
 #' plotHeatmap(

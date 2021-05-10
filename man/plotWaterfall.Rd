@@ -3,6 +3,8 @@
 \name{plotWaterfall}
 \alias{plotWaterfall}
 \alias{plotWaterfall,data.frame-method}
+\alias{plotWaterfall,DataFrame-method}
+\alias{plotWaterfall,SummarizedExperiment-method}
 \title{Plot waterfall}
 \usage{
 plotWaterfall(object, ...)
@@ -12,8 +14,25 @@ plotWaterfall(object, ...)
   sampleCol,
   valueCol,
   interestingGroups = NULL,
-  trans = c("log10", "log2", "identity"),
+  trans = c("identity", "log2", "log10"),
   fill = purpleOrange(1L)
+)
+
+\S4method{plotWaterfall}{DataFrame}(
+  object,
+  sampleCol,
+  valueCol,
+  interestingGroups = NULL,
+  trans = c("identity", "log2", "log10"),
+  fill = purpleOrange(1L)
+)
+
+\S4method{plotWaterfall}{SummarizedExperiment}(
+  object,
+  assay = 1L,
+  fun = c("mean", "sum"),
+  interestingGroups = NULL,
+  ...
 )
 }
 \arguments{
@@ -43,6 +62,11 @@ definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
+\item{fun}{\code{function}.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -52,39 +76,41 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 Plot waterfall
 }
 \note{
-Updated 2020-12-11.
+Updated 2021-02-09.
 }
 \examples{
+data(RangedSummarizedExperiment, package = "AcidTest")
+
 ## data.frame ====
 object <- data.frame(
-    cell_id = paste("cell", seq_len(12L), sep = "_"),
-    ic50 = seq(
+    "cellId" = basejump::autopadZeros(
+        object = paste("cell", seq_len(12L), sep = "_")
+    ),
+    "ic50" = seq(
         from = 0.1,
         to = 10L,
         length.out = 12L
     ),
-    tumor_type = rep(
+    "tumorType" = rep(
         x = c("breast", "bladder"),
         times = 6L
     ),
-    tumor_subtype = rep(
+    "tumorSubtype" = rep(
         x = c("benign", "malignant"),
         each = 6L
     )
 )
 plotWaterfall(
     object = object,
-    sampleCol = "cell_id",
+    sampleCol = "cellId",
     valueCol = "ic50",
-    interestingGroups = c("tumor_type", "tumor_subtype"),
+    interestingGroups = c("tumorType", "tumorSubtype"),
     trans = "log10"
 )
-plotWaterfall(
-    object = object,
-    sampleCol = "cell_id",
-    valueCol = "ic50",
-    trans = "identity"
-)
+
+## SummarizedExperiment ====
+object <- RangedSummarizedExperiment
+plotWaterfall(object, trans = "identity")
 }
 \seealso{
 \itemize{

@@ -103,13 +103,13 @@ Only applies when object contains mappings defined in \code{rowRanges}.}
 The argument names must be formatted in camel case, not snake case.}
 }
 \value{
-\code{pheatmap}.
+Plot.
 }
 \description{
-Construct a simple heatmap.
+Heatmap
 }
 \note{
-Updated 2021-02-08.
+Updated 2021-02-09.
 }
 \section{Scaling}{
 
@@ -146,10 +146,10 @@ In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{F
 you can attempt to pass an \code{hclust} object to these arguments. This is
 recommended as an alternate approach to be used with
 \code{\link[pheatmap:pheatmap]{pheatmap()}}, which is called internally by our
-plotting code. Here's how this can be accomplished:\preformatted{mat <- assay(mat)
+plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="r">}}\preformatted{mat <- assay(mat)
 dist <- dist(mat)
 hclust <- hclust(dist, method = "ward.D2")
-}
+}\if{html}{\out{</div>}}
 }
 
 \examples{
@@ -161,7 +161,7 @@ data(
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 ## Row scaling requires non-zero rows.
-object <- AcidExperiment::nonzeroRowsAndCols(object)
+object <- basejump::nonzeroRowsAndCols(object)
 
 ## Symmetric row-scaled breaks (recommended).
 plotHeatmap(

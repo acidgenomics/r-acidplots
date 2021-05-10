@@ -1,4 +1,17 @@
-#' Principal component analysis plot
+#' @name plotPCA
+#' @inherit AcidGenerics::plotPCA
+#' @note Updated 2021-02-09.
+#'
+#' @details
+#' We're using a modified version of the `DESeqTransform` method here.
+#'
+#' ```r
+#' methodFunction(
+#'     f = "plotPCA",
+#'     signature = "DESeqTransform",
+#'     package = "DESeq2"
+#' )
+#' ```
 #'
 #' @section Principal component analysis:
 #'
@@ -9,10 +22,10 @@
 #' expression variation, and identify potential sample outliers. The PCA plot is
 #' a way to look at how samples are clustering.
 #'
-#' @name plotPCA
-#' @note `SingleCellExperiment` method that visualizes dimension reduction data
-#'   slotted in `reducedDims()` is defined in pointillism package.
-#' @note Updated 2021-02-08.
+#' @section `SingleCellExperiment`:
+#'
+#' The `SingleCellExperiment` method that visualizes dimension reduction data
+#' slotted in `reducedDims()` is defined in pointillism package.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -22,19 +35,8 @@
 #'
 #' @references Jolliffe, et al., 2002.
 #'
-#' @seealso `DESeq2::plotPCA()`.
-#'
-#' We're using a modified version of the `DESeqTransform` method here.
-#'
-#' ```
-#' methodFunction(
-#'     f = "plotPCA",
-#'     signature = "DESeqTransform",
-#'     package = "DESeq2"
-#' )
-#' ```
-#'
-#' @return `ggplot` or `DataFrame`.
+#' @seealso
+#' - `DESeq2::plotPCA()`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

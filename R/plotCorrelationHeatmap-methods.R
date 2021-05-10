@@ -10,7 +10,6 @@
 #'   Refer to the [`cor()`][stats::cor] documentation for details.
 #' @param ... Additional arguments.
 #'
-#' @return `pheatmap`.
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,

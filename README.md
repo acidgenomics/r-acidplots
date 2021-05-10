@@ -33,6 +33,20 @@ conda activate "$name"
 R
 ```
 
+### [Docker][] method
+
+```sh
+image="acidgenomics/r-acidplots"
+workdir="/mnt/work"
+docker pull "$image"
+docker run -it \
+    --volume="${PWD}:${workdir}" \
+    --workdir="$workdir" \
+    "$image" \
+    R
+```
+
 [bioconda]: https://bioconda.github.io/
 [conda]: https://conda.io/
+[docker]: https://www.docker.com/
 [r]: https://www.r-project.org/
