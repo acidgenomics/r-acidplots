@@ -1,10 +1,6 @@
-## FIXME Allow the user to set labels via a column, rather than rownames.
-
-
-
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2021-02-09.
+#' @note Updated 2021-05-17.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -15,10 +11,24 @@
 #' @inheritParams AcidRoxygen::params
 #' @param xCol,yCol `character(1)` or `integer(1)`.
 #'   X and Y column name or position.
+#' @param labelCol `character(1)` or NULL.
+#'   For `data.frame` method, which column should be used to label points
+#'   on the plot?
+#' @param r2 `logical(1)`.
+#'   Show information on the `lm` fit?
+#'   This includes the equation, and the coefficient of determination (R^2).
+#'   Refer to `ggpmisc::stat_poly_eq` for details.
+#' @param se `logical(1)`.
+#'   Display confidence interval around the `lm` fit line?
+#'   Refer to `ggplot2::geom_smooth` for details.
 #' @param colors `list(3)`.
 #'   Named list defining the colors of `dots`, `line`, and `se`, for confidence
 #'   interval standard error.
 #' @param ... Additional arguments.
+#'
+#' @seealso
+#' - `ggpmisc::stat_poly_eq`.
+#' - `ggplot2::geom_smooth`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -30,7 +40,7 @@ NULL
 
 
 
-## Updated 2021-02-09.
+## Updated 2021-05-17.
 `plotCorrelation,matrix` <-  # nolint
     function(
         object,
@@ -38,14 +48,15 @@ NULL
         yCol,
         label = FALSE,
         labels = NULL,
-        trans = c("identity", "log2", "log10"),
+        trans = c("log10", "log2", "identity"),
+        r2 = TRUE,
+        se = TRUE,
         colors = list(
             "dots" = "black",
             "line" = "black",
             "se" = "gray"
         )
     ) {
-        requireNamespaces("ggpmisc")
         validObject(object)
         assert(
             hasColnames(object),
@@ -53,12 +64,17 @@ NULL
             isString(xCol) || isInt(xCol),
             isString(yCol) || isInt(yCol),
             isFlag(label),
+            isFlag(r2),
+            isFlag(se),
             is.list(colors),
             areSetEqual(
                 x = names(colors),
                 y = names(eval(formals()[["colors"]]))
             )
         )
+        if (isFALSE(se)) {
+            colors[["se"]] <- NA
+        }
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
         object <- as.data.frame(object[, c(xCol, yCol)])
@@ -74,7 +90,12 @@ NULL
         data <- tibble("x" = object[[xCol]], "y" = object[[yCol]])
         if (isTRUE(label)) {
             assert(
-                hasRownames(object),
+                ## NOTE Not using `hasRownames` check here, because edge case
+                ## integer values are OK here. Consider updating the assert
+                ## in goalie package to allow for integer row names in matrix
+                ## and DataFrame classes, but not data.frame only.
+                ## > hasRownames(object),
+                isCharacter(rownames(object)),
                 nrow(object) <= 50L
             )
             data[["label"]] <- rownames(object)
@@ -121,22 +142,16 @@ NULL
         formula <- y ~ x
         p <- ggplot(data = data, mapping = mapping) +
             geom_point(color = colors[["dots"]]) +
-            ## This will show deviations from the fit line, but is too busy.
-            ## > ggpmisc::stat_fit_deviations(
-            ## >     method = "lm",
-            ## >     formula = formula,
-            ## >     colour = "red"
-            ## > ) +
             geom_smooth(
                 method = "lm",
                 formula = formula,
                 se = TRUE,
                 color = colors[["line"]],
                 fill = colors[["se"]]
-            ) +
-            ## Equation, p-value, R^2, AIC or BIC of fitted polynomial.
-            ## Can use "adj.rr.label" here instead of "rr.label".
-            ggpmisc::stat_poly_eq(
+            )
+        if (isTRUE(r2)) {
+            requireNamespaces("ggpmisc")
+            p <- p + ggpmisc::stat_poly_eq(
                 mapping = aes(label = paste(
                     stat(!!sym("eq.label")),
                     stat(!!sym("rr.label")),
@@ -144,8 +159,9 @@ NULL
                 )),
                 formula = formula,
                 parse = TRUE
-            ) +
-            labs
+            )
+        }
+        p <- p + labs
         if (isTRUE(isLog)) {
             p <- p +
                 scale_x_continuous(
@@ -199,8 +215,23 @@ setMethod(
 
 
 
-## Updated 2021-02-09.
+## Updated 2021-05-17.
 `plotCorrelation,data.frame` <-  # nolint
+    function(object, labelCol = NULL, ...) {
+        assert(isString(labelCol, nullOK = TRUE))
+        mat <- as.matrix(object)
+        if (isString(labelCol)) {
+            rn <- object[[labelCol]]
+            rn <- as.character(rn)
+            assert(hasNoDuplicates(rn))
+            rownames(mat) <- rn
+        }
+        plotCorrelation(
+            object = mat,
+            label = isString(labelCol),
+            ...
+        )
+    }
     `plotCorrelation,matrix`
 
 
