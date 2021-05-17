@@ -1,5 +1,13 @@
 ## AcidPlots 0.3.6 (2021-05-17)
 
+### Major changes
+
+- `plotCorrelation`: Updated `data.frame` method to support `labelCol`, which
+  is useful for defining the column to use for plot labels.
+- `plotCorrelation`: The `trans` now defaults to "log10", instead of "identity".
+  This is recommended for IC50 plots, which are the intended use of this
+  function the majority of the time.
+
 ### Minor changes
 
 - Updated dependencies to latest versions available on conda.
