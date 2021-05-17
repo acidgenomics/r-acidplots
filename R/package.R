@@ -12,7 +12,6 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
 #'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
 #'   alertWarning arrow as as_tibble as.SummarizedExperiment as.formula
@@ -41,7 +40,6 @@
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
 #'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
 #'   isString isSubset
-#' @importFrom matrixStats colVars rowVars
 #' @importFrom methods setMethod signature
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks

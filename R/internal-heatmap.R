@@ -88,7 +88,8 @@
     ## automatically. The function errors out intentionally if columns (samples)
     ## don't have sufficient variation.
     if (identical(scale, "row")) {
-        pass <- rowVars(object, na.rm = TRUE) > varThreshold
+        requireNamespaces("matrixStats")
+        pass <- matrixStats::rowVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
             ## nocov start
             fail <- !pass
@@ -107,7 +108,8 @@
             ## nocov end
         }
     } else if (identical(scale, "column")) {
-        pass <- colVars(object, na.rm = TRUE) > varThreshold
+        requireNamespaces("matrixStats")
+        pass <- matrixStats::colVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
             ## nocov start
             fail <- !pass

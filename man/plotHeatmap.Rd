@@ -109,7 +109,7 @@ Plot.
 Heatmap
 }
 \note{
-Updated 2021-02-09.
+Updated 2021-05-17.
 }
 \section{Scaling}{
 
@@ -173,15 +173,18 @@ plotHeatmap(
 )
 
 ## Using custom hexadecimal color input.
-color <- rev(RColorBrewer::brewer.pal(n = 11L, name = "PuOr"))
-color <- grDevices::colorRampPalette(color)
-plotHeatmap(
-    object,
-    scale = "row",
-    color = color,
-    breaks = seq(from = -2L, to = 2L, by = 0.25),
-    legendBreaks = seq(from = -2L, to = 2L, by = 1L)
-)
+if (goalie::isInstalled("RColorBrewer")) {
+    color <- rev(RColorBrewer::brewer.pal(n = 11L, name = "PuOr"))
+    color <- grDevices::colorRampPalette(color)
+    head(color)
+    plotHeatmap(
+        object = object,
+        scale = "row",
+        color = color,
+        breaks = seq(from = -2L, to = 2L, by = 0.25),
+        legendBreaks = seq(from = -2L, to = 2L, by = 1L)
+    )
+}
 }
 \seealso{
 \itemize{
