@@ -17,7 +17,9 @@ plotCorrelation(object, ...)
   yCol,
   label = FALSE,
   labels = NULL,
-  trans = c("identity", "log2", "log10"),
+  trans = c("log10", "log2", "identity"),
+  r2 = TRUE,
+  se = TRUE,
   colors = list(dots = "black", line = "black", se = "gray")
 )
 
@@ -27,29 +29,15 @@ plotCorrelation(object, ...)
   yCol,
   label = FALSE,
   labels = NULL,
-  trans = c("identity", "log2", "log10"),
+  trans = c("log10", "log2", "identity"),
+  r2 = TRUE,
+  se = TRUE,
   colors = list(dots = "black", line = "black", se = "gray")
 )
 
-\S4method{plotCorrelation}{data.frame}(
-  object,
-  xCol,
-  yCol,
-  label = FALSE,
-  labels = NULL,
-  trans = c("identity", "log2", "log10"),
-  colors = list(dots = "black", line = "black", se = "gray")
-)
+\S4method{plotCorrelation}{data.frame}(object, labelCol = NULL, ...)
 
-\S4method{plotCorrelation}{DataFrame}(
-  object,
-  xCol,
-  yCol,
-  label = FALSE,
-  labels = NULL,
-  trans = c("identity", "log2", "log10"),
-  colors = list(dots = "black", line = "black", se = "gray")
-)
+\S4method{plotCorrelation}{DataFrame}(object, labelCol = NULL, ...)
 
 \S4method{plotCorrelation}{SummarizedExperiment}(object, assay = 1L, ...)
 }
@@ -72,14 +60,27 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
+\item{r2}{\code{logical(1)}.
+Show information on the \code{lm} fit?
+This includes the equation, and the coefficient of determination (R^2).
+Refer to \code{ggpmisc::stat_poly_eq} for details.}
+
+\item{se}{\code{logical(1)}.
+Display confidence interval around the \code{lm} fit line?
+Refer to \code{ggplot2::geom_smooth} for details.}
+
 \item{colors}{\code{list(3)}.
 Named list defining the colors of \code{dots}, \code{line}, and \code{se}, for confidence
 interval standard error.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
+\item{labelCol}{\code{character(1)} or NULL.
+For \code{data.frame} method, which column should be used to label points
+on the plot?}
 
 \item{...}{Additional arguments.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 }
 \value{
 Plot.
@@ -88,7 +89,7 @@ Plot.
 Correlation X-Y scatterplot
 }
 \note{
-Updated 2021-02-09.
+Updated 2021-05-17.
 }
 \section{Correlation coefficient calculations}{
 
@@ -104,4 +105,10 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 plotCorrelation(object, xCol = 1L, yCol = 2L)
+}
+\seealso{
+\itemize{
+\item \code{ggpmisc::stat_poly_eq}.
+\item \code{ggplot2::geom_smooth}.
+}
 }
