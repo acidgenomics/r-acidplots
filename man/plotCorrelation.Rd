@@ -104,7 +104,12 @@ data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-plotCorrelation(object, xCol = 1L, yCol = 2L)
+plotCorrelation(
+    object = object,
+    xCol = 1L,
+    yCol = 2L,
+    trans = "identity"
+)
 }
 \seealso{
 \itemize{
