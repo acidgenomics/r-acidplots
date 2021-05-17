@@ -232,7 +232,6 @@ setMethod(
             ...
         )
     }
-    `plotCorrelation,matrix`
 
 
 
