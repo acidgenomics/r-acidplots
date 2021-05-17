@@ -1,3 +1,10 @@
+## AcidPlots 0.3.6 (2021-05-17)
+
+### Minor changes
+
+- Updated dependencies to latest versions available on conda.
+- Removed RColorBrewer and matrixStats as dependencies.
+
 ## AcidPlots 0.3.5 (2021-03-12)
 
 ### Minor changes

@@ -48,7 +48,7 @@ NULL
 
 
 
-## Updated 2020-08-25.
+## Updated 2021-05-17.
 `plotPCA,SummarizedExperiment` <-  # nolint
     function(
         object,
@@ -63,6 +63,7 @@ NULL
             subtitle = NULL
         )
     ) {
+        requireNamespaces("matrixStats")
         validObject(object)
         assert(
             isScalar(assay),
@@ -92,7 +93,7 @@ NULL
         counts <- assay(object, i = assay)
         ## Make dense, if necessary, so we can calculate `rowVars`.
         counts <- as.matrix(counts)
-        rv <- rowVars(counts)
+        rv <- matrixStats::rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
         percentVar <- (pca[["sdev"]] ^ 2L) / (sum(pca[["sdev"]] ^ 2L))
