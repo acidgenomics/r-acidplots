@@ -21,7 +21,7 @@ test_that("SummarizedExperiment", {
             "annotation_legend" %in% p[["gtable"]][["layout"]][["name"]]
         )
         ## Test color and title support.
-        ## FIXME This check is failing on R 4.1 due to pheatmap's improper
+        ## NOTE This check is failing on R 4.1 due to pheatmap's improper
         ## definition of `brewer.pal` (without `RColorBrewer::`) in formals.
         ## > expect_is(
         ## >     object = fun(
