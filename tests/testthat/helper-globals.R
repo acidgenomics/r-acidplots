@@ -22,6 +22,7 @@ allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
 calculateMetrics <- AcidExperiment::calculateMetrics
 import <- pipette::import
+isInstalled <- goalie::isInstalled
 mpg <- ggplot2::mpg
 nonzeroRowsAndCols <- AcidExperiment::nonzeroRowsAndCols
 rowData <- SummarizedExperiment::rowData
