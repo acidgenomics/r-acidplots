@@ -12,7 +12,7 @@
 #' AcidPlotsTestsURL
 AcidPlotsTestsURL <-  # nolint
     paste0(
-        "https://tests.acidgenomics.com/AcidPlots/",
+        "https://r.acidgenomics.com/testdata/acidplots/",
         "v", .pkgVersion$major, ".", .pkgVersion$minor  # nolint
     )
 
