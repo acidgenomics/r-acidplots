@@ -1,6 +1,7 @@
 #+TITLE: pipette
 #+STARTUP: content
 * Development
+** TODO Create a plot for log2 vs. log2 expression of RNA-seq counts.
 ** TODO Consider making the theme_acid_plots less bold by default.
 ** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Improve passthrough argument documentation for `plotCorrelationHeatmap`
