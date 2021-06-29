@@ -6,6 +6,10 @@ rlang::`!!!`
 #' @export
 rlang::`!!`
 
+#' @importFrom ggplot2 aes
+#' @export
+ggplot2::aes
+
 #' @importFrom basejump calculateMetrics
 #' @export
 basejump::calculateMetrics
@@ -17,6 +21,10 @@ cowplot::draw_plot
 #' @importFrom cowplot ggdraw
 #' @export
 cowplot::ggdraw
+
+#' @importFrom ggplot2 ggplot
+#' @export
+ggplot2::ggplot
 
 #' @importFrom scales log_breaks
 #' @export

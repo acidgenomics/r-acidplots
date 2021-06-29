@@ -138,6 +138,8 @@ acid_geom_label <-  # nolint
 #' @export
 #' @note Updated 2021-06-29.
 #'
+#' @param data `data.frame`.
+#'   Data frame, containing plot data.
 #' @param col `character(1)`.
 #'   Column name.
 #' @param fun `character(1)`.

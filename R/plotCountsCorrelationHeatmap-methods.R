@@ -3,6 +3,9 @@
 #' @note Updated 2021-02-08.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param method `character(1)`.
+#'   Correlation method.
+#'   Refer to `stats::cor()` for details.
 #' @param ... Passthrough arguments to
 #'   [`plotHeatmap()`][AcidPlots::plotHeatmap].
 #'
