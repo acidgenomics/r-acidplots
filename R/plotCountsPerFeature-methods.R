@@ -139,7 +139,7 @@ NULL
         }
         ## Hide sample name legend.
         if (identical(interestingGroups, "sampleName")) {
-            p <- p + guides(color = FALSE, fill = FALSE)
+            p <- p + guides(color = "none", fill = "none")
         }
         ## Return.
         p

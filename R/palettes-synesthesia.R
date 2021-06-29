@@ -5,12 +5,12 @@
 #' A little bit of an acid trip, especially when used for heatmaps.
 #'
 #' @name synesthesia
-#' @note Updated 2019-09-13.
+#' @note Updated 2021-06-29.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param guide `character(1)` or `function`.
 #'   A function used to create a guide or its name.
-#'   See [`guides()`][ggplot2::guides] for details.
+#'   See `ggplot2::guides` for details.
 #' @param n `integer(1)`.
 #'   The number of colors (>= 1) to be in the palette.
 #' @param na.value `character(1)`.
