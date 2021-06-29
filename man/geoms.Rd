@@ -29,24 +29,18 @@ acid_geom_label_repel(
 \item{xintercept, yintercept}{\code{numeric(1)}.
 Value denoting x- or y-axis cutoff. Specify one but not both.}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-\code{colour = "red"} or \code{size = 3}. They may also be parameters
-to the paired geom/stat.}
+\item{...}{Additional arguments.}
 
 \item{color}{\code{character(1)}.
 Text color (e.g. orange).}
 
-\item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
+\item{stat}{\code{character(1)}.
+Statistical transformation to use on the data for this layer.}
 
 \item{data}{\code{data.frame}.
 Data.}
 
-\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{aes()}} or
-\code{\link[ggplot2:aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
-default), it is combined with the default mapping at the top level of the
-plot. You must supply \code{mapping} if there is no plot mapping.}
+\item{mapping}{Set of aesthetic mappings created by \code{ggplot2::aes()}.}
 
 \item{col}{\code{character(1)}.
 Column name.}
@@ -56,7 +50,8 @@ Function name to use for average calculation.
 Currently supports mean or median.}
 
 \item{digits}{\code{integer(1)}.
-Number of significant digits to use. Defaults to rounded.}
+Number of significant digits to use.
+Defaults to rounded.}
 
 \item{size}{\code{integer(1)}.
 Font size.}
@@ -69,7 +64,7 @@ Convenience functions with modified defaults for
 \href{http://ggplot2.org}{ggplot2}.
 }
 \note{
-Updated 2019-08-21.
+Updated 2021-06-29.
 }
 \section{acid_geom_abline}{
 

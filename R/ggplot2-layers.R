@@ -23,24 +23,30 @@
 #' is required, simply use the ggrepel version instead.
 #'
 #' @name geoms
-#' @note Updated 2019-08-21.
+#' @note Updated 2021-06-29.
 #'
-#' @inheritParams ggplot2::geom_label
-#' @param color `character(1)`.
-#'   Text color (e.g. orange).
-#' @param size `integer(1)`.
-#'   Font size.
-#' @param xintercept,yintercept `numeric(1)`.
-#'   Value denoting x- or y-axis cutoff. Specify one but not both.
-#' @param data `data.frame`.
-#'   Data.
 #' @param col `character(1)`.
 #'   Column name.
+#' @param color `character(1)`.
+#'   Text color (e.g. orange).
+#' @param data `data.frame`.
+#'   Data.
+#' @param digits `integer(1)`.
+#'   Number of significant digits to use.
+#'   Defaults to rounded.
 #' @param fun `character(1)`.
 #'   Function name to use for average calculation.
 #'   Currently supports mean or median.
-#' @param digits `integer(1)`.
-#'   Number of significant digits to use. Defaults to rounded.
+#' @param mapping
+#'   Set of aesthetic mappings created by `ggplot2::aes()`.
+#' @param size `integer(1)`.
+#'   Font size.
+#' @param stat `character(1)`.
+#'   Statistical transformation to use on the data for this layer.
+#' @param xintercept,yintercept `numeric(1)`.
+#'   Value denoting x- or y-axis cutoff. Specify one but not both.
+#' @param ...
+#'   Additional arguments.
 #'
 #' @seealso
 #' - `ggplot2::geom_label()`.

@@ -54,9 +54,12 @@ acid_coord_flip <-  # nolint
 #' Remove Y axis padding
 #'
 #' @export
-#' @note Updated 2019-07-29.
+#' @note Updated 2021-06-29.
 #'
-#' @inheritParams ggplot2::scale_y_continuous
+#' @param expand `numeric`.
+#'   Range expansion.
+#'   Refer to `ggplot2::expansion` for details.
+#' @param ... Other arguments passed to `scale_y_continuous()`.
 #'
 #' @return `ggproto`.
 #'
