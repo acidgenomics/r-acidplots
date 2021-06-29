@@ -37,5 +37,7 @@ if (requireNamespace("DropletUtils", quietly = TRUE)) {
 }
 }
 \seealso{
-
+\itemize{
+\item \code{DropletUtils::barcodeRanks()}.
+}
 }
