@@ -3,7 +3,6 @@
 #' @note Updated 2019-09-15.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @inheritParams base::apply
 #' @param ... Additional arguments.
 #'
 #' @examples

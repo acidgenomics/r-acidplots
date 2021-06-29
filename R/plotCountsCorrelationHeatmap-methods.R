@@ -2,8 +2,6 @@
 #' @inherit AcidGenerics::plotCountsCorrelationHeatmap
 #' @note Updated 2021-02-08.
 #'
-#' @inheritParams base::Extract
-#' @inheritParams stats::cor
 #' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough arguments to
 #'   [`plotHeatmap()`][AcidPlots::plotHeatmap].
