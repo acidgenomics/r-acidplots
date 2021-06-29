@@ -10,14 +10,11 @@ acid_scale_y_continuous_nopad(
 )
 }
 \arguments{
-\item{...}{Other arguments passed on to \verb{scale_(x|y)_continuous()}}
+\item{...}{Other arguments passed to \code{scale_y_continuous()}.}
 
-\item{expand}{For position scales, a vector of range expansion constants used to add some
-padding around the data to ensure that they are placed some distance
-away from the axes. Use the convenience function \code{\link[ggplot2:expansion]{expansion()}}
-to generate the values for the \code{expand} argument. The defaults are to
-expand the scale by 5\% on each side for continuous variables, and by
-0.6 units on each side for discrete variables.}
+\item{expand}{\code{numeric}.
+Range expansion.
+Refer to \code{ggplot2::expansion} for details.}
 }
 \value{
 \code{ggproto}.
@@ -26,7 +23,7 @@ expand the scale by 5\% on each side for continuous variables, and by
 Remove Y axis padding
 }
 \note{
-Updated 2019-07-29.
+Updated 2021-06-29.
 }
 \examples{
 acid_scale_y_continuous_nopad()
