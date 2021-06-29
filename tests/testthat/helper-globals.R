@@ -15,18 +15,18 @@ data(
 )
 
 ## nolint start
-`assay<-` <- SummarizedExperiment::`assay<-`
-`colData<-` <- SummarizedExperiment::`colData<-`
-`rowData<-` <- SummarizedExperiment::`rowData<-`
+`assay<-` <- basejump::`assay<-`
+`colData<-` <- basejump::`colData<-`
+`rowData<-` <- basejump::`rowData<-`
 allAreHexColors <- goalie::allAreHexColors
-assay <- SummarizedExperiment::assay
-calculateMetrics <- AcidExperiment::calculateMetrics
-import <- pipette::import
+assay <- basejump::assay
+calculateMetrics <- basejump::calculateMetrics
+import <- basejump::import
 isInstalled <- goalie::isInstalled
 mpg <- ggplot2::mpg
-nonzeroRowsAndCols <- AcidExperiment::nonzeroRowsAndCols
-rowData <- SummarizedExperiment::rowData
-sampleNames <- AcidExperiment::sampleNames
+nonzeroRowsAndCols <- basejump::nonzeroRowsAndCols
+rowData <- basejump::rowData
+sampleNames <- basejump::sampleNames
 ## nolint end
 
 rse <- RangedSummarizedExperiment
