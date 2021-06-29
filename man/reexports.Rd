@@ -5,9 +5,11 @@
 \alias{reexports}
 \alias{!!!}
 \alias{!!}
+\alias{aes}
 \alias{calculateMetrics}
 \alias{draw_plot}
 \alias{ggdraw}
+\alias{ggplot}
 \alias{log_breaks}
 \alias{plot_grid}
 \alias{percent}
@@ -26,6 +28,8 @@ below to see their documentation.
   \item{basejump}{\code{\link[basejump:reexports]{calculateMetrics}}}
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
+
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
 
   \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 

@@ -27,6 +27,10 @@ For more information:\preformatted{help(topic = "Extract", package = "base")
 For more information:\preformatted{help(topic = "Extract", package = "base")
 }}
 
+\item{method}{\code{character(1)}.
+Correlation method.
+Refer to \code{stats::cor()} for details.}
+
 \item{...}{Passthrough arguments to
 \code{\link[=plotHeatmap]{plotHeatmap()}}.}
 }

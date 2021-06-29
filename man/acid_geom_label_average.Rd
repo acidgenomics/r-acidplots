@@ -7,6 +7,9 @@
 acid_geom_label_average(data, col, fun = c("mean", "median"), digits = 0L, ...)
 }
 \arguments{
+\item{data}{\code{data.frame}.
+Data frame, containing plot data.}
+
 \item{col}{\code{character(1)}.
 Column name.}
 
