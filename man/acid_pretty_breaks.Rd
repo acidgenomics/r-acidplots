@@ -24,9 +24,9 @@ acid_pretty_breaks()
 }
 \seealso{
 \itemize{
-\item \code{\link[grDevices:axisTicks]{grDevices::axisTicks()}}.
-\item \code{\link[scales:breaks_log]{scales::log_breaks()}}.
-\item \code{\link[scales:trans_breaks]{scales::trans_breaks()}}.
+\item \code{grDevices::axisTicks()}.
+\item \code{scales::log_breaks()}.
+\item \code{scales::trans_breaks()}.
 \item Adapted from a Stack Overflow post:
 https://stackoverflow.com/questions/14255533
 }

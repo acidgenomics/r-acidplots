@@ -15,7 +15,8 @@
 #' @param choices `list`.
 #'   Default plot labels, defined in `labels` [`formals()`][base::formals].
 #'
-#' @seealso [ggplot2::labs()].
+#' @seealso
+#' - `ggplot2::labs()`.
 #'
 #' @return `list`.
 #'

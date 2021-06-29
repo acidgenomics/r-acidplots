@@ -6,7 +6,7 @@
 #'
 #' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
 #'
-#' Themes are based off of [ggplot2::theme_linedraw()], but with modifications
+#' Themes are based off of `ggplot2::theme_linedraw()`, but with modifications
 #' and extra user-definable parameters.
 #'
 #' @name themes

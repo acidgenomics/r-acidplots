@@ -13,7 +13,7 @@ barcodeRanksPerSample(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{...}{Passthrough arguments to \code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.}
+\item{...}{Passthrough arguments to \code{DropletUtils::barcodeRanks()}.}
 }
 \value{
 \code{DataFrameList}.
@@ -37,5 +37,5 @@ if (requireNamespace("DropletUtils", quietly = TRUE)) {
 }
 }
 \seealso{
-\code{\link[DropletUtils:barcodeRanks]{DropletUtils::barcodeRanks()}}.
+
 }
