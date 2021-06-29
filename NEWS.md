@@ -1,3 +1,12 @@
+## AcidPlots 0.3.7 (2021-06-29)
+
+### Minor changes
+
+- Documentation improvements. In particular, split out documentation for our
+  customized ggplot2 layer functions, which were previously documented
+  (albeit in a somewhat confusing manner) in `geoms.Rd` file.
+- Updated basejump and plotting dependency packages.
+
 ## AcidPlots 0.3.6 (2021-05-17)
 
 ### Major changes
