@@ -9,7 +9,7 @@
 #'
 #' @section acid_geom_label:
 #'
-#' Modified version of [ggplot2::geom_label()].
+#' Modified version of `ggplot2::geom_label()`.
 #'
 #' @section acid_geom_label_average:
 #'

@@ -9,9 +9,9 @@
 #' @return `function`.
 #'
 #' @seealso
-#' - [grDevices::axisTicks()].
-#' - [scales::log_breaks()].
-#' - [scales::trans_breaks()].
+#' - `grDevices::axisTicks()`.
+#' - `scales::log_breaks()`.
+#' - `scales::trans_breaks()`.
 #' - Adapted from a Stack Overflow post:
 #'   https://stackoverflow.com/questions/14255533
 #'

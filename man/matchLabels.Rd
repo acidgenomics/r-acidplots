@@ -39,5 +39,7 @@ matchLabels(
 )
 }
 \seealso{
-\code{\link[ggplot2:labs]{ggplot2::labs()}}.
+\itemize{
+\item \code{ggplot2::labs()}.
+}
 }

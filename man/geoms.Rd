@@ -80,7 +80,7 @@ Horizontal or vertical cutoff line.
 \section{acid_geom_label}{
 
 
-Modified version of \code{\link[ggplot2:geom_text]{ggplot2::geom_label()}}.
+Modified version of \code{ggplot2::geom_label()}.
 }
 
 \section{acid_geom_label_average}{
