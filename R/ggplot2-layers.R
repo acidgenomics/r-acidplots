@@ -1,100 +1,25 @@
-#' ggplot2 geometric objects
+#' Reference line
 #'
-#' Convenience functions with modified defaults for
-#' [ggplot2](http://ggplot2.org).
+#' Add a horizontal (using `yintercept`) or vertical (using `xintercept`)
+#' reference line.
 #'
-#' @section acid_geom_abline:
-#'
-#' Horizontal or vertical cutoff line.
-#'
-#' @section acid_geom_label:
-#'
-#' Modified version of `ggplot2::geom_label()`.
-#'
-#' @section acid_geom_label_average:
-#'
-#' Add average labels to a plot. For example, `col` can be `nGene`. Median or
-#' mean values are always calculated per sample (`sampleName`).
-#'
-#' @section acid_geom_label_repel:
-#'
-#' Repulsive textual annotations. Modified basejump version of
-#' `ggrepel::geom_label_repel()`. If advanced customization of the text labels
-#' is required, simply use the ggrepel version instead.
-#'
-#' @name geoms
+#' @export
 #' @note Updated 2021-06-29.
 #'
-#' @param MARGIN `integer(1-2)`.
-#'   Dimension where the function will be applied.
-#'   For a two-dimensional matrix:
-#'     `1` indicates rows;
-#'     `2` indicates columns;
-#'     `c(1, 2)` indicates rows and columns.
-#' @param col `character(1)`.
-#'   Column name.
-#' @param color `character(1)`.
-#'   Text color (e.g. orange).
-#' @param data `data.frame`.
-#'   Data.
-#' @param digits `integer(1)`.
-#'   Number of significant digits to use.
-#'   Defaults to rounded.
-#' @param fun `character(1)`.
-#'   Function name to use for average calculation.
-#'   Currently supports mean or median.
-#' @param mapping
-#'   Set of aesthetic mappings created by `ggplot2::aes()`.
-#' @param size `integer(1)`.
-#'   Font size.
-#' @param stat `character(1)`.
-#'   Statistical transformation to use on the data for this layer.
 #' @param xintercept,yintercept `numeric(1)`.
 #'   Value denoting x- or y-axis cutoff.
-#' @param ...
-#'   Additional arguments.
+#'   Use either `xintercept` or `yintercept`, but not both.
 #'
-#' @seealso
-#' - `ggplot2::geom_label()`.
-#' - `ggrepel::geom_label_repel()`.
-#'
-#' @return `ggproto`.
+#' @return `Layer`/`ggproto`.
 #'
 #' @examples
-#' ## acid_geom_abline ====
-#' ## x-axis line
+#' ## x-axis line.
 #' geom <- acid_geom_abline(xintercept = 1L)
-#' geom
+#' print(geom)
 #'
-#' ## y-axis line
+#' ## y-axis line.
 #' geom <- acid_geom_abline(yintercept = 1L)
-#' geom
-#'
-#' ## acid_geom_label ====
-#' geom <- acid_geom_label()
-#' geom
-#'
-#' ## acid_geom_label_average ====
-#' data = data.frame(
-#'     sampleName = rep(c("sample1", "sample2"), times = 4L),
-#'     counts = seq_len(8L)
-#' )
-#' geom <- acid_geom_label_average(
-#'     data = data,
-#'     col = "counts",
-#'     fun = "mean"
-#' )
-#' geom
-#'
-#' ## acid_geom_label_repel ====
-#' geom <- acid_geom_label_repel()
-#' geom
-NULL
-
-
-
-#' @rdname geoms
-#' @export
+#' print(geom)
 acid_geom_abline <-  # nolint
     function(
         xintercept = NULL,
@@ -130,8 +55,30 @@ acid_geom_abline <-  # nolint
 
 
 
-#' @rdname geoms
+#' Bar chart
+#'
+#' Modified version of `ggplot2::geom_bar()`.
+#'
 #' @export
+#' @note Updated 2021-06-29.
+#'
+#' @param ...
+#'   Additional arguments, passed to `ggplot2::geom_bar()`.
+#' @param color `character(1)`.
+#'   Line color.
+#'   Defaults to disabled, using `NA`.
+#' @param stat `character(1)`.
+#'   Statistical transformation to use on the data for this layer.
+#'
+#' @return `Layer`/`ggproto`.
+#'
+#' @examples
+#' data <- data.frame(
+#'     x = c("a", "b", "c", "d"),
+#'     y = c(5L, 10L, 15L, 20L)
+#' )
+#' p <- ggplot(data = data, mapping = aes(x = !!sym("x"), y = !!sym("y")))
+#' p + acid_geom_bar(fill = "black")
 acid_geom_bar <-  # nolint
     function(..., color = NA, stat = "identity") {
         geom_bar(..., color = NA, stat = "identity")
@@ -139,8 +86,25 @@ acid_geom_bar <-  # nolint
 
 
 
-#' @rdname geoms
+#' Text label
+#'
+#' Modified version of `ggplot2::geom_label()`.
+#'
 #' @export
+#' @note Updated 2021-06-29.
+#'
+#' @param data `data.frame`.
+#'   Data frame, containing plot data.
+#' @param mapping
+#'   Set of aesthetic mappings created by `ggplot2::aes()`.
+#' @param ...
+#'   Additional arguments, passed to `ggplot2::geom_label()`.
+#'
+#' @return `Layer`/`ggproto`.
+#'
+#' @examples
+#' geom <- acid_geom_label()
+#' print(geom)
 acid_geom_label <-  # nolint
     function(
         data = NULL,
@@ -163,8 +127,41 @@ acid_geom_label <-  # nolint
 
 
 
-#' @rdname geoms
+#' Average labels
+#'
+#' Add average labels to a plot.
+#'
+#' @details
+#' For example, `col` can be `nGene`. Median or mean values are always
+#' calculated per sample (`sampleName`).
+#'
 #' @export
+#' @note Updated 2021-06-29.
+#'
+#' @param col `character(1)`.
+#'   Column name.
+#' @param fun `character(1)`.
+#'   Function name to use for average calculation.
+#'   Currently supports mean or median.
+#' @param digits `integer(1)`.
+#'   Number of significant digits to use.
+#'   Defaults to rounded.
+#' @param ...
+#'   Additional arguments, passed to [acid_geom_label()].
+#'
+#' @return `Layer`/`ggproto`.
+#'
+#' @examples
+#' data = data.frame(
+#'     "sampleName" = rep(c("sample1", "sample2"), times = 4L),
+#'     "counts" = seq_len(8L)
+#' )
+#' geom <- acid_geom_label_average(
+#'     data = data,
+#'     col = "counts",
+#'     fun = "mean"
+#' )
+#' print(geom)
 acid_geom_label_average <-  # nolint
     function(
         data,
@@ -209,8 +206,33 @@ acid_geom_label_average <-  # nolint
 
 
 
-#' @rdname geoms
+#' Repulsive textual annotations
+#'
+#' Modified version of `ggrepel::geom_label_repel()`.
+#'
+#' @details
+#' If advanced customization of the text labels is required, simply use the
+#' ggrepel version instead.
+#'
 #' @export
+#' @note Updated 2021-06-29.
+#'
+#' @param data `data.frame`.
+#'   Data frame, containing plot data.
+#' @param mapping
+#'   Set of aesthetic mappings created by `ggplot2::aes()`.
+#' @param color `character(1)` or `NULL`.
+#'   Text color.
+#' @param size `integer(1)`.
+#'   Font size.
+#' @param ...
+#'   Additional arguments, passed to `ggrepel::geom_label_repel()`.
+#'
+#' @return `Layer`/`ggproto`.
+#'
+#' @examples
+#' geom <- acid_geom_label_repel()
+#' print(geom)
 acid_geom_label_repel <-  # nolint
     function(
         data = NULL,
