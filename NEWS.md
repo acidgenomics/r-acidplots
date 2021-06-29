@@ -6,6 +6,8 @@
   customized ggplot2 layer functions, which were previously documented
   (albeit in a somewhat confusing manner) in `geoms.Rd` file.
 - Updated basejump and plotting dependency packages.
+- Updated internal `guides()` handling to use character string instead of
+  logical (e.g. `FALSE`), which was changed in ggplot 3.3.5+.
 
 ## AcidPlots 0.3.6 (2021-05-17)
 
