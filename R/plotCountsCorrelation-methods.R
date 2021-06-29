@@ -2,7 +2,6 @@
 #' @inherit AcidGenerics::plotCountsCorrelation
 #' @note Updated 2019-09-16.
 #'
-#' @inheritParams base::Extract
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
