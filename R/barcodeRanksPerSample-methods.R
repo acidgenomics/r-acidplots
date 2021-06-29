@@ -4,10 +4,10 @@
 #' @note Updated 2019-11-19.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @inheritParams DropletUtils::barcodeRanks
-#' @param ... Passthrough arguments to [DropletUtils::barcodeRanks()].
+#' @param ... Passthrough arguments to `DropletUtils::barcodeRanks()`.
 #'
-#' @seealso [DropletUtils::barcodeRanks()].
+#' @seealso
+# - `DropletUtils::barcodeRanks()`.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "AcidTest")
@@ -23,7 +23,7 @@ NULL
 
 
 ## nolint start
-## Muffle this warning:
+## Ensure we muffle this warning:
 ## > Warning in smooth.spline(x[new.keep], y[new.keep], df = df, ...) :
 ## > not using invalid df; must have 1 < df <= n := #{unique x} = 13
 ## > Calls: barcodeRanksPerSample ... lapply -> FUN -> do.call -> <Anonymous>
