@@ -18,11 +18,12 @@ plotSums(object, ...)
 \arguments{
 \item{object}{Object.}
 
-\item{MARGIN}{a vector giving the subscripts which the function will
-    be applied over.  E.g., for a matrix \code{1} indicates rows,
-    \code{2} indicates columns, \code{c(1, 2)} indicates rows and
-    columns. Where \code{X} has named dimnames, it can be a character
-    vector selecting dimension names.}
+\item{MARGIN}{\code{integer(1-2)}.
+Dimension where the function will be applied.
+For a two-dimensional matrix:
+\code{1} indicates rows;
+\code{2} indicates columns;
+\code{c(1, 2)} indicates rows and columns.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
