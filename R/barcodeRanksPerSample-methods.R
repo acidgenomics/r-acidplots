@@ -7,7 +7,7 @@
 #' @param ... Passthrough arguments to `DropletUtils::barcodeRanks()`.
 #'
 #' @seealso
-# - `DropletUtils::barcodeRanks()`.
+#' - `DropletUtils::barcodeRanks()`.
 #'
 #' @examples
 #' data(SingleCellExperiment, package = "AcidTest")
