@@ -27,7 +27,7 @@ acid_geom_label_repel(
 }
 \arguments{
 \item{xintercept, yintercept}{\code{numeric(1)}.
-Value denoting x- or y-axis cutoff. Specify one but not both.}
+Value denoting x- or y-axis cutoff.}
 
 \item{...}{Additional arguments.}
 
