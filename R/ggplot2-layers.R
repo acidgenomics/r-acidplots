@@ -25,6 +25,12 @@
 #' @name geoms
 #' @note Updated 2021-06-29.
 #'
+#' @param MARGIN `integer(1-2)`.
+#'   Dimension where the function will be applied.
+#'   For a two-dimensional matrix:
+#'     `1` indicates rows;
+#'     `2` indicates columns;
+#'     `c(1, 2)` indicates rows and columns.
 #' @param col `character(1)`.
 #'   Column name.
 #' @param color `character(1)`.
