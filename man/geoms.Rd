@@ -55,6 +55,13 @@ Defaults to rounded.}
 
 \item{size}{\code{integer(1)}.
 Font size.}
+
+\item{MARGIN}{\code{integer(1-2)}.
+Dimension where the function will be applied.
+For a two-dimensional matrix:
+\code{1} indicates rows;
+\code{2} indicates columns;
+\code{c(1, 2)} indicates rows and columns.}
 }
 \value{
 \code{ggproto}.
