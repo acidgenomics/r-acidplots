@@ -50,7 +50,7 @@
 #' @param stat `character(1)`.
 #'   Statistical transformation to use on the data for this layer.
 #' @param xintercept,yintercept `numeric(1)`.
-#'   Value denoting x- or y-axis cutoff. Specify one but not both.
+#'   Value denoting x- or y-axis cutoff.
 #' @param ...
 #'   Additional arguments.
 #'
