@@ -81,7 +81,7 @@ acid_geom_abline <-  # nolint
 #' p + acid_geom_bar(fill = "black")
 acid_geom_bar <-  # nolint
     function(..., color = NA, stat = "identity") {
-        geom_bar(..., color = NA, stat = "identity")
+        geom_bar(..., color = color, stat = stat)
     }
 
 
