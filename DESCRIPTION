@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.3.7
-Date: 2021-06-29
+Version: 0.3.8
+Date: 2021-07-27
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -27,7 +27,7 @@ Imports:
     basejump (>= 0.14.19),
     cowplot (>= 1.1.1),
     ggplot2 (>= 3.3.5),
-    goalie (>= 0.5.1),
+    goalie (>= 0.5.2),
     methods,
     rlang (>= 0.4.11),
     scales (>= 1.1.1)
@@ -40,7 +40,7 @@ Suggests:
     ggrepel (>= 0.9.1),
     ggridges (>= 0.5.3),
     pheatmap (>= 1.0.12),
-    matrixStats (>= 0.59.0),
+    matrixStats (>= 0.60.0),
     testthat,
     viridis (>= 0.6.1)
 biocViews: Visualization
