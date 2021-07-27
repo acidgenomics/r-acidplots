@@ -217,7 +217,7 @@ acid_geom_label_average <-  # nolint
 #' ggrepel version instead.
 #'
 #' @export
-#' @note Updated 2021-06-29.
+#' @note Updated 2021-07-27.
 #'
 #' @param data `data.frame`.
 #'   Data frame, containing plot data.
@@ -252,6 +252,7 @@ acid_geom_label_repel <-  # nolint
             fill = "white",
             fontface = "bold",
             force = 1L,
+            max.overlaps = Inf,
             point.padding = unit(0.75, "lines"),
             segment.size = 0.5,
             show.legend = FALSE,
