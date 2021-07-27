@@ -1,3 +1,12 @@
+## AcidPlots 0.3.8 (2021-07-27)
+
+### Minor changes
+
+- `acid_geom_label_repel`: Now setting `max.overlaps = Inf` internally, to
+  ensure that all points are always labeled. Refer to ggrepel examples
+  documentation for details on `max.overlaps` argument, and the override
+  option `ggrepel.max.overlaps`, which works globally in an R session.
+
 ## AcidPlots 0.3.7 (2021-06-29)
 
 ### Minor changes
