@@ -48,10 +48,15 @@ NULL
         )
         ## NOTE We're allowing mapping of genes without a perfect identifier
         ## version match here (e.g. ENSG00000012817 to ENSG00000012817.16).
+        genes <- sort(decode(mcols(gr)[["geneId"]]))
         genes <- mapGenesToRownames(
             object = object,
-            genes = sort(decode(mcols(gr)[["geneId"]])),
+            genes = genes,
             strict = FALSE
+        )
+        assert(
+            isCharacter(genes),
+            msg = "Failed to detect gender markers in object."
         )
         plotCounts(
             object = object,
