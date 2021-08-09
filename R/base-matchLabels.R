@@ -8,10 +8,12 @@
 #' @export
 #' @note Attempting to follow a similar naming convention to
 #'   [`match.arg()`][base::match.arg] here, using `choices` argument.
-#' @note Updated 2021-02-09.
+#' @note Updated 2021-08-09.
 #'
 #' @param labels `list`.
 #'   User-defined plot labels.
+#'   Per element, supports `character(1)`., `logical(1)` (for automatic
+#'   labels), or `NULL`.
 #' @param choices `list`.
 #'   Default plot labels, defined in `labels` [`formals()`][base::formals].
 #'
@@ -32,7 +34,13 @@ matchLabels <- function(labels, choices = NULL) {
     if (is.null(labels)) return(list())
     assert(
         is.list(labels),
-        all(bapply(X = labels, FUN = isString, nullOK = TRUE))
+        all(bapply(
+            X = labels,
+            FUN = function(x) {
+                isString(x) || isFlag(x) || is.null(x)
+            }
+        )),
+        msg = "Invalid 'labels' input."
     )
     if (!is.null(choices)) {
         assert(
