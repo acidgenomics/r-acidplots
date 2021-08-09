@@ -37,7 +37,7 @@ If advanced customization of the text labels is required, simply use the
 ggrepel version instead.
 }
 \note{
-Updated 2021-06-29.
+Updated 2021-07-27.
 }
 \examples{
 geom <- acid_geom_label_repel()
