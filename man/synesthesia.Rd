@@ -78,7 +78,7 @@ Missing values will be replaced with this value.}
 
 \item{guide}{\code{character(1)} or \code{function}.
 A function used to create a guide or its name.
-See \code{\link[ggplot2:guides]{guides()}} for details.}
+See \code{ggplot2::guides} for details.}
 }
 \value{
 \code{character} or \code{ggproto}.
@@ -90,7 +90,7 @@ Four color gradient defined by purple, blue, green, orange.
 A little bit of an acid trip, especially when used for heatmaps.
 }
 \note{
-Updated 2019-09-13.
+Updated 2021-06-29.
 }
 \examples{
 library(ggplot2)

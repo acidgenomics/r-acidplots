@@ -8,7 +8,9 @@ matchLabels(labels, choices = NULL)
 }
 \arguments{
 \item{labels}{\code{list}.
-User-defined plot labels.}
+User-defined plot labels.
+Per element, supports \code{character(1)}., \code{logical(1)} (for automatic
+labels), or \code{NULL}.}
 
 \item{choices}{\code{list}.
 Default plot labels, defined in \code{labels} \code{\link[base:formals]{formals()}}.}
@@ -27,7 +29,7 @@ Returns an empty list on \code{NULL} input.
 Attempting to follow a similar naming convention to
 \code{\link[base:match.arg]{match.arg()}} here, using \code{choices} argument.
 
-Updated 2021-02-09.
+Updated 2021-08-09.
 }
 \examples{
 matchLabels(
