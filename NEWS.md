@@ -1,3 +1,10 @@
+## AcidPlots 0.3.9 (2021-08-09)
+
+### Minor changes
+
+- `matchLabels`: Now allowing input of `logical(1)`, so we can better support
+  dynamic automatic plot labels.
+
 ## AcidPlots 0.3.8 (2021-07-27)
 
 ### Minor changes
