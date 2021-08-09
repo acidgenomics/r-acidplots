@@ -89,7 +89,7 @@ Plot.
 Correlation X-Y scatterplot
 }
 \note{
-Updated 2021-05-17.
+Updated 2021-08-09.
 }
 \section{Correlation coefficient calculations}{
 

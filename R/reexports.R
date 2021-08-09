@@ -10,6 +10,11 @@ rlang::`!!`
 #' @export
 ggplot2::aes
 
+## This is needed for `plotCorrelation` to work with ggpmisc 0.4.2.
+#' @importFrom ggplot2 after_stat
+#' @export
+ggplot2::after_stat
+
 #' @importFrom basejump calculateMetrics
 #' @export
 basejump::calculateMetrics

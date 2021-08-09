@@ -1,6 +1,6 @@
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2021-05-17.
+#' @note Updated 2021-08-09.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -266,7 +266,7 @@ setMethod(
 
 
 
-## Updated 2021-02-09.
+## Updated 2021-08-09.
 `plotCorrelation,SE` <-  # nolint
     function(
         object,
@@ -275,7 +275,8 @@ setMethod(
     ) {
         validObject(object)
         assert(isString(assay) || isInt(assay))
-        plotCorrelation(object = assay(x = object, i = assay), ...)
+        assay <- assay(x = object, i = assay)
+        plotCorrelation(object = assay, ...)
     }
 
 

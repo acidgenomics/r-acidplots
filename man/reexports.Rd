@@ -6,6 +6,7 @@
 \alias{!!!}
 \alias{!!}
 \alias{aes}
+\alias{after_stat}
 \alias{calculateMetrics}
 \alias{draw_plot}
 \alias{ggdraw}
@@ -29,7 +30,7 @@ below to see their documentation.
 
   \item{cowplot}{\code{\link[cowplot]{draw_plot}}, \code{\link[cowplot]{ggdraw}}, \code{\link[cowplot]{plot_grid}}}
 
-  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2]{ggplot}}}
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}}
 
   \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
