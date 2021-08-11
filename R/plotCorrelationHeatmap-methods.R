@@ -1,3 +1,7 @@
+## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
+
+
+
 #' @name plotCorrelationHeatmap
 #' @inherit AcidGenerics::plotCorrelationHeatmap
 #' @note Updated 2021-02-08.
