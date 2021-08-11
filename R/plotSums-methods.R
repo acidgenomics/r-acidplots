@@ -1,3 +1,7 @@
+## FIXME Need to be able to batch these by interesting group.
+
+
+
 #' @name plotSums
 #' @inherit AcidGenerics::plotSums
 #' @note Updated 2019-09-15.
