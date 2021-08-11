@@ -19,16 +19,6 @@ ggplot2::after_stat
 #' @export
 basejump::calculateMetrics
 
-## FIXME Migrate away from this?
-#' @importFrom cowplot draw_plot
-#' @export
-cowplot::draw_plot
-
-## FIXME Migrate away from this?
-#' @importFrom cowplot ggdraw
-#' @export
-cowplot::ggdraw
-
 #' @importFrom ggplot2 ggplot
 #' @export
 ggplot2::ggplot
@@ -37,10 +27,13 @@ ggplot2::ggplot
 #' @export
 scales::log_breaks
 
-## FIXME Migrate away from this?
-#' @importFrom cowplot plot_grid
+#' @importFrom patchwork plot_annotation
 #' @export
-cowplot::plot_grid
+patchwork::plot_annotation
+
+#' @importFrom patchwork plot_layout
+#' @export
+patchwork::plot_layout
 
 #' @importFrom scales percent
 #' @export
