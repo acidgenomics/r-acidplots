@@ -18,6 +18,7 @@
 \alias{quo_text}
 \alias{sym}
 \alias{syms}
+\alias{wrap_plots}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -29,7 +30,7 @@ below to see their documentation.
 
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}}
 
-  \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}}
+  \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
 
   \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 

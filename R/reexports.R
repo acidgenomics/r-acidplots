@@ -58,3 +58,7 @@ rlang::sym
 #' @importFrom rlang syms
 #' @export
 rlang::syms
+
+#' @importFrom patchwork wrap_plots
+#' @export
+patchwork::wrap_plots

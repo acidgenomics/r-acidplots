@@ -1,10 +1,8 @@
-## NOTE Doesn't currently support title assignment.
-
 ## nolint start
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2021-02-09.
+#' @note Updated 2021-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param sampleCol `character(1)`.
@@ -64,7 +62,11 @@ NULL
         valueCol,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
-        fill = purpleOrange(1L)
+        fill = purpleOrange(1L),
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
     ) {
         validObject(object)
         object <- as.data.frame(object)
@@ -77,6 +79,10 @@ NULL
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         data <- data.frame(
             "x" = object[[sampleCol]],
             "y" = object[[valueCol]]
@@ -167,8 +173,14 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = FALSE
         )
-        ## FIXME Migrate away from this.
-        plot_grid(plotlist = plotlist)
+        ## Using patchwork package to dynamically arrange the plots.
+        p <- wrap_plots(plotlist)
+        ## Support title and/or subtitle labeling.
+        p <- p + plot_annotation(
+            "title" = labels[["title"]],
+            "subtitle" = labels[["subtitle"]]
+        )
+        p
     }
 
 
