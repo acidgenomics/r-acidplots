@@ -40,9 +40,6 @@ AcidPlotsTestsURL <-  # nolint
 
 ## Color palettes ==============================================================
 
-## FIXME Add nord palette here.
-## FIXME Add gruvbox palette here.
-
 ## nolint start
 
 #' Color palettes
@@ -87,7 +84,15 @@ NULL
 
 
 
-## Updated 2021-08-11.
+#' Internal color palette hex values
+#'
+#' @note Updated 2021-08-11.
+#' @noRd
+#'
+#' @details
+#' Consider adding:
+#' - gruvbox
+#' - nord
 .palettes <- list(
     "dracula" = c(
         "background" = .rgb(40L, 42L, 54L),
