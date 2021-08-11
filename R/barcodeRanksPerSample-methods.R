@@ -32,10 +32,10 @@ NULL
 
 
 
-## Updated 2019-09-17.
+## Updated 2021-08-11.
 `barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
     function(object, ...) {
-        assert(requireNamespace("DropletUtils", quietly = TRUE))
+        requireNamespaces("DropletUtils")
         counts <- counts(object)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
@@ -55,7 +55,9 @@ NULL
             X = countsPerSample,
             FUN = function(counts) {
                 x <- withCallingHandlers(
-                    expr = DropletUtils::barcodeRanks(m = counts, ...),
+                    expr = {
+                        DropletUtils::barcodeRanks(m = counts, ...)
+                    },
                     warning = function(w) {
                         if (isTRUE(grepl(
                             pattern = "invalid df",
