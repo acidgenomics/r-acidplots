@@ -32,7 +32,7 @@ Plot barcode ranks
 \note{
 Requires DropletUtils package to be installed.
 
-Updated 2019-09-15.
+Updated 2021-08-11.
 }
 \examples{
 data(SingleCellExperiment, package = "AcidTest")
