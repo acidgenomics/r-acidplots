@@ -24,38 +24,76 @@ gradient <- function(colors, n) {
 
 
 
-## FIXME Can we soften this, using iOS palette?
-#' @rdname gradient
-#' @export
-purpleOrange <- function(n) {
-    palette <- lightPalette
+#' Internal gradient palette handler
+#'
+#' @note Updated 2021-08-11.
+#' @noRd
+.gradientPalette <- function(n, palette, colors) {
+    palette <- get(
+        x = match.arg(palette),
+        envir = asNamespace(.pkgName),
+        inherits = FALSE
+    )
+    assert(
+        isCharacter(palette),
+        allAreHexColors(palette)
+    )
+    palette[["black"]] <- .rgb(0L, 0L, 0L)
+    palette[["white"]] <- .rgb(255L, 255L, 255L)
+    assert(
+        identical(names(colors), c("low", "mid", "high")),
+        isSubset(colors, names(palette))
+    )
     gradient(
         colors = c(
-            low = palette[["purple"]],
-            mid = palette[["gray"]],
-            high = palette[["orange"]]
+            "low" = palette[[colors[["low"]]]],
+            "mid" = palette[[colors[["mid"]]]],
+            "high" = palette[[colors[["high"]]]]
         ),
         n = n
     )
 }
 
-formals(purpleOrange)[["n"]] <- .formalsList[["n"]]
+formals(.gradientPalette)[c("n", "palette")] <-
+    list(
+        "n" = .formalsList[["n"]],
+        "palette" = .formalsList[["palette"]]
+    )
 
 
 
-## FIXME Can we soften this, using iOS palette?
 #' @rdname gradient
 #' @export
-blueYellow <- function(n) {
-    palette <- lightPalette
-    gradient(
+blueYellow <- function(n, palette) {
+    .gradientPalette(
+        n = n,
+        palette = match.arg(palette),
         colors = c(
-            low = palette[["blue"]],
-            mid = "black",
-            high = palette[["yellow"]]
-        ),
-        n = n
+            "low" = "blue",
+            "mid" = "black",
+            "high" = "yellow"
+        )
     )
 }
 
-formals(blueYellow)[["n"]] <- .formalsList[["n"]]
+formals(blueYellow)[c("n", "palette")] <-
+    formals(.gradientPalette)[c("n", "palette")]
+
+
+
+#' @rdname gradient
+#' @export
+purpleOrange <- function(n, palette) {
+    .gradientPalette(
+        n = n,
+        palette = match.arg(palette),
+        colors = c(
+            "low" = "purple",
+            "mid" = "gray",
+            "high" = "orange"
+        )
+    )
+}
+
+formals(purpleOrange)[c("n", "palette")] <-
+    formals(.gradientPalette)[c("n", "palette")]

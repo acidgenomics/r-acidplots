@@ -2,15 +2,23 @@
 % Please edit documentation in R/base-gradients.R
 \name{gradient}
 \alias{gradient}
-\alias{purpleOrange}
 \alias{blueYellow}
+\alias{purpleOrange}
 \title{Hex color gradient generator}
 \usage{
 gradient(colors, n)
 
-purpleOrange(n = 256L)
+blueYellow(
+  n = 256L,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 
-blueYellow(n = 256L)
+purpleOrange(
+  n = 256L,
+  palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+)
 }
 \arguments{
 \item{colors}{\code{character}.
