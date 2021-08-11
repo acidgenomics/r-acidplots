@@ -44,6 +44,9 @@ AcidPlotsTestsURL <-  # nolint
 
 ## Color palettes ==============================================================
 
+## FIXME Add nord palette here.
+## FIXME Add gruvbox palette here.
+
 ## nolint start
 
 #' Color palettes
@@ -51,7 +54,7 @@ AcidPlotsTestsURL <-  # nolint
 #' Color palette hexadecimal character vectors.
 #'
 #' @name palettes
-#' @note Updated 2019-09-13.
+#' @note Updated 2021-08-11.
 #'
 #' @return `character`.
 #'
@@ -67,33 +70,33 @@ NULL
 ## nolint end
 
 iOSLightPalette <- c(
-    background = .rgb(255L, 255L, 255L),
-    foreground = .rgb(0L, 0L, 0L),
-    border = .rgb(142L, 142L, 147L),
-    blue = .rgb(0L, 122L, 255L),
-    gray = .rgb(142L, 142L, 147L),
-    green = .rgb(52L, 199L, 89L),
-    orange = .rgb(255L, 149L, 0L),
-    pink = .rgb(255L, 45L, 85L),
-    purple = .rgb(175L, 82L, 222L),
-    red = .rgb(255L, 59L, 48L),
-    teal = .rgb(90L, 200L, 250L),
-    yellow = .rgb(255L, 204L, 0L)
+    "background" = .rgb(255L, 255L, 255L),
+    "foreground" = .rgb(0L, 0L, 0L),
+    "border" = .rgb(142L, 142L, 147L),
+    "blue" = .rgb(0L, 122L, 255L),
+    "gray" = .rgb(142L, 142L, 147L),
+    "green" = .rgb(52L, 199L, 89L),
+    "orange" = .rgb(255L, 149L, 0L),
+    "pink" = .rgb(255L, 45L, 85L),
+    "purple" = .rgb(175L, 82L, 222L),
+    "red" = .rgb(255L, 59L, 48L),
+    "teal" = .rgb(90L, 200L, 250L),
+    "yellow" = .rgb(255L, 204L, 0L)
 )
 
 iOSDarkPalette <- c(
-    background = .rgb(23L, 23L, 23L),
-    foreground = .rgb(153L, 153L, 153L),
-    border = .rgb(152L, 152L, 157L),
-    blue = .rgb(10L, 132L, 255L),
-    gray = .rgb(152L, 152L, 157L),
-    green = .rgb(48L, 209L, 88L),
-    orange = .rgb(255L, 159L, 10L),
-    pink = .rgb(255L, 55L, 95L),
-    purple = .rgb(191L, 90L, 242L),
-    red = .rgb(255L, 69L, 58L),
-    teal = .rgb(100L, 210L, 255L),
-    yellow = .rgb(255L, 214L, 10L)
+    "background" = .rgb(23L, 23L, 23L),
+    "foreground" = .rgb(153L, 153L, 153L),
+    "border" = .rgb(152L, 152L, 157L),
+    "blue" = .rgb(10L, 132L, 255L),
+    "gray" = .rgb(152L, 152L, 157L),
+    "green" = .rgb(48L, 209L, 88L),
+    "orange" = .rgb(255L, 159L, 10L),
+    "pink" = .rgb(255L, 55L, 95L),
+    "purple" = .rgb(191L, 90L, 242L),
+    "red" = .rgb(255L, 69L, 58L),
+    "teal" = .rgb(100L, 210L, 255L),
+    "yellow" = .rgb(255L, 214L, 10L)
 )
 
 macOSLightPalette <- iOSLightPalette
@@ -103,17 +106,17 @@ macOSDarkPalette <- iOSDarkPalette
 macOSDarkPalette[["green"]] <- .rgb(50L, 215L, 75L)
 
 draculaPalette <- c(
-    background = .rgb(40L, 42L, 54L),
-    foreground = .rgb(248L, 248L, 242L),
-    border = .rgb(54L, 57L, 72L),
-    blue = .rgb(0L, 122L, 255L),
-    green = .rgb(52L, 199L, 89L),
-    orange = .rgb(255L, 149L, 0L),
-    pink = .rgb(255L, 45L, 85L),
-    purple = .rgb(175L, 82L, 222L),
-    red = .rgb(255L, 59L, 48L),
-    teal = .rgb(90L, 200L, 250L),
-    yellow = .rgb(255L, 204L, 0L)
+    "background" = .rgb(40L, 42L, 54L),
+    "foreground" = .rgb(248L, 248L, 242L),
+    "border" = .rgb(54L, 57L, 72L),
+    "blue" = .rgb(0L, 122L, 255L),
+    "green" = .rgb(52L, 199L, 89L),
+    "orange" = .rgb(255L, 149L, 0L),
+    "pink" = .rgb(255L, 45L, 85L),
+    "purple" = .rgb(175L, 82L, 222L),
+    "red" = .rgb(255L, 59L, 48L),
+    "teal" = .rgb(90L, 200L, 250L),
+    "yellow" = .rgb(255L, 204L, 0L)
 )
 draculaPalette[["gray"]] <- macOSDarkPalette[["gray"]]
 

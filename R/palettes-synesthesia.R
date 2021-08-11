@@ -5,7 +5,7 @@
 #' A little bit of an acid trip, especially when used for heatmaps.
 #'
 #' @name synesthesia
-#' @note Updated 2021-06-29.
+#' @note Updated 2021-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param guide `character(1)` or `function`.
@@ -51,7 +51,9 @@
 #' - `viridisLite::viridis.map`.
 #'
 #' @examples
-#' library(ggplot2)
+#' suppressPackageStartupMessages({
+#'     library(ggplot2)
+#' })
 #' theme_set(acid_theme_light())
 #'
 #' ## Color, continuous.
@@ -77,20 +79,6 @@
 #'     col = synesthesia()
 #' )
 NULL
-
-
-
-## Previously:
-## nolint start
-## > colors = c(
-## >     "darkorchid3",
-## >     "purple1",
-## >     "dodgerblue",
-## >     "green2",
-## >     "orange1",
-## >     "darkorange2"
-## > )
-## nolint end
 
 
 

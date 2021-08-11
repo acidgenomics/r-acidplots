@@ -24,6 +24,7 @@ gradient <- function(colors, n) {
 
 
 
+## FIXME Can we soften this, using iOS palette?
 #' @rdname gradient
 #' @export
 purpleOrange <- function(n) {
@@ -42,6 +43,7 @@ formals(purpleOrange)[["n"]] <- .n
 
 
 
+## FIXME Can we soften this, using iOS palette?
 #' @rdname gradient
 #' @export
 blueYellow <- function(n) {
