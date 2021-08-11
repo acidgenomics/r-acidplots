@@ -1,3 +1,8 @@
+## FIXME Add support for patchwork:
+## > theme(plot.tag = element_text(size = 8L))
+
+
+
 ## nolint start
 
 
