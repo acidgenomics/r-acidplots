@@ -39,7 +39,7 @@ purpleOrange <- function(n) {
     )
 }
 
-formals(purpleOrange)[["n"]] <- .n
+formals(purpleOrange)[["n"]] <- .formalsList[["n"]]
 
 
 
@@ -58,4 +58,4 @@ blueYellow <- function(n) {
     )
 }
 
-formals(blueYellow)[["n"]] <- .n
+formals(blueYellow)[["n"]] <- .formalsList[["n"]]

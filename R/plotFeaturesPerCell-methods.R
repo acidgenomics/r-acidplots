@@ -50,7 +50,7 @@ NULL
 
 f <- formals(`plotFeaturesPerCell,SingleCellExperiment`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
-f[["geom"]] <- .geom
+f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Features per cell"
 f[["labels"]][["metricAxis"]] <- "features"

@@ -51,7 +51,7 @@ NULL
 
 f <- formals(`plotNovelty,SingleCellExperiment`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
-f[["geom"]] <- .geom
+f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Novelty"
 formals(`plotNovelty,SingleCellExperiment`) <- f

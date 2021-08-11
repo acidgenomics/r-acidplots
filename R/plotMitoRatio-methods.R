@@ -52,7 +52,7 @@ NULL
 
 f <- formals(`plotMitoRatio,SingleCellExperiment`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
-f[["geom"]] <- .geom
+f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Mito ratio"
 formals(`plotMitoRatio,SingleCellExperiment`) <- f
