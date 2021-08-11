@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.3.9
-Date: 2021-08-09
+Version: 0.4.0
+Date: 2021-08-11
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -25,21 +25,21 @@ Depends: R (>= 4.0)
 Imports:
     AcidGenerics (>= 0.5.18),
     basejump (>= 0.14.21),
-    cowplot (>= 1.1.1),
     ggplot2 (>= 3.3.5),
     goalie (>= 0.5.2),
     methods,
+    patchwork (>= 1.1.1),
     rlang (>= 0.4.11),
     scales (>= 1.1.1)
 Suggests:
     AcidTest (>= 0.4.3),
+    ComplexHeatmap (>= 2.6.1),
+    ComplexUpset (>= 1.3.1),
     DropletUtils (>= 1.10.3),
     RColorBrewer (>= 1.1),
-    UpSetR (>= 1.4.0),
-    ggpmisc (>= 0.4.0),
+    ggpmisc (>= 0.4.2),
     ggrepel (>= 0.9.1),
     ggridges (>= 0.5.3),
-    pheatmap (>= 1.0.12),
     matrixStats (>= 0.60.0),
     testthat,
     viridis (>= 0.6.1)
