@@ -151,7 +151,7 @@ NULL
 
 #' @rdname palettes
 #' @export
-lightPalette <- .preparePalette("light")
+draculaPalette <- .preparePalette("dracula")
 
 #' @rdname palettes
 #' @export
@@ -159,11 +159,7 @@ darkPalette <- .preparePalette("dark")
 
 #' @rdname palettes
 #' @export
-draculaPalette <- .preparePalette("dracula")
-
-#' @rdname palettes
-#' @export
-iOSLightPalette <- .preparePalette("iOSLight")
+lightPalette <- .preparePalette("light")
 
 #' @rdname palettes
 #' @export
@@ -171,8 +167,12 @@ iOSDarkPalette <- .preparePalette("iOSDark")
 
 #' @rdname palettes
 #' @export
-macOSLightPalette <- .preparePalette("macOSLight")
+iOSLightPalette <- .preparePalette("iOSLight")
 
 #' @rdname palettes
 #' @export
 macOSDarkPalette <- .preparePalette("macOSDark")
+
+#' @rdname palettes
+#' @export
+macOSLightPalette <- .preparePalette("macOSLight")
