@@ -48,7 +48,7 @@ macOSDarkPalette
 Color palette hexadecimal character vectors.
 }
 \note{
-Updated 2019-09-13.
+Updated 2021-08-11.
 }
 \examples{
 lightPalette

@@ -90,10 +90,12 @@ Four color gradient defined by purple, blue, green, orange.
 A little bit of an acid trip, especially when used for heatmaps.
 }
 \note{
-Updated 2021-06-29.
+Updated 2021-08-11.
 }
 \examples{
-library(ggplot2)
+suppressPackageStartupMessages({
+    library(ggplot2)
+})
 theme_set(acid_theme_light())
 
 ## Color, continuous.
