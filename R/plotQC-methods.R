@@ -176,8 +176,11 @@ setMethod(
         p
     }
 
-formals(`plotQC,SingleCellExperiment`)[["geom"]] <- .geom
-formals(`plotQC,SingleCellExperiment`)[["legend"]] <- formalsList[["legend"]]
+formals(`plotQC,SingleCellExperiment`)[c("geom", "legend")] <-
+    list(
+        "geom" = .formalsList[["geom"]],
+        "legend" = formalsList[["legend"]]
+    )
 
 
 

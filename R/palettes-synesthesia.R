@@ -93,7 +93,11 @@ synesthesia <- function(n, palette) {
     gradient(colors = colors, n = n)
 }
 
-formals(synesthesia)[c("n", "palette")] <- list(.n, .palette)
+formals(synesthesia)[c("n", "palette")] <-
+    list(
+        "n" = .formalsList[["n"]],
+        "palette" = .formalsList[["palette"]]
+    )
 
 
 
@@ -107,7 +111,8 @@ synesthesia_pal <-  # nolint
         }
     }
 
-formals(synesthesia_pal)[["palette"]] <- .palette
+formals(synesthesia_pal)[["palette"]] <-
+    .formalsList[["palette"]]
 
 
 
@@ -133,7 +138,8 @@ scale_colour_synesthesia_c <-  # nolint
         )
     }
 
-formals(scale_colour_synesthesia_c)[["palette"]] <- .palette
+formals(scale_colour_synesthesia_c)[["palette"]] <-
+    .formalsList[["palette"]]
 
 
 
@@ -158,7 +164,8 @@ scale_colour_synesthesia_d <-  # nolint
         )
     }
 
-formals(scale_colour_synesthesia_d)[["palette"]] <- .palette
+formals(scale_colour_synesthesia_d)[["palette"]] <-
+    .formalsList[["palette"]]
 
 
 
@@ -191,7 +198,8 @@ scale_fill_synesthesia_c <-  # nolint
         )
     }
 
-formals(scale_fill_synesthesia_c)[["palette"]] <- .palette
+formals(scale_fill_synesthesia_c)[["palette"]] <-
+    .formalsList[["palette"]]
 
 
 
@@ -209,4 +217,5 @@ scale_fill_synesthesia_d <-  # nolint
         )
     }
 
-formals(scale_fill_synesthesia_d)[["palette"]] <- .palette
+formals(scale_fill_synesthesia_d)[["palette"]] <-
+    .formalsList[["palette"]]

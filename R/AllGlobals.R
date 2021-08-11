@@ -3,6 +3,26 @@
 
 
 
+#' Internal formals list, specific to package
+#'
+#' @note Updated 2021-08-11.
+#' @noRd
+.formalsList <- list(
+    "geom" = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
+    "n" = 256L,
+    "palette" = c(
+        "lightPalette",
+        "darkPalette",
+        "draculaPalette",
+        "macOSLightPalette",
+        "macOSDarkPalette",
+        "iOSLightPalette",
+        "iOSDarkPalette"
+    )
+)
+
+
+
 #' AcidPlots test data URL
 #'
 #' @keywords internal
@@ -15,30 +35,6 @@ AcidPlotsTestsURL <-  # nolint
         "https://r.acidgenomics.com/testdata/acidplots/",
         "v", .pkgVersion$major, ".", .pkgVersion$minor  # nolint
     )
-
-
-
-.geom <- c("histogram", "ecdf", "violin", "ridgeline", "boxplot")
-.n <- 256L
-.palette <- c(
-    "lightPalette",
-    "darkPalette",
-    "draculaPalette",
-    "macOSLightPalette",
-    "macOSDarkPalette",
-    "iOSLightPalette",
-    "iOSDarkPalette"
-)
-
-
-
-#' Improve the `rgb()` default to use 0:255, as expected
-#'
-#' @note Updated 2019-09-13.
-#' @noRd
-.rgb <- function(...) {
-    rgb(..., maxColorValue = 255L)
-}
 
 
 
@@ -68,6 +64,20 @@ AcidPlotsTestsURL <-  # nolint
 NULL
 
 ## nolint end
+
+
+
+#' Improve the `rgb()` default to use 0:255, as expected
+#'
+#' @note Updated 2019-09-13.
+#' @noRd
+.rgb <- function(...) {
+    rgb(..., maxColorValue = 255L)
+}
+
+
+
+## FIXME Put these into a list, and reexport below...
 
 iOSLightPalette <- c(
     "background" = .rgb(255L, 255L, 255L),

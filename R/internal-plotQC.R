@@ -183,10 +183,12 @@
     p
 }
 
-f <- formals(`.plotQCMetric`)
-f[c("color", "fill")] <- formalsList[c("color.discrete", "fill.discrete")]
-f[["geom"]] <- .geom
-formals(`.plotQCMetric`) <- f
+formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
+    list(
+        "color" = formalsList[["color.discrete"]],
+        "fill" = formalsList[["fill.discrete"]],
+        "geom" = .formalsList[["geom"]]
+    )
 
 
 
