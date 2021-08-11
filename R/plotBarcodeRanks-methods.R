@@ -48,8 +48,6 @@ NULL
             labels = labels,
             choices = eval(formals()[["labels"]])
         )
-        ## FIXME Need to update the internal code here?
-        ## FIXME Doesn't seem to be calculating correctly now.
         ranksPerSample <- barcodeRanksPerSample(object, ...)
         sampleData <- sampleData(object)
         if (is.null(sampleData)) {
