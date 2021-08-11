@@ -11,13 +11,15 @@ plotQC(object, ...)
 \S4method{plotQC}{SummarizedExperiment}(
   object,
   assay = 1L,
-  legend = getOption(x = "acid.legend", default = TRUE)
+  legend = getOption(x = "acid.legend", default = TRUE),
+  labels = list(title = "Quality control", subtitle = NULL)
 )
 
 \S4method{plotQC}{SingleCellExperiment}(
   object,
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
-  legend = getOption(x = "acid.legend", default = TRUE)
+  legend = getOption(x = "acid.legend", default = TRUE),
+  labels = list(title = "Quality control", subtitle = NULL)
 )
 }
 \arguments{
@@ -28,6 +30,10 @@ Assay name or index position.}
 
 \item{legend}{\code{logical(1)}.
 Include plot legend.}
+
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{geom}{\code{character(1)}.
 Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
@@ -42,7 +48,7 @@ the first argument in the \code{character} vector.}
 Quality control
 }
 \note{
-Updated 2019-08-12.
+Updated 2021-08-11.
 }
 \examples{
 data(
@@ -58,5 +64,5 @@ plotQC(object)
 ## SingleCellExperiment ====
 object <- SingleCellExperiment
 object <- calculateMetrics(object)
-plotQC(object, legend = FALSE)
+plotQC(object)
 }

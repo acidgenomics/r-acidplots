@@ -15,7 +15,8 @@ plotWaterfall(object, ...)
   valueCol,
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
-  fill = purpleOrange(1L)
+  fill = purpleOrange(1L),
+  labels = list(title = NULL, subtitle = NULL)
 )
 
 \S4method{plotWaterfall}{DataFrame}(
@@ -24,7 +25,8 @@ plotWaterfall(object, ...)
   valueCol,
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
-  fill = purpleOrange(1L)
+  fill = purpleOrange(1L),
+  labels = list(title = NULL, subtitle = NULL)
 )
 
 \S4method{plotWaterfall}{SummarizedExperiment}(
@@ -62,6 +64,10 @@ definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
 To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
@@ -76,7 +82,7 @@ Assay name or index position.}
 Plot waterfall
 }
 \note{
-Updated 2021-02-09.
+Updated 2021-08-11.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")

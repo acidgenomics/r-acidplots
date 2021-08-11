@@ -1,6 +1,11 @@
+## FIXME Need to add support for title and subtitle.
+## FIXME Can we combine into single legend using patchwork?
+
+
+
 #' @name plotQC
 #' @inherit AcidGenerics::plotQC
-#' @note Updated 2019-08-12.
+#' @note Updated 2021-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -19,42 +24,59 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment
 #' object <- calculateMetrics(object)
-#' plotQC(object, legend = FALSE)
+#' plotQC(object)
 NULL
 
 
 
-## Updated 2019-08-12.
+## Updated 2021-08-11.
 `plotQC,SummarizedExperiment` <-  # nolint
     function(
         object,
         assay = 1L,
-        legend
+        legend,
+        labels = list(
+            "title" = "Quality control",
+            "subtitle" = NULL
+        )
     ) {
         validObject(object)
         assert(
             isScalar(assay),
             isFlag(legend)
         )
-        totalCounts <- plotTotalCounts(object, assay = assay)
-        zerosVsDepth <- plotZerosVsDepth(object, assay = assay)
-        rowSums <- plotSums(object, assay = assay, MARGIN = 1L)
-        colSums <- plotSums(object, assay = assay, MARGIN = 2L)
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         plotlist <- list(
-            totalCounts = totalCounts,
-            zerosVsDepth = zerosVsDepth,
-            rowSums = rowSums,
-            colSums = colSums
+            "totalCounts" =
+                plotTotalCounts(object, assay = assay),
+            "zerosVsDepth" =
+                plotZerosVsDepth(object, assay = assay) +
+                guides(color = "none"),
+            "rowSums" =
+                ## FIXME Need to batch these per interesting group.
+                ## FIXME Need to make the labels more descriptive.
+                plotSums(object, assay = assay, MARGIN = 1L),
+            "colSums" =
+                ## FIXME Need to batch these per interesting group.
+                ## FIXME Need to make the labels more descriptive.
+                plotSums(object, assay = assay, MARGIN = 2L)
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
         if (identical(legend, FALSE)) {
             plotlist <- .hideLegendsInPlotlist(plotlist)
-
         }
-        ## Return as grid.
-        ## FIXME Migrate away from this.
-        plot_grid(plotlist = plotlist)
+        ## Using patchwork package to dynamically arrange the plots.
+        p <- wrap_plots(plotlist, guides = "collect")
+        ## Support title and/or subtitle labeling.
+        p <- p + plot_annotation(
+            "title" = labels[["title"]],
+            "subtitle" = labels[["subtitle"]]
+        )
+        p
     }
 
 formals(`plotQC,SummarizedExperiment`)[["legend"]] <- formalsList[["legend"]]
@@ -71,12 +93,16 @@ setMethod(
 
 
 
-## Updated 2019-08-12.
+## Updated 2021-08-11.
 `plotQC,SingleCellExperiment` <-  # nolint
     function(
         object,
         geom,
-        legend
+        legend,
+        labels = list(
+            "title" = "Quality control",
+            "subtitle" = NULL
+        )
     ) {
         validObject(object)
         assert(
@@ -85,44 +111,69 @@ setMethod(
             isFlag(legend)
         )
         geom <- match.arg(geom)
+        plotlist <- list()
         ## Don't show cell counts for unfiltered datasets.
         if (hasSubset(object, metadata = "filterCells")) {
-            cellCounts <- plotCellCounts(object)
-            zerosVsDepth <- NULL
+            plotlist[["cellCounts"]] <-
+                plotCellCounts(object) +
+                theme(legend.position = "none")
         } else {
-            cellCounts <- NULL
-            zerosVsDepth <- plotZerosVsDepth(object)
+            plotlist[["zerosVsDepth"]] <-
+                plotZerosVsDepth(object) +
+                theme(legend.position = "none")
         }
-        countsPerCell <- plotCountsPerCell(object, geom = geom)
-        featuresPerCell <- plotFeaturesPerCell(object, geom = geom)
-        countsVsFeatures <- plotCountsVsFeatures(object)
-        novelty <- plotNovelty(object, geom = geom)
-        mitoRatio <-
-            tryCatch(
-                expr = plotMitoRatio(object, geom = geom),
-                error = function(e) NULL
+        plotlist <- append(
+            x = plotlist,
+            values = list(
+                "countsPerCell" =
+                    plotCountsPerCell(object, geom = geom),
+                "featuresPerCell" =
+                    plotFeaturesPerCell(object, geom = geom) +
+                    theme(legend.position = "none"),
+                "countsVsFeatures" =
+                    plotCountsVsFeatures(object) +
+                    theme(legend.position = "none"),
+                "novelty" =
+                    plotNovelty(object, geom = geom) +
+                    theme(legend.position = "none"),
+                "mitoRatio" = tryCatch(
+                    expr = {
+                        plotMitoRatio(object, geom = geom) +
+                        theme(legend.position = "none")
+                    },
+                    error = function(e) NULL
+                ),
+                "rowSums" =
+                    ## FIXME Need to batch these per interesting group.
+                    ## FIXME Need to make the labels more descriptive.
+                    plotSums(
+                        object = object,
+                        assay = 1L,
+                        MARGIN = 1L
+                    ),
+                "colSums" =
+                    ## FIXME Need to batch these per interesting group.
+                    ## FIXME Need to make the labels more descriptive.
+                    plotSums(
+                        object = object,
+                        assay = 1L,
+                        MARGIN = 2L
+                    )
             )
-        rowSums <- plotSums(object, MARGIN = 1L)
-        colSums <- plotSums(object, MARGIN = 2L)
-        plotlist <- list(
-            cellCounts = cellCounts,
-            countsPerCell = countsPerCell,
-            featuresPerCell = featuresPerCell,
-            countsVsFeatures = countsVsFeatures,
-            novelty = novelty,
-            mitoRatio = mitoRatio,
-            zerosVsDepth = zerosVsDepth,
-            rowSums = rowSums,
-            colSums = colSums
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
         if (identical(legend, FALSE)) {
             plotlist <- .hideLegendsInPlotlist(plotlist)
         }
-        ## Return as grid.
-        ## FIXME Migrate away from this.
-        plot_grid(plotlist = plotlist)
+        ## Using patchwork package to dynamically arrange the plots.
+        p <- wrap_plots(plotlist, guides = "collect")
+        ## Support title and/or subtitle labeling.
+        p <- p + plot_annotation(
+            "title" = labels[["title"]],
+            "subtitle" = labels[["subtitle"]]
+        )
+        p
     }
 
 formals(`plotQC,SingleCellExperiment`)[["geom"]] <- .geom
