@@ -51,7 +51,7 @@ UpSet plot
 S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2021-02-08.
+Updated 2021-08-11.
 }
 \examples{
 list <- list(
@@ -63,5 +63,9 @@ list <- list(
 plotUpset(list)
 }
 \seealso{
-\code{upsetMatrix()}.
+\itemize{
+\item \code{upsetMatrix()}.
+\item ComplexUpset package.
+\item UpSetR package.
+}
 }

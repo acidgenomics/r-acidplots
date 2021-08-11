@@ -11,6 +11,7 @@ plotBarcodeRanks(object, ...)
   object,
   colors = c(fitline = AcidPlots::lightPalette[["blue"]], inflection =
     AcidPlots::lightPalette[["purple"]], knee = AcidPlots::lightPalette[["orange"]]),
+  labels = list(title = NULL, subtitle = NULL),
   ...
 )
 }
