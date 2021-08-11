@@ -3,13 +3,13 @@
 \docType{data}
 \name{palettes}
 \alias{palettes}
-\alias{lightPalette}
-\alias{darkPalette}
 \alias{draculaPalette}
-\alias{iOSLightPalette}
+\alias{darkPalette}
+\alias{lightPalette}
 \alias{iOSDarkPalette}
-\alias{macOSLightPalette}
+\alias{iOSLightPalette}
 \alias{macOSDarkPalette}
+\alias{macOSLightPalette}
 \title{Color palettes}
 \format{
 An object of class \code{character} of length 12.
@@ -27,19 +27,19 @@ An object of class \code{character} of length 12.
 An object of class \code{character} of length 12.
 }
 \usage{
-lightPalette
+draculaPalette
 
 darkPalette
 
-draculaPalette
-
-iOSLightPalette
+lightPalette
 
 iOSDarkPalette
 
-macOSLightPalette
+iOSLightPalette
 
 macOSDarkPalette
+
+macOSLightPalette
 }
 \value{
 \code{character}.
