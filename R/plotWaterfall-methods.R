@@ -1,3 +1,5 @@
+## NOTE Doesn't currently support title assignment.
+
 ## nolint start
 
 #' @name plotWaterfall

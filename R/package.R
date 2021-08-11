@@ -1,3 +1,11 @@
+## FIXME Migrate from cowplot to patchwork.
+## https://github.com/thomasp85/patchwork
+
+## FIXME Migrate from UpSetR to ComplexUpset.
+## https://github.com/krassowski/complex-upset
+
+
+
 #' AcidPlots
 #'
 #' Functions for plotting genomic data.
