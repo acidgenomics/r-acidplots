@@ -167,6 +167,7 @@ NULL
             SIMPLIFY = FALSE,
             USE.NAMES = FALSE
         )
+        ## FIXME Migrate away from this.
         plot_grid(plotlist = plotlist)
     }
 

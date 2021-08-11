@@ -1,3 +1,7 @@
+## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
+
+
+
 #' @name plotHeatmap
 #' @inherit AcidGenerics::plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner

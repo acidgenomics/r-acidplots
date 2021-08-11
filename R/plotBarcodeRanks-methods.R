@@ -124,6 +124,7 @@ NULL
         )
         ## Sort the plots by sample name.
         plotlist <- plotlist[sort(names(plotlist))]
+        ## FIXME Migrate away from this.
         plot_grid(plotlist = plotlist)
     }
 

@@ -53,6 +53,7 @@ NULL
 
         }
         ## Return as grid.
+        ## FIXME Migrate away from this.
         plot_grid(plotlist = plotlist)
     }
 
@@ -120,6 +121,7 @@ setMethod(
             plotlist <- .hideLegendsInPlotlist(plotlist)
         }
         ## Return as grid.
+        ## FIXME Migrate away from this.
         plot_grid(plotlist = plotlist)
     }
 
