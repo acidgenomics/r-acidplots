@@ -93,6 +93,7 @@ NULL
 #' Consider adding:
 #' - gruvbox
 #' - nord
+#' - solarized
 .palettes <- list(
     "dracula" = c(
         "background" = .rgb(40L, 42L, 54L),
