@@ -1,3 +1,5 @@
+## FIXME Switch to ComplexUpset.
+
 ## NOTE Consider migrating to ComplexUpset
 ##      (https://github.com/krassowski/complex-upset),
 ##      which uses ggplot internally instead.
@@ -6,7 +8,7 @@
 
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
-#' @note Updated 2021-02-08.
+#' @note Updated 2021-08-12.
 #'
 #' @details
 #' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
@@ -25,7 +27,10 @@
 #'   Set `Inf` to plot all intersections.
 #' @param ... Additional arguments.
 #'
-#' @seealso `upsetMatrix()`.
+#' @seealso
+#' - `upsetMatrix()`.
+#' - ComplexUpset package.
+#' - UpSetR package.
 #'
 #' @examples
 #' list <- list(
@@ -39,13 +44,11 @@ NULL
 
 
 
-## Updated 2021-02-08.
+## Updated 2021-08-11.
 `plotUpset,list` <- # nolint
     function(object, ...) {
-        plotUpset(
-            object = intersectionMatrix(object),
-            ...
-        )
+        object <- intersectionMatrix(object)
+        plotUpset(object, ...)
     }
 
 
@@ -88,21 +91,21 @@ setMethod(
         )
         if (!is.finite(nIntersects)) nIntersects <- NA
         args <- list(
-            data = as.data.frame(object),
-            keep.order = !isTRUE(orderBySize[["matrix"]]),
-            line.size = 1L,
-            main.bar.color = "black",
-            matrix.color = "black",
-            matrix.dot.alpha = 1L,
-            mb.ratio = c(0.5, 0.5),
-            nintersects = nIntersects,
-            nsets = ncol(object),
-            point.size = 3L,
-            sets = rev(colnames(object)),
-            sets.bar.color = "black",
-            shade.alpha = 1L,
-            shade.color = NA,
-            text.scale = 1.5
+            "data" = as.data.frame(object),
+            "keep.order" = !isTRUE(orderBySize[["matrix"]]),
+            "line.size" = 1L,
+            "main.bar.color" = "black",
+            "matrix.color" = "black",
+            "matrix.dot.alpha" = 1L,
+            "mb.ratio" = c(0.5, 0.5),
+            "nintersects" = nIntersects,
+            "nsets" = ncol(object),
+            "point.size" = 3L,
+            "sets" = rev(colnames(object)),
+            "sets.bar.color" = "black",
+            "shade.alpha" = 1L,
+            "shade.color" = NA,
+            "text.scale" = 1.5
         )
         if (isTRUE(orderBySize[["bars"]])) {
             args[["order.by"]] <- "freq"
