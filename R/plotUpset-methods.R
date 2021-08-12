@@ -1,8 +1,5 @@
-## FIXME Switch to ComplexUpset.
-
-## NOTE Consider migrating to ComplexUpset
-##      (https://github.com/krassowski/complex-upset),
-##      which uses ggplot internally instead.
+## FIXME Need to improve working example to test coverage of
+## sortIntersections and sortSets.
 
 
 
@@ -28,6 +25,7 @@
 #' @param ... Additional arguments.
 #'
 #' @seealso
+#' - `ComplexUpset::upset`, `ComplexUpset::upset_data`.
 #' - `upsetMatrix()`.
 #' - ComplexUpset package.
 #' - UpSetR package.
@@ -39,7 +37,15 @@
 #'     "ccc" = c("c", "d", "e", "f", "g", "h"),
 #'     "ddd" = c("d", "e", "f", "g", "h", "i")
 #' )
+#' print(list)
+#' mat <- intersectionMatrix(list)
+#' print(mat)
+#'
+#' ## list ====
 #' plotUpset(list)
+#'
+#' ## matrix ====
+#' plotUpset(mat)
 NULL
 
 
@@ -63,60 +69,51 @@ setMethod(
 
 
 
-## Updated 2021-02-08.
+## Updated 2021-08-12.
 `plotUpset,matrix` <-  # nolint
     function(
         object,
-        nIntersects = 40L,
-        orderBySize = c(bars = TRUE, matrix = TRUE)
+        nIntersections = 40L,
+        sortSets = TRUE,
+        sortIntersections = TRUE
     ) {
-        requireNamespaces("UpSetR")
+        requireNamespaces("ComplexUpset")
         if (is.logical(object)) {
             mode(object) <- "integer"
-        }
-        if (isFlag(orderBySize)) {
-            orderBySize <- c("bars" = orderBySize, "matrix" = orderBySize)
         }
         assert(
             is.integer(object),
             all(object %in% c(0L, 1L)),
-            isInt(nIntersects) ||
-                is.infinite(nIntersects) ||
-                is.na(nIntersects),
-            is.logical(orderBySize),
-            areSetEqual(
-                x = names(orderBySize),
-                y = names(eval(formals()[["orderBySize"]]))
-            )
+            isInt(nIntersections) || is.infinite(nIntersections),
+            isFlag(sortSets),
+            isFlag(sortIntersections)
         )
-        if (!is.finite(nIntersects)) nIntersects <- NA
+        if (!is.finite(nIntersections)) {
+            nIntersections <- NULL
+        }
         args <- list(
             "data" = as.data.frame(object),
-            "keep.order" = !isTRUE(orderBySize[["matrix"]]),
-            "line.size" = 1L,
-            "main.bar.color" = "black",
-            "matrix.color" = "black",
-            "matrix.dot.alpha" = 1L,
-            "mb.ratio" = c(0.5, 0.5),
-            "nintersects" = nIntersects,
-            "nsets" = ncol(object),
-            "point.size" = 3L,
-            "sets" = rev(colnames(object)),
-            "sets.bar.color" = "black",
-            "shade.alpha" = 1L,
-            "shade.color" = NA,
-            "text.scale" = 1.5
+            "intersect" = colnames(object),
+            ## Label shown below the intersection matrix.
+            "name" = NULL,
+            ## The exact number of the intersections to be displayed;
+            ## "n" largest intersections that meet the size and degree
+            ## criteria will be shown.
+            "n_intersections" = nIntersections,
+            ## Whether to sort the rows in the intersection matrix.
+            "sort_sets" = ifelse(
+                test = sortSets,
+                "yes" = "descending",
+                "no" = FALSE
+            ),
+            ## Whether to sort the columns in the intersection matrix.
+            "sort_intersections" = ifelse(
+                test = sortIntersections,
+                "yes" = "descending",
+                "no" = FALSE
+            )
         )
-        if (isTRUE(orderBySize[["bars"]])) {
-            args[["order.by"]] <- "freq"
-            args[["decreasing"]] <- TRUE
-        } else {
-            args[["order.by"]] <- c("freq", "degree")
-            args[["decreasing"]] <- c(TRUE, FALSE)
-        }
-        suppressMessages({
-            do.call(what = UpSetR::upset, args = args)
-        })
+        do.call(what = ComplexUpset::upset, args = args)
     }
 
 
