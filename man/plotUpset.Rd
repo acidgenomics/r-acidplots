@@ -14,8 +14,9 @@ plotUpset(object, ...)
 
 \S4method{plotUpset}{matrix}(
   object,
-  nIntersects = 40L,
-  orderBySize = c(bars = TRUE, matrix = TRUE)
+  nIntersections = 40L,
+  orderBySize = c(intersections = TRUE, sets = TRUE),
+  labels = list(title = NULL, subtitle = NULL)
 )
 
 \S4method{plotUpset}{data.frame}(object, ...)
@@ -27,7 +28,7 @@ plotUpset(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{nIntersects}{\code{integer(1)} or \code{Inf}.
+\item{nIntersections}{\code{integer(1)} or \code{Inf}.
 Maximum number of intersections to plot.
 Set \code{Inf} to plot all intersections.}
 
@@ -40,6 +41,14 @@ Whether to order main bar plot and/or intersection matrix by set size.
 
 Can pass in \code{TRUE}/\code{FALSE} boolean flag and both "bars" and "matrix"
 settings will inherit.}
+
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
+\item{sortIntersections}{\code{logical(1)}.}
+
+\item{sortSets}{\code{logical(1)}.}
 }
 \value{
 Plot.
@@ -51,7 +60,7 @@ UpSet plot
 S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2021-08-11.
+Updated 2021-08-12.
 }
 \examples{
 list <- list(
@@ -60,10 +69,19 @@ list <- list(
     "ccc" = c("c", "d", "e", "f", "g", "h"),
     "ddd" = c("d", "e", "f", "g", "h", "i")
 )
+print(list)
+mat <- intersectionMatrix(list)
+print(mat)
+
+## list ====
 plotUpset(list)
+
+## matrix ====
+plotUpset(mat)
 }
 \seealso{
 \itemize{
+\item \code{ComplexUpset::upset}, \code{ComplexUpset::upset_data}.
 \item \code{upsetMatrix()}.
 \item ComplexUpset package.
 \item UpSetR package.

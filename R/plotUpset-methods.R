@@ -11,6 +11,13 @@
 #' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
+#' @param nIntersections `integer(1)` or `Inf`.
+#'   Maximum number of intersections to plot.
+#'   Set `Inf` to plot all intersections.
+#' @param sortIntersections `logical(1)`.
+#' @param sortSets `logical(1)`.
+#'
 #' @param orderBySize `logical`.
 #'   Whether to order main bar plot and/or intersection matrix by set size.
 #'
@@ -19,9 +26,7 @@
 #'
 #'   Can pass in `TRUE`/`FALSE` boolean flag and both "bars" and "matrix"
 #'   settings will inherit.
-#' @param nIntersects `integer(1)` or `Inf`.
-#'   Maximum number of intersections to plot.
-#'   Set `Inf` to plot all intersections.
+
 #' @param ... Additional arguments.
 #'
 #' @seealso
@@ -74,23 +79,42 @@ setMethod(
     function(
         object,
         nIntersections = 40L,
-        sortSets = TRUE,
-        sortIntersections = TRUE
+        orderBySize = c(
+            "intersections" = TRUE,
+            "sets" = TRUE
+        ),
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
     ) {
         requireNamespaces("ComplexUpset")
         if (is.logical(object)) {
             mode(object) <- "integer"
         }
+        if (isFlag(orderBySize)) {
+            orderBySize <- c(
+                "intersections" = orderBySize,
+                "sets" = orderBySize
+            )
+        }
         assert(
             is.integer(object),
             all(object %in% c(0L, 1L)),
             isInt(nIntersections) || is.infinite(nIntersections),
-            isFlag(sortSets),
-            isFlag(sortIntersections)
+            is.logical(orderBySize),
+            areSetEqual(
+                x = names(orderBySize),
+                y = names(eval(formals()[["orderBySize"]]))
+            )
         )
         if (!is.finite(nIntersections)) {
             nIntersections <- NULL
         }
+        labels <- matchLabels(
+            labels = labels,
+            choices = eval(formals()[["labels"]])
+        )
         args <- list(
             "data" = as.data.frame(object),
             "intersect" = colnames(object),
@@ -100,20 +124,22 @@ setMethod(
             ## "n" largest intersections that meet the size and degree
             ## criteria will be shown.
             "n_intersections" = nIntersections,
-            ## Whether to sort the rows in the intersection matrix.
-            "sort_sets" = ifelse(
-                test = sortSets,
+            ## Whether to sort the columns in the intersection matrix.
+            "sort_intersections" = ifelse(
+                test = orderBySize[["intersections"]],
                 "yes" = "descending",
                 "no" = FALSE
             ),
-            ## Whether to sort the columns in the intersection matrix.
-            "sort_intersections" = ifelse(
-                test = sortIntersections,
+            ## Whether to sort the rows in the intersection matrix.
+            "sort_sets" = ifelse(
+                test = orderBySize[["sets"]],
                 "yes" = "descending",
                 "no" = FALSE
             )
         )
-        do.call(what = ComplexUpset::upset, args = args)
+        p <- do.call(what = ComplexUpset::upset, args = args)
+        p <- p + do.call(what = labs, args = labels)
+        p
     }
 
 
