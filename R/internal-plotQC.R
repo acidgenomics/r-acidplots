@@ -49,11 +49,20 @@
     data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(metricCol, colnames(data))) {
-        stop(sprintf("'%s' is not defined in 'colData()'.", metricCol))
+        abort(sprintf(
+            "{.var %s} is not defined in {.fun %s}.",
+            metricCol, "colData"
+        ))
     } else if (anyNA(data[[metricCol]])) {
-        stop(sprintf("'%s' in 'colData()' contains NA values.", metricCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains NA values.",
+            metricCol, "colData"
+        ))
     } else if (all(data[[metricCol]] == 0L)) {
-        stop(sprintf("'%s' in 'colData()' contains only zeros.", metricCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains only zeros.",
+            metricCol, "colData"
+        ))
     }
     ## nocov end
     mapping <- aes(
@@ -237,18 +246,30 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
     data <- as_tibble(data, rownames = NULL)
     ## nocov start
     if (!isSubset(c(xCol, yCol), colnames(data))) {
-        stop(sprintf(
-            "%s are not defined in 'colData()'.",
-            toString(c(xCol, yCol))
+        abort(sprintf(
+            "Not defined in {.fun %s}: %s.",
+            "colData", toInlineString(c(xCol, yCol))
         ))
     } else if (anyNA(data[[xCol]])) {
-        stop(sprintf("'%s' in 'colData()' contains NA values.", xCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains NA values.",
+            xCol, "colData"
+        ))
     } else if (anyNA(data[[yCol]])) {
-        stop(sprintf("'%s' in 'colData()' contains NA values.", yCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains NA values.",
+            yCol, "colData"
+        ))
     } else if (all(data[[xCol]] == 0L)) {
-        stop(sprintf("'%s' in 'colData()' contains only zeros.", xCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains only zeros.",
+            xCol, "colData"
+        ))
     } else if (all(data[[yCol]] == 0L)) {
-        stop(sprintf("'%s' in 'colData()' contains only zeros.", yCol))
+        abort(sprintf(
+            "{.var %s} in {.fun %s} contains only zeros.",
+            yCol, "colData"
+        ))
     }
     ## nocov end
     p <- ggplot(
