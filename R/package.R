@@ -34,7 +34,8 @@
 #'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
 #'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
 #'   nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase
-#'   str_replace_na standardizeCall tibble unit validObject var zerosVsDepth
+#'   str_replace_na standardizeCall tibble toInlineString unit validObject var
+#'   zerosVsDepth
 #' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect

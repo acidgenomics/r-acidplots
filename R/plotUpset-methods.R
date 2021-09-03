@@ -167,13 +167,14 @@ setMethod(
 
 
 
-## Updated 2020-08-25.
+## Updated 2021-09-03.
 `plotUpset,data.frame` <-  # nolint
     function(object, ...) {
         keep <- bapply(X = object, FUN = function(x) all(x %in% c(0L, 1L)))
-        if (!any(keep)) {
-            stop("Data frame does not contain any columns with 0, 1 values.")
-        }
+        assert(
+            any(keep),
+            msg = "Data frame does not contain any columns with 0, 1 values."
+        )
         mat <- as.matrix(object[, keep, drop = FALSE])
         mode(mat) <- "integer"
         plotUpset(mat, ...)

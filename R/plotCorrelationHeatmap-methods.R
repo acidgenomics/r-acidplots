@@ -90,9 +90,10 @@ NULL
         ))
         cor <- cor(x = mat, y = NULL, method = method)
         ## Check for NA values in correlation matrix and error, if necessary.
-        if (any(is.na(cor))) {
-            stop("NA values detected in correlation matrix.")
-        }
+        assert(
+            !any(is.na(cor)),
+            msg = "NA values detected in correlation matrix."
+        )
         ## Get annotation columns and colors automatically.
         x <- .pheatmapAnnotations(object = object, legendColor = legendColor)
         assert(

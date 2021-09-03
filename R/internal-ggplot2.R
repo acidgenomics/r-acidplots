@@ -7,7 +7,7 @@
     ## Second, check the first layer defined in the object.
     map <- object[["layers"]][[1L]][["mapping"]]
     if (hasLength(map)) return(map)
-    stop("Failed to detect mapping.")
+    abort("Failed to detect mapping.")
 }
 
 
