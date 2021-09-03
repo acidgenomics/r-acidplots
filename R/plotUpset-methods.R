@@ -1,5 +1,11 @@
 ## FIXME Need to improve working example to test coverage of
 ## sortIntersections and sortSets.
+## FIXME Need to harden intersectionMatrix to NOT work on standard data frame.
+## FIXME intersectionMatrix data.frame method needs to check for specifi class.
+##       Harden against ggplot2movies dataset.
+## FIXME Set the minimum number of intersections to plot???
+## FIXME Use `min_size` here to set the intersection size limit.
+## FIXME Allow the user to set `maxSize`?
 
 
 
@@ -15,25 +21,22 @@
 #' @param nIntersections `integer(1)` or `Inf`.
 #'   Maximum number of intersections to plot.
 #'   Set `Inf` to plot all intersections.
-#' @param sortIntersections `logical(1)`.
-#' @param sortSets `logical(1)`.
-#'
 #' @param orderBySize `logical`.
 #'   Whether to order main bar plot and/or intersection matrix by set size.
 #'
-#'   - "bars" refers to main bar plot.
-#'   - "matrix" refers to intersection matrix, shown as connected dots.
+#'   - `"intersection"`: refers to main intersection bar plot.
+#'   - `"sets"`: refers to set intersection matrix, shown as connected dots.
+#'     When `TRUE`, orders by the set size (see plot to the left).
 #'
-#'   Can pass in `TRUE`/`FALSE` boolean flag and both "bars" and "matrix"
-#'   settings will inherit.
+#'   Can pass in `TRUE`/`FALSE` boolean flag and both `"intersection"` and
+#'   `"sets"` settings will inherit.
 
 #' @param ... Additional arguments.
 #'
 #' @seealso
-#' - `ComplexUpset::upset`, `ComplexUpset::upset_data`.
 #' - `upsetMatrix()`.
-#' - ComplexUpset package.
-#' - UpSetR package.
+#' - `ComplexUpset::upset()`.
+#' - UpSetR package (legacy approach).
 #'
 #' @examples
 #' list <- list(
@@ -78,11 +81,16 @@ setMethod(
 `plotUpset,matrix` <-  # nolint
     function(
         object,
+
+        ## FIXME Think about the names of these arguments.
+        minSize = 0L,
+        maxSize = Inf,
         nIntersections = 40L,
         orderBySize = c(
             "intersections" = TRUE,
             "sets" = TRUE
         ),
+
         labels = list(
             "title" = NULL,
             "subtitle" = NULL
@@ -101,6 +109,8 @@ setMethod(
         assert(
             is.integer(object),
             all(object %in% c(0L, 1L)),
+            isNonNegative(minSize),
+            isNonNegative(maxSize),
             isInt(nIntersections) || is.infinite(nIntersections),
             is.logical(orderBySize),
             areSetEqual(
@@ -120,9 +130,12 @@ setMethod(
             "intersect" = colnames(object),
             ## Label shown below the intersection matrix.
             "name" = NULL,
+
+            "max_size" = maxSize,
+            "min_size" = maxSize,
+
             ## The exact number of the intersections to be displayed;
-            ## "n" largest intersections that meet the size and degree
-            ## criteria will be shown.
+            ## "n" largest intersections that meet criteria will be shown.
             "n_intersections" = nIntersections,
             ## Whether to sort the columns in the intersection matrix.
             "sort_intersections" = ifelse(
