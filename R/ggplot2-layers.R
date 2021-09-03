@@ -4,7 +4,7 @@
 #' reference line.
 #'
 #' @export
-#' @note Updated 2021-06-29.
+#' @note Updated 2021-09-03.
 #'
 #' @param xintercept,yintercept `numeric(1)`.
 #'   Value denoting x- or y-axis cutoff.
@@ -33,7 +33,10 @@ acid_geom_abline <-  # nolint
             (is.null(xintercept) && is.null(yintercept)) ||
             (is.numeric(xintercept) && is.numeric(yintercept))
         ) {
-            stop("Either 'xintercept' or 'yintercept' is required.")
+            abort(sprintf(
+                "Either {.arg %s} or {.arg %s} is required.",
+                "xintercept", "yintercept"
+            ))
         } else if (is.numeric(xintercept)) {
             geom_vline(
                 xintercept = xintercept,

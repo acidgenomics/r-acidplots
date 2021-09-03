@@ -114,7 +114,7 @@
             ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
-            stop(sprintf(
+            abort(sprintf(
                 fmt = "%d %s have enough variance: %s.",
                 n,
                 ngettext(
@@ -122,7 +122,7 @@
                     msg1 = "column doesn't",
                     msg2 = "columns don't"
                 ),
-                toString(colnames(object)[which(fail)], width = 200L)
+                toInlineString(colnames(object)[which(fail)], n = 5L)
             ))
             ## nocov end
         }
