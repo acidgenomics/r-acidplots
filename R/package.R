@@ -24,12 +24,12 @@
 #' @importMethodsFrom basejump coerce
 #'
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
-#'   SummarizedExperiment aggregate aggregateCellsToSamples alert alertInfo
-#'   alertWarning append arrow as as_tibble as.SummarizedExperiment as.formula
-#'   assayNames assay assay<- assays assays<- axisTicks camelCase cell2sample
-#'   colData colSums colorRampPalette complete.cases convertGenesToSymbols
-#'   counts decode dist ecdf formalArgs formalsList hclust head
-#'   interestingGroups interestingGroups<- intersectionMatrix is leftJoin
+#'   SummarizedExperiment abort aggregate aggregateCellsToSamples alert
+#'   alertInfo alertWarning append arrow as as_tibble as.SummarizedExperiment
+#'   as.formula assayNames assay assay<- assays assays<- axisTicks camelCase
+#'   cell2sample colData colSums colorRampPalette complete.cases
+#'   convertGenesToSymbols counts decode dist ecdf formalArgs formalsList hclust
+#'   head interestingGroups interestingGroups<- intersectionMatrix is leftJoin
 #'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
 #'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
 #'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
