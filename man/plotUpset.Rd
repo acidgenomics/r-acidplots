@@ -14,6 +14,8 @@ plotUpset(object, ...)
 
 \S4method{plotUpset}{matrix}(
   object,
+  minSize = 0L,
+  maxSize = Inf,
   nIntersections = 40L,
   orderBySize = c(intersections = TRUE, sets = TRUE),
   labels = list(title = NULL, subtitle = NULL)
@@ -35,20 +37,17 @@ Set \code{Inf} to plot all intersections.}
 \item{orderBySize}{\code{logical}.
 Whether to order main bar plot and/or intersection matrix by set size.
 \itemize{
-\item "bars" refers to main bar plot.
-\item "matrix" refers to intersection matrix, shown as connected dots.
+\item \code{"intersection"}: refers to main intersection bar plot.
+\item \code{"sets"}: refers to set intersection matrix, shown as connected dots.
+When \code{TRUE}, orders by the set size (see plot to the left).
 }
 
-Can pass in \code{TRUE}/\code{FALSE} boolean flag and both "bars" and "matrix"
-settings will inherit.}
+Can pass in \code{TRUE}/\code{FALSE} boolean flag and both \code{"intersection"} and
+\code{"sets"} settings will inherit.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
-
-\item{sortIntersections}{\code{logical(1)}.}
-
-\item{sortSets}{\code{logical(1)}.}
 }
 \value{
 Plot.
@@ -81,9 +80,8 @@ plotUpset(mat)
 }
 \seealso{
 \itemize{
-\item \code{ComplexUpset::upset}, \code{ComplexUpset::upset_data}.
 \item \code{upsetMatrix()}.
-\item ComplexUpset package.
-\item UpSetR package.
+\item \code{ComplexUpset::upset()}.
+\item UpSetR package (legacy approach).
 }
 }

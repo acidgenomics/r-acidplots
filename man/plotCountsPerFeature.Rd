@@ -68,13 +68,13 @@ Flip x and y axes. Recommended for plots containing many samples.}
 
 \item{minMethod}{\code{character(1)}.
 Only applies when \code{min} argument is numeric.
-Uses \code{\link[base:match.arg]{match.arg()}}.
+Uses \code{match.arg()}.
 \itemize{
 \item \code{absolute}: Applies hard cutoff to \code{counts} column after the melt
 operation. This applies to all counts, not per feature.
-\item \code{perRow}: Applies cutoff per row (i.e. gene). Internally,
-\code{\link[base:colSums]{rowSums()}} values are checked against this cutoff
-threshold prior to the melt operation.
+\item \code{perRow}: Applies cutoff per row (i.e. gene). Internally, \code{rowSums()}
+values are checked against this cutoff threshold prior to the melt
+operation.
 }}
 
 \item{...}{Additional arguments.}
