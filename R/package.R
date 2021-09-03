@@ -36,7 +36,6 @@
 #'   nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase
 #'   str_replace_na standardizeCall tibble toInlineString unit validObject var
 #'   zerosVsDepth
-#' @importFrom cowplot plot_grid
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
 #'   element_text expand_limits facet_grid facet_wrap geom_bar geom_boxplot
