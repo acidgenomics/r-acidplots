@@ -102,7 +102,7 @@
                     msg1 = "row doesn't",
                     msg2 = "rows don't"
                 ),
-                toString(rownames(object)[which(fail)], width = 200L)
+                toInlineString(rownames(object)[which(fail)], n = 5L)
             ))
             object <- object[pass, , drop = FALSE]
             ## nocov end

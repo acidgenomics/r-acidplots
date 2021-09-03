@@ -98,7 +98,7 @@
 
 #' Generate pheatmap arguments
 #'
-#' @note Updated 2021-02-08.
+#' @note Updated 2021-09-03.
 #' @noRd
 #'
 #' @details
@@ -110,9 +110,9 @@
     ## Abort on snake case formatted formal args.
     invalidNames <- grep("[._]", names(args), value = TRUE)
     if (hasLength(invalidNames)) {
-        stop(sprintf(
+        abort(sprintf(
             "Specify arguments in camel case: %s.",
-            toString(invalidNames, width = 100L)
+            toInlineString(invalidNames, n = 5L)
         ))
     }
     names(args) <- snakeCase(names(args))
