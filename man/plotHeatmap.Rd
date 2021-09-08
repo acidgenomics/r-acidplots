@@ -146,7 +146,7 @@ In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{F
 you can attempt to pass an \code{hclust} object to these arguments. This is
 recommended as an alternate approach to be used with
 \code{\link[pheatmap:pheatmap]{pheatmap()}}, which is called internally by our
-plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="r">}}\preformatted{mat <- assay(mat)
+plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="sourceCode r">}}\preformatted{mat <- assay(mat)
 dist <- dist(mat)
 hclust <- hclust(dist, method = "ward.D2")
 }\if{html}{\out{</div>}}
