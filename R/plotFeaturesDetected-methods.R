@@ -101,16 +101,6 @@ formals(`plotFeaturesDetected,SE`)[c("fill", "flip")] <-
 
 
 
-#' @rdname plotFeaturesDetected
-#' @export
-setMethod(
-    f = "plotFeaturesDetected",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotFeaturesDetected,SE`
-)
-
-
-
 ## Updated 2019-09-15.
 `plotFeaturesDetected,SCE` <-  # nolint
     function(object, ...) {
@@ -122,7 +112,7 @@ setMethod(
 
 
 
-#' @describeIn plotFeaturesDetected Applies [aggregateCellsToSamples()]
+#' @describeIn plotFeaturesDetected Applies `aggregateCellsToSamples()`
 #'   calculation to summarize at sample level prior to plotting.\cr
 #'   Passes `...` to `SummarizedExperiment` method.
 #' @export
@@ -130,4 +120,12 @@ setMethod(
     f = "plotFeaturesDetected",
     signature = signature("SingleCellExperiment"),
     definition = `plotFeaturesDetected,SCE`
+)
+
+#' @rdname plotFeaturesDetected
+#' @export
+setMethod(
+    f = "plotFeaturesDetected",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotFeaturesDetected,SE`
 )

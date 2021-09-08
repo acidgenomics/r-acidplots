@@ -31,8 +31,7 @@ For more information:\preformatted{help(topic = "Extract", package = "base")
 Correlation method.
 Refer to \code{stats::cor()} for details.}
 
-\item{...}{Passthrough arguments to
-\code{\link[=plotHeatmap]{plotHeatmap()}}.}
+\item{...}{Passthrough arguments to \code{plotHeatmap()}.}
 }
 \value{
 Graphical output.

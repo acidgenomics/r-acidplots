@@ -11,7 +11,7 @@
 #' @param method `character(1)`.
 #'   Correlation coefficient (or covariance) method to be computed.
 #'   Defaults to pearson, but spearman or kendall can also be used.
-#'   Refer to the [`cor()`][stats::cor] documentation for details.
+#'   Refer to `cor()` documentation for details.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -45,6 +45,7 @@ NULL
         title = TRUE,
         ...
     ) {
+        ## FIXME Rework using whatPkg, whatFun approach.
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -151,16 +152,6 @@ formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
 
 
 
-#' @rdname plotCorrelationHeatmap
-#' @export
-setMethod(
-    f = "plotCorrelationHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotCorrelationHeatmap,SE`
-)
-
-
-
 ## Updated 2020-02-19.
 `plotCorrelationHeatmap,SCE` <-  # nolint
     function(object, ...) {
@@ -172,10 +163,20 @@ setMethod(
 
 
 
+## FIXME Need to document that this performs `aggregateCellsToSamples` step.
+
 #' @rdname plotCorrelationHeatmap
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SingleCellExperiment"),
     definition = `plotCorrelationHeatmap,SCE`
+)
+
+#' @rdname plotCorrelationHeatmap
+#' @export
+setMethod(
+    f = "plotCorrelationHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotCorrelationHeatmap,SE`
 )

@@ -2,13 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCountsPerBiotype-methods.R
 \name{plotCountsPerBiotype}
 \alias{plotCountsPerBiotype}
-\alias{plotCountsPerBiotype,SummarizedExperiment-method}
 \alias{plotCountsPerBiotype,SingleCellExperiment-method}
+\alias{plotCountsPerBiotype,SummarizedExperiment-method}
 \title{Plot counts per biotype}
 \usage{
 plotCountsPerBiotype(object, ...)
 
-\S4method{plotCountsPerBiotype}{SummarizedExperiment}(
+\S4method{plotCountsPerBiotype}{SingleCellExperiment}(
   object,
   assay = 1L,
   n = 9L,
@@ -20,7 +20,7 @@ plotCountsPerBiotype(object, ...)
     countAxis = "counts")
 )
 
-\S4method{plotCountsPerBiotype}{SingleCellExperiment}(
+\S4method{plotCountsPerBiotype}{SummarizedExperiment}(
   object,
   assay = 1L,
   n = 9L,

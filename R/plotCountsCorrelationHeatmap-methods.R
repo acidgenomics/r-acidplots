@@ -6,8 +6,7 @@
 #' @param method `character(1)`.
 #'   Correlation method.
 #'   Refer to `stats::cor()` for details.
-#' @param ... Passthrough arguments to
-#'   [`plotHeatmap()`][AcidPlots::plotHeatmap].
+#' @param ... Passthrough arguments to `plotHeatmap()`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

@@ -3,11 +3,13 @@
 %   R/plotCorrelationHeatmap-methods.R
 \name{plotCorrelationHeatmap}
 \alias{plotCorrelationHeatmap}
-\alias{plotCorrelationHeatmap,SummarizedExperiment-method}
 \alias{plotCorrelationHeatmap,SingleCellExperiment-method}
+\alias{plotCorrelationHeatmap,SummarizedExperiment-method}
 \title{Correlation heatmap}
 \usage{
 plotCorrelationHeatmap(object, ...)
+
+\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(
   object,
@@ -26,11 +28,11 @@ plotCorrelationHeatmap(object, ...)
   title = TRUE,
   ...
 )
-
-\S4method{plotCorrelationHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -42,7 +44,7 @@ Corresponds to factors describing the columns of the object.}
 \item{method}{\code{character(1)}.
 Correlation coefficient (or covariance) method to be computed.
 Defaults to pearson, but spearman or kendall can also be used.
-Refer to the \code{\link[stats:cor]{cor()}} documentation for details.}
+Refer to \code{cor()} documentation for details.}
 
 \item{clusteringMethod}{\code{character(1)}.
 Clustering method. Accepts the same values as \code{hclust()}.}
@@ -86,8 +88,6 @@ Border color.}
 
 \item{title}{\code{character(1)}.
 Title.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Plot.

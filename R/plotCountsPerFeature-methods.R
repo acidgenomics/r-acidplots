@@ -159,16 +159,6 @@ formals(`plotCountsPerFeature,SE`) <- f
 
 
 
-#' @rdname plotCountsPerFeature
-#' @export
-setMethod(
-    f = "plotCountsPerFeature",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotCountsPerFeature,SE`
-)
-
-
-
 ## Updated 2019-07-23.
 `plotCountsPerFeature,SCE` <-  # nolint
     function(object, ...) {
@@ -180,7 +170,7 @@ setMethod(
 
 
 
-#' @describeIn plotCountsPerFeature Applies [aggregateCellsToSamples()]
+#' @describeIn plotCountsPerFeature Applies `aggregateCellsToSamples()`
 #'   calculation to summarize at sample level prior to plotting.\cr
 #'   Passes `...` to `SummarizedExperiment` method.
 #' @export
@@ -188,4 +178,12 @@ setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SingleCellExperiment"),
     definition = `plotCountsPerFeature,SCE`
+)
+
+#' @rdname plotCountsPerFeature
+#' @export
+setMethod(
+    f = "plotCountsPerFeature",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotCountsPerFeature,SE`
 )

@@ -2,11 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCountsPerFeature-methods.R
 \name{plotCountsPerFeature}
 \alias{plotCountsPerFeature}
-\alias{plotCountsPerFeature,SummarizedExperiment-method}
 \alias{plotCountsPerFeature,SingleCellExperiment-method}
+\alias{plotCountsPerFeature,SummarizedExperiment-method}
 \title{Plot counts per feature}
 \usage{
 plotCountsPerFeature(object, ...)
+
+\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, ...)
 
 \S4method{plotCountsPerFeature}{SummarizedExperiment}(
   object,
@@ -23,11 +25,11 @@ plotCountsPerFeature(object, ...)
   flip = getOption(x = "acid.flip", default = TRUE),
   minMethod = c("absolute", "perRow")
 )
-
-\S4method{plotCountsPerFeature}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -76,8 +78,6 @@ operation. This applies to all counts, not per feature.
 values are checked against this cutoff threshold prior to the melt
 operation.
 }}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.
@@ -88,7 +88,7 @@ unless the library sizes or total RNA expression are different.
 }
 \section{Functions}{
 \itemize{
-\item \code{plotCountsPerFeature,SingleCellExperiment-method}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
+\item \code{plotCountsPerFeature,SingleCellExperiment-method}: Applies \code{aggregateCellsToSamples()}
 calculation to summarize at sample level prior to plotting.\cr
 Passes \code{...} to \code{SummarizedExperiment} method.
 }}
