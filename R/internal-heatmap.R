@@ -18,6 +18,8 @@
     ## Prepare our skeleton return list.
     out <- list(rows = FALSE, cols = FALSE)
     if (isTRUE(rows) || isTRUE(cols)) {
+        ## FIXME Improve this CLI message.
+        ## FIXME Don't use deparse in call here.
         alert(sprintf(
             fmt = paste0(
                 "Performing hierarchical clustering with ",
