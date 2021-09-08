@@ -1,8 +1,5 @@
 ## FIXME Need to improve working example to test coverage of
-## sortIntersections and sortSets.
-## FIXME Need to harden intersectionMatrix to NOT work on standard data frame.
-## FIXME intersectionMatrix data.frame method needs to check for specifi class.
-##       Harden against ggplot2movies dataset.
+##       sortIntersections and sortSets.
 ## FIXME Set the minimum number of intersections to plot???
 ## FIXME Use `min_size` here to set the intersection size limit.
 ## FIXME Allow the user to set `maxSize`?
@@ -14,7 +11,7 @@
 #' @note Updated 2021-08-12.
 #'
 #' @details
-#' S4 wrapper for `UpSetR::upset()` with improved default aesthetics.
+#' S4 wrapper for `ComplexUpset::upset()` with improved default aesthetics.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -34,7 +31,7 @@
 #' @param ... Additional arguments.
 #'
 #' @seealso
-#' - `upsetMatrix()`.
+#' - `intersectionMatrix()`.
 #' - `ComplexUpset::upset()`.
 #' - UpSetR package (legacy approach).
 #'
@@ -96,7 +93,9 @@ setMethod(
             "subtitle" = NULL
         )
     ) {
-        requireNamespaces("ComplexUpset")
+        whatPkg <- "ComplexUpset"
+        whatFun <- "upset"
+        requireNamespaces(whatPkg)
         if (is.logical(object)) {
             mode(object) <- "integer"
         }
@@ -150,7 +149,9 @@ setMethod(
                 "no" = FALSE
             )
         )
-        p <- do.call(what = ComplexUpset::upset, args = args)
+        what <- get(x = whatFun, envir = asNamespace(whatPkg), inherits = FALSE)
+        assert(is.function(what))
+        p <- do.call(what = what, args = args)
         p <- p + do.call(what = labs, args = labels)
         p
     }
@@ -167,10 +168,15 @@ setMethod(
 
 
 
-## Updated 2021-09-03.
+## Updated 2021-09-08.
 `plotUpset,data.frame` <-  # nolint
     function(object, ...) {
-        keep <- bapply(X = object, FUN = function(x) all(x %in% c(0L, 1L)))
+        keep <- bapply(
+            X = object,
+            FUN = function(x) {
+                all(x %in% c(0L, 1L))
+            }
+        )
         assert(
             any(keep),
             msg = "Data frame does not contain any columns with 0, 1 values."

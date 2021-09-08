@@ -56,7 +56,7 @@ Plot.
 UpSet plot
 }
 \details{
-S4 wrapper for \code{UpSetR::upset()} with improved default aesthetics.
+S4 wrapper for \code{ComplexUpset::upset()} with improved default aesthetics.
 }
 \note{
 Updated 2021-08-12.
@@ -80,7 +80,7 @@ plotUpset(mat)
 }
 \seealso{
 \itemize{
-\item \code{upsetMatrix()}.
+\item \code{intersectionMatrix()}.
 \item \code{ComplexUpset::upset()}.
 \item UpSetR package (legacy approach).
 }
