@@ -28,8 +28,8 @@
 #' @section Hierarchical clustering:
 #'
 #' Row- and column-wise hierarchical clustering is performed when `clusterRows`
-#' and/or `clusterCols` are set to `TRUE`. Internally, this calls
-#' [`hclust()`][stats::hclust], and defaults to the Ward method.
+#' and/or `clusterCols` are set to `TRUE`. Internally, this calls `hclust()`,
+#' and defaults to the Ward method.
 #'
 #' Automatic hierarchical clustering of rows and/or columns can error for some
 #' datasets. When this occurs, you'll likely see this error:
@@ -41,9 +41,8 @@
 #'
 #' In this case, either set `clusterRows` and/or `clusterCols` to `FALSE`, or
 #' you can attempt to pass an `hclust` object to these arguments. This is
-#' recommended as an alternate approach to be used with
-#' [`pheatmap()`][pheatmap::pheatmap], which is called internally by our
-#' plotting code. Here's how this can be accomplished:
+#' recommended as an alternate approach to be used with `pheatmap()`, which is
+#' called internally by our plotting code. Here's how this can be accomplished:
 #'
 #' ```r
 #' mat <- assay(mat)
@@ -60,14 +59,14 @@
 #'   be 1 element longer than the color vector, which is handled internally
 #'   automatically, differing from the behavior in pheatmap.
 #' @param clusteringMethod `character(1)`.
-#'   Clustering method. Accepts the same values as [`hclust()`][stats::hclust].
+#'   Clustering method. Accepts the same values as `hclust()`.
 #' @param clusterRows,clusterCols `logical(1)`.
 #'   Arrange with hierarchical clustering.
 #' @param color `function`, `character`, or `NULL`.
 #'   Hexadecimal color function or values to use for plot.
 #'
 #'   We generally recommend these hexadecimal functions from the viridis
-#'   package, in addition to our [synesthesia()] palette:
+#'   package, in addition to our `synesthesia()` palette:
 #'
 #'   - `viridis::viridis()`.
 #'   - `viridis::inferno()`.
@@ -88,7 +87,7 @@
 #'   Show row or column names.
 #' @param treeheightRow,treeheightCol `integer(1)`.
 #'   Size of the row and column dendrograms. Use `0` to disable.
-#' @param ... Passthrough arguments to [`pheatmap()`][pheatmap::pheatmap].
+#' @param ... Passthrough arguments to `pheatmap()`.
 #'   The argument names must be formatted in camel case, not snake case.
 #'
 #' @seealso
@@ -135,7 +134,7 @@ NULL
 
 
 ## Updated 2021-05-17.
-`plotHeatmap,SummarizedExperiment` <-  # nolint
+`plotHeatmap,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -293,25 +292,15 @@ NULL
         )
     }
 
-formals(`plotHeatmap,SummarizedExperiment`)[["color"]] <-
+formals(`plotHeatmap,SE`)[["color"]] <-
     formalsList[["heatmap.color"]]
-formals(`plotHeatmap,SummarizedExperiment`)[["legendColor"]] <-
+formals(`plotHeatmap,SE`)[["legendColor"]] <-
     formalsList[["heatmap.legend.color"]]
 
 
 
-#' @rdname plotHeatmap
-#' @export
-setMethod(
-    f = "plotHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotHeatmap,SummarizedExperiment`
-)
-
-
-
 ## Updated 2020-02-19.
-`plotHeatmap,SingleCellExperiment` <-  # nolint
+`plotHeatmap,SCE` <-  # nolint
     function(object, ...) {
         plotHeatmap(
             object = aggregateCellsToSamples(object),
@@ -326,5 +315,13 @@ setMethod(
 setMethod(
     f = "plotHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = `plotHeatmap,SingleCellExperiment`
+    definition = `plotHeatmap,SCE`
+)
+
+#' @rdname plotHeatmap
+#' @export
+setMethod(
+    f = "plotHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotHeatmap,SE`
 )

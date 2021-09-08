@@ -27,7 +27,7 @@ NULL
 
 
 ## Updated 2021-02-07.
-`plotGenderMarkers,SummarizedExperiment` <-  # nolint
+`plotGenderMarkers,SE` <-  # nolint
     function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
@@ -73,13 +73,13 @@ NULL
 setMethod(
     f = "plotGenderMarkers",
     signature = signature("SummarizedExperiment"),
-    definition = `plotGenderMarkers,SummarizedExperiment`
+    definition = `plotGenderMarkers,SE`
 )
 
 
 
 ## Updated 2020-02-19.
-`plotGenderMarkers,SingleCellExperiment` <-  # nolint
+`plotGenderMarkers,SCE` <-  # nolint
     function(object, ...) {
         plotGenderMarkers(
             object = aggregateCellsToSamples(object),
@@ -94,5 +94,5 @@ setMethod(
 setMethod(
     f = "plotGenderMarkers",
     signature = signature("SingleCellExperiment"),
-    definition = `plotGenderMarkers,SingleCellExperiment`
+    definition = `plotGenderMarkers,SCE`
 )

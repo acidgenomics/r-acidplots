@@ -25,7 +25,7 @@ NULL
 
 
 ## Updated 2019-12-09.
-`plotCountsPerBroadClass,SummarizedExperiment` <-  # nolint
+`plotCountsPerBroadClass,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -129,7 +129,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerBroadClass,SummarizedExperiment`)[["fill"]] <-
+formals(`plotCountsPerBroadClass,SE`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 
 
@@ -139,5 +139,5 @@ formals(`plotCountsPerBroadClass,SummarizedExperiment`)[["fill"]] <-
 setMethod(
     f = "plotCountsPerBroadClass",
     signature = signature("SummarizedExperiment"),
-    definition = `plotCountsPerBroadClass,SummarizedExperiment`
+    definition = `plotCountsPerBroadClass,SE`
 )

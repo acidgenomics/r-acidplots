@@ -28,7 +28,7 @@ NULL
 
 
 ## Updated 2021-02-08.
-`plotCorrelationHeatmap,SummarizedExperiment` <-  # nolint
+`plotCorrelationHeatmap,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -142,11 +142,11 @@ NULL
         do.call(what = pheatmap::pheatmap, args = args)
     }
 
-formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["method"]] <-
+formals(`plotCorrelationHeatmap,SE`)[["method"]] <-
     formals(stats::cor)[["method"]]
-formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["color"]] <-
+formals(`plotCorrelationHeatmap,SE`)[["color"]] <-
     formalsList[["heatmap.correlation.color"]]
-formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
+formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
     formalsList[["heatmap.legend.color"]]
 
 
@@ -156,13 +156,13 @@ formals(`plotCorrelationHeatmap,SummarizedExperiment`)[["legendColor"]] <-
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SummarizedExperiment"),
-    definition = `plotCorrelationHeatmap,SummarizedExperiment`
+    definition = `plotCorrelationHeatmap,SE`
 )
 
 
 
 ## Updated 2020-02-19.
-`plotCorrelationHeatmap,SingleCellExperiment` <-  # nolint
+`plotCorrelationHeatmap,SCE` <-  # nolint
     function(object, ...) {
         plotCorrelationHeatmap(
             object = aggregateCellsToSamples(object),
@@ -177,5 +177,5 @@ setMethod(
 setMethod(
     f = "plotCorrelationHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = `plotCorrelationHeatmap,SingleCellExperiment`
+    definition = `plotCorrelationHeatmap,SCE`
 )

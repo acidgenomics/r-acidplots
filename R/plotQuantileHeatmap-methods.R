@@ -41,7 +41,7 @@ NULL
 
 
 ## Updated 2021-02-08.
-`plotQuantileHeatmap,SummarizedExperiment` <-  # nolint
+`plotQuantileHeatmap,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -62,6 +62,7 @@ NULL
         convertGenesToSymbols = showRownames,
         ...
     ) {
+        ## FIXME Rework using whatPkg, whatFun approach.
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -166,25 +167,15 @@ NULL
         )
     }
 
-formals(`plotQuantileHeatmap,SummarizedExperiment`)[["color"]] <-
+formals(`plotQuantileHeatmap,SE`)[["color"]] <-
     formalsList[["heatmap.quantile.color"]]
-formals(`plotQuantileHeatmap,SummarizedExperiment`)[["legendColor"]] <-
+formals(`plotQuantileHeatmap,SE`)[["legendColor"]] <-
     formalsList[["heatmap.legend.color"]]
 
 
 
-#' @rdname plotQuantileHeatmap
-#' @export
-setMethod(
-    f = "plotQuantileHeatmap",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotQuantileHeatmap,SummarizedExperiment`
-)
-
-
-
 ## Updated 2020-02-19.
-`plotQuantileHeatmap,SingleCellExperiment` <-  # nolint
+`plotQuantileHeatmap,SCE` <-  # nolint
     function(object, ...) {
         plotQuantileHeatmap(
             object = aggregateCellsToSamples(object),
@@ -199,5 +190,13 @@ setMethod(
 setMethod(
     f = "plotQuantileHeatmap",
     signature = signature("SingleCellExperiment"),
-    definition = `plotQuantileHeatmap,SingleCellExperiment`
+    definition = `plotQuantileHeatmap,SCE`
+)
+
+#' @rdname plotQuantileHeatmap
+#' @export
+setMethod(
+    f = "plotQuantileHeatmap",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotQuantileHeatmap,SE`
 )

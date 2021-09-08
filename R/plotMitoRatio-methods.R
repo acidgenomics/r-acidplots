@@ -20,7 +20,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotMitoRatio,SingleCellExperiment` <-  # nolint
+`plotMitoRatio,SCE` <-  # nolint
     function(
         object,
         geom,
@@ -50,12 +50,12 @@ NULL
         )
     }
 
-f <- formals(`plotMitoRatio,SingleCellExperiment`)
+f <- formals(`plotMitoRatio,SCE`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Mito ratio"
-formals(`plotMitoRatio,SingleCellExperiment`) <- f
+formals(`plotMitoRatio,SCE`) <- f
 
 
 
@@ -64,5 +64,5 @@ formals(`plotMitoRatio,SingleCellExperiment`) <- f
 setMethod(
     f = "plotMitoRatio",
     signature = signature("SingleCellExperiment"),
-    definition = `plotMitoRatio,SingleCellExperiment`
+    definition = `plotMitoRatio,SCE`
 )

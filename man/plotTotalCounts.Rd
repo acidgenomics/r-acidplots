@@ -2,11 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotTotalCounts-methods.R
 \name{plotTotalCounts}
 \alias{plotTotalCounts}
-\alias{plotTotalCounts,SummarizedExperiment-method}
 \alias{plotTotalCounts,SingleCellExperiment-method}
+\alias{plotTotalCounts,SummarizedExperiment-method}
 \title{Plot total read counts}
 \usage{
 plotTotalCounts(object, ...)
+
+\S4method{plotTotalCounts}{SingleCellExperiment}(object, ...)
 
 \S4method{plotTotalCounts}{SummarizedExperiment}(
   object,
@@ -18,11 +20,11 @@ plotTotalCounts(object, ...)
   labels = list(title = "Total counts", subtitle = NULL, x = NULL, y = "counts"),
   flip = getOption(x = "acid.flip", default = TRUE)
 )
-
-\S4method{plotTotalCounts}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -48,8 +50,6 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{flip}{\code{logical(1)}.
 Flip x and y axes. Recommended for plots containing many samples.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.

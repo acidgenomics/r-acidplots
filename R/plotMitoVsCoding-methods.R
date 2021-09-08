@@ -29,7 +29,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotMitoVsCoding,SingleCellExperiment` <-  # nolint
+`plotMitoVsCoding,SCE` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
@@ -62,9 +62,9 @@ NULL
         )
     }
 
-f <- formals(`plotMitoVsCoding,SingleCellExperiment`)
+f <- formals(`plotMitoVsCoding,SCE`)
 f[["color"]] <- formalsList[["color.discrete"]]
-formals(`plotMitoVsCoding,SingleCellExperiment`) <- f
+formals(`plotMitoVsCoding,SCE`) <- f
 
 
 
@@ -73,5 +73,5 @@ formals(`plotMitoVsCoding,SingleCellExperiment`) <- f
 setMethod(
     f = "plotMitoVsCoding",
     signature = signature("SingleCellExperiment"),
-    definition = `plotMitoVsCoding,SingleCellExperiment`
+    definition = `plotMitoVsCoding,SCE`
 )

@@ -2,11 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotQuantileHeatmap-methods.R
 \name{plotQuantileHeatmap}
 \alias{plotQuantileHeatmap}
-\alias{plotQuantileHeatmap,SummarizedExperiment-method}
 \alias{plotQuantileHeatmap,SingleCellExperiment-method}
+\alias{plotQuantileHeatmap,SummarizedExperiment-method}
 \title{Quantile heatmap}
 \usage{
 plotQuantileHeatmap(object, ...)
+
+\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, ...)
 
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(
   object,
@@ -28,11 +30,11 @@ plotQuantileHeatmap(object, ...)
   convertGenesToSymbols = showRownames,
   ...
 )
-
-\S4method{plotQuantileHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -66,7 +68,7 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 Hexadecimal color function or values to use for plot.
 
 We generally recommend these hexadecimal functions from the viridis
-package, in addition to our \code{\link[=synesthesia]{synesthesia()}} palette:
+package, in addition to our \code{synesthesia()} palette:
 \itemize{
 \item \code{viridis::viridis()}.
 \item \code{viridis::inferno()}.
@@ -96,8 +98,6 @@ Title.}
 \item{convertGenesToSymbols}{\code{logical(1)}.
 Attempt to automatically convert gene identifiers to gene symbols.
 Only applies when object contains mappings defined in \code{rowRanges}.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Plot.

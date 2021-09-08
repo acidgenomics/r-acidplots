@@ -185,29 +185,9 @@ NULL
 
 
 
-#' @rdname plotWaterfall
-#' @export
-setMethod(
-    f = "plotWaterfall",
-    signature = signature("data.frame"),
-    definition = `plotWaterfall,data.frame`
-)
-
-
-
 ## Updated 2021-02-09.
 `plotWaterfall,DataFrame` <-  # nolint
     `plotWaterfall,data.frame`
-
-
-
-#' @rdname plotWaterfall
-#' @export
-setMethod(
-    f = "plotWaterfall",
-    signature = signature("DataFrame"),
-    definition = `plotWaterfall,DataFrame`
-)
 
 
 
@@ -256,6 +236,22 @@ setMethod(
 #' @export
 setMethod(
     f = "plotWaterfall",
+    signature = signature("DataFrame"),
+    definition = `plotWaterfall,DataFrame`
+)
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
     signature = signature("SummarizedExperiment"),
     definition = `plotWaterfall,SE`
+)
+
+#' @rdname plotWaterfall
+#' @export
+setMethod(
+    f = "plotWaterfall",
+    signature = signature("data.frame"),
+    definition = `plotWaterfall,data.frame`
 )

@@ -64,16 +64,6 @@ NULL
 
 
 
-#' @rdname plotUpset
-#' @export
-setMethod(
-    f = "plotUpset",
-    signature = signature("list"),
-    definition = `plotUpset,list`
-)
-
-
-
 ## Updated 2021-08-12.
 `plotUpset,matrix` <-  # nolint
     function(
@@ -158,16 +148,6 @@ setMethod(
 
 
 
-#' @rdname plotUpset
-#' @export
-setMethod(
-    f = "plotUpset",
-    signature = signature("matrix"),
-    definition = `plotUpset,matrix`
-)
-
-
-
 ## Updated 2021-09-08.
 `plotUpset,data.frame` <-  # nolint
     function(object, ...) {
@@ -188,16 +168,6 @@ setMethod(
 
 
 
-#' @rdname plotUpset
-#' @export
-setMethod(
-    f = "plotUpset",
-    signature = signature("data.frame"),
-    definition = `plotUpset,data.frame`
-)
-
-
-
 ## Updated 2020-07-23.
 `plotUpset,DataFrame` <-  # nolint
     `plotUpset,data.frame`
@@ -210,4 +180,28 @@ setMethod(
     f = "plotUpset",
     signature = signature("DataFrame"),
     definition = `plotUpset,DataFrame`
+)
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("data.frame"),
+    definition = `plotUpset,data.frame`
+)
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("list"),
+    definition = `plotUpset,list`
+)
+
+#' @rdname plotUpset
+#' @export
+setMethod(
+    f = "plotUpset",
+    signature = signature("matrix"),
+    definition = `plotUpset,matrix`
 )

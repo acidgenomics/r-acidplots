@@ -2,13 +2,17 @@
 % Please edit documentation in R/AllGenerics.R, R/plotUpset-methods.R
 \name{plotUpset}
 \alias{plotUpset}
+\alias{plotUpset,DataFrame-method}
+\alias{plotUpset,data.frame-method}
 \alias{plotUpset,list-method}
 \alias{plotUpset,matrix-method}
-\alias{plotUpset,data.frame-method}
-\alias{plotUpset,DataFrame-method}
 \title{UpSet plot}
 \usage{
 plotUpset(object, ...)
+
+\S4method{plotUpset}{DataFrame}(object, ...)
+
+\S4method{plotUpset}{data.frame}(object, ...)
 
 \S4method{plotUpset}{list}(object, ...)
 
@@ -20,10 +24,6 @@ plotUpset(object, ...)
   orderBySize = c(intersections = TRUE, sets = TRUE),
   labels = list(title = NULL, subtitle = NULL)
 )
-
-\S4method{plotUpset}{data.frame}(object, ...)
-
-\S4method{plotUpset}{DataFrame}(object, ...)
 }
 \arguments{
 \item{object}{Object.}

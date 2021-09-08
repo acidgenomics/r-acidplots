@@ -2,11 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotHeatmap-methods.R
 \name{plotHeatmap}
 \alias{plotHeatmap}
-\alias{plotHeatmap,SummarizedExperiment-method}
 \alias{plotHeatmap,SingleCellExperiment-method}
+\alias{plotHeatmap,SummarizedExperiment-method}
 \title{Heatmap}
 \usage{
 plotHeatmap(object, ...)
+
+\S4method{plotHeatmap}{SingleCellExperiment}(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(
   object,
@@ -30,11 +32,12 @@ plotHeatmap(object, ...)
   convertGenesToSymbols = showRownames,
   ...
 )
-
-\S4method{plotHeatmap}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Passthrough arguments to \code{pheatmap()}.
+The argument names must be formatted in camel case, not snake case.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -48,7 +51,7 @@ Whether the values should be centered and scaled in either the row or
 column direction, or remain unscaled.}
 
 \item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{\link[stats:hclust]{hclust()}}.}
+Clustering method. Accepts the same values as \code{hclust()}.}
 
 \item{clusterRows, clusterCols}{\code{logical(1)}.
 Arrange with hierarchical clustering.}
@@ -63,7 +66,7 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 Hexadecimal color function or values to use for plot.
 
 We generally recommend these hexadecimal functions from the viridis
-package, in addition to our \code{\link[=synesthesia]{synesthesia()}} palette:
+package, in addition to our \code{synesthesia()} palette:
 \itemize{
 \item \code{viridis::viridis()}.
 \item \code{viridis::inferno()}.
@@ -98,9 +101,6 @@ Title.}
 \item{convertGenesToSymbols}{\code{logical(1)}.
 Attempt to automatically convert gene identifiers to gene symbols.
 Only applies when object contains mappings defined in \code{rowRanges}.}
-
-\item{...}{Passthrough arguments to \code{\link[pheatmap:pheatmap]{pheatmap()}}.
-The argument names must be formatted in camel case, not snake case.}
 }
 \value{
 Plot.
@@ -134,8 +134,8 @@ See also:
 
 
 Row- and column-wise hierarchical clustering is performed when \code{clusterRows}
-and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls
-\code{\link[stats:hclust]{hclust()}}, and defaults to the Ward method.
+and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls \code{hclust()},
+and defaults to the Ward method.
 
 Automatic hierarchical clustering of rows and/or columns can error for some
 datasets. When this occurs, you'll likely see this error:\preformatted{Error in hclust(d, method = method) :
@@ -144,9 +144,8 @@ NA/NaN/Inf in foreign function call
 
 In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{FALSE}, or
 you can attempt to pass an \code{hclust} object to these arguments. This is
-recommended as an alternate approach to be used with
-\code{\link[pheatmap:pheatmap]{pheatmap()}}, which is called internally by our
-plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="sourceCode r">}}\preformatted{mat <- assay(mat)
+recommended as an alternate approach to be used with \code{pheatmap()}, which is
+called internally by our plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="sourceCode r">}}\preformatted{mat <- assay(mat)
 dist <- dist(mat)
 hclust <- hclust(dist, method = "ward.D2")
 }\if{html}{\out{</div>}}

@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotNovelty,SingleCellExperiment` <-  # nolint
+`plotNovelty,SCE` <-  # nolint
     function(
         object,
         geom,
@@ -49,12 +49,12 @@ NULL
         )
     }
 
-f <- formals(`plotNovelty,SingleCellExperiment`)
+f <- formals(`plotNovelty,SCE`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Novelty"
-formals(`plotNovelty,SingleCellExperiment`) <- f
+formals(`plotNovelty,SCE`) <- f
 
 
 
@@ -63,5 +63,5 @@ formals(`plotNovelty,SingleCellExperiment`) <- f
 setMethod(
     f = "plotNovelty",
     signature = signature("SingleCellExperiment"),
-    definition = `plotNovelty,SingleCellExperiment`
+    definition = `plotNovelty,SCE`
 )

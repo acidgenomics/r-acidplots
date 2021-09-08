@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotCountsVsFeatures,SingleCellExperiment` <-  # nolint
+`plotCountsVsFeatures,SCE` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
@@ -51,9 +51,9 @@ NULL
         )
     }
 
-f <- formals(`plotCountsVsFeatures,SingleCellExperiment`)
+f <- formals(`plotCountsVsFeatures,SCE`)
 f[["color"]] <- formalsList[["color.discrete"]]
-formals(`plotCountsVsFeatures,SingleCellExperiment`) <- f
+formals(`plotCountsVsFeatures,SCE`) <- f
 
 
 
@@ -62,5 +62,5 @@ formals(`plotCountsVsFeatures,SingleCellExperiment`) <- f
 setMethod(
     f = "plotCountsVsFeatures",
     signature = signature("SingleCellExperiment"),
-    definition = `plotCountsVsFeatures,SingleCellExperiment`
+    definition = `plotCountsVsFeatures,SCE`
 )
