@@ -145,13 +145,18 @@ formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
 
 
 
-## FIXME Consider aggregating cells to samples here first.
-
-## Updated 2019-08-20.
+## Updated 2021-09-08.
 `plotCountsPerBiotype,SCE` <-  # nolint
-    `plotCountsPerBiotype,SE`
+    function(object, ...) {
+        plotCountsPerBiotype(
+            object = aggregateCellsToSamples(object),
+            ...
+        )
+    }
 
 
+
+## FIXME Need to document the `aggregateCellsToSamples` step here.
 
 #' @rdname plotCountsPerBiotype
 #' @export
