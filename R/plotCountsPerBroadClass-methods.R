@@ -1,4 +1,6 @@
 ## FIXME Allow the user to customize the geom here.
+## FIXME This is a bit redundant with `plotCountsPerBiotype`.
+##       Rethink the approach? Merge the documentation?
 
 
 
