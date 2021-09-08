@@ -16,16 +16,14 @@
         isFlag(cols)
     )
     ## Prepare our skeleton return list.
-    out <- list(rows = FALSE, cols = FALSE)
+    out <- list("rows" = FALSE, "cols" = FALSE)
     if (isTRUE(rows) || isTRUE(cols)) {
-        ## FIXME Improve this CLI message.
-        ## FIXME Don't use deparse in call here.
         alert(sprintf(
             fmt = paste0(
                 "Performing hierarchical clustering with ",
-                "{.fun hclust} method {.arg %s}."
+                "{.fun %s} method {.val %s}."
             ),
-            deparse(method)
+            "hclust", method
         ))
     }
     if (isTRUE(rows)) {
@@ -36,7 +34,9 @@
             ),
             error = function(e) {
                 ## nocov start
-                alertWarning("{.fun hclust} row calculation failed.")
+                alertWarning(sprintf(
+                    "{.fun %s} row calculation failed.", "hclust"
+                ))
                 FALSE
                 ## nocov end
             }
@@ -51,7 +51,9 @@
             ),
             error = function(e) {
                 ## nocov start
-                alertWarning("{.fun hclust} column calculation failed.")
+                alertWarning(sprintf(
+                    "{.fun %s} column calculation failed.", "hclust"
+                ))
                 FALSE
                 ## nocov end
             }
