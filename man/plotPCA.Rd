@@ -61,7 +61,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Principal component analysis plot
 }
 \details{
-We're using a modified version of the \code{DESeqTransform} method here.\if{html}{\out{<div class="r">}}\preformatted{methodFunction(
+We're using a modified version of the \code{DESeqTransform} method here.\if{html}{\out{<div class="sourceCode r">}}\preformatted{methodFunction(
     f = "plotPCA",
     signature = "DESeqTransform",
     package = "DESeq2"
