@@ -28,7 +28,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotCountsPerFeature,SummarizedExperiment` <-  # nolint
+`plotCountsPerFeature,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -145,7 +145,7 @@ NULL
         p
     }
 
-f <- formals(`plotCountsPerFeature,SummarizedExperiment`)
+f <- formals(`plotCountsPerFeature,SE`)
 f[["color"]] <- formalsList[["color.discrete"]]
 f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["flip"]] <- formalsList[["flip"]]
@@ -155,7 +155,7 @@ f[["minMethod"]] <-
         signature = "SummarizedExperiment",
         package = "AcidExperiment"
     )[["minMethod"]]
-formals(`plotCountsPerFeature,SummarizedExperiment`) <- f
+formals(`plotCountsPerFeature,SE`) <- f
 
 
 
@@ -164,13 +164,13 @@ formals(`plotCountsPerFeature,SummarizedExperiment`) <- f
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SummarizedExperiment"),
-    definition = `plotCountsPerFeature,SummarizedExperiment`
+    definition = `plotCountsPerFeature,SE`
 )
 
 
 
 ## Updated 2019-07-23.
-`plotCountsPerFeature,SingleCellExperiment` <-  # nolint
+`plotCountsPerFeature,SCE` <-  # nolint
     function(object, ...) {
         plotCountsPerFeature(
             object = aggregateCellsToSamples(object),
@@ -187,5 +187,5 @@ setMethod(
 setMethod(
     f = "plotCountsPerFeature",
     signature = signature("SingleCellExperiment"),
-    definition = `plotCountsPerFeature,SingleCellExperiment`
+    definition = `plotCountsPerFeature,SCE`
 )

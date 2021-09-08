@@ -24,7 +24,7 @@ NULL
 
 
 ## Updated 2021-02-16.
-`plotTotalCounts,SummarizedExperiment` <-  # nolint
+`plotTotalCounts,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -94,25 +94,15 @@ NULL
         p
     }
 
-f <- formals(`plotTotalCounts,SummarizedExperiment`)
+f <- formals(`plotTotalCounts,SE`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["flip"]] <- formalsList[["flip"]]
-formals(`plotTotalCounts,SummarizedExperiment`) <- f
-
-
-
-#' @rdname plotTotalCounts
-#' @export
-setMethod(
-    f = "plotTotalCounts",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotTotalCounts,SummarizedExperiment`
-)
+formals(`plotTotalCounts,SE`) <- f
 
 
 
 ## Updated 2019-09-15.
-`plotTotalCounts,SingleCellExperiment` <-  # nolint
+`plotTotalCounts,SCE` <-  # nolint
     function(object, ...) {
         plotTotalCounts(
             object = aggregateCellsToSamples(object),
@@ -129,5 +119,13 @@ setMethod(
 setMethod(
     f = "plotTotalCounts",
     signature = signature("SingleCellExperiment"),
-    definition = `plotTotalCounts,SingleCellExperiment`
+    definition = `plotTotalCounts,SCE`
+)
+
+#' @rdname plotTotalCounts
+#' @export
+setMethod(
+    f = "plotTotalCounts",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotTotalCounts,SE`
 )

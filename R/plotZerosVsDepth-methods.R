@@ -24,7 +24,7 @@ NULL
 
 
 ## Updated 2019-12-09.
-`plotZerosVsDepth,SummarizedExperiment` <-  # nolint
+`plotZerosVsDepth,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -83,7 +83,7 @@ NULL
         p
     }
 
-formals(`plotZerosVsDepth,SummarizedExperiment`)[["color"]] <-
+formals(`plotZerosVsDepth,SE`)[["color"]] <-
     formalsList[["color.discrete"]]
 
 
@@ -93,5 +93,5 @@ formals(`plotZerosVsDepth,SummarizedExperiment`)[["color"]] <-
 setMethod(
     f = "plotZerosVsDepth",
     signature = signature("SummarizedExperiment"),
-    definition = `plotZerosVsDepth,SummarizedExperiment`
+    definition = `plotZerosVsDepth,SE`
 )

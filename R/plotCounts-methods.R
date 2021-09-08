@@ -103,7 +103,7 @@ NULL
 ##       plotting-with-ggplot-bar-plots-with-error-bars/
 ##
 ## Updated 2020-09-02.
-`plotCounts,SummarizedExperiment` <-  # nolint
+`plotCounts,SE` <-  # nolint
     function(
         object,
         genes,
@@ -245,11 +245,11 @@ NULL
         p
     }
 
-formals(`plotCounts,SummarizedExperiment`)[["color"]] <-
+formals(`plotCounts,SE`)[["color"]] <-
     formalsList[["color.discrete"]]
-formals(`plotCounts,SummarizedExperiment`)[["fill"]] <-
+formals(`plotCounts,SE`)[["fill"]] <-
     formalsList[["fill.discrete"]]
-formals(`plotCounts,SummarizedExperiment`)[["legend"]] <-
+formals(`plotCounts,SE`)[["legend"]] <-
     formalsList[["legend"]]
 
 
@@ -259,5 +259,5 @@ formals(`plotCounts,SummarizedExperiment`)[["legend"]] <-
 setMethod(
     f = "plotCounts",
     signature = signature("SummarizedExperiment"),
-    definition = `plotCounts,SummarizedExperiment`
+    definition = `plotCounts,SE`
 )

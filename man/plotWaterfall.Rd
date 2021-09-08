@@ -2,22 +2,12 @@
 % Please edit documentation in R/AllGenerics.R, R/plotWaterfall-methods.R
 \name{plotWaterfall}
 \alias{plotWaterfall}
-\alias{plotWaterfall,data.frame-method}
 \alias{plotWaterfall,DataFrame-method}
 \alias{plotWaterfall,SummarizedExperiment-method}
+\alias{plotWaterfall,data.frame-method}
 \title{Plot waterfall}
 \usage{
 plotWaterfall(object, ...)
-
-\S4method{plotWaterfall}{data.frame}(
-  object,
-  sampleCol,
-  valueCol,
-  interestingGroups = NULL,
-  trans = c("identity", "log2", "log10"),
-  fill = purpleOrange(1L),
-  labels = list(title = NULL, subtitle = NULL)
-)
 
 \S4method{plotWaterfall}{DataFrame}(
   object,
@@ -35,6 +25,16 @@ plotWaterfall(object, ...)
   fun = c("mean", "sum"),
   interestingGroups = NULL,
   ...
+)
+
+\S4method{plotWaterfall}{data.frame}(
+  object,
+  sampleCol,
+  valueCol,
+  interestingGroups = NULL,
+  trans = c("identity", "log2", "log10"),
+  fill = purpleOrange(1L),
+  labels = list(title = NULL, subtitle = NULL)
 )
 }
 \arguments{

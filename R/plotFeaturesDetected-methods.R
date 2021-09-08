@@ -24,7 +24,7 @@ NULL
 
 
 ## Updated 2021-02-16.
-`plotFeaturesDetected,SummarizedExperiment` <-  # nolint
+`plotFeaturesDetected,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -96,7 +96,7 @@ NULL
         p
     }
 
-formals(`plotFeaturesDetected,SummarizedExperiment`)[c("fill", "flip")] <-
+formals(`plotFeaturesDetected,SE`)[c("fill", "flip")] <-
     formalsList[c("fill.discrete", "flip")]
 
 
@@ -106,13 +106,13 @@ formals(`plotFeaturesDetected,SummarizedExperiment`)[c("fill", "flip")] <-
 setMethod(
     f = "plotFeaturesDetected",
     signature = signature("SummarizedExperiment"),
-    definition = `plotFeaturesDetected,SummarizedExperiment`
+    definition = `plotFeaturesDetected,SE`
 )
 
 
 
 ## Updated 2019-09-15.
-`plotFeaturesDetected,SingleCellExperiment` <-  # nolint
+`plotFeaturesDetected,SCE` <-  # nolint
     function(object, ...) {
         plotFeaturesDetected(
             object = aggregateCellsToSamples(object),
@@ -129,5 +129,5 @@ setMethod(
 setMethod(
     f = "plotFeaturesDetected",
     signature = signature("SingleCellExperiment"),
-    definition = `plotFeaturesDetected,SingleCellExperiment`
+    definition = `plotFeaturesDetected,SCE`
 )

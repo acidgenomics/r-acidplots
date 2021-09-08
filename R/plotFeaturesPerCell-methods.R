@@ -18,7 +18,7 @@ NULL
 
 
 ## Updated 2019-09-16.
-`plotFeaturesPerCell,SingleCellExperiment` <-  # nolint
+`plotFeaturesPerCell,SCE` <-  # nolint
     function(
         object,
         geom,
@@ -48,13 +48,13 @@ NULL
         )
     }
 
-f <- formals(`plotFeaturesPerCell,SingleCellExperiment`)
+f <- formals(`plotFeaturesPerCell,SCE`)
 f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Features per cell"
 f[["labels"]][["metricAxis"]] <- "features"
-formals(`plotFeaturesPerCell,SingleCellExperiment`) <- f
+formals(`plotFeaturesPerCell,SCE`) <- f
 
 
 
@@ -63,5 +63,5 @@ formals(`plotFeaturesPerCell,SingleCellExperiment`) <- f
 setMethod(
     f = "plotFeaturesPerCell",
     signature = signature("SingleCellExperiment"),
-    definition = `plotFeaturesPerCell,SingleCellExperiment`
+    definition = `plotFeaturesPerCell,SCE`
 )

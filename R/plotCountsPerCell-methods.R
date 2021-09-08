@@ -25,7 +25,7 @@ NULL
 
 
 ## Updated 2019-08-27.
-`plotCountsPerCell,SingleCellExperiment` <-  # nolint
+`plotCountsPerCell,SCE` <-  # nolint
     function(
         object,
         geom,
@@ -138,7 +138,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerCell,SingleCellExperiment`)[
+formals(`plotCountsPerCell,SCE`)[
     c("color", "fill", "geom")] <-
     list(
         "color" = formalsList[["color.discrete"]],
@@ -153,5 +153,5 @@ formals(`plotCountsPerCell,SingleCellExperiment`)[
 setMethod(
     f = "plotCountsPerCell",
     signature = signature("SingleCellExperiment"),
-    definition = `plotCountsPerCell,SingleCellExperiment`
+    definition = `plotCountsPerCell,SCE`
 )

@@ -49,7 +49,7 @@ NULL
 
 
 ## Updated 2021-05-17.
-`plotPCA,SummarizedExperiment` <-  # nolint
+`plotPCA,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -143,7 +143,7 @@ NULL
         p
     }
 
-formals(`plotPCA,SummarizedExperiment`)[c("color", "label", "pointSize")] <-
+formals(`plotPCA,SE`)[c("color", "label", "pointSize")] <-
     formalsList[c("color.discrete", "label", "point.size")]
 
 
@@ -153,5 +153,10 @@ formals(`plotPCA,SummarizedExperiment`)[c("color", "label", "pointSize")] <-
 setMethod(
     f = "plotPCA",
     signature = signature("SummarizedExperiment"),
-    definition = `plotPCA,SummarizedExperiment`
+    definition = `plotPCA,SE`
 )
+
+
+
+## FIXME Consider erroring here on SingleCellExperiment input.
+##       Alternatively, consider an internal call using aggregateCellsToSamples

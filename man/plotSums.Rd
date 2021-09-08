@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/plotSums-methods.R
 \name{plotSums}
 \alias{plotSums}
-\alias{plotSums,matrix-method}
 \alias{plotSums,Matrix-method}
 \alias{plotSums,SummarizedExperiment-method}
+\alias{plotSums,matrix-method}
 \title{Plot row or column sums}
 \usage{
 plotSums(object, ...)
 
-\S4method{plotSums}{matrix}(object, MARGIN = 1L)
-
 \S4method{plotSums}{Matrix}(object, MARGIN = 1L)
 
 \S4method{plotSums}{SummarizedExperiment}(object, assay = 1L, MARGIN = 1L)
+
+\S4method{plotSums}{matrix}(object, MARGIN = 1L)
 }
 \arguments{
 \item{object}{Object.}

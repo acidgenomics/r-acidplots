@@ -2,18 +2,11 @@
 % Please edit documentation in R/AllGenerics.R, R/plotQC-methods.R
 \name{plotQC}
 \alias{plotQC}
-\alias{plotQC,SummarizedExperiment-method}
 \alias{plotQC,SingleCellExperiment-method}
+\alias{plotQC,SummarizedExperiment-method}
 \title{Quality control}
 \usage{
 plotQC(object, ...)
-
-\S4method{plotQC}{SummarizedExperiment}(
-  object,
-  assay = 1L,
-  legend = getOption(x = "acid.legend", default = TRUE),
-  labels = list(title = "Quality control", subtitle = NULL)
-)
 
 \S4method{plotQC}{SingleCellExperiment}(
   object,
@@ -21,12 +14,20 @@ plotQC(object, ...)
   legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = "Quality control", subtitle = NULL)
 )
+
+\S4method{plotQC}{SummarizedExperiment}(
+  object,
+  assay = 1L,
+  legend = getOption(x = "acid.legend", default = TRUE),
+  labels = list(title = "Quality control", subtitle = NULL)
+)
 }
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
+\item{geom}{\code{character(1)}.
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
 
 \item{legend}{\code{logical(1)}.
 Include plot legend.}
@@ -35,9 +36,8 @@ Include plot legend.}
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
-\item{geom}{\code{character(1)}.
-Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
-the first argument in the \code{character} vector.}
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Additional arguments.}
 }

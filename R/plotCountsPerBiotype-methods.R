@@ -25,7 +25,7 @@ NULL
 
 
 ## Updated 2019-12-09.
-`plotCountsPerBiotype,SummarizedExperiment` <-  # nolint
+`plotCountsPerBiotype,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -140,7 +140,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerBiotype,SummarizedExperiment`)[["fill"]] <-
+formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
     formalsList[["fill.discrete"]]
 
 
@@ -150,14 +150,14 @@ formals(`plotCountsPerBiotype,SummarizedExperiment`)[["fill"]] <-
 setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SummarizedExperiment"),
-    definition = `plotCountsPerBiotype,SummarizedExperiment`
+    definition = `plotCountsPerBiotype,SE`
 )
 
 
 
 ## Updated 2019-08-20.
-`plotCountsPerBiotype,SingleCellExperiment` <-  # nolint
-    `plotCountsPerBiotype,SummarizedExperiment`
+`plotCountsPerBiotype,SCE` <-  # nolint
+    `plotCountsPerBiotype,SE`
 
 
 
@@ -166,5 +166,5 @@ setMethod(
 setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SingleCellExperiment"),
-    definition = `plotCountsPerBiotype,SingleCellExperiment`
+    definition = `plotCountsPerBiotype,SCE`
 )

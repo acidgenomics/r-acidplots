@@ -32,8 +32,8 @@ NULL
 
 
 
-## Updated 2021-08-11.
-`barcodeRanksPerSample,SingleCellExperiment` <-  # nolint
+## Updated 2021-09-08.
+`barcodeRanksPerSample,SCE` <-  # nolint
     function(object, ...) {
         requireNamespaces("DropletUtils")
         counts <- counts(object)
@@ -51,7 +51,7 @@ NULL
         names(countsPerSample) <- samples
         ## Calculate the ranks per sample.
         ## Note that this now supports sparse matrices.
-        DataFrameList(lapply(
+        out <- lapply(
             X = countsPerSample,
             FUN = function(counts) {
                 x <- withCallingHandlers(
@@ -83,7 +83,9 @@ NULL
                 )
                 x
             }
-        ))
+        )
+        out <- DataFrameList(out)
+        out
     }
 
 
@@ -93,5 +95,5 @@ NULL
 setMethod(
     f = "barcodeRanksPerSample",
     signature = signature("SingleCellExperiment"),
-    definition = `barcodeRanksPerSample,SingleCellExperiment`
+    definition = `barcodeRanksPerSample,SCE`
 )

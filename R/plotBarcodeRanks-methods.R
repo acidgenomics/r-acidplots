@@ -21,7 +21,7 @@ NULL
 
 
 ## Updated 2021-08-11.
-`plotBarcodeRanks,SingleCellExperiment` <-  # nolint
+`plotBarcodeRanks,SCE` <-  # nolint
     function(
         object,
         colors = c(
@@ -147,5 +147,5 @@ NULL
 setMethod(
     f = "plotBarcodeRanks",
     signature = signature("SingleCellExperiment"),
-    definition = `plotBarcodeRanks,SingleCellExperiment`
+    definition = `plotBarcodeRanks,SCE`
 )

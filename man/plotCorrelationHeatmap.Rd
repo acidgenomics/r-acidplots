@@ -45,7 +45,7 @@ Defaults to pearson, but spearman or kendall can also be used.
 Refer to the \code{\link[stats:cor]{cor()}} documentation for details.}
 
 \item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{\link[stats:hclust]{hclust()}}.}
+Clustering method. Accepts the same values as \code{hclust()}.}
 
 \item{showRownames}{\code{logical(1)}.
 Show row or column names.}
@@ -63,7 +63,7 @@ Size of the row and column dendrograms. Use \code{0} to disable.}
 Hexadecimal color function or values to use for plot.
 
 We generally recommend these hexadecimal functions from the viridis
-package, in addition to our \code{\link[=synesthesia]{synesthesia()}} palette:
+package, in addition to our \code{synesthesia()} palette:
 \itemize{
 \item \code{viridis::viridis()}.
 \item \code{viridis::inferno()}.

@@ -30,7 +30,7 @@ NULL
 
 
 ## Updated 2021-08-11.
-`plotQC,SummarizedExperiment` <-  # nolint
+`plotQC,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -79,22 +79,12 @@ NULL
         p
     }
 
-formals(`plotQC,SummarizedExperiment`)[["legend"]] <- formalsList[["legend"]]
-
-
-
-#' @rdname plotQC
-#' @export
-setMethod(
-    f = "plotQC",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotQC,SummarizedExperiment`
-)
+formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
 
 
 
 ## Updated 2021-08-11.
-`plotQC,SingleCellExperiment` <-  # nolint
+`plotQC,SCE` <-  # nolint
     function(
         object,
         geom,
@@ -176,7 +166,7 @@ setMethod(
         p
     }
 
-formals(`plotQC,SingleCellExperiment`)[c("geom", "legend")] <-
+formals(`plotQC,SCE`)[c("geom", "legend")] <-
     list(
         "geom" = .formalsList[["geom"]],
         "legend" = formalsList[["legend"]]
@@ -189,5 +179,13 @@ formals(`plotQC,SingleCellExperiment`)[c("geom", "legend")] <-
 setMethod(
     f = "plotQC",
     signature = signature("SingleCellExperiment"),
-    definition = `plotQC,SingleCellExperiment`
+    definition = `plotQC,SCE`
+)
+
+#' @rdname plotQC
+#' @export
+setMethod(
+    f = "plotQC",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotQC,SE`
 )

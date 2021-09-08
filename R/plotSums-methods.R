@@ -69,34 +69,14 @@ NULL
 
 
 
-#' @rdname plotSums
-#' @export
-setMethod(
-    f = "plotSums",
-    signature = signature("matrix"),
-    definition = `plotSums,matrix`
-)
-
-
-
 ## Updated 2019-08-12.
 `plotSums,Matrix` <-  # nolint
     `plotSums,matrix`
 
 
 
-#' @rdname plotSums
-#' @export
-setMethod(
-    f = "plotSums",
-    signature = signature("Matrix"),
-    definition = `plotSums,Matrix`
-)
-
-
-
 ## Updated 2019-08-12.
-`plotSums,SummarizedExperiment` <-  # nolint
+`plotSums,SE` <-  # nolint
     function(
         object,
         assay = 1L,
@@ -114,6 +94,22 @@ setMethod(
 #' @export
 setMethod(
     f = "plotSums",
+    signature = signature("Matrix"),
+    definition = `plotSums,Matrix`
+)
+
+#' @rdname plotSums
+#' @export
+setMethod(
+    f = "plotSums",
     signature = signature("SummarizedExperiment"),
-    definition = `plotSums,SummarizedExperiment`
+    definition = `plotSums,SE`
+)
+
+#' @rdname plotSums
+#' @export
+setMethod(
+    f = "plotSums",
+    signature = signature("matrix"),
+    definition = `plotSums,matrix`
 )
