@@ -25,17 +25,16 @@
 #'
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
 #'   SummarizedExperiment abort aggregate aggregateCellsToSamples alert
-#'   alertInfo alertWarning append arrow as as_tibble as.SummarizedExperiment
+#'   alertInfo alertWarning append arrow as_tibble as.SummarizedExperiment
 #'   as.formula assayNames assay assay<- assays assays<- axisTicks camelCase
 #'   cell2sample colData colSums colorRampPalette complete.cases
-#'   convertGenesToSymbols counts decode dist ecdf formalArgs formalsList hclust
-#'   head interestingGroups interestingGroups<- intersectionMatrix is leftJoin
-#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
-#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
-#'   packageName packageVersion prcomp quantile reorder requireNamespaces sem
+#'   convertGenesToSymbols counts decode dist ecdf formalsList hclust head
+#'   interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
+#'   makeTitle mapGenesToRownames matchInterestingGroups matchSampleColumn mcols
+#'   melt merge metadata methodFormals metrics organism packageName
+#'   packageVersion prcomp quantile reorder requireNamespaces sem
 #'   nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase
-#'   str_replace_na standardizeCall tibble toInlineString unit validObject var
-#'   zerosVsDepth
+#'   str_replace_na standardizeCall tibble toInlineString unit var zerosVsDepth
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
 #'   element_text expand_limits facet_grid facet_wrap geom_bar geom_boxplot
@@ -51,7 +50,7 @@
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
 #'   isInRightOpenRange isInt isNonNegative isNumber isPositive isScalar
 #'   isString isSubset
-#' @importFrom methods setMethod signature
+#' @importFrom methods as formalArgs is setMethod signature validObject
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
 NULL
