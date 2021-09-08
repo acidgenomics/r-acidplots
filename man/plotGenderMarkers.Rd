@@ -2,24 +2,24 @@
 % Please edit documentation in R/AllGenerics.R, R/plotGenderMarkers-methods.R
 \name{plotGenderMarkers}
 \alias{plotGenderMarkers}
-\alias{plotGenderMarkers,SummarizedExperiment-method}
 \alias{plotGenderMarkers,SingleCellExperiment-method}
+\alias{plotGenderMarkers,SummarizedExperiment-method}
 \title{Plot sexually dimorphic gender marker genes}
 \usage{
 plotGenderMarkers(object, ...)
 
-\S4method{plotGenderMarkers}{SummarizedExperiment}(object, style = "wide", ...)
-
 \S4method{plotGenderMarkers}{SingleCellExperiment}(object, ...)
+
+\S4method{plotGenderMarkers}{SummarizedExperiment}(object, style = "wide", ...)
 }
 \arguments{
 \item{object}{Object.}
 
+\item{...}{Passthrough to \code{plotCounts()}, with the \code{genes} argument
+automatically defined.}
+
 \item{style}{\code{character(1)}.
 Plot style.}
-
-\item{...}{Passthrough to \code{\link[=plotCounts]{plotCounts()}}, with the \code{genes} argument
-automatically defined.}
 }
 \value{
 \code{ggplot}.

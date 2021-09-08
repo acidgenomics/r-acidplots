@@ -261,3 +261,7 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `plotCounts,SE`
 )
+
+
+
+## FIXME Need to harden against SCE input here.

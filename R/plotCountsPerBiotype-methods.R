@@ -145,15 +145,7 @@ formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
 
 
 
-#' @rdname plotCountsPerBiotype
-#' @export
-setMethod(
-    f = "plotCountsPerBiotype",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotCountsPerBiotype,SE`
-)
-
-
+## FIXME Consider aggregating cells to samples here first.
 
 ## Updated 2019-08-20.
 `plotCountsPerBiotype,SCE` <-  # nolint
@@ -167,4 +159,12 @@ setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SingleCellExperiment"),
     definition = `plotCountsPerBiotype,SCE`
+)
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
+    f = "plotCountsPerBiotype",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotCountsPerBiotype,SE`
 )

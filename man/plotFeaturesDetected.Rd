@@ -2,11 +2,13 @@
 % Please edit documentation in R/AllGenerics.R, R/plotFeaturesDetected-methods.R
 \name{plotFeaturesDetected}
 \alias{plotFeaturesDetected}
-\alias{plotFeaturesDetected,SummarizedExperiment-method}
 \alias{plotFeaturesDetected,SingleCellExperiment-method}
+\alias{plotFeaturesDetected,SummarizedExperiment-method}
 \title{Plot features detected}
 \usage{
 plotFeaturesDetected
+
+\S4method{plotFeaturesDetected}{SingleCellExperiment}(object, ...)
 
 \S4method{plotFeaturesDetected}{SummarizedExperiment}(
   object,
@@ -19,11 +21,11 @@ plotFeaturesDetected
   labels = list(title = "Features detected", subtitle = NULL, x = NULL, y = "features"),
   flip = getOption(x = "acid.flip", default = TRUE)
 )
-
-\S4method{plotFeaturesDetected}{SingleCellExperiment}(object, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -52,8 +54,6 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
 \item{flip}{\code{logical(1)}.
 Flip x and y axes. Recommended for plots containing many samples.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.
@@ -63,7 +63,7 @@ Visualize the number of features (i.e. genes) detected.
 }
 \section{Functions}{
 \itemize{
-\item \code{plotFeaturesDetected,SingleCellExperiment-method}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}}
+\item \code{plotFeaturesDetected,SingleCellExperiment-method}: Applies \code{aggregateCellsToSamples()}
 calculation to summarize at sample level prior to plotting.\cr
 Passes \code{...} to \code{SummarizedExperiment} method.
 }}

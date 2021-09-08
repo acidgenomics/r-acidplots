@@ -141,3 +141,5 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `plotCountsPerBroadClass,SE`
 )
+
+## FIXME Consider aggregating cells to samples for SCE here.

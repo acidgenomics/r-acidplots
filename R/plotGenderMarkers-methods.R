@@ -5,7 +5,7 @@
 #'
 #' @inheritParams plotCounts
 #' @inheritParams AcidRoxygen::params
-#' @param ... Passthrough to [plotCounts()], with the `genes` argument
+#' @param ... Passthrough to `plotCounts()`, with the `genes` argument
 #'   automatically defined.
 #'
 #' @examples
@@ -47,7 +47,7 @@ NULL
             isSubset("geneId", names(mcols(gr)))
         )
         ## NOTE We're allowing mapping of genes without a perfect identifier
-        ## version match here (e.g. ENSG00000012817 to ENSG00000012817.16).
+        ## version match here (e.g. "ENSG00000012817" to "ENSG00000012817.16").
         genes <- sort(decode(mcols(gr)[["geneId"]]))
         genes <- mapGenesToRownames(
             object = object,
@@ -68,16 +68,6 @@ NULL
 
 
 
-#' @rdname plotGenderMarkers
-#' @export
-setMethod(
-    f = "plotGenderMarkers",
-    signature = signature("SummarizedExperiment"),
-    definition = `plotGenderMarkers,SE`
-)
-
-
-
 ## Updated 2020-02-19.
 `plotGenderMarkers,SCE` <-  # nolint
     function(object, ...) {
@@ -95,4 +85,12 @@ setMethod(
     f = "plotGenderMarkers",
     signature = signature("SingleCellExperiment"),
     definition = `plotGenderMarkers,SCE`
+)
+
+#' @rdname plotGenderMarkers
+#' @export
+setMethod(
+    f = "plotGenderMarkers",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotGenderMarkers,SE`
 )
