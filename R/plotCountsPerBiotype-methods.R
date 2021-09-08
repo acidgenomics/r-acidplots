@@ -1,5 +1,6 @@
 ## FIXME Allow the user to custom the geom here.
 ##       Consider using boxplot instead of violin by default.
+## FIXME Allow the user to specify the biotype column directly?
 
 
 
