@@ -1,3 +1,8 @@
+## FIXME Allow the user to custom the geom here.
+##       Consider using boxplot instead of violin by default.
+
+
+
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBiotype
@@ -147,16 +152,9 @@ formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
 
 ## Updated 2021-09-08.
 `plotCountsPerBiotype,SCE` <-  # nolint
-    function(object, ...) {
-        plotCountsPerBiotype(
-            object = aggregateCellsToSamples(object),
-            ...
-        )
-    }
+    `plotCountsPerBiotype,SE`
 
 
-
-## FIXME Need to document the `aggregateCellsToSamples` step here.
 
 #' @rdname plotCountsPerBiotype
 #' @export
