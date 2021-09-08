@@ -1,3 +1,7 @@
+## FIXME Allow the user to customize the geom here.
+
+
+
 #' @name plotCountsPerBroadClass
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBroadClass
@@ -134,6 +138,19 @@ formals(`plotCountsPerBroadClass,SE`)[["fill"]] <-
 
 
 
+`plotCountsPerBroadClass,SCE` <-  # nolint
+    `plotCountsPerBroadClass,SE`
+
+
+
+#' @rdname plotCountsPerBroadClass
+#' @export
+setMethod(
+    f = "plotCountsPerBroadClass",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotCountsPerBroadClass,SCE`
+)
+
 #' @rdname plotCountsPerBroadClass
 #' @export
 setMethod(
@@ -142,4 +159,3 @@ setMethod(
     definition = `plotCountsPerBroadClass,SE`
 )
 
-## FIXME Consider aggregating cells to samples for SCE here.

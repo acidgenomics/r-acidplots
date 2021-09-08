@@ -8,7 +8,17 @@
 \usage{
 plotCountsPerBiotype(object, ...)
 
-\S4method{plotCountsPerBiotype}{SingleCellExperiment}(object, ...)
+\S4method{plotCountsPerBiotype}{SingleCellExperiment}(
+  object,
+  assay = 1L,
+  n = 9L,
+  interestingGroups = NULL,
+  trans = c("identity", "log2", "log10"),
+  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
+    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
+  labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
+    countAxis = "counts")
+)
 
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(
   object,
@@ -24,8 +34,6 @@ plotCountsPerBiotype(object, ...)
 }
 \arguments{
 \item{object}{Object.}
-
-\item{...}{Additional arguments.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -54,6 +62,8 @@ To set the discrete fill palette globally, use:\preformatted{options(acid.fill.d
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
+\item{...}{Additional arguments.}
 }
 \value{
 \code{ggplot}.
