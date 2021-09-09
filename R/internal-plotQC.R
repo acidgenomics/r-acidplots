@@ -29,9 +29,7 @@
         isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
     )
     geom <- match.arg(geom)
-    ## FIXME Ensure that this works.
     labels <- matchLabels(labels)
-    ## FIXME Is this code here necessary?
     if (is.null(labels[["metricAxis"]])) {
         labels[["metricAxis"]] <- makeLabel(metricCol)
     }
