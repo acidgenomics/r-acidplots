@@ -35,9 +35,11 @@ matchLabels <- function(labels, argName = "labels") {
     if (is.null(labels)) {
         return(list())
     }
+    ## This approach is used internally in `match.arg()`.
+    formalArgs <- formals(sys.function(sysP <- sys.parent()))
     assert(
         isString(argName),
-        isSubset(argName, formalArgs())
+        isSubset(argName, names(formalArgs))
     )
     assert(
         is.list(labels),
@@ -49,7 +51,7 @@ matchLabels <- function(labels, argName = "labels") {
         )),
         msg = "Invalid 'labels' input."
     )
-    defaults <- eval(formals()[[argName]])
+    defaults <- eval(formalArgs[[argName]])
     assert(
         is.list(defaults),
         hasNames(defaults),
