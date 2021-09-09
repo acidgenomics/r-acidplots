@@ -9,7 +9,9 @@
 ### Minor changes
 
 - `matchLabels`: Simplified argument matching using new `argName` approach
-  instead of legacy `choices` approach.
+  instead of legacy `choices` approach. Also improved hardening against
+  mismatched user input, when attempting to specify elements in `labels` list
+  that are not allowed/supported internally in the function.
 
 ## AcidPlots 0.3.9 (2021-08-09)
 
