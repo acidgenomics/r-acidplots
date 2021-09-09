@@ -50,7 +50,11 @@ matchLabels <- function(labels, argName = "labels") {
         msg = "Invalid 'labels' input."
     )
     defaults <- eval(formals()[[argName]])
-    assert(is.list(defaults))
+    assert(
+        is.list(defaults),
+        hasNames(defaults),
+        isSubset(names(labels), names(defaults))
+    )
     ## Allow the user to pass in a subset of labels, and populate the rest
     ## using the defaults defined in the formal argument.
     if (!areSetEqual(names(labels), names(defaults))) {
