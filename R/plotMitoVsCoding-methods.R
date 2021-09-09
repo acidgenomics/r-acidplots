@@ -54,10 +54,7 @@ NULL
                 color = color,
                 xTrans = trans,
                 yTrans = trans,
-                labels = matchLabels(
-                    labels = labels,
-                    choices = eval(formals()[["labels"]])
-                )
+                labels = matchLabels(labels)
             )
         )
     }

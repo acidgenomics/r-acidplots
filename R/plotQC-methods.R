@@ -45,10 +45,7 @@ NULL
             isScalar(assay),
             isFlag(legend)
         )
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         plotlist <- list(
             "totalCounts" =
                 plotTotalCounts(object, assay = assay),

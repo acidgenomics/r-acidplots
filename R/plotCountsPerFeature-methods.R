@@ -55,10 +55,7 @@ NULL
         minMethod <- match.arg(minMethod)
         geom <- match.arg(geom)
         trans <- match.arg(trans)
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)

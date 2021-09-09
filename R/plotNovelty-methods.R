@@ -32,19 +32,16 @@ NULL
         do.call(
             what = .plotQCMetric,
             args = list(
-                object = object,
-                metricCol = "log10FeaturesPerCount",
-                geom = match.arg(geom),
-                interestingGroups = interestingGroups,
-                min = min,
-                max = 1L,
-                trans = trans,
-                ratio = TRUE,
-                fill = fill,
-                labels = matchLabels(
-                    labels = labels,
-                    choices = eval(formals()[["labels"]])
-                )
+                "object" = object,
+                "metricCol" = "log10FeaturesPerCount",
+                "geom" = match.arg(geom),
+                "interestingGroups" = interestingGroups,
+                "min" = min,
+                "max" = 1L,
+                "trans" = trans,
+                "ratio" = TRUE,
+                "fill" = fill,
+                "labels" = matchLabels(labels)
             )
         )
     }

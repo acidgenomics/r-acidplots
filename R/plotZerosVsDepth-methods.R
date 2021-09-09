@@ -42,10 +42,7 @@ NULL
             isScalar(assay),
             isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
         )
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)

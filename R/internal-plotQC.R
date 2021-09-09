@@ -26,14 +26,12 @@
         isString(metricCol),
         all(isNonNegative(c(min, max))),
         isString(trans),
-        isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
-        is.list(labels),
-        areSetEqual(
-            x = names(labels),
-            y = names(eval(formals()[["labels"]]))
-        )
+        isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
     )
     geom <- match.arg(geom)
+    ## FIXME Ensure that this works.
+    labels <- matchLabels(labels)
+    ## FIXME Is this code here necessary?
     if (is.null(labels[["metricAxis"]])) {
         labels[["metricAxis"]] <- makeLabel(metricCol)
     }
@@ -226,13 +224,10 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
         isString(yCol),
         isString(xTrans),
         isString(yTrans),
-        isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-        is.list(labels),
-        areSetEqual(
-            x = names(labels),
-            y = names(eval(formals()[["labels"]]))
-        )
+        isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
     )
+    ## FIXME Ensure that this works.
+    labels <- matchLabels(labels)
     ## Generate x- and y-axis labels automatically.
     if (is.null(labels[["x"]])) {
         labels[["x"]] <- makeLabel(xCol)
