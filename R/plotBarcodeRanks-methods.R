@@ -44,10 +44,7 @@ NULL
                 y = c("fitline", "inflection", "knee")
             )
         )
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         ranksPerSample <- barcodeRanksPerSample(object, ...)
         sampleData <- sampleData(object)
         if (is.null(sampleData)) {

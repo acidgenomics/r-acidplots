@@ -8,7 +8,7 @@
 
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
-#' @note Updated 2021-08-12.
+#' @note Updated 2021-09-09.
 #'
 #' @details
 #' S4 wrapper for `ComplexUpset::upset()` with improved default aesthetics.
@@ -64,7 +64,7 @@ NULL
 
 
 
-## Updated 2021-08-12.
+## Updated 2021-09-09.
 `plotUpset,matrix` <-  # nolint
     function(
         object,
@@ -77,7 +77,6 @@ NULL
             "intersections" = TRUE,
             "sets" = TRUE
         ),
-
         labels = list(
             "title" = NULL,
             "subtitle" = NULL
@@ -110,10 +109,9 @@ NULL
         if (!is.finite(nIntersections)) {
             nIntersections <- NULL
         }
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        ## FIXME Can we rework this to handle like match.arg, where we
+        ## don't have to specify the formals by default?
+        labels <- matchLabels(labels)
         args <- list(
             "data" = as.data.frame(object),
             "intersect" = colnames(object),

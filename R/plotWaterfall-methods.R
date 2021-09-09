@@ -79,10 +79,7 @@ NULL
         )
         trans <- match.arg(trans)
         isLog <- !identical(trans, "identity")
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         data <- data.frame(
             "x" = object[[sampleCol]],
             "y" = object[[valueCol]]

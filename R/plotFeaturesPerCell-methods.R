@@ -40,10 +40,7 @@ NULL
                 max = max,
                 trans = trans,
                 fill = fill,
-                labels = matchLabels(
-                    labels = labels,
-                    choices = eval(formals()[["labels"]])
-                )
+                labels = matchLabels(labels)
             )
         )
     }

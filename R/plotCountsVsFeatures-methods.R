@@ -35,18 +35,15 @@ NULL
         do.call(
             what = .plotQCScatterplot,
             args = list(
-                object = object,
-                interestingGroups = interestingGroups,
-                trendline = trendline,
-                xCol = "nCount",
-                yCol = "nFeature",
-                color = color,
-                xTrans = trans,
-                yTrans = trans,
-                labels = matchLabels(
-                    labels = labels,
-                    choices = eval(formals()[["labels"]])
-                )
+                "object" = object,
+                "interestingGroups" = interestingGroups,
+                "trendline" = trendline,
+                "xCol" = "nCount",
+                "yCol" = "nFeature",
+                "color" = color,
+                "xTrans" = trans,
+                "yTrans" = trans,
+                "labels" = matchLabels(labels)
             )
         )
     }

@@ -145,10 +145,7 @@ NULL
         if (identical(geom, "bar")) {
             assert(identical(style, "facet"))
         }
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)

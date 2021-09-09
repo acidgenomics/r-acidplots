@@ -44,10 +44,7 @@ NULL
             isString(.xname),
             isString(.yname)
         )
-        labels <- matchLabels(
-            labels = labels,
-            choices = eval(formals()[["labels"]])
-        )
+        labels <- matchLabels(labels)
         if (!is.null(i)) {
             x <- x[i, , drop = FALSE]
             y <- y[i, , drop = FALSE]

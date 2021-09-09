@@ -42,10 +42,7 @@ NULL
                 trans = trans,
                 ratio = TRUE,
                 fill = fill,
-                labels = matchLabels(
-                    labels = labels,
-                    choices = eval(formals()[["labels"]])
-                )
+                labels = matchLabels(labels)
             )
         )
     }
