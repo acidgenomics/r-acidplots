@@ -1,15 +1,13 @@
-## FIXME Add support for patchwork:
-## > theme(plot.tag = element_text(size = 8L))
-
-
-
 ## nolint start
+
+## NOTE Consider adding support for patchwork:
+## > theme(plot.tag = element_text(size = 8L))
 
 
 
 #' ggplot2 themes
 #'
-#' Complete [ggplot2](http://ggplot2.tidyverse.org) themes.
+#' Complete ggplot2 themes.
 #'
 #' Themes are based off of `ggplot2::theme_linedraw()`, but with modifications
 #' and extra user-definable parameters.

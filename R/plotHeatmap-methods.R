@@ -1,4 +1,4 @@
-## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
+## FIXME Migrate from pheatmap to ComplexHeatmap.
 
 
 
