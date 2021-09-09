@@ -226,7 +226,6 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
         isString(yTrans),
         isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
     )
-    ## FIXME Ensure that this works.
     labels <- matchLabels(labels)
     ## Generate x- and y-axis labels automatically.
     if (is.null(labels[["x"]])) {
