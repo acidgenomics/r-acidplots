@@ -1,3 +1,11 @@
+## AcidPlots 0.4.0 (UNRELEASED)
+
+### Major changes
+
+- `plotHeatmap`: ComplexHeatmap.
+- `plotUpset`: ComplexUpset.
+- Now using patchwork package internally for grid layout instead of cowplot.
+
 ## AcidPlots 0.3.9 (2021-08-09)
 
 ### Minor changes

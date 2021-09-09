@@ -1,11 +1,3 @@
-## FIXME Migrate from UpSetR to ComplexUpset.
-## https://github.com/krassowski/complex-upset
-
-## FIXME Replace pheatmap with ComplexHeatmap.
-## https://github.com/jokergoo/ComplexHeatmap
-
-
-
 #' AcidPlots
 #'
 #' Functions for plotting genomic data.
