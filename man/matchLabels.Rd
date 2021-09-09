@@ -4,32 +4,32 @@
 \alias{matchLabels}
 \title{Match ggplot2 labels}
 \usage{
-matchLabels(labels, choices = NULL)
+matchLabels(labels, argName = "labels")
 }
 \arguments{
 \item{labels}{\code{list}.
 User-defined plot labels.
-Per element, supports \code{character(1)}., \code{logical(1)} (for automatic
-labels), or \code{NULL}.}
+Per element, supports \code{character(1)}., \code{logical(1)}
+(for automatic labels), or \code{NULL}.}
 
-\item{choices}{\code{list}.
-Default plot labels, defined in \code{labels} \code{\link[base:formals]{formals()}}.}
+\item{argName}{\code{character(1)}.
+Argument name defined in \code{formalArgs()} to match against user input.
+Defaults to \code{"labels"}.}
 }
 \value{
 \code{list}.
+Returns an empty list on \code{NULL} input.
 }
 \description{
 Allow user to define ggplot labels, and populate missing values from the
 defaults specified in \code{labels} formal argument.
 }
 \details{
-Returns an empty list on \code{NULL} input.
+Attempting to follow a similar naming convention to \code{match.arg()} here,
+using \code{choices} argument
 }
 \note{
-Attempting to follow a similar naming convention to
-\code{\link[base:match.arg]{match.arg()}} here, using \code{choices} argument.
-
-Updated 2021-08-09.
+Updated 2021-09-09.
 }
 \examples{
 matchLabels(
