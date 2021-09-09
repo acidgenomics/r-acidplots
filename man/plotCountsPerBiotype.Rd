@@ -11,6 +11,7 @@ plotCountsPerBiotype(object, ...)
 \S4method{plotCountsPerBiotype}{SingleCellExperiment}(
   object,
   assay = 1L,
+  biotypeCol = "geneBiotype",
   n = 9L,
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
@@ -23,6 +24,7 @@ plotCountsPerBiotype(object, ...)
 \S4method{plotCountsPerBiotype}{SummarizedExperiment}(
   object,
   assay = 1L,
+  biotypeCol = "geneBiotype",
   n = 9L,
   interestingGroups = NULL,
   trans = c("identity", "log2", "log10"),
@@ -37,6 +39,9 @@ plotCountsPerBiotype(object, ...)
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
+
+\item{biotypeCol}{\code{character(1)}.
+Biotype column name defined in \code{colData()}.}
 
 \item{n}{\code{integer(1)}.
 Number to include.}
@@ -72,7 +77,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts per biotype
 }
 \note{
-Updated 2019-12-09.
+Updated 2021-09-09.
 }
 \examples{
 data(

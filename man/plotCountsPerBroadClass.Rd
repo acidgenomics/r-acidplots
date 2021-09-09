@@ -11,55 +11,26 @@ plotCountsPerBroadClass(object, ...)
 
 \S4method{plotCountsPerBroadClass}{SingleCellExperiment}(
   object,
-  assay = 1L,
-  interestingGroups = NULL,
-  trans = c("identity", "log2", "log10"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
-  labels = list(title = "Counts per broad class", subtitle = NULL, sampleAxis = NULL,
-    countAxis = "counts")
+  ...,
+  labels = list(title = "Counts per broad class biotype", subtitle = NULL, sampleAxis =
+    NULL, countAxis = "counts")
 )
 
 \S4method{plotCountsPerBroadClass}{SummarizedExperiment}(
   object,
-  assay = 1L,
-  interestingGroups = NULL,
-  trans = c("identity", "log2", "log10"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
-  labels = list(title = "Counts per broad class", subtitle = NULL, sampleAxis = NULL,
-    countAxis = "counts")
+  ...,
+  labels = list(title = "Counts per broad class biotype", subtitle = NULL, sampleAxis =
+    NULL, countAxis = "counts")
 )
 }
 \arguments{
 \item{object}{Object.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
-
-\item{trans}{\code{character(1)}.
-Name of the axis scale transformation to apply.
-
-For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
+\item{...}{Passthrough arguments to \code{plotCountsPerBiotype()}.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
-
-\item{...}{Additional arguments.}
 }
 \value{
 Plot.
@@ -68,7 +39,7 @@ Plot.
 Plot counts per broad class definition
 }
 \note{
-Updated 2019-12-09.
+Updated 2021-09-09.
 }
 \examples{
 data(

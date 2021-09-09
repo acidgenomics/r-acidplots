@@ -1,15 +1,18 @@
 ## FIXME Allow the user to custom the geom here.
 ##       Consider using boxplot instead of violin by default.
 ## FIXME Allow the user to specify the biotype column directly?
+## FIXME Can we migrate the broadClass code here?
 
 
 
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBiotype
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-09-09.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param biotypeCol `character(1)`.
+#'   Biotype column name defined in `colData()`.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -30,11 +33,12 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2021-09-09.
 `plotCountsPerBiotype,SE` <-  # nolint
     function(
         object,
         assay = 1L,
+        biotypeCol = "geneBiotype",
         n = 9L,
         interestingGroups = NULL,
         trans = c("identity", "log2", "log10"),
@@ -47,8 +51,10 @@ NULL
         )
     ) {
         validObject(object)
+        ## FIXME Put the biotypeCol check up here earlier.
         assert(
             isScalar(assay),
+            isString(biotypeCol),
             isInt(n),
             isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
         )
@@ -71,6 +77,7 @@ NULL
         rowData <- decode(rowData)
         rowData[["rowname"]] <- rownames(object)
         ## Determine whether to use transcripts or genes automatically.
+        ## FIXME Need to rework this, and move check up...
         if (isSubset("txBiotype", colnames(rowData))) {
             biotypeCol <- "txBiotype"
         } else if (isSubset("transcriptBiotype", colnames(rowData))) {
