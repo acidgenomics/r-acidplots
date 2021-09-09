@@ -59,7 +59,7 @@ UpSet plot
 S4 wrapper for \code{ComplexUpset::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2021-08-12.
+Updated 2021-09-09.
 }
 \examples{
 list <- list(

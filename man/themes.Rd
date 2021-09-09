@@ -66,7 +66,7 @@ Remove all axis lines, axis ticks, and panel borders.}
 \code{theme}.
 }
 \description{
-Complete \href{http://ggplot2.tidyverse.org}{ggplot2} themes.
+Complete ggplot2 themes.
 }
 \details{
 Themes are based off of \code{ggplot2::theme_linedraw()}, but with modifications
