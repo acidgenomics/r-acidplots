@@ -13,9 +13,9 @@
 #'   User-defined plot labels.
 #'   Per element, supports `character(1)`., `logical(1)`
 #'   (for automatic labels), or `NULL`.
-#' @param choices `list`.
-#'   Default plot labels, defined in `labels`.
-#'   Refer to `formals()` for details.
+#' @param argName `character(1)`.
+#'   Argument name defined in `formalArgs()` to match against user input.
+#'   Defaults to `"labels"`.
 #'
 #' @seealso
 #' - `ggplot2::labs()`.
@@ -31,11 +31,14 @@
 #'         subtitle = "BBB"
 #'     )
 #' )
-matchLabels <- function(labels, choices = NULL) {
-    ## FIXME Don't allow NULL input of choices.
+matchLabels <- function(labels, argName = "labels") {
     if (is.null(labels)) {
         return(list())
     }
+    assert(
+        isString(argName),
+        isSubset(argName, formalArgs())
+    )
     assert(
         is.list(labels),
         all(bapply(
@@ -46,17 +49,13 @@ matchLabels <- function(labels, choices = NULL) {
         )),
         msg = "Invalid 'labels' input."
     )
-    if (!is.null(choices)) {
-        assert(
-            is.list(choices),
-            isSubset(names(labels), names(choices))
-        )
-    }
+    defaults <- eval(formals()[[argName]])
+    assert(is.list(defaults))
     ## Allow the user to pass in a subset of labels, and populate the rest
-    ## using the defaults.
-    if (!areSetEqual(names(labels), names(choices))) {
-        diff <- setdiff(names(choices), names(labels))
-        labels <- c(labels, choices[diff])
+    ## using the defaults defined in the formal argument.
+    if (!areSetEqual(names(labels), names(defaults))) {
+        diff <- setdiff(names(defaults), names(labels))
+        labels <- append(x = labels, values = defaults[diff])
     }
     labels
 }
