@@ -1,7 +1,5 @@
 ## FIXME Allow the user to custom the geom here.
 ##       Consider using boxplot instead of violin by default.
-## FIXME Allow the user to specify the biotype column directly?
-## FIXME Can we migrate the broadClass code here?
 
 
 
@@ -51,7 +49,6 @@ NULL
         )
     ) {
         validObject(object)
-        ## FIXME Put the biotypeCol check up here earlier.
         assert(
             isScalar(assay),
             isString(biotypeCol),
@@ -63,6 +60,25 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
+        rowData <- rowData(object)
+        if (!isSubset(biotypeCol, colnames(rowData))) {
+            ## nocov start
+            alertWarning(sprintf(
+                "{.fun %s} does not contain biotypes defined in {.val %s}.",
+                "rowData", biotypeCol
+            ))
+            return(invisible(NULL))
+            ## nocov end
+        }
+        rowData <- decode(rowData)
+        rowData[["rowname"]] <- rownames(object)
+        ## Get the top biotypes from the row data.
+        biotypes <- table(rowData[[biotypeCol]])
+        ## Requiring at least 10 genes per biotype.
+        biotypes <- biotypes[which(biotypes > 10L)]
+        biotypes <- sort(biotypes, decreasing = TRUE)
+        biotypes <- head(biotypes, n = n)
+        biotypes <- names(biotypes)
         ## Melt the count matrix into long format.
         data <- melt(
             object = object,
@@ -72,37 +88,6 @@ NULL
             trans = trans
         )
         data <- decode(data)
-        ## Get the row data and prepare for left join via "rowname" column.
-        rowData <- rowData(object)
-        rowData <- decode(rowData)
-        rowData[["rowname"]] <- rownames(object)
-        ## Determine whether to use transcripts or genes automatically.
-        ## FIXME Need to rework this, and move check up...
-        if (isSubset("txBiotype", colnames(rowData))) {
-            biotypeCol <- "txBiotype"
-        } else if (isSubset("transcriptBiotype", colnames(rowData))) {
-            ## Legacy approach used until 2021-01-15.
-            biotypeCol <- "transcriptBiotype"
-        } else {
-            biotypeCol <- "geneBiotype"
-        }
-        ## Warn and early return if the biotypes are not defined in rowData.
-        if (!isSubset(biotypeCol, colnames(rowData))) {
-            ## nocov start
-            warning(sprintf(
-                "'rowData()' does not contain biotypes defined in '%s' column.",
-                biotypeCol
-            ))
-            return(invisible(NULL))
-            ## nocov end
-        }
-        ## Get the top biotypes from the row data.
-        biotypes <- table(rowData[[biotypeCol]])
-        ## Requiring at least 10 genes per biotype.
-        biotypes <- biotypes[which(biotypes > 10L)]
-        biotypes <- sort(biotypes, decreasing = TRUE)
-        biotypes <- head(biotypes, n = n)
-        biotypes <- names(biotypes)
         ## Prepare the minimal data frame required for plotting.
         data <- leftJoin(x = data, y = rowData, by = "rowname")
         keep <- which(data[[biotypeCol]] %in% biotypes)
