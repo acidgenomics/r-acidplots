@@ -30,6 +30,11 @@ plotUpset(object, ...)
 
 \item{...}{Additional arguments.}
 
+\item{minSize, maxSize}{Non-negative \code{integer(1)} or \code{Inf}.
+Minimal/maximal number of observations in an intersection for it to be
+included. Defaults to all observations. Note that \code{maxSize} must be
+greater than \code{minSize}.}
+
 \item{nIntersections}{\code{integer(1)} or \code{Inf}.
 Maximum number of intersections to plot.
 Set \code{Inf} to plot all intersections.}
