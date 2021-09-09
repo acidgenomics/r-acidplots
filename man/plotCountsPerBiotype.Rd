@@ -2,11 +2,16 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCountsPerBiotype-methods.R
 \name{plotCountsPerBiotype}
 \alias{plotCountsPerBiotype}
+\alias{plotCountsPerBroadClass}
 \alias{plotCountsPerBiotype,SingleCellExperiment-method}
 \alias{plotCountsPerBiotype,SummarizedExperiment-method}
+\alias{plotCountsPerBroadClass,SingleCellExperiment-method}
+\alias{plotCountsPerBroadClass,SummarizedExperiment-method}
 \title{Plot counts per biotype}
 \usage{
 plotCountsPerBiotype(object, ...)
+
+plotCountsPerBroadClass(object, ...)
 
 \S4method{plotCountsPerBiotype}{SingleCellExperiment}(
   object,
@@ -32,6 +37,20 @@ plotCountsPerBiotype(object, ...)
     "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts")
+)
+
+\S4method{plotCountsPerBroadClass}{SingleCellExperiment}(
+  object,
+  ...,
+  labels = list(title = "Counts per broad class biotype", subtitle = NULL, sampleAxis =
+    NULL, countAxis = "counts")
+)
+
+\S4method{plotCountsPerBroadClass}{SummarizedExperiment}(
+  object,
+  ...,
+  labels = list(title = "Counts per broad class biotype", subtitle = NULL, sampleAxis =
+    NULL, countAxis = "counts")
 )
 }
 \arguments{

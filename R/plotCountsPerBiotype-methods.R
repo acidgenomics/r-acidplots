@@ -146,6 +146,33 @@ formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
 
 
 
+## Updated 2021-09-09.
+`plotCountsPerBroadClass,SE` <-  # nolint
+    function(
+        object,
+        ...,
+        labels = list(
+            title = "Counts per broad class biotype",
+            subtitle = NULL,
+            sampleAxis = NULL,
+            countAxis = "counts"
+        )
+    ) {
+        plotCountsPerBiotype(
+            object = object,
+            biotypeCol = "broadClass",
+            labels = matchLabels(labels),
+            ...
+        )
+    }
+
+
+
+`plotCountsPerBroadClass,SCE` <-  # nolint
+    `plotCountsPerBroadClass,SE`
+
+
+
 #' @rdname plotCountsPerBiotype
 #' @export
 setMethod(
@@ -160,4 +187,22 @@ setMethod(
     f = "plotCountsPerBiotype",
     signature = signature("SummarizedExperiment"),
     definition = `plotCountsPerBiotype,SE`
+)
+
+
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
+    f = "plotCountsPerBroadClass",
+    signature = signature("SingleCellExperiment"),
+    definition = `plotCountsPerBroadClass,SCE`
+)
+
+#' @rdname plotCountsPerBiotype
+#' @export
+setMethod(
+    f = "plotCountsPerBroadClass",
+    signature = signature("SummarizedExperiment"),
+    definition = `plotCountsPerBroadClass,SE`
 )

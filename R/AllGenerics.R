@@ -79,7 +79,7 @@ NULL
 
 
 
-#' @rdname plotCountsPerBroadClass
+#' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBroadClass
 #' @importFrom AcidGenerics plotCountsPerBroadClass
 #' @usage plotCountsPerBroadClass(object, ...)
