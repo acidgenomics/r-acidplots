@@ -1,11 +1,3 @@
-## FIXME Need to improve working example to test coverage of
-##       sortIntersections and sortSets.
-## FIXME Set the minimum number of intersections to plot???
-## FIXME Use `min_size` here to set the intersection size limit.
-## FIXME Allow the user to set `maxSize`?
-
-
-
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
 #' @note Updated 2021-09-09.
@@ -15,6 +7,10 @@
 #'
 #' @inheritParams AcidRoxygen::params
 #'
+#' @param minSize,maxSize Non-negative `integer(1)` or `Inf`.
+#'   Minimal/maximal number of observations in an intersection for it to be
+#'   included. Defaults to all observations. Note that `maxSize` must be
+#'   greater than `minSize`.
 #' @param nIntersections `integer(1)` or `Inf`.
 #'   Maximum number of intersections to plot.
 #'   Set `Inf` to plot all intersections.
@@ -68,8 +64,6 @@ NULL
 `plotUpset,matrix` <-  # nolint
     function(
         object,
-
-        ## FIXME Think about the names of these arguments.
         minSize = 0L,
         maxSize = Inf,
         nIntersections = 40L,
@@ -97,9 +91,10 @@ NULL
         assert(
             is.integer(object),
             all(object %in% c(0L, 1L)),
-            isNonNegative(minSize),
-            isNonNegative(maxSize),
+            allAreNonNegative(c(minSize, maxSize)),
+            isTRUE(maxSize > minSize),
             isInt(nIntersections) || is.infinite(nIntersections),
+            isPositive(nIntersections),
             is.logical(orderBySize),
             areSetEqual(
                 x = names(orderBySize),
@@ -109,18 +104,14 @@ NULL
         if (!is.finite(nIntersections)) {
             nIntersections <- NULL
         }
-        ## FIXME Can we rework this to handle like match.arg, where we
-        ## don't have to specify the formals by default?
         labels <- matchLabels(labels)
         args <- list(
             "data" = as.data.frame(object),
             "intersect" = colnames(object),
-            ## Label shown below the intersection matrix.
-            "name" = NULL,
-
             "max_size" = maxSize,
-            "min_size" = maxSize,
-
+            "min_size" = minSize,
+            ## This will define label shown below the intersection matrix.
+            "name" = NULL,
             ## The exact number of the intersections to be displayed;
             ## "n" largest intersections that meet criteria will be shown.
             "n_intersections" = nIntersections,
