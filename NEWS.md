@@ -6,6 +6,11 @@
 - `plotUpset`: ComplexUpset.
 - Now using patchwork package internally for grid layout instead of cowplot.
 
+### Minor changes
+
+- `matchLabels`: Simplified argument matching using new `argName` approach
+  instead of legacy `choices` approach.
+
 ## AcidPlots 0.3.9 (2021-08-09)
 
 ### Minor changes
