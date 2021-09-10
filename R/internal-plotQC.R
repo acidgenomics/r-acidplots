@@ -12,10 +12,10 @@
     trans = "identity",
     ratio = FALSE,
     labels = list(
-        title = NULL,
-        subtitle = NULL,
-        metricAxis = NULL,
-        otherAxis = NULL
+        "title" = NULL,
+        "subtitle" = NULL,
+        "metricAxis" = NULL,
+        "otherAxis" = NULL
     )
 ) {
     validObject(object)
@@ -196,10 +196,10 @@ formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
     interestingGroups = NULL,
     trendline = FALSE,
     labels = list(
-        title = NULL,
-        subtitle = NULL,
-        x = NULL,
-        y = NULL
+        "title" = NULL,
+        "subtitle" = NULL,
+        "x" = NULL,
+        "y" = NULL
     )
 ) {
     validObject(object)
