@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit AcidGenerics::plotFeaturesDetected
-#' @note Updated 2021-02-16.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2021-02-16.
+## Updated 2021-09-10.
 `plotFeaturesDetected,SE` <-  # nolint
     function(
         object,
@@ -31,12 +31,11 @@ NULL
         interestingGroups = NULL,
         limit = 0L,
         minCounts = 1L,
-        fill,
         labels = list(
-            title = "Features detected",
-            subtitle = NULL,
-            x = NULL,
-            y = "features"
+            "title" = "Features detected",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "features"
         ),
         flip
     ) {
@@ -45,7 +44,6 @@ NULL
             isScalar(assay),
             isInt(limit) && isNonNegative(limit),
             isInt(minCounts) && isNonNegative(minCounts),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip)
         )
         labels <- matchLabels(labels)
@@ -69,17 +67,13 @@ NULL
             acid_geom_bar() +
             acid_scale_y_continuous_nopad()
         ## Labels.
-        if (is.list(labels)) {
-            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
-            p <- p + do.call(what = labs, args = labels)
-        }
+        labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteFillScale()
         ## Show limit line.
         if (isPositive(limit)) {
             p <- p + acid_geom_abline(yintercept = limit)
-        }
-        ## Fill.
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
         }
         ## Flip.
         if (isTRUE(flip)) {
@@ -93,8 +87,7 @@ NULL
         p
     }
 
-formals(`plotFeaturesDetected,SE`)[c("fill", "flip")] <-
-    formalsList[c("fill.discrete", "flip")]
+formals(`plotFeaturesDetected,SE`)[["flip"]] <- formalsList[["flip"]]
 
 
 
