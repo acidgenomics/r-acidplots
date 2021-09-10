@@ -102,7 +102,7 @@ NULL
 ## - http://environmentalcomputing.net/
 ##       plotting-with-ggplot-bar-plots-with-error-bars/
 ##
-## Updated 2020-09-02.
+## Updated 2021-09-10.
 `plotCounts,SE` <-  # nolint
     function(
         object,
@@ -113,16 +113,14 @@ NULL
         geom = c("point", "violin", "boxplot", "bar"),
         trans = c("identity", "log2", "log10"),
         line = c("none", "median", "mean", "geometricMean"),
-        color,
-        fill,
         legend,
         style = c("facet", "wide"),
         sort = FALSE,
         labels = list(
-            title = NULL,
-            subtitle = NULL,
-            sampleAxis = NULL,
-            countAxis = "counts"
+            "title" = NULL,
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
         )
     ) {
         validObject(object)
@@ -134,7 +132,6 @@ NULL
             all(isInClosedRange(length(genes), lower = 1L, upper = 20L)),
             isScalar(assay),
             isFlag(convertGenesToSymbols),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isFlag(legend),
             isFlag(sort)
         )
@@ -223,29 +220,22 @@ NULL
                 width = 0.5
             )
         }
-        if (is(color, "ScaleDiscrete")) {
-            p <- p + color
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
+        p <- p + autoDiscreteFillScale()
+        ## Labels.
+        if (!identical(trans, "identity")) {
+            labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
         }
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
-        }
-        if (is.list(labels)) {
-            if (!identical(trans, "identity")) {
-                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
-            }
-            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-            labels[["fill"]] <- labels[["color"]]
-            names(labels)[names(labels) == "sampleAxis"] <- "x"
-            names(labels)[names(labels) == "countAxis"] <- "y"
-            p <- p + do.call(what = labs, args = labels)
-        }
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        labels[["fill"]] <- labels[["color"]]
+        names(labels)[names(labels) == "sampleAxis"] <- "x"
+        names(labels)[names(labels) == "countAxis"] <- "y"
+        p <- p + do.call(what = labs, args = labels)
+        ## Return.
         p
     }
 
-formals(`plotCounts,SE`)[["color"]] <-
-    formalsList[["color.discrete"]]
-formals(`plotCounts,SE`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
 formals(`plotCounts,SE`)[["legend"]] <-
     formalsList[["legend"]]
 
@@ -261,4 +251,5 @@ setMethod(
 
 
 
-## FIXME Need to harden against SCE input here.
+## FIXME SingleCellExperiment method is defined in pointillism.
+## Need to move that here?
