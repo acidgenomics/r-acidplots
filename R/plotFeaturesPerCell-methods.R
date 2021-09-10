@@ -1,7 +1,7 @@
 #' @name plotFeaturesPerCell
 #' @inherit AcidGenerics::plotFeaturesPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
-#' @note Updated 2019-09-16.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2021-09-10.
 `plotFeaturesPerCell,SCE` <-  # nolint
     function(
         object,
@@ -26,27 +26,24 @@ NULL
         min = 0L,
         max = Inf,
         trans = "log2",
-        fill,
         labels
     ) {
         do.call(
             what = .plotQCMetric,
             args = list(
-                object = object,
-                metricCol = "nFeature",
-                geom = match.arg(geom),
-                interestingGroups = interestingGroups,
-                min = min,
-                max = max,
-                trans = trans,
-                fill = fill,
-                labels = matchLabels(labels)
+                "object" = object,
+                "metricCol" = "nFeature",
+                "geom" = match.arg(geom),
+                "interestingGroups" = interestingGroups,
+                "min" = min,
+                "max" = max,
+                "trans" = trans,
+                "labels" = matchLabels(labels)
             )
         )
     }
 
 f <- formals(`plotFeaturesPerCell,SCE`)
-f[["fill"]] <- formalsList[["fill.discrete"]]
 f[["geom"]] <- .formalsList[["geom"]]
 f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 f[["labels"]][["title"]] <- "Features per cell"
