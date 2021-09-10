@@ -1,12 +1,7 @@
-## FIXME Allow the user to custom the geom here.
-##       Consider using boxplot instead of violin by default.
-
-
-
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBiotype
-#' @note Updated 2021-09-09.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param biotypeCol `character(1)`.
@@ -31,7 +26,7 @@ NULL
 
 
 
-## Updated 2021-09-09.
+## Updated 2021-09-10.
 `plotCountsPerBiotype,SE` <-  # nolint
     function(
         object,
@@ -39,8 +34,8 @@ NULL
         biotypeCol = "geneBiotype",
         n = 9L,
         interestingGroups = NULL,
+        geom = c("violin", "boxplot"),
         trans = c("identity", "log2", "log10"),
-        fill,
         labels = list(
             title = "Counts per biotype",
             subtitle = NULL,
@@ -52,9 +47,9 @@ NULL
         assert(
             isScalar(assay),
             isString(biotypeCol),
-            isInt(n),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+            isInt(n)
         )
+        geom <- match.arg(geom)
         trans <- match.arg(trans)
         labels <- matchLabels(labels)
         interestingGroups(object) <-
@@ -103,40 +98,51 @@ NULL
                 x = str_replace_na(!!sym("interestingGroups")),
                 y = !!sym("value")
             )
-        ) +
-            geom_violin(
-                mapping = aes(
-                    fill = str_replace_na(!!sym("interestingGroups"))
-                ),
-                color = NA,
-                scale = "area",
-                trim = TRUE
-            ) +
+        )
+        switch(
+            EXPR = geom,
+            "violin" = {
+                p <- p +
+                    geom_violin(
+                        mapping = aes(
+                            fill = str_replace_na(!!sym("interestingGroups"))
+                        ),
+                        color = NA,
+                        scale = "area",
+                        trim = TRUE
+                    )
+            },
+            "boxplot" = {
+                p <- p +
+                    geom_boxplot(
+                        mapping = aes(
+                            color = str_replace_na(!!sym("interestingGroups"))
+                        ),
+                        fill = NA
+                    )
+            }
+        )
+        p <- p +
             scale_y_continuous(
                 breaks = pretty_breaks(),
                 labels = prettyNum
             ) +
             facet_wrap(facets = sym(biotypeCol), scales = "free_y")
         ## Labels.
-        if (is.list(labels)) {
-            if (!identical(trans, "identity")) {
-                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
-            }
-            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
-            names(labels)[names(labels) == "sampleAxis"] <- "x"
-            names(labels)[names(labels) == "countAxis"] <- "y"
-            p <- p + do.call(what = labs, args = labels)
+        if (!identical(trans, "identity")) {
+            labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
         }
-        ## Fill.
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
-        }
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        labels[["fill"]] <- labels[["color"]]
+        names(labels)[names(labels) == "sampleAxis"] <- "x"
+        names(labels)[names(labels) == "countAxis"] <- "y"
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
+        p <- p + autoDiscreteFillScale()
         ## Return.
         p
     }
-
-formals(`plotCountsPerBiotype,SE`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
 
 
 
@@ -198,6 +204,8 @@ setMethod(
     signature = signature("SingleCellExperiment"),
     definition = `plotCountsPerBroadClass,SCE`
 )
+
+## NOTE This is currently used in bcbioRNASeq R Markdown template.
 
 #' @rdname plotCountsPerBiotype
 #' @export
