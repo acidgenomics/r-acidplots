@@ -29,7 +29,6 @@ NULL
         object,
         assay = 1L,
         interestingGroups = NULL,
-        color,
         labels = list(
             "title" = "Zeros vs. depth",
             "subtitle" = NULL,

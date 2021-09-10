@@ -11,7 +11,6 @@ plotZerosVsDepth(object, ...)
   object,
   assay = 1L,
   interestingGroups = NULL,
-  color,
   labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)",
     y = "dropout rate")
 )
@@ -25,14 +24,6 @@ Assay name or index position.}
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual()}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
