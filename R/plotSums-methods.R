@@ -3,9 +3,6 @@
 #' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param f `factor` or `NULL`.
-#'   Interesting group factor mappings corresponding to samples defined in
-#'   the columns. Used to split plot into groupings.
 #' @param ... Additional arguments.
 #'
 #' @examples
