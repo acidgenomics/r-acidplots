@@ -12,8 +12,6 @@ plotMitoRatio(object, ...)
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   interestingGroups = NULL,
   max = 1L,
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   trans = "sqrt",
   labels = list(title = "Mito ratio", subtitle = NULL, metricAxis = NULL, otherAxis =
     NULL)
@@ -32,14 +30,6 @@ Corresponds to factors describing the columns of the object.}
 
 \item{max}{\code{numeric(1)}.
 Recommended maximum value cutoff.}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
@@ -60,7 +50,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot mitochondrial transcript abundance
 }
 \note{
-Updated 2019-09-16.
+Updated 2021-09-10.
 }
 \examples{
 data(SingleCellExperiment, package = "AcidTest")

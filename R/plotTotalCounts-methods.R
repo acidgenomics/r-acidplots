@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit AcidGenerics::plotTotalCounts
-#' @note Updated 2021-02-16.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,19 +23,18 @@ NULL
 
 
 
-## Updated 2021-02-16.
+## Updated 2021-09-10.
 `plotTotalCounts,SE` <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
         perMillion = FALSE,
-        fill,
         labels = list(
-            title = "Total counts",
-            subtitle = NULL,
-            x = NULL,
-            y = "counts"
+            "title" = "Total counts",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "counts"
         ),
         flip
     ) {
@@ -43,7 +42,6 @@ NULL
         assert(
             isScalar(assay),
             isFlag(perMillion),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip)
         )
         labels <- matchLabels(labels)
@@ -71,14 +69,10 @@ NULL
             acid_geom_bar() +
             acid_scale_y_continuous_nopad()
         ## Labels.
-        if (is.list(labels)) {
-            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
-            p <- p + do.call(what = labs, args = labels)
-        }
-        ## Fill.
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
-        }
+        labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteFillScale()
         ## Flip.
         if (isTRUE(flip)) {
             p <- acid_coord_flip(p)
@@ -91,10 +85,7 @@ NULL
         p
     }
 
-f <- formals(`plotTotalCounts,SE`)
-f[["fill"]] <- formalsList[["fill.discrete"]]
-f[["flip"]] <- formalsList[["flip"]]
-formals(`plotTotalCounts,SE`) <- f
+formals(`plotTotalCounts,SE`)[["flip"]] <- formalsList[["flip"]]
 
 
 
@@ -109,7 +100,7 @@ formals(`plotTotalCounts,SE`) <- f
 
 
 
-#' @describeIn plotTotalCounts Applies [aggregateCellsToSamples()] calculation
+#' @describeIn plotTotalCounts Applies `aggregateCellsToSamples()` calculation
 #'   to summarize at sample level prior to plotting.\cr
 #'   Passes `...` to `SummarizedExperiment` method.
 #' @export
