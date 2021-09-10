@@ -2,26 +2,16 @@
 % Please edit documentation in R/AllGenerics.R, R/plotSums-methods.R
 \name{plotSums}
 \alias{plotSums}
-\alias{plotSums,Matrix-method}
 \alias{plotSums,SummarizedExperiment-method}
-\alias{plotSums,matrix-method}
 \title{Plot row or column sums}
 \usage{
 plotSums(object, ...)
 
-\S4method{plotSums}{Matrix}(
+\S4method{plotSums}{SummarizedExperiment}(
   object,
   MARGIN,
-  f = NULL,
-  labels = list(title = NULL, subtitle = NULL)
-)
-
-\S4method{plotSums}{SummarizedExperiment}(object, assay = 1L, interestingGroups = NULL, ...)
-
-\S4method{plotSums}{matrix}(
-  object,
-  MARGIN,
-  f = NULL,
+  assay = 1L,
+  interestingGroups = NULL,
   labels = list(title = NULL, subtitle = NULL)
 )
 }
@@ -35,20 +25,20 @@ For a two-dimensional matrix:
 \code{2} indicates columns;
 \code{c(1, 2)} indicates rows and columns.}
 
-\item{f}{\code{factor} or \code{NULL}.
-Interesting group factor mappings corresponding to samples defined in
-the columns. Used to split plot into groupings.}
-
-\item{labels}{\code{list}.
-ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
-
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
+
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
+\item{f}{\code{factor} or \code{NULL}.
+Interesting group factor mappings corresponding to samples defined in
+the columns. Used to split plot into groupings.}
 
 \item{...}{Additional arguments.}
 }
@@ -65,23 +55,11 @@ Updated 2021-09-10.
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
     package = "AcidTest"
 )
-
-## matrix ====
-object <- basejump::counts(RangedSummarizedExperiment)
-plotSums(object, MARGIN = 1L)
-
-## Matrix ====
-object <- basejump::counts(SingleCellExperiment)
-plotSums(object, MARGIN = 2L)
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 plotSums(object, MARGIN = 1L)
-
-## SingleCellExperiment ====
-object <- SingleCellExperiment
-plotSums(object, MARGIN = 1L)
+plotSums(object, MARGIN = 2L)
 }

@@ -1,3 +1,7 @@
+## NOTE SingleCellExperiment method is currently defined in pointillism.
+
+
+
 #' @name plotPCA
 #' @inherit AcidGenerics::plotPCA
 #' @note Updated 2021-09-10.
@@ -146,8 +150,3 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `plotPCA,SE`
 )
-
-
-
-## FIXME Consider erroring here on SingleCellExperiment input.
-##       Alternatively, consider an internal call using aggregateCellsToSamples

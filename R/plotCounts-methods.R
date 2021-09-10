@@ -1,3 +1,7 @@
+## NOTE SingleCellExperiment method is currently defined in pointillism.
+
+
+
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
 #' @note Updated 2021-02-08.
@@ -248,8 +252,3 @@ setMethod(
     signature = signature("SummarizedExperiment"),
     definition = `plotCounts,SE`
 )
-
-
-
-## FIXME SingleCellExperiment method is defined in pointillism.
-## Need to move that here?
