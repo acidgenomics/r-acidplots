@@ -1,4 +1,5 @@
-## FIXME Check handling in code coverage if "viridis" is set as default.
+## FIXME Check handling in code coverage if "viridis" or "gradient" is
+## set as default.
 
 
 
@@ -7,7 +8,7 @@
 #' Helper functions for setting default colors in Acid Genomics plots.
 #'
 #' @name autoScale
-#' @note Updated 2021-09-09.
+#' @note Updated 2021-09-10.
 #'
 #' @return `Scale`/`ggproto`/`gg`.
 #'
@@ -30,12 +31,14 @@ NULL
 #' @rdname autoScale
 #' @export
 autoContinuousColorScale <- function() {
-    scale_colour_continuous(
+    x <- scale_colour_continuous(
         type = getOption(
             x = "ggplot2.continuous.colour",
             default = scale_color_synesthesia_c
         )
     )
+    assert(isGGScale(fill, scale = "continuous", aes = "color"))
+    x
 }
 
 
@@ -43,12 +46,14 @@ autoContinuousColorScale <- function() {
 #' @rdname autoScale
 #' @export
 autoContinuousFillScale <- function() {
-    scale_fill_continuous(
+    x <- scale_fill_continuous(
         type = getOption(
             x = "ggplot2.continuous.fill",
             default = scale_fill_synesthesia_c
         )
     )
+    assert(isGGScale(fill, scale = "continuous", aes = "fill"))
+    x
 }
 
 
@@ -56,12 +61,14 @@ autoContinuousFillScale <- function() {
 #' @rdname autoScale
 #' @export
 autoDiscreteColorScale <- function() {
-    scale_colour_discrete(
+    x <- scale_colour_discrete(
         type = getOption(
             x = "ggplot2.discrete.colour",
             default = scale_color_synesthesia_d
         )
     )
+    assert(isGGScale(fill, scale = "discrete", aes = "color"))
+    x
 }
 
 
@@ -69,10 +76,12 @@ autoDiscreteColorScale <- function() {
 #' @rdname autoScale
 #' @export
 autoDiscreteFillScale <- function() {
-    scale_fill_discrete(
+    x <- scale_fill_discrete(
         type = getOption(
             x = "ggplot2.discrete.fill",
             default = scale_fill_synesthesia_d
         )
     )
+    assert(isGGScale(fill, scale = "discrete", aes = "fill"))
+    x
 }
