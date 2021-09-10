@@ -134,8 +134,8 @@ NULL
         p
     }
 
-formals(`plotPCA,SE`)[c("color", "label", "pointSize")] <-
-    formalsList[c("color.discrete", "label", "point.size")]
+formals(`plotPCA,SE`)[c("label", "pointSize")] <-
+    formalsList[c("label", "point.size")]
 
 
 
