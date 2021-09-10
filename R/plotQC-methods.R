@@ -1,11 +1,10 @@
-## FIXME Need to add support for title and subtitle.
-## FIXME Can we combine into single legend using patchwork?
+## FIXME This needs to support `interestingGroups` argument.
 
 
 
 #' @name plotQC
 #' @inherit AcidGenerics::plotQC
-#' @note Updated 2021-08-11.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -34,6 +33,7 @@ NULL
     function(
         object,
         assay = 1L,
+        interestingGroups = NULL,
         legend,
         labels = list(
             "title" = "Quality control",
@@ -45,6 +45,8 @@ NULL
             isScalar(assay),
             isFlag(legend)
         )
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
         labels <- matchLabels(labels)
         plotlist <- list(
             "totalCounts" =

@@ -18,6 +18,7 @@ plotQC(object, ...)
 \S4method{plotQC}{SummarizedExperiment}(
   object,
   assay = 1L,
+  interestingGroups = NULL,
   legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = "Quality control", subtitle = NULL)
 )
@@ -39,6 +40,10 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -48,7 +53,7 @@ Assay name or index position.}
 Quality control
 }
 \note{
-Updated 2021-08-11.
+Updated 2021-09-10.
 }
 \examples{
 data(
