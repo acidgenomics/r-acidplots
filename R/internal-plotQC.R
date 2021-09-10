@@ -1,6 +1,6 @@
 #' Plot a single quality control metric
 #'
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-09-10.
 #' @noRd
 .plotQCMetric <- function(
     object,
@@ -11,8 +11,6 @@
     max = Inf,
     trans = "identity",
     ratio = FALSE,
-    color,
-    fill,
     labels = list(
         title = NULL,
         subtitle = NULL,
@@ -25,8 +23,7 @@
         is(object, "SingleCellExperiment"),
         isString(metricCol),
         all(isNonNegative(c(min, max))),
-        isString(trans),
-        isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
+        isString(trans)
     )
     geom <- match.arg(geom)
     labels <- matchLabels(labels)
@@ -140,27 +137,21 @@
         }
     }
     ## Labels.
-    if (is.list(labels)) {
-        names(labels)[names(labels) == "metricAxis"] <- metricAxis
-        otherAxis <- ifelse(
-            test = identical(metricAxis, "y"),
-            yes = "x",
-            no = "y"
-        )
-        names(labels)[names(labels) == "otherAxis"] <- otherAxis
-        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-        labels[["fill"]] <- labels[["color"]]
-        p <- p + do.call(what = labs, args = labels)
-    }
+    names(labels)[names(labels) == "metricAxis"] <- metricAxis
+    otherAxis <- ifelse(
+        test = identical(metricAxis, "y"),
+        yes = "x",
+        no = "y"
+    )
+    names(labels)[names(labels) == "otherAxis"] <- otherAxis
+    labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+    labels[["fill"]] <- labels[["color"]]
+    p <- p + do.call(what = labs, args = labels)
     ## Color palette.
     if (identical(geom, "ecdf")) {
-        if (is(color, "ScaleDiscrete")) {
-            p <- p + color
-        }
+        p <- p + autoDiscreteColorScale()
     } else {
-        if (is(fill, "ScaleDiscrete")) {
-            p <- p + fill
-        }
+        p <- p + autoDiscreteFillScale()
     }
     ## Median labels.
     if (!isSubset(geom, c("ecdf", "histogram"))) {
@@ -188,17 +179,14 @@
     p
 }
 
-formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
-    list(
-        "color" = formalsList[["color.discrete"]],
-        "fill" = formalsList[["fill.discrete"]],
-        "geom" = .formalsList[["geom"]]
-    )
+formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
 
 
 
-## Compare two quality control metrics.
-## Updated 2021-02-08.
+#' Compare two quality control metrics
+#'
+#' @note Updated 2021-09-10.
+#' @noRd
 .plotQCScatterplot <- function(
     object,
     xCol,
@@ -207,7 +195,6 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
     yTrans = "identity",
     interestingGroups = NULL,
     trendline = FALSE,
-    color = getOption("acid.discrete.color", NULL),
     labels = list(
         title = NULL,
         subtitle = NULL,
@@ -221,8 +208,7 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
         isString(xCol),
         isString(yCol),
         isString(xTrans),
-        isString(yTrans),
-        isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
+        isString(yTrans)
     )
     labels <- matchLabels(labels)
     ## Generate x- and y-axis labels automatically.
@@ -236,34 +222,41 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
         matchInterestingGroups(object, interestingGroups)
     data <- metrics(object)
     data <- as_tibble(data, rownames = NULL)
-    ## nocov start
-    if (!isSubset(c(xCol, yCol), colnames(data))) {
-        abort(sprintf(
+    assert(
+        isSubset(c(xCol, yCol), colnames(data)),
+        msg = sprintf(
             "Not defined in {.fun %s}: %s.",
             "colData", toInlineString(c(xCol, yCol))
-        ))
-    } else if (anyNA(data[[xCol]])) {
-        abort(sprintf(
+        )
+    )
+    assert(
+        !anyNA(data[[xCol]]),
+        msg = sprintf(
             "{.var %s} in {.fun %s} contains NA values.",
             xCol, "colData"
-        ))
-    } else if (anyNA(data[[yCol]])) {
-        abort(sprintf(
+        )
+    )
+    assert(
+        !anyNA(data[[yCol]]),
+        msg = sprintf(
             "{.var %s} in {.fun %s} contains NA values.",
             yCol, "colData"
-        ))
-    } else if (all(data[[xCol]] == 0L)) {
-        abort(sprintf(
+        )
+    )
+    assert(
+        !all(data[[xCol]] == 0L),
+        msg = sprintf(
             "{.var %s} in {.fun %s} contains only zeros.",
             xCol, "colData"
-        ))
-    } else if (all(data[[yCol]] == 0L)) {
-        abort(sprintf(
+        )
+    )
+    assert(
+        !all(data[[yCol]] == 0L),
+        msg = sprintf(
             "{.var %s} in {.fun %s} contains only zeros.",
             yCol, "colData"
-        ))
-    }
-    ## nocov end
+        )
+    )
     p <- ggplot(
         data = data,
         mapping = aes(
@@ -282,14 +275,10 @@ formals(`.plotQCMetric`)[c("color", "fill", "geom")] <-
         p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
     }
     ## Labels.
-    if (is.list(labels)) {
-        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-        p <- p + do.call(what = labs, args = labels)
-    }
+    labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+    p <- p + do.call(what = labs, args = labels)
     ## Color palette.
-    if (is(color, "ScaleDiscrete")) {
-        p <- p + color
-    }
+    p <- p + autoDiscreteColorScale()
     ## Facets.
     facets <- NULL
     if (isSubset("aggregate", colnames(data))) {
