@@ -9,11 +9,21 @@
 \usage{
 plotSums(object, ...)
 
-\S4method{plotSums}{Matrix}(object, MARGIN = 1L)
+\S4method{plotSums}{Matrix}(
+  object,
+  MARGIN,
+  f = NULL,
+  labels = list(title = NULL, subtitle = NULL)
+)
 
-\S4method{plotSums}{SummarizedExperiment}(object, assay = 1L, MARGIN = 1L)
+\S4method{plotSums}{SummarizedExperiment}(object, assay = 1L, interestingGroups = NULL, ...)
 
-\S4method{plotSums}{matrix}(object, MARGIN = 1L)
+\S4method{plotSums}{matrix}(
+  object,
+  MARGIN,
+  f = NULL,
+  labels = list(title = NULL, subtitle = NULL)
+)
 }
 \arguments{
 \item{object}{Object.}
@@ -25,8 +35,20 @@ For a two-dimensional matrix:
 \code{2} indicates columns;
 \code{c(1, 2)} indicates rows and columns.}
 
+\item{f}{\code{factor} or \code{NULL}.
+Interesting group factor mappings corresponding to samples defined in
+the columns. Used to split plot into groupings.}
+
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{...}{Additional arguments.}
 }
@@ -38,7 +60,7 @@ Visualize row or column sums using empirical cumulative distribution function
 (ECDF) plot.
 }
 \note{
-Updated 2019-09-15.
+Updated 2021-09-10.
 }
 \examples{
 data(
@@ -56,10 +78,10 @@ object <- basejump::counts(SingleCellExperiment)
 plotSums(object, MARGIN = 2L)
 
 ## SummarizedExperiment ====
-object <- SingleCellExperiment
-plotSums(object)
-
-## SingleCellExperiment
 object <- RangedSummarizedExperiment
-plotSums(object)
+plotSums(object, MARGIN = 1L)
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment
+plotSums(object, MARGIN = 1L)
 }

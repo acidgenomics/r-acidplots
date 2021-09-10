@@ -1,15 +1,15 @@
-## FIXME Need to be able to batch these by interesting group.
-## FIXME How to handle when interestingGroups are defined per sample?
-##       Just plot everything in this case?
-##
+## FIXME Rework this to work directly on SummarizedExperiment...
 
 
 
 #' @name plotSums
 #' @inherit AcidGenerics::plotSums
-#' @note Updated 2019-09-15.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param f `factor` or `NULL`.
+#'   Interesting group factor mappings corresponding to samples defined in
+#'   the columns. Used to split plot into groupings.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -28,45 +28,86 @@
 #' plotSums(object, MARGIN = 2L)
 #'
 #' ## SummarizedExperiment ====
-#' object <- SingleCellExperiment
-#' plotSums(object)
-#'
-#' ## SingleCellExperiment
 #' object <- RangedSummarizedExperiment
-#' plotSums(object)
+#' plotSums(object, MARGIN = 1L)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment
+#' plotSums(object, MARGIN = 1L)
 NULL
 
 
 
-## FIXME Add `f` support that is NULL by default.
-
-## Updated 2019-09-15.
+## Updated 2021-09-10.
 `plotSums,matrix` <-  # nolint
     function(
         object,
-        MARGIN  # nolint
+        MARGIN,
+        f = NULL,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
     ) {
-        assert(isInt(MARGIN))
-        fname <- switch(EXPR = MARGIN, "1" = "rowSums", "2" = "colSums")
+        assert(
+            isInt(MARGIN),
+            is.factor(f) || is.null(f)
+        )
+        labels <- matchLabels(labels)
+        fname <- switch(
+            EXPR = as.character(MARGIN),
+            "1" = "rowSums",
+            "2" = "colSums",
+            stop("Invalid MARGIN.")  # nocov
+        )
         ## Providing method support here for sparse matrix.
-        if (is(object, "Matrix")) {
-            pkg <- "Matrix"
+        whatPkg <- ifelse(
+            test = is(object, "Matrix"),
+            yes = "Matrix",
+            no = "base"
+        )
+        fun <- get(x = fname, envir = asNamespace(whatPkg), inherits = FALSE)
+        assert(is.function(fun))
+        if (is.factor(f)) {
+            assert(identical(names(f), colnames(object)))
+            data <- do.call(
+                what = rbind,
+                args = lapply(
+                    X = levels(f),
+                    object = object,
+                    FUN = function(level, object) {
+                        sums <- fun(object[, which(f == level), drop = FALSE])
+                        data.frame(
+                            "sample" = level,
+                            "value" = unname(sums)
+                        )
+                    }
+                )
+            )
         } else {
-            pkg <- "base"
+            sums <- fun(object)
+            data <- data.frame(
+                "sample" = "unknown",
+                "value" = unname(sums)
+            )
         }
-        fun <- get(x = fname, envir = asNamespace(pkg), inherits = FALSE)
-        sums <- fun(object)
-        data <- data.frame(x = sums)
-        ggplot(
+        p <- ggplot(
             data = data,
-            mapping = aes(x = !!sym("x"))
+            mapping = aes(
+                x = !!sym("value"),
+                color = !!sym("sample")
+            )
         ) +
             stat_ecdf(size = 1L) +
-            scale_x_continuous(trans = "sqrt") +
-            labs(
-                x = fname,
-                y = "Fn(x)"
-            )
+            scale_x_continuous(trans = "sqrt")
+        ## Labels.
+        labels[["color"]] <- ""
+        labels[["x"]] <- fname
+        labels[["y"]] <- "Fn(x)"
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
+        p
     }
 
 
@@ -77,25 +118,24 @@ NULL
 
 
 
-## FIXME Can we batch these by interestingGroup factor mapping?
-## FIXME Need to pass this through as factor in matrix method.
-## Updated 2019-08-12.
+## Updated 2021-09-10.
 `plotSums,SE` <-  # nolint
     function(
         object,
         assay = 1L,
-        MARGIN  # nolint
+        interestingGroups = NULL,
+        ...
     ) {
-
-        ## FIXME Need to return an `interestingGroups` factor that works with
-        ## SingleCellExperiment. Can't use sampleData approach for this.
-        ## FIXME Define this mapping as `f` argument.
-
+        validObject(object)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
+        metrics <- metrics(object = object, return = "DataFrame")
+        f <- metrics[["interestingGroups"]]
+        assert(is.factor(f))
+        names(f) <- rownames(metrics)
         assay <- assay(object, i = assay)
-        plotSums(
-            object = assay,
-            MARGIN = MARGIN
-        )
+        assert(identical(names(f), colnames(assay)))
+        plotSums(object = assay, f = f, ...)
     }
 
 
