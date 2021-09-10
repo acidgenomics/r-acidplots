@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit AcidGenerics::plotCountsCorrelation
-#' @note Updated 2019-09-16.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,20 +17,19 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2021-09-10.
 `plotCountsCorrelation,matrix` <-  # nolint
     function(
         x,
         y,
         i = NULL,
         j = NULL,
-        color,
         labels = list(
-            title = NULL,
-            subtitle = NULL,
-            color = NULL,
-            x = NULL,
-            y = "counts"
+            "title" = NULL,
+            "subtitle" = NULL,
+            "color" = NULL,
+            "x" = NULL,
+            "y" = "counts"
         ),
         .xname = getNameInParent(x),
         .yname = getNameInParent(y)
@@ -73,20 +72,13 @@ NULL
         ) +
             geom_point() +
             facet_wrap(facets = sym("rowname"), scales = "free_y")
-        ## Color.
-        if (is(color, "ScaleDiscrete")) {
-            p <- p + color
-        }
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
         ## Labels
-        if (is.list(labels)) {
-            p <- p + do.call(what = labs, args = labels)
-        }
+        p <- p + do.call(what = labs, args = labels)
         ## Return.
         p
     }
-
-formals(`plotCountsCorrelation,matrix`)[["color"]] <-
-    formalsList[["color.discrete"]]
 
 
 
