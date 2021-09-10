@@ -36,10 +36,6 @@ Corresponds to factors describing the columns of the object.}
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
-\item{f}{\code{factor} or \code{NULL}.
-Interesting group factor mappings corresponding to samples defined in
-the columns. Used to split plot into groupings.}
-
 \item{...}{Additional arguments.}
 }
 \value{
