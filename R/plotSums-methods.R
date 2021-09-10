@@ -38,11 +38,13 @@ NULL
 
 
 
+## FIXME Add `f` support that is NULL by default.
+
 ## Updated 2019-09-15.
 `plotSums,matrix` <-  # nolint
     function(
         object,
-        MARGIN = 1L  # nolint
+        MARGIN  # nolint
     ) {
         assert(isInt(MARGIN))
         fname <- switch(EXPR = MARGIN, "1" = "rowSums", "2" = "colSums")
@@ -75,15 +77,23 @@ NULL
 
 
 
+## FIXME Can we batch these by interestingGroup factor mapping?
+## FIXME Need to pass this through as factor in matrix method.
 ## Updated 2019-08-12.
 `plotSums,SE` <-  # nolint
     function(
         object,
         assay = 1L,
-        MARGIN = 1L  # nolint
+        MARGIN  # nolint
     ) {
+
+        ## FIXME Need to return an `interestingGroups` factor that works with
+        ## SingleCellExperiment. Can't use sampleData approach for this.
+        ## FIXME Define this mapping as `f` argument.
+
+        assay <- assay(object, i = assay)
         plotSums(
-            object = assay(object, i = assay),
+            object = assay,
             MARGIN = MARGIN
         )
     }
