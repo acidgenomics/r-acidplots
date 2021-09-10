@@ -1,6 +1,6 @@
 #' @name plotPCA
 #' @inherit AcidGenerics::plotPCA
-#' @note Updated 2021-02-09.
+#' @note Updated 2021-09-10.
 #'
 #' @details
 #' We're using a modified version of the `DESeqTransform` method here.
@@ -48,7 +48,7 @@ NULL
 
 
 
-## Updated 2021-05-17.
+## Updated 2021-09-10.
 `plotPCA,SE` <-  # nolint
     function(
         object,
@@ -56,11 +56,10 @@ NULL
         interestingGroups = NULL,
         ntop = 500L,
         label,
-        color,
         pointSize,
         labels = list(
-            title = "PCA",
-            subtitle = NULL
+            "title" = "PCA",
+            "subtitle" = NULL
         )
     ) {
         requireNamespaces("matrixStats")
@@ -69,7 +68,6 @@ NULL
             isScalar(assay),
             isInt(ntop),
             isFlag(label),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
             isInt(pointSize),
             isPositive(pointSize)
         )
@@ -112,24 +110,20 @@ NULL
             geom_point(size = 4L) +
             coord_fixed()
         ## Labels.
-        if (is.list(labels)) {
-            if (is.null(labels[["subtitle"]])) {
-                labels[["subtitle"]] <- paste0("n = ", ntop)
-            }
-            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-            labels[["fill"]] <- labels[["color"]]
-            labels[["x"]] <- paste0(
-                "PC1: ", round(percentVar[[1L]] * 100L), "% variance"
-            )
-            labels[["y"]] <- paste0(
-                "PC2: ", round(percentVar[[2L]] * 100L), "% variance"
-            )
-            p <- p + do.call(what = labs, args = labels)
+        if (is.null(labels[["subtitle"]])) {
+            labels[["subtitle"]] <- paste0("n = ", ntop)
         }
-        ## Color.
-        if (is(color, "ScaleDiscrete")) {
-            p <- p + color
-        }
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        labels[["fill"]] <- labels[["color"]]
+        labels[["x"]] <- paste0(
+            "PC1: ", round(percentVar[[1L]] * 100L), "% variance"
+        )
+        labels[["y"]] <- paste0(
+            "PC2: ", round(percentVar[[2L]] * 100L), "% variance"
+        )
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
         ## Label.
         if (isTRUE(label)) {
             p <- p + acid_geom_label_repel(
