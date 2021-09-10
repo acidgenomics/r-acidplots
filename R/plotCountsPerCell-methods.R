@@ -1,7 +1,7 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerCell
-#' @note Updated 2019-08-27.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param point `character(1)`.
@@ -24,7 +24,7 @@ NULL
 
 
 
-## Updated 2019-08-27.
+## Updated 2021-09-10.
 `plotCountsPerCell,SCE` <-  # nolint
     function(
         object,
@@ -34,8 +34,6 @@ NULL
         max = Inf,
         point = c("none", "inflection", "knee"),
         trans = "log10",
-        color,
-        fill,
         title = "Counts per cell"
     ) {
         assert(isString(title, nullOK = TRUE))
@@ -50,16 +48,12 @@ NULL
             what = .plotQCMetric,
             args = list(
                 object = object,
-                ## Note that this was changed in v0.3.19 to better match
-                ## conventions used in Chromium and Seurat packages.
                 metricCol = "nCount",
                 geom = geom,
                 interestingGroups = interestingGroups,
                 min = min,
                 max = max,
-                trans = trans,
-                color = color,
-                fill = fill
+                trans = trans
             )
         )
         ## Calculate barcode ranks and label inflection or knee points.
@@ -106,10 +100,10 @@ NULL
                     USE.NAMES = TRUE
                 )
                 pointData <- data.frame(
-                    x = points,
-                    y = freq,
-                    label = paste0(sampleNames, " (", points, ")"),
-                    sampleName = sampleNames
+                    "x" = points,
+                    "y" = freq,
+                    "label" = paste0(sampleNames, " (", points, ")"),
+                    "sampleName" = sampleNames
                 )
                 p <- p +
                     geom_point(
@@ -138,13 +132,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerCell,SCE`)[
-    c("color", "fill", "geom")] <-
-    list(
-        "color" = formalsList[["color.discrete"]],
-        "fill" = formalsList[["fill.discrete"]],
-        "geom" = .formalsList[["geom"]]
-    )
+formals(`plotCountsPerCell,SCE`)[["geom"]] <- .formalsList[["geom"]]
 
 
 
