@@ -96,7 +96,6 @@ Updated 2021-08-11.
 suppressPackageStartupMessages({
     library(ggplot2)
 })
-theme_set(acid_theme_light())
 
 ## Color, continuous.
 cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(color = hwy))

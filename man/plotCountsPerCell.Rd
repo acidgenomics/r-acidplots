@@ -15,10 +15,6 @@ plotCountsPerCell(object, ...)
   max = Inf,
   point = c("none", "inflection", "knee"),
   trans = "log10",
-  color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   title = "Counts per cell"
 )
 }
@@ -49,22 +45,6 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual()}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
-
 \item{title}{\code{character(1)}.
 Title.}
 
@@ -81,7 +61,7 @@ Plot the disambiguated counts per cell.
 droplet-based scRNA-seq data.
 }
 \note{
-Updated 2019-08-27.
+Updated 2021-09-10.
 }
 \examples{
 data(SingleCellExperiment, package = "AcidTest")

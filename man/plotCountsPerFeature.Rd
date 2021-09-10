@@ -16,10 +16,6 @@ plotCountsPerFeature(object, ...)
   interestingGroups = NULL,
   geom = c("boxplot", "density", "jitter"),
   trans = c("identity", "log2", "log10"),
-  color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per feature", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts"),
   flip = getOption(x = "acid.flip", default = TRUE),
@@ -44,22 +40,6 @@ Type of ggplot2 geometric object to use.}
 \item{trans}{\code{character(1)}.
 Apply a log transformation (e.g. \code{log2(x + 1L)}) to the count matrix prior
 to melting, if desired. Use \code{"identity"} to return unmodified (default).}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual()}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
@@ -94,7 +74,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2021-02-06.
+Updated 2021-09-10.
 }
 \examples{
 data(
