@@ -11,8 +11,7 @@ plotZerosVsDepth(object, ...)
   object,
   assay = 1L,
   interestingGroups = NULL,
-  color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
+  color,
   labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)",
     y = "dropout rate")
 )
@@ -48,7 +47,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot percentage of zeros vs. library depth
 }
 \note{
-Updated 2019-12-09.
+Updated 2021-09-10.
 }
 \examples{
 data(

@@ -1,6 +1,6 @@
 #' @name plotZerosVsDepth
 #' @inherit AcidGenerics::plotZerosVsDepth
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2019-12-09.
+## Updated 2021-09-10.
 `plotZerosVsDepth,SE` <-  # nolint
     function(
         object,
@@ -31,17 +31,14 @@ NULL
         interestingGroups = NULL,
         color,
         labels = list(
-            title = "Zeros vs. depth",
-            subtitle = NULL,
-            x = "library size (depth)",
-            y = "dropout rate"
+            "title" = "Zeros vs. depth",
+            "subtitle" = NULL,
+            "x" = "library size (depth)",
+            "y" = "dropout rate"
         )
     ) {
         validObject(object)
-        assert(
-            isScalar(assay),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE)
-        )
+        assert(isScalar(assay))
         labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -60,14 +57,10 @@ NULL
             expand_limits(y = c(0L, 1L)) +
             scale_x_continuous(trans = "log10")
         ## Labels.
-        if (is.list(labels)) {
-            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-            p <- p + do.call(what = labs, args = labels)
-        }
-        ## Color.
-        if (is(color, "ScaleDiscrete")) {
-            p <- p + color
-        }
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
         ## Wrap samples by `aggregate` column, if defined.
         facets <- NULL
         if (isSubset("aggregate", colnames(data))) {
@@ -79,9 +72,6 @@ NULL
         ## Return.
         p
     }
-
-formals(`plotZerosVsDepth,SE`)[["color"]] <-
-    formalsList[["color.discrete"]]
 
 
 
