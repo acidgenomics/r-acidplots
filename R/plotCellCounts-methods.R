@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2019-12-09.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -16,23 +16,19 @@ NULL
 
 
 
-## Updated 2021-01-15.
+## Updated 2021-09-10.
 `plotCellCounts,SCE` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
-        fill,
         labels = list(
-            title = "Cell counts",
-            subtitle = NULL,
-            x = NULL,
-            y = "cells"
+            "title" = "Cell counts",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "cells"
         )
     ) {
         validObject(object)
-        assert(
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE)
-        )
         labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -59,14 +55,10 @@ NULL
             acid_geom_bar() +
             acid_scale_y_continuous_nopad()
         ## Labels.
-        if (is.list(labels)) {
-            labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
-            p <- p + do.call(what = labs, args = labels)
-        }
+        labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
+        p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        if (!is.null(fill)) {
-            p <- p + fill
-        }
+        p <- p + autoDiscreteFillScale()
         ## Labels.
         if (isTRUE(nrow(data) <= 16L)) {
             p <- p + acid_geom_label(
@@ -87,9 +79,6 @@ NULL
         ## Return.
         p
     }
-
-formals(`plotCellCounts,SCE`)[["fill"]] <-
-    formalsList[["fill.discrete"]]
 
 
 #' @rdname plotCellCounts

@@ -37,7 +37,7 @@ autoContinuousColorScale <- function() {
             default = scale_color_synesthesia_c
         )
     )
-    assert(isGGScale(fill, scale = "continuous", aes = "color"))
+    assert(isGGScale(x, scale = "continuous", aes = "color"))
     x
 }
 
@@ -52,7 +52,7 @@ autoContinuousFillScale <- function() {
             default = scale_fill_synesthesia_c
         )
     )
-    assert(isGGScale(fill, scale = "continuous", aes = "fill"))
+    assert(isGGScale(x, scale = "continuous", aes = "fill"))
     x
 }
 
@@ -67,7 +67,7 @@ autoDiscreteColorScale <- function() {
             default = scale_color_synesthesia_d
         )
     )
-    assert(isGGScale(fill, scale = "discrete", aes = "color"))
+    assert(isGGScale(x, scale = "discrete", aes = "color"))
     x
 }
 
@@ -82,6 +82,6 @@ autoDiscreteFillScale <- function() {
             default = scale_fill_synesthesia_d
         )
     )
-    assert(isGGScale(fill, scale = "discrete", aes = "fill"))
+    assert(isGGScale(x, scale = "discrete", aes = "fill"))
     x
 }
