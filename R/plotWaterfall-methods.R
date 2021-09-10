@@ -2,9 +2,11 @@
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2021-08-11.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param fill `character(1)`.
+#'   R color name or hex color code (e.g. `"#AF52DE"`).
 #' @param sampleCol `character(1)`.
 #'   Column name of discrete samples to plot on X axis.
 #' @param valueCol `character(1)`.
