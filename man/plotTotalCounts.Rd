@@ -15,8 +15,6 @@ plotTotalCounts(object, ...)
   assay = 1L,
   interestingGroups = NULL,
   perMillion = FALSE,
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Total counts", subtitle = NULL, x = NULL, y = "counts"),
   flip = getOption(x = "acid.flip", default = TRUE)
 )
@@ -36,14 +34,6 @@ Corresponds to factors describing the columns of the object.}
 \item{perMillion}{\code{logical(1)}.
 Display as counts per million.}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
-
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
@@ -59,13 +49,13 @@ Plot total read counts
 }
 \section{Functions}{
 \itemize{
-\item \code{plotTotalCounts,SingleCellExperiment-method}: Applies \code{\link[=aggregateCellsToSamples]{aggregateCellsToSamples()}} calculation
+\item \code{plotTotalCounts,SingleCellExperiment-method}: Applies \code{aggregateCellsToSamples()} calculation
 to summarize at sample level prior to plotting.\cr
 Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2021-02-16.
+Updated 2021-09-10.
 }
 \examples{
 data(
