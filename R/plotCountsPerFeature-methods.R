@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit AcidGenerics::plotCountsPerFeature
-#' @note Updated 2021-02-06.
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidExperiment::melt
 #' @inheritParams AcidRoxygen::params
@@ -27,7 +27,7 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2021-09-10.
 `plotCountsPerFeature,SE` <-  # nolint
     function(
         object,
@@ -35,8 +35,6 @@ NULL
         interestingGroups = NULL,
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
-        color,
-        fill,
         labels = list(
             title = "Counts per feature",
             subtitle = NULL,
@@ -48,8 +46,6 @@ NULL
         validObject(object)
         assert(
             isScalar(assay),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
-            isGGScale(fill, scale = "discrete", aes = "fill", nullOK = TRUE),
             isFlag(flip)
         )
         minMethod <- match.arg(minMethod)
@@ -105,31 +101,22 @@ NULL
                 )
         }
         ## Labels.
-        if (is.list(labels)) {
-            if (!identical(trans, "identity")) {
-                labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
-            }
-            if (identical(geom, "density")) {
-                names(labels)[names(labels) == "countAxis"] <- "x"
-                names(labels)[names(labels) == "sampleAxis"] <- "y"
-            } else {
-                names(labels)[names(labels) == "countAxis"] <- "y"
-                names(labels)[names(labels) == "sampleAxis"] <- "x"
-            }
-            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
-            labels[["fill"]] <- labels[["color"]]
-            p <- p + do.call(what = labs, args = labels)
+        if (!identical(trans, "identity")) {
+            labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
         }
-        ## Fill or color.
-        if (identical(geom, "boxplot")) {
-            if (is(fill, "ScaleDiscrete")) {
-                p <- p + fill
-            }
-        } else if (isSubset(geom, c("density", "jitter"))) {
-            if (is(color, "ScaleDiscrete")) {
-                p <- p + color
-            }
+        if (identical(geom, "density")) {
+            names(labels)[names(labels) == "countAxis"] <- "x"
+            names(labels)[names(labels) == "sampleAxis"] <- "y"
+        } else {
+            names(labels)[names(labels) == "countAxis"] <- "y"
+            names(labels)[names(labels) == "sampleAxis"] <- "x"
         }
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+        labels[["fill"]] <- labels[["color"]]
+        p <- p + do.call(what = labs, args = labels)
+        ## Color palette.
+        p <- p + autoDiscreteColorScale()
+        p <- p + autoDiscreteFillScale()
         ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !identical(geom, "density")) {
             p <- acid_coord_flip(p)
@@ -142,17 +129,16 @@ NULL
         p
     }
 
-f <- formals(`plotCountsPerFeature,SE`)
-f[["color"]] <- formalsList[["color.discrete"]]
-f[["fill"]] <- formalsList[["fill.discrete"]]
-f[["flip"]] <- formalsList[["flip"]]
-f[["minMethod"]] <-
-    methodFormals(
-        f = "melt",
-        signature = "SummarizedExperiment",
-        package = "AcidExperiment"
-    )[["minMethod"]]
-formals(`plotCountsPerFeature,SE`) <- f
+formals(`plotCountsPerFeature,SE`)[
+    c("flip", "minMethod")] <-
+    list(
+        "flip" = formalsList[["flip"]],
+        "minMethod" = methodFormals(
+            f = "melt",
+            signature = "SummarizedExperiment",
+            package = "AcidExperiment"
+        )[["minMethod"]]
+    )
 
 
 
