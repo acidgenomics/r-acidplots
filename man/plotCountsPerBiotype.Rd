@@ -19,9 +19,8 @@ plotCountsPerBroadClass(object, ...)
   biotypeCol = "geneBiotype",
   n = 9L,
   interestingGroups = NULL,
+  geom = c("violin", "boxplot"),
   trans = c("identity", "log2", "log10"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts")
 )
@@ -32,9 +31,8 @@ plotCountsPerBroadClass(object, ...)
   biotypeCol = "geneBiotype",
   n = 9L,
   interestingGroups = NULL,
+  geom = c("violin", "boxplot"),
   trans = c("identity", "log2", "log10"),
-  fill = getOption(x = "acid.fill.discrete", default = getOption(x =
-    "ggplot2.discrete.fill", default = AcidPlots::scale_fill_synesthesia_d())),
   labels = list(title = "Counts per biotype", subtitle = NULL, sampleAxis = NULL,
     countAxis = "counts")
 )
@@ -69,18 +67,14 @@ Number to include.}
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
 
+\item{geom}{\code{character(1)}.
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
+
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
 
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
-
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
 }}
 
 \item{labels}{\code{list}.
@@ -96,7 +90,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts per biotype
 }
 \note{
-Updated 2021-09-09.
+Updated 2021-09-10.
 }
 \examples{
 data(
