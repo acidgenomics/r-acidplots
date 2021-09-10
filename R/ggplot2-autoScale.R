@@ -1,14 +1,25 @@
-## FIXME Check handling in code coverage if "viridis" or "gradient" is
-## set as default.
-
-
-
 #' Automatic color/fill scales to use with ggplot object
 #'
 #' Helper functions for setting default colors in Acid Genomics plots.
 #'
+#' @section Setting default colors:
+#'
+#' These functions will inherit values defined in global `options()`. Either
+#' input a ggplot2 color scale function that returns `Scale` class
+#' (e.g. `scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
+#' character strings.
+#'
+#' - `autoContinuousColorScale()`: `"ggplot2.continuous.colour"`.
+#' - `autoContinuousFillScale()`: `"ggplot2.continuous.fill"`.
+#' - `autoDiscreteColorScale()`: `"ggplot2.discrete.colour"`.
+#' - `autoDiscreteFillScale()`: `"ggplot2.discrete.fill"`.
+#'
 #' @name autoScale
 #' @note Updated 2021-09-10.
+#'
+#' @seealso
+#' - https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html
+#' - https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html
 #'
 #' @return `Scale`/`ggproto`/`gg`.
 #'
