@@ -1,7 +1,7 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsVsFeatures
-#' @note Updated 2019-09-16
+#' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,19 +17,18 @@ NULL
 
 
 
-## Updated 2019-09-16.
+## Updated 2021-09-10.
 `plotCountsVsFeatures,SCE` <-  # nolint
     function(
         object,
         interestingGroups = NULL,
         trendline = FALSE,
-        color,
         trans = "log2",
         labels = list(
-            title = "Counts vs. features",
-            subtitle = NULL,
-            x = "counts",
-            y = "features"
+            "title" = "Counts vs. features",
+            "subtitle" = NULL,
+            "x" = "counts",
+            "y" = "features"
         )
     ) {
         do.call(
@@ -40,17 +39,12 @@ NULL
                 "trendline" = trendline,
                 "xCol" = "nCount",
                 "yCol" = "nFeature",
-                "color" = color,
                 "xTrans" = trans,
                 "yTrans" = trans,
                 "labels" = matchLabels(labels)
             )
         )
     }
-
-f <- formals(`plotCountsVsFeatures,SCE`)
-f[["color"]] <- formalsList[["color.discrete"]]
-formals(`plotCountsVsFeatures,SCE`) <- f
 
 
 
