@@ -1,7 +1,3 @@
-## FIXME Rework this to work directly on SummarizedExperiment...
-
-
-
 #' @name plotSums
 #' @inherit AcidGenerics::plotSums
 #' @note Updated 2021-09-10.
@@ -15,44 +11,37 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
 #'     package = "AcidTest"
 #' )
-#'
-#' ## matrix ====
-#' object <- basejump::counts(RangedSummarizedExperiment)
-#' plotSums(object, MARGIN = 1L)
-#'
-#' ## Matrix ====
-#' object <- basejump::counts(SingleCellExperiment)
-#' plotSums(object, MARGIN = 2L)
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotSums(object, MARGIN = 1L)
-#'
-#' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
-#' plotSums(object, MARGIN = 1L)
+#' plotSums(object, MARGIN = 2L)
 NULL
 
 
 
 ## Updated 2021-09-10.
-`plotSums,matrix` <-  # nolint
+`plotSums,SE` <-  # nolint
     function(
         object,
-        MARGIN,
-        f = NULL,
+        MARGIN,  # nolint
+        assay = 1L,
+        interestingGroups = NULL,
         labels = list(
             "title" = NULL,
             "subtitle" = NULL
         )
     ) {
+        validObject(object)
         assert(
             isInt(MARGIN),
-            is.factor(f) || is.null(f)
+            isScalar(assay)
         )
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         labels <- matchLabels(labels)
         fname <- switch(
             EXPR = as.character(MARGIN),
@@ -60,37 +49,40 @@ NULL
             "2" = "colSums",
             stop("Invalid MARGIN.")  # nocov
         )
-        ## Providing method support here for sparse matrix.
+        ## Get the interestingGroups factor to split object.
+        metrics <- metrics(object = object, return = "DataFrame")
+        f <- metrics[["interestingGroups"]]
+        assert(is.factor(f))
+        names(f) <- rownames(metrics)
+        assay <- assay(object, i = assay)
+        assert(identical(names(f), colnames(assay)))
         whatPkg <- ifelse(
-            test = is(object, "Matrix"),
+            test = is(assay, "Matrix"),
             yes = "Matrix",
             no = "base"
         )
         fun <- get(x = fname, envir = asNamespace(whatPkg), inherits = FALSE)
-        assert(is.function(fun))
-        if (is.factor(f)) {
-            assert(identical(names(f), colnames(object)))
-            data <- do.call(
-                what = rbind,
-                args = lapply(
-                    X = levels(f),
-                    object = object,
-                    FUN = function(level, object) {
-                        sums <- fun(object[, which(f == level), drop = FALSE])
-                        data.frame(
-                            "sample" = level,
-                            "value" = unname(sums)
-                        )
-                    }
-                )
+        assert(
+            is.function(fun),
+            identical(names(f), colnames(object))
+        )
+        data <- do.call(
+            what = rbind,
+            args = lapply(
+                X = levels(f),
+                assay = assay,
+                f = f,
+                FUN = function(level, assay, f) {
+                    idx <- which(f == level)
+                    assay <- assay[, idx, drop = FALSE]
+                    sums <- fun(assay)
+                    data.frame(
+                        "sample" = level,
+                        "value" = unname(sums)
+                    )
+                }
             )
-        } else {
-            sums <- fun(object)
-            data <- data.frame(
-                "sample" = "unknown",
-                "value" = unname(sums)
-            )
-        }
+        )
         p <- ggplot(
             data = data,
             mapping = aes(
@@ -101,7 +93,7 @@ NULL
             stat_ecdf(size = 1L) +
             scale_x_continuous(trans = "sqrt")
         ## Labels.
-        labels[["color"]] <- ""
+        labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
         labels[["x"]] <- fname
         labels[["y"]] <- "Fn(x)"
         p <- p + do.call(what = labs, args = labels)
@@ -112,54 +104,10 @@ NULL
 
 
 
-## Updated 2019-08-12.
-`plotSums,Matrix` <-  # nolint
-    `plotSums,matrix`
-
-
-
-## Updated 2021-09-10.
-`plotSums,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        ...
-    ) {
-        validObject(object)
-        interestingGroups(object) <-
-            matchInterestingGroups(object, interestingGroups)
-        metrics <- metrics(object = object, return = "DataFrame")
-        f <- metrics[["interestingGroups"]]
-        assert(is.factor(f))
-        names(f) <- rownames(metrics)
-        assay <- assay(object, i = assay)
-        assert(identical(names(f), colnames(assay)))
-        plotSums(object = assay, f = f, ...)
-    }
-
-
-
-#' @rdname plotSums
-#' @export
-setMethod(
-    f = "plotSums",
-    signature = signature("Matrix"),
-    definition = `plotSums,Matrix`
-)
-
 #' @rdname plotSums
 #' @export
 setMethod(
     f = "plotSums",
     signature = signature("SummarizedExperiment"),
     definition = `plotSums,SE`
-)
-
-#' @rdname plotSums
-#' @export
-setMethod(
-    f = "plotSums",
-    signature = signature("matrix"),
-    definition = `plotSums,matrix`
 )
