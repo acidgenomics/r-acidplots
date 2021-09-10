@@ -10,6 +10,7 @@ plotQC(object, ...)
 
 \S4method{plotQC}{SingleCellExperiment}(
   object,
+  assay = 1L,
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = "Quality control", subtitle = NULL)
@@ -26,6 +27,9 @@ plotQC(object, ...)
 \arguments{
 \item{object}{Object.}
 
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
 \item{geom}{\code{character(1)}.
 Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
 the first argument in the \code{character} vector.}
@@ -36,9 +40,6 @@ Include plot legend.}
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
-
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
