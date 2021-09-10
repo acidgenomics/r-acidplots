@@ -25,6 +25,29 @@ Helper functions for setting default colors in Acid Genomics plots.
 \note{
 Updated 2021-09-10.
 }
+\section{Setting default colors}{
+
+
+These functions will inherit values defined in global \code{options()}. Either
+input a ggplot2 color scale function that returns \code{Scale} class
+(e.g. \code{scale_color_synesthesia_c}), or can input \code{"gradient"}, \code{"viridis"}
+character strings.
+\itemize{
+\item \code{autoContinuousColorScale()}: \code{"ggplot2.continuous.colour"}.
+\item \code{autoContinuousFillScale()}: \code{"ggplot2.continuous.fill"}.
+\item \code{autoDiscreteColorScale()}: \code{"ggplot2.discrete.colour"}.
+\item \code{autoDiscreteFillScale()}: \code{"ggplot2.discrete.fill"}.
+}
+
+For example, here's how to set the color palette to greyscale globally:\if{html}{\out{<div class="sourceCode r">}}\preformatted{options(
+    "ggplot2.continuous.colour" = ggplot2::scale_colour_grey,
+    "ggplot2.continuous.fill" = ggplot2::scale_fill_grey,
+    "ggplot2.discrete.colour" = ggplot2::scale_colour_grey,
+    "ggplot2.discrete.fill" = ggplot2::scale_fill_grey
+)
+}\if{html}{\out{</div>}}
+}
+
 \examples{
 x <- autoContinuousColorScale()
 class(x)
@@ -37,4 +60,10 @@ class(x)
 
 x <- autoDiscreteFillScale()
 class(x)
+}
+\seealso{
+\itemize{
+\item https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html
+\item https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html
+}
 }
