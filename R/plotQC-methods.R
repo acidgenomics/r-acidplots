@@ -50,18 +50,29 @@ NULL
         labels <- matchLabels(labels)
         plotlist <- list(
             "totalCounts" =
-                plotTotalCounts(object, assay = assay),
+                plotTotalCounts(
+                    object = object,
+                    assay = assay),
             "zerosVsDepth" =
-                plotZerosVsDepth(object, assay = assay) +
+                plotZerosVsDepth(
+                    object = object,
+                    assay = assay
+                ) +
                 guides(color = "none"),
             "rowSums" =
-                ## FIXME Need to batch these per interesting group.
-                ## FIXME Need to make the labels more descriptive.
-                plotSums(object, assay = assay, MARGIN = 1L),
+                plotSums(
+                    object = object,
+                    assay = assay,
+                    MARGIN = 1L
+                ) +
+                theme(legend.position = "none"),
             "colSums" =
-                ## FIXME Need to batch these per interesting group.
-                ## FIXME Need to make the labels more descriptive.
-                plotSums(object, assay = assay, MARGIN = 2L)
+                plotSums(
+                    object = object,
+                    assay = assay,
+                    MARGIN = 2L
+                ) +
+                theme(legend.position = "none")
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
@@ -82,10 +93,12 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
 
 
 
-## Updated 2021-08-11.
+## FIXME All of these functions need to support assay.
+## Updated 2021-09-10.
 `plotQC,SCE` <-  # nolint
     function(
         object,
+        assay = 1L,
         geom,
         legend,
         labels = list(
@@ -96,7 +109,7 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
         validObject(object)
         assert(
             hasMetrics(object),
-            identical(assayNames(object)[[1L]], "counts"),
+            isScalar(assay),
             isFlag(legend)
         )
         geom <- match.arg(geom)
@@ -104,50 +117,76 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
         ## Don't show cell counts for unfiltered datasets.
         if (hasSubset(object, metadata = "filterCells")) {
             plotlist[["cellCounts"]] <-
-                plotCellCounts(object) +
+                ## FIXME Needs to support assay.
+                plotCellCounts(
+                    object = object,
+                    assay = assay
+                ) +
                 theme(legend.position = "none")
         } else {
             plotlist[["zerosVsDepth"]] <-
-                plotZerosVsDepth(object) +
+                ## FIXME Needs to support assay.
+                plotZerosVsDepth(object, assay = assay) +
                 theme(legend.position = "none")
         }
         plotlist <- append(
             x = plotlist,
             values = list(
                 "countsPerCell" =
-                    plotCountsPerCell(object, geom = geom),
+                    ## FIXME Needs to support assay.
+                    plotCountsPerCell(
+                        object = object,
+                        assay = assay,
+                        geom = geom
+                    ),
                 "featuresPerCell" =
-                    plotFeaturesPerCell(object, geom = geom) +
+                    ## FIXME Needs to support assay.
+                    plotFeaturesPerCell(
+                        object = object,
+                        geom = geom
+                    ) +
                     theme(legend.position = "none"),
                 "countsVsFeatures" =
-                    plotCountsVsFeatures(object) +
+                    ## FIXME Needs to support assay.
+                    plotCountsVsFeatures(
+                        object = object,
+                        assay = assay
+                    ) +
                     theme(legend.position = "none"),
                 "novelty" =
-                    plotNovelty(object, geom = geom) +
+                    ## FIXME Needs to support assay.
+                    plotNovelty(
+                        object = object,
+                        assay = assay,
+                        geom = geom
+                    ) +
                     theme(legend.position = "none"),
                 "mitoRatio" = tryCatch(
                     expr = {
-                        plotMitoRatio(object, geom = geom) +
+                        ## FIXME Needs to support assay.
+                        plotMitoRatio(
+                            object = object,
+                            assay = assay,
+                            geom = geom
+                        ) +
                         theme(legend.position = "none")
                     },
                     error = function(e) NULL
                 ),
                 "rowSums" =
-                    ## FIXME Need to batch these per interesting group.
-                    ## FIXME Need to make the labels more descriptive.
                     plotSums(
                         object = object,
-                        assay = 1L,
+                        assay = assay,
                         MARGIN = 1L
-                    ),
+                    ) +
+                    theme(legend.position = "none"),
                 "colSums" =
-                    ## FIXME Need to batch these per interesting group.
-                    ## FIXME Need to make the labels more descriptive.
                     plotSums(
                         object = object,
-                        assay = 1L,
+                        assay = assay,
                         MARGIN = 2L
-                    )
+                    ) +
+                    theme(legend.position = "none")
             )
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
