@@ -56,13 +56,8 @@ Name of the axis scale transformation to apply.
 For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }}
 
-\item{fill}{\code{ggproto}/\code{ScaleDiscrete}.
-Desired ggplot2 fill scale. Must supply discrete values. When set to
-\code{NULL}, the default ggplot2 color palette will be used. If manual color
-definitions are desired, we recommend using \code{ggplot2::scale_fill_manual()}.
-
-To set the discrete fill palette globally, use:\preformatted{options(acid.fill.discrete = ggplot2::scale_fill_viridis_d())
-}}
+\item{fill}{\code{character(1)}.
+R color name or hex color code (e.g. \code{"#AF52DE"}).}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
@@ -82,7 +77,7 @@ Assay name or index position.}
 Plot waterfall
 }
 \note{
-Updated 2021-08-11.
+Updated 2021-09-10.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
