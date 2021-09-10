@@ -13,8 +13,6 @@ plotPCA(object, ...)
   interestingGroups = NULL,
   ntop = 500L,
   label = getOption(x = "acid.label", default = FALSE),
-  color = getOption(x = "acid.color.discrete", default = getOption(x =
-    "ggplot2.discrete.colour", default = AcidPlots::scale_color_synesthesia_d())),
   pointSize = getOption(x = "acid.point.size", default = 3L),
   labels = list(title = "PCA", subtitle = NULL)
 )
@@ -35,14 +33,6 @@ Use \code{Inf} to include all genes (\emph{not recommended}).}
 
 \item{label}{\code{logical(1)}.
 Superimpose sample text labels on the plot.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual()}.
-
-To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
-}}
 
 \item{pointSize}{\code{numeric(1)}.
 Point size for dots in the plot.
@@ -69,7 +59,7 @@ We're using a modified version of the \code{DESeqTransform} method here.\if{html
 }\if{html}{\out{</div>}}
 }
 \note{
-Updated 2021-02-09.
+Updated 2021-09-10.
 }
 \section{Principal component analysis}{
 
