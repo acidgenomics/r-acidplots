@@ -17,21 +17,22 @@
 #'   alertInfo alertWarning append arrow as_tibble as.SummarizedExperiment
 #'   as.formula assayNames assay assay<- assays assays<- axisTicks camelCase
 #'   cell2sample colData colSums colorRampPalette complete.cases
-#'   convertGenesToSymbols counts decode dist ecdf formalsList hclust head
-#'   interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
-#'   makeTitle mapGenesToRownames matchInterestingGroups matchSampleColumn mcols
-#'   melt merge metadata methodFormals metrics organism packageName
-#'   packageVersion prcomp quantile reorder requireNamespaces sem
-#'   nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase
+#'   convertGenesToSymbols counts decode dist do.call ecdf formalsList hclust
+#'   head interestingGroups interestingGroups<- intersectionMatrix leftJoin
+#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
+#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
+#'   packageName packageVersion prcomp quantile rbind reorder requireNamespaces
+#'   sem nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase split
 #'   str_replace_na standardizeCall tibble toInlineString unit var zerosVsDepth
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
 #'   element_text expand_limits facet_grid facet_wrap geom_bar geom_boxplot
 #'   geom_density geom_histogram geom_hline geom_jitter geom_label geom_line
 #'   geom_point geom_smooth geom_step geom_text geom_violin geom_vline ggplot
-#'   guides labs margin position_jitterdodge scale_x_continuous scale_x_discrete
-#'   scale_y_continuous stat stat_ecdf stat_summary theme theme_linedraw waiver
-#'   vars
+#'   guides labs margin position_jitterdodge scale_colour_continuous
+#'   scale_colour_discrete scale_fill_continuous scale_fill_discrete
+#'   scale_x_continuous scale_x_discrete scale_y_continuous stat stat_ecdf
+#'   stat_summary theme theme_linedraw waiver vars
 #' @importFrom goalie allAreHexColors allAreNonNegative allArePositive
 #'   areDisjointSets areSetEqual assert bapply getNameInParent hasColnames
 #'   hasDims hasLength hasNames hasNoDuplicates hasMetrics hasNonzeroRowsAndCols
