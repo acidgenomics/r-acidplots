@@ -1,4 +1,4 @@
-## NOTE SingleCellExperiment method is currently defined in pointillism.
+## FIXME SingleCellExperiment method is currently defined in pointillism.
 
 
 

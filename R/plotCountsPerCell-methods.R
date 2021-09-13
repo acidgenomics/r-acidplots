@@ -24,6 +24,7 @@ NULL
 
 
 
+## FIXME This needs to support assay.
 ## Updated 2021-09-10.
 `plotCountsPerCell,SCE` <-  # nolint
     function(
