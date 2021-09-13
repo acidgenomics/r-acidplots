@@ -1,7 +1,7 @@
 #' @name barcodeRanksPerSample
 #' @inherit AcidGenerics::barcodeRanksPerSample
 #' @note Requires DropletUtils package to be installed.
-#' @note Updated 2019-11-19.
+#' @note Updated 2021-09-13.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough arguments to `DropletUtils::barcodeRanks()`.
@@ -32,11 +32,16 @@ NULL
 
 
 
-## Updated 2021-09-08.
+## Updated 2021-09-13.
 `barcodeRanksPerSample,SCE` <-  # nolint
-    function(object, ...) {
+    function(
+        object,
+        assay = 1L,
+        ...
+    ) {
+        assert(isScalar(assay))
         requireNamespaces("DropletUtils")
-        counts <- counts(object)
+        counts <- assay(object, i = assay)
         cell2sample <- cell2sample(object)
         samples <- levels(cell2sample)
         ## Subset the counts per sample into a list.
