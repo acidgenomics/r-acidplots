@@ -8,10 +8,13 @@
 \usage{
 barcodeRanksPerSample(object, ...)
 
-\S4method{barcodeRanksPerSample}{SingleCellExperiment}(object, ...)
+\S4method{barcodeRanksPerSample}{SingleCellExperiment}(object, assay = 1L, ...)
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{...}{Passthrough arguments to \code{DropletUtils::barcodeRanks()}.}
 }
@@ -24,7 +27,7 @@ Barcode ranks per sample
 \note{
 Requires DropletUtils package to be installed.
 
-Updated 2019-11-19.
+Updated 2021-09-13.
 }
 \examples{
 data(SingleCellExperiment, package = "AcidTest")

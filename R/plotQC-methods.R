@@ -1,10 +1,6 @@
-## FIXME This needs to support `interestingGroups` argument.
-
-
-
 #' @name plotQC
 #' @inherit AcidGenerics::plotQC
-#' @note Updated 2021-09-10.
+#' @note Updated 2021-09-13.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -93,12 +89,13 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
 
 
 
-## FIXME All of these functions need to support assay.
-## Updated 2021-09-10.
+## FIXME This isn't returning interestingGroups in plot legend correctly.
+## Updated 2021-09-13.
 `plotQC,SCE` <-  # nolint
     function(
         object,
         assay = 1L,
+        interestingGroups = NULL,
         geom,
         legend,
         labels = list(
@@ -108,24 +105,24 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
     ) {
         validObject(object)
         assert(
-            hasMetrics(object),
+            identical(assayNames(object)[[1L]], "counts"),
             isScalar(assay),
             isFlag(legend)
         )
+        if (!hasMetrics(object)) {
+            object <- calculateMetrics(object, assay = assay)
+        }
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
         geom <- match.arg(geom)
         plotlist <- list()
         ## Don't show cell counts for unfiltered datasets.
         if (hasSubset(object, metadata = "filterCells")) {
             plotlist[["cellCounts"]] <-
-                ## FIXME Needs to support assay.
-                plotCellCounts(
-                    object = object,
-                    assay = assay
-                ) +
+                plotCellCounts(object) +
                 theme(legend.position = "none")
         } else {
             plotlist[["zerosVsDepth"]] <-
-                ## FIXME Needs to support assay.
                 plotZerosVsDepth(object, assay = assay) +
                 theme(legend.position = "none")
         }
@@ -133,40 +130,29 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
             x = plotlist,
             values = list(
                 "countsPerCell" =
-                    ## FIXME Needs to support assay.
                     plotCountsPerCell(
                         object = object,
-                        assay = assay,
                         geom = geom
                     ),
                 "featuresPerCell" =
-                    ## FIXME Needs to support assay.
                     plotFeaturesPerCell(
                         object = object,
                         geom = geom
                     ) +
                     theme(legend.position = "none"),
                 "countsVsFeatures" =
-                    ## FIXME Needs to support assay.
-                    plotCountsVsFeatures(
-                        object = object,
-                        assay = assay
-                    ) +
+                    plotCountsVsFeatures(object) +
                     theme(legend.position = "none"),
                 "novelty" =
-                    ## FIXME Needs to support assay.
                     plotNovelty(
                         object = object,
-                        assay = assay,
                         geom = geom
                     ) +
                     theme(legend.position = "none"),
                 "mitoRatio" = tryCatch(
                     expr = {
-                        ## FIXME Needs to support assay.
                         plotMitoRatio(
                             object = object,
-                            assay = assay,
                             geom = geom
                         ) +
                         theme(legend.position = "none")

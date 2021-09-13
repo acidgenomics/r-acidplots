@@ -1,6 +1,6 @@
 #' Plot a single quality control metric
 #'
-#' @note Updated 2021-09-10.
+#' @note Updated 2021-09-13.
 #' @noRd
 .plotQCMetric <- function(
     object,
@@ -32,6 +32,7 @@
     }
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
+    interestingGroups <- interestingGroups(object)
     ## Support for per sample filtering cutoffs.
     min <- min(min)
     max <- max(max)
