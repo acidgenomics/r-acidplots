@@ -2,10 +2,27 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCounts-methods.R
 \name{plotCounts}
 \alias{plotCounts}
+\alias{plotDots}
+\alias{plotViolin}
+\alias{plotCounts,SingleCellExperiment-method}
 \alias{plotCounts,SummarizedExperiment-method}
 \title{Plot counts}
 \usage{
 plotCounts(object, ...)
+
+plotDots(object, ...)
+
+plotViolin(object, ...)
+
+\S4method{plotCounts}{SingleCellExperiment}(
+  object,
+  genes,
+  assay = c("logcounts", "normcounts"),
+  geom = c("violin", "dot"),
+  perSample = TRUE,
+  legend = getOption(x = "acid.legend", default = TRUE),
+  title = NULL
+)
 
 \S4method{plotCounts}{SummarizedExperiment}(
   object,
@@ -32,6 +49,19 @@ object, or gene symbols defined in the object.}
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
+\item{geom}{\code{character(1)}.
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} to pick the type.
+Currently supports \code{"dot"} and \code{"violin"}.}
+
+\item{perSample}{\code{logical(1)}.
+Visualize the distributions per sample.}
+
+\item{legend}{\code{logical(1)}.
+Include plot legend.}
+
+\item{title}{\code{character(1)}.
+Title.}
+
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
@@ -39,10 +69,6 @@ Corresponds to factors describing the columns of the object.}
 \item{convertGenesToSymbols}{\code{logical(1)}.
 Attempt to automatically convert gene identifiers to gene symbols.
 Only applies when object contains mappings defined in \code{rowRanges}.}
-
-\item{geom}{\code{character(1)}.
-Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
-the first argument in the \code{character} vector.}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
@@ -53,9 +79,6 @@ For more information:\preformatted{help(topic = "scale_x_continuous", package = 
 \item{line}{\code{character(1)}.
 Include average (median, mean, or geometric mean) line for each interesting
 group. Disabled by default and if samples are colored by sample name.}
-
-\item{legend}{\code{logical(1)}.
-Include plot legend.}
 
 \item{style}{\code{character(1)}.
 Plot style.}
@@ -69,6 +92,27 @@ when \code{convertGenesToSymbols} is \code{TRUE}.}
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
+\item{colMin}{\code{numeric(1)}.
+Minimum scaled average expression threshold. Everything smaller will be
+set to this.}
+
+\item{colMax}{\code{numeric(1)}.
+Maximum scaled average expression threshold. Everything larger will be set
+to this.}
+
+\item{dotMin}{\code{numeric(1)}.
+The fraction of cells at which to draw the smallest dot. All cell groups
+with less than this expressing the given gene will have no dot drawn.}
+
+\item{dotScale}{\code{numeric(1)}.
+Scale the size of the points, similar to \code{cex}.}
+
+\item{scale}{\code{character(1)}.
+If "area" (default), all violins have the same area (before trimming the
+tails). If "count", areas are scaled proportionally to the number of
+observartions. If "width", all violins have the same maximum width.
+See \code{ggplot2::geom_violin} for details.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -79,10 +123,14 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 }
 }
 \description{
-Plot counts
+Visualize genes on a dot or violin plot.
 }
 \note{
 Updated 2021-02-08.
+
+Dot geom currently only supports logcounts.
+
+Updated 2020-10-12.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
@@ -100,7 +148,26 @@ print(geneNames)
 ## Rownames, gene IDs, and gene names (symbols) are supported.
 plotCounts(object, genes = geneIds, style = "facet")
 plotCounts(object, genes = geneNames, style = "wide")
+data(Seurat, package = "AcidTest")
+
+## Seurat ====
+object <- Seurat
+
+## Plotting with either gene IDs or gene names (symbols) works.
+genes <- head(rownames(object), n = 4L)
+print(genes)
+
+## Per sample mode enabled.
+plotCounts(object, genes = genes, perSample = TRUE)
+
+## Per sample mode disabled.
+plotCounts(object, genes = genes, perSample = FALSE)
 }
 \seealso{
-\code{DESeq2::plotCounts()}.
+\itemize{
+\item \code{Seurat::DotPlot()}.
+\item \code{Seurat::VlnPlot()}.
+\item \code{Seurat::RidgePlot()}.
+\item \code{monocle3::plot_genes_violin()}.
+}
 }

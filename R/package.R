@@ -1,3 +1,7 @@
+## FIXME Need to update basejump to export barcodeRanksPerSample
+
+
+
 #' AcidPlots
 #'
 #' Functions for plotting genomic data.
@@ -12,6 +16,7 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom AcidSingleCell barcodeRanksPerSample
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
 #'   SummarizedExperiment abort aggregate aggregateCellsToSamples alert
 #'   alertInfo alertWarning append arrow as_tibble as.SummarizedExperiment
