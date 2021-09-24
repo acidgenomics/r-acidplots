@@ -85,7 +85,8 @@ NULL
         p
     }
 
-formals(`plotTotalCounts,SE`)[["flip"]] <- formalsList[["flip"]]
+formals(`plotTotalCounts,SE`)[["flip"]] <-
+    .formalsList[["flip"]]
 
 
 

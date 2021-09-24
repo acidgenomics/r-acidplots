@@ -132,7 +132,7 @@ NULL
 formals(`plotCountsPerFeature,SE`)[
     c("flip", "minMethod")] <-
     list(
-        "flip" = formalsList[["flip"]],
+        "flip" = .formalsList[["flip"]],
         "minMethod" = methodFormals(
             f = "melt",
             signature = "SummarizedExperiment",

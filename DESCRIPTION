@@ -2,7 +2,7 @@ Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
 Version: 0.4.0
-Date: 2021-09-09
+Date: 2021-09-24
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -23,11 +23,10 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.0)
 Imports:
-    AcidGenerics (>= 0.5.20),
-    AcidSingleCell,
-    basejump (>= 0.14.22),
+    AcidGenerics (>= 0.5.21),
+    basejump (>= 0.14.24),
     ggplot2 (>= 3.3.5),
-    goalie (>= 0.5.4),
+    goalie (>= 0.5.5),
     methods,
     patchwork (>= 1.1.1),
     rlang (>= 0.4.11),

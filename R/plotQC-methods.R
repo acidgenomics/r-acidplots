@@ -85,7 +85,8 @@ NULL
         p
     }
 
-formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
+formals(`plotQC,SE`)[["legend"]] <-
+    .formalsList[["legend"]]
 
 
 
@@ -191,10 +192,7 @@ formals(`plotQC,SE`)[["legend"]] <- formalsList[["legend"]]
     }
 
 formals(`plotQC,SCE`)[c("geom", "legend")] <-
-    list(
-        "geom" = .formalsList[["geom"]],
-        "legend" = formalsList[["legend"]]
-    )
+    .formalsList[c("geom", "legend")]
 
 
 

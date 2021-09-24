@@ -139,7 +139,7 @@ NULL
     }
 
 formals(`plotPCA,SE`)[c("label", "pointSize")] <-
-    formalsList[c("label", "point.size")]
+    .formalsList[c("label", "point.size")]
 
 
 
