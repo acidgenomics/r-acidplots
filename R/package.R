@@ -22,12 +22,12 @@
 #'   alertInfo alertWarning append arrow as_tibble as.SummarizedExperiment
 #'   as.formula assayNames assay assay<- assays assays<- axisTicks camelCase
 #'   cell2sample colData colSums colorRampPalette complete.cases
-#'   convertGenesToSymbols counts decode dist do.call ecdf formalsList hclust
-#'   head interestingGroups interestingGroups<- intersectionMatrix leftJoin
-#'   makeLabel makeTitle mapGenesToRownames matchInterestingGroups
-#'   matchSampleColumn mcols melt merge metadata methodFormals metrics organism
-#'   packageName packageVersion prcomp quantile rbind reorder requireNamespaces
-#'   sem nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase split
+#'   convertGenesToSymbols counts decode dist do.call ecdf hclust head
+#'   interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
+#'   makeTitle mapGenesToRownames matchInterestingGroups matchSampleColumn mcols
+#'   melt merge metadata methodFormals metrics organism packageName
+#'   packageVersion prcomp quantile rbind reorder requireNamespaces sem
+#'   nonzeroRowsAndCols rgb rowData sampleData sampleNames snakeCase split
 #'   str_replace_na standardizeCall tibble toInlineString unit var zerosVsDepth
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect

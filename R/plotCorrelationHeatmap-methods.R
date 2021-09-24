@@ -146,9 +146,9 @@ NULL
 formals(`plotCorrelationHeatmap,SE`)[["method"]] <-
     formals(stats::cor)[["method"]]
 formals(`plotCorrelationHeatmap,SE`)[["color"]] <-
-    formalsList[["heatmap.correlation.color"]]
+    .formalsList[["heatmap.correlation.color"]]
 formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
-    formalsList[["heatmap.legend.color"]]
+    .formalsList[["heatmap.legend.color"]]
 
 
 

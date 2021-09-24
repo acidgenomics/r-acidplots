@@ -241,7 +241,7 @@ NULL
     }
 
 formals(`plotCounts,SE`)[["legend"]] <-
-    formalsList[["legend"]]
+    .formalsList[["legend"]]
 
 
 
@@ -333,7 +333,8 @@ NULL
         do.call(what = what, args = args)
     }
 
-formals(`plotCounts,SCE`)[["legend"]] <- formalsList[["legend"]]
+formals(`plotCounts,SCE`)[["legend"]] <-
+    .formalsList[["legend"]]
 
 
 

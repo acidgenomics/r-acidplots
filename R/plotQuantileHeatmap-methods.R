@@ -167,10 +167,8 @@ NULL
         )
     }
 
-formals(`plotQuantileHeatmap,SE`)[["color"]] <-
-    formalsList[["heatmap.quantile.color"]]
-formals(`plotQuantileHeatmap,SE`)[["legendColor"]] <-
-    formalsList[["heatmap.legend.color"]]
+formals(`plotQuantileHeatmap,SE`)[c("color", "legendColor")] <-
+    .formalsList[c("heatmap.quantile.color", "heatmap.legend.color")]
 
 
 
