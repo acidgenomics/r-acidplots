@@ -1,4 +1,5 @@
 ## FIXME SingleCellExperiment method is currently defined in pointillism.
+## FIXME Need to improve error when genes fail to map.
 
 
 

@@ -42,7 +42,9 @@
     ok <- hasDims(data) &&
         hasLength(interestingGroups) &&
         !identical(interestingGroups, "sampleName")
-    if (!isTRUE(ok)) return(empty)
+    if (!isTRUE(ok)) {
+        return(empty)
+    }
     assert(
         hasRownames(data),
         isSubset(interestingGroups, colnames(data))
@@ -50,10 +52,14 @@
     data <- data[, interestingGroups, drop = FALSE]
     denylist <- unique(c("sampleName", denylist))
     cols <- setdiff(colnames(data), denylist)
-    if (!hasLength(cols)) return(empty)
+    if (!hasLength(cols)) {
+        return(empty)
+    }
     data <- data[, cols, drop = FALSE]
     keep <- bapply(X = data, FUN = is.factor)
-    if (!any(keep)) return(empty)
+    if (!any(keep)) {
+        return(empty)
+    }
     data <- data[, keep, drop = FALSE]
     rownames <- rownames(data)
     data <- as.data.frame(lapply(
@@ -72,7 +78,9 @@
             length(unique(x)) > 1L
         }
     )
-    if (!hasLength(hasMultiple)) return(empty)
+    if (!hasLength(hasMultiple)) {
+        return(empty)
+    }
     data <- data[, hasMultiple, drop = FALSE]
     if (is.function(legendColor)) {
         colors <- lapply(
