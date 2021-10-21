@@ -5,16 +5,12 @@
 #' @export
 NULL
 
-
-
 #' @rdname plotCellCounts
 #' @name plotCellCounts
 #' @importFrom AcidGenerics plotCellCounts
 #' @usage plotCellCounts(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCellCountsPerCluster
 #' @name plotCellCountsPerCluster
@@ -23,16 +19,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCellTypesPerCluster
 #' @name plotCellTypesPerCluster
 #' @importFrom AcidGenerics plotCellTypesPerCluster
 #' @usage plotCellTypesPerCluster(object, markers, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCorrelation
 #' @name plotCorrelation
@@ -41,16 +33,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCorrelationHeatmap
 #' @name plotCorrelationHeatmap
 #' @importFrom AcidGenerics plotCorrelationHeatmap
 #' @usage plotCorrelationHeatmap(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCounts
 #' @name plotCounts
@@ -73,16 +61,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCountsCorrelation
 #' @name plotCountsCorrelation
 #' @importFrom AcidGenerics plotCountsCorrelation
 #' @usage plotCountsCorrelation(x, y, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCountsCorrelationHeatmap
 #' @name plotCountsCorrelationHeatmap
@@ -91,16 +75,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBiotype
 #' @importFrom AcidGenerics plotCountsPerBiotype
 #' @usage plotCountsPerBiotype(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCountsPerBiotype
 #' @name plotCountsPerBroadClass
@@ -109,16 +89,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCountsPerCell
 #' @name plotCountsPerCell
 #' @importFrom AcidGenerics plotCountsPerCell
 #' @usage plotCountsPerCell(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotCountsPerFeature
 #' @name plotCountsPerFeature
@@ -127,16 +103,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotCountsVsFeatures
 #' @name plotCountsVsFeatures
 #' @importFrom AcidGenerics plotCountsVsFeatures
 #' @usage plotCountsVsFeatures(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotFeature
 #' @name plotFeature
@@ -145,16 +117,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotFeaturesDetected
 #' @name plotFeaturesDetected
 #' @importFrom AcidGenerics plotFeaturesDetected
 #' @usage plotFeaturesDetected
 #' @export
 NULL
-
-
 
 #' @rdname plotFeaturesPerCell
 #' @name plotFeaturesPerCell
@@ -163,16 +131,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotGenderMarkers
 #' @name plotGenderMarkers
 #' @importFrom AcidGenerics plotGenderMarkers
 #' @usage plotGenderMarkers(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotHeatmap
 #' @name plotHeatmap
@@ -181,16 +145,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotKnownMarkers
 #' @name plotKnownMarkers
 #' @importFrom AcidGenerics plotKnownMarkers
 #' @usage plotKnownMarkers(object, markers, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotMarker
 #' @name plotMarker
@@ -199,16 +159,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotMitoRatio
 #' @name plotMitoRatio
 #' @importFrom AcidGenerics plotMitoRatio
 #' @usage plotMitoRatio(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotNovelty
 #' @name plotNovelty
@@ -217,16 +173,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotPCA
 #' @name plotPCA
 #' @importFrom AcidGenerics plotPCA
 #' @usage plotPCA(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotQC
 #' @name plotQC
@@ -235,16 +187,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotQuantileHeatmap
 #' @name plotQuantileHeatmap
 #' @importFrom AcidGenerics plotQuantileHeatmap
 #' @usage plotQuantileHeatmap(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotReducedDim
 #' @name plotReducedDim
@@ -274,16 +222,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotStackedBarPlot
 #' @name plotStackedBarPlot
 #' @importFrom AcidGenerics plotStackedBarPlot
 #' @usage plotStackedBarPlot(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotSums
 #' @name plotSums
@@ -292,16 +236,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotTotalCounts
 #' @name plotTotalCounts
 #' @importFrom AcidGenerics plotTotalCounts
 #' @usage plotTotalCounts(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotUpset
 #' @name plotUpset
@@ -310,16 +250,12 @@ NULL
 #' @export
 NULL
 
-
-
 #' @rdname plotWaterfall
 #' @name plotWaterfall
 #' @importFrom AcidGenerics plotWaterfall
 #' @usage plotWaterfall(object, ...)
 #' @export
 NULL
-
-
 
 #' @rdname plotZerosVsDepth
 #' @name plotZerosVsDepth
