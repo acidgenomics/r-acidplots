@@ -23,6 +23,10 @@ basejump::calculateMetrics
 #' @export
 ggplot2::ggplot
 
+#' @importFrom ggplot2 ggsave
+#' @export
+ggplot2::ggsave
+
 #' @importFrom scales log_breaks
 #' @export
 scales::log_breaks
@@ -58,6 +62,10 @@ rlang::sym
 #' @importFrom rlang syms
 #' @export
 rlang::syms
+
+#' @importFrom ggplot2 theme_set
+#' @export
+ggplot2::theme_set
 
 #' @importFrom patchwork wrap_plots
 #' @export
