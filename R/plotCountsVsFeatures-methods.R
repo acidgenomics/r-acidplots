@@ -52,6 +52,6 @@ NULL
 #' @export
 setMethod(
     f = "plotCountsVsFeatures",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCountsVsFeatures,SCE`
 )

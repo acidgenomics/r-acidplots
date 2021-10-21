@@ -8,5 +8,5 @@
 #' @examples
 #' isDark()
 isDark <- function() {
-    isTRUE(getOption("acid.dark"))
+    isTRUE(getOption(x = "acid.dark"))
 }

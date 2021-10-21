@@ -78,6 +78,6 @@ NULL
 #' @export
 setMethod(
     f = "plotZerosVsDepth",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotZerosVsDepth,SE`
 )

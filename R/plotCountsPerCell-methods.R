@@ -141,6 +141,6 @@ formals(`plotCountsPerCell,SCE`)[["geom"]] <- .formalsList[["geom"]]
 #' @export
 setMethod(
     f = "plotCountsPerCell",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCountsPerCell,SCE`
 )

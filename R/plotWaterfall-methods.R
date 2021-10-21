@@ -184,7 +184,7 @@ NULL
 
 
 
-## Updated 2021-02-09.
+## Updated 2021-10-13.
 `plotWaterfall,DataFrame` <-  # nolint
     `plotWaterfall,data.frame`
 
@@ -235,7 +235,7 @@ NULL
 #' @export
 setMethod(
     f = "plotWaterfall",
-    signature = signature("DataFrame"),
+    signature = signature(object = "DataFrame"),
     definition = `plotWaterfall,DataFrame`
 )
 
@@ -243,7 +243,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotWaterfall",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotWaterfall,SE`
 )
 
@@ -251,6 +251,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotWaterfall",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `plotWaterfall,data.frame`
 )

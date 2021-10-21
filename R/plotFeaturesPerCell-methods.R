@@ -56,6 +56,6 @@ formals(`plotFeaturesPerCell,SCE`) <- f
 #' @export
 setMethod(
     f = "plotFeaturesPerCell",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotFeaturesPerCell,SCE`
 )

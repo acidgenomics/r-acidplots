@@ -63,6 +63,6 @@ NULL
 #' @export
 setMethod(
     f = "plotMitoVsCoding",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotMitoVsCoding,SCE`
 )

@@ -85,6 +85,6 @@ NULL
 #' @export
 setMethod(
     f = "plotCellCounts",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCellCounts,SCE`
 )

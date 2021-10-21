@@ -1,5 +1,10 @@
 ## FIXME SingleCellExperiment method is currently defined in pointillism.
 ## FIXME Need to improve error when genes fail to map.
+## FIXME Harden against DESeqDataSet input here -- we don't want to ever plot
+##       non-normalized counts by default.
+## FIXME This needs to error and return faster on gene map failure.
+## FIXME Need to think about NA gene symbol handling in call
+#        to convertGenesToSymbols.
 
 
 
@@ -343,7 +348,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
 #' @export
 setMethod(
     f = "plotCounts",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCounts,SCE`
 )
 
@@ -351,6 +356,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCounts",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCounts,SE`
 )

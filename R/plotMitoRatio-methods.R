@@ -57,6 +57,6 @@ formals(`plotMitoRatio,SCE`) <- f
 #' @export
 setMethod(
     f = "plotMitoRatio",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotMitoRatio,SCE`
 )

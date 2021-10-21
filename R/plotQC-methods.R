@@ -200,7 +200,7 @@ formals(`plotQC,SCE`)[c("geom", "legend")] <-
 #' @export
 setMethod(
     f = "plotQC",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotQC,SCE`
 )
 
@@ -208,6 +208,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotQC",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotQC,SE`
 )

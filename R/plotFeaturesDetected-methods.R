@@ -109,7 +109,7 @@ formals(`plotFeaturesDetected,SE`)[["flip"]] <-
 #' @export
 setMethod(
     f = "plotFeaturesDetected",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotFeaturesDetected,SCE`
 )
 
@@ -117,6 +117,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotFeaturesDetected",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotFeaturesDetected,SE`
 )

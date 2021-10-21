@@ -183,7 +183,7 @@ NULL
 #' @export
 setMethod(
     f = "plotCountsPerBiotype",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCountsPerBiotype,SCE`
 )
 
@@ -191,7 +191,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCountsPerBiotype",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCountsPerBiotype,SE`
 )
 
@@ -201,7 +201,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCountsPerBroadClass",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCountsPerBroadClass,SCE`
 )
 
@@ -211,6 +211,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCountsPerBroadClass",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCountsPerBroadClass,SE`
 )

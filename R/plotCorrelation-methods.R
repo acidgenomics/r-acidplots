@@ -245,7 +245,7 @@ NULL
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature("DataFrame"),
+    signature = signature(object = "DataFrame"),
     definition = `plotCorrelation,DataFrame`
 )
 
@@ -254,7 +254,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature("Matrix"),
+    signature = signature(object = "Matrix"),
     definition = `plotCorrelation,Matrix`
 )
 
@@ -262,7 +262,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCorrelation,SE`
 )
 
@@ -270,7 +270,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `plotCorrelation,data.frame`
 )
 
@@ -278,6 +278,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `plotCorrelation,matrix`
 )
