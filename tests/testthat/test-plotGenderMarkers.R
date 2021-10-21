@@ -7,7 +7,7 @@ test_that("SummarizedExperiment", {
         package = "AcidPlots"
     ))
     gr <- markers[[camelCase(organism(object))]]
-    expect_s4_class(gr, "GRanges")
+    expect_s4_class(gr, "GenomicRanges")
     expect_true(isSubset(x = c("geneId", "geneName"), y = names(mcols(gr))))
     geneIds <- mcols(gr)[["geneId"]]
     geneNames <- mcols(gr)[["geneName"]]

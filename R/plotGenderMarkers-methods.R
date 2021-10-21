@@ -43,7 +43,7 @@ NULL
         )
         gr <- markers[[organism]]
         assert(
-            is(gr, "GRanges"),
+            is(gr, "GenomicRanges"),
             isSubset("geneId", names(mcols(gr)))
         )
         ## NOTE We're allowing mapping of genes without a perfect identifier
@@ -83,7 +83,7 @@ NULL
 #' @export
 setMethod(
     f = "plotGenderMarkers",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotGenderMarkers,SCE`
 )
 
@@ -91,6 +91,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotGenderMarkers",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotGenderMarkers,SE`
 )

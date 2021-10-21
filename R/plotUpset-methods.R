@@ -157,7 +157,7 @@ NULL
 
 
 
-## Updated 2020-07-23.
+## Updated 2021-10-13.
 `plotUpset,DataFrame` <-  # nolint
     `plotUpset,data.frame`
 
@@ -167,7 +167,7 @@ NULL
 #' @export
 setMethod(
     f = "plotUpset",
-    signature = signature("DataFrame"),
+    signature = signature(object = "DataFrame"),
     definition = `plotUpset,DataFrame`
 )
 
@@ -175,7 +175,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotUpset",
-    signature = signature("data.frame"),
+    signature = signature(object = "data.frame"),
     definition = `plotUpset,data.frame`
 )
 
@@ -183,7 +183,7 @@ setMethod(
 #' @export
 setMethod(
     f = "plotUpset",
-    signature = signature("list"),
+    signature = signature(object = "list"),
     definition = `plotUpset,list`
 )
 
@@ -191,6 +191,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotUpset",
-    signature = signature("matrix"),
+    signature = signature(object = "matrix"),
     definition = `plotUpset,matrix`
 )

@@ -159,7 +159,7 @@ formals(`plotCountsPerFeature,SE`)[
 #' @export
 setMethod(
     f = "plotCountsPerFeature",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCountsPerFeature,SCE`
 )
 
@@ -167,6 +167,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCountsPerFeature",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCountsPerFeature,SE`
 )

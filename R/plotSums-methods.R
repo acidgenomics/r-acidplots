@@ -105,6 +105,6 @@ NULL
 #' @export
 setMethod(
     f = "plotSums",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotSums,SE`
 )

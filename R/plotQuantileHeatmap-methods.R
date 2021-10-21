@@ -1,4 +1,6 @@
 ## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
+## FIXME Need to think about NA gene symbol handling in call
+##       to convertGenesToSymbols.
 
 
 
@@ -187,7 +189,7 @@ formals(`plotQuantileHeatmap,SE`)[c("color", "legendColor")] <-
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotQuantileHeatmap,SCE`
 )
 
@@ -195,6 +197,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotQuantileHeatmap",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotQuantileHeatmap,SE`
 )

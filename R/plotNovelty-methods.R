@@ -56,6 +56,6 @@ formals(`plotNovelty,SCE`) <- f
 #' @export
 setMethod(
     f = "plotNovelty",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotNovelty,SCE`
 )

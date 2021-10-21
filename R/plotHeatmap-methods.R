@@ -1,4 +1,6 @@
 ## FIXME Migrate from pheatmap to ComplexHeatmap.
+## FIXME Need to think about NA gene symbol handling in call
+#        to convertGenesToSymbols.
 
 
 
@@ -312,7 +314,7 @@ formals(`plotHeatmap,SE`)[c("color", "legendColor")] <-
 #' @export
 setMethod(
     f = "plotHeatmap",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotHeatmap,SCE`
 )
 
@@ -320,6 +322,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotHeatmap",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotHeatmap,SE`
 )

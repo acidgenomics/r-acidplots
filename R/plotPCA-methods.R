@@ -147,6 +147,6 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
 #' @export
 setMethod(
     f = "plotPCA",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotPCA,SE`
 )

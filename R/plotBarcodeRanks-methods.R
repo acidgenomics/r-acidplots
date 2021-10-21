@@ -143,6 +143,6 @@ NULL
 #' @export
 setMethod(
     f = "plotBarcodeRanks",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotBarcodeRanks,SCE`
 )

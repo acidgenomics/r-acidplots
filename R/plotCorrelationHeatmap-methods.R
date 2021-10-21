@@ -169,7 +169,7 @@ formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotCorrelationHeatmap,SCE`
 )
 
@@ -177,6 +177,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotCorrelationHeatmap",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotCorrelationHeatmap,SE`
 )

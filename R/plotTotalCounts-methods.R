@@ -107,7 +107,7 @@ formals(`plotTotalCounts,SE`)[["flip"]] <-
 #' @export
 setMethod(
     f = "plotTotalCounts",
-    signature = signature("SingleCellExperiment"),
+    signature = signature(object = "SingleCellExperiment"),
     definition = `plotTotalCounts,SCE`
 )
 
@@ -115,6 +115,6 @@ setMethod(
 #' @export
 setMethod(
     f = "plotTotalCounts",
-    signature = signature("SummarizedExperiment"),
+    signature = signature(object = "SummarizedExperiment"),
     definition = `plotTotalCounts,SE`
 )
