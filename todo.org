@@ -1,7 +1,7 @@
-#+TITLE: pipette
+#+TITLE: AcidPlots
 #+STARTUP: content
 * Development
-** TODO Ensure that theme_set is reexported from ggplot2.
+** TODO Ensure that 'theme_set()' is reexported from ggplot2.
 ** TODO pkgdown now seems to be failing on this, with R 4.0.4.
 ** TODO Consider making the theme_acid_plots less bold by default.
 ** TODO Create a plot for log2 vs. log2 expression of RNA-seq counts.
@@ -10,3 +10,16 @@
         and other heatmap functions that inherit from `plotHeatmap`.
 ** TODO Need to add improved support for X-Y scatterplot with correlation
         information on the plot.
+** TODO colors: colorscope, dracula, craylola
+** TODO GSEA heatmap code (put this in pfgsea).
+** TODO plotHeatmap needs include basic matrix method.
+** TODO Add venn diagram support? See ggVennDiagram.
+    Kind of like upset plots more.
+** TODO Consider adding matrix support for plotHeatmap.
+    Note that this won't include interesting groups.
+** TODO Add support for multiple PCs in `plotPCA()`.
+    Currently `plotPCA()` functions simply to plot PC1 vs. PC2. It is useful to visualize the other components in a series (e.g. PC3 vs. PC4 in addition), which isn't currently supported in the function. We may want to add an option to display a plot grid of PC1 through PC10.
+** TODO Consider switching heatmap engine.
+    Switch pheatmap to ComplexHeatmap or heatmap.2?
+** TODO `plotHeatmap()`: Look into kmeans approach with `kmeans_k`.
+** TODO Is plotCountsCorrelation not matching geneID to geneName?
