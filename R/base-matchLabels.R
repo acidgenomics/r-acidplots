@@ -3,11 +3,8 @@
 #' Allow user to define ggplot labels, and populate missing values from the
 #' defaults specified in `labels` formal argument.
 #'
-#' Attempting to follow a similar naming convention to `match.arg()` here,
-#' using `choices` argument
-#'
 #' @export
-#' @note Updated 2021-09-09.
+#' @note Updated 2022-01-19.
 #'
 #' @param labels `list`.
 #'   User-defined plot labels.
@@ -24,13 +21,17 @@
 #' Returns an empty list on `NULL` input.
 #'
 #' @examples
-#' matchLabels(
-#'     labels = list(title = "XXX"),
-#'     choices = list(
-#'         title = "AAA",
-#'         subtitle = "BBB"
+#' fun <- function(
+#'     object,
+#'     labels = list(
+#'         "title" = NULL,
+#'         "x" = "x-axis",
+#'         "y" = "y-axis"
 #'     )
-#' )
+#' ) {
+#'     labels <- matchLabels(labels)
+#'     labels
+#' }
 matchLabels <- function(labels, argName = "labels") {
     if (is.null(labels)) {
         return(list())
