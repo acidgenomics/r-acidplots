@@ -1,16 +1,16 @@
-## FIXME SingleCellExperiment method is currently defined in pointillism.
-## FIXME Need to improve error when genes fail to map.
-## FIXME Harden against DESeqDataSet input here -- we don't want to ever plot
-##       non-normalized counts by default.
 ## FIXME This needs to error and return faster on gene map failure.
 ## FIXME Need to think about NA gene symbol handling in call
-#        to convertGenesToSymbols.
+##       to convertGenesToSymbols.
+## FIXME Harden against DESeqDataSet input here -- we don't want to ever plot
+##       non-normalized counts by default.
+## FIXME SingleCellExperiment method is currently defined in pointillism.
+## FIXME Need to improve error when genes fail to map.
 
 
 
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2021-02-08.
+#' @note Updated 2022-01-19.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -33,7 +33,11 @@
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "AcidTest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment_Seurat,
+#'     package = "AcidTest"
+#' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
@@ -48,6 +52,19 @@
 #' ## Rownames, gene IDs, and gene names (symbols) are supported.
 #' plotCounts(object, genes = geneIds, style = "facet")
 #' plotCounts(object, genes = geneNames, style = "wide")
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
+#'
+#' ## Plotting with either gene IDs or gene names (symbols) works.
+#' genes <- head(rownames(object), n = 4L)
+#' print(genes)
+#'
+#' ## Per sample mode enabled.
+#' plotCounts(object, genes = genes, perSample = TRUE)
+#'
+#' ## Per sample mode disabled.
+#' plotCounts(object, genes = genes, perSample = FALSE)
 NULL
 
 
@@ -248,68 +265,6 @@ NULL
 
 formals(`plotCounts,SE`)[["legend"]] <-
     .formalsList[["legend"]]
-
-
-
-
-
-
-
-
-#' @name plotCounts
-#' @aliases plotDots plotViolin
-#' @inherit AcidGenerics::plotCounts
-#'
-#' @note Dot geom currently only supports logcounts.
-#' @note Updated 2020-10-12.
-#'
-#' @description Visualize genes on a dot or violin plot.
-#'
-#' @inheritParams AcidRoxygen::params
-#' @param colMin `numeric(1)`.
-#'   Minimum scaled average expression threshold. Everything smaller will be
-#'   set to this.
-#' @param colMax `numeric(1)`.
-#'   Maximum scaled average expression threshold. Everything larger will be set
-#'   to this.
-#' @param dotMin `numeric(1)`.
-#'   The fraction of cells at which to draw the smallest dot. All cell groups
-#'   with less than this expressing the given gene will have no dot drawn.
-#' @param dotScale `numeric(1)`.
-#'   Scale the size of the points, similar to `cex`.
-#' @param geom `character(1)`.
-#'   Plot type. Uses [`match.arg()`][base::match.arg] to pick the type.
-#'   Currently supports `"dot"` and `"violin"`.
-#' @param scale `character(1)`.
-#'   If "area" (default), all violins have the same area (before trimming the
-#'   tails). If "count", areas are scaled proportionally to the number of
-#'   observartions. If "width", all violins have the same maximum width.
-#'   See `ggplot2::geom_violin` for details.
-
-#' @param ... Additional arguments.
-#'
-#' @seealso
-#' - `Seurat::DotPlot()`.
-#' - `Seurat::VlnPlot()`.
-#' - `Seurat::RidgePlot()`.
-#' - `monocle3::plot_genes_violin()`.
-#'
-#' @examples
-#' data(Seurat, package = "AcidTest")
-#'
-#' ## Seurat ====
-#' object <- Seurat
-#'
-#' ## Plotting with either gene IDs or gene names (symbols) works.
-#' genes <- head(rownames(object), n = 4L)
-#' print(genes)
-#'
-#' ## Per sample mode enabled.
-#' plotCounts(object, genes = genes, perSample = TRUE)
-#'
-#' ## Per sample mode disabled.
-#' plotCounts(object, genes = genes, perSample = FALSE)
-NULL
 
 
 
