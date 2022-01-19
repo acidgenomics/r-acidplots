@@ -16,7 +16,7 @@ test_that("grid", {
     expect_s3_class(p, "ggplot")
 })
 
-geoms <- eval(formals(`plotQC,SingleCellExperiment`)[["geom"]])
+geoms <- eval(formals(`plotQC,SCE`)[["geom"]])
 test_that("geom", {
     for (geom in geoms) {
         p <- plotQC(sce, geom = geom)

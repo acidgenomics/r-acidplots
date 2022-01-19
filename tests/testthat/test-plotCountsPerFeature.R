@@ -7,7 +7,7 @@ test_that("RSE, SCE", {
     }
 })
 
-geoms <- eval(formals(`plotCountsPerFeature,SummarizedExperiment`)[["geom"]])
+geoms <- eval(formals(`plotCountsPerFeature,SE`)[["geom"]])
 test_that("geom", {
     for (geom in geoms) {
         p <- plotCountsPerFeature(rse, geom = geom)

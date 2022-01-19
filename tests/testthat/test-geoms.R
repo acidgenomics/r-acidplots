@@ -10,7 +10,7 @@ test_that("acid_geom_abline", {
     ## An intercept is required.
     expect_error(
         object = acid_geom_abline(),
-        regexp = "Either 'xintercept' or 'yintercept' is required."
+        regexp = "xintercept"
     )
 })
 

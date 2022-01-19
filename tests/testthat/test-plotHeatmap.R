@@ -95,7 +95,7 @@ test_that("SummarizedExperiment : Invalid pheatmap passthrough", {
     object <- rse
     expect_error(
         object = plotHeatmap(object, show_colnames = FALSE),
-        regexp = "Specify arguments in camel case: show_colnames"
+        regexp = "camel"
     )
 })
 

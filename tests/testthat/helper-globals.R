@@ -7,7 +7,7 @@ options(
 
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     matrix,
     matrix_lfc,
     package = "AcidTest",
@@ -30,7 +30,7 @@ sampleNames <- basejump::sampleNames
 ## nolint end
 
 rse <- RangedSummarizedExperiment
-sce <- SingleCellExperiment
+sce <- SingleCellExperiment_splatter
 object <- rse
 
 rownames <- head(rownames(rse))
