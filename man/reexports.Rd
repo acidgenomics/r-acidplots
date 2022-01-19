@@ -9,6 +9,7 @@
 \alias{after_stat}
 \alias{calculateMetrics}
 \alias{ggplot}
+\alias{ggsave}
 \alias{log_breaks}
 \alias{plot_annotation}
 \alias{plot_layout}
@@ -18,6 +19,7 @@
 \alias{quo_text}
 \alias{sym}
 \alias{syms}
+\alias{theme_set}
 \alias{wrap_plots}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -28,7 +30,7 @@ below to see their documentation.
 \describe{
   \item{basejump}{\code{\link[basejump:reexports]{calculateMetrics}}}
 
-  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}}
+  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{ggsave}}, \code{\link[ggplot2:theme_get]{theme_set}}}
 
   \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
 
