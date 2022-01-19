@@ -3,8 +3,6 @@
 
 
 
-## FIXME Go through these and see if there are some we can remove.
-
 #' Internal formals list, specific to package
 #'
 #' @note Updated 2022-01-19.
