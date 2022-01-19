@@ -24,21 +24,21 @@ Returns an empty list on \code{NULL} input.
 Allow user to define ggplot labels, and populate missing values from the
 defaults specified in \code{labels} formal argument.
 }
-\details{
-Attempting to follow a similar naming convention to \code{match.arg()} here,
-using \code{choices} argument
-}
 \note{
-Updated 2021-09-09.
+Updated 2022-01-19.
 }
 \examples{
-matchLabels(
-    labels = list(title = "XXX"),
-    choices = list(
-        title = "AAA",
-        subtitle = "BBB"
+fun <- function(
+    object,
+    labels = list(
+        "title" = NULL,
+        "x" = "x-axis",
+        "y" = "y-axis"
     )
-)
+) {
+    labels <- matchLabels(labels)
+    labels
+}
 }
 \seealso{
 \itemize{
