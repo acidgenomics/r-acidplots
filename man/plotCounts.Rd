@@ -50,8 +50,8 @@ object, or gene symbols defined in the object.}
 Assay name or index position.}
 
 \item{geom}{\code{character(1)}.
-Plot type. Uses \code{\link[base:match.arg]{match.arg()}} to pick the type.
-Currently supports \code{"dot"} and \code{"violin"}.}
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
+the first argument in the \code{character} vector.}
 
 \item{perSample}{\code{logical(1)}.
 Visualize the distributions per sample.}
@@ -92,27 +92,6 @@ when \code{convertGenesToSymbols} is \code{TRUE}.}
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
-\item{colMin}{\code{numeric(1)}.
-Minimum scaled average expression threshold. Everything smaller will be
-set to this.}
-
-\item{colMax}{\code{numeric(1)}.
-Maximum scaled average expression threshold. Everything larger will be set
-to this.}
-
-\item{dotMin}{\code{numeric(1)}.
-The fraction of cells at which to draw the smallest dot. All cell groups
-with less than this expressing the given gene will have no dot drawn.}
-
-\item{dotScale}{\code{numeric(1)}.
-Scale the size of the points, similar to \code{cex}.}
-
-\item{scale}{\code{character(1)}.
-If "area" (default), all violins have the same area (before trimming the
-tails). If "count", areas are scaled proportionally to the number of
-observartions. If "width", all violins have the same maximum width.
-See \code{ggplot2::geom_violin} for details.}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -123,17 +102,17 @@ See \code{ggplot2::geom_violin} for details.}
 }
 }
 \description{
-Visualize genes on a dot or violin plot.
+Plot counts
 }
 \note{
-Updated 2021-02-08.
-
-Dot geom currently only supports logcounts.
-
-Updated 2020-10-12.
+Updated 2022-01-19.
 }
 \examples{
-data(RangedSummarizedExperiment, package = "AcidTest")
+data(
+    RangedSummarizedExperiment,
+    SingleCellExperiment_Seurat,
+    package = "AcidTest"
+)
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
@@ -148,10 +127,9 @@ print(geneNames)
 ## Rownames, gene IDs, and gene names (symbols) are supported.
 plotCounts(object, genes = geneIds, style = "facet")
 plotCounts(object, genes = geneNames, style = "wide")
-data(Seurat, package = "AcidTest")
 
-## Seurat ====
-object <- Seurat
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
 
 ## Plotting with either gene IDs or gene names (symbols) works.
 genes <- head(rownames(object), n = 4L)
@@ -164,10 +142,5 @@ plotCounts(object, genes = genes, perSample = TRUE)
 plotCounts(object, genes = genes, perSample = FALSE)
 }
 \seealso{
-\itemize{
-\item \code{Seurat::DotPlot()}.
-\item \code{Seurat::VlnPlot()}.
-\item \code{Seurat::RidgePlot()}.
-\item \code{monocle3::plot_genes_violin()}.
-}
+\code{DESeq2::plotCounts()}.
 }

@@ -1,16 +1,16 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-01-19.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "AcidTest")
+#' data(SingleCellExperiment_splatter, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotCellCounts(object)
 NULL
 

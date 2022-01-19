@@ -1,7 +1,7 @@
 #' @name plotBarcodeRanks
 #' @inherit AcidGenerics::plotBarcodeRanks
 #' @note Requires DropletUtils package to be installed.
-#' @note Updated 2021-08-11.
+#' @note Updated 2022-01-19.
 #'
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
@@ -9,11 +9,11 @@
 #' @param ... Passthrough to [barcodeRanksPerSample()].
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "AcidTest")
+#' data(SingleCellExperiment_splatter, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' if (requireNamespace("DropletUtils", quietly = TRUE)) {
-#'     object <- SingleCellExperiment
+#'     object <- SingleCellExperiment_splatter
 #'     plotBarcodeRanks(object)
 #' }
 NULL
