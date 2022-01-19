@@ -7,49 +7,9 @@
 
 #' Internal formals list, specific to package
 #'
-#' @note Updated 2021-09-24.
+#' @note Updated 2022-01-19.
 #' @noRd
 .formalsList <- list(
-    ## FIXME Take this out?
-    "color.continuous" = quote(
-        getOption(
-            x = "acid.color.continuous",
-            default = getOption(
-                x = "ggplot2.continuous.colour",
-                default = AcidPlots::scale_color_synesthesia_c()
-            )
-        )
-    ),
-    ## FIXME Take this out?
-    "color.discrete" = quote(
-        getOption(
-            x = "acid.color.discrete",
-            default = getOption(
-                x = "ggplot2.discrete.colour",
-                default = AcidPlots::scale_color_synesthesia_d()
-            )
-        )
-    ),
-    ## FIXME Take this out?
-    "fill.continuous" = quote(
-        getOption(
-            x = "acid.fill.continuous",
-            default = getOption(
-                x = "ggplot2.continuous.fill",
-                default = AcidPlots::scale_fill_synesthesia_c()
-            )
-        )
-    ),
-    ## FIXME Take this out?
-    "fill.discrete" = quote(
-        getOption(
-            x = "acid.fill.discrete",
-            default = getOption(
-                x = "ggplot2.discrete.fill",
-                default = AcidPlots::scale_fill_synesthesia_d()
-            )
-        )
-    ),
     "flip" = quote(
         getOption(x = "acid.flip", default = TRUE)
     ),
