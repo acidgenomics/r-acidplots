@@ -7,7 +7,7 @@ test_that("RSE, SCE", {
     }
 })
 
-transes <- eval(formals(`plotCountsPerBiotype,SummarizedExperiment`)[["trans"]])
+transes <- eval(formals(`plotCountsPerBiotype,SE`)[["trans"]])
 test_that("trans", {
     for (trans in transes) {
         x <- plotCountsPerBiotype(rse, trans = trans)
@@ -27,7 +27,7 @@ test_that("RSE, SCE", {
 })
 
 transes <-
-    eval(formals(`plotCountsPerBroadClass,SummarizedExperiment`)[["trans"]])
+    eval(formals(`plotCountsPerBroadClass,SE`)[["trans"]])
 test_that("trans", {
     for (trans in transes) {
         x <- plotCountsPerBroadClass(rse, trans = trans)

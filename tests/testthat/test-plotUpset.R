@@ -1,3 +1,17 @@
+## FIXME Need to update unit tests here.
+##
+## Error (test-plotUpset.R:10:5): list
+## Error in `.local(object, ...)`: unused argument (nIntersects = Inf)
+## Backtrace:
+##  1. AcidGenerics::plotUpset(object = list, nIntersects = Inf, orderBySize = FALSE) test-plotUpset.R:10:4
+##  2. AcidPlots::plotUpset(object = list, nIntersects = Inf, orderBySize = FALSE)
+##  4. AcidPlots::plotUpset(object, ...)
+##
+## Failure (test-plotUpset.R:22:5): data.frame
+## `p` inherits from 'patchwork'/'gg'/'ggplot' not 'upset'.
+
+
+
 context("plotUpset")
 
 test_that("list", {

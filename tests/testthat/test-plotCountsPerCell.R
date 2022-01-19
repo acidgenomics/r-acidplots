@@ -9,7 +9,7 @@ test_that("SingleCellExperiment", {
 
 skip_if_not_installed(pkg = "DropletUtils", minimum_version = "1.4")
 
-points <- eval(formals(`plotCountsPerCell,SingleCellExperiment`)[["point"]])
+points <- eval(formals(`plotCountsPerCell,SCE`)[["point"]])
 test_that("Inflection/knee point labeling", {
     for (point in points) {
         p <- plotCountsPerCell(

@@ -35,7 +35,7 @@ test_that("Gene IDs or names", {
     }
 })
 
-trans <- eval(formals(`plotCounts,SummarizedExperiment`)[["trans"]])
+trans <- eval(formals(`plotCounts,SE`)[["trans"]])
 test_that("trans", {
     mapply(
         trans = trans,
@@ -56,7 +56,7 @@ test_that("trans", {
     )
 })
 
-style <- eval(formals(`plotCounts,SummarizedExperiment`)[["style"]])
+style <- eval(formals(`plotCounts,SE`)[["style"]])
 test_that("style", {
     mapply(
         style = style,
