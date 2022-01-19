@@ -33,14 +33,14 @@ Plot barcode ranks
 \note{
 Requires DropletUtils package to be installed.
 
-Updated 2021-08-11.
+Updated 2022-01-19.
 }
 \examples{
-data(SingleCellExperiment, package = "AcidTest")
+data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 if (requireNamespace("DropletUtils", quietly = TRUE)) {
-    object <- SingleCellExperiment
+    object <- SingleCellExperiment_splatter
     plotBarcodeRanks(object)
 }
 }

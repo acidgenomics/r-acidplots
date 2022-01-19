@@ -1,16 +1,16 @@
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsVsFeatures
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-01-19.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(SingleCellExperiment, package = "AcidTest")
+#' data(SingleCellExperiment_splatter, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' object <- calculateMetrics(object)
 #' plotCountsVsFeatures(object)
 NULL

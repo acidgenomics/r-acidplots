@@ -54,13 +54,13 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot features per cell
 }
 \note{
-Updated 2021-09-10.
+Updated 2022-01-19.
 }
 \examples{
-data(SingleCellExperiment, package = "AcidTest")
+data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 object <- calculateMetrics(object)
 plotFeaturesPerCell(object)
 }
