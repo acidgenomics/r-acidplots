@@ -1,17 +1,3 @@
-## FIXME Need to update unit tests here.
-##
-## Error (test-plotUpset.R:10:5): list
-## Error in `.local(object, ...)`: unused argument (nIntersects = Inf)
-## Backtrace:
-##  1. AcidGenerics::plotUpset(object = list, nIntersects = Inf, orderBySize = FALSE) test-plotUpset.R:10:4
-##  2. AcidPlots::plotUpset(object = list, nIntersects = Inf, orderBySize = FALSE)
-##  4. AcidPlots::plotUpset(object, ...)
-##
-## Failure (test-plotUpset.R:22:5): data.frame
-## `p` inherits from 'patchwork'/'gg'/'ggplot' not 'upset'.
-
-
-
 context("plotUpset")
 
 test_that("list", {
@@ -23,17 +9,17 @@ test_that("list", {
     )
     p <- plotUpset(
         object = list,
-        nIntersects = Inf,
+        nIntersections = Inf,
         orderBySize = FALSE
     )
-    expect_s3_class(p, "upset")
+    expect_s3_class(p, "patchwork")
 })
 
 test_that("data.frame", {
     file <- system.file("extdata", "movies.csv", package = "AcidPlots")
     data <- import(file)
     p <- plotUpset(data)
-    expect_s3_class(p, "upset")
+    expect_s3_class(p, "patchwork")
     expect_error(
         object = plotUpset(
             object = data.frame(
@@ -41,6 +27,6 @@ test_that("data.frame", {
                 "bbb" = c("c", "d")
             )
         ),
-        regexp = "Data frame does not contain any columns"
+        regexp = "0, 1"
     )
 })
