@@ -3,6 +3,7 @@
 ##       to convertGenesToSymbols.
 ## FIXME Harden against DESeqDataSet input here -- we don't want to ever plot
 ##       non-normalized counts by default.
+## FIXME Need to migrate SCE method for plotViolin here from pointillism.
 ## FIXME SingleCellExperiment method is currently defined in pointillism.
 ## FIXME Need to improve error when genes fail to map.
 
