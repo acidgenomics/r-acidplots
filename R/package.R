@@ -1,7 +1,3 @@
-## FIXME Need to update basejump to export barcodeRanksPerSample
-
-
-
 #' AcidPlots
 #'
 #' Functions for plotting genomic data.
