@@ -1,263 +1,221 @@
-#' @rdname plotBarcodeRanks
+#' @export
 #' @name plotBarcodeRanks
-#' @importFrom AcidGenerics plotBarcodeRanks
+#' @rdname plotBarcodeRanks
 #' @usage plotBarcodeRanks(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCellCounts
+#' @export
 #' @name plotCellCounts
-#' @importFrom AcidGenerics plotCellCounts
+#' @rdname plotCellCounts
 #' @usage plotCellCounts(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCellCountsPerCluster
+#' @export
 #' @name plotCellCountsPerCluster
-#' @importFrom AcidGenerics plotCellCountsPerCluster
+#' @rdname plotCellCountsPerCluster
 #' @usage plotCellCountsPerCluster(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCellTypesPerCluster
+#' @export
 #' @name plotCellTypesPerCluster
-#' @importFrom AcidGenerics plotCellTypesPerCluster
+#' @rdname plotCellTypesPerCluster
 #' @usage plotCellTypesPerCluster(object, markers, ...)
-#' @export
 NULL
 
-#' @rdname plotCorrelation
+#' @export
 #' @name plotCorrelation
-#' @importFrom AcidGenerics plotCorrelation
+#' @rdname plotCorrelation
 #' @usage plotCorrelation(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCorrelationHeatmap
+#' @export
 #' @name plotCorrelationHeatmap
-#' @importFrom AcidGenerics plotCorrelationHeatmap
+#' @rdname plotCorrelationHeatmap
 #' @usage plotCorrelationHeatmap(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCounts
+#' @export
 #' @name plotCounts
-#' @importFrom AcidGenerics plotCounts
+#' @rdname plotCounts
 #' @usage plotCounts(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCounts
-#' @name plotDots
-#' @importFrom AcidGenerics plotDots
-#' @usage plotDots(object, ...)
 #' @export
-NULL
-
-#' @rdname plotCounts
-#' @name plotViolin
-#' @importFrom AcidGenerics plotViolin
-#' @usage plotViolin(object, ...)
-#' @export
-NULL
-
-#' @rdname plotCountsCorrelation
 #' @name plotCountsCorrelation
-#' @importFrom AcidGenerics plotCountsCorrelation
+#' @rdname plotCountsCorrelation
 #' @usage plotCountsCorrelation(x, y, ...)
-#' @export
 NULL
 
-#' @rdname plotCountsCorrelationHeatmap
+#' @export
 #' @name plotCountsCorrelationHeatmap
-#' @importFrom AcidGenerics plotCountsCorrelationHeatmap
+#' @rdname plotCountsCorrelationHeatmap
 #' @usage plotCountsCorrelationHeatmap(x, y, ...)
-#' @export
 NULL
 
-#' @rdname plotCountsPerBiotype
+#' @export
 #' @name plotCountsPerBiotype
-#' @importFrom AcidGenerics plotCountsPerBiotype
-#' @usage plotCountsPerBiotype(object, ...)
-#' @export
-NULL
-
 #' @rdname plotCountsPerBiotype
+#' @usage plotCountsPerBiotype(object, ...)
+NULL
+
+#' @export
 #' @name plotCountsPerBroadClass
-#' @importFrom AcidGenerics plotCountsPerBroadClass
+#' @rdname plotCountsPerBiotype
 #' @usage plotCountsPerBroadClass(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCountsPerCell
+#' @export
 #' @name plotCountsPerCell
-#' @importFrom AcidGenerics plotCountsPerCell
+#' @rdname plotCountsPerCell
 #' @usage plotCountsPerCell(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCountsPerFeature
+#' @export
 #' @name plotCountsPerFeature
-#' @importFrom AcidGenerics plotCountsPerFeature
+#' @rdname plotCountsPerFeature
 #' @usage plotCountsPerFeature(object, ...)
-#' @export
 NULL
 
-#' @rdname plotCountsVsFeatures
+#' @export
 #' @name plotCountsVsFeatures
-#' @importFrom AcidGenerics plotCountsVsFeatures
+#' @rdname plotCountsVsFeatures
 #' @usage plotCountsVsFeatures(object, ...)
-#' @export
 NULL
 
-#' @rdname plotFeature
+#' @export
+#' @name plotDots
+#' @rdname plotCounts
+#' @usage plotDots(object, ...)
+NULL
+
+#' @export
 #' @name plotFeature
-#' @importFrom AcidGenerics plotFeature
+#' @rdname plotFeature
 #' @usage plotFeature(object, ...)
-#' @export
 NULL
 
-#' @rdname plotFeaturesDetected
+#' @export
 #' @name plotFeaturesDetected
-#' @importFrom AcidGenerics plotFeaturesDetected
+#' @rdname plotFeaturesDetected
 #' @usage plotFeaturesDetected
-#' @export
 NULL
 
-#' @rdname plotFeaturesPerCell
+#' @export
 #' @name plotFeaturesPerCell
-#' @importFrom AcidGenerics plotFeaturesPerCell
+#' @rdname plotFeaturesPerCell
 #' @usage plotFeaturesPerCell(object, ...)
-#' @export
 NULL
 
-#' @rdname plotGenderMarkers
+#' @export
 #' @name plotGenderMarkers
-#' @importFrom AcidGenerics plotGenderMarkers
+#' @rdname plotGenderMarkers
 #' @usage plotGenderMarkers(object, ...)
-#' @export
 NULL
 
-#' @rdname plotHeatmap
+#' @export
 #' @name plotHeatmap
-#' @importFrom AcidGenerics plotHeatmap
+#' @rdname plotHeatmap
 #' @usage plotHeatmap(object, ...)
-#' @export
 NULL
 
-#' @rdname plotKnownMarkers
+#' @export
 #' @name plotKnownMarkers
-#' @importFrom AcidGenerics plotKnownMarkers
+#' @rdname plotKnownMarkers
 #' @usage plotKnownMarkers(object, markers, ...)
-#' @export
 NULL
 
-#' @rdname plotMarker
+#' @export
 #' @name plotMarker
-#' @importFrom AcidGenerics plotMarker
+#' @rdname plotMarker
 #' @usage plotMarker(object, ...)
-#' @export
 NULL
 
-#' @rdname plotMitoRatio
+#' @export
 #' @name plotMitoRatio
-#' @importFrom AcidGenerics plotMitoRatio
+#' @rdname plotMitoRatio
 #' @usage plotMitoRatio(object, ...)
-#' @export
 NULL
 
-#' @rdname plotNovelty
+#' @export
 #' @name plotNovelty
-#' @importFrom AcidGenerics plotNovelty
+#' @rdname plotNovelty
 #' @usage plotNovelty(object, ...)
-#' @export
 NULL
 
-#' @rdname plotPCA
+#' @export
 #' @name plotPCA
+#' @rdname plotReducedDim
 #' @usage plotPCA(object, ...)
-#' @export
 NULL
 
-#' @rdname plotQC
+#' @export
 #' @name plotQC
-#' @importFrom AcidGenerics plotQC
+#' @rdname plotQC
 #' @usage plotQC(object, ...)
-#' @export
 NULL
 
-#' @rdname plotQuantileHeatmap
+#' @export
 #' @name plotQuantileHeatmap
-#' @importFrom AcidGenerics plotQuantileHeatmap
+#' @rdname plotQuantileHeatmap
 #' @usage plotQuantileHeatmap(object, ...)
-#' @export
 NULL
 
-#' @rdname plotReducedDim
+#' @export
 #' @name plotReducedDim
-#' @importFrom AcidGenerics plotReducedDim
+#' @rdname plotReducedDim
 #' @usage plotReducedDim(object, ...)
-#' @export
 NULL
 
-#' @rdname plotReducedDim
-#' @name plotPCA
-#' @usage plotPCA(object, ...)
 #' @export
-NULL
-
-#' @rdname plotReducedDim
-#' @name plotTSNE
-#' @importFrom AcidGenerics plotTSNE
-#' @usage plotTSNE(object, ...)
-#' @export
-NULL
-
-#' @rdname plotReducedDim
-#' @name plotUMAP
-#' @importFrom AcidGenerics plotUMAP
-#' @usage plotUMAP(object, ...)
-#' @export
-NULL
-
-#' @rdname plotStackedBarPlot
 #' @name plotStackedBarPlot
-#' @importFrom AcidGenerics plotStackedBarPlot
+#' @rdname plotStackedBarPlot
 #' @usage plotStackedBarPlot(object, ...)
-#' @export
 NULL
 
-#' @rdname plotSums
+#' @export
 #' @name plotSums
-#' @importFrom AcidGenerics plotSums
+#' @rdname plotSums
 #' @usage plotSums(object, ...)
-#' @export
 NULL
 
-#' @rdname plotTotalCounts
+#' @export
+#' @name plotTSNE
+#' @rdname plotReducedDim
+#' @usage plotTSNE(object, ...)
+NULL
+
+#' @export
 #' @name plotTotalCounts
-#' @importFrom AcidGenerics plotTotalCounts
+#' @rdname plotTotalCounts
 #' @usage plotTotalCounts(object, ...)
-#' @export
 NULL
 
-#' @rdname plotUpset
+#' @export
+#' @name plotUMAP
+#' @rdname plotReducedDim
+#' @usage plotUMAP(object, ...)
+NULL
+
+#' @export
 #' @name plotUpset
-#' @importFrom AcidGenerics plotUpset
+#' @rdname plotUpset
 #' @usage plotUpset(object, ...)
-#' @export
 NULL
 
-#' @rdname plotWaterfall
+#' @export
+#' @name plotViolin
+#' @rdname plotCounts
+#' @usage plotViolin(object, ...)
+NULL
+
+#' @export
 #' @name plotWaterfall
-#' @importFrom AcidGenerics plotWaterfall
+#' @rdname plotWaterfall
 #' @usage plotWaterfall(object, ...)
-#' @export
 NULL
 
-#' @rdname plotZerosVsDepth
-#' @name plotZerosVsDepth
-#' @importFrom AcidGenerics plotZerosVsDepth
-#' @usage plotZerosVsDepth(object, ...)
 #' @export
+#' @name plotZerosVsDepth
+#' @rdname plotZerosVsDepth
+#' @usage plotZerosVsDepth(object, ...)
 NULL
