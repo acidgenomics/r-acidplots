@@ -1,32 +1,69 @@
-#' @importClassesFrom basejump DataFrame Matrix SingleCellExperiment
-#'   SummarizedExperiment
+## S4 classes ==================================================================
+
+#' @importClassesFrom Matrix Matrix
+#' @importClassesFrom S4Vectors DataFrame
+#' @importClassesFrom SingleCellExperiment SingleCellExperiment
+#' @importClassesFrom SummarizedExperiment SummarizedExperiment
+NULL
+
+
+
+## S4 generics and methods =====================================================
+
+#' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
+#'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
+#'   convertGenesToSymbols interestingGroups interestingGroups<-
+#'   intersectionMatrix leftJoin makeLabel makeTitle matchGenesToRownames
+#'   matchInterestingGroups matchSampleColumn melt metrics nonzeroRowsAndCols
+#'   plotBarcodeRanks plotCellCounts plotCellCountsPerCluster
+#'   plotCellTypesPerCluster plotCorrelation plotCorrelationHeatmap plotCounts
+#'   plotCountsCorrelation plotCountsCorrelationHeatmap plotCountsPerBiotype
+#'   plotCountsPerBroadClass plotCountsPerCell plotCountsPerFeature
+#'   plotCountsVsFeatures plotDots plotFeature plotFeaturesDetected
+#'   plotFeaturesPerCell plotGenderMarkers plotHeatmap plotKnownMarkers
+#'   plotMarker plotMitoRatio plotNovelty plotQC plotQuantileHeatmap
+#'   plotReducedDim plotStackedBarPlot plotSums plotTSNE plotTotalCounts
+#'   plotUpset plotUMAP plotViolin plotWaterfall plotZerosVsDepth sampleData sem
+#'   snakeCase zerosVsDepth
+#' @importFrom Biobase sampleNames
+#' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
+#'   var
+#' @importFrom IRanges quantile
+#' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
+#'   metadata split
+#' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
+#'   colData rowData
+#' @importFrom methods coerce
 #'
-#' @importMethodsFrom basejump coerce
-#'
-#' @importFrom AcidGenerics plotBarcodeRanks plotCellCounts
-#'   plotCellCountsPerCluster plotCellTypesPerCluster plotCorrelation
-#'   plotCorrelationHeatmap plotCounts plotCountsCorrelation
-#'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
-#'   plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
-#'   plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
-#'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty
-#'   plotQC plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums
-#'   plotTSNE plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
-#'   plotZerosVsDepth
-#' @importFrom BiocGenerics plotPCA
-#' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
-#'   SummarizedExperiment abort aggregate aggregateCellsToSamples alert
-#'   alertInfo alertWarning append arrow as_tibble as.SummarizedExperiment
-#'   as.formula assayNames assay assay<- assays assays<- axisTicks
-#'   barcodeRanksPerSample camelCase cell2sample colData colSums
-#'   colorRampPalette complete.cases convertGenesToSymbols counts decode dist
-#'   do.call ecdf hclust head interestingGroups interestingGroups<-
-#'   intersectionMatrix leftJoin makeLabel makeTitle mapGenesToRownames
-#'   matchInterestingGroups matchSampleColumn mcols melt merge metadata
-#'   methodFormals metrics organism packageName packageVersion prcomp quantile
-#'   rbind reorder requireNamespaces sem nonzeroRowsAndCols rgb rowData
-#'   sampleData sampleNames snakeCase split str_replace_na standardizeCall
-#'   tibble toInlineString unit var zerosVsDepth
+#' @importMethodsFrom AcidBase intersectionMatrix sem
+#' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
+#'   convertGenesToSymbols decode interestingGroups interestingGroups<-
+#'   matchGenesToRownames matchInterestingGroups matchSampleColumn melt metrics
+#'   nonzeroRowsAndCols organism sampleData
+#' @importMethodsFrom AcidGenomes Gene2Symbol organism
+#' @importMethodsFrom AcidPlyr leftJoin melt
+#' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
+#'   barcodeRanksPerSample cell2sample melt metrics sampleData zerosVsDepth
+#' @importMethodsFrom pipette coerce decode
+#' @importMethodsFrom syntactic camelCase makeLabel makeTitle snakeCase
+NULL
+
+
+
+## S3 generics =================================================================
+
+#' @importFrom pipette as_tibble
+NULL
+
+
+
+## Standard functions ==========================================================
+
+#' @importFrom AcidBase methodFormals requireNamespaces standardizeCall
+#' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
+#' @importFrom IRanges DataFrameList
+#' @importFrom S4Vectors DataFrame SimpleList
+#' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
 #'   coord_flip discrete_scale element_blank element_line element_rect
 #'   element_text expand_limits facet_grid facet_wrap geom_bar geom_boxplot
@@ -43,7 +80,13 @@
 #'   isGreaterThanOrEqualTo isHexColorFunction isInClosedRange isInLeftOpenRange
 #'   isInRange isInRightOpenRange isInt isNonNegative isNumber isPositive
 #'   isScalar isString isSubset
+#' @importFrom grDevices axisTicks colorRampPalette rgb
+#' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject
+#' @importFrom pipette tibble
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
+#' @importFrom stats as.formula dist ecdf hclust prcomp reorder
+#' @importFrom stringr str_replace_na
+#' @importFrom utils packageName packageVersion
 NULL

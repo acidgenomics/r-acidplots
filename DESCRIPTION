@@ -23,15 +23,32 @@ Encoding: UTF-8
 LazyData: false
 Depends: R (>= 4.1)
 Imports:
+    AcidBase (>= 0.5.0),
+    AcidCLI (>= 0.1.8),
+    AcidExperiment (>= 0.3.0),
     AcidGenerics (>= 0.6.0),
+    AcidGenomes (>= 0.3.0),
+    AcidSingleCell (>= 0.2.0),
+    Biobase,
     BiocGenerics,
-    basejump (>= 0.15.0),
+    IRanges,
+    Matrix,
+    S4Vectors,
+    SingleCellExperiment,
+    SummarizedExperiment,
     ggplot2,
     goalie (>= 0.6.0),
+    grDevices,
+    grid,
     methods,
     patchwork,
+    pipette (>= 0.8.0),
     rlang,
-    scales
+    scales,
+    stats,
+    stringr,
+    syntactic (>= 0.5.1),
+    utils
 Suggests:
     AcidTest (>= 0.5.0),
     ComplexHeatmap,
