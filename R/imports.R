@@ -3,6 +3,16 @@
 #'
 #' @importMethodsFrom basejump coerce
 #'
+#' @importFrom AcidGenerics plotBarcodeRanks plotCellCounts
+#'   plotCellCountsPerCluster plotCellTypesPerCluster plotCorrelation
+#'   plotCorrelationHeatmap plotCounts plotCountsCorrelation
+#'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
+#'   plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
+#'   plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
+#'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty
+#'   plotQC plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums
+#'   plotTSNE plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
+#'   plotZerosVsDepth
 #' @importFrom BiocGenerics plotPCA
 #' @importFrom basejump DataFrame DataFrameList Gene2Symbol SimpleList
 #'   SummarizedExperiment abort aggregate aggregateCellsToSamples alert
