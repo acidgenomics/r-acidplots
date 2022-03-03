@@ -116,6 +116,30 @@ NULL
 
 
 
+#' Min max
+#'
+#' @note Updated 2019-08-03.
+#' @seealso `Seurat:::MinMax`.
+#' @noRd
+.minMax <- function(x, min, max) {
+    x[x > max] <- max
+    x[x < min] <- min
+    x
+}
+
+
+
+#' Percent above
+#'
+#' @note Updated 2019-07-31.
+#' @seealso `Seurat:::PercentAbove()`.
+#' @noRd
+.percentAbove <- function(x, threshold) {
+    length(x[x > threshold]) / length(x)
+}
+
+
+
 #' Facet wrap the counts plot
 #' @note Updated 2019-08-28.
 #' @noRd
@@ -328,6 +352,231 @@ formals(`plotCounts,SCE`)[["legend"]] <-
 
 
 
+## Updated 2020-02-21.
+`plotDots,SCE` <-  # nolint
+    function(
+        object,
+        genes,
+        perSample = TRUE,
+        colMin = -2.5,
+        colMax = 2.5,
+        dotMin = 0L,
+        dotScale = 6L,
+        color,
+        legend,
+        title = NULL
+    ) {
+        validObject(object)
+        assert(
+            .hasClusters(object),
+            isCharacter(genes),
+            isFlag(perSample),
+            isNumber(colMin),
+            isNumber(colMax),
+            isNumber(dotMin),
+            isNumber(dotScale),
+            isGGScale(
+                x = color,
+                scale = "continuous",
+                aes = "color",
+                nullOK = TRUE
+            ),
+            isFlag(legend),
+            isString(title, nullOK = TRUE)
+        )
+        assay <- "logcounts"
+        ## Fetch the gene expression data.
+        x <- .fetchGeneData(
+            object = object,
+            genes = genes,
+            assay = assay,
+            metadata = TRUE
+        )
+        cols <- c("geneName", "sampleName", "ident")
+        assert(isSubset(c(cols, assay), colnames(x)))
+        f <- .group(x[, cols])
+        x <- split(x = x, f = f)
+        x <- SplitDataFrameList(lapply(
+            X = x,
+            FUN = function(x) {
+                value <- x[[assay]]
+                ## Assuming use of logcounts here.
+                avgExp <- mean(expm1(value))
+                ## Consider making the threshold user definable.
+                pctExp <- .percentAbove(value, threshold = 0L)
+                DataFrame(
+                    geneName = x[["geneName"]][[1L]],
+                    sampleName = x[["sampleName"]][[1L]],
+                    ident = x[["ident"]][[1L]],
+                    avgExp = avgExp,
+                    pctExp = pctExp
+                )
+            }
+        ))
+        x <- unlist(x, recursive = FALSE, use.names = FALSE)
+        ## Calculate the average expression scale per gene.
+        x <- split(x, f = x[["geneName"]])
+        x <- SplitDataFrameList(lapply(
+            X = x,
+            FUN = function(x) {
+                avgExpScale <- scale(x[["avgExp"]])
+                avgExpScale <- .minMax(
+                    x = avgExpScale,
+                    max = colMax,
+                    min = colMin
+                )
+                x[["avgExpScale"]] <- as.numeric(avgExpScale)
+                x
+            }
+        ))
+        x <- unlist(x, recursive = FALSE, use.names = FALSE)
+        ## Apply our `dotMin` threshold.
+        x[["pctExp"]][x[["pctExp"]] < dotMin] <- NA
+        ## Plot.
+        p <- ggplot(
+            data = as.data.frame(x),
+            mapping = aes(
+                x = !!sym("geneName"),
+                y = !!sym("ident")
+            )
+        ) +
+            geom_point(
+                mapping = aes(
+                    color = !!sym("avgExpScale"),
+                    size = !!sym("pctExp")
+                ),
+                show.legend = legend
+            ) +
+            scale_radius(range = c(0L, dotScale)) +
+            labs(
+                title = title,
+                subtitle = assay,
+                x = "gene",
+                y = "cluster"
+            )
+        ## Handling step for multiple samples, if desired.
+        if (
+            isTRUE(perSample) &&
+            isTRUE(.hasMultipleSamples(object))
+        ) {
+            p <- p + facet_wrap(facets = vars(!!sym("sampleName")))
+        }
+        ## Color.
+        if (is(color, "ScaleContinuous")) {
+            p <- p + color
+        }
+        ## Return.
+        p
+    }
+
+formals(`plotDots,SCE`)[c("color", "legend")] <-
+    .formalsList[c("continuousColorPurpleOrange", "legend")]
+
+
+
+## Updated 2019-09-03.
+`plotViolin,SCE` <-  # nolint
+    function(
+        object,
+        genes,
+        assay = c("logcounts", "normcounts"),
+        perSample = TRUE,
+        scale = c("count", "width", "area"),
+        color,
+        legend,
+        title = NULL
+    ) {
+        validObject(object)
+        assert(
+            isCharacter(genes),
+            isFlag(perSample),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
+            isFlag(legend),
+            isString(title, nullOK = TRUE)
+        )
+        assay <- match.arg(assay)
+        scale <- match.arg(scale)
+        ## Fetch the gene expression data.
+        data <- .fetchGeneData(
+            object = object,
+            genes = genes,
+            assay = assay,
+            metadata = TRUE
+        )
+        ## Handling step for multiple samples, if desired.
+        if (
+            isTRUE(perSample) &&
+            isTRUE(.hasMultipleSamples(object))
+        ) {
+            x <- "sampleName"
+            interestingGroups <- interestingGroups(object)
+            if (
+                is.null(interestingGroups) ||
+                interestingGroups == "ident"
+            ) {
+                interestingGroups <- "sampleName"
+            }
+            colorMapping <- "interestingGroups"
+            colorLabs <- paste(interestingGroups, collapse = ":\n")
+        } else {
+            x <- "ident"
+            colorMapping <- x
+            colorLabs <- "cluster"
+        }
+        ## Plot.
+        p <- ggplot(
+            data = as.data.frame(data),
+            mapping = aes(
+                x = !!sym(x),
+                y = !!sym(assay),
+                color = !!sym(colorMapping)
+            )
+        ) +
+            geom_jitter(show.legend = legend) +
+            geom_violin(
+                fill = NA,
+                scale = scale,
+                adjust = 1L,
+                show.legend = legend,
+                trim = TRUE
+            ) +
+            ## Note that `scales = free_y` will hide the x-axis for some plots.
+            labs(
+                x = NULL,
+                color = colorLabs,
+                title = title
+            )
+        ## Handling step for multiple samples, if desired.
+        if (
+            isTRUE(perSample) &&
+            isTRUE(.hasMultipleSamples(object))
+        ) {
+            p <- p +
+                facet_grid(
+                    rows = vars(!!sym("ident")),
+                    cols = vars(!!sym("geneName")),
+                    scales = "free_y"
+                )
+        } else {
+            p <- p +
+                facet_wrap(
+                    facets = vars(!!sym("geneName")),
+                    scales = "free_y"
+                )
+        }
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Return.
+        p
+    }
+
+formals(`plotViolin,SCE`)[c("color", "legend")] <-
+    .formalsList[c("discreteColor", "legend")]
+
+
+
 #' @rdname plotCounts
 #' @export
 setMethod(
@@ -342,4 +591,20 @@ setMethod(
     f = "plotCounts",
     signature = signature(object = "SummarizedExperiment"),
     definition = `plotCounts,SE`
+)
+
+#' @rdname plotCounts
+#' @export
+setMethod(
+    f = "plotDots",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotDots,SCE`
+)
+
+#' @rdname plotCounts
+#' @export
+setMethod(
+    f = "plotViolin",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotViolin,SCE`
 )
