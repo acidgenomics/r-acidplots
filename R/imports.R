@@ -13,18 +13,17 @@ NULL
 #' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
 #'   convertGenesToSymbols interestingGroups interestingGroups<-
-#'   intersectionMatrix leftJoin makeLabel makeTitle matchGenesToRownames
-#'   matchInterestingGroups matchSampleColumn melt metrics nonzeroRowsAndCols
-#'   plotBarcodeRanks plotCellCounts plotCellCountsPerCluster
-#'   plotCellTypesPerCluster plotCorrelation plotCorrelationHeatmap plotCounts
-#'   plotCountsCorrelation plotCountsCorrelationHeatmap plotCountsPerBiotype
-#'   plotCountsPerBroadClass plotCountsPerCell plotCountsPerFeature
-#'   plotCountsVsFeatures plotDots plotFeature plotFeaturesDetected
-#'   plotFeaturesPerCell plotGenderMarkers plotHeatmap plotKnownMarkers
-#'   plotMarker plotMitoRatio plotNovelty plotQC plotQuantileHeatmap
-#'   plotReducedDim plotStackedBarPlot plotSums plotTSNE plotTotalCounts
-#'   plotUpset plotUMAP plotViolin plotWaterfall plotZerosVsDepth sampleData sem
-#'   snakeCase zerosVsDepth
+#'   intersectionMatrix leftJoin makeLabel makeTitle mapGenesToRownames
+#'   matchSampleColumn melt metrics nonzeroRowsAndCols plotBarcodeRanks
+#'   plotCellCounts plotCellCountsPerCluster plotCellTypesPerCluster
+#'   plotCorrelation plotCorrelationHeatmap plotCounts plotCountsCorrelation
+#'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
+#'   plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
+#'   plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
+#'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotQC
+#'   plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums plotTSNE
+#'   plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
+#'   plotZerosVsDepth sampleData sem snakeCase zerosVsDepth
 #' @importFrom Biobase sampleNames
 #' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
 #'   var
@@ -38,8 +37,8 @@ NULL
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
 #'   convertGenesToSymbols decode interestingGroups interestingGroups<-
-#'   matchGenesToRownames matchInterestingGroups matchSampleColumn melt metrics
-#'   nonzeroRowsAndCols organism sampleData
+#'   mapGenesToRownames matchSampleColumn melt metrics nonzeroRowsAndCols
+#'   organism sampleData
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
@@ -61,6 +60,7 @@ NULL
 
 #' @importFrom AcidBase methodFormals requireNamespaces standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
+#' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom IRanges DataFrameList
 #' @importFrom S4Vectors DataFrame SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
