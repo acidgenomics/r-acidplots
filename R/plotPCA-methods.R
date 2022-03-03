@@ -2,9 +2,12 @@
 
 
 
+#' Principal component analysis plot
+#'
 #' @name plotPCA
-#' @inherit AcidGenerics::plotPCA
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-03-03.
+#'
+#' @inheritParams AcidRoxygen::params
 #'
 #' @details
 #' We're using a modified version of the `DESeqTransform` method here.
@@ -41,6 +44,8 @@
 #'
 #' @seealso
 #' - `DESeq2::plotPCA()`.
+#'
+#' @return `ggplot`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")

@@ -1,11 +1,11 @@
 #+TITLE: AcidPlots
 #+STARTUP: content
 * Development
+** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Ensure that 'theme_set()' is reexported from ggplot2.
 ** TODO pkgdown now seems to be failing on this, with R 4.0.4.
 ** TODO Consider making the theme_acid_plots less bold by default.
 ** TODO Create a plot for log2 vs. log2 expression of RNA-seq counts.
-** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Improve passthrough argument documentation for `plotCorrelationHeatmap`
         and other heatmap functions that inherit from `plotHeatmap`.
 ** TODO Need to add improved support for X-Y scatterplot with correlation

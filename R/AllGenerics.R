@@ -175,7 +175,6 @@ NULL
 
 #' @rdname plotPCA
 #' @name plotPCA
-#' @importFrom AcidGenerics plotPCA
 #' @usage plotPCA(object, ...)
 #' @export
 NULL
@@ -203,7 +202,6 @@ NULL
 
 #' @rdname plotReducedDim
 #' @name plotPCA
-#' @importFrom AcidGenerics plotPCA
 #' @usage plotPCA(object, ...)
 #' @export
 NULL
