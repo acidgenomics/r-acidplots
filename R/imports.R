@@ -1,5 +1,6 @@
 ## S4 classes ==================================================================
 
+#' @importClassesFrom AcidSingleCell KnownMarkers
 #' @importClassesFrom Matrix Matrix
 #' @importClassesFrom S4Vectors DataFrame
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment

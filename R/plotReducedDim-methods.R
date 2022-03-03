@@ -1,20 +1,28 @@
-## FIXME Need to migrate this from pointillism.
-
-
-
-## NOTE SingleCellExperiment method is currently defined in pointillism.
-## FIXME Consolidate this into plotReducedDim-methods.R
-
-
-
-#' Principal component analysis plot
-#'
-#' @name plotPCA
+#' @name plotReducedDim
+#' @aliases plotPCA plotTSNE plotUMAP
+#' @author Michael Steinbaugh, Rory Kirchner
+#' @inherit AcidGenerics::plotReducedDim
 #' @note Updated 2022-03-03.
 #'
-#' @inheritParams AcidRoxygen::params
-#'
 #' @details
+#' For `SingleCellExperiment`, colors using `ident` column defined in
+#' `colData()` by default.
+#'
+#' @section Reduction types:
+#'
+#' - PCA: **P**rincipal **C**omponent **A**nalysis.
+#' - t-SNE: **t**-distributed **S**tochastic **N**eighbor **E**mbedding.
+#' - UMAP: **U**niform **M**anifold **A**pproximation and **P**rojection.
+#'
+#' @section Principal component analysis (`plotPCA`):
+#'
+#' PCA (Jolliffe, et al., 2002) is a multivariate technique that allows us to
+#' summarize the systematic patterns of variations in the data. PCA takes the
+#' expression levels for genes and transforms it in principal component space,
+#' reducing each sample into one point. Thereby, we can separate samples by
+#' expression variation, and identify potential sample outliers. The PCA plot is
+#' a way to look at how samples are clustering.
+#'
 #' We're using a modified version of the `DESeqTransform` method here.
 #'
 #' ```r
@@ -25,19 +33,14 @@
 #' )
 #' ```
 #'
-#' @section Principal component analysis:
+#' @section UMAP calculation:
 #'
-#' PCA (Jolliffe, et al., 2002) is a multivariate technique that allows us to
-#' summarize the systematic patterns of variations in the data. PCA takes the
-#' expression levels for genes and transforms it in principal component space,
-#' reducing each sample into one point. Thereby, we can separate samples by
-#' expression variation, and identify potential sample outliers. The PCA plot is
-#' a way to look at how samples are clustering.
+#' [UMAP][] calculation in R requires the [Python][] module `umap-learn`.
+#' The UMAP module can be loaded in R using [reticulate][].
 #'
-#' @section `SingleCellExperiment`:
-#'
-#' The `SingleCellExperiment` method that visualizes dimension reduction data
-#' slotted in `reducedDims()` is defined in pointillism package.
+#' [Python]: https://www.python.org
+#' [UMAP]: https://github.com/lmcinnes/umap
+#' [reticulate]: https://rstudio.github.io/reticulate/
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
@@ -49,15 +52,26 @@
 #'
 #' @seealso
 #' - `DESeq2::plotPCA()`.
+#' - `Seurat::DimPlot()`.
+#' - `monocle3::plot_cells()`.
+#' - [Seurat Mouse Cell Atlas vignette](https://satijalab.org/seurat/mca.html).
 #'
 #' @return `ggplot`.
 #'
 #' @examples
-#' data(RangedSummarizedExperiment, package = "AcidTest")
+#' data(
+#'     RangedSummarizedExperiment,
+#'     SingleCellExperiment_Seurat,
+#'     package = "AcidTest"
+#' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotPCA(object)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
+#' plotReducedDim(object, reduction = "UMAP")
 NULL
 
 
@@ -153,10 +167,252 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
 
 
 
-#' @rdname plotPCA
+## Updated 2021-03-03.
+`plotReducedDim,SCE` <-  # nolint
+    function(
+        object,
+        reduction,
+        dims,
+        interestingGroups = NULL,
+        color,
+        pointSize,
+        pointAlpha,
+        pointsAsNumbers,
+        label,
+        labelSize,
+        dark,
+        legend,
+        labels = list(
+            title = NULL,
+            subtitle = NULL
+        )
+    ) {
+        validObject(object)
+        assert(
+            .hasClusters(object),
+            ## Allow pass in of positional scalar, for looping.
+            isScalar(reduction),
+            hasLength(dims, n = 2L),
+            all(isIntegerish(dims)),
+            isCharacter(interestingGroups, nullOK = TRUE),
+            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
+            isNumber(pointSize),
+            isNumber(pointAlpha),
+            isFlag(pointsAsNumbers),
+            isFlag(label),
+            isNumber(labelSize),
+            isFlag(dark),
+            isFlag(legend)
+        )
+        labels <- matchLabels(labels)
+        dl(c(
+            "reduction" = reduction,
+            "dims" = deparse(dims)
+        ))
+        ## Note that we're not slotting interesting groups back into object
+        ## here because we're allowing visualization of cluster identity, which
+        ## isn't sample level.
+        if (is.null(interestingGroups)) {
+            interestingGroups <- "ident"
+        }
+        data <- .fetchReductionData(
+            object = object,
+            reduction = reduction,
+            dims = dims
+        )
+        assert(
+            is(data, "DataFrame"),
+            isSubset(
+                x = c("x", "y", "centerX", "centerY", "interestingGroups"),
+                y = colnames(data)
+            )
+        )
+        ## Check if interesting groups input is supported.
+        supported <- bapply(data, is.factor)
+        supported <- names(supported)[supported]
+        ## FIXME Rename this to "denylist" from "blacklist".
+        blacklist <- c("interestingGroups", "origIdent", "sampleId")
+        supported <- setdiff(supported, blacklist)
+        if (!isSubset(interestingGroups, supported)) {
+            setdiff <- setdiff(interestingGroups, supported)
+            abort(sprintf(
+                fmt = paste0(
+                    "%s ",
+                    ngettext(
+                        n = length(setdiff),
+                        msg1 = "interesting group",
+                        msg2 = "interesting groups"
+                    ),
+                    " not defined: %s\n",
+                    "Available:\n%s"
+                ),
+                length(setdiff),
+                toInlineString(setdiff, n = 5L),
+                printString(supported)
+            ))
+        }
+        data <- uniteInterestingGroups(
+            object = data,
+            interestingGroups = interestingGroups
+        )
+        ## Turn off labeling if there's only 1 cluster.
+        if (hasLength(levels(data[["ident"]]), n = 1L)) {
+            label <- FALSE
+        }
+        ## Set the x- and y-axis labels (e.g. t_SNE1, t_SNE2). We're setting
+        ## this up internally as the first two columns in the data frame.
+        axes <- colnames(data)[seq_len(2L)]
+        p <- ggplot(
+            data = as.data.frame(data),
+            mapping = aes(
+                x = !!sym("x"),
+                y = !!sym("y"),
+                color = !!sym("interestingGroups")
+            )
+        )
+        ## Points as numbers.
+        if (isTRUE(pointsAsNumbers)) {
+            ## Increase the size, if necessary.
+            if (pointSize < 4L) {
+                alertWarning("Increase pointSize to 4.")
+                pointSize <- 4L
+            }
+            p <- p +
+                geom_text(
+                    mapping = aes(
+                        x = !!sym("x"),
+                        y = !!sym("y"),
+                        label = !!sym("ident"),
+                        color = !!sym("interestingGroups")
+                    ),
+                    alpha = pointAlpha,
+                    size = pointSize,
+                    show.legend = legend
+                )
+        } else {
+            p <- p +
+                geom_point(
+                    alpha = pointAlpha,
+                    size = pointSize,
+                    show.legend = legend
+                )
+        }
+        ## Label.
+        if (isTRUE(label)) {
+            if (isTRUE(dark)) {
+                labelColor <- "white"
+            } else {
+                labelColor <- "black"
+            }
+            p <- p +
+                geom_text(
+                    mapping = aes(
+                        x = !!sym("centerX"),
+                        y = !!sym("centerY"),
+                        label = !!sym("ident")
+                    ),
+                    color = labelColor,
+                    size = labelSize,
+                    fontface = "bold"
+                )
+        }
+        ## Dark mode.
+        if (isTRUE(dark)) {
+            p <- p + acid_theme_dark()
+        }
+        ## Color.
+        if (is(color, "ScaleDiscrete")) {
+            p <- p + color
+        }
+        ## Improve the axis breaks.
+        p <- p +
+            scale_x_continuous(breaks = pretty_breaks(n = 4L)) +
+            scale_y_continuous(breaks = pretty_breaks(n = 4L))
+        ## Labels.
+        if (is.list(labels)) {
+            labels[["x"]] <- makeLabel(axes[[1L]])
+            labels[["y"]] <- makeLabel(axes[[2L]])
+            labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
+            labels[["fill"]] <- labels[["color"]]
+            p <- p + do.call(what = labs, args = labels)
+        }
+        p
+    }
+
+args <- c(
+    "dark",
+    "dims",
+    "label",
+    "labelSize",
+    "legend",
+    "pointAlpha",
+    "pointSize",
+    "pointsAsNumbers",
+    "reduction"
+)
+args1 <- c(args, "color")
+args2 <- c(args, "discreteColor")
+formals(`plotReducedDim,SCE`)[args1] <- .formalsList[args2]
+rm(args, args1, args2)
+
+
+
+## Updated 2020-02-21.
+`plotPCA,SCE` <-  # nolint
+    function(object, ...) {
+        plotReducedDim(object = object, reduction = "PCA", ...)
+    }
+
+## Updated 2020-02-21.
+`plotTSNE,SCE` <-  # nolint
+    function(object, ...) {
+        plotReducedDim(object = object, reduction = "TSNE", ...)
+    }
+
+## Updated 2020-02-21.
+`plotUMAP,SCE` <-  # nolint
+    function(object, ...) {
+        plotReducedDim(object = object, reduction = "UMAP", ...)
+    }
+
+
+
+#' @rdname plotReducedDim
+#' @export
+setMethod(
+    f = "plotReducedDim",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotReducedDim,SCE`
+)
+
+#' @rdname plotReducedDim
+#' @export
+setMethod(
+    f = "plotPCA",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotPCA,SCE`
+)
+
+#' @rdname plotReducedDim
 #' @export
 setMethod(
     f = "plotPCA",
     signature = signature(object = "SummarizedExperiment"),
     definition = `plotPCA,SE`
+)
+
+#' @rdname plotReducedDim
+#' @export
+setMethod(
+    f = "plotTSNE",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotTSNE,SCE`
+)
+
+#' @rdname plotReducedDim
+#' @export
+setMethod(
+    f = "plotUMAP",
+    signature = signature(object = "SingleCellExperiment"),
+    definition = `plotUMAP,SCE`
 )
