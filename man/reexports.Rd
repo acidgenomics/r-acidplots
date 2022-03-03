@@ -34,7 +34,7 @@ below to see their documentation.
 
   \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
 
-  \item{rlang}{\code{\link[rlang:nse-force]{!!}}, \code{\link[rlang:nse-force]{!!!}}, \code{\link[rlang:nse-defuse]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
+  \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:defusing-advanced]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
   \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:label_percent]{percent}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
 }}

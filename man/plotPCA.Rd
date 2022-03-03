@@ -59,7 +59,7 @@ We're using a modified version of the \code{DESeqTransform} method here.\if{html
 }\if{html}{\out{</div>}}
 }
 \note{
-Updated 2021-09-10.
+Updated 2022-03-03.
 }
 \section{Principal component analysis}{
 
