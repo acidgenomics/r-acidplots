@@ -3,6 +3,8 @@
 
 
 
+## FIXME Check that all of these are in use.
+
 #' Internal formals list, specific to package
 #'
 #' @note Updated 2022-03-04.
@@ -20,7 +22,6 @@
             )
         )
     ),
-    ## FIXME Rework this using new auto color approach?
     "continuousColorPurpleOrange" = quote(
         getOption(
             x = "acid.continuous.color",
