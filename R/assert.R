@@ -4,14 +4,6 @@
 
 
 
-
-## Updated 2019-07-31.
-.hasMultipleSamples <- function(object) {
-    length(sampleNames(object)) > 1L
-}
-
-
-
 ## Consider moving this to goalie package.
 ## Updated 2019-07-31.
 .isBPPARAM <- function(object) {

@@ -457,7 +457,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(.hasMultipleSamples(object))
+            isTRUE(hasMultipleSamples(object))
         ) {
             p <- p + facet_wrap(facets = vars(!!sym("sampleName")))
         }
@@ -506,7 +506,7 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(.hasMultipleSamples(object))
+            isTRUE(hasMultipleSamples(object))
         ) {
             x <- "sampleName"
             interestingGroups <- interestingGroups(object)
@@ -549,7 +549,7 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(.hasMultipleSamples(object))
+            isTRUE(hasMultipleSamples(object))
         ) {
             p <- p +
                 facet_grid(
