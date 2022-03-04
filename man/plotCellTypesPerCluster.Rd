@@ -72,6 +72,7 @@ data(Seurat, package = "AcidTest")
 data(seuratKnownMarkers)
 
 ## Seurat ====
+## FIXME Need to improve this working example to not use Seurat object.
 object <- Seurat
 markers <- seuratKnownMarkers
 plotCellTypesPerCluster(

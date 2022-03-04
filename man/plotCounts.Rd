@@ -6,6 +6,8 @@
 \alias{plotViolin}
 \alias{plotCounts,SingleCellExperiment-method}
 \alias{plotCounts,SummarizedExperiment-method}
+\alias{plotDots,SingleCellExperiment-method}
+\alias{plotViolin,SingleCellExperiment-method}
 \title{Plot counts}
 \usage{
 plotCounts(object, ...)
@@ -38,6 +40,30 @@ plotViolin(object, ...)
   sort = FALSE,
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")
 )
+
+\S4method{plotDots}{SingleCellExperiment}(
+  object,
+  genes,
+  perSample = TRUE,
+  colMin = -2.5,
+  colMax = 2.5,
+  dotMin = 0L,
+  dotScale = 6L,
+  color = NULL,
+  legend = getOption(x = "acid.legend", default = TRUE),
+  title = NULL
+)
+
+\S4method{plotViolin}{SingleCellExperiment}(
+  object,
+  genes,
+  assay = c("logcounts", "normcounts"),
+  perSample = TRUE,
+  scale = c("count", "width", "area"),
+  color = NULL,
+  legend = getOption(x = "acid.legend", default = TRUE),
+  title = NULL
+)
 }
 \arguments{
 \item{object}{Object.}
@@ -50,8 +76,8 @@ object, or gene symbols defined in the object.}
 Assay name or index position.}
 
 \item{geom}{\code{character(1)}.
-Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
-the first argument in the \code{character} vector.}
+Plot type. Uses \code{\link[base:match.arg]{match.arg()}} to pick the type.
+Currently supports \code{"dot"} and \code{"violin"}.}
 
 \item{perSample}{\code{logical(1)}.
 Visualize the distributions per sample.}
@@ -92,6 +118,35 @@ when \code{convertGenesToSymbols} is \code{TRUE}.}
 ggplot2 labels.
 See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 
+\item{colMin}{\code{numeric(1)}.
+Minimum scaled average expression threshold. Everything smaller will be
+set to this.}
+
+\item{colMax}{\code{numeric(1)}.
+Maximum scaled average expression threshold. Everything larger will be set
+to this.}
+
+\item{dotMin}{\code{numeric(1)}.
+The fraction of cells at which to draw the smallest dot. All cell groups
+with less than this expressing the given gene will have no dot drawn.}
+
+\item{dotScale}{\code{numeric(1)}.
+Scale the size of the points, similar to \code{cex}.}
+
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{ggplot2::scale_color_manual()}.
+
+To set the discrete color palette globally, use:\preformatted{options(acid.color.discrete = ggplot2::scale_color_viridis_d())
+}}
+
+\item{scale}{\code{character(1)}.
+If "area" (default), all violins have the same area (before trimming the
+tails). If "count", areas are scaled proportionally to the number of
+observartions. If "width", all violins have the same maximum width.
+See \code{ggplot2::geom_violin} for details.}
+
 \item{...}{Additional arguments.}
 }
 \value{
@@ -105,7 +160,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-03-03.
 }
 \examples{
 data(
@@ -142,5 +197,10 @@ plotCounts(object, genes = genes, perSample = TRUE)
 plotCounts(object, genes = genes, perSample = FALSE)
 }
 \seealso{
-\code{DESeq2::plotCounts()}.
+\itemize{
+\item \code{Seurat::DotPlot()}.
+\item \code{Seurat::VlnPlot()}.
+\item \code{Seurat::RidgePlot()}.
+\item \code{monocle3::plot_genes_violin()}.
+}
 }

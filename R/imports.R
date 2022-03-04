@@ -15,7 +15,7 @@ NULL
 #'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
 #'   convertGenesToSymbols interestingGroups interestingGroups<-
 #'   intersectionMatrix leftJoin makeLabel makeTitle mapGenesToRownames
-#'   matchSampleColumn melt metrics nonzeroRowsAndCols plotBarcodeRanks
+#'   matchSampleColumn melt metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks
 #'   plotCellCounts plotCellCountsPerCluster plotCellTypesPerCluster
 #'   plotCorrelation plotCorrelationHeatmap plotCounts plotCountsCorrelation
 #'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
@@ -31,6 +31,7 @@ NULL
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #'   metadata split
+#' @importFrom SingleCellExperiment logcounts
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #'   colData rowData
 #' @importFrom methods coerce
@@ -41,7 +42,7 @@ NULL
 #'   mapGenesToRownames matchSampleColumn melt metrics nonzeroRowsAndCols
 #'   organism sampleData
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
-#' @importMethodsFrom AcidPlyr leftJoin melt
+#' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
 #'   barcodeRanksPerSample cell2sample melt metrics sampleData zerosVsDepth
 #' @importMethodsFrom pipette coerce decode
