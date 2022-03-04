@@ -1,6 +1,6 @@
 #' @name plotCellCountsPerCluster
 #' @inherit AcidGenerics::plotCellCountsPerCluster
-#' @note Updated 2022-03-03.
+#' @note Updated 2022-03-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -8,10 +8,10 @@
 #' @return Show graphical output. Invisibly return `ggplot`.
 #'
 #' @examples
-#' data(Seurat, package = "AcidTest")
+#' data(SingleCellExperiment_Seurat, package = "AcidTest")
 #'
-#' ## Seurat ====
-#' object <- Seurat
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
 #' plotCellCountsPerCluster(object)
 NULL
 
