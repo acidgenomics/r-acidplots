@@ -13,18 +13,19 @@ NULL
 
 #' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
-#'   convertGenesToSymbols interestingGroups interestingGroups<-
-#'   intersectionMatrix leftJoin makeLabel makeTitle mapGenesToRownames
-#'   matchSampleColumn melt metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks
-#'   plotCellCounts plotCellCountsPerCluster plotCellTypesPerCluster
-#'   plotCorrelation plotCorrelationHeatmap plotCounts plotCountsCorrelation
-#'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
-#'   plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
-#'   plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
-#'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotQC
-#'   plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums plotTSNE
-#'   plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
-#'   plotZerosVsDepth sampleData sem snakeCase zerosVsDepth
+#'   cellCountsPerCluster convertGenesToSymbols interestingGroups
+#'   interestingGroups<- intersectionMatrix leftJoin makeLabel makeTitle
+#'   mapGenesToRownames matchSampleColumn melt metrics mutateIf
+#'   nonzeroRowsAndCols plotBarcodeRanks plotCellCounts plotCellCountsPerCluster
+#'   plotCellTypesPerCluster plotCorrelation plotCorrelationHeatmap plotCounts
+#'   plotCountsCorrelation plotCountsCorrelationHeatmap plotCountsPerBiotype
+#'   plotCountsPerBroadClass plotCountsPerCell plotCountsPerFeature
+#'   plotCountsVsFeatures plotDots plotFeature plotFeaturesDetected
+#'   plotFeaturesPerCell plotGenderMarkers plotHeatmap plotKnownMarkers
+#'   plotMarker plotMitoRatio plotNovelty plotQC plotQuantileHeatmap
+#'   plotReducedDim plotStackedBarPlot plotSums plotTSNE plotTotalCounts
+#'   plotUpset plotUMAP plotViolin plotWaterfall plotZerosVsDepth sampleData sem
+#'   snakeCase zerosVsDepth
 #' @importFrom Biobase sampleNames
 #' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
 #'   var
@@ -44,7 +45,8 @@ NULL
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
-#'   barcodeRanksPerSample cell2sample melt metrics sampleData zerosVsDepth
+#'   barcodeRanksPerSample cell2sample cellCountsPerCluster melt metrics
+#'   sampleData zerosVsDepth
 #' @importMethodsFrom pipette coerce decode
 #' @importMethodsFrom syntactic camelCase makeLabel makeTitle snakeCase
 NULL

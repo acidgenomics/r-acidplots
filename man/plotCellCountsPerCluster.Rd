@@ -26,12 +26,12 @@ Show graphical output. Invisibly return \code{ggplot}.
 Plot cell counts per cluster
 }
 \note{
-Updated 2022-03-03.
+Updated 2022-03-04.
 }
 \examples{
-data(Seurat, package = "AcidTest")
+data(SingleCellExperiment_Seurat, package = "AcidTest")
 
-## Seurat ====
-object <- Seurat
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
 plotCellCountsPerCluster(object)
 }
