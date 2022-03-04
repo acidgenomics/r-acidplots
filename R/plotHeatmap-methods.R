@@ -295,7 +295,7 @@ NULL
     }
 
 formals(`plotHeatmap,SE`)[c("color", "legendColor")] <-
-    .formalsList[c("heatmap.color", "heatmap.legend.color")]
+    .formalsList[c("heatmapColor", "heatmapLegendColor")]
 
 
 
