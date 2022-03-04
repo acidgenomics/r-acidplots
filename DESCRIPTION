@@ -28,6 +28,7 @@ Imports:
     AcidExperiment (>= 0.3.0),
     AcidGenerics (>= 0.6.0),
     AcidGenomes (>= 0.3.0),
+    AcidMarkdown (>= 0.1.5),
     AcidSingleCell (>= 0.2.0),
     Biobase,
     BiocGenerics,
