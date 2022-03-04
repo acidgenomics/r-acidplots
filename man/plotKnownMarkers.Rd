@@ -10,10 +10,10 @@ plotKnownMarkers(object, markers, ...)
 \S4method{plotKnownMarkers}{SingleCellExperiment,KnownMarkers}(
   object,
   markers,
-  reduction = NULL,
-  headerLevel = NULL,
+  reduction = "UMAP",
+  headerLevel = 2L,
   ...,
-  BPPARAM = NULL
+  BPPARAM = BiocParallel::bpparam()
 )
 }
 \arguments{

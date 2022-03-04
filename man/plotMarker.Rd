@@ -10,15 +10,16 @@ plotMarker(object, ...)
 \S4method{plotMarker}{SingleCellExperiment}(
   object,
   genes,
-  reduction = NULL,
-  expression = NULL,
-  color = NULL,
-  pointSize = NULL,
-  pointAlpha = NULL,
-  pointsAsNumbers = NULL,
+  reduction = "UMAP",
+  expression = c("mean", "sum"),
+  color = getOption(x = "acid.continuous.color", default =
+    ggplot2::scale_color_gradient(low = "gray75", high = "purple")),
+  pointSize = getOption(x = "acid.point.size", default = 0.75),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
-  labelSize = NULL,
-  dark = NULL,
+  labelSize = getOption(x = "acid.label.size", default = 6L),
+  dark = getOption(x = "acid.dark", default = FALSE),
   legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = "auto", subtitle = NULL)
 )
@@ -82,13 +83,13 @@ Invisibly return a \code{ggplot} \code{list}.
 Visualize gene markers on a reduced dimension plot (e.g. t-SNE, UMAP).
 }
 \note{
-Updated 2020-05-19.
+Updated 2022-03-04.
 }
 \examples{
-data(Seurat, package = "AcidTest")
+data(SingleCellExperiment_Seurat, package = "AcidTest")
 
-## Seurat ====
-object <- Seurat
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
 sums <- sort(rowSums(counts(object)), decreasing = TRUE)
 genes <- names(head(sums, n = 4L))
 print(genes)
