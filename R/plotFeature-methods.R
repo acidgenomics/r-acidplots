@@ -88,8 +88,8 @@ NULL
         supported <- bapply(X = data, FUN = is.numeric)
         supported <- names(supported)[supported]
         ## These values are required for dim reduction labeling.
-        blacklist <- c("centerX", "centerY", "x", "y")
-        supported <- setdiff(supported, blacklist)
+        denylist <- c("centerX", "centerY", "x", "y")
+        supported <- setdiff(supported, denylist)
         if (!isSubset(features, supported)) {
             setdiff <- setdiff(features, supported)
             abort(sprintf(

@@ -233,9 +233,8 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
         ## Check if interesting groups input is supported.
         supported <- bapply(data, is.factor)
         supported <- names(supported)[supported]
-        ## FIXME Rename this to "denylist" from "blacklist".
-        blacklist <- c("interestingGroups", "origIdent", "sampleId")
-        supported <- setdiff(supported, blacklist)
+        denylist <- c("interestingGroups", "origIdent", "sampleId")
+        supported <- setdiff(supported, denylist)
         if (!isSubset(interestingGroups, supported)) {
             setdiff <- setdiff(interestingGroups, supported)
             abort(sprintf(
