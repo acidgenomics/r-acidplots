@@ -13,26 +13,27 @@ NULL
 
 #' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
 #'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
-#'   cellCountsPerCluster convertGenesToSymbols interestingGroups
-#'   interestingGroups<- intersectionMatrix leftJoin makeLabel makeTitle
-#'   mapGenesToRownames matchSampleColumn melt metrics mutateIf
-#'   nonzeroRowsAndCols plotBarcodeRanks plotCellCounts plotCellCountsPerCluster
-#'   plotCellTypesPerCluster plotCorrelation plotCorrelationHeatmap plotCounts
-#'   plotCountsCorrelation plotCountsCorrelationHeatmap plotCountsPerBiotype
-#'   plotCountsPerBroadClass plotCountsPerCell plotCountsPerFeature
-#'   plotCountsVsFeatures plotDots plotFeature plotFeaturesDetected
-#'   plotFeaturesPerCell plotGenderMarkers plotHeatmap plotKnownMarkers
-#'   plotMarker plotMitoRatio plotNovelty plotQC plotQuantileHeatmap
-#'   plotReducedDim plotStackedBarPlot plotSums plotTSNE plotTotalCounts
-#'   plotUpset plotUMAP plotViolin plotWaterfall plotZerosVsDepth sampleData sem
-#'   snakeCase zerosVsDepth
+#'   cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
+#'   interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
+#'   makeTitle mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
+#'   metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks plotCellCounts
+#'   plotCellCountsPerCluster plotCellTypesPerCluster plotCorrelation
+#'   plotCorrelationHeatmap plotCounts plotCountsCorrelation
+#'   plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
+#'   plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
+#'   plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
+#'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotQC
+#'   plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums plotTSNE
+#'   plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
+#'   plotZerosVsDepth sampleData sem snakeCase zerosVsDepth
 #' @importFrom Biobase sampleNames
 #' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
-#'   var
+#'   rowMeans rowSums t unsplit var
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #'   metadata split
-#' @importFrom SingleCellExperiment logcounts
+#' @importFrom SingleCellExperiment logcounts reducedDim reducedDimNames
+#'   reducedDimNames<-
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #'   colData rowData
 #' @importFrom methods coerce
@@ -40,13 +41,13 @@ NULL
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
 #'   convertGenesToSymbols decode interestingGroups interestingGroups<-
-#'   mapGenesToRownames matchSampleColumn melt metrics nonzeroRowsAndCols
-#'   organism sampleData
+#'   mapGenesToRownames mapGenesToSymbols matchSampleColumn melt metrics
+#'   nonzeroRowsAndCols organism sampleData
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
-#'   barcodeRanksPerSample cell2sample cellCountsPerCluster melt metrics
-#'   sampleData zerosVsDepth
+#'   barcodeRanksPerSample cell2sample cellCountsPerCluster cellTypesPerCluster
+#'   melt metrics sampleData zerosVsDepth
 #' @importMethodsFrom pipette coerce decode
 #' @importMethodsFrom syntactic camelCase makeLabel makeTitle snakeCase
 NULL
@@ -65,7 +66,8 @@ NULL
 #' @importFrom AcidBase methodFormals requireNamespaces standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
-#' @importFrom IRanges DataFrameList
+#' @importFrom AcidMarkdown markdownHeader
+#' @importFrom IRanges DataFrameList SplitDataFrameList
 #' @importFrom S4Vectors DataFrame SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
 #' @importFrom ggplot2 aes annotation_logticks continuous_scale coord_fixed
@@ -73,18 +75,18 @@ NULL
 #'   element_text expand_limits facet_grid facet_wrap geom_bar geom_boxplot
 #'   geom_density geom_histogram geom_hline geom_jitter geom_label geom_line
 #'   geom_point geom_smooth geom_step geom_text geom_violin geom_vline ggplot
-#'   guides labs margin position_jitterdodge scale_colour_continuous
-#'   scale_colour_discrete scale_fill_continuous scale_fill_discrete
-#'   scale_x_continuous scale_x_discrete scale_y_continuous stat stat_ecdf
-#'   stat_summary theme theme_linedraw waiver vars
-#' @importFrom goalie allAreHexColors allAreNonNegative allArePositive
-#'   areDisjointSets areSetEqual assert bapply getNameInParent hasClusters
-#'   hasColnames hasDims hasLength hasMultipleSamples hasNames hasNoDuplicates
-#'   hasMetrics hasNonzeroRowsAndCols hasRownames hasRows hasSubset
-#'   hasUniqueCols isBiocParallelParam isCharacter isDark isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHexColorFunction isInClosedRange isInLeftOpenRange
-#'   isInRange isInRightOpenRange isInt isNonNegative isNumber isPositive
-#'   isScalar isString isSubset
+#'   guide_colorbar guides labs margin position_jitterdodge
+#'   scale_colour_continuous scale_colour_discrete scale_fill_continuous
+#'   scale_fill_discrete scale_x_continuous scale_x_discrete scale_y_continuous
+#'   stat stat_ecdf stat_summary theme theme_linedraw waiver vars
+#' @importFrom goalie allAreHexColors allAreMatchingRegex allAreNonNegative
+#'   allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
+#'   hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
+#'   hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
+#'   hasSubset hasUniqueCols isBiocParallelParam isCharacter isDark isFlag
+#'   isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
+#'   isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
+#'   isIntegerish isNonNegative isNumber isPositive isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject
