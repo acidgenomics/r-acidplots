@@ -13,11 +13,11 @@ plotCellTypesPerCluster(object, markers, ...)
   markers,
   min = 1L,
   max = Inf,
-  reduction = NULL,
-  expression = NULL,
+  reduction = "UMAP",
+  expression = c("mean", "sum"),
   headerLevel = 2L,
   ...,
-  BPPARAM = NULL
+  BPPARAM = BiocParallel::bpparam()
 )
 }
 \arguments{
@@ -68,13 +68,15 @@ many (\code{max} cutoff) marker genes will be skipped.
 Updated 2020-02-21.
 }
 \examples{
-data(Seurat, package = "AcidTest")
-data(seuratKnownMarkers)
+data(
+    KnownMarkers,
+    SingleCellExperiment_Seurat,
+    package = "AcidTest"
+)
 
-## Seurat ====
-## FIXME Need to improve this working example to not use Seurat object.
-object <- Seurat
-markers <- seuratKnownMarkers
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
+markers <- KnownMarkers
 plotCellTypesPerCluster(
     object = object,
     markers = markers,

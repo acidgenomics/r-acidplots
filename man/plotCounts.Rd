@@ -49,7 +49,9 @@ plotViolin(object, ...)
   colMax = 2.5,
   dotMin = 0L,
   dotScale = 6L,
-  color = NULL,
+  color = getOption(x = "acid.continuous.color", default =
+    ggplot2::scale_color_gradient2(low = "orange", mid = "gray75", high = "purple",
+    midpoint = 0L)),
   legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
 )
@@ -60,7 +62,8 @@ plotViolin(object, ...)
   assay = c("logcounts", "normcounts"),
   perSample = TRUE,
   scale = c("count", "width", "area"),
-  color = NULL,
+  color = getOption(x = "acid.discrete.color", default =
+    AcidPlots::scale_color_synesthesia_d()),
   legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
 )

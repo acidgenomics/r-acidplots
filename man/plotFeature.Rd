@@ -10,16 +10,17 @@ plotFeature(object, ...)
 \S4method{plotFeature}{SingleCellExperiment}(
   object,
   features,
-  reduction = NULL,
-  color = NULL,
-  pointSize = NULL,
-  pointAlpha = NULL,
-  pointsAsNumbers = NULL,
+  reduction = "UMAP",
+  color = getOption(x = "acid.continuous.color", default =
+    ggplot2::scale_color_gradient(low = "gray75", high = "purple")),
+  pointSize = getOption(x = "acid.point.size", default = 3L),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
-  labelSize = NULL,
-  dark = NULL,
+  labelSize = getOption(x = "acid.label.size", default = 6L),
+  dark = getOption(x = "acid.dark", default = FALSE),
   legend = getOption(x = "acid.legend", default = TRUE),
-  expression = NULL
+  expression = c("mean", "sum")
 )
 }
 \arguments{
