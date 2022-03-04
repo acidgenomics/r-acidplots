@@ -11,13 +11,15 @@
 #' @param ... Passthrough arguments to [plotMarker()].
 #'
 #' @examples
-#' data(Seurat, package = "AcidTest")
-#' data(seuratKnownMarkers)
+#' data(
+#'     KnownMarkers,
+#'     SingleCellExperiment_Seurat,
+#'     package = "AcidTest"
+#' )
 #'
-#' ## Seurat ====
-#' ## FIXME Need to improve this working example to not use Seurat object.
-#' object <- Seurat
-#' markers <- seuratKnownMarkers
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
+#' markers <- KnownMarkers
 #' plotCellTypesPerCluster(
 #'     object = object,
 #'     markers = markers,
