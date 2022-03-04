@@ -368,7 +368,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
     ) {
         validObject(object)
         assert(
-            .hasClusters(object),
+            hasClusters(object),
             isCharacter(genes),
             isFlag(perSample),
             isNumber(colMin),

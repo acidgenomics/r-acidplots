@@ -76,12 +76,12 @@ NULL
 #'   scale_x_continuous scale_x_discrete scale_y_continuous stat stat_ecdf
 #'   stat_summary theme theme_linedraw waiver vars
 #' @importFrom goalie allAreHexColors allAreNonNegative allArePositive
-#'   areDisjointSets areSetEqual assert bapply getNameInParent hasColnames
-#'   hasDims hasLength hasNames hasNoDuplicates hasMetrics hasNonzeroRowsAndCols
-#'   hasRownames hasRows hasSubset hasUniqueCols isCharacter isFlag isGGScale
-#'   isGreaterThanOrEqualTo isHexColorFunction isInClosedRange isInLeftOpenRange
-#'   isInRange isInRightOpenRange isInt isNonNegative isNumber isPositive
-#'   isScalar isString isSubset
+#'   areDisjointSets areSetEqual assert bapply getNameInParent hasClusters
+#'   hasColnames hasDims hasLength hasNames hasNoDuplicates hasMetrics
+#'   hasNonzeroRowsAndCols hasRownames hasRows hasSubset hasUniqueCols
+#'   isCharacter isFlag isGGScale isGreaterThanOrEqualTo isHexColorFunction
+#'   isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
+#'   isNonNegative isNumber isPositive isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject

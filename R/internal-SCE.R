@@ -98,7 +98,7 @@
 ) {
     object <- as(object, "SingleCellExperiment")
     assert(
-        .hasClusters(object),
+        hasClusters(object),
         isScalar(reduction),
         hasLength(dims, n = 2L),
         all(isIntegerish(dims))
