@@ -1,20 +1,16 @@
-## FIXME Consider moving this to AcidPlots.
-
-
-
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker
-#' @note Updated 2020-05-19.
+#' @note Updated 2022-03-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(Seurat, package = "AcidTest")
+#' data(SingleCellExperiment_Seurat, package = "AcidTest")
 #'
-#' ## Seurat ====
-#' object <- Seurat
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
 #' sums <- sort(rowSums(counts(object)), decreasing = TRUE)
 #' genes <- names(head(sums, n = 4L))
 #' print(genes)
@@ -27,7 +23,7 @@ NULL
 
 
 
-## Updated 2020-02-21.
+## Updated 2022-03-04.
 `plotMarker,SCE` <-  # nolint
     function(
         object,
@@ -35,7 +31,10 @@ NULL
         reduction,
         expression,
         color,
-        pointSize,
+        pointSize = getOption(
+            x = "acid.point.size",
+            default = 0.75
+        ),
         pointAlpha,
         pointsAsNumbers,
         label,
@@ -43,8 +42,8 @@ NULL
         dark,
         legend,
         labels = list(
-            title = "auto",
-            subtitle = NULL
+            "title" = "auto",
+            "subtitle" = NULL
         )
     ) {
         assert(
@@ -181,7 +180,6 @@ args <- c(
     "labelSize",
     "legend",
     "pointAlpha",
-    "pointSize",
     "pointsAsNumbers",
     "reduction"
 )
