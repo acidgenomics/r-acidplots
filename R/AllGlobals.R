@@ -5,32 +5,82 @@
 
 #' Internal formals list, specific to package
 #'
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-04.
 #' @noRd
 .formalsList <- list(
-    "flip" = quote(
-        getOption(x = "acid.flip", default = TRUE)
+    "BPPARAM" = quote(  # nolint
+        BiocParallel::bpparam()
     ),
-    "geom" = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
-    "heatmap.color" = quote(
+    "continuousColor" = quote(
+        getOption(
+            x = "acid.continuous.color",
+            default = ggplot2::scale_color_gradient(
+                low = "gray75",
+                high = "purple"
+            )
+        )
+    ),
+    ## FIXME Rework this using new auto color approach?
+    "continuousColorPurpleOrange" = quote(
+        getOption(
+            x = "acid.continuous.color",
+            default = ggplot2::scale_color_gradient2(
+                low = "orange",
+                mid = "gray75",
+                high = "purple",
+                midpoint = 0L
+            )
+        )
+    ),
+    "dark" = quote(
+        getOption(
+            x = "acid.dark",
+            default = FALSE
+        )
+    ),
+    "dims" = c(1L, 2L),
+    "direction" = c("both", "up", "down"),
+    ## FIXME Rework this using new auto color approach?
+    "discreteColor" = quote(
+        getOption(
+            x = "acid.discrete.color",
+            default = AcidPlots::scale_color_synesthesia_d()
+        )
+    ),
+    "expression" = c("mean", "sum"),
+    "flip" = quote(
+        getOption(
+            x = "acid.flip",
+            default = TRUE
+        )
+    ),
+    "geom" = c(
+        "histogram",
+        "ecdf",
+        "violin",
+        "ridgeline",
+        "boxplot"
+    ),
+    "headerLevel" = 2L,
+    "heatmapColor" = quote(
         getOption(
             x = "acid.heatmap.color",
             default = AcidPlots::blueYellow
         )
     ),
-    "heatmap.correlation.color" = quote(
+    "heatmapCorrelationColor" = quote(
         getOption(
             x = "acid.heatmap.correlation.color",
             default = viridis::viridis
         )
     ),
-    "heatmap.legend.color" = quote(
+    "heatmapLegendColor" = quote(
         getOption(
             x = "acid.heatmap.legend.color",
             default = AcidPlots::synesthesia
         )
     ),
-    "heatmap.quantile.color" = quote(
+    "heatmapQuantileColor" = quote(
         getOption(
             x = "acid.heatmap.quantile.color",
             default = viridis::viridis
@@ -38,6 +88,9 @@
     ),
     "label" = quote(
         getOption(x = "acid.label", default = FALSE)
+    ),
+    "labelSize" = quote(
+        getOption(x = "acid.label.size", default = 6L)
     ),
     "legend" = quote(
         getOption(x = "acid.legend", default = TRUE)
@@ -52,9 +105,26 @@
         "iOSLightPalette",
         "iOSDarkPalette"
     ),
-    "point.size" = quote(
-        getOption(x = "acid.point.size", default = 3L)
-    )
+    "pointAlpha" = quote(
+        getOption(
+            x = "acid.point.alpha",
+            default = 0.85
+        )
+    ),
+    "pointSize" = quote(
+        getOption(
+            x = "acid.point.size",
+            default = 3L
+        )
+    ),
+    "pointsAsNumbers" = quote(
+        getOption(
+            x = "acid.points.as.numbers",
+            default = FALSE
+        )
+    ),
+    ## Alternatively, consider using `1L` here instead.
+    "reduction" = "UMAP"
 )
 
 
