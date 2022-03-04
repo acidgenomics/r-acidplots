@@ -189,7 +189,7 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
     ) {
         validObject(object)
         assert(
-            .hasClusters(object),
+            hasClusters(object),
             ## Allow pass in of positional scalar, for looping.
             isScalar(reduction),
             hasLength(dims, n = 2L),
