@@ -22,16 +22,17 @@ plotUMAP(object, ...)
 
 \S4method{plotReducedDim}{SingleCellExperiment}(
   object,
-  reduction = NULL,
-  dims = NULL,
+  reduction = "UMAP",
+  dims = 1:2,
   interestingGroups = NULL,
-  color = NULL,
-  pointSize = NULL,
-  pointAlpha = NULL,
-  pointsAsNumbers = NULL,
+  color = getOption(x = "acid.discrete.color", default =
+    AcidPlots::scale_color_synesthesia_d()),
+  pointSize = getOption(x = "acid.point.size", default = 0.75),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
-  labelSize = NULL,
-  dark = NULL,
+  labelSize = getOption(x = "acid.label.size", default = 6L),
+  dark = getOption(x = "acid.dark", default = FALSE),
   legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = NULL, subtitle = NULL)
 )

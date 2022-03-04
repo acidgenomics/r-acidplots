@@ -163,11 +163,11 @@ NULL
     }
 
 formals(`plotPCA,SE`)[c("label", "pointSize")] <-
-    .formalsList[c("label", "point.size")]
+    .formalsList[c("label", "pointSize")]
 
 
 
-## Updated 2021-03-03.
+## Updated 2022-03-04.
 `plotReducedDim,SCE` <-  # nolint
     function(
         object,
@@ -175,7 +175,10 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
         dims,
         interestingGroups = NULL,
         color,
-        pointSize,
+        pointSize = getOption(
+            x = "acid.point.size",
+            default = 0.75
+        ),
         pointAlpha,
         pointsAsNumbers,
         label,
@@ -346,7 +349,6 @@ args <- c(
     "labelSize",
     "legend",
     "pointAlpha",
-    "pointSize",
     "pointsAsNumbers",
     "reduction"
 )
