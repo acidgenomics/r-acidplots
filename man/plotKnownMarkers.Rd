@@ -46,15 +46,18 @@ Invisibly return a \code{ggplot} \code{list}.
 Plot known markers
 }
 \note{
-Updated 2020-01-30.
+Updated 2022-03-04.
 }
 \examples{
-data(Seurat, package = "AcidTest")
-data(seuratKnownMarkers)
+data(
+    KnownMarkers,
+    SingleCellExperiment_Seurat,
+    package = "AcidTest"
+)
 
-## Seurat ====
-object <- Seurat
-markers <- seuratKnownMarkers
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
+markers <- KnownMarkers
 plotKnownMarkers(
     object = object,
     markers = markers,
