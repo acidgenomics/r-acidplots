@@ -1,3 +1,8 @@
+## FIXME We need to create an example object that contains mitochondrial
+## transcript information.
+
+
+
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMitoRatio

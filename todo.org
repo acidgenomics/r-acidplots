@@ -1,6 +1,8 @@
 #+TITLE: AcidPlots
 #+STARTUP: content
 * Development
+** TODO Remove "basejump" reference in working examples.
+** TODO One of this plots isn't rendering with our recommended default color palette.
 ** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Ensure that 'theme_set()' is reexported from ggplot2.
 ** TODO pkgdown now seems to be failing on this, with R 4.0.4.

@@ -1,3 +1,7 @@
+## FIXME Colors are too washed out here, rethink alpha setting.
+
+
+
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsVsFeatures

@@ -1,6 +1,18 @@
+## FIXME Need to set our default colors here.
+## FIXME Bioconductor is warning about SplitDataFrameList:
+## #> Warning: The dim() method for DataFrameList objects is deprecated. Please use
+## #>   dims() on these objects instead.
+## #> Warning: The nrow() method for DataFrameList objects is deprecated. Please use
+## #>   nrows() on these objects instead.
+## #> Warning: The ncol() method for CompressedSplitDataFrameList objects is
+## #>   deprecated. Please use ncols() on these objects instead.
+## FIXME This is a Bioconductor problem, need to file an issue.
+
+
+
 #' @name plotStackedBarPlot
 #' @inherit AcidGenerics::plotStackedBarPlot
-#' @note Updated 2021-03-04.
+#' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param absolute `logical(1)`.
@@ -17,7 +29,7 @@ NULL
 
 
 
-## Updated 2021-03-04.
+## Updated 2022-03-05.
 `plotStackedBarPlot,SCE` <-  # nolint
     function(
         object,
@@ -68,6 +80,9 @@ NULL
                 ),
                 stat = "identity"
             )
+        ## Color palette.
+        p <- p + autoDiscreteFillScale()
+        ## Labels.
         if (!isSubset("x", names(labels))) {
             labels[["x"]] <- paste(interestingGroups, collapse = ":\n")
         }

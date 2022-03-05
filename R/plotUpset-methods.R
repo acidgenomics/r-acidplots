@@ -1,6 +1,6 @@
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
-#' @note Updated 2021-09-09.
+#' @note Updated 2022-03-05.
 #'
 #' @details
 #' S4 wrapper for `ComplexUpset::upset()` with improved default aesthetics.
@@ -32,6 +32,7 @@
 #' - UpSetR package (legacy approach).
 #'
 #' @examples
+#' ## list ====
 #' list <- list(
 #'     "aaa" = c("a", "b", "c", "d", "e", "f"),
 #'     "bbb" = c("b", "c", "d", "e", "f", "g"),
@@ -39,13 +40,11 @@
 #'     "ddd" = c("d", "e", "f", "g", "h", "i")
 #' )
 #' print(list)
-#' mat <- intersectionMatrix(list)
-#' print(mat)
-#'
-#' ## list ====
 #' plotUpset(list)
 #'
 #' ## matrix ====
+#' mat <- AcidBase::intersectionMatrix(list)
+#' print(mat)
 #' plotUpset(mat)
 NULL
 
