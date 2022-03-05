@@ -33,7 +33,7 @@ NULL
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #'   metadata split
 #' @importFrom SingleCellExperiment logcounts reducedDim reducedDimNames
-#'   reducedDimNames<-
+#'   reducedDimNames<- reducedDims
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #'   colData rowData
 #' @importFrom methods coerce
@@ -83,10 +83,11 @@ NULL
 #'   allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
 #'   hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
 #'   hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
-#'   hasSubset hasUniqueCols isBiocParallelParam isCharacter isDark isFlag
-#'   isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
-#'   isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
-#'   isIntegerish isNonNegative isNumber isPositive isScalar isString isSubset
+#'   hasSubset hasUniqueCols hasValidDimnames isBiocParallelParam isCharacter
+#'   isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
+#'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
+#'   isInRightOpenRange isInt isIntegerish isNonNegative isNumber isPositive
+#'   isScalar isString isSubset
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject

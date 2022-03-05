@@ -80,10 +80,10 @@ Plot feature
 Updated 2021-03-03.
 }
 \examples{
-data(Seurat, package = "AcidTest")
+data(SingleCellExperiment_Seurat, package = "AcidTest")
 
-## Seurat ====
-object <- Seurat
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
 plotFeature(
     object = object,
     features = c("nCount_RNA", "nFeature_RNA", "PC_1", "PC_2"),

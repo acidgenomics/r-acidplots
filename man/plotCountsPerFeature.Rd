@@ -79,7 +79,7 @@ Updated 2021-09-10.
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
@@ -89,6 +89,6 @@ plotCountsPerFeature(object, geom = "boxplot")
 plotCountsPerFeature(object, geom = "density")
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 plotCountsPerFeature(object)
 }

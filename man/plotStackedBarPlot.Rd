@@ -40,9 +40,9 @@ Plot stacked bar plot
 Updated 2021-03-04.
 }
 \examples{
-data(Seurat, package = "AcidTest")
+data(SingleCellExperiment_Seurat, package = "AcidTest")
 
-## Seurat ====
-object <- Seurat
+## SingleCellExperiment ====
+object <- SingleCellExperiment_Seurat
 plotStackedBarPlot(object)
 }

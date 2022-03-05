@@ -1,7 +1,3 @@
-## FIXME Consider moving this to AcidPlots.
-
-
-
 #' @name plotStackedBarPlot
 #' @inherit AcidGenerics::plotStackedBarPlot
 #' @note Updated 2021-03-04.
@@ -12,10 +8,10 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' data(Seurat, package = "AcidTest")
+#' data(SingleCellExperiment_Seurat, package = "AcidTest")
 #'
-#' ## Seurat ====
-#' object <- Seurat
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
 #' plotStackedBarPlot(object)
 NULL
 

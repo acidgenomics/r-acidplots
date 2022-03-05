@@ -43,7 +43,7 @@ Updated 2021-09-10.
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
@@ -52,6 +52,6 @@ object <- RangedSummarizedExperiment
 plotZerosVsDepth(object)
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 plotZerosVsDepth(object)
 }
