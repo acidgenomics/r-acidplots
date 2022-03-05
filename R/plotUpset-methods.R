@@ -1,7 +1,3 @@
-## FIXME Bars should be black here insteaed of gray.
-
-
-
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
 #' @note Updated 2022-03-05.
@@ -33,6 +29,7 @@
 #' @seealso
 #' - `intersectionMatrix()`.
 #' - `ComplexUpset::upset()`.
+#' - `ComplexUpset::upset_themes`.
 #' - UpSetR package (legacy approach).
 #'
 #' @examples
@@ -63,7 +60,7 @@ NULL
 
 
 
-## Updated 2021-09-09.
+## Updated 2022-03-05.
 `plotUpset,matrix` <-  # nolint
     function(
         object,
@@ -107,9 +104,16 @@ NULL
         if (!is.finite(nIntersections)) {
             nIntersections <- NULL
         }
-        labels <- matchLabels(labels)
         args <- list(
             "data" = as.data.frame(object),
+            "base_annotations" = list(
+                'Intersection size' =
+                    ComplexUpset::intersection_size(
+                        counts = TRUE,
+                        color = NA,
+                        fill = "black"
+                    )
+            ),
             "intersect" = colnames(object),
             "max_size" = maxSize,
             "min_size" = minSize,
@@ -118,6 +122,13 @@ NULL
             ## The exact number of the intersections to be displayed;
             ## "n" largest intersections that meet criteria will be shown.
             "n_intersections" = nIntersections,
+            "set_sizes" = ComplexUpset::upset_set_size(
+                geom = geom_bar(
+                    width = 0.6,
+                    color = NA,
+                    fill = "black"
+                )
+            ),
             ## Whether to sort the columns in the intersection matrix.
             "sort_intersections" = ifelse(
                 test = orderBySize[["intersections"]],
