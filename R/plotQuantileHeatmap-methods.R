@@ -1,6 +1,7 @@
 ## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
 ## FIXME Need to think about NA gene symbol handling in call
 ##       to convertGenesToSymbols.
+## FIXME viridis seems a bit aggressive here, consider using magma or inferno?
 
 
 

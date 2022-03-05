@@ -1,3 +1,7 @@
+## FIXME Colors are too washed out in current working example...rethink.
+
+
+
 #' @name plotCountsCorrelationHeatmap
 #' @inherit AcidGenerics::plotCountsCorrelationHeatmap
 #' @note Updated 2021-02-08.

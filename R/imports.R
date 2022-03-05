@@ -25,7 +25,8 @@ NULL
 #'   plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotQC
 #'   plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums plotTSNE
 #'   plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
-#'   plotZerosVsDepth sampleData sem snakeCase zerosVsDepth
+#'   plotZerosVsDepth sampleData sem snakeCase uniteInterestingGroups
+#'   zerosVsDepth
 #' @importFrom Biobase sampleNames
 #' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
 #'   rowMeans rowSums t unsplit var
@@ -42,7 +43,7 @@ NULL
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
 #'   convertGenesToSymbols decode interestingGroups interestingGroups<-
 #'   mapGenesToRownames mapGenesToSymbols matchSampleColumn melt metrics
-#'   nonzeroRowsAndCols organism sampleData
+#'   nonzeroRowsAndCols organism sampleData uniteInterestingGroups
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
@@ -64,7 +65,7 @@ NULL
 ## Standard functions ==========================================================
 
 #' @importFrom AcidBase methodFormals requireNamespaces standardizeCall
-#' @importFrom AcidCLI abort alert alertInfo alertWarning toInlineString
+#' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
 #' @importFrom IRanges DataFrameList SplitDataFrameList

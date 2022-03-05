@@ -1,3 +1,7 @@
+## FIXME Need to generate a new working example with mito count info.
+
+
+
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMitoVsCoding

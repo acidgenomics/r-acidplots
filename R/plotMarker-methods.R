@@ -1,3 +1,7 @@
+## FIXME Consider not making axis lowercase here...
+
+
+
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker

@@ -1,3 +1,7 @@
+## FIXME Don't attempt to rename the title here, looks weird.
+
+
+
 #' @name plotFeature
 #' @inherit AcidGenerics::plotFeature
 #' @note Updated 2021-03-03.
