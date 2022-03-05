@@ -1,6 +1,6 @@
 #' @name plotCellCountsPerCluster
 #' @inherit AcidGenerics::plotCellCountsPerCluster
-#' @note Updated 2022-03-04.
+#' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2019-08-03.
+## Updated 2022-03-05.
 `plotCellCountsPerCluster,SCE` <-  # nolint
     function(
         object,
@@ -59,6 +59,8 @@ NULL
                 y = "n cells",
                 fill = legendTitle
             )
+        ## Color palette.
+        p <- p + autoDiscreteFillScale()
         ## Wrap for multiple samples.
         if (isTRUE(multipleSamples)) {
             p <- p + facet_wrap(facets = sym("ident"))

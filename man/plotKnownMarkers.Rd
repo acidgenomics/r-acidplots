@@ -46,7 +46,7 @@ Invisibly return a \code{ggplot} \code{list}.
 Plot known markers
 }
 \note{
-Updated 2022-03-04.
+Updated 2022-03-05.
 }
 \examples{
 data(
