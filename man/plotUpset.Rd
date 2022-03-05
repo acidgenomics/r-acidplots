@@ -64,9 +64,10 @@ UpSet plot
 S4 wrapper for \code{ComplexUpset::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2021-09-09.
+Updated 2022-03-05.
 }
 \examples{
+## list ====
 list <- list(
     "aaa" = c("a", "b", "c", "d", "e", "f"),
     "bbb" = c("b", "c", "d", "e", "f", "g"),
@@ -74,13 +75,11 @@ list <- list(
     "ddd" = c("d", "e", "f", "g", "h", "i")
 )
 print(list)
-mat <- intersectionMatrix(list)
-print(mat)
-
-## list ====
 plotUpset(list)
 
 ## matrix ====
+mat <- AcidBase::intersectionMatrix(list)
+print(mat)
 plotUpset(mat)
 }
 \seealso{
