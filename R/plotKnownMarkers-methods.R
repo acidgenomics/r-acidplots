@@ -1,22 +1,21 @@
-## FIXME Move this to AcidPlots.
-
-
-
 #' @name plotKnownMarkers
 #' @inherit AcidGenerics::plotKnownMarkers
-#' @note Updated 2020-01-30.
+#' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param markers Object.
 #' @param ... Passthrough arguments to [plotMarker()].
 #'
 #' @examples
-#' data(Seurat, package = "AcidTest")
-#' data(seuratKnownMarkers)
+#' data(
+#'     KnownMarkers,
+#'     SingleCellExperiment_Seurat,
+#'     package = "AcidTest"
+#' )
 #'
-#' ## Seurat ====
-#' object <- Seurat
-#' markers <- seuratKnownMarkers
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_Seurat
+#' markers <- KnownMarkers
 #' plotKnownMarkers(
 #'     object = object,
 #'     markers = markers,
@@ -37,8 +36,24 @@ NULL
     ) {
         validObject(object)
         validObject(markers)
+        ## Handle gene identifier to symbol conversion automatically.
+        if (
+            !isSubset(
+                x = unique(markers[["name"]]),
+                y = rownames(object)
+            ) &&
+            isSubset(
+                x = unique(markers[["name"]]),
+                y = unique(decode(rowData(object)[["geneName"]]))
+            )
+        ) {
+            object <- convertGenesToSymbols(object)
+        }
         assert(
-            isSubset(unique(markers[["name"]]), rownames(object)),
+            isSubset(
+                x = unique(markers[["name"]]),
+                y = rownames(object)
+            ),
             isScalar(reduction),
             isHeaderLevel(headerLevel)
         )
