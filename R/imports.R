@@ -31,7 +31,7 @@ NULL
 #'   rowMeans rowSums t unsplit var
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
-#'   metadata split
+#'   metadata sort split
 #' @importFrom SingleCellExperiment logcounts reducedDim reducedDimNames
 #'   reducedDimNames<- reducedDims
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
