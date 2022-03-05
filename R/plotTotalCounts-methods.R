@@ -1,6 +1,6 @@
 #' @name plotTotalCounts
 #' @inherit AcidGenerics::plotTotalCounts
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-03-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -8,7 +8,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -17,7 +17,7 @@
 #' plotTotalCounts(object)
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotTotalCounts(object)
 NULL
 

@@ -1,7 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBiotype
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-03-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param biotypeCol `character(1)`.
@@ -11,7 +11,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -20,7 +20,7 @@
 #' plotCountsPerBiotype(object)
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotCountsPerBiotype(object)
 NULL
 

@@ -31,12 +31,12 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 
-Updated 2021-02-08.
+Updated 2022-03-04.
 }
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
@@ -45,7 +45,7 @@ object <- RangedSummarizedExperiment
 plotGenderMarkers(object)
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 plotGenderMarkers(object)
 }
 \seealso{

@@ -1,7 +1,7 @@
 #' @name plotGenderMarkers
 #' @inherit AcidGenerics::plotGenderMarkers
 #' @note Currently only *Homo sapiens* and *Mus musculus* genomes are supported.
-#' @note Updated 2021-02-08.
+#' @note Updated 2022-03-04.
 #'
 #' @inheritParams plotCounts
 #' @inheritParams AcidRoxygen::params
@@ -11,7 +11,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -20,7 +20,7 @@
 #' plotGenderMarkers(object)
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotGenderMarkers(object)
 NULL
 

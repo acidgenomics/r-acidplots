@@ -11,7 +11,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -21,7 +21,7 @@
 #' plotCountsPerFeature(object, geom = "density")
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotCountsPerFeature(object)
 NULL
 

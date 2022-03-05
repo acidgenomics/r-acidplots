@@ -55,12 +55,12 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 }}
 
 \note{
-Updated 2021-09-10.
+Updated 2022-03-04.
 }
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
@@ -69,6 +69,6 @@ object <- RangedSummarizedExperiment
 plotTotalCounts(object)
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 plotTotalCounts(object)
 }

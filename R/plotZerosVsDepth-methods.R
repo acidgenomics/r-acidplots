@@ -8,7 +8,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
-#'     SingleCellExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -17,7 +17,7 @@
 #' plotZerosVsDepth(object)
 #'
 #' ## SingleCellExperiment ====
-#' object <- SingleCellExperiment
+#' object <- SingleCellExperiment_splatter
 #' plotZerosVsDepth(object)
 NULL
 

@@ -90,12 +90,12 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot counts per biotype
 }
 \note{
-Updated 2021-09-10.
+Updated 2022-03-04.
 }
 \examples{
 data(
     RangedSummarizedExperiment,
-    SingleCellExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
@@ -104,7 +104,7 @@ object <- RangedSummarizedExperiment
 plotCountsPerBiotype(object)
 
 ## SingleCellExperiment ====
-object <- SingleCellExperiment
+object <- SingleCellExperiment_splatter
 plotCountsPerBiotype(object)
 }
 \author{
