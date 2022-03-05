@@ -1,7 +1,7 @@
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker
-#' @note Updated 2022-03-04.
+#' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -11,7 +11,12 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_Seurat
-#' sums <- sort(rowSums(counts(object)), decreasing = TRUE)
+#' sums <- sort(
+#'     BiocGenerics::rowSums(
+#'         BiocGenerics::counts(object)
+#'     ),
+#'     decreasing = TRUE
+#' )
 #' genes <- names(head(sums, n = 4L))
 #' print(genes)
 #' plotMarker(

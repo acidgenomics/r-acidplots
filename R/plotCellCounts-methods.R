@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -16,7 +16,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2022-03-05.
 `plotCellCounts,SCE` <-  # nolint
     function(
         object,
@@ -29,6 +29,7 @@ NULL
         )
     ) {
         validObject(object)
+        assert(hasMultipleSamples(object))
         labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

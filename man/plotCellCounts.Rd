@@ -33,7 +33,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot cell counts
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-03-05.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
