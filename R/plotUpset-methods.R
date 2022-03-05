@@ -1,3 +1,7 @@
+## FIXME Bars should be black here insteaed of gray.
+
+
+
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
 #' @note Updated 2022-03-05.
