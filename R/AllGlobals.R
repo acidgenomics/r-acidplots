@@ -3,11 +3,9 @@
 
 
 
-## FIXME Check that all of these are in use.
-
 #' Internal formals list, specific to package
 #'
-#' @note Updated 2022-03-04.
+#' @note Updated 2022-03-06.
 #' @noRd
 .formalsList <- list(
     "BPPARAM" = quote(  # nolint
@@ -41,7 +39,6 @@
     ),
     "dims" = c(1L, 2L),
     "direction" = c("both", "up", "down"),
-    ## FIXME Rework this using new auto color approach?
     "discreteColor" = quote(
         getOption(
             x = "acid.discrete.color",
@@ -124,8 +121,7 @@
             default = FALSE
         )
     ),
-    ## Alternatively, consider using `1L` here instead.
-    "reduction" = "UMAP"
+    "reduction" = "UMAP"  # or `1L`.
 )
 
 

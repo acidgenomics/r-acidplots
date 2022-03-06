@@ -6,13 +6,12 @@
 ## FIXME Need to migrate SCE method for plotViolin here from pointillism.
 ## FIXME SingleCellExperiment method is currently defined in pointillism.
 ## FIXME Need to improve error when genes fail to map.
-## FIXME Consider splitting out plotDots and plotViolin to separate documentation.
 
 
 
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2022-03-03.
+#' @note Updated 2022-03-06.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param genes `character` or `missing`. Gene identifiers. The function will
@@ -352,7 +351,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
 
 
 
-## Updated 2020-02-21.
+## Updated 2022-03-21.
 `plotDots,SCE` <-  # nolint
     function(
         object,
