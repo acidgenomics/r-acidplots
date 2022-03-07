@@ -1,4 +1,5 @@
 ## FIXME Colors are too washed out in current working example...rethink.
+## FIXME This needs a SCE working example.
 
 
 

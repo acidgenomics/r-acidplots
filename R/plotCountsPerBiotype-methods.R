@@ -37,10 +37,10 @@ NULL
         geom = c("violin", "boxplot"),
         trans = c("identity", "log2", "log10"),
         labels = list(
-            title = "Counts per biotype",
-            subtitle = NULL,
-            sampleAxis = NULL,
-            countAxis = "counts"
+            "title" = "Counts per biotype",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
         )
     ) {
         validObject(object)
@@ -158,10 +158,10 @@ NULL
         object,
         ...,
         labels = list(
-            title = "Counts per broad class biotype",
-            subtitle = NULL,
-            sampleAxis = NULL,
-            countAxis = "counts"
+            "title" = "Counts per broad class biotype",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
         )
     ) {
         plotCountsPerBiotype(

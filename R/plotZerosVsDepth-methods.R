@@ -1,6 +1,10 @@
+## FIXME Inherit the default point size here.
+
+
+
 #' @name plotZerosVsDepth
 #' @inherit AcidGenerics::plotZerosVsDepth
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.

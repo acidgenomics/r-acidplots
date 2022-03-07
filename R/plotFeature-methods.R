@@ -1,7 +1,3 @@
-## FIXME Don't attempt to rename the title here, looks weird.
-
-
-
 #' @name plotFeature
 #' @inherit AcidGenerics::plotFeature
 #' @note Updated 2021-03-03.
@@ -30,10 +26,7 @@ NULL
 
 
 
-## NOTE Consider using snake case here instead.
-## The plot labels are more readable in that case.
-
-## Updated 2020-02-21.
+## Updated 2022-03-07.
 `plotFeature,SCE` <-  # nolint
     function(
         object,
@@ -201,13 +194,35 @@ args <- c(
     "labelSize",
     "legend",
     "pointAlpha",
-    "pointSize",
+    "pointSize2",
     "pointsAsNumbers",
     "reduction"
 )
-formals(`plotFeature,SCE`)[c(args, "color")] <-
-    .formalsList[c(args, "continuousColor")]
-rm(args)
+formals(`plotFeature,SCE`)[
+    c(
+        "color",
+        "dark",
+        "expression",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize",
+        "pointsAsNumbers",
+        "reduction"
+    )] <-
+    .formalsList[c(
+        "continuousColor",
+        "dark",
+        "expression",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize2",
+        "pointsAsNumbers",
+        "reduction"
+    )]
 
 
 
