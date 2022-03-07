@@ -1,4 +1,6 @@
 ## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
+## FIXME Consider defaulting to magma or inferno palette here instead.
+## FIXME This needs an SCE working example.
 
 
 

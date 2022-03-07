@@ -1,11 +1,7 @@
-## FIXME Consider not making axis lowercase here...
-
-
-
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker
-#' @note Updated 2022-03-05.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -32,7 +28,7 @@ NULL
 
 
 
-## Updated 2022-03-04.
+## Updated 2022-03-07.
 `plotMarker,SCE` <-  # nolint
     function(
         object,
@@ -40,10 +36,7 @@ NULL
         reduction,
         expression,
         color,
-        pointSize = getOption(
-            x = "acid.point.size",
-            default = 0.75
-        ),
+        pointSize,
         pointAlpha,
         pointsAsNumbers,
         label,
@@ -182,19 +175,31 @@ NULL
         p
     }
 
-args <- c(
-    "dark",
-    "expression",
-    "label",
-    "labelSize",
-    "legend",
-    "pointAlpha",
-    "pointsAsNumbers",
-    "reduction"
-)
-formals(`plotMarker,SCE`)[c(args, "color")] <-
-    .formalsList[c(args, "continuousColor")]
-rm(args)
+formals(`plotMarker,SCE`)[
+    c(
+        "color",
+        "dark",
+        "expression",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize",
+        "pointsAsNumbers",
+        "reduction"
+    )] <-
+    .formalsList[c(
+        "continuousColor",
+        "dark",
+        "expression",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize2",
+        "pointsAsNumbers",
+        "reduction"
+    )]
 
 
 

@@ -36,10 +36,10 @@ NULL
         geom = c("boxplot", "density", "jitter"),
         trans = c("identity", "log2", "log10"),
         labels = list(
-            title = "Counts per feature",
-            subtitle = NULL,
-            sampleAxis = NULL,
-            countAxis = "counts"
+            "title" = "Counts per feature",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
         ),
         flip
     ) {

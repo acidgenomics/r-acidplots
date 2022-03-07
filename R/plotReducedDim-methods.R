@@ -7,7 +7,7 @@
 #' @aliases plotPCA plotTSNE plotUMAP
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotReducedDim
-#' @note Updated 2022-03-03.
+#' @note Updated 2022-03-07.
 #'
 #' @details
 #' For `SingleCellExperiment`, colors using `ident` column defined in
@@ -167,12 +167,19 @@ NULL
         p
     }
 
-formals(`plotPCA,SE`)[c("label", "pointSize")] <-
-    .formalsList[c("label", "pointSize")]
+formals(`plotPCA,SE`)[
+    c(
+        "label",
+        "pointSize"
+    )] <-
+    .formalsList[c(
+        "label",
+        "pointSize"
+    )]
 
 
 
-## Updated 2022-03-04.
+## Updated 2022-03-07.
 `plotReducedDim,SCE` <-  # nolint
     function(
         object,
@@ -180,10 +187,7 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
         dims,
         interestingGroups = NULL,
         color,
-        pointSize = getOption(
-            x = "acid.point.size",
-            default = 0.75
-        ),
+        pointSize,
         pointAlpha,
         pointsAsNumbers,
         label,
@@ -191,8 +195,8 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
         dark,
         legend,
         labels = list(
-            title = NULL,
-            subtitle = NULL
+            "title" = NULL,
+            "subtitle" = NULL
         )
     ) {
         validObject(object)
@@ -346,20 +350,30 @@ formals(`plotPCA,SE`)[c("label", "pointSize")] <-
         p
     }
 
-args <- c(
-    "dark",
-    "dims",
-    "label",
-    "labelSize",
-    "legend",
-    "pointAlpha",
-    "pointsAsNumbers",
-    "reduction"
-)
-args1 <- c(args, "color")
-args2 <- c(args, "discreteColor")
-formals(`plotReducedDim,SCE`)[args1] <- .formalsList[args2]
-rm(args, args1, args2)
+formals(`plotReducedDim,SCE`)[
+    c(
+        "color",
+        "dark",
+        "dims",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize",
+        "pointsAsNumbers",
+        "reduction"
+    )] <- .formalsList[c(
+        "discreteColor",
+        "dark",
+        "dims",
+        "label",
+        "labelSize",
+        "legend",
+        "pointAlpha",
+        "pointSize2",
+        "pointsAsNumbers",
+        "reduction"
+    )]
 
 
 
