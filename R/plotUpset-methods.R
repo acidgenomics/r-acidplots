@@ -107,7 +107,7 @@ NULL
         args <- list(
             "data" = as.data.frame(object),
             "base_annotations" = list(
-                'Intersection size' =
+                "Intersection size" =
                     ComplexUpset::intersection_size(
                         counts = TRUE,
                         color = NA,
