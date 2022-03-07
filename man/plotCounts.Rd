@@ -20,7 +20,7 @@ plotViolin(object, ...)
   object,
   genes,
   assay = c("logcounts", "normcounts"),
-  geom = c("violin", "dot"),
+  geom = c("violin", "dots"),
   perSample = TRUE,
   legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
@@ -80,7 +80,7 @@ Assay name or index position.}
 
 \item{geom}{\code{character(1)}.
 Plot type. Uses \code{\link[base:match.arg]{match.arg()}} to pick the type.
-Currently supports \code{"dot"} and \code{"violin"}.}
+Currently supports \code{"dots"} and \code{"violin"}.}
 
 \item{perSample}{\code{logical(1)}.
 Visualize the distributions per sample.}

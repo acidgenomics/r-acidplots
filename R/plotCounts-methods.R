@@ -29,7 +29,7 @@
 #'   Scale the size of the points, similar to `cex`.
 #' @param geom `character(1)`.
 #'   Plot type. Uses [`match.arg()`][base::match.arg] to pick the type.
-#'   Currently supports `"dot"` and `"violin"`.
+#'   Currently supports `"dots"` and `"violin"`.
 #' @param scale `character(1)`.
 #'   If "area" (default), all violins have the same area (before trimming the
 #'   tails). If "count", areas are scaled proportionally to the number of
@@ -309,13 +309,13 @@ formals(`plotCounts,SE`)[["legend"]] <-
 
 
 
-## Updated 2022-03-03.
+## Updated 2022-03-07.
 `plotCounts,SCE` <-  # nolint
     function(
         object,
         genes,
         assay = c("logcounts", "normcounts"),
-        geom = c("violin", "dot"),
+        geom = c("violin", "dots"),
         perSample = TRUE,
         legend,
         title = NULL
@@ -325,13 +325,17 @@ formals(`plotCounts,SE`)[["legend"]] <-
         geom <- match.arg(geom)
         args <- as.list(sys.call(which = -1L))[-1L]
         args[["geom"]] <- NULL
-        if (geom == "dot") {
-            assert(identical(assay, "logcounts"))
-            args[["assay"]] <- NULL
-            what <- plotDots
-        } else if (geom == "violin") {
-            what <- plotViolin
-        }
+        switch(
+            EXPR = geom,
+            "dots" = {
+                assert(identical(assay, "logcounts"))
+                args[["assay"]] <- NULL
+                what <- plotDots
+            },
+            "violin" = {
+                what <- plotViolin
+            }
+        )
         do.call(what = what, args = args)
     }
 
