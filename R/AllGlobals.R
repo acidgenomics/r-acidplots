@@ -69,7 +69,7 @@
     "heatmapCorrelationColor" = quote(
         getOption(
             x = "acid.heatmap.correlation.color",
-            default = AcidPlots::magma
+            default = viridis::magma
         )
     ),
     "heatmapLegendColor" = quote(
@@ -81,7 +81,7 @@
     "heatmapQuantileColor" = quote(
         getOption(
             x = "acid.heatmap.quantile.color",
-            default = AcidPlots::magma
+            default = viridis::magma
         )
     ),
     "label" = quote(

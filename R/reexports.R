@@ -24,20 +24,8 @@ ggplot2::ggplot
 ggplot2::ggsave
 
 #' @export
-#' @importFrom viridis inferno
-viridis::inferno
-
-#' @export
 #' @importFrom scales log_breaks
 scales::log_breaks
-
-#' @export
-#' @importFrom viridis magma
-viridis::magma
-
-#' @export
-#' @importFrom viridis plasma
-viridis::plasma
 
 #' @export
 #' @importFrom patchwork plot_annotation
@@ -74,10 +62,6 @@ rlang::syms
 #' @export
 #' @importFrom ggplot2 theme_set
 ggplot2::theme_set
-
-#' @export
-#' @importFrom viridis viridis
-viridis::viridis
 
 #' @export
 #' @importFrom patchwork wrap_plots

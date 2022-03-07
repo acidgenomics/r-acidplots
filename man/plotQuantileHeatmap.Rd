@@ -21,7 +21,7 @@ plotQuantileHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.quantile.color", default = AcidPlots::magma),
+  color = getOption(x = "acid.heatmap.quantile.color", default = viridis::magma),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
     AcidPlots::synesthesia),
   legend = FALSE,

@@ -9,10 +9,7 @@
 \alias{after_stat}
 \alias{ggplot}
 \alias{ggsave}
-\alias{inferno}
 \alias{log_breaks}
-\alias{magma}
-\alias{plasma}
 \alias{plot_annotation}
 \alias{plot_layout}
 \alias{percent}
@@ -22,7 +19,6 @@
 \alias{sym}
 \alias{syms}
 \alias{theme_set}
-\alias{viridis}
 \alias{wrap_plots}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -38,7 +34,5 @@ below to see their documentation.
   \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:defusing-advanced]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
   \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:label_percent]{percent}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
-
-  \item{viridis}{\code{\link[viridis:reexports]{inferno}}, \code{\link[viridis:reexports]{magma}}, \code{\link[viridis:reexports]{plasma}}, \code{\link[viridis:reexports]{viridis}}}
 }}
 
