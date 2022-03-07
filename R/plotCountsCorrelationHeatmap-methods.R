@@ -1,11 +1,6 @@
-## FIXME Colors are too washed out in current working example...rethink.
-## FIXME This needs a SCE working example.
-
-
-
 #' @name plotCountsCorrelationHeatmap
 #' @inherit AcidGenerics::plotCountsCorrelationHeatmap
-#' @note Updated 2021-02-08.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param method `character(1)`.

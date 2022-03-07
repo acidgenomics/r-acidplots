@@ -1,7 +1,7 @@
 #' @name plotNovelty
 #' @author Michael Steinbaugh
 #' @inherit AcidGenerics::plotNovelty
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -11,7 +11,6 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
 #' plotNovelty(object)
 NULL
 

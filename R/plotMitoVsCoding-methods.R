@@ -1,11 +1,7 @@
-## FIXME Need to generate a new working example with mito count info.
-
-
-
 #' @name plotMitoVsCoding
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMitoVsCoding
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -15,10 +11,7 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
-#' if (!anyNA(object$nMito)) {
-#'     plotMitoVsCoding(object)
-#' }
+#' plotMitoVsCoding(object)
 NULL
 
 

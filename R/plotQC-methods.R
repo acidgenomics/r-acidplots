@@ -1,10 +1,6 @@
-## FIXME This step should calculateMetrics automatically, if necessary.
-
-
-
 #' @name plotQC
 #' @inherit AcidGenerics::plotQC
-#' @note Updated 2022-03-04.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.

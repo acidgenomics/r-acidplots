@@ -101,6 +101,7 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
@@ -131,6 +132,12 @@
 #'         legendBreaks = seq(from = -2L, to = 2L, by = 1L)
 #'     )
 #' }
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_splatter
+#' ## Row scaling requires non-zero rows.
+#' object <- basejump::nonzeroRowsAndCols(object)
+#' plotHeatmap(object)
 NULL
 
 

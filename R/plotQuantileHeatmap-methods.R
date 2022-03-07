@@ -1,13 +1,6 @@
-## FIXME viridis seems a bit aggressive here, consider using magma or inferno?
-## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
-## FIXME Need to think about NA gene symbol handling in call
-##       to convertGenesToSymbols.
-
-
-
 #' @name plotQuantileHeatmap
 #' @inherit AcidGenerics::plotQuantileHeatmap
-#' @note Updated 2021-02-08.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams AcidRoxygen::params
@@ -20,11 +13,16 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
+#' plotQuantileHeatmap(object)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_splatter
 #' plotQuantileHeatmap(object)
 NULL
 

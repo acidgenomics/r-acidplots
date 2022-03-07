@@ -16,10 +16,6 @@ ggplot2::aes
 ggplot2::after_stat
 
 #' @export
-#' @importFrom basejump calculateMetrics
-basejump::calculateMetrics
-
-#' @export
 #' @importFrom ggplot2 ggplot
 ggplot2::ggplot
 
