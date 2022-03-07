@@ -67,7 +67,7 @@ NULL
                 ## Label the knee and inflection points more clearly
                 whichKnee <- which.min(abs(data[["total"]] - knee))
                 whichInflection <- which.min(abs(data[["total"]] - inflection))
-                labelData <-data[c(whichKnee, whichInflection), , drop = FALSE]
+                labelData <- data[c(whichKnee, whichInflection), , drop = FALSE]
                 labelData[["label"]] <- c(
                     paste("knee", "=", knee),
                     paste("inflection", "=", inflection)

@@ -1,13 +1,3 @@
-## NOTE Bioconductor is warning about SplitDataFrameList:
-## #> Warning: The dim() method for DataFrameList objects is deprecated. Please use
-## #>   dims() on these objects instead.
-## #> Warning: The nrow() method for DataFrameList objects is deprecated. Please use
-## #>   nrows() on these objects instead.
-## #> Warning: The ncol() method for CompressedSplitDataFrameList objects is
-## #>   deprecated. Please use ncols() on these objects instead.
-
-
-
 #' @name plotStackedBarPlot
 #' @inherit AcidGenerics::plotStackedBarPlot
 #' @note Updated 2022-03-05.
