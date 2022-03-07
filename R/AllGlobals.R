@@ -106,13 +106,19 @@
     "pointAlpha" = quote(
         getOption(
             x = "acid.point.alpha",
-            default = 0.85
+            default = 0.9
         )
     ),
     "pointSize" = quote(
         getOption(
             x = "acid.point.size",
             default = 3L
+        )
+    ),
+    "pointSize2" = quote(
+        getOption(
+            x = "acid.point.size",
+            default = 1L
         )
     ),
     "pointsAsNumbers" = quote(
