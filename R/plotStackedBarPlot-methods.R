@@ -1,12 +1,10 @@
-## FIXME Need to set our default colors here.
-## FIXME Bioconductor is warning about SplitDataFrameList:
+## NOTE Bioconductor is warning about SplitDataFrameList:
 ## #> Warning: The dim() method for DataFrameList objects is deprecated. Please use
 ## #>   dims() on these objects instead.
 ## #> Warning: The nrow() method for DataFrameList objects is deprecated. Please use
 ## #>   nrows() on these objects instead.
 ## #> Warning: The ncol() method for CompressedSplitDataFrameList objects is
 ## #>   deprecated. Please use ncols() on these objects instead.
-## FIXME This is a Bioconductor problem, need to file an issue.
 
 
 

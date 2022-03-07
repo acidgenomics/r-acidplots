@@ -1,9 +1,3 @@
-## FIXME Migrate from pheatmap to ComplexHeatmap.
-## FIXME Need to think about NA gene symbol handling in call
-#        to convertGenesToSymbols.
-
-
-
 #' @name plotHeatmap
 #' @inherit AcidGenerics::plotHeatmap
 #' @author Michael Steinbaugh, Rory Kirchner
@@ -108,7 +102,7 @@
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' ## Row scaling requires non-zero rows.
-#' object <- basejump::nonzeroRowsAndCols(object)
+#' object <- AcidGenerics::nonzeroRowsAndCols(object)
 #'
 #' ## Symmetric row-scaled breaks (recommended).
 #' plotHeatmap(
@@ -136,7 +130,7 @@
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
 #' ## Row scaling requires non-zero rows.
-#' object <- basejump::nonzeroRowsAndCols(object)
+#' object <- AcidGenerics::nonzeroRowsAndCols(object)
 #' plotHeatmap(object)
 NULL
 

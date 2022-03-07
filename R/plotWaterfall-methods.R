@@ -22,7 +22,7 @@
 #'
 #' ## data.frame ====
 #' object <- data.frame(
-#'     "cellId" = basejump::autopadZeros(
+#'     "cellId" = AcidGenerics::autopadZeros(
 #'         object = paste("cell", seq_len(12L), sep = "_")
 #'     ),
 #'     "ic50" = seq(

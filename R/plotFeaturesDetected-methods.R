@@ -1,8 +1,3 @@
-## FIXME pkgdown is only returning the class specific documentation for this
-## function. Why not the other plotting functions? What's up with that?
-
-
-
 #' @name plotFeaturesDetected
 #' @inherit AcidGenerics::plotFeaturesDetected
 #' @note Updated 2022-03-04.

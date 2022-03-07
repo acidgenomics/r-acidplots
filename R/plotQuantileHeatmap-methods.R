@@ -63,7 +63,6 @@ NULL
         convertGenesToSymbols = showRownames,
         ...
     ) {
-        ## FIXME Rework using whatPkg, whatFun approach.
         requireNamespaces("pheatmap")
         validObject(object)
         assert(

@@ -1,8 +1,3 @@
-## FIXME Consider making the axis not lowercase here.
-## FIXME Consider setting the default point size to 1 here instead?
-
-
-
 #' @name plotReducedDim
 #' @aliases plotPCA plotTSNE plotUMAP
 #' @author Michael Steinbaugh, Rory Kirchner

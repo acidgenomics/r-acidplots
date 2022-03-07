@@ -161,7 +161,7 @@ data(
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
 ## Row scaling requires non-zero rows.
-object <- basejump::nonzeroRowsAndCols(object)
+object <- AcidGenerics::nonzeroRowsAndCols(object)
 
 ## Symmetric row-scaled breaks (recommended).
 plotHeatmap(
@@ -189,7 +189,7 @@ if (goalie::isInstalled("RColorBrewer")) {
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
 ## Row scaling requires non-zero rows.
-object <- basejump::nonzeroRowsAndCols(object)
+object <- AcidGenerics::nonzeroRowsAndCols(object)
 plotHeatmap(object)
 }
 \seealso{
