@@ -1,12 +1,10 @@
-## FIXME This needs to support assay.
-## FIXME If `assay` is non-default, ensure we re-run calculateMetrics.
-
 #' Plot a single quality control metric
 #'
-#' @note Updated 2021-09-13.
+#' @note Updated 2022-03-07.
 #' @noRd
 .plotQCMetric <- function(
     object,
+    assay = 1L,
     metricCol,
     geom,
     interestingGroups = NULL,
@@ -36,6 +34,9 @@
     interestingGroups(object) <-
         matchInterestingGroups(object, interestingGroups)
     interestingGroups <- interestingGroups(object)
+    if (!hasMetrics(object)) {
+        object <- calculateMetrics(object, assay = assay)
+    }
     ## Support for per sample filtering cutoffs.
     min <- min(min)
     max <- max(max)
@@ -187,14 +188,13 @@ formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
 
 
 
-## FIXME This needs to support asssay.
-
 #' Compare two quality control metrics
 #'
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-03-07.
 #' @noRd
 .plotQCScatterplot <- function(
     object,
+    assay = 1L,
     xCol,
     yCol,
     xTrans = "identity",
@@ -217,6 +217,9 @@ formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
         isString(yTrans)
     )
     labels <- matchLabels(labels)
+    if (!hasMetrics(object)) {
+        object <- calculateMetrics(object, assay = assay)
+    }
     ## Generate x- and y-axis labels automatically.
     if (is.null(labels[["x"]])) {
         labels[["x"]] <- makeLabel(xCol)
