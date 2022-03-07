@@ -11,7 +11,9 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' plotMitoVsCoding(object)
+#' try({
+#'     plotMitoVsCoding(object)
+#' })
 NULL
 
 
