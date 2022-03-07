@@ -9,12 +9,16 @@ plotCellCounts(object, ...)
 
 \S4method{plotCellCounts}{SingleCellExperiment}(
   object,
+  assay = 1L,
   interestingGroups = NULL,
   labels = list(title = "Cell counts", subtitle = NULL, x = NULL, y = "cells")
 )
 }
 \arguments{
 \item{object}{Object.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
@@ -33,7 +37,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot cell counts
 }
 \note{
-Updated 2022-03-05.
+Updated 2022-03-07.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
