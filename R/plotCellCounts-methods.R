@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2022-03-05.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -16,10 +16,11 @@ NULL
 
 
 
-## Updated 2022-03-05.
+## Updated 2022-03-07.
 `plotCellCounts,SCE` <-  # nolint
     function(
         object,
+        assay = 1L,
         interestingGroups = NULL,
         labels = list(
             "title" = "Cell counts",
@@ -34,15 +35,18 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
+        if (!hasMetrics(object)) {
+            object <- calculateMetrics(object, assay = assay)
+        }
         idCol <- matchSampleColumn(object)
         colData <- colData(object)
         assert(isSubset(idCol, colnames(colData)))
         metric <- table(colData[[idCol]])
         sampleData <- sampleData(object)
-        assert(identical(names(metric), rownames(sampleData)))
+        assert(areSetEqual(names(metric), rownames(sampleData)))
         data <- sampleData
         metricCol <- "nCells"
-        data[[metricCol]] <- as.integer(metric)
+        data[[metricCol]] <- as.integer(metric[rownames(data)])
         ## Plot.
         data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
