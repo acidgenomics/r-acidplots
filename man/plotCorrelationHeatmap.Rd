@@ -21,7 +21,7 @@ plotCorrelationHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 0L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.correlation.color", default = AcidPlots::magma),
+  color = getOption(x = "acid.heatmap.correlation.color", default = viridis::magma),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
     AcidPlots::synesthesia),
   borderColor = NULL,
