@@ -1,9 +1,3 @@
-## FIXME Can we switch from pheatmap to ComplexHeatmap here instead?
-## FIXME Consider defaulting to magma or inferno palette here instead.
-## FIXME This needs an SCE working example.
-
-
-
 #' @name plotCorrelationHeatmap
 #' @inherit AcidGenerics::plotCorrelationHeatmap
 #' @note Updated 2021-02-08.
@@ -19,17 +13,22 @@
 #' @examples
 #' data(
 #'     RangedSummarizedExperiment,
+#'     SingleCellExperiment_splatter,
 #'     package = "AcidTest"
 #' )
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
 #' plotCorrelationHeatmap(object)
+#'
+#' ## SingleCellExperiment ====
+#' object <- SingleCellExperiment_splatter
+#' plotCorrelationHeatmap(object)
 NULL
 
 
 
-## Updated 2021-02-08.
+## Updated 2022-03-07.
 `plotCorrelationHeatmap,SE` <-  # nolint
     function(
         object,
@@ -47,7 +46,6 @@ NULL
         title = TRUE,
         ...
     ) {
-        ## FIXME Rework using whatPkg, whatFun approach.
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -164,8 +162,6 @@ formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
     }
 
 
-
-## FIXME Need to document that this performs `aggregateCellsToSamples` step.
 
 #' @rdname plotCorrelationHeatmap
 #' @export
