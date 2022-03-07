@@ -92,10 +92,17 @@ NULL
         invisible(list)
     }
 
-args <- c("headerLevel", "reduction", "BPPARAM")
-formals(`plotKnownMarkers,SCE,KnownMarkers`)[args] <-
-    .formalsList[args]
-rm(args)
+formals(`plotKnownMarkers,SCE,KnownMarkers`)[
+    c(
+        "BPPARAM",
+        "headerLevel",
+        "reduction"
+    )] <-
+    .formalsList[c(
+        "BPPARAM",
+        "headerLevel",
+        "reduction"
+    )]
 
 
 

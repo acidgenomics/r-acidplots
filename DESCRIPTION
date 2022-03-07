@@ -59,6 +59,7 @@ Suggests:
     ggrepel,
     ggridges,
     matrixStats,
+    pheatmap,
     testthat,
     viridis
 Roxygen: list(markdown = TRUE)

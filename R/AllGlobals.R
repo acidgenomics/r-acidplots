@@ -37,6 +37,9 @@
             default = FALSE
         )
     ),
+    "darkMarkerColors" = quote(
+        ggplot2::scale_color_viridis_c(option = "plasma")
+    ),
     "dims" = c(1L, 2L),
     "direction" = c("both", "up", "down"),
     "discreteColor" = quote(
