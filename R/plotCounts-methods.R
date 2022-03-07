@@ -1,14 +1,3 @@
-## FIXME This needs to error and return faster on gene map failure.
-## FIXME Need to think about NA gene symbol handling in call
-##       to convertGenesToSymbols.
-## FIXME Harden against DESeqDataSet input here -- we don't want to ever plot
-##       non-normalized counts by default.
-## FIXME Need to migrate SCE method for plotViolin here from pointillism.
-## FIXME SingleCellExperiment method is currently defined in pointillism.
-## FIXME Need to improve error when genes fail to map.
-
-
-
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
 #' @note Updated 2022-03-06.
