@@ -72,3 +72,35 @@ test_that("style", {
         SIMPLIFY = FALSE
     )
 })
+
+
+
+context("plotCounts : SingleCellExperiment")
+
+test_that("'geom' support", {
+    data(
+        SingleCellExperiment_Seurat,
+        package = "AcidTest",
+        envir = environment()
+    )
+    object <- SingleCellExperiment_Seurat
+    genes <- head(rownames(object))
+    ## Dots.
+    p <- plotCounts(
+        object = object,
+        genes = genes,
+        geom = "dots"
+    )
+    expect_s3_class(p, "ggplot")
+    p <- plotDots(object, genes = genes)
+    expect_s3_class(p, "ggplot")
+    ## Violin.
+    p <- plotCounts(
+        object = object,
+        genes = genes,
+        geom = "violin"
+    )
+    expect_s3_class(p, "ggplot")
+    p <- plotViolin(object, genes = genes)
+    expect_s3_class(p, "ggplot")
+})
