@@ -13,8 +13,8 @@ plotFeature(object, ...)
   reduction = "UMAP",
   color = getOption(x = "acid.continuous.color", default =
     ggplot2::scale_color_gradient(low = "gray75", high = "purple")),
-  pointSize = getOption(x = "acid.point.size", default = 3L),
-  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointSize = getOption(x = "acid.point.size", default = 1L),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
   pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
   labelSize = getOption(x = "acid.label.size", default = 6L),

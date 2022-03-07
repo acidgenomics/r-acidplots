@@ -86,6 +86,7 @@ plotUpset(mat)
 \itemize{
 \item \code{intersectionMatrix()}.
 \item \code{ComplexUpset::upset()}.
+\item \code{ComplexUpset::upset_themes}.
 \item UpSetR package (legacy approach).
 }
 }

@@ -37,7 +37,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot stacked bar plot
 }
 \note{
-Updated 2021-03-04.
+Updated 2022-03-05.
 }
 \examples{
 data(SingleCellExperiment_Seurat, package = "AcidTest")

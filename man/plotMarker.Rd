@@ -14,8 +14,8 @@ plotMarker(object, ...)
   expression = c("mean", "sum"),
   color = getOption(x = "acid.continuous.color", default =
     ggplot2::scale_color_gradient(low = "gray75", high = "purple")),
-  pointSize = getOption(x = "acid.point.size", default = 0.75),
-  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointSize = getOption(x = "acid.point.size", default = 1L),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
   pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
   labelSize = getOption(x = "acid.label.size", default = 6L),
@@ -83,7 +83,7 @@ Invisibly return a \code{ggplot} \code{list}.
 Visualize gene markers on a reduced dimension plot (e.g. t-SNE, UMAP).
 }
 \note{
-Updated 2022-03-05.
+Updated 2022-03-07.
 }
 \examples{
 data(SingleCellExperiment_Seurat, package = "AcidTest")
