@@ -12,8 +12,8 @@ NULL
 ## S4 generics and methods =====================================================
 
 #' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
-#'   as.SummarizedExperiment barcodeRanksPerSample camelCase cell2sample
-#'   cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
+#'   as.SummarizedExperiment barcodeRanksPerSample calculateMetrics camelCase
+#'   cell2sample cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
 #'   interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
 #'   makeTitle mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
 #'   metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks plotCellCounts
@@ -41,9 +41,9 @@ NULL
 #'
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
-#'   convertGenesToSymbols decode interestingGroups interestingGroups<-
-#'   mapGenesToRownames mapGenesToSymbols matchSampleColumn melt metrics
-#'   nonzeroRowsAndCols organism sampleData uniteInterestingGroups
+#'   calculateMetrics convertGenesToSymbols decode interestingGroups
+#'   interestingGroups<- mapGenesToRownames mapGenesToSymbols matchSampleColumn
+#'   melt metrics nonzeroRowsAndCols organism sampleData uniteInterestingGroups
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
