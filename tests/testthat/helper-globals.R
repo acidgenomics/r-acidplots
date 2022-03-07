@@ -6,7 +6,9 @@ options(
 )
 
 data(
+    KnownMarkers,
     RangedSummarizedExperiment,
+    SingleCellExperiment_Seurat,
     SingleCellExperiment_splatter,
     matrix,
     matrix_lfc,
