@@ -51,7 +51,9 @@ data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-plotMitoVsCoding(object)
+try({
+    plotMitoVsCoding(object)
+})
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

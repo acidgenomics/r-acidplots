@@ -31,7 +31,7 @@ genes, and overall gene experssion for the X and Y chromosomes.
 \note{
 Currently only \emph{Homo sapiens} and \emph{Mus musculus} genomes are supported.
 
-Updated 2022-03-04.
+Updated 2022-03-07.
 }
 \examples{
 data(
@@ -42,11 +42,15 @@ data(
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
-plotGenderMarkers(object)
+try({
+    plotGenderMarkers(object)
+})
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-plotGenderMarkers(object)
+try({
+    plotGenderMarkers(object)
+})
 }
 \seealso{
 \code{plotCounts()}.
