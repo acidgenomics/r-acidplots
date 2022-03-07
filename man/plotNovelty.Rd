@@ -50,14 +50,13 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 "Novelty" refers to log10 genes detected per count.
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-03-07.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-object <- calculateMetrics(object)
 plotNovelty(object)
 }
 \author{
