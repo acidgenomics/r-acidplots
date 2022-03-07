@@ -5,7 +5,7 @@
 
 #' Internal formals list, specific to package
 #'
-#' @note Updated 2022-03-06.
+#' @note Updated 2022-03-07.
 #' @noRd
 .formalsList <- list(
     "BPPARAM" = quote(  # nolint
@@ -69,7 +69,7 @@
     "heatmapCorrelationColor" = quote(
         getOption(
             x = "acid.heatmap.correlation.color",
-            default = viridis::viridis
+            default = AcidPlots::magma
         )
     ),
     "heatmapLegendColor" = quote(
@@ -81,7 +81,7 @@
     "heatmapQuantileColor" = quote(
         getOption(
             x = "acid.heatmap.quantile.color",
-            default = viridis::viridis
+            default = AcidPlots::magma
         )
     ),
     "label" = quote(

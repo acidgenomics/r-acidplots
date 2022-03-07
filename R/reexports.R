@@ -1,72 +1,88 @@
-#' @importFrom rlang !!!
 #' @export
+#' @importFrom rlang !!!
 rlang::`!!!`
 
-#' @importFrom rlang !!
 #' @export
+#' @importFrom rlang !!
 rlang::`!!`
 
-#' @importFrom ggplot2 aes
 #' @export
+#' @importFrom ggplot2 aes
 ggplot2::aes
 
 ## This is needed for `plotCorrelation` to work with ggpmisc 0.4.2.
-#' @importFrom ggplot2 after_stat
 #' @export
+#' @importFrom ggplot2 after_stat
 ggplot2::after_stat
 
-#' @importFrom basejump calculateMetrics
 #' @export
+#' @importFrom basejump calculateMetrics
 basejump::calculateMetrics
 
-#' @importFrom ggplot2 ggplot
 #' @export
+#' @importFrom ggplot2 ggplot
 ggplot2::ggplot
 
-#' @importFrom ggplot2 ggsave
 #' @export
+#' @importFrom ggplot2 ggsave
 ggplot2::ggsave
 
-#' @importFrom scales log_breaks
 #' @export
+#' @importFrom viridis inferno
+viridis::inferno
+
+#' @export
+#' @importFrom scales log_breaks
 scales::log_breaks
 
-#' @importFrom patchwork plot_annotation
 #' @export
+#' @importFrom viridis magma
+viridis::magma
+
+#' @export
+#' @importFrom viridis plasma
+viridis::plasma
+
+#' @export
+#' @importFrom patchwork plot_annotation
 patchwork::plot_annotation
 
-#' @importFrom patchwork plot_layout
 #' @export
+#' @importFrom patchwork plot_layout
 patchwork::plot_layout
 
-#' @importFrom scales percent
 #' @export
+#' @importFrom scales percent
 scales::percent
 
-#' @importFrom scales pretty_breaks
 #' @export
+#' @importFrom scales pretty_breaks
 scales::pretty_breaks
 
-#' @importFrom rlang quo
 #' @export
+#' @importFrom rlang quo
 rlang::quo
 
-#' @importFrom rlang quo_text
 #' @export
+#' @importFrom rlang quo_text
 rlang::quo_text
 
-#' @importFrom rlang sym
 #' @export
+#' @importFrom rlang sym
 rlang::sym
 
-#' @importFrom rlang syms
 #' @export
+#' @importFrom rlang syms
 rlang::syms
 
-#' @importFrom ggplot2 theme_set
 #' @export
+#' @importFrom ggplot2 theme_set
 ggplot2::theme_set
 
-#' @importFrom patchwork wrap_plots
 #' @export
+#' @importFrom viridis viridis
+viridis::viridis
+
+#' @export
+#' @importFrom patchwork wrap_plots
 patchwork::wrap_plots
