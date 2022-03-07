@@ -29,7 +29,7 @@ NULL
 #'   zerosVsDepth
 #' @importFrom Biobase sampleNames
 #' @importFrom BiocGenerics append colSums counts do.call organism plotPCA rbind
-#'   rowMeans rowSums t unsplit var
+#'   rowMeans rowSums t unlist unsplit var
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #'   metadata sort split

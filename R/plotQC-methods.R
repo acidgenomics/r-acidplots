@@ -89,7 +89,6 @@ formals(`plotQC,SE`)[["legend"]] <-
 
 
 
-## FIXME This isn't returning interestingGroups in plot legend correctly.
 ## Updated 2021-09-13.
 `plotQC,SCE` <-  # nolint
     function(
