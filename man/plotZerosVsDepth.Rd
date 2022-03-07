@@ -11,6 +11,8 @@ plotZerosVsDepth(object, ...)
   object,
   assay = 1L,
   interestingGroups = NULL,
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
+  pointSize = getOption(x = "acid.point.size", default = 1L),
   labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)",
     y = "dropout rate")
 )
@@ -24,6 +26,13 @@ Assay name or index position.}
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
 Corresponds to factors describing the columns of the object.}
+
+\item{pointAlpha}{\code{numeric(1)} (\code{0}-\code{1}).
+Alpha transparency level.}
+
+\item{pointSize}{\code{numeric(1)}.
+Point size for dots in the plot.
+In the range of 1-3 is generally recommended.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.

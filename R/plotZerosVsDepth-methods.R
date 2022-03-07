@@ -1,7 +1,3 @@
-## FIXME Inherit the default point size here.
-
-
-
 #' @name plotZerosVsDepth
 #' @inherit AcidGenerics::plotZerosVsDepth
 #' @note Updated 2022-03-07.
@@ -27,12 +23,14 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2022-03-07.
 `plotZerosVsDepth,SE` <-  # nolint
     function(
         object,
         assay = 1L,
         interestingGroups = NULL,
+        pointAlpha,
+        pointSize,
         labels = list(
             "title" = "Zeros vs. depth",
             "subtitle" = NULL,
@@ -41,7 +39,11 @@ NULL
         )
     ) {
         validObject(object)
-        assert(isScalar(assay))
+        assert(
+            isScalar(assay),
+            isAlpha(pointAlpha),
+            isNumber(pointSize)
+        )
         labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -56,7 +58,10 @@ NULL
                 color = str_replace_na(!!sym("interestingGroups"))
             )
         ) +
-            geom_point(size = 0.8, alpha = 0.8) +
+            geom_point(
+                alpha = pointAlpha,
+                size = pointSize
+            ) +
             expand_limits(y = c(0L, 1L)) +
             scale_x_continuous(trans = "log10")
         ## Labels.
@@ -75,6 +80,15 @@ NULL
         ## Return.
         p
     }
+
+formals(`plotZerosVsDepth,SE`)[
+    c(
+        "pointAlpha",
+        "pointSize"
+    )] <- .formalsList[c(
+        "pointAlpha",
+        "pointSize2"
+    )]
 
 
 

@@ -84,8 +84,8 @@ NULL
 #'   allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
 #'   hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
 #'   hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
-#'   hasSubset hasUniqueCols hasValidDimnames isBiocParallelParam isCharacter
-#'   isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
+#'   hasSubset hasUniqueCols hasValidDimnames isAlpha isBiocParallelParam
+#'   isCharacter isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #'   isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
 #'   isInRightOpenRange isInt isIntegerish isNonNegative isNumber isPositive
 #'   isScalar isString isSubset
