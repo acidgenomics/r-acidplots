@@ -1,7 +1,7 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerCell
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param point `character(1)`.
@@ -25,7 +25,7 @@ NULL
 
 
 ## FIXME This needs to support assay.
-## Updated 2021-09-10.
+## Updated 2022-03-07.
 `plotCountsPerCell,SCE` <-  # nolint
     function(
         object,
@@ -48,13 +48,13 @@ NULL
         p <- do.call(
             what = .plotQCMetric,
             args = list(
-                object = object,
-                metricCol = "nCount",
-                geom = geom,
-                interestingGroups = interestingGroups,
-                min = min,
-                max = max,
-                trans = trans
+                "object" = object,
+                "metricCol" = "nCount",
+                "geom" = geom,
+                "interestingGroups" = interestingGroups,
+                "min" = min,
+                "max" = max,
+                "trans" = trans
             )
         )
         ## Calculate barcode ranks and label inflection or knee points.

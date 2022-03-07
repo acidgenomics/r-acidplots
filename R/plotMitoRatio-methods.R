@@ -1,8 +1,3 @@
-## FIXME We need to create an example object that contains mitochondrial
-## transcript information.
-
-
-
 #' @name plotMitoRatio
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMitoRatio
@@ -16,10 +11,9 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
-#' if (!anyNA(object$mitoRatio)) {
+#' try({
 #'     plotMitoRatio(object)
-#' }
+#' })
 NULL
 
 
