@@ -1,11 +1,7 @@
-## FIXME Colors are too washed out here, rethink alpha setting.
-
-
-
 #' @name plotCountsVsFeatures
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsVsFeatures
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -15,7 +11,6 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
 #' plotCountsVsFeatures(object)
 NULL
 

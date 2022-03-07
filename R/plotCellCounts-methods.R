@@ -36,7 +36,9 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         if (!hasMetrics(object)) {
-            object <- calculateMetrics(object, assay = assay)
+            suppressMessages({
+                object <- calculateMetrics(object, assay = assay)
+            })
         }
         idCol <- matchSampleColumn(object)
         colData <- colData(object)

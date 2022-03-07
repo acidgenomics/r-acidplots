@@ -70,6 +70,5 @@ plotQC(object)
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-object <- calculateMetrics(object)
 plotQC(object)
 }
