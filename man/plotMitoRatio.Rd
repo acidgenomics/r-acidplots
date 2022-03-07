@@ -57,10 +57,9 @@ data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-object <- calculateMetrics(object)
-if (!anyNA(object$mitoRatio)) {
+try({
     plotMitoRatio(object)
-}
+})
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

@@ -21,7 +21,7 @@ plotQuantileHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.quantile.color", default = viridis::viridis),
+  color = getOption(x = "acid.heatmap.quantile.color", default = AcidPlots::magma),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
     AcidPlots::synesthesia),
   legend = FALSE,
@@ -106,15 +106,20 @@ Plot.
 Quantile heatmap
 }
 \note{
-Updated 2021-02-08.
+Updated 2022-03-07.
 }
 \examples{
 data(
     RangedSummarizedExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
+plotQuantileHeatmap(object)
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment_splatter
 plotQuantileHeatmap(object)
 }

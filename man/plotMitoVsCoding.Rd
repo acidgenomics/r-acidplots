@@ -44,17 +44,14 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot mitochondrial vs. coding counts
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-03-07.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-object <- calculateMetrics(object)
-if (!anyNA(object$nMito)) {
-    plotMitoVsCoding(object)
-}
+plotMitoVsCoding(object)
 }
 \author{
 Michael Steinbaugh, Rory Kirchner

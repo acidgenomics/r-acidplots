@@ -7,10 +7,12 @@
 \alias{!!}
 \alias{aes}
 \alias{after_stat}
-\alias{calculateMetrics}
 \alias{ggplot}
 \alias{ggsave}
+\alias{inferno}
 \alias{log_breaks}
+\alias{magma}
+\alias{plasma}
 \alias{plot_annotation}
 \alias{plot_layout}
 \alias{percent}
@@ -20,6 +22,7 @@
 \alias{sym}
 \alias{syms}
 \alias{theme_set}
+\alias{viridis}
 \alias{wrap_plots}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -28,8 +31,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{basejump}{\code{\link[basejump:reexports]{calculateMetrics}}}
-
   \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{ggsave}}, \code{\link[ggplot2:theme_get]{theme_set}}}
 
   \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
@@ -37,5 +38,7 @@ below to see their documentation.
   \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:defusing-advanced]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
   \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:label_percent]{percent}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
+
+  \item{viridis}{\code{\link[viridis:reexports]{inferno}}, \code{\link[viridis:reexports]{magma}}, \code{\link[viridis:reexports]{plasma}}, \code{\link[viridis:reexports]{viridis}}}
 }}
 
