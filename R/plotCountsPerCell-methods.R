@@ -76,15 +76,16 @@ NULL
             )
             points <- unlist(points)
             names(points) <- names(ranks)
-            assert(identical(names(sampleNames), names(points)))
+            assert(areSetEqual(names(sampleNames), names(points)))
+            points <- points[names(sampleNames)]
             if (identical(geom, "ecdf")) {
                 ## Calculate the y-intercept per sample.
                 freq <- mapply(
                     sampleId = names(points),
                     point = points,
                     MoreArgs = list(
-                        idCol = matchSampleColumn(object),
-                        metrics = metrics(object)
+                        "idCol" = matchSampleColumn(object),
+                        "metrics" = metrics(object)
                     ),
                     FUN = function(metrics, sampleId, idCol, point) {
                         nCount <- metrics[

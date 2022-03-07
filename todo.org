@@ -1,7 +1,7 @@
 #+TITLE: AcidPlots
 #+STARTUP: content
 * Development
-** TODO Remove "basejump" reference in working examples.
+** TODO Check that plotQC SCE method returns interestingGroups in plot legend correctly.
 ** TODO Need to think about NA gene symbol handling in call to convertGenesToSymbols.
 ** TODO Harden plotCounts to error faster on gene identifier mismatch.
 ** TODO Consider adding assay support to plotCountsPerCell.
