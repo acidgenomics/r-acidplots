@@ -60,7 +60,7 @@ Updated 2021-09-10.
 data(RangedSummarizedExperiment, package = "AcidTest")
 
 ## matrix ====
-x <- basejump::assay(RangedSummarizedExperiment)
+x <- SummarizedExperiment::assay(RangedSummarizedExperiment)
 x <- x[seq_len(4L), seq_len(2L)]
 y <- x * 2L
 plotCountsCorrelation(x, y)
