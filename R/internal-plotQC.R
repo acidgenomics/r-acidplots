@@ -1,3 +1,6 @@
+## FIXME This needs to support assay.
+## FIXME If `assay` is non-default, ensure we re-run calculateMetrics.
+
 #' Plot a single quality control metric
 #'
 #' @note Updated 2021-09-13.
@@ -183,6 +186,8 @@
 formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
 
 
+
+## FIXME This needs to support asssay.
 
 #' Compare two quality control metrics
 #'
