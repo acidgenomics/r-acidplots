@@ -1,12 +1,6 @@
 context("plotCellTypesPerCluster")
 
 test_that("Homo sapiens", {
-    data(
-        KnownMarkers,
-        SingleCellExperiment_Seurat,
-        package = "AcidTest",
-        envir = environment()
-    )
     object <- SingleCellExperiment_Seurat
     markers <- KnownMarkers
     invisible(capture.output({

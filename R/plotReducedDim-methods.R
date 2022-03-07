@@ -280,7 +280,6 @@ formals(`plotPCA,SE`)[
         if (isTRUE(pointsAsNumbers)) {
             ## Increase the size, if necessary.
             if (pointSize < 4L) {
-                alertWarning("Increase pointSize to 4.")
                 pointSize <- 4L
             }
             p <- p +
