@@ -27,8 +27,8 @@ plotUMAP(object, ...)
   interestingGroups = NULL,
   color = getOption(x = "acid.discrete.color", default =
     AcidPlots::scale_color_synesthesia_d()),
-  pointSize = getOption(x = "acid.point.size", default = 0.75),
-  pointAlpha = getOption(x = "acid.point.alpha", default = 0.85),
+  pointSize = getOption(x = "acid.point.size", default = 1L),
+  pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
   pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),
   label = getOption(x = "acid.label", default = FALSE),
   labelSize = getOption(x = "acid.label.size", default = 6L),
@@ -123,7 +123,7 @@ For \code{SingleCellExperiment}, colors using \code{ident} column defined in
 \code{colData()} by default.
 }
 \note{
-Updated 2022-03-03.
+Updated 2022-03-07.
 }
 \section{Reduction types}{
 
