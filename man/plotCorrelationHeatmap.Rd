@@ -21,7 +21,7 @@ plotCorrelationHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 0L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.correlation.color", default = viridis::viridis),
+  color = getOption(x = "acid.heatmap.correlation.color", default = AcidPlots::magma),
   legendColor = getOption(x = "acid.heatmap.legend.color", default =
     AcidPlots::synesthesia),
   borderColor = NULL,
@@ -101,10 +101,15 @@ Updated 2021-02-08.
 \examples{
 data(
     RangedSummarizedExperiment,
+    SingleCellExperiment_splatter,
     package = "AcidTest"
 )
 
 ## SummarizedExperiment ====
 object <- RangedSummarizedExperiment
+plotCorrelationHeatmap(object)
+
+## SingleCellExperiment ====
+object <- SingleCellExperiment_splatter
 plotCorrelationHeatmap(object)
 }
