@@ -1,10 +1,12 @@
 #' Hex color gradient generator
 #'
-#' @note Updated 2019-09-13.
+#' @note Updated 2022-03-07.
 #' @export
 #'
 #' @param colors `character`.
 #'   Color names or hexadecimal values used to define the gradient.
+#' @param palette `character(1)`.
+#'   Color palette name.
 #' @param n `integer(1)`.
 #'   The number of colors (>= 1) to be in the palette.
 #'

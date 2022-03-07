@@ -22,6 +22,10 @@ plotBarcodeRanks(object, ...)
 Character vector denoting \code{fitline}, \code{inflection}, and \code{knee} point colors.
 Must pass in color names or hexadecimal values.}
 
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+
 \item{...}{Passthrough to \code{\link[=barcodeRanksPerSample]{barcodeRanksPerSample()}}.}
 }
 \value{

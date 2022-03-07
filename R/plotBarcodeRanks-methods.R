@@ -3,6 +3,7 @@
 #' @note Requires DropletUtils package to be installed.
 #' @note Updated 2022-01-19.
 #'
+#' @inheritParams AcidRoxygen::params
 #' @param colors `character(3)`.
 #'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
 #'   Must pass in color names or hexadecimal values.

@@ -26,6 +26,9 @@ Color names or hexadecimal values used to define the gradient.}
 
 \item{n}{\code{integer(1)}.
 The number of colors (>= 1) to be in the palette.}
+
+\item{palette}{\code{character(1)}.
+Color palette name.}
 }
 \value{
 \code{character}.
@@ -35,7 +38,7 @@ Hexadecimal colors in RGB space.
 Hex color gradient generator
 }
 \note{
-Updated 2019-09-13.
+Updated 2022-03-07.
 }
 \examples{
 purpleOrange(n = 3L)
