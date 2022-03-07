@@ -32,12 +32,12 @@ NULL
 #'   rowMeans rowSums t unlist unsplit var
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
-#'   metadata sort split
+#'   metadata na.omit sort split
 #' @importFrom SingleCellExperiment logcounts reducedDim reducedDimNames
 #'   reducedDimNames<- reducedDims
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #'   colData rowData
-#' @importFrom methods coerce
+#' @importFrom methods coerce show
 #'
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
@@ -64,7 +64,8 @@ NULL
 
 ## Standard functions ==========================================================
 
-#' @importFrom AcidBase methodFormals requireNamespaces standardizeCall
+#' @importFrom AcidBase methodFormals printString requireNamespaces
+#'   standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
@@ -78,8 +79,9 @@ NULL
 #'   geom_point geom_smooth geom_step geom_text geom_violin geom_vline ggplot
 #'   guide_colorbar guides labs margin position_jitterdodge
 #'   scale_colour_continuous scale_colour_discrete scale_fill_continuous
-#'   scale_fill_discrete scale_x_continuous scale_x_discrete scale_y_continuous
-#'   stat stat_ecdf stat_summary theme theme_linedraw waiver vars
+#'   scale_fill_discrete scale_radius scale_x_continuous scale_x_discrete
+#'   scale_y_continuous stat stat_ecdf stat_summary theme theme_linedraw waiver
+#'   vars
 #' @importFrom goalie allAreHexColors allAreMatchingRegex allAreNonNegative
 #'   allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
 #'   hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
@@ -95,7 +97,7 @@ NULL
 #' @importFrom pipette tibble
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
-#' @importFrom stats as.formula dist ecdf hclust prcomp reorder
+#' @importFrom stats as.formula dist ecdf hclust median prcomp reorder
 #' @importFrom stringr str_replace_na
 #' @importFrom utils packageName packageVersion
 NULL

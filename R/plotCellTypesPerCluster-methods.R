@@ -111,10 +111,16 @@ NULL
         invisible(return)
     }
 
-args <- c("reduction", "expression", "BPPARAM")
-formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[args] <-
-    .formalsList[args]
-rm(args)
+formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[
+    c(
+        "BPPARAM",
+        "expression",
+        "reduction"
+    )] <- .formalsList[c(
+        "BPPARAM",
+        "expression",
+        "reduction"
+    )]
 
 
 
