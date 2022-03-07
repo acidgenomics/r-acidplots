@@ -14,7 +14,6 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
 #' plotCountsPerCell(object, geom = "violin")
 #' plotCountsPerCell(object, geom = "ridgeline")
 #' plotCountsPerCell(object, geom = "ecdf")

@@ -50,14 +50,13 @@ transcripts) detected.
 droplet-based scRNA-seq data.
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-03-07.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_splatter
-object <- calculateMetrics(object)
 plotCountsVsFeatures(object)
 }
 \seealso{

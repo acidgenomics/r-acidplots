@@ -18,7 +18,6 @@
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' object <- calculateMetrics(object)
 #' plotQC(object)
 NULL
 
@@ -111,7 +110,9 @@ formals(`plotQC,SE`)[["legend"]] <-
             isFlag(legend)
         )
         if (!hasMetrics(object)) {
-            object <- calculateMetrics(object, assay = assay)
+            suppressMessages({
+                object <- calculateMetrics(object, assay = assay)
+            })
         }
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

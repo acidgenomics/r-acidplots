@@ -35,7 +35,9 @@
         matchInterestingGroups(object, interestingGroups)
     interestingGroups <- interestingGroups(object)
     if (!hasMetrics(object)) {
-        object <- calculateMetrics(object, assay = assay)
+        suppressMessages({
+            object <- calculateMetrics(object, assay = assay)
+        })
     }
     ## Support for per sample filtering cutoffs.
     min <- min(min)
@@ -218,7 +220,9 @@ formals(`.plotQCMetric`)[["geom"]] <- .formalsList[["geom"]]
     )
     labels <- matchLabels(labels)
     if (!hasMetrics(object)) {
-        object <- calculateMetrics(object, assay = assay)
+        suppressMessages({
+            object <- calculateMetrics(object, assay = assay)
+        })
     }
     ## Generate x- and y-axis labels automatically.
     if (is.null(labels[["x"]])) {
