@@ -54,6 +54,7 @@ Suggests:
     AcidTest (>= 0.5.0),
     ComplexHeatmap,
     ComplexUpset,
+    DropletUtils,
     RColorBrewer,
     ggpmisc,
     ggrepel,
