@@ -6,7 +6,7 @@ Functions for plotting genomic data.
 
 ## Installation
 
-### [R][] method
+This is an [R][] package.
 
 ```r
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
@@ -17,7 +17,8 @@ install.packages(
     repos = c(
         "https://r.acidgenomics.com",
         BiocManager::repositories()
-    )
+    ),
+    dependencies = TRUE
 )
 ```
 
