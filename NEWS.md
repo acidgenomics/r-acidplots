@@ -1,10 +1,9 @@
-# AcidPlots 0.4.0 (UNRELEASED)
+# AcidPlots 0.4.0 (2022-03-11)
 
 ## Major changes
 
-- `plotHeatmap`: ComplexHeatmap.
-- `plotUpset`: ComplexUpset.
 - Now using patchwork package internally for grid layout instead of cowplot.
+- `plotUpset`: Now using ComplexUpset engine interanlly.
 
 ## Minor changes
 
@@ -281,7 +280,7 @@
 
 ## Minor changes
 
-- `plotCounts`: Reworked `medianLine` argument  and renamed to simply `line`.
+- `plotCounts`: Reworked `medianLine` argument and renamed to simply `line`.
   Now supports mean and geometric mean in addition to median now.
   Line is now disabled by default.
 
