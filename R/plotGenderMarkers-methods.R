@@ -6,7 +6,7 @@
 #' @inheritParams plotCounts
 #' @inheritParams AcidRoxygen::params
 #' @param ... Passthrough to `plotCounts()`, with the `genes` argument
-#'   automatically defined.
+#' automatically defined.
 #'
 #' @examples
 #' data(
@@ -31,7 +31,7 @@ NULL
 
 
 ## Updated 2021-02-07.
-`plotGenderMarkers,SE` <-  # nolint
+`plotGenderMarkers,SE` <- # nolint
     function(object, style = "wide", ...) {
         ## Load the relevant internal gender markers data.
         organism <- organism(object)
@@ -73,7 +73,7 @@ NULL
 
 
 ## Updated 2020-02-19.
-`plotGenderMarkers,SCE` <-  # nolint
+`plotGenderMarkers,SCE` <- # nolint
     function(object, ...) {
         plotGenderMarkers(
             object = aggregateCellsToSamples(object),

@@ -26,81 +26,81 @@
 #' in case we have a situation where we're comparing a value against `NA`.
 #' Here this will a level of 1, even though we have 2 unique values. This
 #' approach handles NA values better than using `levels()`.
-.pheatmapAnnotations <- function(
-    object,
-    denylist = "sampleName",
-    legendColor
-) {
-    assert(
-        is(object, "SummarizedExperiment"),
-        isCharacter(denylist),
-        isHexColorFunction(legendColor, nullOK = TRUE)
-    )
-    empty <- .emptyPheatmapAnnotations
-    data <- colData(object)
-    interestingGroups <- interestingGroups(object)
-    ok <- hasDims(data) &&
-        hasLength(interestingGroups) &&
-        !identical(interestingGroups, "sampleName")
-    if (!isTRUE(ok)) {
-        return(empty)
-    }
-    assert(
-        hasRownames(data),
-        isSubset(interestingGroups, colnames(data))
-    )
-    data <- data[, interestingGroups, drop = FALSE]
-    denylist <- unique(c("sampleName", denylist))
-    cols <- setdiff(colnames(data), denylist)
-    if (!hasLength(cols)) {
-        return(empty)
-    }
-    data <- data[, cols, drop = FALSE]
-    keep <- bapply(X = data, FUN = is.factor)
-    if (!any(keep)) {
-        return(empty)
-    }
-    data <- data[, keep, drop = FALSE]
-    rownames <- rownames(data)
-    data <- as.data.frame(lapply(
-        X = data,
-        FUN = function(x) {
-            x <- as.character(x)
-            x <- str_replace_na(x)
-            x <- as.factor(x)
-            x
+.pheatmapAnnotations <-
+    function(object,
+             denylist = "sampleName",
+             legendColor) {
+        assert(
+            is(object, "SummarizedExperiment"),
+            isCharacter(denylist),
+            isHexColorFunction(legendColor, nullOK = TRUE)
+        )
+        empty <- .emptyPheatmapAnnotations
+        data <- colData(object)
+        interestingGroups <- interestingGroups(object)
+        ok <- hasDims(data) &&
+            hasLength(interestingGroups) &&
+            !identical(interestingGroups, "sampleName")
+        if (!isTRUE(ok)) {
+            return(empty)
         }
-    ))
-    rownames(data) <- rownames
-    hasMultiple <- bapply(
-        X = data,
-        FUN = function(x) {
-            length(unique(x)) > 1L
+        assert(
+            hasRownames(data),
+            isSubset(interestingGroups, colnames(data))
+        )
+        data <- data[, interestingGroups, drop = FALSE]
+        denylist <- unique(c("sampleName", denylist))
+        cols <- setdiff(colnames(data), denylist)
+        if (!hasLength(cols)) {
+            return(empty)
         }
-    )
-    if (!hasLength(hasMultiple)) {
-        return(empty)
-    }
-    data <- data[, hasMultiple, drop = FALSE]
-    if (is.function(legendColor)) {
-        colors <- lapply(
+        data <- data[, cols, drop = FALSE]
+        keep <- bapply(X = data, FUN = is.factor)
+        if (!any(keep)) {
+            return(empty)
+        }
+        data <- data[, keep, drop = FALSE]
+        rownames <- rownames(data)
+        data <- as.data.frame(lapply(
             X = data,
             FUN = function(x) {
-                assert(is.factor(x))
-                levels <- levels(x)
-                colors <- legendColor(length(levels))
-                names(colors) <- levels
-                colors
-            })
-        names(colors) <- colnames(data)
-    } else {
-        colors <- NA
+                x <- as.character(x)
+                x <- str_replace_na(x)
+                x <- as.factor(x)
+                x
+            }
+        ))
+        rownames(data) <- rownames
+        hasMultiple <- bapply(
+            X = data,
+            FUN = function(x) {
+                length(unique(x)) > 1L
+            }
+        )
+        if (!hasLength(hasMultiple)) {
+            return(empty)
+        }
+        data <- data[, hasMultiple, drop = FALSE]
+        if (is.function(legendColor)) {
+            colors <- lapply(
+                X = data,
+                FUN = function(x) {
+                    assert(is.factor(x))
+                    levels <- levels(x)
+                    colors <- legendColor(length(levels))
+                    names(colors) <- levels
+                    colors
+                }
+            )
+            names(colors) <- colnames(data)
+        } else {
+            colors <- NA
+        }
+        list(
+            "annotationCol" = as.data.frame(data),
+            "annotationColors" = colors
+        )
     }
-    list(
-        "annotationCol" = as.data.frame(data),
-        "annotationColors" = colors
-    )
-}
 
 
 

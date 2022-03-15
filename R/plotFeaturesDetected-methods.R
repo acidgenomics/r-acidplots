@@ -24,21 +24,19 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotFeaturesDetected,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        limit = 0L,
-        minCounts = 1L,
-        labels = list(
-            "title" = "Features detected",
-            "subtitle" = NULL,
-            "x" = NULL,
-            "y" = "features"
-        ),
-        flip
-    ) {
+`plotFeaturesDetected,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             limit = 0L,
+             minCounts = 1L,
+             labels = list(
+                 "title" = "Features detected",
+                 "subtitle" = NULL,
+                 "x" = NULL,
+                 "y" = "features"
+             ),
+             flip) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -93,7 +91,7 @@ formals(`plotFeaturesDetected,SE`)[["flip"]] <-
 
 
 ## Updated 2019-09-15.
-`plotFeaturesDetected,SCE` <-  # nolint
+`plotFeaturesDetected,SCE` <- # nolint
     function(object, ...) {
         plotFeaturesDetected(
             object = aggregateCellsToSamples(object),
@@ -104,8 +102,8 @@ formals(`plotFeaturesDetected,SE`)[["flip"]] <-
 
 
 #' @describeIn plotFeaturesDetected Applies `aggregateCellsToSamples()`
-#'   calculation to summarize at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' calculation to summarize at sample level prior to plotting.\cr
+#' Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotFeaturesDetected",

@@ -8,15 +8,19 @@
 #' @note Updated 2021-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param guide `character(1)` or `function`.
-#'   A function used to create a guide or its name.
-#'   See `ggplot2::guides` for details.
+#' A function used to create a guide or its name.
+#' See `ggplot2::guides` for details.
+#'
 #' @param n `integer(1)`.
-#'   The number of colors (>= 1) to be in the palette.
+#' The number of colors (>= 1) to be in the palette.
+#'
 #' @param na.value `character(1)`.
-#'   Missing values will be replaced with this value.
+#' Missing values will be replaced with this value.
+#'
 #' @param palette `character(1)`.
-#'   Color palette name.
+#' Color palette name.
 #'
 #' @return `character` or `ggproto`.
 #'
@@ -56,19 +60,23 @@
 #' })
 #'
 #' ## Color, continuous.
-#' cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(color = hwy))
+#' cc <- ggplot(mpg, aes(cty, hwy)) +
+#'     geom_jitter(aes(color = hwy))
 #' cc + scale_color_synesthesia_c()
 #'
 #' ## Color, discrete.
-#' cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(color = fl), fill = NA)
+#' cd <- ggplot(mpg, aes(fl)) +
+#'     geom_bar(aes(color = fl), fill = NA)
 #' cd + scale_color_synesthesia_d()
 #'
 #' ## Fill, continuous.
-#' fc <- ggplot(diamonds, aes(carat, price)) + geom_hex()
+#' fc <- ggplot(diamonds, aes(carat, price)) +
+#'     geom_hex()
 #' fc + scale_fill_synesthesia_c()
 #'
 #' ## Fill, discrete.
-#' fd <- ggplot(mpg, aes(fl)) + geom_bar(aes(fill = fl))
+#' fd <- ggplot(mpg, aes(fl)) +
+#'     geom_bar(aes(fill = fl))
 #' fd + scale_fill_synesthesia_d()
 #'
 #' ## Base color.
@@ -93,16 +101,13 @@ synesthesia <- function(n, palette) {
 }
 
 formals(synesthesia)[c("n", "palette")] <-
-    list(
-        "n" = .formalsList[["n"]],
-        "palette" = .formalsList[["palette"]]
-    )
+    .formalsList[c("n", "palette")]
 
 
 
 #' @rdname synesthesia
 #' @export
-synesthesia_pal <-  # nolint
+synesthesia_pal <- # nolint
     function(palette) {
         palette <- match.arg(palette)
         function(n) {
@@ -117,13 +122,11 @@ formals(synesthesia_pal)[["palette"]] <-
 
 #' @rdname synesthesia
 #' @export
-scale_colour_synesthesia_c <-  # nolint
-    function(
-        ...,
-        na.value = "grey50",  # nolint
-        guide = "colourbar",
-        palette
-    ) {
+scale_colour_synesthesia_c <- # nolint
+    function(...,
+             na.value = "grey50", # nolint
+             guide = "colourbar",
+             palette) {
         palette <- match.arg(palette)
         colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
@@ -144,14 +147,14 @@ formals(scale_colour_synesthesia_c)[["palette"]] <-
 
 #' @rdname synesthesia
 #' @export
-scale_color_synesthesia_c <-  # nolint
+scale_color_synesthesia_c <- # nolint
     scale_colour_synesthesia_c
 
 
 
 #' @rdname synesthesia
 #' @export
-scale_colour_synesthesia_d <-  # nolint
+scale_colour_synesthesia_d <- # nolint
     function(..., palette) {
         palette <- match.arg(palette)
         palette <- synesthesia_pal(palette = palette)
@@ -170,20 +173,18 @@ formals(scale_colour_synesthesia_d)[["palette"]] <-
 
 #' @rdname synesthesia
 #' @export
-scale_color_synesthesia_d <-  # nolint
+scale_color_synesthesia_d <- # nolint
     scale_colour_synesthesia_d
 
 
 
 #' @rdname synesthesia
 #' @export
-scale_fill_synesthesia_c <-  # nolint
-    function(
-        ...,
-        na.value = "grey50",  # nolint
-        guide = "colourbar",
-        palette
-    ) {
+scale_fill_synesthesia_c <- # nolint
+    function(...,
+             na.value = "grey50", # nolint
+             guide = "colourbar",
+             palette) {
         palette <- match.arg(palette)
         colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
@@ -204,7 +205,7 @@ formals(scale_fill_synesthesia_c)[["palette"]] <-
 
 #' @rdname synesthesia
 #' @export
-scale_fill_synesthesia_d <-  # nolint
+scale_fill_synesthesia_d <- # nolint
     function(..., palette) {
         palette <- match.arg(palette)
         palette <- synesthesia_pal(palette = palette)

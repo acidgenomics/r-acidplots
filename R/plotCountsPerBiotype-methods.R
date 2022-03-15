@@ -4,9 +4,10 @@
 #' @note Updated 2022-03-04.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param biotypeCol `character(1)`.
-#'   Biotype column name defined in `colData()`.
 #' @param ... Additional arguments.
+#'
+#' @param biotypeCol `character(1)`.
+#' Biotype column name defined in `colData()`.
 #'
 #' @examples
 #' data(
@@ -27,22 +28,20 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotCountsPerBiotype,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        biotypeCol = "geneBiotype",
-        n = 9L,
-        interestingGroups = NULL,
-        geom = c("violin", "boxplot"),
-        trans = c("identity", "log2", "log10"),
-        labels = list(
-            "title" = "Counts per biotype",
-            "subtitle" = NULL,
-            "sampleAxis" = NULL,
-            "countAxis" = "counts"
-        )
-    ) {
+`plotCountsPerBiotype,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             biotypeCol = "geneBiotype",
+             n = 9L,
+             interestingGroups = NULL,
+             geom = c("violin", "boxplot"),
+             trans = c("identity", "log2", "log10"),
+             labels = list(
+                 "title" = "Counts per biotype",
+                 "subtitle" = NULL,
+                 "sampleAxis" = NULL,
+                 "countAxis" = "counts"
+             )) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -147,23 +146,21 @@ NULL
 
 
 ## Updated 2021-09-08.
-`plotCountsPerBiotype,SCE` <-  # nolint
+`plotCountsPerBiotype,SCE` <- # nolint
     `plotCountsPerBiotype,SE`
 
 
 
 ## Updated 2021-09-09.
-`plotCountsPerBroadClass,SE` <-  # nolint
-    function(
-        object,
-        ...,
-        labels = list(
-            "title" = "Counts per broad class biotype",
-            "subtitle" = NULL,
-            "sampleAxis" = NULL,
-            "countAxis" = "counts"
-        )
-    ) {
+`plotCountsPerBroadClass,SE` <- # nolint
+    function(object,
+             ...,
+             labels = list(
+                 "title" = "Counts per broad class biotype",
+                 "subtitle" = NULL,
+                 "sampleAxis" = NULL,
+                 "countAxis" = "counts"
+             )) {
         plotCountsPerBiotype(
             object = object,
             biotypeCol = "broadClass",
@@ -174,7 +171,7 @@ NULL
 
 
 
-`plotCountsPerBroadClass,SCE` <-  # nolint
+`plotCountsPerBroadClass,SCE` <- # nolint
     `plotCountsPerBroadClass,SE`
 
 

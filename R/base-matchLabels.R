@@ -7,12 +7,13 @@
 #' @note Updated 2022-01-19.
 #'
 #' @param labels `list`.
-#'   User-defined plot labels.
-#'   Per element, supports `character(1)`., `logical(1)`
-#'   (for automatic labels), or `NULL`.
+#' User-defined plot labels.
+#' Per element, supports `character(1)`., `logical(1)`
+#' (for automatic labels), or `NULL`.
+#'
 #' @param argName `character(1)`.
-#'   Argument name defined in `formalArgs()` to match against user input.
-#'   Defaults to `"labels"`.
+#' Argument name defined in `formalArgs()` to match against user input.
+#' Defaults to `"labels"`.
 #'
 #' @seealso
 #' - `ggplot2::labs()`.
@@ -21,14 +22,12 @@
 #' Returns an empty list on `NULL` input.
 #'
 #' @examples
-#' fun <- function(
-#'     object,
-#'     labels = list(
-#'         "title" = NULL,
-#'         "x" = "x-axis",
-#'         "y" = "y-axis"
-#'     )
-#' ) {
+#' fun <- function(object,
+#'                 labels = list(
+#'                     "title" = NULL,
+#'                     "x" = "x-axis",
+#'                     "y" = "y-axis"
+#'                 )) {
 #'     labels <- matchLabels(labels)
 #'     labels
 #' }

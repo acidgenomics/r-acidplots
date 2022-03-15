@@ -4,14 +4,16 @@
 #' @export
 #'
 #' @param colors `character`.
-#'   Color names or hexadecimal values used to define the gradient.
+#' Color names or hexadecimal values used to define the gradient.
+#'
 #' @param palette `character(1)`.
-#'   Color palette name.
+#' Color palette name.
+#'
 #' @param n `integer(1)`.
-#'   The number of colors (>= 1) to be in the palette.
+#' The number of colors (>= 1) to be in the palette.
 #'
 #' @return `character`.
-#'   Hexadecimal colors in RGB space.
+#' Hexadecimal colors in RGB space.
 #'
 #' @examples
 #' purpleOrange(n = 3L)
@@ -57,10 +59,7 @@ gradient <- function(colors, n) {
 }
 
 formals(.gradientPalette)[c("n", "palette")] <-
-    list(
-        "n" = .formalsList[["n"]],
-        "palette" = .formalsList[["palette"]]
-    )
+    .formalsList[c("n", "palette")]
 
 
 

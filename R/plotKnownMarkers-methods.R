@@ -26,14 +26,12 @@ NULL
 
 
 ## Updated 2019-09-03.
-`plotKnownMarkers,SCE,KnownMarkers` <-  # nolint
-    function(
-        object,
-        markers,
-        reduction,
-        headerLevel,
-        ...
-    ) {
+`plotKnownMarkers,SCE,KnownMarkers` <- # nolint
+    function(object,
+             markers,
+             reduction,
+             headerLevel,
+             ...) {
         validObject(object)
         validObject(markers)
         ## Handle gene identifier to symbol conversion automatically.
@@ -42,10 +40,10 @@ NULL
                 x = unique(markers[["name"]]),
                 y = rownames(object)
             ) &&
-            isSubset(
-                x = unique(markers[["name"]]),
-                y = unique(decode(rowData(object)[["geneName"]]))
-            )
+                isSubset(
+                    x = unique(markers[["name"]]),
+                    y = unique(decode(rowData(object)[["geneName"]]))
+                )
         ) {
             object <- convertGenesToSymbols(object)
         }
@@ -92,17 +90,15 @@ NULL
         invisible(list)
     }
 
-formals(`plotKnownMarkers,SCE,KnownMarkers`)[
-    c(
-        "BPPARAM",
-        "headerLevel",
-        "reduction"
-    )] <-
-    .formalsList[c(
-        "BPPARAM",
-        "headerLevel",
-        "reduction"
-    )]
+formals(`plotKnownMarkers,SCE,KnownMarkers`)[c(
+    "BPPARAM",
+    "headerLevel",
+    "reduction"
+)] <- .formalsList[c(
+    "BPPARAM",
+    "headerLevel",
+    "reduction"
+)]
 
 
 

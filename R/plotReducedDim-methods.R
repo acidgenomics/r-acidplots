@@ -25,14 +25,6 @@
 #'
 #' We're using a modified version of the `DESeqTransform` method here.
 #'
-#' ```r
-#' methodFunction(
-#'     f = "plotPCA",
-#'     signature = "DESeqTransform",
-#'     package = "DESeq2"
-#' )
-#' ```
-#'
 #' @section UMAP calculation:
 #'
 #' [UMAP][] calculation in R requires the [Python][] module `umap-learn`.
@@ -44,8 +36,8 @@
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ntop `integer(1)` or `Inf`.
-#'   Number of most variable genes to plot.
-#'   Use `Inf` to include all genes (*not recommended*).
+#' Number of most variable genes to plot.
+#' Use `Inf` to include all genes (*not recommended*).
 #' @param ... Additional arguments.
 #'
 #' @references Jolliffe, et al., 2002.
@@ -77,19 +69,17 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotPCA,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        ntop = 500L,
-        label,
-        pointSize,
-        labels = list(
-            "title" = "PCA",
-            "subtitle" = NULL
-        )
-    ) {
+`plotPCA,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             ntop = 500L,
+             label,
+             pointSize,
+             labels = list(
+                 "title" = "PCA",
+                 "subtitle" = NULL
+             )) {
         requireNamespaces("matrixStats")
         validObject(object)
         assert(
@@ -119,7 +109,7 @@ NULL
         rv <- matrixStats::rowVars(counts)
         select <- order(rv, decreasing = TRUE)[seq_len(min(ntop, length(rv)))]
         pca <- prcomp(t(counts[select, , drop = FALSE]))
-        percentVar <- (pca[["sdev"]] ^ 2L) / (sum(pca[["sdev"]] ^ 2L))
+        percentVar <- (pca[["sdev"]]^2L) / (sum(pca[["sdev"]]^2L))
         data <- data.frame(
             "pc1" = pca[["x"]][, 1L],
             "pc2" = pca[["x"]][, 2L],
@@ -162,38 +152,34 @@ NULL
         p
     }
 
-formals(`plotPCA,SE`)[
-    c(
-        "label",
-        "pointSize"
-    )] <-
-    .formalsList[c(
-        "label",
-        "pointSize"
-    )]
+formals(`plotPCA,SE`)[c(
+    "label",
+    "pointSize"
+)] <- .formalsList[c(
+    "label",
+    "pointSize"
+)]
 
 
 
 ## Updated 2022-03-07.
-`plotReducedDim,SCE` <-  # nolint
-    function(
-        object,
-        reduction,
-        dims,
-        interestingGroups = NULL,
-        color,
-        pointSize,
-        pointAlpha,
-        pointsAsNumbers,
-        label,
-        labelSize,
-        dark,
-        legend,
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL
-        )
-    ) {
+`plotReducedDim,SCE` <- # nolint
+    function(object,
+             reduction,
+             dims,
+             interestingGroups = NULL,
+             color,
+             pointSize,
+             pointAlpha,
+             pointsAsNumbers,
+             label,
+             labelSize,
+             dark,
+             legend,
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL
+             )) {
         validObject(object)
         assert(
             hasClusters(object),
@@ -344,47 +330,46 @@ formals(`plotPCA,SE`)[
         p
     }
 
-formals(`plotReducedDim,SCE`)[
-    c(
-        "color",
-        "dark",
-        "dims",
-        "label",
-        "labelSize",
-        "legend",
-        "pointAlpha",
-        "pointSize",
-        "pointsAsNumbers",
-        "reduction"
-    )] <- .formalsList[c(
-        "discreteColor",
-        "dark",
-        "dims",
-        "label",
-        "labelSize",
-        "legend",
-        "pointAlpha",
-        "pointSize2",
-        "pointsAsNumbers",
-        "reduction"
-    )]
+formals(`plotReducedDim,SCE`)[c(
+    "color",
+    "dark",
+    "dims",
+    "label",
+    "labelSize",
+    "legend",
+    "pointAlpha",
+    "pointSize",
+    "pointsAsNumbers",
+    "reduction"
+)] <- .formalsList[c(
+    "discreteColor",
+    "dark",
+    "dims",
+    "label",
+    "labelSize",
+    "legend",
+    "pointAlpha",
+    "pointSize2",
+    "pointsAsNumbers",
+    "reduction"
+)]
 
 
 
 ## Updated 2020-02-21.
-`plotPCA,SCE` <-  # nolint
+`plotPCA,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "PCA", ...)
     }
 
 ## Updated 2020-02-21.
-`plotTSNE,SCE` <-  # nolint
+`plotTSNE,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "TSNE", ...)
     }
 
 ## Updated 2020-02-21.
-`plotUMAP,SCE` <-  # nolint
+`plotUMAP,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "UMAP", ...)
     }

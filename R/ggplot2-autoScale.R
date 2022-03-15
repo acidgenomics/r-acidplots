@@ -14,17 +14,6 @@
 #' - `autoDiscreteColorScale()`: `"ggplot2.discrete.colour"`.
 #' - `autoDiscreteFillScale()`: `"ggplot2.discrete.fill"`.
 #'
-#' For example, here's how to set the color palette to greyscale globally:
-#'
-#' ```r
-#' options(
-#'     "ggplot2.continuous.colour" = ggplot2::scale_colour_grey,
-#'     "ggplot2.continuous.fill" = ggplot2::scale_fill_grey,
-#'     "ggplot2.discrete.colour" = ggplot2::scale_colour_grey,
-#'     "ggplot2.discrete.fill" = ggplot2::scale_fill_grey
-#' )
-#' ```
-#'
 #' @name autoScale
 #' @note Updated 2021-09-10.
 #'
@@ -37,13 +26,10 @@
 #' @examples
 #' x <- autoContinuousColorScale()
 #' class(x)
-#'
 #' x <- autoContinuousFillScale()
 #' class(x)
-#'
 #' x <- autoDiscreteColorScale()
 #' class(x)
-#'
 #' x <- autoDiscreteFillScale()
 #' class(x)
 NULL

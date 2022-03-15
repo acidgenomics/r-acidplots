@@ -24,17 +24,15 @@ NULL
 
 
 ## Updated 2021-08-11.
-`plotQC,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        legend,
-        labels = list(
-            "title" = "Quality control",
-            "subtitle" = NULL
-        )
-    ) {
+`plotQC,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             legend,
+             labels = list(
+                 "title" = "Quality control",
+                 "subtitle" = NULL
+             )) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -47,27 +45,28 @@ NULL
             "totalCounts" =
                 plotTotalCounts(
                     object = object,
-                    assay = assay),
+                    assay = assay
+                ),
             "zerosVsDepth" =
                 plotZerosVsDepth(
                     object = object,
                     assay = assay
                 ) +
-                guides(color = "none"),
+                    guides(color = "none"),
             "rowSums" =
                 plotSums(
                     object = object,
                     assay = assay,
                     MARGIN = 1L
                 ) +
-                theme(legend.position = "none"),
+                    theme(legend.position = "none"),
             "colSums" =
                 plotSums(
                     object = object,
                     assay = assay,
                     MARGIN = 2L
                 ) +
-                theme(legend.position = "none")
+                    theme(legend.position = "none")
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
@@ -90,18 +89,16 @@ formals(`plotQC,SE`)[["legend"]] <-
 
 
 ## Updated 2021-09-13.
-`plotQC,SCE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        geom,
-        legend,
-        labels = list(
-            "title" = "Quality control",
-            "subtitle" = NULL
-        )
-    ) {
+`plotQC,SCE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             geom,
+             legend,
+             labels = list(
+                 "title" = "Quality control",
+                 "subtitle" = NULL
+             )) {
         validObject(object)
         assert(
             identical(assayNames(object)[[1L]], "counts"),
@@ -140,23 +137,23 @@ formals(`plotQC,SE`)[["legend"]] <-
                         object = object,
                         geom = geom
                     ) +
-                    theme(legend.position = "none"),
+                        theme(legend.position = "none"),
                 "countsVsFeatures" =
                     plotCountsVsFeatures(object) +
-                    theme(legend.position = "none"),
+                        theme(legend.position = "none"),
                 "novelty" =
                     plotNovelty(
                         object = object,
                         geom = geom
                     ) +
-                    theme(legend.position = "none"),
+                        theme(legend.position = "none"),
                 "mitoRatio" = tryCatch(
                     expr = {
                         plotMitoRatio(
                             object = object,
                             geom = geom
                         ) +
-                        theme(legend.position = "none")
+                            theme(legend.position = "none")
                     },
                     error = function(e) NULL
                 ),
@@ -166,14 +163,14 @@ formals(`plotQC,SE`)[["legend"]] <-
                         assay = assay,
                         MARGIN = 1L
                     ) +
-                    theme(legend.position = "none"),
+                        theme(legend.position = "none"),
                 "colSums" =
                     plotSums(
                         object = object,
                         assay = assay,
                         MARGIN = 2L
                     ) +
-                    theme(legend.position = "none")
+                        theme(legend.position = "none")
             )
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)

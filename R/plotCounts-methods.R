@@ -3,44 +3,52 @@
 #' @note Updated 2022-03-06.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
+#'
 #' @param genes `character` or `missing`. Gene identifiers. The function will
-#'   automatically match identifiers corresponding to the rownames of the
-#'   object, or gene symbols defined in the object.
+#' automatically match identifiers corresponding to the rownames of the
+#' object, or gene symbols defined in the object.
+#'
 #' @param line `character(1)`.
-#'   Include average (median, mean, or geometric mean) line for each interesting
-#'   group. Disabled by default and if samples are colored by sample name.
+#' Include average (median, mean, or geometric mean) line for each interesting
+#' group. Disabled by default and if samples are colored by sample name.
+#'
 #' @param style `character(1)`.
-#'   Plot style.
+#' Plot style.
+#'
 #' @param sort `logical(1)`.
-#'   Sort the genes alphabetically.
-#'   This setting applies to the gene symbols rather than the gene identifiers
-#'   when `convertGenesToSymbols` is `TRUE`.
+#' Sort the genes alphabetically.
+#' This setting applies to the gene symbols rather than the gene identifiers
+#' when `convertGenesToSymbols` is `TRUE`.
 #'
 #' @param colMin `numeric(1)`.
-#'   Minimum scaled average expression threshold. Everything smaller will be
-#'   set to this.
-#' @param colMax `numeric(1)`.
-#'   Maximum scaled average expression threshold. Everything larger will be set
-#'   to this.
-#' @param dotMin `numeric(1)`.
-#'   The fraction of cells at which to draw the smallest dot. All cell groups
-#'   with less than this expressing the given gene will have no dot drawn.
-#' @param dotScale `numeric(1)`.
-#'   Scale the size of the points, similar to `cex`.
-#' @param geom `character(1)`.
-#'   Plot type. Uses [`match.arg()`][base::match.arg] to pick the type.
-#'   Currently supports `"dots"` and `"violin"`.
-#' @param scale `character(1)`.
-#'   If "area" (default), all violins have the same area (before trimming the
-#'   tails). If "count", areas are scaled proportionally to the number of
-#'   observartions. If "width", all violins have the same maximum width.
-#'   See `ggplot2::geom_violin` for details.
+#' Minimum scaled average expression threshold. Everything smaller will be
+#' set to this.
 #'
-#' @param ... Additional arguments.
+#' @param colMax `numeric(1)`.
+#' Maximum scaled average expression threshold. Everything larger will be set
+#' to this.
+#'
+#' @param dotMin `numeric(1)`.
+#' The fraction of cells at which to draw the smallest dot. All cell groups
+#' with less than this expressing the given gene will have no dot drawn.
+#'
+#' @param dotScale `numeric(1)`.
+#' Scale the size of the points, similar to `cex`.
+#'
+#' @param geom `character(1)`.
+#' Plot type. Uses [`match.arg()`][base::match.arg] to pick the type.
+#' Currently supports `"dots"` and `"violin"`.
+#'
+#' @param scale `character(1)`.
+#' If "area" (default), all violins have the same area (before trimming the
+#' tails). If "count", areas are scaled proportionally to the number of
+#' observartions. If "width", all violins have the same maximum width.
+#' See `ggplot2::geom_violin` for details.
 #'
 #' @return
 #' - `style = "facet"`: `ggplot` grouped by `sampleName`, with
-#'   `ggplot2::facet_wrap()` applied to panel the samples.
+#' `ggplot2::facet_wrap()` applied to panel the samples.
 #' - `style = "wide"`: `ggplot` in wide format, with genes on the x-axis.
 #'
 #' @seealso
@@ -89,18 +97,17 @@ NULL
 #' Improved gene point geom
 #' @note Updated 2019-07-23.
 #' @noRd
-.genePoint <- function(
-    size = 3L,
-    alpha = 1L,
-    ...
-) {
-    geom_point(
-        ...,
-        size = size,
-        alpha = alpha,
-        position = position_jitterdodge(dodge.width = 0.9)
-    )
-}
+.genePoint <-
+    function(size = 3L,
+             alpha = 1L,
+             ...) {
+        geom_point(
+            ...,
+            size = size,
+            alpha = alpha,
+            position = position_jitterdodge(dodge.width = 0.9)
+        )
+    }
 
 
 
@@ -168,29 +175,27 @@ NULL
 ## Useful posts regarding error bars:
 ## - https://stackoverflow.com/a/32091916/3911732
 ## - http://environmentalcomputing.net/
-##       plotting-with-ggplot-bar-plots-with-error-bars/
+## plotting-with-ggplot-bar-plots-with-error-bars/
 ##
 ## Updated 2021-09-10.
-`plotCounts,SE` <-  # nolint
-    function(
-        object,
-        genes,
-        assay = 1L,
-        interestingGroups = NULL,
-        convertGenesToSymbols = TRUE,
-        geom = c("point", "violin", "boxplot", "bar"),
-        trans = c("identity", "log2", "log10"),
-        line = c("none", "median", "mean", "geometricMean"),
-        legend,
-        style = c("facet", "wide"),
-        sort = FALSE,
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL,
-            "sampleAxis" = NULL,
-            "countAxis" = "counts"
-        )
-    ) {
+`plotCounts,SE` <- # nolint
+    function(object,
+             genes,
+             assay = 1L,
+             interestingGroups = NULL,
+             convertGenesToSymbols = TRUE,
+             geom = c("point", "violin", "boxplot", "bar"),
+             trans = c("identity", "log2", "log10"),
+             line = c("none", "median", "mean", "geometricMean"),
+             legend,
+             style = c("facet", "wide"),
+             sort = FALSE,
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL,
+                 "sampleAxis" = NULL,
+                 "countAxis" = "counts"
+             )) {
         validObject(object)
         if (missing(genes)) {
             genes <- rownames(object)
@@ -274,7 +279,7 @@ NULL
         )
         if (
             !identical(line, "none") &&
-            !identical(interestingGroups, "sampleName")
+                !identical(interestingGroups, "sampleName")
         ) {
             alertInfo(sprintf("Line denotes {.fun %s}.", line))
             lineFun <- get(x = line, inherits = TRUE)
@@ -310,16 +315,14 @@ formals(`plotCounts,SE`)[["legend"]] <-
 
 
 ## Updated 2022-03-07.
-`plotCounts,SCE` <-  # nolint
-    function(
-        object,
-        genes,
-        assay = c("logcounts", "normcounts"),
-        geom = c("violin", "dots"),
-        perSample = TRUE,
-        legend,
-        title = NULL
-    ) {
+`plotCounts,SCE` <- # nolint
+    function(object,
+             genes,
+             assay = c("logcounts", "normcounts"),
+             geom = c("violin", "dots"),
+             perSample = TRUE,
+             legend,
+             title = NULL) {
         validObject(object)
         assay <- match.arg(assay)
         geom <- match.arg(geom)
@@ -345,19 +348,17 @@ formals(`plotCounts,SCE`)[["legend"]] <-
 
 
 ## Updated 2022-03-21.
-`plotDots,SCE` <-  # nolint
-    function(
-        object,
-        genes,
-        perSample = TRUE,
-        colMin = -2.5,
-        colMax = 2.5,
-        dotMin = 0L,
-        dotScale = 6L,
-        color,
-        legend,
-        title = NULL
-    ) {
+`plotDots,SCE` <- # nolint
+    function(object,
+             genes,
+             perSample = TRUE,
+             colMin = -2.5,
+             colMax = 2.5,
+             dotMin = 0L,
+             dotScale = 6L,
+             color,
+             legend,
+             title = NULL) {
         validObject(object)
         assert(
             hasClusters(object),
@@ -449,7 +450,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(hasMultipleSamples(object))
+                isTRUE(hasMultipleSamples(object))
         ) {
             p <- p + facet_wrap(facets = vars(!!sym("sampleName")))
         }
@@ -467,17 +468,15 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
 
 
 ## Updated 2019-09-03.
-`plotViolin,SCE` <-  # nolint
-    function(
-        object,
-        genes,
-        assay = c("logcounts", "normcounts"),
-        perSample = TRUE,
-        scale = c("count", "width", "area"),
-        color,
-        legend,
-        title = NULL
-    ) {
+`plotViolin,SCE` <- # nolint
+    function(object,
+             genes,
+             assay = c("logcounts", "normcounts"),
+             perSample = TRUE,
+             scale = c("count", "width", "area"),
+             color,
+             legend,
+             title = NULL) {
         validObject(object)
         assert(
             isCharacter(genes),
@@ -498,13 +497,13 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(hasMultipleSamples(object))
+                isTRUE(hasMultipleSamples(object))
         ) {
             x <- "sampleName"
             interestingGroups <- interestingGroups(object)
             if (
                 is.null(interestingGroups) ||
-                interestingGroups == "ident"
+                    interestingGroups == "ident"
             ) {
                 interestingGroups <- "sampleName"
             }
@@ -541,7 +540,7 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
         ## Handling step for multiple samples, if desired.
         if (
             isTRUE(perSample) &&
-            isTRUE(hasMultipleSamples(object))
+                isTRUE(hasMultipleSamples(object))
         ) {
             p <- p +
                 facet_grid(

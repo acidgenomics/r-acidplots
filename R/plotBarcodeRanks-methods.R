@@ -4,9 +4,11 @@
 #' @note Updated 2022-01-19.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param colors `character(3)`.
-#'   Character vector denoting `fitline`, `inflection`, and `knee` point colors.
-#'   Must pass in color names or hexadecimal values.
+#' Character vector denoting `fitline`, `inflection`, and `knee` point colors.
+#' Must pass in color names or hexadecimal values.
+#'
 #' @param ... Passthrough to [barcodeRanksPerSample()].
 #'
 #' @examples
@@ -22,20 +24,18 @@ NULL
 
 
 ## Updated 2021-08-11.
-`plotBarcodeRanks,SCE` <-  # nolint
-    function(
-        object,
-        colors = c(
-            "fitline" = AcidPlots::lightPalette[["blue"]],
-            "inflection" = AcidPlots::lightPalette[["purple"]],
-            "knee" = AcidPlots::lightPalette[["orange"]]
-        ),
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL
-        ),
-        ...
-    ) {
+`plotBarcodeRanks,SCE` <- # nolint
+    function(object,
+             colors = c(
+                 "fitline" = AcidPlots::lightPalette[["blue"]],
+                 "inflection" = AcidPlots::lightPalette[["purple"]],
+                 "knee" = AcidPlots::lightPalette[["orange"]]
+             ),
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL
+             ),
+             ...) {
         requireNamespaces("DropletUtils")
         validObject(object)
         assert(
@@ -55,7 +55,7 @@ NULL
                 names(ranksPerSample),
                 "sampleName",
                 drop = TRUE
-                ]
+            ]
             sampleNames <- as.character(sampleNames)
         }
         plotlist <- mapply(

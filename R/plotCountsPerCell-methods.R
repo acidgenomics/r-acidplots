@@ -4,10 +4,11 @@
 #' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param point `character(1)`.
-#'   Label either the knee or inflection points per sample.
-#'   Requires `geom = "ecdf"`.
 #' @param ... Additional arguments.
+#'
+#' @param point `character(1)`.
+#' Label either the knee or inflection points per sample.
+#' Requires `geom = "ecdf"`.
 #'
 #' @examples
 #' data(SingleCellExperiment_splatter, package = "AcidTest")
@@ -24,17 +25,15 @@ NULL
 
 
 ## Updated 2022-03-07.
-`plotCountsPerCell,SCE` <-  # nolint
-    function(
-        object,
-        geom,
-        interestingGroups = NULL,
-        min = 0L,
-        max = Inf,
-        point = c("none", "inflection", "knee"),
-        trans = "log10",
-        title = "Counts per cell"
-    ) {
+`plotCountsPerCell,SCE` <- # nolint
+    function(object,
+             geom,
+             interestingGroups = NULL,
+             min = 0L,
+             max = Inf,
+             point = c("none", "inflection", "knee"),
+             trans = "log10",
+             title = "Counts per cell") {
         assert(isString(title, nullOK = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
@@ -132,7 +131,8 @@ NULL
         p
     }
 
-formals(`plotCountsPerCell,SCE`)[["geom"]] <- .formalsList[["geom"]]
+formals(`plotCountsPerCell,SCE`)[["geom"]] <-
+    .formalsList[["geom"]]
 
 
 

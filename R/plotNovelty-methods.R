@@ -17,15 +17,13 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotNovelty,SCE` <-  # nolint
-    function(
-        object,
-        geom,
-        interestingGroups = NULL,
-        min = 0L,
-        trans = "identity",
-        labels
-    ) {
+`plotNovelty,SCE` <- # nolint
+    function(object,
+             geom,
+             interestingGroups = NULL,
+             min = 0L,
+             trans = "identity",
+             labels) {
         assert(isInRightOpenRange(min, lower = 0L, upper = 1L))
         do.call(
             what = .plotQCMetric,
@@ -43,11 +41,11 @@ NULL
         )
     }
 
-f <- formals(`plotNovelty,SCE`)
-f[["geom"]] <- .formalsList[["geom"]]
-f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
-f[["labels"]][["title"]] <- "Novelty"
-formals(`plotNovelty,SCE`) <- f
+.f <- formals(`plotNovelty,SCE`)
+.f[["geom"]] <- .formalsList[["geom"]]
+.f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+.f[["labels"]][["title"]] <- "Novelty"
+formals(`plotNovelty,SCE`) <- .f
 
 
 

@@ -7,8 +7,8 @@
 #' @note Updated 2021-09-03.
 #'
 #' @param xintercept,yintercept `numeric(1)`.
-#'   Value denoting x- or y-axis cutoff.
-#'   Use either `xintercept` or `yintercept`, but not both.
+#' Value denoting x- or y-axis cutoff.
+#' Use either `xintercept` or `yintercept`, but not both.
 #'
 #' @return `Layer`/`ggproto`.
 #'
@@ -20,18 +20,16 @@
 #' ## y-axis line.
 #' geom <- acid_geom_abline(yintercept = 1L)
 #' print(geom)
-acid_geom_abline <-  # nolint
-    function(
-        xintercept = NULL,
-        yintercept = NULL
-    ) {
+acid_geom_abline <- # nolint
+    function(xintercept = NULL,
+             yintercept = NULL) {
         alpha <- 0.75
         color <- "black"
         linetype <- "dashed"
         size <- 1L
         if (
             (is.null(xintercept) && is.null(yintercept)) ||
-            (is.numeric(xintercept) && is.numeric(yintercept))
+                (is.numeric(xintercept) && is.numeric(yintercept))
         ) {
             abort(sprintf(
                 "Either {.arg %s} or {.arg %s} is required.",
@@ -66,12 +64,12 @@ acid_geom_abline <-  # nolint
 #' @note Updated 2021-06-29.
 #'
 #' @param ...
-#'   Additional arguments, passed to `ggplot2::geom_bar()`.
+#' Additional arguments, passed to `ggplot2::geom_bar()`.
 #' @param color `character(1)`.
-#'   Line color.
-#'   Defaults to disabled, using `NA`.
+#' Line color.
+#' Defaults to disabled, using `NA`.
 #' @param stat `character(1)`.
-#'   Statistical transformation to use on the data for this layer.
+#' Statistical transformation to use on the data for this layer.
 #'
 #' @return `Layer`/`ggproto`.
 #'
@@ -82,7 +80,7 @@ acid_geom_abline <-  # nolint
 #' )
 #' p <- ggplot(data = data, mapping = aes(x = !!sym("x"), y = !!sym("y")))
 #' p + acid_geom_bar(fill = "black")
-acid_geom_bar <-  # nolint
+acid_geom_bar <- # nolint
     function(..., color = NA, stat = "identity") {
         geom_bar(..., color = color, stat = stat)
     }
@@ -97,23 +95,21 @@ acid_geom_bar <-  # nolint
 #' @note Updated 2021-06-29.
 #'
 #' @param data `data.frame`.
-#'   Data frame, containing plot data.
+#' Data frame, containing plot data.
 #' @param mapping
-#'   Set of aesthetic mappings created by `ggplot2::aes()`.
+#' Set of aesthetic mappings created by `ggplot2::aes()`.
 #' @param ...
-#'   Additional arguments, passed to `ggplot2::geom_label()`.
+#' Additional arguments, passed to `ggplot2::geom_label()`.
 #'
 #' @return `Layer`/`ggproto`.
 #'
 #' @examples
 #' geom <- acid_geom_label()
 #' print(geom)
-acid_geom_label <-  # nolint
-    function(
-        data = NULL,
-        mapping = NULL,
-        ...
-    ) {
+acid_geom_label <- # nolint
+    function(data = NULL,
+             mapping = NULL,
+             ...) {
         geom_label(
             data = data,
             mapping = mapping,
@@ -142,22 +138,22 @@ acid_geom_label <-  # nolint
 #' @note Updated 2021-06-29.
 #'
 #' @param data `data.frame`.
-#'   Data frame, containing plot data.
+#' Data frame, containing plot data.
 #' @param col `character(1)`.
-#'   Column name.
+#' Column name.
 #' @param fun `character(1)`.
-#'   Function name to use for average calculation.
-#'   Currently supports mean or median.
+#' Function name to use for average calculation.
+#' Currently supports mean or median.
 #' @param digits `integer(1)`.
-#'   Number of significant digits to use.
-#'   Defaults to rounded.
+#' Number of significant digits to use.
+#' Defaults to rounded.
 #' @param ...
-#'   Additional arguments, passed to [acid_geom_label()].
+#' Additional arguments, passed to [acid_geom_label()].
 #'
 #' @return `Layer`/`ggproto`.
 #'
 #' @examples
-#' data = data.frame(
+#' data <- data.frame(
 #'     "sampleName" = rep(c("sample1", "sample2"), times = 4L),
 #'     "counts" = seq_len(8L)
 #' )
@@ -167,14 +163,12 @@ acid_geom_label <-  # nolint
 #'     fun = "mean"
 #' )
 #' print(geom)
-acid_geom_label_average <-  # nolint
-    function(
-        data,
-        col,
-        fun = c("mean", "median"),
-        digits = 0L,
-        ...
-    ) {
+acid_geom_label_average <- # nolint
+    function(data,
+             col,
+             fun = c("mean", "median"),
+             digits = 0L,
+             ...) {
         data <- as.data.frame(data)
         assert(
             isString(col),
@@ -223,29 +217,27 @@ acid_geom_label_average <-  # nolint
 #' @note Updated 2021-07-27.
 #'
 #' @param data `data.frame`.
-#'   Data frame, containing plot data.
+#' Data frame, containing plot data.
 #' @param mapping
-#'   Set of aesthetic mappings created by `ggplot2::aes()`.
+#' Set of aesthetic mappings created by `ggplot2::aes()`.
 #' @param color `character(1)` or `NULL`.
-#'   Text color.
+#' Text color.
 #' @param size `integer(1)`.
-#'   Font size.
+#' Font size.
 #' @param ...
-#'   Additional arguments, passed to `ggrepel::geom_label_repel()`.
+#' Additional arguments, passed to `ggrepel::geom_label_repel()`.
 #'
 #' @return `Layer`/`ggproto`.
 #'
 #' @examples
 #' geom <- acid_geom_label_repel()
 #' print(geom)
-acid_geom_label_repel <-  # nolint
-    function(
-        data = NULL,
-        mapping = NULL,
-        color = NULL,
-        size = 4L,
-        ...
-    ) {
+acid_geom_label_repel <- # nolint
+    function(data = NULL,
+             mapping = NULL,
+             color = NULL,
+             size = 4L,
+             ...) {
         requireNamespaces("ggrepel")
         geom <- ggrepel::geom_label_repel(
             data = data,

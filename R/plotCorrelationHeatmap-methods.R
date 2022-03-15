@@ -4,11 +4,12 @@
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams AcidRoxygen::params
-#' @param method `character(1)`.
-#'   Correlation coefficient (or covariance) method to be computed.
-#'   Defaults to pearson, but spearman or kendall can also be used.
-#'   Refer to `cor()` documentation for details.
 #' @param ... Additional arguments.
+#'
+#' @param method `character(1)`.
+#' Correlation coefficient (or covariance) method to be computed.
+#' Defaults to pearson, but spearman or kendall can also be used.
+#' Refer to `cor()` documentation for details.
 #'
 #' @examples
 #' data(
@@ -29,23 +30,21 @@ NULL
 
 
 ## Updated 2022-03-07.
-`plotCorrelationHeatmap,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        method,
-        clusteringMethod = "ward.D2",
-        showRownames = TRUE,
-        showColnames = TRUE,
-        treeheightRow = 0L,
-        treeheightCol = 50L,
-        color,
-        legendColor,
-        borderColor = NULL,
-        title = TRUE,
-        ...
-    ) {
+`plotCorrelationHeatmap,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             method,
+             clusteringMethod = "ward.D2",
+             showRownames = TRUE,
+             showColnames = TRUE,
+             treeheightRow = 0L,
+             treeheightCol = 50L,
+             color,
+             legendColor,
+             borderColor = NULL,
+             title = TRUE,
+             ...) {
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -153,7 +152,7 @@ formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
 
 
 ## Updated 2020-02-19.
-`plotCorrelationHeatmap,SCE` <-  # nolint
+`plotCorrelationHeatmap,SCE` <- # nolint
     function(object, ...) {
         plotCorrelationHeatmap(
             object = aggregateCellsToSamples(object),

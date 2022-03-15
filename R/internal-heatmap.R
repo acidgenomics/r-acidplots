@@ -2,65 +2,64 @@
 #' @note Updated 2021-02-08.
 #' @return `hclust` object or `FALSE` (not `NULL`) to skip.
 #' @noRd
-.hclust <- function(
-    object,
-    method = "ward.D2",
-    rows = TRUE,
-    cols = TRUE
-) {
-    assert(
-        is.matrix(object),
-        is.numeric(object),
-        isString(method),
-        isFlag(rows),
-        isFlag(cols)
-    )
-    ## Prepare our skeleton return list.
-    out <- list("rows" = FALSE, "cols" = FALSE)
-    if (isTRUE(rows) || isTRUE(cols)) {
-        alert(sprintf(
-            fmt = paste0(
-                "Performing hierarchical clustering with ",
-                "{.fun %s} method {.val %s}."
-            ),
-            "hclust", method
-        ))
-    }
-    if (isTRUE(rows)) {
-        out[["rows"]] <- tryCatch(
-            expr = hclust(
-                d = dist(object),
-                method = method
-            ),
-            error = function(e) {
-                ## nocov start
-                alertWarning(sprintf(
-                    "{.fun %s} row calculation failed.", "hclust"
-                ))
-                FALSE
-                ## nocov end
-            }
+.hclust <-
+    function(object,
+             method = "ward.D2",
+             rows = TRUE,
+             cols = TRUE) {
+        assert(
+            is.matrix(object),
+            is.numeric(object),
+            isString(method),
+            isFlag(rows),
+            isFlag(cols)
         )
+        ## Prepare our skeleton return list.
+        out <- list("rows" = FALSE, "cols" = FALSE)
+        if (isTRUE(rows) || isTRUE(cols)) {
+            alert(sprintf(
+                fmt = paste0(
+                    "Performing hierarchical clustering with ",
+                    "{.fun %s} method {.val %s}."
+                ),
+                "hclust", method
+            ))
+        }
+        if (isTRUE(rows)) {
+            out[["rows"]] <- tryCatch(
+                expr = hclust(
+                    d = dist(object),
+                    method = method
+                ),
+                error = function(e) {
+                    ## nocov start
+                    alertWarning(sprintf(
+                        "{.fun %s} row calculation failed.", "hclust"
+                    ))
+                    FALSE
+                    ## nocov end
+                }
+            )
+        }
+        if (isTRUE(cols)) {
+            out[["cols"]] <- tryCatch(
+                expr = hclust(
+                    ## Note the use of `t()` here.
+                    d = dist(t(object)),
+                    method = method
+                ),
+                error = function(e) {
+                    ## nocov start
+                    alertWarning(sprintf(
+                        "{.fun %s} column calculation failed.", "hclust"
+                    ))
+                    FALSE
+                    ## nocov end
+                }
+            )
+        }
+        out
     }
-    if (isTRUE(cols)) {
-        out[["cols"]] <- tryCatch(
-            expr = hclust(
-                ## Note the use of `t()` here.
-                d = dist(t(object)),
-                method = method
-            ),
-            error = function(e) {
-                ## nocov start
-                alertWarning(sprintf(
-                    "{.fun %s} column calculation failed.", "hclust"
-                ))
-                FALSE
-                ## nocov end
-            }
-        )
-    }
-    out
-}
 
 
 
@@ -79,7 +78,7 @@
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
     if (any(is.na(object))) {
-        alertWarning("NA values detected in matrix.")  # nocov
+        alertWarning("NA values detected in matrix.") # nocov
     }
     if (!identical(scale, "none")) {
         alert(sprintf("Scaling matrix per %s (z-score).", scale))

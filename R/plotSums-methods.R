@@ -20,17 +20,15 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotSums,SE` <-  # nolint
-    function(
-        object,
-        MARGIN,  # nolint
-        assay = 1L,
-        interestingGroups = NULL,
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL
-        )
-    ) {
+`plotSums,SE` <- # nolint
+    function(object,
+             MARGIN, # nolint
+             assay = 1L,
+             interestingGroups = NULL,
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL
+             )) {
         validObject(object)
         assert(
             isInt(MARGIN),
@@ -44,7 +42,7 @@ NULL
             EXPR = as.character(MARGIN),
             "1" = "rowSums",
             "2" = "colSums",
-            stop("Invalid MARGIN.")  # nocov
+            stop("Invalid MARGIN.") # nocov
         )
         ## Get the interestingGroups factor to split object.
         metrics <- metrics(object = object, return = "DataFrame")

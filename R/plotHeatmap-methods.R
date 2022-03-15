@@ -47,44 +47,54 @@
 #' ```
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param scale `character(1)`.
-#'   Whether the values should be centered and scaled in either the row or
-#'   column direction, or remain unscaled.
+#' Whether the values should be centered and scaled in either the row or
+#' column direction, or remain unscaled.
+#'
 #' @param breaks `numeric` or `NULL`.
-#'   A sequence of numbers that covers the range of values in the matrix. Must
-#'   be 1 element longer than the color vector, which is handled internally
-#'   automatically, differing from the behavior in pheatmap.
+#' A sequence of numbers that covers the range of values in the matrix. Must
+#' be 1 element longer than the color vector, which is handled internally
+#' automatically, differing from the behavior in pheatmap.
+#'
 #' @param clusteringMethod `character(1)`.
-#'   Clustering method. Accepts the same values as `hclust()`.
+#' Clustering method. Accepts the same values as `hclust()`.
+#'
 #' @param clusterRows,clusterCols `logical(1)`.
-#'   Arrange with hierarchical clustering.
+#' Arrange with hierarchical clustering.
+#'
 #' @param color `function`, `character`, or `NULL`.
-#'   Hexadecimal color function or values to use for plot.
+#' Hexadecimal color function or values to use for plot.
 #'
-#'   We generally recommend these hexadecimal functions from the viridis
-#'   package, in addition to our `synesthesia()` palette:
+#' We generally recommend these hexadecimal functions from the viridis
+#' package, in addition to our `synesthesia()` palette:
 #'
-#'   - `viridis::viridis()`.
-#'   - `viridis::inferno()`.
-#'   - `viridis::magma()`.
-#'   - `viridis::plasma()`.
+#' - `viridis::viridis()`.
+#' - `viridis::inferno()`.
+#' - `viridis::magma()`.
+#' - `viridis::plasma()`.
 #'
-#'   Alternatively, colors can be defined manually using hexadecimal values
-#'   (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
-#'   Refer to the RColorBrewer package for hexadecimal color palettes that may
-#'   be suitable. If set `NULL`, will use the default pheatmap colors.
+#' Alternatively, colors can be defined manually using hexadecimal values
+#' (e.g. `c("#FF0000", "#0000FF")`), but this is not generally recommended.
+#' Refer to the RColorBrewer package for hexadecimal color palettes that may
+#' be suitable. If set `NULL`, will use the default pheatmap colors.
+#'
 #' @param legendBreaks `numeric` or `NULL`.
-#'   Numeric vector of breakpoints for the color legend.
+#' Numeric vector of breakpoints for the color legend.
+#'
 #' @param legendColor `function` or `NULL`.
-#'   Hexadecimal color function to use for legend labels. Note that hexadecimal
-#'   values are not supported. If set `NULL`, will use the default pheatmap
-#'   colors.
+#' Hexadecimal color function to use for legend labels. Note that hexadecimal
+#' values are not supported. If set `NULL`, will use the default pheatmap
+#' colors.
+#'
 #' @param showRownames,showColnames `logical(1)`.
-#'   Show row or column names.
+#' Show row or column names.
+#'
 #' @param treeheightRow,treeheightCol `integer(1)`.
-#'   Size of the row and column dendrograms. Use `0` to disable.
+#' Size of the row and column dendrograms. Use `0` to disable.
+#'
 #' @param ... Passthrough arguments to `pheatmap()`.
-#'   The argument names must be formatted in camel case, not snake case.
+#' The argument names must be formatted in camel case, not snake case.
 #'
 #' @seealso
 #' - `pheatmap::pheatmap()`.
@@ -137,31 +147,29 @@ NULL
 
 
 ## Updated 2021-05-17.
-`plotHeatmap,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        scale = c("row", "column", "none"),
-        clusteringMethod = "ward.D2",
-        clusterRows = TRUE,
-        clusterCols = TRUE,
-        showRownames = isTRUE(nrow(object) <= 30L),
-        showColnames = TRUE,
-        ## Set to `0L` to disable.
-        treeheightRow = 50L,
-        ## Set to `0L` to disable.
-        treeheightCol = 50L,
-        color,
-        legendColor,
-        breaks = seq(from = -3L, to = 3L, by = 0.25),
-        legendBreaks = seq(from = -3L, to = 3L, by = 1L),
-        borderColor = NULL,
-        title = NULL,
-        ## Attept to map genes to symbols automatically only when shown.
-        convertGenesToSymbols = showRownames,
-        ...
-    ) {
+`plotHeatmap,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             scale = c("row", "column", "none"),
+             clusteringMethod = "ward.D2",
+             clusterRows = TRUE,
+             clusterCols = TRUE,
+             showRownames = isTRUE(nrow(object) <= 30L),
+             showColnames = TRUE,
+             ## Set to `0L` to disable.
+             treeheightRow = 50L,
+             ## Set to `0L` to disable.
+             treeheightCol = 50L,
+             color,
+             legendColor,
+             breaks = seq(from = -3L, to = 3L, by = 0.25),
+             legendBreaks = seq(from = -3L, to = 3L, by = 1L),
+             borderColor = NULL,
+             title = NULL,
+             ## Attept to map genes to symbols automatically only when shown.
+             convertGenesToSymbols = showRownames,
+             ...) {
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -301,7 +309,7 @@ formals(`plotHeatmap,SE`)[c("color", "legendColor")] <-
 
 
 ## Updated 2020-02-19.
-`plotHeatmap,SCE` <-  # nolint
+`plotHeatmap,SCE` <- # nolint
     function(object, ...) {
         plotHeatmap(
             object = aggregateCellsToSamples(object),

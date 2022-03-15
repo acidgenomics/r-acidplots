@@ -17,19 +17,17 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotCountsVsFeatures,SCE` <-  # nolint
-    function(
-        object,
-        interestingGroups = NULL,
-        trendline = FALSE,
-        trans = "log2",
-        labels = list(
-            "title" = "Counts vs. features",
-            "subtitle" = NULL,
-            "x" = "counts",
-            "y" = "features"
-        )
-    ) {
+`plotCountsVsFeatures,SCE` <- # nolint
+    function(object,
+             interestingGroups = NULL,
+             trendline = FALSE,
+             trans = "log2",
+             labels = list(
+                 "title" = "Counts vs. features",
+                 "subtitle" = NULL,
+                 "x" = "counts",
+                 "y" = "features"
+             )) {
         do.call(
             what = .plotQCScatterplot,
             args = list(

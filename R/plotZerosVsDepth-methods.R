@@ -24,20 +24,18 @@ NULL
 
 
 ## Updated 2022-03-07.
-`plotZerosVsDepth,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        pointAlpha,
-        pointSize,
-        labels = list(
-            "title" = "Zeros vs. depth",
-            "subtitle" = NULL,
-            "x" = "library size (depth)",
-            "y" = "dropout rate"
-        )
-    ) {
+`plotZerosVsDepth,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             pointAlpha,
+             pointSize,
+             labels = list(
+                 "title" = "Zeros vs. depth",
+                 "subtitle" = NULL,
+                 "x" = "library size (depth)",
+                 "y" = "dropout rate"
+             )) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -81,14 +79,13 @@ NULL
         p
     }
 
-formals(`plotZerosVsDepth,SE`)[
-    c(
-        "pointAlpha",
-        "pointSize"
-    )] <- .formalsList[c(
-        "pointAlpha",
-        "pointSize2"
-    )]
+formals(`plotZerosVsDepth,SE`)[c(
+    "pointAlpha",
+    "pointSize"
+)] <- .formalsList[c(
+    "pointAlpha",
+    "pointSize2"
+)]
 
 
 
