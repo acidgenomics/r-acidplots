@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @param n `integer(1)`.
-#'   Desired number of breaks.
+#' Desired number of breaks.
 #'
 #' @return `function`.
 #'
@@ -13,11 +13,11 @@
 #' - `scales::log_breaks()`.
 #' - `scales::trans_breaks()`.
 #' - Adapted from a Stack Overflow post:
-#'   https://stackoverflow.com/questions/14255533
+#' https://stackoverflow.com/questions/14255533
 #'
 #' @examples
 #' acid_pretty_breaks()
-acid_pretty_breaks <-  # nolint
+acid_pretty_breaks <- # nolint
     function(n = 5L) {
         function(x) {
             axisTicks(

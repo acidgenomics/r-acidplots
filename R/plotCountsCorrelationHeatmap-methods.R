@@ -3,9 +3,11 @@
 #' @note Updated 2022-03-07.
 #'
 #' @inheritParams AcidRoxygen::params
+#'
 #' @param method `character(1)`.
-#'   Correlation method.
-#'   Refer to `stats::cor()` for details.
+#' Correlation method.
+#' Refer to `stats::cor()` for details.
+#'
 #' @param ... Passthrough arguments to `plotHeatmap()`.
 #'
 #' @examples
@@ -20,15 +22,13 @@ NULL
 
 
 ## Updated 2019-07-23.
-`plotCountsCorrelationHeatmap,matrix` <-  # nolint
-    function(
-        x,
-        y,
-        i = NULL,
-        j = NULL,
-        method = "pearson",
-        ...
-    ) {
+`plotCountsCorrelationHeatmap,matrix` <- # nolint
+    function(x,
+             y,
+             i = NULL,
+             j = NULL,
+             method = "pearson",
+             ...) {
         validObject(x)
         validObject(y)
         assert(

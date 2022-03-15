@@ -24,20 +24,18 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotTotalCounts,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        perMillion = FALSE,
-        labels = list(
-            "title" = "Total counts",
-            "subtitle" = NULL,
-            "x" = NULL,
-            "y" = "counts"
-        ),
-        flip
-    ) {
+`plotTotalCounts,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             perMillion = FALSE,
+             labels = list(
+                 "title" = "Total counts",
+                 "subtitle" = NULL,
+                 "x" = NULL,
+                 "y" = "counts"
+             ),
+             flip) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -91,7 +89,7 @@ formals(`plotTotalCounts,SE`)[["flip"]] <-
 
 
 ## Updated 2019-09-15.
-`plotTotalCounts,SCE` <-  # nolint
+`plotTotalCounts,SCE` <- # nolint
     function(object, ...) {
         plotTotalCounts(
             object = aggregateCellsToSamples(object),
@@ -102,8 +100,8 @@ formals(`plotTotalCounts,SE`)[["flip"]] <-
 
 
 #' @describeIn plotTotalCounts Applies `aggregateCellsToSamples()` calculation
-#'   to summarize at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' to summarize at sample level prior to plotting.\cr
+#' Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotTotalCounts",

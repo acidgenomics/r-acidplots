@@ -17,18 +17,16 @@ NULL
 
 
 ## Updated 2022-03-07.
-`plotCellCounts,SCE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        labels = list(
-            "title" = "Cell counts",
-            "subtitle" = NULL,
-            "x" = NULL,
-            "y" = "cells"
-        )
-    ) {
+`plotCellCounts,SCE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             labels = list(
+                 "title" = "Cell counts",
+                 "subtitle" = NULL,
+                 "x" = NULL,
+                 "y" = "cells"
+             )) {
         validObject(object)
         assert(hasMultipleSamples(object))
         labels <- matchLabels(labels)

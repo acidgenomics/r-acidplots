@@ -3,9 +3,10 @@
 #' @note Updated 2021-03-03.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param features `character`. Features to plot (e.g. gene expression, PC
-#'   scores, number of genes detected).
 #' @param ... Additional arguments.
+#'
+#' @param features `character`. Features to plot (e.g. gene expression, PC
+#' scores, number of genes detected).
 #'
 #' @seealso
 #' - `Seurat::FeaturePlot()`.
@@ -27,20 +28,18 @@ NULL
 
 
 ## Updated 2022-03-07.
-`plotFeature,SCE` <-  # nolint
-    function(
-        object,
-        features,
-        reduction,
-        color,
-        pointSize,
-        pointAlpha,
-        pointsAsNumbers,
-        label,
-        labelSize,
-        dark,
-        legend
-    ) {
+`plotFeature,SCE` <- # nolint
+    function(object,
+             features,
+             reduction,
+             color,
+             pointSize,
+             pointAlpha,
+             pointsAsNumbers,
+             label,
+             labelSize,
+             dark,
+             legend) {
         assert(
             isCharacter(features),
             isScalar(reduction),
@@ -198,31 +197,29 @@ args <- c(
     "pointsAsNumbers",
     "reduction"
 )
-formals(`plotFeature,SCE`)[
-    c(
-        "color",
-        "dark",
-        "expression",
-        "label",
-        "labelSize",
-        "legend",
-        "pointAlpha",
-        "pointSize",
-        "pointsAsNumbers",
-        "reduction"
-    )] <-
-    .formalsList[c(
-        "continuousColor",
-        "dark",
-        "expression",
-        "label",
-        "labelSize",
-        "legend",
-        "pointAlpha",
-        "pointSize2",
-        "pointsAsNumbers",
-        "reduction"
-    )]
+formals(`plotFeature,SCE`)[c(
+    "color",
+    "dark",
+    "expression",
+    "label",
+    "labelSize",
+    "legend",
+    "pointAlpha",
+    "pointSize",
+    "pointsAsNumbers",
+    "reduction"
+)] <- .formalsList[c(
+    "continuousColor",
+    "dark",
+    "expression",
+    "label",
+    "labelSize",
+    "legend",
+    "pointAlpha",
+    "pointSize2",
+    "pointsAsNumbers",
+    "reduction"
+)]
 
 
 

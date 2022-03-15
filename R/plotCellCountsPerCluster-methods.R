@@ -18,11 +18,9 @@ NULL
 
 
 ## Updated 2022-03-05.
-`plotCellCountsPerCluster,SCE` <-  # nolint
-    function(
-        object,
-        interestingGroups = NULL
-    ) {
+`plotCellCountsPerCluster,SCE` <- # nolint
+    function(object,
+             interestingGroups = NULL) {
         validObject(object)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

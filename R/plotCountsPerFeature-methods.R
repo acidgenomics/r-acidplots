@@ -4,9 +4,10 @@
 #'
 #' @inheritParams AcidExperiment::melt
 #' @inheritParams AcidRoxygen::params
-#' @param geom `character(1)`.
-#'   Type of ggplot2 geometric object to use.
 #' @param ... Additional arguments.
+#'
+#' @param geom `character(1)`.
+#' Type of ggplot2 geometric object to use.
 #'
 #' @examples
 #' data(
@@ -28,21 +29,19 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotCountsPerFeature,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        geom = c("boxplot", "density", "jitter"),
-        trans = c("identity", "log2", "log10"),
-        labels = list(
-            "title" = "Counts per feature",
-            "subtitle" = NULL,
-            "sampleAxis" = NULL,
-            "countAxis" = "counts"
-        ),
-        flip
-    ) {
+`plotCountsPerFeature,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             geom = c("boxplot", "density", "jitter"),
+             trans = c("identity", "log2", "log10"),
+             labels = list(
+                 "title" = "Counts per feature",
+                 "subtitle" = NULL,
+                 "sampleAxis" = NULL,
+                 "countAxis" = "counts"
+             ),
+             flip) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -61,7 +60,7 @@ NULL
         ## Add automatic subtitle, including feature count.
         if (
             isString(labels[["title"]]) &&
-            is.null(labels[["subtitle"]])
+                is.null(labels[["subtitle"]])
         ) {
             labels[["subtitle"]] <- paste("n", "=", nrow(object), "(non-zero)")
         }
@@ -129,8 +128,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerFeature,SE`)[
-    c("flip", "minMethod")] <-
+formals(`plotCountsPerFeature,SE`)[c("flip", "minMethod")] <-
     list(
         "flip" = .formalsList[["flip"]],
         "minMethod" = methodFormals(
@@ -143,7 +141,7 @@ formals(`plotCountsPerFeature,SE`)[
 
 
 ## Updated 2019-07-23.
-`plotCountsPerFeature,SCE` <-  # nolint
+`plotCountsPerFeature,SCE` <- # nolint
     function(object, ...) {
         plotCountsPerFeature(
             object = aggregateCellsToSamples(object),
@@ -154,8 +152,8 @@ formals(`plotCountsPerFeature,SE`)[
 
 
 #' @describeIn plotCountsPerFeature Applies `aggregateCellsToSamples()`
-#'   calculation to summarize at sample level prior to plotting.\cr
-#'   Passes `...` to `SummarizedExperiment` method.
+#' calculation to summarize at sample level prior to plotting.\cr
+#' Passes `...` to `SummarizedExperiment` method.
 #' @export
 setMethod(
     f = "plotCountsPerFeature",

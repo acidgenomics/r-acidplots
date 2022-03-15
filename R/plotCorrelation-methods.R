@@ -10,22 +10,27 @@
 #' [ggpmisc GitHub repo]: https://github.com/aphalo/ggpmisc/
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param xCol,yCol `character(1)` or `integer(1)`.
-#'   X and Y column name or position.
-#' @param labelCol `character(1)` or NULL.
-#'   For `data.frame` method, which column should be used to label points
-#'   on the plot?
-#' @param r2 `logical(1)`.
-#'   Show information on the `lm` fit?
-#'   This includes the equation, and the coefficient of determination (R^2).
-#'   Refer to `ggpmisc::stat_poly_eq` for details.
-#' @param se `logical(1)`.
-#'   Display confidence interval around the `lm` fit line?
-#'   Refer to `ggplot2::geom_smooth` for details.
-#' @param colors `list(3)`.
-#'   Named list defining the colors of `dots`, `line`, and `se`, for confidence
-#'   interval standard error.
 #' @param ... Additional arguments.
+#'
+#' @param xCol,yCol `character(1)` or `integer(1)`.
+#' X and Y column name or position.
+#'
+#' @param labelCol `character(1)` or NULL.
+#' For `data.frame` method, which column should be used to label points
+#' on the plot?
+#'
+#' @param r2 `logical(1)`.
+#' Show information on the `lm` fit?
+#' This includes the equation, and the coefficient of determination (R^2).
+#' Refer to `ggpmisc::stat_poly_eq` for details.
+#'
+#' @param se `logical(1)`.
+#' Display confidence interval around the `lm` fit line?
+#' Refer to `ggplot2::geom_smooth` for details.
+#'
+#' @param colors `list(3)`.
+#' Named list defining the colors of `dots`, `line`, and `se`, for confidence
+#' interval standard error.
 #'
 #' @seealso
 #' - `ggpmisc::stat_poly_eq`.
@@ -47,22 +52,20 @@ NULL
 
 
 ## Updated 2021-05-17.
-`plotCorrelation,matrix` <-  # nolint
-    function(
-        object,
-        xCol,
-        yCol,
-        label = FALSE,
-        labels = NULL,
-        trans = c("log10", "log2", "identity"),
-        r2 = TRUE,
-        se = TRUE,
-        colors = list(
-            "dots" = "black",
-            "line" = "black",
-            "se" = "gray"
-        )
-    ) {
+`plotCorrelation,matrix` <- # nolint
+    function(object,
+             xCol,
+             yCol,
+             label = FALSE,
+             labels = NULL,
+             trans = c("log10", "log2", "identity"),
+             r2 = TRUE,
+             se = TRUE,
+             colors = list(
+                 "dots" = "black",
+                 "line" = "black",
+                 "se" = "gray"
+             )) {
         validObject(object)
         assert(
             hasColnames(object),
@@ -114,25 +117,28 @@ NULL
             )
         }
         if (isTRUE(isLog)) {
-            base <- switch(EXPR = trans, "log2" = 2L, "log10" = 10L)
+            base <- switch(EXPR = trans,
+                "log2" = 2L,
+                "log10" = 10L
+            )
             limits <- list(
                 "x" = c(
-                    base ^ min(floor(log(data[["x"]], base = base))),
-                    base ^ max(ceiling(log(data[["x"]], base = base)))
+                    base^min(floor(log(data[["x"]], base = base))),
+                    base^max(ceiling(log(data[["x"]], base = base)))
                 ),
                 "y" = c(
-                    base ^ min(floor(log(data[["y"]], base = base))),
-                    base ^ max(ceiling(log(data[["y"]], base = base)))
+                    base^min(floor(log(data[["y"]], base = base))),
+                    base^max(ceiling(log(data[["y"]], base = base)))
                 )
             )
             assert(!any(unlist(limits) == 0L))
             breaks <- list(
-                "x" = base ^ seq(
+                "x" = base^seq(
                     from = log(limits[["x"]][[1L]], base = base),
                     to = log(limits[["x"]][[2L]], base = base),
                     by = 1L
                 ),
-                "y" = base ^ seq(
+                "y" = base^seq(
                     from = log(limits[["y"]][[1L]], base = base),
                     to = log(limits[["y"]][[2L]], base = base),
                     by = 1L
@@ -195,13 +201,13 @@ NULL
 
 
 ## Updated 2021-02-09.
-`plotCorrelation,Matrix` <-  # nolint
+`plotCorrelation,Matrix` <- # nolint
     `plotCorrelation,matrix`
 
 
 
 ## Updated 2021-05-17.
-`plotCorrelation,data.frame` <-  # nolint
+`plotCorrelation,data.frame` <- # nolint
     function(object, labelCol = NULL, ...) {
         assert(isString(labelCol, nullOK = TRUE))
         mat <- as.matrix(object)
@@ -221,18 +227,16 @@ NULL
 
 
 ## Updated 2021-02-09.
-`plotCorrelation,DataFrame` <-  # nolint
+`plotCorrelation,DataFrame` <- # nolint
     `plotCorrelation,data.frame`
 
 
 
 ## Updated 2021-08-09.
-`plotCorrelation,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        ...
-    ) {
+`plotCorrelation,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             ...) {
         validObject(object)
         assert(isString(assay) || isInt(assay))
         assay <- assay(x = object, i = assay)

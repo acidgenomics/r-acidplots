@@ -8,9 +8,10 @@
 #' @note Updated 2022-03-07.
 #' @noRd
 .formalsList <- list(
-    "BPPARAM" = quote(  # nolint
-        BiocParallel::bpparam()
-    ),
+    "BPPARAM" = # nolint
+        quote(
+            BiocParallel::bpparam()
+        ),
     "continuousColor" = quote(
         getOption(
             x = "acid.continuous.color",
@@ -130,7 +131,7 @@
             default = FALSE
         )
     ),
-    "reduction" = "UMAP"  # or `1L`.
+    "reduction" = "UMAP" # or `1L`.
 )
 
 
@@ -142,10 +143,10 @@
 #'
 #' @examples
 #' AcidPlotsTestsURL
-AcidPlotsTestsURL <-  # nolint
+AcidPlotsTestsURL <- # nolint
     paste0(
         "https://r.acidgenomics.com/testdata/acidplots/",
-        "v", .pkgVersion$major, ".", .pkgVersion$minor  # nolint
+        "v", .pkgVersion$major, ".", .pkgVersion$minor # nolint
     )
 
 
@@ -263,7 +264,7 @@ NULL
 .palettes[["dark"]] <- .palettes[["macOSDark"]]
 .palettes[["dark"]][["background"]] <- .rgb(0L, 0L, 0L)
 .palettes[["dark"]][["foreground"]] <- .rgb(255L, 255L, 255L)
-.palettes[["dark"]][["gray"]] <- .rgb(26L, 26L, 26L)  ## gray10
+.palettes[["dark"]][["gray"]] <- .rgb(26L, 26L, 26L) ## gray10
 
 
 

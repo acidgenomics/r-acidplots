@@ -6,25 +6,26 @@
 #' S4 wrapper for `ComplexUpset::upset()` with improved default aesthetics.
 #'
 #' @inheritParams AcidRoxygen::params
+#' @param ... Additional arguments.
 #'
 #' @param minSize,maxSize Non-negative `integer(1)` or `Inf`.
-#'   Minimal/maximal number of observations in an intersection for it to be
-#'   included. Defaults to all observations. Note that `maxSize` must be
-#'   greater than `minSize`.
+#' Minimal/maximal number of observations in an intersection for it to be
+#' included. Defaults to all observations. Note that `maxSize` must be
+#' greater than `minSize`.
+#'
 #' @param nIntersections `integer(1)` or `Inf`.
-#'   Maximum number of intersections to plot.
-#'   Set `Inf` to plot all intersections.
+#' Maximum number of intersections to plot.
+#' Set `Inf` to plot all intersections.
+#'
 #' @param orderBySize `logical`.
-#'   Whether to order main bar plot and/or intersection matrix by set size.
+#' Whether to order main bar plot and/or intersection matrix by set size.
 #'
-#'   - `"intersection"`: refers to main intersection bar plot.
-#'   - `"sets"`: refers to set intersection matrix, shown as connected dots.
-#'     When `TRUE`, orders by the set size (see plot to the left).
+#' - `"intersection"`: refers to main intersection bar plot.
+#' - `"sets"`: refers to set intersection matrix, shown as connected dots.
+#' When `TRUE`, orders by the set size (see plot to the left).
 #'
-#'   Can pass in `TRUE`/`FALSE` boolean flag and both `"intersection"` and
-#'   `"sets"` settings will inherit.
-
-#' @param ... Additional arguments.
+#' Can pass in `TRUE`/`FALSE` boolean flag and both `"intersection"` and
+#' `"sets"` settings will inherit.
 #'
 #' @seealso
 #' - `intersectionMatrix()`.
@@ -61,21 +62,19 @@ NULL
 
 
 ## Updated 2022-03-05.
-`plotUpset,matrix` <-  # nolint
-    function(
-        object,
-        minSize = 0L,
-        maxSize = Inf,
-        nIntersections = 40L,
-        orderBySize = c(
-            "intersections" = TRUE,
-            "sets" = TRUE
-        ),
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL
-        )
-    ) {
+`plotUpset,matrix` <- # nolint
+    function(object,
+             minSize = 0L,
+             maxSize = Inf,
+             nIntersections = 40L,
+             orderBySize = c(
+                 "intersections" = TRUE,
+                 "sets" = TRUE
+             ),
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL
+             )) {
         whatPkg <- "ComplexUpset"
         whatFun <- "upset"
         requireNamespaces(whatPkg)
@@ -152,7 +151,7 @@ NULL
 
 
 ## Updated 2021-09-08.
-`plotUpset,data.frame` <-  # nolint
+`plotUpset,data.frame` <- # nolint
     function(object, ...) {
         keep <- bapply(
             X = object,
@@ -172,7 +171,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`plotUpset,DataFrame` <-  # nolint
+`plotUpset,DataFrame` <- # nolint
     `plotUpset,data.frame`
 
 

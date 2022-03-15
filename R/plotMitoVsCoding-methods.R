@@ -28,19 +28,17 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotMitoVsCoding,SCE` <-  # nolint
-    function(
-        object,
-        interestingGroups = NULL,
-        trendline = FALSE,
-        trans = "log2",
-        labels = list(
-            "title" = "Mito vs. coding",
-            "subtitle" = NULL,
-            "x" = "coding",
-            "y" = "mito"
-        )
-    ) {
+`plotMitoVsCoding,SCE` <- # nolint
+    function(object,
+             interestingGroups = NULL,
+             trendline = FALSE,
+             trans = "log2",
+             labels = list(
+                 "title" = "Mito vs. coding",
+                 "subtitle" = NULL,
+                 "x" = "coding",
+                 "y" = "mito"
+             )) {
         do.call(
             what = .plotQCScatterplot,
             args = list(

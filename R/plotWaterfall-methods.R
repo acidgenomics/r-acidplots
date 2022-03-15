@@ -5,13 +5,16 @@
 #' @note Updated 2021-09-10.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param fill `character(1)`.
-#'   R color name or hex color code (e.g. `"#AF52DE"`).
-#' @param sampleCol `character(1)`.
-#'   Column name of discrete samples to plot on X axis.
-#' @param valueCol `character(1)`.
-#'   Column name of continues values to plot on Y axis.
 #' @param ... Additional arguments.
+#'
+#' @param fill `character(1)`.
+#' R color name or hex color code (e.g. `"#AF52DE"`).
+#'
+#' @param sampleCol `character(1)`.
+#' Column name of discrete samples to plot on X axis.
+#'
+#' @param valueCol `character(1)`.
+#' Column name of continues values to plot on Y axis.
 #'
 #' @seealso
 #' - [Ordering bars from lowest to highest value in each facet](https://stackoverflow.com/questions/43176546)
@@ -57,19 +60,17 @@ NULL
 
 
 ## Updated 2021-02-09.
-`plotWaterfall,data.frame` <-  # nolint
-    function(
-        object,
-        sampleCol,
-        valueCol,
-        interestingGroups = NULL,
-        trans = c("identity", "log2", "log10"),
-        fill = purpleOrange(1L),
-        labels = list(
-            "title" = NULL,
-            "subtitle" = NULL
-        )
-    ) {
+`plotWaterfall,data.frame` <- # nolint
+    function(object,
+             sampleCol,
+             valueCol,
+             interestingGroups = NULL,
+             trans = c("identity", "log2", "log10"),
+             fill = purpleOrange(1L),
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL
+             )) {
         validObject(object)
         object <- as.data.frame(object)
         assert(
@@ -185,20 +186,18 @@ NULL
 
 
 ## Updated 2021-10-13.
-`plotWaterfall,DataFrame` <-  # nolint
+`plotWaterfall,DataFrame` <- # nolint
     `plotWaterfall,data.frame`
 
 
 
 ## Updated 2021-02-09.
-`plotWaterfall,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        fun = c("mean", "sum"),
-        interestingGroups = NULL,
-        ...
-    ) {
+`plotWaterfall,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             fun = c("mean", "sum"),
+             interestingGroups = NULL,
+             ...) {
         validObject(object)
         fun <- switch(
             EXPR = match.arg(fun),

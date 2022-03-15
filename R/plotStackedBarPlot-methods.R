@@ -3,9 +3,10 @@
 #' @note Updated 2022-03-05.
 #'
 #' @inheritParams AcidRoxygen::params
-#' @param absolute `logical(1)`.
-#'   Return absolute (`TRUE`) or relative/proportional (`FALSE`) cell count.
 #' @param ... Additional arguments.
+#'
+#' @param absolute `logical(1)`.
+#' Return absolute (`TRUE`) or relative/proportional (`FALSE`) cell count.
 #'
 #' @examples
 #' data(SingleCellExperiment_Seurat, package = "AcidTest")
@@ -18,13 +19,11 @@ NULL
 
 
 ## Updated 2022-03-05.
-`plotStackedBarPlot,SCE` <-  # nolint
-    function(
-        object,
-        absolute = FALSE,
-        interestingGroups = NULL,
-        labels = NULL
-    ) {
+`plotStackedBarPlot,SCE` <- # nolint
+    function(object,
+             absolute = FALSE,
+             interestingGroups = NULL,
+             labels = NULL) {
         validObject(object)
         assert(isFlag(absolute))
         labels <- matchLabels(labels)

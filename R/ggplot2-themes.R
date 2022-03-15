@@ -16,29 +16,35 @@
 #' @note Updated 2019-09-13.
 #'
 #' @param base_size `numeric(1)`.
-#'   Base font size.
+#' Base font size.
+#'
 #' @param base_family `character(1)`.
-#'   Base font family.
+#' Base font family.
+#'
 #' @param face `character(1)`.
-#'   Font face (`"bold"`, `"plain"`).
+#' Font face (`"bold"`, `"plain"`).
+#'
 #' @param aspect_ratio `numeric(1)`.
-#'   Aspect ratio, specifying the plot proportions. Use `1` for a perfectly
-#'   square plot (including the axis labels).
+#' Aspect ratio, specifying the plot proportions. Use `1` for a perfectly
+#' square plot (including the axis labels).
+#'
 #' @param legend_position `character(1)`.
-#'   Legend key position. We're being a little more restrictive here, only
-#'   allowing `"bottom"`, `"right"`, or `"none"`. Including the legend at the
-#'   top or the left side of the plot rarely makes sense and is discouraged.
+#' Legend key position. We're being a little more restrictive here, only
+#' allowing `"bottom"`, `"right"`, or `"none"`. Including the legend at the
+#' top or the left side of the plot rarely makes sense and is discouraged.
+#'
 #' @param grid `logical(1)`.
-#'   Label the major panel grids.
+#' Label the major panel grids.
+#'
 #' @param minimal `logical(1)`.
-#'   Remove all axis lines, axis ticks, and panel borders.
+#' Remove all axis lines, axis ticks, and panel borders.
 #'
 #' @return `theme`.
 #'
 #' @seealso
 #' - `ggplot2::theme()`.
 #' - https://cran.r-project.org/web/packages/ggplot2/vignettes/
-#'       extending-ggplot2.html
+#' extending-ggplot2.html
 #'
 #' @examples
 #' library(ggplot2)
@@ -66,19 +72,17 @@ NULL
 
 
 #' @describeIn themes Light theme that has a white background and black text.\cr
-#'   Optimized for print and recommended for scientific manuscripts.\cr
-#'   See `lightPalette` for color values.
+#' Optimized for print and recommended for scientific manuscripts.\cr
+#' See `lightPalette` for color values.
 #' @export
-acid_theme_light <-  # nolint
-    function(
-        base_size = 14L,
-        base_family = "",
-        face = c("bold", "plain"),
-        aspect_ratio = NULL,
-        legend_position = c("right", "bottom", "top", "none"),
-        grid = FALSE,
-        minimal = FALSE
-    ) {
+acid_theme_light <- # nolint
+    function(base_size = 14L,
+             base_family = "",
+             face = c("bold", "plain"),
+             aspect_ratio = NULL,
+             legend_position = c("right", "bottom", "top", "none"),
+             grid = FALSE,
+             minimal = FALSE) {
         palette <- lightPalette
         ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = FALSE)
@@ -145,12 +149,12 @@ acid_theme_light <-  # nolint
 
 
 #' @describeIn themes Dark theme that has a black background and white text.\cr
-#'   Inspired by `Seurat::DarkTheme()`, with some color modifications.\cr
-#'   Useful for visualizing many points with a high dynamic color range, such
-#'   dimension reduction plots.\cr
-#'   See `darkPalette` for color values.
+#' Inspired by `Seurat::DarkTheme()`, with some color modifications.\cr
+#' Useful for visualizing many points with a high dynamic color range, such
+#' dimension reduction plots.\cr
+#' See `darkPalette` for color values.
 #' @export
-acid_theme_dark <-  # nolint
+acid_theme_dark <- # nolint
     function() {
         palette <- darkPalette
         ## Set dark mode global variable that we can access inside functions.
@@ -219,7 +223,7 @@ formals(acid_theme_dark) <- formals(acid_theme_light)
 
 
 #' @describeIn themes Dark theme that uses Dracula color palette.\cr
-#'   See `draculaPalette` for color values.
+#' See `draculaPalette` for color values.
 #' @export
 acid_theme_dracula <- acid_theme_dark
 ## Change the first line of function body to import dracula palette.

@@ -30,17 +30,15 @@ NULL
 
 
 ## Updated 2020-02-21.
-`plotCellTypesPerCluster,SCE,KnownMarkers` <-  # nolint
-    function(
-        object,
-        markers,
-        min = 1L,
-        max = Inf,
-        reduction,
-        expression,
-        headerLevel = 2L,
-        ...
-    ) {
+`plotCellTypesPerCluster,SCE,KnownMarkers` <- # nolint
+    function(object,
+             markers,
+             min = 1L,
+             max = Inf,
+             reduction,
+             expression,
+             headerLevel = 2L,
+             ...) {
         ## Passthrough: color, dark.
         validObject(object)
         validObject(markers)
@@ -84,8 +82,7 @@ NULL
                         ## Modify the title by adding the cluster number.
                         title <- paste(paste0("Cluster ", cluster, ":"), title)
                         cellData <- clusterData[
-                            clusterData[["cellType"]] == cellType,
-                            ,
+                            clusterData[["cellType"]] == cellType, ,
                             drop = FALSE
                         ]
                         assert(identical(nrow(cellData), 1L))
@@ -111,16 +108,15 @@ NULL
         invisible(return)
     }
 
-formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[
-    c(
-        "BPPARAM",
-        "expression",
-        "reduction"
-    )] <- .formalsList[c(
-        "BPPARAM",
-        "expression",
-        "reduction"
-    )]
+formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[c(
+    "BPPARAM",
+    "expression",
+    "reduction"
+)] <- .formalsList[c(
+    "BPPARAM",
+    "expression",
+    "reduction"
+)]
 
 
 

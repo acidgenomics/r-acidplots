@@ -4,11 +4,13 @@
 #'
 #' @inheritParams plotHeatmap
 #' @inheritParams AcidRoxygen::params
-#' @param legend `logical(1)`.
-#'   Show the color legend.
-#' @param n `integer(1)`.
-#'   The number of quantile breaks to create.
 #' @param ... Additional arguments.
+#'
+#' @param legend `logical(1)`.
+#' Show the color legend.
+#'
+#' @param n `integer(1)`.
+#' The number of quantile breaks to create.
 #'
 #' @examples
 #' data(
@@ -42,27 +44,25 @@ NULL
 
 
 ## Updated 2021-02-08.
-`plotQuantileHeatmap,SE` <-  # nolint
-    function(
-        object,
-        assay = 1L,
-        interestingGroups = NULL,
-        n = 10L,
-        clusterRows = TRUE,
-        clusterCols = TRUE,
-        showRownames = isTRUE(nrow(object) <= 30L),
-        showColnames = TRUE,
-        treeheightRow = 50L,
-        treeheightCol = 50L,
-        color,
-        legendColor,
-        legend = FALSE,
-        borderColor = NULL,
-        title = NULL,
-        ## Attept to map genes to symbols automatically only when shown.
-        convertGenesToSymbols = showRownames,
-        ...
-    ) {
+`plotQuantileHeatmap,SE` <- # nolint
+    function(object,
+             assay = 1L,
+             interestingGroups = NULL,
+             n = 10L,
+             clusterRows = TRUE,
+             clusterCols = TRUE,
+             showRownames = isTRUE(nrow(object) <= 30L),
+             showColnames = TRUE,
+             treeheightRow = 50L,
+             treeheightCol = 50L,
+             color,
+             legendColor,
+             legend = FALSE,
+             borderColor = NULL,
+             title = NULL,
+             ## Attept to map genes to symbols automatically only when shown.
+             convertGenesToSymbols = showRownames,
+             ...) {
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -173,7 +173,7 @@ formals(`plotQuantileHeatmap,SE`)[c("color", "legendColor")] <-
 
 
 ## Updated 2020-02-19.
-`plotQuantileHeatmap,SCE` <-  # nolint
+`plotQuantileHeatmap,SCE` <- # nolint
     function(object, ...) {
         plotQuantileHeatmap(
             object = aggregateCellsToSamples(object),
