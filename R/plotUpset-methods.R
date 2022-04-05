@@ -1,6 +1,10 @@
+## FIXME Is there a way to hide "Intersection size" text in the plot?
+
+
+
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
-#' @note Updated 2022-03-05.
+#' @note Updated 2022-04-05.
 #'
 #' @details
 #' S4 wrapper for `ComplexUpset::upset()` with improved default aesthetics.
@@ -61,7 +65,7 @@ NULL
 
 
 
-## Updated 2022-03-05.
+## Updated 2022-04-05.
 `plotUpset,matrix` <- # nolint
     function(object,
              minSize = 0L,
@@ -108,7 +112,7 @@ NULL
             "base_annotations" = list(
                 "Intersection size" =
                     ComplexUpset::intersection_size(
-                        counts = TRUE,
+                        counts = FALSE,
                         color = NA,
                         fill = "black"
                     )
