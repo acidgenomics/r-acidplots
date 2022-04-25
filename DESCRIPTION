@@ -2,7 +2,7 @@ Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
 Version: 0.4.1.9000
-Date: 2022-04-05
+Date: 2022-04-25
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -20,16 +20,16 @@ URL:
 BugReports: https://github.com/acidgenomics/r-acidplots/issues/
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 4.1)
+Depends: R (>= 4.2)
 Imports:
     AcidBase (>= 0.5.0),
     AcidCLI (>= 0.2.0),
-    AcidExperiment (>= 0.3.0),
-    AcidGenerics (>= 0.6.0),
-    AcidGenomes (>= 0.3.0),
+    AcidExperiment (>= 0.3.1),
+    AcidGenerics (>= 0.6.1),
+    AcidGenomes (>= 0.3.1),
     AcidMarkdown (>= 0.1.5),
     AcidPlyr (>= 0.2.0),
-    AcidSingleCell (>= 0.2.0),
+    AcidSingleCell (>= 0.2.1),
     Biobase,
     BiocGenerics,
     IRanges,
