@@ -1,4 +1,4 @@
-## FIXME Is there a way to hide "Intersection size" text in the plot?
+## NOTE Is there a way to hide "Intersection size" text in the plot?
 
 
 
