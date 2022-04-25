@@ -179,7 +179,7 @@ acid_geom_label_average <- # nolint
         fun <- get(fun)
         assert(is.function(fun))
         aggdata <- aggregate(
-            formula = as.formula(paste(col, "sampleName", sep = " ~ ")),
+            x = as.formula(paste(col, "sampleName", sep = " ~ ")),
             data = data,
             FUN = fun
         )
