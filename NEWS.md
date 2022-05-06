@@ -1,3 +1,14 @@
+# AcidPlots 0.5.0 (2022-05-06)
+
+## Major changes
+
+- Starting a new release series that provides compatibility with R 4.2
+  and Bioconductor 3.15.
+
+## Minor changes
+
+- Removed internal dependencies on tibble (e.g. `as_tibble` coercion).
+
 # AcidPlots 0.4.0 (2022-03-11)
 
 ## Major changes
