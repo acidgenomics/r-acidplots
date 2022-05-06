@@ -37,7 +37,7 @@ NULL
 #' reducedDimNames<- reducedDims
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #' colData rowData
-#' @importFrom methods coerce show
+#' @importFrom methods show
 #'
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
@@ -49,15 +49,8 @@ NULL
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
 #' barcodeRanksPerSample cell2sample cellCountsPerCluster cellTypesPerCluster
 #' melt metrics sampleData zerosVsDepth
-#' @importMethodsFrom pipette coerce decode
+#' @importMethodsFrom pipette decode
 #' @importMethodsFrom syntactic camelCase makeLabel makeTitle snakeCase
-NULL
-
-
-
-## S3 generics =================================================================
-
-#' @importFrom pipette as_tibble
 NULL
 
 
@@ -94,7 +87,6 @@ NULL
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject
-#' @importFrom pipette tibble
 #' @importFrom rlang !! quo quo_text sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust median prcomp reorder

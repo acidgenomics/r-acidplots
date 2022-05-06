@@ -90,9 +90,8 @@ NULL
         ## Sanitize the biotype column to appear nicer in plots.
         data[[biotypeCol]] <- gsub("_", " ", data[[biotypeCol]])
         ## Plot.
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = str_replace_na(!!sym("interestingGroups")),
                 y = !!sym("value")

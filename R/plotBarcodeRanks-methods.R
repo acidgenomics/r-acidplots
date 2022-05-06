@@ -60,11 +60,10 @@ NULL
         }
         plotlist <- mapply(
             sampleName = sampleNames,
-            ranks = ranksPerSample,
-            FUN = function(sampleName, ranks) {
-                data <- as_tibble(ranks, rownames = NULL)
-                inflection <- metadata(ranks)[["inflection"]]
-                knee <- metadata(ranks)[["knee"]]
+            data = ranksPerSample,
+            FUN = function(sampleName, data) {
+                inflection <- metadata(data)[["inflection"]]
+                knee <- metadata(data)[["knee"]]
                 ## Label the knee and inflection points more clearly
                 whichKnee <- which.min(abs(data[["total"]] - knee))
                 whichInflection <- which.min(abs(data[["total"]] - inflection))
@@ -77,7 +76,7 @@ NULL
                 fitData <- data
                 keep <- which(!is.na(fitData[["fitted"]]))
                 fitData <- fitData[keep, , drop = FALSE]
-                p <- ggplot(data = data) +
+                p <- ggplot(data = as.data.frame(data)) +
                     geom_point(
                         mapping = aes(
                             x = !!sym("rank"),
@@ -92,7 +91,7 @@ NULL
                     )
                 if (hasRows(fitData)) {
                     p <- p + geom_line(
-                        data = fitData,
+                        data = as.data.frame(fitData),
                         mapping = aes(
                             x = !!sym("rank"),
                             y = !!sym("fitted")
@@ -114,7 +113,7 @@ NULL
                     )
                 p +
                     acid_geom_label_repel(
-                        data = labelData,
+                        data = as.data.frame(labelData),
                         mapping = aes(
                             x = !!sym("rank"),
                             y = !!sym("total"),

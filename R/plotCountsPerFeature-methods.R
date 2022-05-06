@@ -65,8 +65,7 @@ NULL
             labels[["subtitle"]] <- paste("n", "=", nrow(object), "(non-zero)")
         }
         ## Construct the ggplot.
-        data <- as_tibble(data, rownames = NULL)
-        p <- ggplot(data = data)
+        p <- ggplot(data = as.data.frame(data))
         if (identical(geom, "density")) {
             p <- p +
                 geom_density(

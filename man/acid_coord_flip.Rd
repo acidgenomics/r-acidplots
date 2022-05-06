@@ -30,7 +30,8 @@ Updated 2020-03-11.
 }
 \examples{
 library(ggplot2)
-g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+g <- ggplot(data = mpg, aes(x = class)) +
+    geom_bar()
 
 ## Notice the difference in Y axis sample order.
 g + coord_flip()
@@ -42,10 +43,10 @@ g <- acid_coord_flip(g)
 \item \code{ggplot2::ggproto()}.
 \item \code{ggplot2:::add_ggplot}.
 \item \verb{ggplot2:::+.gg}.
-\item https://stackoverflow.com/questions/40450904
-\item https://stackoverflow.com/questions/34227967
 \item https://cran.r-project.org/web/packages/ggplot2/vignettes/
 extending-ggplot2.html
+\item https://stackoverflow.com/questions/40450904
+\item https://stackoverflow.com/questions/34227967
 \item https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r
 }
 }

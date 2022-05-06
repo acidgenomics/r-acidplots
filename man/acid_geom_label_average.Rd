@@ -37,7 +37,7 @@ calculated per sample (\code{sampleName}).
 Updated 2021-06-29.
 }
 \examples{
-data = data.frame(
+data <- data.frame(
     "sampleName" = rep(c("sample1", "sample2"), times = 4L),
     "counts" = seq_len(8L)
 )

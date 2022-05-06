@@ -52,7 +52,7 @@ Can pass in \code{TRUE}/\code{FALSE} boolean flag and both \code{"intersection"}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+See \code{ggplot2::labs()} for details.}
 }
 \value{
 Plot.
@@ -64,7 +64,7 @@ UpSet plot
 S4 wrapper for \code{ComplexUpset::upset()} with improved default aesthetics.
 }
 \note{
-Updated 2022-03-05.
+Updated 2022-04-05.
 }
 \examples{
 ## list ====

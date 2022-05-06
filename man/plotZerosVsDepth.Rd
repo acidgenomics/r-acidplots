@@ -36,7 +36,7 @@ In the range of 1-3 is generally recommended.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+See \code{ggplot2::labs()} for details.}
 
 \item{...}{Additional arguments.}
 }

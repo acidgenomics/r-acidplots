@@ -1,6 +1,6 @@
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2021-08-09.
+#' @note Updated 2022-05-06.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -96,7 +96,7 @@ NULL
         }
         labs <- do.call(what = labs, args = labels)
         assert(is(labs, "labels"))
-        data <- tibble("x" = object[[xCol]], "y" = object[[yCol]])
+        data <- DataFrame("x" = object[[xCol]], "y" = object[[yCol]])
         if (isTRUE(label)) {
             ## NOTE Not using `hasRownames` check here, because edge case
             ## integer values are OK here. Consider updating the assert in
@@ -151,7 +151,7 @@ NULL
         }
         mapping <- do.call(what = aes, args = args)
         formula <- y ~ x
-        p <- ggplot(data = data, mapping = mapping) +
+        p <- ggplot(data = as.data.frame(data), mapping = mapping) +
             geom_point(color = colors[["dots"]]) +
             geom_smooth(
                 method = "lm",

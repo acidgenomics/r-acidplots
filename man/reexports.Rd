@@ -33,6 +33,6 @@ below to see their documentation.
 
   \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:defusing-advanced]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
-  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:label_percent]{percent}}, \code{\link[scales:breaks_pretty]{pretty_breaks}}}
+  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:percent_format]{percent}}, \code{\link[scales]{pretty_breaks}}}
 }}
 

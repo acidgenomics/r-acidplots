@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2022-03-07.
+#' @note Updated 2022-05-06.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -16,7 +16,7 @@ NULL
 
 
 
-## Updated 2022-03-07.
+## Updated 2022-05-06.
 `plotCellCounts,SCE` <- # nolint
     function(object,
              assay = 1L,
@@ -48,9 +48,8 @@ NULL
         metricCol <- "nCells"
         data[[metricCol]] <- as.integer(metric[rownames(data)])
         ## Plot.
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = !!sym("sampleName"),
                 y = !!sym(metricCol),
