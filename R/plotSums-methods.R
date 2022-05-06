@@ -45,7 +45,7 @@ NULL
             stop("Invalid MARGIN.") # nocov
         )
         ## Get the interestingGroups factor to split object.
-        metrics <- metrics(object = object, return = "DataFrame")
+        metrics <- metrics(object)
         f <- metrics[["interestingGroups"]]
         assert(is.factor(f))
         names(f) <- rownames(metrics)

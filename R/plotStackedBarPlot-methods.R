@@ -30,7 +30,7 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
-        data <- metrics(object, return = "DataFrame")
+        data <- metrics(object)
         ## Generate the summary count table to pass to ggplot.
         cols <- c("interestingGroups", "ident")
         data <- data[, cols, drop = FALSE]
