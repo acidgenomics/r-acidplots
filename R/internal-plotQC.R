@@ -45,7 +45,6 @@
             assert(all(isInRange(c(min, max), lower = 0L, upper = 1L)))
         }
         data <- metrics(object)
-        data <- as_tibble(data, rownames = NULL)
         ## nocov start
         if (!isSubset(metricCol, colnames(data))) {
             abort(sprintf(
@@ -78,7 +77,7 @@
         } else if (isSubset(geom, c("ecdf", "histogram"))) {
             mapping[["x"]] <- as.symbol(metricCol)
         }
-        p <- ggplot(data = data, mapping = mapping)
+        p <- ggplot(data = as.data.frame(data), mapping = mapping)
         metricAxis <- "y"
         if (identical(geom, "boxplot")) {
             p <- p +
@@ -168,7 +167,7 @@
             }
             p <- p +
                 acid_geom_label_average(
-                    data = data,
+                    data = as.data.frame(data),
                     col = metricCol,
                     digits = digits
                 )
@@ -233,7 +232,6 @@ formals(`.plotQCMetric`)[["geom"]] <-
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         data <- metrics(object)
-        data <- as_tibble(data, rownames = NULL)
         assert(
             isSubset(c(xCol, yCol), colnames(data)),
             msg = sprintf(
@@ -270,7 +268,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
             )
         )
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = !!sym(xCol),
                 y = !!sym(yCol),

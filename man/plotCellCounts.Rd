@@ -26,7 +26,7 @@ Corresponds to factors describing the columns of the object.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+See \code{ggplot2::labs()} for details.}
 
 \item{...}{Additional arguments.}
 }
@@ -37,7 +37,7 @@ See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
 Plot cell counts
 }
 \note{
-Updated 2022-03-07.
+Updated 2022-05-06.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")

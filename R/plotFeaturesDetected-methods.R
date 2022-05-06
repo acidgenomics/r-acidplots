@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2022-05-06.
 `plotFeaturesDetected,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -53,9 +53,8 @@ NULL
         data <- metrics(object)
         data[["featureCount"]] <- featureCount
         ## Plot.
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = !!sym("sampleName"),
                 y = !!sym("featureCount"),

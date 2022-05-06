@@ -28,14 +28,12 @@ defaults specified in \code{labels} formal argument.
 Updated 2022-01-19.
 }
 \examples{
-fun <- function(
-    object,
-    labels = list(
-        "title" = NULL,
-        "x" = "x-axis",
-        "y" = "y-axis"
-    )
-) {
+fun <- function(object,
+                labels = list(
+                    "title" = NULL,
+                    "x" = "x-axis",
+                    "y" = "y-axis"
+                )) {
     labels <- matchLabels(labels)
     labels
 }

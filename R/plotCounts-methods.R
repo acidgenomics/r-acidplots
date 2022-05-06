@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2022-03-06.
+#' @note Updated 2022-05-06.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -95,6 +95,7 @@ NULL
 
 
 #' Improved gene point geom
+#'
 #' @note Updated 2019-07-23.
 #' @noRd
 .genePoint <-
@@ -136,11 +137,12 @@ NULL
 
 
 #' Facet wrap the counts plot
-#' @note Updated 2019-08-28.
+#'
+#' @note Updated 2022-05-06.
 #' @noRd
 .plotCountsFacet <- function(data) {
     ggplot(
-        data = data,
+        data = as.data.frame(data),
         mapping = aes(
             x = str_replace_na(!!sym("interestingGroups")),
             y = !!sym("value"),
@@ -154,11 +156,12 @@ NULL
 
 
 #' Display the counts plot in wide format
-#' @note Updated 2020-08-28.
+#'
+#' @note Updated 2022-05-06.
 #' @noRd
 .plotCountsWide <- function(data) {
     ggplot(
-        data = data,
+        data = as.data.frame(data),
         mapping = aes(
             x = !!sym("rowname"),
             y = !!sym("value"),
@@ -170,14 +173,20 @@ NULL
 
 
 
-## Coercing to `SummarizedExperiment` internally for fast subsetting.
-##
-## Useful posts regarding error bars:
-## - https://stackoverflow.com/a/32091916/3911732
-## - http://environmentalcomputing.net/
-## plotting-with-ggplot-bar-plots-with-error-bars/
-##
-## Updated 2021-09-10.
+## nolint start
+#' Plot counts
+#'
+#' @note Updated 2021-09-10.
+#' @noRd
+#'
+#' @details
+#' Coercing to `SummarizedExperiment` internally for fast subsetting.
+#'
+#' @seealso
+#' Useful posts regarding error bars:
+#' - https://stackoverflow.com/a/32091916/3911732
+#' - http://environmentalcomputing.net/plotting-with-ggplot-bar-plots-with-error-bars/
+## nolint end
 `plotCounts,SE` <- # nolint
     function(object,
              genes,
@@ -243,7 +252,6 @@ NULL
             minMethod = "absolute",
             trans = trans
         )
-        data <- as_tibble(data, rownames = NULL)
         if (isTRUE(sort)) {
             data[["rowname"]] <- as.character(data[["rowname"]])
         } else {
@@ -255,7 +263,7 @@ NULL
                 "facet" = .plotCountsFacet,
                 "wide" = .plotCountsWide
             ),
-            args = list(data = data)
+            args = list("data" = data)
         )
         p <- switch(
             EXPR = geom,

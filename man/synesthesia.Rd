@@ -98,19 +98,23 @@ suppressPackageStartupMessages({
 })
 
 ## Color, continuous.
-cc <- ggplot(mpg, aes(cty, hwy)) + geom_jitter(aes(color = hwy))
+cc <- ggplot(mpg, aes(cty, hwy)) +
+    geom_jitter(aes(color = hwy))
 cc + scale_color_synesthesia_c()
 
 ## Color, discrete.
-cd <- ggplot(mpg, aes(fl)) + geom_bar(aes(color = fl), fill = NA)
+cd <- ggplot(mpg, aes(fl)) +
+    geom_bar(aes(color = fl), fill = NA)
 cd + scale_color_synesthesia_d()
 
 ## Fill, continuous.
-fc <- ggplot(diamonds, aes(carat, price)) + geom_hex()
+fc <- ggplot(diamonds, aes(carat, price)) +
+    geom_hex()
 fc + scale_fill_synesthesia_c()
 
 ## Fill, discrete.
-fd <- ggplot(mpg, aes(fl)) + geom_bar(aes(fill = fl))
+fd <- ggplot(mpg, aes(fl)) +
+    geom_bar(aes(fill = fl))
 fd + scale_fill_synesthesia_d()
 
 ## Base color.

@@ -61,7 +61,7 @@ R color name or hex color code (e.g. \code{"#AF52DE"}).}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+See \code{ggplot2::labs()} for details.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}

@@ -58,7 +58,7 @@ Superimpose sample text labels on the plot.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.
-See \code{\link[ggplot2:labs]{ggplot2::labs()}} for details.}
+See \code{ggplot2::labs()} for details.}
 
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
@@ -89,7 +89,7 @@ Plot.
 Correlation X-Y scatterplot
 }
 \note{
-Updated 2021-08-09.
+Updated 2022-05-06.
 }
 \section{Correlation coefficient calculations}{
 

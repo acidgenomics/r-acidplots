@@ -55,9 +55,8 @@ NULL
             labels[["y"]] <- paste(labels[["y"]], "(per million)")
         }
         ## Plot.
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = !!sym("sampleName"),
                 y = !!sym(metricCol),

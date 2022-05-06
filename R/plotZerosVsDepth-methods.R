@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2022-03-07.
+## Updated 2022-05-06.
 `plotZerosVsDepth,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -47,9 +47,8 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         data <- zerosVsDepth(object, assay = assay)
-        data <- as_tibble(data, rownames = NULL)
         p <- ggplot(
-            data = data,
+            data = as.data.frame(data),
             mapping = aes(
                 x = !!sym("depth"),
                 y = !!sym("dropout"),
