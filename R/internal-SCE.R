@@ -69,7 +69,7 @@
         ## Join cell-level metrics. Always include `ident` and `sampleName`
         ## using `metrics` here. This ensures `sampleName` and
         ## `interestingGroups` are always defined.
-        colData <- metrics(object, return = "DataFrame")
+        colData <- metrics(object)
         colData[["colname"]] <- rownames(colData)
         data <- leftJoin(data, colData, by = "colname")
         ## Join the `geneId` and `geneName` columns by the `rowname` column.
@@ -115,7 +115,7 @@
         ## Coercing to DataFrame, for `cbind` call below.
         redData <- as(redData, "DataFrame")
         ## Cellular barcode metrics.
-        colData <- metrics(object, return = "DataFrame")
+        colData <- metrics(object)
         assert(
             isSubset("ident", colnames(colData)),
             identical(
