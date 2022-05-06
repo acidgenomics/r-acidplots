@@ -66,7 +66,7 @@ NULL
         ## Labels.
         if (isTRUE(nrow(data) <= 16L)) {
             p <- p + acid_geom_label(
-                data = data,
+                data = as.data.frame(data),
                 mapping = aes(label = !!sym(metricCol)),
                 ## Align the label just under the top of the bar.
                 vjust = 1.25
