@@ -176,7 +176,7 @@ NULL
 ## nolint start
 #' Plot counts
 #'
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-05-06.
 #' @noRd
 #'
 #' @details
@@ -252,6 +252,8 @@ NULL
             minMethod = "absolute",
             trans = trans
         )
+        data <- decode(data)
+        assert(isSubset("rowname", colnames(data)))
         if (isTRUE(sort)) {
             data[["rowname"]] <- as.character(data[["rowname"]])
         } else {
