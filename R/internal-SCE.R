@@ -1,6 +1,6 @@
 #' Bind all dimension reduction matrices into a single data frame
 #'
-#' @note Updated 2021-03-03.
+#' @note Updated 2022-05-24.
 #' @noRd
 .bindReducedDims <- function(object) {
     object <- as(object, "SingleCellExperiment")
@@ -9,10 +9,10 @@
     ## Handle undefined column names here, which is currently the case with
     ## monocle3 UMAP (but not PCA) output.
     if (!isTRUE(all(bapply(reducedDims, hasColnames)))) {
-        list <- mapply(
+        list <- Map(
             name = names(reducedDims),
             assay = reducedDims,
-            FUN = function(name, assay) {
+            f = function(name, assay) {
                 if (!hasColnames(assay)) {
                     colnames(assay) <- paste0(name, seq_len(ncol(assay)))
                 }

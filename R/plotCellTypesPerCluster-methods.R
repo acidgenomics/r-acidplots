@@ -108,7 +108,7 @@ NULL
         invisible(return)
     }
 
-formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[c(
+formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[c( # nolint
     "BPPARAM",
     "expression",
     "reduction"

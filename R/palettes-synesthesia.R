@@ -5,7 +5,7 @@
 #' A little bit of an acid trip, especially when used for heatmaps.
 #'
 #' @name synesthesia
-#' @note Updated 2021-08-11.
+#' @note Updated 2022-05-24.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -115,7 +115,7 @@ synesthesia_pal <- # nolint
         }
     }
 
-formals(synesthesia_pal)[["palette"]] <-
+formals(synesthesia_pal)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
@@ -140,7 +140,7 @@ scale_colour_synesthesia_c <- # nolint
         )
     }
 
-formals(scale_colour_synesthesia_c)[["palette"]] <-
+formals(scale_colour_synesthesia_c)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
@@ -166,7 +166,7 @@ scale_colour_synesthesia_d <- # nolint
         )
     }
 
-formals(scale_colour_synesthesia_d)[["palette"]] <-
+formals(scale_colour_synesthesia_d)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
@@ -198,7 +198,7 @@ scale_fill_synesthesia_c <- # nolint
         )
     }
 
-formals(scale_fill_synesthesia_c)[["palette"]] <-
+formals(scale_fill_synesthesia_c)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
@@ -217,5 +217,5 @@ scale_fill_synesthesia_d <- # nolint
         )
     }
 
-formals(scale_fill_synesthesia_d)[["palette"]] <-
+formals(scale_fill_synesthesia_d)[["palette"]] <- # nolint
     .formalsList[["palette"]]

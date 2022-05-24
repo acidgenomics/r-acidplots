@@ -45,9 +45,9 @@ NULL
              borderColor = NULL,
              title = TRUE,
              ...) {
-        requireNamespaces("pheatmap")
-        validObject(object)
         assert(
+            requireNamespaces("pheatmap"),
+            validObject(object),
             isScalar(assay),
             nrow(object) > 1L,
             ncol(object) > 1L,
@@ -77,7 +77,7 @@ NULL
         ## Correlation matrix.
         mat <- as.matrix(assay(object, i = assay))
         ## Inform the user if NA values are present, and replace with zeros.
-        if (any(is.na(mat))) {
+        if (anyNA(mat)) {
             alertWarning(sprintf(
                 "%d NA detected in matrix. Replacing with zeros.",
                 sum(is.na(mat))
@@ -91,7 +91,7 @@ NULL
         cor <- cor(x = mat, y = NULL, method = method)
         ## Check for NA values in correlation matrix and error, if necessary.
         assert(
-            !any(is.na(cor)),
+            !anyNA(cor),
             msg = "NA values detected in correlation matrix."
         )
         ## Get annotation columns and colors automatically.
@@ -114,7 +114,7 @@ NULL
         if (hasLength(sampleNames)) {
             rownames(cor) <- sampleNames
             colnames(cor) <- sampleNames
-            if (hasLength(annotationCol) && !any(is.na(annotationCol))) {
+            if (hasLength(annotationCol) && !anyNA(annotationCol)) {
                 rownames(annotationCol) <- sampleNames
             }
         }
@@ -142,12 +142,15 @@ NULL
         do.call(what = pheatmap::pheatmap, args = args)
     }
 
-formals(`plotCorrelationHeatmap,SE`)[["method"]] <-
+formals(`plotCorrelationHeatmap,SE`)[c( # nolint
+    "color",
+    "legendColor",
+    "method"
+)] <- list(
+    .formalsList[["heatmapCorrelationColor"]],
+    .formalsList[["heatmapLegendColor"]],
     formals(stats::cor)[["method"]]
-formals(`plotCorrelationHeatmap,SE`)[["color"]] <-
-    .formalsList[["heatmapCorrelationColor"]]
-formals(`plotCorrelationHeatmap,SE`)[["legendColor"]] <-
-    .formalsList[["heatmapLegendColor"]]
+)
 
 
 
