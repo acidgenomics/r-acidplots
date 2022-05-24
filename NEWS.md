@@ -1,3 +1,9 @@
+# AcidPlots 0.5.1 (2022-05-24)
+
+## Minor changes
+
+- Updated lintr checks and testthat unit tests.
+
 # AcidPlots 0.5.0 (2022-05-06)
 
 ## Major changes
