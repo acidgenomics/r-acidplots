@@ -25,7 +25,7 @@ Allow user to define ggplot labels, and populate missing values from the
 defaults specified in \code{labels} formal argument.
 }
 \note{
-Updated 2022-01-19.
+Updated 2022-05-24.
 }
 \examples{
 fun <- function(object,

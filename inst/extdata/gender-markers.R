@@ -1,9 +1,9 @@
+## nolint start
 suppressPackageStartupMessages({
     library(AcidGenomes)
 })
-
+## nolint end
 list <- list()
-
 ## Homo sapiens ====
 genes <- c(
     "ENSG00000012817",
@@ -21,7 +21,6 @@ gr <- makeGRangesFromEnsembl(
 gr <- gr[genes]
 gr <- droplevels(gr)
 homoSapiens <- gr
-
 ## Mus musculus ====
 genes <- c(
     "ENSMUSG00000056673",
@@ -37,7 +36,6 @@ gr <- makeGRangesFromEnsembl(
 gr <- gr[genes]
 gr <- droplevels(gr)
 musMusculus <- gr
-
 list <- list(
     "homoSapiens" = homoSapiens,
     "musMusculus" = musMusculus
