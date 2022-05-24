@@ -1,5 +1,3 @@
-context("plotFeature")
-
 test_that("SCE", {
     object <- SingleCellExperiment_Seurat
     features <- c("nCount_RNA", "nFeature_RNA")

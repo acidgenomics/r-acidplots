@@ -1,5 +1,3 @@
-context("plotUpset")
-
 test_that("list", {
     list <- list(
         "aaa" = c("a", "b", "c", "d", "e", "f"),

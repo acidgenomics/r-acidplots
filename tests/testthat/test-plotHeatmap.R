@@ -1,5 +1,3 @@
-context("plotHeatmap")
-
 funs <- list(
     "plotCorrelationHeatmap" = plotCorrelationHeatmap,
     "plotHeatmap" = plotHeatmap,

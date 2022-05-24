@@ -1,4 +1,5 @@
 ## NOTE Is there a way to hide "Intersection size" text in the plot?
+## FIXME Need to harden against empty list input.
 
 
 

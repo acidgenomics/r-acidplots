@@ -1,5 +1,3 @@
-context("plotCountsPerBiotype")
-
 test_that("RSE, SCE", {
     transes <- eval(formals(`plotCountsPerBiotype,SE`)[["trans"]])
     for (object in list(rse, sce)) {

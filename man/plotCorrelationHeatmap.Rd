@@ -49,16 +49,10 @@ Refer to \code{cor()} documentation for details.}
 \item{clusteringMethod}{\code{character(1)}.
 Clustering method. Accepts the same values as \code{hclust()}.}
 
-\item{showRownames}{\code{logical(1)}.
+\item{showRownames, showColnames}{\code{logical(1)}.
 Show row or column names.}
 
-\item{showColnames}{\code{logical(1)}.
-Show row or column names.}
-
-\item{treeheightRow}{\code{integer(1)}.
-Size of the row and column dendrograms. Use \code{0} to disable.}
-
-\item{treeheightCol}{\code{integer(1)}.
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{color}{\code{function}, \code{character}, or \code{NULL}.

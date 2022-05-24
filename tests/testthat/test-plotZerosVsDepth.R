@@ -1,5 +1,3 @@
-context("plotZerosVsDepth")
-
 test_that("plotZerosVsDepth", {
     for (object in list(
         SummarizedExperiment = rse,

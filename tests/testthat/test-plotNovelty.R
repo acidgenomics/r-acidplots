@@ -1,5 +1,3 @@
-context("plotNovelty")
-
 test_that("SingleCellExperiment", {
     object <- calculateMetrics(sce)
     p <- plotNovelty(object)

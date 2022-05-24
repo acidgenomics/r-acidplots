@@ -102,8 +102,10 @@ Only applies when object contains mappings defined in \code{rowRanges}.}
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
 
-For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
+For more information:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}\if{html}{\out{</div>}}}
 
 \item{line}{\code{character(1)}.
 Include average (median, mean, or geometric mean) line for each interesting
@@ -141,8 +143,10 @@ Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
 are desired, we recommend using \code{ggplot2::scale_color_manual()}.
 
-To set the discrete color palette globally, use:\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
-}}
+To set the discrete color palette globally, use:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
+}\if{html}{\out{</div>}}}
 
 \item{scale}{\code{character(1)}.
 If "area" (default), all violins have the same area (before trimming the

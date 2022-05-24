@@ -1,5 +1,3 @@
-context("plotCounts")
-
 test_that("default", {
     x <- plotCounts(
         object = object,
@@ -74,8 +72,6 @@ test_that("style", {
 })
 
 
-
-context("plotCounts : SingleCellExperiment")
 
 test_that("'geom' support", {
     data(

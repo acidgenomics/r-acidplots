@@ -1,5 +1,3 @@
-context("plotMarker")
-
 test_that("SCE", {
     object <- SingleCellExperiment_Seurat
     genes <- head(rownames(object))

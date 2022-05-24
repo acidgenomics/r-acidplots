@@ -1,5 +1,3 @@
-context("ggplot2 themes")
-
 test_that("themes", {
     for (theme in list(
         acid_theme_light,

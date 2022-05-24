@@ -1,5 +1,3 @@
-context("plotGenderMarkers")
-
 test_that("SummarizedExperiment", {
     object <- rse
     markers <- readRDS(system.file(

@@ -1,5 +1,3 @@
-context("plotCorrelationHeatmap")
-
 test_that("plotCorrelationHeatmap", {
     for (object in list(
         SummarizedExperiment = rse,

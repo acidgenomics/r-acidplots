@@ -1,5 +1,3 @@
-context("plotWaterfall")
-
 test_that("data.frame", {
     object <- data.frame(
         cell_id = paste("cell", seq_len(12L), sep = "_"),

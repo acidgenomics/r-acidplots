@@ -1,5 +1,3 @@
-context("plotCountsVsFeatures")
-
 test_that("SingleCellExperiment", {
     object <- calculateMetrics(sce)
     p <- plotCountsVsFeatures(object, trendline = TRUE)
