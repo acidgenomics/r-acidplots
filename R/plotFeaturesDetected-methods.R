@@ -84,7 +84,7 @@ NULL
         p
     }
 
-formals(`plotFeaturesDetected,SE`)[["flip"]] <-
+formals(`plotFeaturesDetected,SE`)[["flip"]] <- # nolint
     .formalsList[["flip"]]
 
 

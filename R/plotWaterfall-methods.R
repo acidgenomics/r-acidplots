@@ -2,7 +2,7 @@
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-05-24.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -113,10 +113,10 @@ NULL
             list <- list("unknown" = data)
         }
         assert(hasLength(list))
-        plotlist <- mapply(
+        plotlist <- Map(
             title = names(list),
             data = list,
-            FUN = function(title, data) {
+            f = function(title, data) {
                 data[["x"]] <- reorder(data[["x"]], data[["y"]])
                 p <- ggplot(
                     data = data,
@@ -169,9 +169,7 @@ NULL
                         axis.title.x = element_blank()
                     )
                 }
-            },
-            SIMPLIFY = FALSE,
-            USE.NAMES = FALSE
+            }
         )
         ## Using patchwork package to dynamically arrange the plots.
         p <- wrap_plots(plotlist)

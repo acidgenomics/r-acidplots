@@ -45,7 +45,7 @@ NULL
 .f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Features per cell"
 .f[["labels"]][["metricAxis"]] <- "features"
-formals(`plotFeaturesPerCell,SCE`) <- .f
+formals(`plotFeaturesPerCell,SCE`) <- .f # nolint
 rm(.f)
 
 

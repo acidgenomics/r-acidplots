@@ -1,5 +1,4 @@
 ## NOTE Is there a way to hide "Intersection size" text in the plot?
-## FIXME Need to harden against empty list input.
 
 
 
@@ -57,9 +56,10 @@ NULL
 
 
 
-## Updated 2021-08-11.
+## Updated 2022-05-24.
 `plotUpset,list` <- # nolint
     function(object, ...) {
+        assert(hasLength(object))
         object <- intersectionMatrix(object)
         plotUpset(object, ...)
     }

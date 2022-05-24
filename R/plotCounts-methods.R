@@ -319,7 +319,7 @@ NULL
         p
     }
 
-formals(`plotCounts,SE`)[["legend"]] <-
+formals(`plotCounts,SE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
@@ -352,7 +352,7 @@ formals(`plotCounts,SE`)[["legend"]] <-
         do.call(what = what, args = args)
     }
 
-formals(`plotCounts,SCE`)[["legend"]] <-
+formals(`plotCounts,SCE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
@@ -472,7 +472,7 @@ formals(`plotCounts,SCE`)[["legend"]] <-
         p
     }
 
-formals(`plotDots,SCE`)[c("color", "legend")] <-
+formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
     .formalsList[c("continuousColorPurpleOrange", "legend")]
 
 
@@ -573,7 +573,7 @@ formals(`plotDots,SCE`)[c("color", "legend")] <-
         p
     }
 
-formals(`plotViolin,SCE`)[c("color", "legend")] <-
+formals(`plotViolin,SCE`)[c("color", "legend")] <- # nolint
     .formalsList[c("discreteColor", "legend")]
 
 

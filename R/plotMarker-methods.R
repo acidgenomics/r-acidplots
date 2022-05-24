@@ -173,7 +173,7 @@ NULL
         p
     }
 
-formals(`plotMarker,SCE`)[c(
+formals(`plotMarker,SCE`)[c( # nolint
     "color",
     "dark",
     "expression",

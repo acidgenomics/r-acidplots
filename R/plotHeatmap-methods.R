@@ -260,7 +260,7 @@ NULL
         )
         if (hasLength(sampleNames)) {
             colnames(mat) <- sampleNames
-            if (hasLength(annotationCol) && !any(is.na(annotationCol))) {
+            if (hasLength(annotationCol) && !anyNA(annotationCol)) {
                 rownames(annotationCol) <- sampleNames
             }
         }
@@ -303,7 +303,7 @@ NULL
         )
     }
 
-formals(`plotHeatmap,SE`)[c("color", "legendColor")] <-
+formals(`plotHeatmap,SE`)[c("color", "legendColor")] <- # nolint
     .formalsList[c("heatmapColor", "heatmapLegendColor")]
 
 

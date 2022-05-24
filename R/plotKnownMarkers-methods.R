@@ -90,7 +90,7 @@ NULL
         invisible(list)
     }
 
-formals(`plotKnownMarkers,SCE,KnownMarkers`)[c(
+formals(`plotKnownMarkers,SCE,KnownMarkers`)[c( # nolint
     "BPPARAM",
     "headerLevel",
     "reduction"

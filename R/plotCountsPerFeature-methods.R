@@ -127,7 +127,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerFeature,SE`)[c("flip", "minMethod")] <-
+formals(`plotCountsPerFeature,SE`)[c("flip", "minMethod")] <- # nolint
     list(
         "flip" = .formalsList[["flip"]],
         "minMethod" = methodFormals(
