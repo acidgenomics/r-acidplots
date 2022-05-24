@@ -4,7 +4,7 @@
 #' defaults specified in `labels` formal argument.
 #'
 #' @export
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-05-24.
 #'
 #' @param labels `list`.
 #' User-defined plot labels.
@@ -35,8 +35,7 @@ matchLabels <- function(labels, argName = "labels") {
     if (is.null(labels)) {
         return(list())
     }
-    ## This approach is used internally in `match.arg()`.
-    formalArgs <- formals(sys.function(sysP <- sys.parent()))
+    formalArgs <- formals(sys.function(sys.parent()))
     assert(
         isString(argName),
         isSubset(argName, names(formalArgs))
