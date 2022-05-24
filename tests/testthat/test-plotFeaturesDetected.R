@@ -1,5 +1,3 @@
-context("plotFeaturesDetected")
-
 test_that("plotFeaturesDetected", {
     for (object in list(
         SummarizedExperiment = rse,

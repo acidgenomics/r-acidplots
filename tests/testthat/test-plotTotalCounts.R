@@ -1,5 +1,3 @@
-context("plotTotalCounts")
-
 test_that("plotTotalCounts", {
     for (object in list(
         SummarizedExperiment = rse,

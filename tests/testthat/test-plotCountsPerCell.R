@@ -1,5 +1,3 @@
-context("plotCountsPerCell")
-
 object <- calculateMetrics(sce)
 
 test_that("SingleCellExperiment", {

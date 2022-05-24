@@ -1,5 +1,3 @@
-context("geoms")
-
 test_that("acid_geom_abline", {
     ## x-axis line.
     geom <- acid_geom_abline(xintercept = 1L)

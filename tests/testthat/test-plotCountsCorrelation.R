@@ -1,5 +1,3 @@
-context("plotCountsCorrelation")
-
 test_that("matrix", {
     x <- assay(rse)
     x <- x[seq_len(4L), seq_len(2L)]

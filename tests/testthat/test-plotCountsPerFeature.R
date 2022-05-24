@@ -1,5 +1,3 @@
-context("plotCountsPerFeature")
-
 test_that("RSE, SCE", {
     for (object in list(rse, sce)) {
         p <- plotCountsPerFeature(object)

@@ -63,8 +63,10 @@ See \code{ggplot2::labs()} for details.}
 \item{trans}{\code{character(1)}.
 Name of the axis scale transformation to apply.
 
-For more information:\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
-}}
+For more information:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
+}\if{html}{\out{</div>}}}
 
 \item{r2}{\code{logical(1)}.
 Show information on the \code{lm} fit?

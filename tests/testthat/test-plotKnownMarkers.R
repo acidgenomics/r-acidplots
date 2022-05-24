@@ -1,5 +1,3 @@
-context("plotKnownMarkers")
-
 test_that("SCE", {
     object <- SingleCellExperiment_Seurat
     markers <- head(KnownMarkers, n = 2L)

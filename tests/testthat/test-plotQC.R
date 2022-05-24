@@ -1,13 +1,9 @@
-context("plotQC : SummarizedExperiment")
-
 test_that("grid", {
     p <- plotQC(rse)
     expect_s3_class(p, "ggplot")
 })
 
 
-
-context("plotQC : SingleCellExperiment")
 
 sce <- calculateMetrics(sce)
 

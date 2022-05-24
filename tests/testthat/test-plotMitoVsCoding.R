@@ -1,5 +1,3 @@
-context("plotMitoVsCoding")
-
 ## Current example doesn't contain mito genes, so fake this.
 
 test_that("SingleCellExperiment", {

@@ -1,5 +1,3 @@
-context("plotFeaturesPerCell")
-
 test_that("SingleCellExperiment", {
     object <- calculateMetrics(sce)
     p <- plotFeaturesPerCell(object)

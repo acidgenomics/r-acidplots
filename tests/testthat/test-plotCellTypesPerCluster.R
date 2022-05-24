@@ -1,5 +1,3 @@
-context("plotCellTypesPerCluster")
-
 test_that("Homo sapiens", {
     object <- SingleCellExperiment_Seurat
     markers <- KnownMarkers

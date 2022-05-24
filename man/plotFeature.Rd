@@ -37,8 +37,10 @@ Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
 the default ggplot2 color palette will be used. If manual color definitions
 are desired, we recommend using \code{ggplot2::scale_color_manual()}.
 
-To set the discrete color palette globally, use:\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
-}}
+To set the discrete color palette globally, use:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
+}\if{html}{\out{</div>}}}
 
 \item{pointSize}{\code{numeric(1)}.
 Point size for dots in the plot.

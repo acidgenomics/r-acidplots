@@ -1,5 +1,3 @@
-context("plotReducedDim")
-
 object <- SingleCellExperiment_Seurat
 
 test_that("SCE", {

@@ -1,5 +1,3 @@
-context("plotBarcodeRanks")
-
 skip_if_not_installed(pkg = "DropletUtils", minimum_version = "1.4")
 
 test_that("SingleCellExperiment", {

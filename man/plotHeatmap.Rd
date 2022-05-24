@@ -120,8 +120,10 @@ Here we're scaling simply by calculating the standard score (z-score).
 \item sigma: standard deviation.
 \item x: raw score (e.g. count matrix).
 \item z: standard score (z-score).
-}\preformatted{z = (x - mu) / sigma
 }
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{z = (x - mu) / sigma
+}\if{html}{\out{</div>}}
 
 See also:
 \itemize{
@@ -138,14 +140,18 @@ and/or \code{clusterCols} are set to \code{TRUE}. Internally, this calls \code{h
 and defaults to the Ward method.
 
 Automatic hierarchical clustering of rows and/or columns can error for some
-datasets. When this occurs, you'll likely see this error:\preformatted{Error in hclust(d, method = method) :
+datasets. When this occurs, you'll likely see this error:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{Error in hclust(d, method = method) :
 NA/NaN/Inf in foreign function call
-}
+}\if{html}{\out{</div>}}
 
 In this case, either set \code{clusterRows} and/or \code{clusterCols} to \code{FALSE}, or
 you can attempt to pass an \code{hclust} object to these arguments. This is
 recommended as an alternate approach to be used with \code{pheatmap()}, which is
-called internally by our plotting code. Here's how this can be accomplished:\if{html}{\out{<div class="sourceCode r">}}\preformatted{mat <- assay(mat)
+called internally by our plotting code. Here's how this can be accomplished:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{mat <- assay(mat)
 dist <- dist(mat)
 hclust <- hclust(dist, method = "ward.D2")
 }\if{html}{\out{</div>}}

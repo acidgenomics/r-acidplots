@@ -46,22 +46,13 @@ Corresponds to factors describing the columns of the object.}
 \item{n}{\code{integer(1)}.
 The number of quantile breaks to create.}
 
-\item{clusterRows}{\code{logical(1)}.
+\item{clusterRows, clusterCols}{\code{logical(1)}.
 Arrange with hierarchical clustering.}
 
-\item{clusterCols}{\code{logical(1)}.
-Arrange with hierarchical clustering.}
-
-\item{showRownames}{\code{logical(1)}.
+\item{showRownames, showColnames}{\code{logical(1)}.
 Show row or column names.}
 
-\item{showColnames}{\code{logical(1)}.
-Show row or column names.}
-
-\item{treeheightRow}{\code{integer(1)}.
-Size of the row and column dendrograms. Use \code{0} to disable.}
-
-\item{treeheightCol}{\code{integer(1)}.
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{color}{\code{function}, \code{character}, or \code{NULL}.

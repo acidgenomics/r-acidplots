@@ -1,5 +1,3 @@
-context("plotCountsCorrelationHeatmap")
-
 test_that("matrix", {
     x <- assay(rse)
     y <- x + 1L
