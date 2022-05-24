@@ -152,7 +152,7 @@ NULL
         p
     }
 
-formals(`plotPCA,SE`)[c(
+formals(`plotPCA,SE`)[c( # nolint
     "label",
     "pointSize"
 )] <- .formalsList[c(
@@ -330,7 +330,7 @@ formals(`plotPCA,SE`)[c(
         p
     }
 
-formals(`plotReducedDim,SCE`)[c(
+formals(`plotReducedDim,SCE`)[c( # nolint
     "color",
     "dark",
     "dims",

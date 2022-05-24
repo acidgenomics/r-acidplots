@@ -45,7 +45,7 @@ NULL
 .f[["geom"]] <- .formalsList[["geom"]]
 .f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Novelty"
-formals(`plotNovelty,SCE`) <- .f
+formals(`plotNovelty,SCE`) <- .f # nolint
 
 
 

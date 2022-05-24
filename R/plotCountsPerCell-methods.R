@@ -79,14 +79,14 @@ NULL
             points <- points[names(sampleNames)]
             if (identical(geom, "ecdf")) {
                 ## Calculate the y-intercept per sample.
-                freq <- mapply(
+                freq <- Map(
                     sampleId = names(points),
                     point = points,
                     MoreArgs = list(
                         "idCol" = matchSampleColumn(object),
                         "metrics" = metrics(object)
                     ),
-                    FUN = function(metrics, sampleId, idCol, point) {
+                    f = function(metrics, sampleId, idCol, point) {
                         nCount <- metrics[
                             metrics[[idCol]] == sampleId,
                             "nCount",
@@ -94,10 +94,9 @@ NULL
                         ]
                         e <- ecdf(sort(nCount))
                         e(point)
-                    },
-                    SIMPLIFY = TRUE,
-                    USE.NAMES = TRUE
+                    }
                 )
+                freq <- unlist(freq, recursive = FALSE, use.names = FALSE)
                 pointData <- data.frame(
                     "x" = points,
                     "y" = freq,
@@ -131,7 +130,7 @@ NULL
         p
     }
 
-formals(`plotCountsPerCell,SCE`)[["geom"]] <-
+formals(`plotCountsPerCell,SCE`)[["geom"]] <- # nolint
     .formalsList[["geom"]]
 
 

@@ -46,7 +46,7 @@ NULL
 .f[["geom"]] <- .formalsList[["geom"]]
 .f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Mito ratio"
-formals(`plotMitoRatio,SCE`) <- .f
+formals(`plotMitoRatio,SCE`) <- .f # nolint
 rm(.f)
 
 

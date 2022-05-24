@@ -197,7 +197,7 @@ args <- c(
     "pointsAsNumbers",
     "reduction"
 )
-formals(`plotFeature,SCE`)[c(
+formals(`plotFeature,SCE`)[c( # nolint
     "color",
     "dark",
     "expression",

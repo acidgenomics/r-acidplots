@@ -1,8 +1,10 @@
+## nolint start
+
 ## Fix for pheatmap partial match warning.
 ## https://github.com/raivokolde/pheatmap/issues/46
 options(
-    warnPartialMatchAttr = FALSE,
-    warnPartialMatchDollar = FALSE
+    "warnPartialMatchAttr" = FALSE,
+    "warnPartialMatchDollar" = FALSE
 )
 
 data(
@@ -16,7 +18,6 @@ data(
     envir = environment()
 )
 
-## nolint start
 `assay<-` <- SummarizedExperiment::`assay<-`
 `colData<-` <- SummarizedExperiment::`colData<-`
 `rowData<-` <- SummarizedExperiment::`rowData<-`
@@ -29,7 +30,6 @@ mpg <- ggplot2::mpg
 nonzeroRowsAndCols <- AcidGenerics::nonzeroRowsAndCols
 rowData <- SummarizedExperiment::rowData
 sampleNames <- Biobase::sampleNames
-## nolint end
 
 rse <- RangedSummarizedExperiment
 sce <- SingleCellExperiment_splatter
@@ -39,3 +39,5 @@ rownames <- head(rownames(rse))
 geneIds <- head(as.character(rowData(rse)[["geneId"]]))
 geneNames <- head(as.character(rowData(rse)[["geneName"]]))
 genes <- geneIds
+
+## nolint end

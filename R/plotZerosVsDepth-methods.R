@@ -78,7 +78,7 @@ NULL
         p
     }
 
-formals(`plotZerosVsDepth,SE`)[c(
+formals(`plotZerosVsDepth,SE`)[c( # nolint
     "pointAlpha",
     "pointSize"
 )] <- .formalsList[c(
