@@ -64,7 +64,7 @@ test_that("style", {
         f = function(style, facetClass) {
             x <- plotCounts(object, genes = genes, style = style)
             expect_s3_class(x, "ggplot")
-            expect_is(x[["facet"]], facetClass)
+            expect_s3_class(x[["facet"]], facetClass)
         }
     )
 })

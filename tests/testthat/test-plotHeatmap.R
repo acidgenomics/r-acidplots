@@ -13,7 +13,7 @@ test_that("SummarizedExperiment", {
     for (fun in funs) {
         object <- rse
         p <- fun(object)
-        expect_is(p, "pheatmap")
+        expect_s3_class(p, "pheatmap")
         ## Plot should contain annotation data.
         expect_true(
             "annotation_legend" %in% p[["gtable"]][["layout"]][["name"]]
@@ -21,7 +21,7 @@ test_that("SummarizedExperiment", {
         ## Test color and title support.
         ## NOTE This check is failing on R 4.1 due to pheatmap's improper
         ## definition of `brewer.pal` (without `RColorBrewer::`) in formals.
-        ## > expect_is(
+        ## > expect_s3_class(
         ## >     object = fun(
         ## >         object = object,
         ## >         color = NULL,
@@ -31,7 +31,7 @@ test_that("SummarizedExperiment", {
         ## >     class = "pheatmap"
         ## > )
         ## Hexadecimal color functions (e.g. viridis).
-        expect_is(
+        expect_s3_class(
             object = fun(
                 object = object,
                 color = viridis::viridis,
@@ -44,13 +44,13 @@ test_that("SummarizedExperiment", {
             color <- colorRampPalette(
                 RColorBrewer::brewer.pal(n = 11L, name = "PuOr")
             )(256L)
-            expect_is(
+            expect_s3_class(
                 object = fun(object = object, color = color),
                 class = "pheatmap"
             )
         }
         ## Disable interesting groups.
-        expect_is(
+        expect_s3_class(
             object = fun(
                 object = object,
                 interestingGroups = NULL
@@ -78,7 +78,7 @@ test_that("SummarizedExperiment : Convert genes to symbols", {
         plotQuantileHeatmap
     )) {
         object <- rse
-        expect_is(
+        expect_s3_class(
             object = fun(
                 object = object,
                 convertGenesToSymbols = TRUE,

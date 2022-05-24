@@ -1,6 +1,6 @@
 test_that("synesthesia_pal", {
-    expect_is(synesthesia_pal, "function")
-    expect_is(synesthesia_pal(), "function")
+    expect_type(synesthesia_pal, "closure")
+    expect_type(synesthesia_pal(), "closure")
     expect_true(allAreHexColors(synesthesia_pal()(n = 2L)))
 })
 
@@ -11,7 +11,7 @@ test_that("ggplot2 scales", {
         scale_fill_synesthesia_c,
         scale_fill_synesthesia_d
     )) {
-        expect_is(f, "function")
+        expect_type(f, "closure")
         expect_s3_class(f(), "Scale")
     }
 })
