@@ -69,7 +69,7 @@
 #' Columns require sufficient variation and will error intentionally otherwise.
 #' Modified version of `pheatmap:::scale_mat()`.
 #'
-#' @note Updated 2021-02-08.
+#' @note Updated 2022-05-24.
 #' @noRd
 .scaleMatrix <- function(object, scale = c("none", "row", "column")) {
     assert(is.matrix(object), is.numeric(object))
@@ -77,7 +77,7 @@
     ## Inform the user if NA values are present. Note that we're including
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
-    if (any(is.na(object))) {
+    if (anyNA(object)) {
         alertWarning("NA values detected in matrix.") # nocov
     }
     if (!identical(scale, "none")) {

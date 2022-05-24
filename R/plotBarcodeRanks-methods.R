@@ -1,7 +1,7 @@
 #' @name plotBarcodeRanks
 #' @inherit AcidGenerics::plotBarcodeRanks
 #' @note Requires DropletUtils package to be installed.
-#' @note Updated 2022-01-19.
+#' @note Updated 2022-05-24.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2021-08-11.
+## Updated 2022-05-24.
 `plotBarcodeRanks,SCE` <- # nolint
     function(object,
              colors = c(
@@ -36,9 +36,9 @@ NULL
                  "subtitle" = NULL
              ),
              ...) {
-        requireNamespaces("DropletUtils")
-        validObject(object)
         assert(
+            requireNamespaces("DropletUtils"),
+            validObject(object),
             isCharacter(colors),
             areSetEqual(
                 x = names(colors),
@@ -58,10 +58,10 @@ NULL
             ]
             sampleNames <- as.character(sampleNames)
         }
-        plotlist <- mapply(
+        plotlist <- Map(
             sampleName = sampleNames,
             data = ranksPerSample,
-            FUN = function(sampleName, data) {
+            f = function(sampleName, data) {
                 inflection <- metadata(data)[["inflection"]]
                 knee <- metadata(data)[["knee"]]
                 ## Label the knee and inflection points more clearly
@@ -121,9 +121,7 @@ NULL
                         ),
                         color = colors[c("knee", "inflection")]
                     )
-            },
-            SIMPLIFY = FALSE,
-            USE.NAMES = TRUE
+            }
         )
         ## Sort the plots by sample name.
         plotlist <- plotlist[sort(names(plotlist))]
