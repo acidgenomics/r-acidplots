@@ -46,7 +46,6 @@
 #' - `DESeq2::plotPCA()`.
 #' - `Seurat::DimPlot()`.
 #' - `monocle3::plot_cells()`.
-#' - [Seurat Mouse Cell Atlas vignette](https://satijalab.org/seurat/mca.html).
 #'
 #' @return `ggplot`.
 #'

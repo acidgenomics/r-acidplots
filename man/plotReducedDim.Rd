@@ -179,7 +179,6 @@ Jolliffe, et al., 2002.
 \item \code{DESeq2::plotPCA()}.
 \item \code{Seurat::DimPlot()}.
 \item \code{monocle3::plot_cells()}.
-\item \href{https://satijalab.org/seurat/mca.html}{Seurat Mouse Cell Atlas vignette}.
 }
 }
 \author{

@@ -79,7 +79,7 @@ Assay name or index position.}
 Plot waterfall
 }
 \note{
-Updated 2021-09-10.
+Updated 2022-05-24.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
