@@ -74,20 +74,20 @@ and extra user-definable parameters.
 }
 \section{Functions}{
 \itemize{
-\item \code{acid_theme_light}: Light theme that has a white background and black text.\cr
+\item \code{acid_theme_light()}: Light theme that has a white background and black text.\cr
 Optimized for print and recommended for scientific manuscripts.\cr
 See \code{lightPalette} for color values.
 
-\item \code{acid_theme_dark}: Dark theme that has a black background and white text.\cr
+\item \code{acid_theme_dark()}: Dark theme that has a black background and white text.\cr
 Inspired by \code{Seurat::DarkTheme()}, with some color modifications.\cr
 Useful for visualizing many points with a high dynamic color range, such
 dimension reduction plots.\cr
 See \code{darkPalette} for color values.
 
-\item \code{acid_theme_dracula}: Dark theme that uses Dracula color palette.\cr
+\item \code{acid_theme_dracula()}: Dark theme that uses Dracula color palette.\cr
 See \code{draculaPalette} for color values.
-}}
 
+}}
 \note{
 Updated 2019-09-13.
 }
