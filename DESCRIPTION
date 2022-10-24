@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.5.1
-Date: 2022-05-24
+Version: 0.5.2.9000
+Date: 2022-10-24
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -22,48 +22,48 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.2)
 Imports:
-    AcidBase,
-    AcidCLI,
-    AcidExperiment,
-    AcidGenerics,
-    AcidGenomes,
-    AcidMarkdown,
-    AcidPlyr,
-    AcidSingleCell,
-    Biobase,
-    BiocGenerics,
-    IRanges,
-    Matrix,
-    S4Vectors,
-    SingleCellExperiment,
-    SummarizedExperiment,
-    ggplot2,
-    goalie,
+    AcidBase (>= 0.6.8),
+    AcidCLI (>= 0.2.4),
+    AcidExperiment (>= 0.4.4),
+    AcidGenerics (>= 0.6.4),
+    AcidGenomes (>= 0.4.4),
+    AcidMarkdown (>= 0.2.4),
+    AcidPlyr (>= 0.3.2),
+    AcidSingleCell (>= 0.3.3),
+    Biobase (>= 2.56.0),
+    BiocGenerics (>= 0.42.0),
+    IRanges (>= 2.30.1),
+    Matrix (>= 1.5.1),
+    S4Vectors (>= 0.34.0),
+    SingleCellExperiment (>= 1.18.0),
+    SummarizedExperiment (>= 1.26.0),
+    ggplot2 (>= 3.3.6),
+    goalie (>= 0.6.6),
     grDevices,
     grid,
     methods,
-    patchwork,
-    pipette,
-    rlang,
-    scales,
+    patchwork (>= 1.1.2),
+    pipette (>= 0.10.0),
+    rlang (>= 1.0.6),
+    scales (>= 1.2.1),
     stats,
-    stringr,
-    syntactic,
+    stringr (>= 1.4.1),
+    syntactic (>= 0.6.3),
     utils
 Suggests:
-    AcidTest,
-    ComplexHeatmap,
-    ComplexUpset,
-    DropletUtils,
-    RColorBrewer,
-    ggpmisc,
-    ggrepel,
-    ggridges,
-    matrixStats,
-    pheatmap,
-    testthat (>= 3.0.0),
-    viridis
+    AcidTest (>= 0.7.0),
+    ComplexHeatmap (>= 2.12.0),
+    ComplexUpset (>= 1.3.3),
+    DropletUtils (>= 1.16.0),
+    RColorBrewer (>= 1.1.3),
+    ggpmisc (>= 0.5.1),
+    ggrepel (>= 0.9.1),
+    ggridges (>= 0.5.4),
+    matrixStats (>= 0.62.0),
+    pheatmap (>= 1.0.12),
+    testthat (>= 3.1.5),
+    viridis (>= 0.6.2)
 Additional_repositories: https://r.acidgenomics.com
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2
