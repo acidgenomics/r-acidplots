@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidPlots 0.5.2 (2022-10-24)
+
+Minor changes
+
+- Improved dependency pinning, in anticipation of breaking changes introduced
+  in basejump package updates, notably pipette and AcidExperiment.
+
 ## AcidPlots 0.5.1 (2022-05-24)
 
 Minor changes:
