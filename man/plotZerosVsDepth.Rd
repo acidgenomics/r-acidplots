@@ -13,8 +13,8 @@ plotZerosVsDepth(object, ...)
   interestingGroups = NULL,
   pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
   pointSize = getOption(x = "acid.point.size", default = 1L),
-  labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)",
-    y = "dropout rate")
+  labels = list(title = "Zeros vs. depth", subtitle = NULL, x = "library size (depth)", y
+    = "dropout rate")
 )
 }
 \arguments{

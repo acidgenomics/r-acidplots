@@ -13,8 +13,7 @@ plotNovelty(object, ...)
   interestingGroups = NULL,
   min = 0L,
   trans = "identity",
-  labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis =
-    NULL)
+  labels = list(title = "Novelty", subtitle = NULL, metricAxis = NULL, otherAxis = NULL)
 )
 }
 \arguments{

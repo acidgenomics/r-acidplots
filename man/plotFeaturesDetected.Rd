@@ -53,11 +53,11 @@ Visualize the number of features (i.e. genes) detected.
 }
 \section{Functions}{
 \itemize{
-\item \code{plotFeaturesDetected,SingleCellExperiment-method}: Applies \code{aggregateCellsToSamples()}
+\item \code{plotFeaturesDetected(SingleCellExperiment)}: Applies \code{aggregateCellsToSamples()}
 calculation to summarize at sample level prior to plotting.\cr
 Passes \code{...} to \code{SummarizedExperiment} method.
-}}
 
+}}
 \note{
 Updated 2022-03-04.
 }

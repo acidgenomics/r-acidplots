@@ -143,6 +143,7 @@ Useful color palette URLs:
 \item http://colorspace.r-forge.r-project.org/
 \item http://hclwizard.org/
 \item https://developer.apple.com/design/human-interface-guidelines/
+\item https://blog.datawrapper.de/colors-for-data-vis-style-guides/
 }
 
 Additional color palette functions that may be relevant:

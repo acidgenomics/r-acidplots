@@ -49,11 +49,11 @@ Plot total read counts
 }
 \section{Functions}{
 \itemize{
-\item \code{plotTotalCounts,SingleCellExperiment-method}: Applies \code{aggregateCellsToSamples()} calculation
+\item \code{plotTotalCounts(SingleCellExperiment)}: Applies \code{aggregateCellsToSamples()} calculation
 to summarize at sample level prior to plotting.\cr
 Passes \code{...} to \code{SummarizedExperiment} method.
-}}
 
+}}
 \note{
 Updated 2022-03-04.
 }
