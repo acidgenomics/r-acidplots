@@ -136,14 +136,14 @@ NULL
             ## Whether to sort the columns in the intersection matrix.
             "sort_intersections" = ifelse(
                 test = orderBySize[["intersections"]],
-                "yes" = "descending",
-                "no" = FALSE
+                yes = "descending",
+                no = FALSE
             ),
             ## Whether to sort the rows in the intersection matrix.
             "sort_sets" = ifelse(
                 test = orderBySize[["sets"]],
-                "yes" = "descending",
-                "no" = FALSE
+                yes = "descending",
+                no = FALSE
             )
         )
         what <- get(x = whatFun, envir = asNamespace(whatPkg), inherits = FALSE)

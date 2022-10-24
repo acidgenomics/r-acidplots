@@ -42,6 +42,7 @@
 #' - http://colorspace.r-forge.r-project.org/
 #' - http://hclwizard.org/
 #' - https://developer.apple.com/design/human-interface-guidelines/
+#' - https://blog.datawrapper.de/colors-for-data-vis-style-guides/
 #'
 #' Additional color palette functions that may be relevant:
 #'
