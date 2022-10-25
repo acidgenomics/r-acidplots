@@ -1,6 +1,6 @@
 # Release notes
 
-## AcidPlots 0.5.2 (2022-10-24)
+## AcidPlots 0.5.2 (2022-10-25)
 
 Minor changes
 
