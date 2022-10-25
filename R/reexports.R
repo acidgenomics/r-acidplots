@@ -1,10 +1,10 @@
 #' @export
 #' @importFrom rlang !!!
-rlang::`!!!`
+rlang::`!!!` # nolint
 
 #' @export
 #' @importFrom rlang !!
-rlang::`!!`
+rlang::`!!` # nolint
 
 #' @export
 #' @importFrom ggplot2 aes
