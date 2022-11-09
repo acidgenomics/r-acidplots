@@ -69,6 +69,7 @@ NULL
             )
         ) +
             geom_point() +
+            ## FIXME Need to rework with `!!` here?
             facet_wrap(facets = sym("rowname"), scales = "free_y")
         ## Color palette.
         p <- p + autoDiscreteColorScale()
