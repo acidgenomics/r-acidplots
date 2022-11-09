@@ -178,6 +178,7 @@
             facets <- "aggregate"
         }
         if (is.character(facets)) {
+            ## FIXME Need to rework with `!!` here?
             p <- p + facet_wrap(facets = syms(facets), scales = "free")
         }
         ## Return.
@@ -295,6 +296,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
             facets <- c(facets, "aggregate")
         }
         if (is.character(facets)) {
+            ## FIXME Need to rework with `!!` here?
             p <- p + facet_wrap(facets = syms(facets), scales = "free")
         }
         ## Return.
