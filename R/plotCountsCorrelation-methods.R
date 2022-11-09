@@ -69,7 +69,7 @@ NULL
             )
         ) +
             geom_point() +
-            facet_wrap(facets = !!sym("rowname"), scales = "free_y")
+            facet_wrap(facets = vars(!!sym("rowname")), scales = "free_y")
         ## Color palette.
         p <- p + autoDiscreteColorScale()
         ## Labels

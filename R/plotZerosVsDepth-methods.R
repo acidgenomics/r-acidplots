@@ -72,7 +72,10 @@ NULL
             facets <- "aggregate"
         }
         if (is.character(facets)) {
-            p <- p + facet_wrap(facets = !!syms(facets), scales = "free")
+            p <- p + facet_wrap(
+                facets = vars(!!!syms(facets)),
+                scales = "free"
+            )
         }
         ## Return.
         p

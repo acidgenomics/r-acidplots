@@ -150,7 +150,7 @@ NULL
             fill = str_replace_na(!!sym("interestingGroups"))
         )
     ) +
-        facet_wrap(facets = sym("rowname"), scales = "free_y")
+        facet_wrap(facets = vars(!!sym("rowname")), scales = "free_y")
 }
 
 
