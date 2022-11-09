@@ -1,6 +1,6 @@
 #' @name plotCellCountsPerCluster
 #' @inherit AcidGenerics::plotCellCountsPerCluster
-#' @note Updated 2022-03-05.
+#' @note Updated 2022-11-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -61,7 +61,7 @@ NULL
         p <- p + autoDiscreteFillScale()
         ## Wrap for multiple samples.
         if (isTRUE(multipleSamples)) {
-            p <- p + facet_wrap(facets = sym("ident"))
+            p <- p + facet_wrap(facets = vars(!!sym("ident")))
         }
         ## Return.
         p
