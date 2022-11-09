@@ -1,8 +1,14 @@
 # Release notes
 
+Minor changes:
+
+- Updated R dependency versions.
+- Hardened internal calls to `facet_wrap` by using `vars` consistently.
+  This requires calling `sym` with `!!` or `syms` with `!!!` (from rlang).
+
 ## AcidPlots 0.5.2 (2022-10-25)
 
-Minor changes
+Minor changes:
 
 - Improved dependency pinning, in anticipation of breaking changes introduced
   in basejump package updates, notably pipette and AcidExperiment.
