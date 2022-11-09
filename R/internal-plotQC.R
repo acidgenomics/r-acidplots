@@ -1,6 +1,6 @@
 #' Plot a single quality control metric
 #'
-#' @note Updated 2022-03-07.
+#' @note Updated 2022-11-09.
 #' @noRd
 .plotQCMetric <-
     function(object,
@@ -178,8 +178,7 @@
             facets <- "aggregate"
         }
         if (is.character(facets)) {
-            ## FIXME Need to rework with `!!` here?
-            p <- p + facet_wrap(facets = syms(facets), scales = "free")
+            p <- p + facet_wrap(facets = !!syms(facets), scales = "free")
         }
         ## Return.
         p
