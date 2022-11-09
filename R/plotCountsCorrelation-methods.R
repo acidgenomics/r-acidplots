@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit AcidGenerics::plotCountsCorrelation
-#' @note Updated 2021-09-10.
+#' @note Updated 2022-11-09.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2022-11-09.
 `plotCountsCorrelation,matrix` <- # nolint
     function(x,
              y,
@@ -69,8 +69,7 @@ NULL
             )
         ) +
             geom_point() +
-            ## FIXME Need to rework with `!!` here?
-            facet_wrap(facets = sym("rowname"), scales = "free_y")
+            facet_wrap(facets = !!sym("rowname"), scales = "free_y")
         ## Color palette.
         p <- p + autoDiscreteColorScale()
         ## Labels
