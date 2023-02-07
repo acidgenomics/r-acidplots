@@ -22,12 +22,13 @@
 #' Returns an empty list on `NULL` input.
 #'
 #' @examples
-#' fun <- function(object,
-#'                 labels = list(
-#'                     "title" = NULL,
-#'                     "x" = "x-axis",
-#'                     "y" = "y-axis"
-#'                 )) {
+#' fun <- function(
+#'     object,
+#'     labels = list(
+#'         "title" = NULL,
+#'         "x" = "x-axis",
+#'         "y" = "y-axis"
+#'     )) {
 #'     labels <- matchLabels(labels)
 #'     labels
 #' }
