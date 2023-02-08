@@ -47,7 +47,7 @@ See \code{ggplot2::labs()} for details.}
 Plot percentage of zeros vs. library depth
 }
 \note{
-Updated 2022-03-07.
+Updated 2022-11-09.
 }
 \examples{
 data(

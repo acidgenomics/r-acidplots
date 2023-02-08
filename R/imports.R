@@ -38,7 +38,8 @@ NULL
 #' @importFrom SummarizedExperiment assayNames assay assay<- assays assays<-
 #' colData rowData
 #' @importFrom methods show
-#'
+NULL
+
 #' @importMethodsFrom AcidBase intersectionMatrix sem
 #' @importMethodsFrom AcidExperiment aggregate as.SummarizedExperiment
 #' calculateMetrics convertGenesToSymbols decode interestingGroups
@@ -57,8 +58,7 @@ NULL
 
 ## Standard functions ==========================================================
 
-#' @importFrom AcidBase methodFormals printString requireNamespaces
-#' standardizeCall
+#' @importFrom AcidBase methodFormals printString standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
@@ -83,7 +83,7 @@ NULL
 #' isCharacter isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #' isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
 #' isInRightOpenRange isInt isIntegerish isNonNegative isNumber isPositive
-#' isScalar isString isSubset
+#' isScalar isString isSubset requireNamespaces
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject
