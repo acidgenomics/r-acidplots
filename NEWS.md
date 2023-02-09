@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidPlots 0.5.4 (2023-02-09)
+
+- Updated dependencies to Bioconductor 3.16.
+- Migrated `requireNamespaces` import from AcidBase to goalie.
+
+## AcidPlots 0.5.3 (2022-11-09)
+
 Minor changes:
 
 - Updated R dependency versions.
