@@ -59,6 +59,7 @@ Suggests:
     ggpmisc (>= 0.5.2),
     ggrepel (>= 0.9.3),
     ggridges (>= 0.5.4),
+    ggsci,
     matrixStats (>= 0.63.0),
     pheatmap (>= 1.0.12),
     testthat (>= 3.1.6),
