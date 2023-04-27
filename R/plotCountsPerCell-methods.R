@@ -67,7 +67,7 @@ NULL
             points <- lapply(
                 X = ranks,
                 FUN = function(x) {
-                    assert(is(x, "DataFrame"))
+                    assert(is(x, "DFrame"))
                     out <- metadata(x)[[point]]
                     assert(is.numeric(out))
                     out

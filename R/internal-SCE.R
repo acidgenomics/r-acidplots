@@ -22,7 +22,7 @@
         reducedDims <- as(list, "SimpleList")
     }
     out <- do.call(what = cbind, args = reducedDims)
-    out <- as(out, "DataFrame")
+    out <- as(out, "DFrame")
     assert(
         hasValidDimnames(out),
         identical(x = colnames(object), y = rownames(out))
@@ -75,7 +75,7 @@
         ## Join the `geneId` and `geneName` columns by the `rowname` column.
         g2s <- Gene2Symbol(object, format = "makeUnique")
         assert(hasLength(g2s), hasRownames(g2s))
-        g2s <- as(g2s, "DataFrame")
+        g2s <- as(g2s, "DFrame")
         g2s[["rowname"]] <- rownames(g2s)
         data <- leftJoin(data, g2s, by = "rowname")
         data <- mutateIf(data, is.character, as.factor)
@@ -112,8 +112,7 @@
         if (!hasColnames(redData)) {
             colnames(redData) <- paste0(reduction, seq_len(ncol(redData)))
         }
-        ## Coercing to DataFrame, for `cbind` call below.
-        redData <- as(redData, "DataFrame")
+        redData <- as(redData, "DFrame")
         ## Cellular barcode metrics.
         colData <- metrics(object)
         assert(
@@ -131,7 +130,7 @@
         assert(is.character(dimCols))
         ## Bind the data frames.
         data <- cbind(redData, colData)
-        assert(is(data, "DataFrame"))
+        assert(is(data, "DFrame"))
         ## Split by cluster.
         f <- data[["ident"]]
         assert(
@@ -139,7 +138,7 @@
             !all(is.na(f))
         )
         split <- split(x = data, f = f)
-        assert(is(split, "SplitDataFrameList"))
+        assert(is(split, "SplitDFrameList"))
         split <- SplitDataFrameList(lapply(
             X = split,
             FUN = function(x) {
@@ -199,7 +198,7 @@ formals(.fetchReductionData)[c("dims", "reduction")] <-
             reduction = reduction
         )
         data <- cbind(reductionData, mean, sum)
-        assert(is(data, "DataFrame"))
+        assert(is(data, "DFrame"))
         colnames(data) <- camelCase(colnames(data), strict = TRUE)
         data
     }

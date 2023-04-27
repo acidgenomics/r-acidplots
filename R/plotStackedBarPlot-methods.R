@@ -43,7 +43,7 @@ NULL
             collapse = ":"
         ))
         split <- split(x = data, f = f)
-        assert(is(split, "SplitDataFrameList"))
+        assert(is(split, "SplitDFrameList"))
         data <- as.data.frame(do.call(
             what = rbind,
             args = strsplit(x = levels(f), split = ":", fixed = TRUE)

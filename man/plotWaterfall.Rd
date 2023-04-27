@@ -2,14 +2,14 @@
 % Please edit documentation in R/AllGenerics.R, R/plotWaterfall-methods.R
 \name{plotWaterfall}
 \alias{plotWaterfall}
-\alias{plotWaterfall,DataFrame-method}
+\alias{plotWaterfall,DFrame-method}
 \alias{plotWaterfall,SummarizedExperiment-method}
 \alias{plotWaterfall,data.frame-method}
 \title{Plot waterfall}
 \usage{
 plotWaterfall(object, ...)
 
-\S4method{plotWaterfall}{DataFrame}(
+\S4method{plotWaterfall}{DFrame}(
   object,
   sampleCol,
   valueCol,

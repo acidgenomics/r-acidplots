@@ -101,7 +101,7 @@ NULL
             ## NOTE Not using `hasRownames` check here, because edge case
             ## integer values are OK here. Consider updating the assert in
             ## goalie package to allow for integer row names in matrix and
-            ## DataFrame classes, but not data.frame only.
+            ## DFrame classes, but not data.frame only.
             assert(
                 isCharacter(rownames(object)),
                 nrow(object) <= 50L
@@ -226,8 +226,8 @@ NULL
 
 
 
-## Updated 2021-02-09.
-`plotCorrelation,DataFrame` <- # nolint
+## Updated 2023-04-27.
+`plotCorrelation,DFrame` <- # nolint
     `plotCorrelation,data.frame`
 
 
@@ -249,8 +249,8 @@ NULL
 #' @export
 setMethod(
     f = "plotCorrelation",
-    signature = signature(object = "DataFrame"),
-    definition = `plotCorrelation,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `plotCorrelation,DFrame`
 )
 
 

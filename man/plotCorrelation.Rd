@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R, R/plotCorrelation-methods.R
 \name{plotCorrelation}
 \alias{plotCorrelation}
-\alias{plotCorrelation,DataFrame-method}
+\alias{plotCorrelation,DFrame-method}
 \alias{plotCorrelation,Matrix-method}
 \alias{plotCorrelation,SummarizedExperiment-method}
 \alias{plotCorrelation,data.frame-method}
@@ -11,7 +11,7 @@
 \usage{
 plotCorrelation(object, ...)
 
-\S4method{plotCorrelation}{DataFrame}(object, labelCol = NULL, ...)
+\S4method{plotCorrelation}{DFrame}(object, labelCol = NULL, ...)
 
 \S4method{plotCorrelation}{Matrix}(
   object,

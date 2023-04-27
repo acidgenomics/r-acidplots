@@ -55,7 +55,7 @@ NULL
             isScalar(reduction),
             isHeaderLevel(headerLevel)
         )
-        markers <- as(markers, "DataFrame")
+        markers <- as(markers, "DFrame")
         cellTypes <- markers[["cellType"]]
         cellTypes <- unique(na.omit(as.character(cellTypes)))
         assert(hasLength(cellTypes))

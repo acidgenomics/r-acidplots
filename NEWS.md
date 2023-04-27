@@ -1,5 +1,10 @@
 # Release notes
 
+## AcidPlots 0.5.5 (2023-04-27)
+
+- NAMESPACE fixes for Bioconductor 3.17 compatibility.
+- Now classing on `DFrame` instead of `DataFrame` virtual class.
+
 ## AcidPlots 0.5.4 (2023-02-09)
 
 - Updated dependencies to Bioconductor 3.16.

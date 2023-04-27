@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R, R/plotUpset-methods.R
 \name{plotUpset}
 \alias{plotUpset}
-\alias{plotUpset,DataFrame-method}
+\alias{plotUpset,DFrame-method}
 \alias{plotUpset,data.frame-method}
 \alias{plotUpset,list-method}
 \alias{plotUpset,matrix-method}
@@ -10,7 +10,7 @@
 \usage{
 plotUpset(object, ...)
 
-\S4method{plotUpset}{DataFrame}(object, ...)
+\S4method{plotUpset}{DFrame}(object, ...)
 
 \S4method{plotUpset}{data.frame}(object, ...)
 

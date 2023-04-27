@@ -213,7 +213,7 @@ formals(`plotPCA,SE`)[c( # nolint
             dims = dims
         )
         assert(
-            is(data, "DataFrame"),
+            is(data, "DFrame"),
             isSubset(
                 x = c("x", "y", "centerX", "centerY", "interestingGroups"),
                 y = colnames(data)
