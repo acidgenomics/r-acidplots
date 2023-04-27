@@ -31,7 +31,6 @@ NULL
 #' @importFrom BiocGenerics append counts do.call organism plotPCA rbind t
 #' unlist unsplit var
 #' @importFrom IRanges quantile
-#' @importFrom Matrix colSums rowMeans rowSums
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #' metadata na.omit sort split
 #' @importFrom SingleCellExperiment logcounts reducedDim reducedDimNames

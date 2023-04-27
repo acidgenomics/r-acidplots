@@ -42,8 +42,8 @@ NULL
                  "sampleAxis" = NULL,
                  "countAxis" = "counts"
              )) {
-        validObject(object)
         assert(
+            validObject(object),
             isScalar(assay),
             isString(biotypeCol),
             isInt(n)

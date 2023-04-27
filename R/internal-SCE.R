@@ -188,7 +188,11 @@ formals(.fetchReductionData)[c("dims", "reduction")] <-
             x = colnames(geneCounts),
             y = as.character(rownames)
         ))
-        ## Calculate the expression summary columns.
+        if (is(geneCounts, "Matrix")) {
+            assert(requireNamespaces("Matrix"))
+            rowMeans <- Matrix::rowMeans
+            rowSums <- Matrix::rowSums
+        }
         ## Note that `rowMedians` currently isn't supported for sparse data.
         mean <- rowMeans(geneCounts)
         sum <- rowSums(geneCounts)

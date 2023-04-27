@@ -49,6 +49,10 @@ NULL
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         counts <- assay(object, i = assay)
+        if (is(counts, "Matrix")) {
+            assert(requireNamespaces("Matrix"))
+            colSums <- Matrix::colSums
+        }
         featureCount <- colSums(counts >= minCounts)
         data <- metrics(object)
         data[["featureCount"]] <- featureCount

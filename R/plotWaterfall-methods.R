@@ -2,7 +2,7 @@
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2022-05-24.
+#' @note Updated 2023-04-27.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -189,34 +189,36 @@ NULL
 
 
 
-## Updated 2021-02-09.
+## Updated 2023-04-27.
 `plotWaterfall,SE` <- # nolint
     function(object,
              assay = 1L,
              fun = c("mean", "sum"),
              interestingGroups = NULL,
              ...) {
-        validObject(object)
-        fun <- switch(
-            EXPR = match.arg(fun),
-            "mean" = colMeans,
-            "sum" = colSums
-        )
+        assert(validObject(object))
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         sd <- sampleData(object)
         assert(
-            ## Harden against SingleCellExperiment input.
             identical(rownames(sd), colnames(object)),
             isSubset(
                 x = c("interestingGroups", "sampleName"),
                 y = colnames(sd)
             )
         )
+        assay <- assay(object, i = assay)
+        whatPkg <- ifelse(
+            test = is(assay, "Matrix"),
+            yes = "Matrix",
+            no = "base"
+        )
+        fun <- get(x = fname, envir = asNamespace(whatPkg), inherits = FALSE)
+        assert(is.function(fun))
         data <- DataFrame(
             "sample" = sd[["sampleName"]],
             "interestingGroups" = sd[["interestingGroups"]],
-            "value" = fun(assay(object, i = assay))
+            "value" = fun(assay)
         )
         plotWaterfall(
             object = data,
