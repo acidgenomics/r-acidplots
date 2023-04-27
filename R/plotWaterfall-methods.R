@@ -213,6 +213,11 @@ NULL
             yes = "Matrix",
             no = "base"
         )
+        fname <- switch(
+            EXPR = match.arg(fun),
+            "mean" = colMeans,
+            "sum" = colSums
+        )
         fun <- get(x = fname, envir = asNamespace(whatPkg), inherits = FALSE)
         assert(is.function(fun))
         data <- DataFrame(
