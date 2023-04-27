@@ -85,21 +85,17 @@ Invisibly return a \code{ggplot} \code{list}.
 Visualize gene markers on a reduced dimension plot (e.g. t-SNE, UMAP).
 }
 \note{
-Updated 2022-03-07.
+Updated 2023-04-27.
 }
 \examples{
+requireNamespace("BiocGenerics", quietly = TRUE)
+requireNamespace("Matrix", quietly = TRUE)
 data(SingleCellExperiment_Seurat, package = "AcidTest")
 
 ## SingleCellExperiment ====
 object <- SingleCellExperiment_Seurat
-sums <- sort(
-    BiocGenerics::rowSums(
-        BiocGenerics::counts(object)
-    ),
-    decreasing = TRUE
-)
+sums <- sort(rowSums(counts(object)), decreasing = TRUE)
 genes <- names(head(sums, n = 4L))
-print(genes)
 plotMarker(
     object = object,
     genes = genes,

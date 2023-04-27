@@ -49,6 +49,10 @@ NULL
         metricCol <- "totalCounts"
         counts <- assay(object, i = assay)
         data <- sampleData(object)
+        if (is(counts, "Matrix")) {
+            assert(requireNamespaces("Matrix"))
+            colSums <- Matrix::colSums
+        }
         data[[metricCol]] <- colSums(counts)
         if (isTRUE(perMillion)) {
             data[[metricCol]] <- data[[metricCol]] / 1e6L

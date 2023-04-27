@@ -19,7 +19,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2023-04-27.
 `plotSums,SE` <- # nolint
     function(object,
              MARGIN, # nolint
@@ -29,8 +29,8 @@ NULL
                  "title" = NULL,
                  "subtitle" = NULL
              )) {
-        validObject(object)
         assert(
+            validObject(object),
             isInt(MARGIN),
             isScalar(assay)
         )
