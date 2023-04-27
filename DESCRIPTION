@@ -24,11 +24,11 @@ Depends: R (>= 4.2)
 Imports:
     AcidBase (>= 0.6.15),
     AcidCLI (>= 0.2.7),
-    AcidExperiment (>= 0.4.6),
+    AcidExperiment (>= 0.4.7),
     AcidGenerics (>= 0.6.7),
     AcidGenomes (>= 0.5.0),
     AcidMarkdown (>= 0.2.5),
-    AcidPlyr (>= 0.3.9),
+    AcidPlyr (>= 0.3.10),
     AcidSingleCell (>= 0.3.5),
     Biobase (>= 2.58.0),
     BiocGenerics (>= 0.44.0),
