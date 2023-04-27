@@ -184,7 +184,7 @@ NULL
 
 
 ## Updated 2021-10-13.
-`plotWaterfall,DataFrame` <- # nolint
+`plotWaterfall,DFrame` <- # nolint
     `plotWaterfall,data.frame`
 
 
@@ -232,8 +232,8 @@ NULL
 #' @export
 setMethod(
     f = "plotWaterfall",
-    signature = signature(object = "DataFrame"),
-    definition = `plotWaterfall,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `plotWaterfall,DFrame`
 )
 
 #' @rdname plotWaterfall

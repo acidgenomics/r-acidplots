@@ -175,8 +175,8 @@ NULL
 
 
 
-## Updated 2021-10-13.
-`plotUpset,DataFrame` <- # nolint
+## Updated 2023-04-27.
+`plotUpset,DFrame` <- # nolint
     `plotUpset,data.frame`
 
 
@@ -185,8 +185,8 @@ NULL
 #' @export
 setMethod(
     f = "plotUpset",
-    signature = signature(object = "DataFrame"),
-    definition = `plotUpset,DataFrame`
+    signature = signature(object = "DFrame"),
+    definition = `plotUpset,DFrame`
 )
 
 #' @rdname plotUpset

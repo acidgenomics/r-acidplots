@@ -2,7 +2,7 @@
 
 #' @importClassesFrom AcidSingleCell KnownMarkers
 #' @importClassesFrom Matrix Matrix
-#' @importClassesFrom S4Vectors DataFrame
+#' @importClassesFrom S4Vectors DFrame
 #' @importClassesFrom SingleCellExperiment SingleCellExperiment
 #' @importClassesFrom SummarizedExperiment SummarizedExperiment
 NULL
