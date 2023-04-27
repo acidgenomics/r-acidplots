@@ -7,8 +7,7 @@
 #' @param ... Additional arguments.
 #'
 #' @examples
-#' requireNamespace("BiocGenerics", quietly = TRUE)
-#' requireNamespace("Matrix", quietly = TRUE)
+#' requireNamespace("SingleCellExperiment", quietly = TRUE)
 #' data(SingleCellExperiment_Seurat, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
