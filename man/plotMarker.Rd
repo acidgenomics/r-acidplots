@@ -88,8 +88,7 @@ Visualize gene markers on a reduced dimension plot (e.g. t-SNE, UMAP).
 Updated 2023-04-27.
 }
 \examples{
-requireNamespace("BiocGenerics", quietly = TRUE)
-requireNamespace("Matrix", quietly = TRUE)
+requireNamespace("SingleCellExperiment", quietly = TRUE)
 data(SingleCellExperiment_Seurat, package = "AcidTest")
 
 ## SingleCellExperiment ====
