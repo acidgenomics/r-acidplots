@@ -1,18 +1,20 @@
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker
-#' @note Updated 2023-04-27.
+#' @note Updated 2023-04-28.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
 #'
 #' @examples
+#' requireNamespace("Matrix", quietly = TRUE)
 #' requireNamespace("SingleCellExperiment", quietly = TRUE)
 #' data(SingleCellExperiment_Seurat, package = "AcidTest")
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_Seurat
-#' sums <- sort(rowSums(counts(object)), decreasing = TRUE)
+#' counts <- SingleCellExperiment::counts(object)
+#' sums <- sort(Matrix::rowSums(counts), decreasing = TRUE)
 #' genes <- names(head(sums, n = 4L))
 #' plotMarker(
 #'     object = object,
