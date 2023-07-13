@@ -1,13 +1,13 @@
 #+TITLE: AcidPlots
 #+STARTUP: content
 * Development
+** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Check that plotQC SCE method returns interestingGroups in plot legend correctly.
 ** TODO Need to think about NA gene symbol handling in call to convertGenesToSymbols.
 ** TODO Harden plotCounts to error faster on gene identifier mismatch.
 ** TODO Consider adding assay support to plotCountsPerCell.
 ** TODO May want to harden plotCounts against DESeqDataSet input.
     We don't want to ever plot non-normalized counts by default.
-** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO How to suppress joint bandwidth message for ridgeline?
 ** TODO Consider making the theme_acid_plots less bold by default.
 ** TODO Create a plot for log2 vs. log2 expression of RNA-seq counts.
