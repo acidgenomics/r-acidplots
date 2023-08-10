@@ -1,3 +1,8 @@
+## FIXME This is erroring with the working example, need to debug:
+## plotCountsPerCell(object, geom = "ecdf", point = "inflection")
+
+
+
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerCell
