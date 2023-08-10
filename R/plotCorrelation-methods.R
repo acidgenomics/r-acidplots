@@ -145,9 +145,9 @@ NULL
                 )
             )
         }
-        args <- list("x" = sym("x"), "y" = sym("y"))
+        args <- list("x" = .data[["x"]], "y" = .data[["y"]])
         if (isTRUE(label)) {
-            args[["label"]] <- sym("label")
+            args[["label"]] <- .data[["label"]]
         }
         mapping <- do.call(what = aes, args = args)
         formula <- y ~ x
@@ -164,8 +164,8 @@ NULL
             requireNamespaces("ggpmisc")
             p <- p + ggpmisc::stat_poly_eq(
                 mapping = aes(label = paste(
-                    stat(!!sym("eq.label")),
-                    stat(!!sym("rr.label")),
+                    stat(.data[["eq.label"]]),
+                    stat(.data[["rr.label"]]),
                     sep = "*\", \"*"
                 )),
                 formula = formula,

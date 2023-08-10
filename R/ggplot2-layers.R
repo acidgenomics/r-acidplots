@@ -78,7 +78,8 @@ acid_geom_abline <- # nolint
 #'     x = c("a", "b", "c", "d"),
 #'     y = c(5L, 10L, 15L, 20L)
 #' )
-#' p <- ggplot(data = data, mapping = aes(x = !!sym("x"), y = !!sym("y")))
+#' Note that `.data` is a data pronoun from the rlang package.
+#' p <- ggplot(data = data, mapping = aes(x = .data[["x"]], y = .data[["y"]]))
 #' p + acid_geom_bar(fill = "black")
 acid_geom_bar <- # nolint
     function(..., color = NA, stat = "identity") {
@@ -198,7 +199,7 @@ acid_geom_label_average <- # nolint
         }
         acid_geom_label(
             data = data,
-            mapping = aes(label = !!sym("roundedAverage")),
+            mapping = aes(label = .data[["roundedAverage"]]),
             ...
         )
     }

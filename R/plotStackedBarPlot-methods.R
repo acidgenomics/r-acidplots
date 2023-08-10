@@ -53,9 +53,9 @@ NULL
         p <- ggplot(
             data = data,
             mapping = aes(
-                x = !!sym("interestingGroups"),
-                y = !!sym("n"),
-                fill = !!sym("ident")
+                x = .data[["interestingGroups"]],
+                y = .data[["n"]],
+                fill = .data[["ident"]]
             )
         ) +
             geom_bar(

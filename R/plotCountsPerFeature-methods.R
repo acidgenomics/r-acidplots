@@ -70,9 +70,9 @@ NULL
             p <- p +
                 geom_density(
                     mapping = aes(
-                        x = !!sym("value"),
-                        group = str_replace_na(!!sym("interestingGroups")),
-                        color = str_replace_na(!!sym("interestingGroups"))
+                        x = .data[["value"]],
+                        group = str_replace_na(.data[["interestingGroups"]]),
+                        color = str_replace_na(.data[["interestingGroups"]])
                     ),
                     fill = NA,
                     linewidth = 1L
@@ -81,9 +81,9 @@ NULL
             p <- p +
                 geom_boxplot(
                     mapping = aes(
-                        x = !!sym("sampleName"),
-                        y = !!sym("value"),
-                        fill = str_replace_na(!!sym("interestingGroups"))
+                        x = .data[["sampleName"]],
+                        y = .data[["value"]],
+                        fill = str_replace_na(.data[["interestingGroups"]])
                     ),
                     color = "black"
                 )
@@ -91,9 +91,9 @@ NULL
             p <- p +
                 geom_jitter(
                     mapping = aes(
-                        x = !!sym("sampleName"),
-                        y = !!sym("value"),
-                        color = str_replace_na(!!sym("interestingGroups"))
+                        x = .data[["sampleName"]],
+                        y = .data[["value"]],
+                        color = str_replace_na(.data[["interestingGroups"]])
                     ),
                     size = 0.5
                 )

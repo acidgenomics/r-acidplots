@@ -110,9 +110,9 @@ NULL
                 p <- ggplot(
                     data = as.data.frame(data),
                     mapping = aes(
-                        x = !!sym("x"),
-                        y = !!sym("y"),
-                        color = !!sym(feature)
+                        x = .data[["x"]],
+                        y = .data[["y"]],
+                        color = .data[[feature]]
                     )
                 )
                 if (isTRUE(pointsAsNumbers)) {
@@ -120,10 +120,10 @@ NULL
                     p <- p +
                         geom_text(
                             mapping = aes(
-                                x = !!sym("x"),
-                                y = !!sym("y"),
-                                label = !!sym("ident"),
-                                color = !!sym(feature)
+                                x = .data[["x"]],
+                                y = .data[["y"]],
+                                label = .data[["ident"]],
+                                color = .data[[feature]]
                             ),
                             alpha = pointAlpha,
                             size = pointSize
@@ -151,9 +151,9 @@ NULL
                     p <- p +
                         geom_text(
                             mapping = aes(
-                                x = !!sym("centerX"),
-                                y = !!sym("centerY"),
-                                label = !!sym("ident")
+                                x = .data[["centerX"]],
+                                y = .data[["centerY"]],
+                                label = .data[["ident"]]
                             ),
                             color = labelColor,
                             size = labelSize,

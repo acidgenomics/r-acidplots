@@ -144,13 +144,13 @@ NULL
     ggplot(
         data = as.data.frame(data),
         mapping = aes(
-            x = str_replace_na(!!sym("interestingGroups")),
-            y = !!sym("value"),
-            color = str_replace_na(!!sym("interestingGroups")),
-            fill = str_replace_na(!!sym("interestingGroups"))
+            x = str_replace_na(.data[["interestingGroups"]]),
+            y = .data[["value"]],
+            color = str_replace_na(.data[["interestingGroups"]]),
+            fill = str_replace_na(.data[["interestingGroups"]])
         )
     ) +
-        facet_wrap(facets = vars(!!sym("rowname")), scales = "free_y")
+        facet_wrap(facets = vars(.data[["rowname"]]), scales = "free_y")
 }
 
 
@@ -163,10 +163,10 @@ NULL
     ggplot(
         data = as.data.frame(data),
         mapping = aes(
-            x = !!sym("rowname"),
-            y = !!sym("value"),
-            color = str_replace_na(!!sym("interestingGroups")),
-            fill = str_replace_na(!!sym("interestingGroups"))
+            x = .data[["rowname"]],
+            y = .data[["value"]],
+            color = str_replace_na(.data[["interestingGroups"]]),
+            fill = str_replace_na(.data[["interestingGroups"]])
         )
     )
 }
@@ -439,14 +439,14 @@ formals(`plotCounts,SCE`)[["legend"]] <- # nolint
         p <- ggplot(
             data = as.data.frame(x),
             mapping = aes(
-                x = !!sym("geneName"),
-                y = !!sym("ident")
+                x = .data[["geneName"]],
+                y = .data[["ident"]]
             )
         ) +
             geom_point(
                 mapping = aes(
-                    color = !!sym("avgExpScale"),
-                    size = !!sym("pctExp")
+                    color = .data[["avgExpScale"]],
+                    size = .data[["pctExp"]]
                 ),
                 show.legend = legend
             ) +
@@ -462,7 +462,7 @@ formals(`plotCounts,SCE`)[["legend"]] <- # nolint
             isTRUE(perSample) &&
                 isTRUE(hasMultipleSamples(object))
         ) {
-            p <- p + facet_wrap(facets = vars(!!sym("sampleName")))
+            p <- p + facet_wrap(facets = vars(.data[["sampleName"]]))
         }
         ## Color.
         if (is(color, "ScaleContinuous")) {
@@ -528,9 +528,9 @@ formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym(x),
-                y = !!sym(assay),
-                color = !!sym(colorMapping)
+                x = .data[[x]],
+                y = .data[[assay]],
+                color = .data[[colorMapping]]
             )
         ) +
             geom_jitter(show.legend = legend) +
@@ -554,14 +554,14 @@ formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
         ) {
             p <- p +
                 facet_grid(
-                    rows = vars(!!sym("ident")),
-                    cols = vars(!!sym("geneName")),
+                    rows = vars(.data[["ident"]]),
+                    cols = vars(.data[["geneName"]]),
                     scales = "free_y"
                 )
         } else {
             p <- p +
                 facet_wrap(
-                    facets = vars(!!sym("geneName")),
+                    facets = vars(.data[["geneName"]]),
                     scales = "free_y"
                 )
         }

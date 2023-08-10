@@ -60,9 +60,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("sampleName"),
-                y = !!sym("featureCount"),
-                fill = str_replace_na(!!sym("interestingGroups"))
+                x = .data[["sampleName"]],
+                y = .data[["featureCount"]],
+                fill = str_replace_na(.data[["interestingGroups"]])
             )
         ) +
             acid_geom_bar() +

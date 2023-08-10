@@ -119,9 +119,9 @@ NULL
         p <- ggplot(
             data = data,
             mapping = aes(
-                x = !!sym("pc1"),
-                y = !!sym("pc2"),
-                color = str_replace_na(!!sym("interestingGroups"))
+                x = .data[["pc1"]],
+                y = .data[["pc2"]],
+                color = str_replace_na(.data[["interestingGroups"]])
             )
         ) +
             geom_point(size = 4L) +
@@ -144,7 +144,7 @@ NULL
         ## Label.
         if (isTRUE(label)) {
             p <- p + acid_geom_label_repel(
-                mapping = aes(label = !!sym("sampleName"))
+                mapping = aes(label = .data[["sampleName"]])
             )
         }
         ## Return.
@@ -256,9 +256,9 @@ formals(`plotPCA,SE`)[c( # nolint
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("x"),
-                y = !!sym("y"),
-                color = !!sym("interestingGroups")
+                x = .data[["x"]],
+                y = .data[["y"]],
+                color = .data[["interestingGroups"]]
             )
         )
         ## Points as numbers.
@@ -270,10 +270,10 @@ formals(`plotPCA,SE`)[c( # nolint
             p <- p +
                 geom_text(
                     mapping = aes(
-                        x = !!sym("x"),
-                        y = !!sym("y"),
-                        label = !!sym("ident"),
-                        color = !!sym("interestingGroups")
+                        x = .data[["x"]],
+                        y = .data[["y"]],
+                        label = .data[["ident"]],
+                        color = .data[["interestingGroups"]]
                     ),
                     alpha = pointAlpha,
                     size = pointSize,
@@ -297,9 +297,9 @@ formals(`plotPCA,SE`)[c( # nolint
             p <- p +
                 geom_text(
                     mapping = aes(
-                        x = !!sym("centerX"),
-                        y = !!sym("centerY"),
-                        label = !!sym("ident")
+                        x = .data[["centerX"]],
+                        y = .data[["centerY"]],
+                        label = .data[["ident"]]
                     ),
                     color = labelColor,
                     size = labelSize,

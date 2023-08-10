@@ -85,7 +85,7 @@ Invisibly return a \code{ggplot} \code{list}.
 Visualize gene markers on a reduced dimension plot (e.g. t-SNE, UMAP).
 }
 \note{
-Updated 2023-04-28.
+Updated 2023-08-10.
 }
 \examples{
 requireNamespace("Matrix", quietly = TRUE)

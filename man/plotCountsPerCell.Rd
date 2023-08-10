@@ -63,7 +63,7 @@ Plot the disambiguated counts per cell.
 droplet-based scRNA-seq data.
 }
 \note{
-Updated 2022-03-07.
+Updated 2022-08-10.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")
