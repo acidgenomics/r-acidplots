@@ -2,6 +2,7 @@
 
 export("!!!")
 export("!!")
+export(.data)
 export(AcidPlotsTestsURL)
 export(acid_coord_flip)
 export(acid_geom_abline)

@@ -1,4 +1,8 @@
 #' @export
+#' @importFrom rlang .data
+rlang::`.data`
+
+#' @export
 #' @importFrom rlang !!!
 rlang::`!!!` # nolint
 
