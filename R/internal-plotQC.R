@@ -64,8 +64,8 @@
         }
         ## nocov end
         mapping <- aes(
-            color = str_replace_na(!!sym("interestingGroups")),
-            fill = str_replace_na(!!sym("interestingGroups"))
+            color = str_replace_na(.data$interestingGroups),
+            fill = str_replace_na(.data$interestingGroups)
         )
         if (isSubset(geom, c("boxplot", "violin"))) {
             mapping[["x"]] <- as.symbol("sampleName")
@@ -275,7 +275,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
             mapping = aes(
                 x = !!sym(xCol),
                 y = !!sym(yCol),
-                color = str_replace_na(!!sym("interestingGroups"))
+                color = str_replace_na(.data$interestingGroups)
             )
         ) +
             geom_point(alpha = 0.5, size = 1L) +
