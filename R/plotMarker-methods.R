@@ -1,7 +1,7 @@
 #' @name plotMarker
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotMarker
-#' @note Updated 2023-04-28.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -25,7 +25,7 @@ NULL
 
 
 
-## Updated 2022-03-07.
+## Updated 2023-08-10.
 `plotMarker,SCE` <- # nolint
     function(object,
              genes,
@@ -89,8 +89,8 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("x"),
-                y = !!sym("y"),
+                x = .data$x,
+                y = .data$y,
                 color = !!sym(expression)
             )
         )
