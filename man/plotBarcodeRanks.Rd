@@ -34,10 +34,11 @@ See \code{ggplot2::labs()} for details.}
 \description{
 Plot barcode ranks
 }
-\note{
+\details{
 Requires DropletUtils package to be installed.
-
-Updated 2022-05-24.
+}
+\note{
+Updated 2023-08-10.
 }
 \examples{
 data(SingleCellExperiment_splatter, package = "AcidTest")

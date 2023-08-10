@@ -19,7 +19,7 @@ Add a horizontal (using \code{yintercept}) or vertical (using \code{xintercept})
 reference line.
 }
 \note{
-Updated 2021-09-03.
+Updated 2023-08-10.
 }
 \examples{
 ## x-axis line.
