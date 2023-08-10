@@ -50,9 +50,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = .data$sampleName,
-                y = .data$nCells,
-                fill = str_replace_na(.data$interestingGroups)
+                x = .data[["sampleName"]],
+                y = .data[["nCells"]],
+                fill = str_replace_na(.data[["interestingGroups"]])
             )
         ) +
             acid_geom_bar() +
@@ -66,7 +66,7 @@ NULL
         if (isTRUE(nrow(data) <= 16L)) {
             p <- p + acid_geom_label(
                 data = as.data.frame(data),
-                mapping = aes(label = .data$nCells),
+                mapping = aes(label = .data[["nCells"]]),
                 ## Align the label just under the top of the bar.
                 vjust = 1.25
             )
