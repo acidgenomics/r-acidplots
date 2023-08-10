@@ -4,7 +4,7 @@
 #' reference line.
 #'
 #' @export
-#' @note Updated 2021-09-03.
+#' @note Updated 2023-08-10.
 #'
 #' @param xintercept,yintercept `numeric(1)`.
 #' Value denoting x- or y-axis cutoff.
@@ -26,7 +26,7 @@ acid_geom_abline <- # nolint
         alpha <- 0.75
         color <- "black"
         linetype <- "dashed"
-        size <- 1L
+        linewidth <- 1L
         if (
             (is.null(xintercept) && is.null(yintercept)) ||
                 (is.numeric(xintercept) && is.numeric(yintercept))
@@ -41,7 +41,7 @@ acid_geom_abline <- # nolint
                 alpha = alpha,
                 color = color,
                 linetype = linetype,
-                size = size
+                linewidth = linewidth
             )
         } else if (is.numeric(yintercept)) {
             geom_hline(
@@ -49,7 +49,7 @@ acid_geom_abline <- # nolint
                 alpha = alpha,
                 color = color,
                 linetype = linetype,
-                size = size
+                linewidth = linewidth
             )
         }
     }
