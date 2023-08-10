@@ -112,9 +112,9 @@ NULL
                     geom_point(
                         data = pointData,
                         mapping = aes(
-                            x = .data$x,
-                            y = .data$y,
-                            color = .data$sampleName
+                            x = .data[["x"]],
+                            y = .data[["y"]],
+                            color = .data[["sampleName"]]
                         ),
                         size = 5L,
                         show.legend = FALSE
@@ -122,10 +122,10 @@ NULL
                     acid_geom_label_repel(
                         data = pointData,
                         mapping = aes(
-                            x = .data$x,
-                            y = .data$y,
-                            label = .data$label,
-                            color = .data$sampleName
+                            x = .data[["x"]],
+                            y = .data[["y"]],
+                            label = .data[["label"]],
+                            color = .data[["sampleName"]]
                         )
                     )
             }

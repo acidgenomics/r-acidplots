@@ -120,7 +120,7 @@ NULL
                 data[["x"]] <- reorder(data[["x"]], data[["y"]])
                 p <- ggplot(
                     data = data,
-                    mapping = aes(x = .data$x, y = .data$y)
+                    mapping = aes(x = .data[["x"]], y = .data[["y"]])
                 ) +
                     geom_bar(
                         color = NA,

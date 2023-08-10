@@ -81,8 +81,8 @@ NULL
         p <- ggplot(
             data = data,
             mapping = aes(
-                x = .data$value,
-                color = .data$sample
+                x = .data[["value"]],
+                color = .data[["sample"]]
             )
         ) +
             stat_ecdf(linewidth = 1L) +
