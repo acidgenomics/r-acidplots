@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit AcidGenerics::plotCountsPerFeature
-#' @note Updated 2021-09-10.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidExperiment::melt
 #' @inheritParams AcidRoxygen::params
@@ -75,7 +75,7 @@ NULL
                         color = str_replace_na(!!sym("interestingGroups"))
                     ),
                     fill = NA,
-                    size = 1L
+                    linewidth = 1L
                 )
         } else if (identical(geom, "boxplot")) {
             p <- p +

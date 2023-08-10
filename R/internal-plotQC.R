@@ -86,7 +86,7 @@
         } else if (identical(geom, "ecdf")) {
             metricAxis <- "x"
             p <- p +
-                stat_ecdf(geom = "step", size = 1L) +
+                stat_ecdf(geom = "step", linewidth = 1L) +
                 scale_x_continuous(trans = trans)
             labels[["otherAxis"]] <- "Fn(x)"
         } else if (identical(geom, "histogram")) {
@@ -285,7 +285,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
         if (isTRUE(trendline)) {
             ## If `method = "gam"`, mgcv package is required.
             ## Otherwise build checks will error.
-            p <- p + geom_smooth(method = "glm", se = FALSE, size = 1L)
+            p <- p + geom_smooth(linewidth = 1L, method = "glm", se = FALSE)
         }
         ## Labels.
         labels[["color"]] <- paste(interestingGroups, collapse = ":\n")

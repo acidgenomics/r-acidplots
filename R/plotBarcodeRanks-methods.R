@@ -1,7 +1,9 @@
 #' @name plotBarcodeRanks
 #' @inherit AcidGenerics::plotBarcodeRanks
-#' @note Requires DropletUtils package to be installed.
-#' @note Updated 2022-05-24.
+#' @note Updated 2023-08-10.
+#'
+#' @details
+#' Requires DropletUtils package to be installed.
 #'
 #' @inheritParams AcidRoxygen::params
 #'
@@ -23,7 +25,7 @@ NULL
 
 
 
-## Updated 2022-05-24.
+## Updated 2023-08-10.
 `plotBarcodeRanks,SCE` <- # nolint
     function(object,
              colors = c(
@@ -97,7 +99,7 @@ NULL
                             y = !!sym("fitted")
                         ),
                         color = colors[["fitline"]],
-                        size = 1L
+                        linewidth = 1L
                     )
                 }
                 p <- p +

@@ -1,6 +1,6 @@
 #' @name plotSums
 #' @inherit AcidGenerics::plotSums
-#' @note Updated 2021-09-10.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -85,7 +85,7 @@ NULL
                 color = !!sym("sample")
             )
         ) +
-            stat_ecdf(size = 1L) +
+            stat_ecdf(linewidth = 1L) +
             scale_x_continuous(trans = "sqrt")
         ## Labels.
         labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
