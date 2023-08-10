@@ -1,7 +1,7 @@
 #' @name plotCellCounts
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCellCounts
-#' @note Updated 2022-05-06.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -16,7 +16,7 @@ NULL
 
 
 
-## Updated 2022-05-06.
+## Updated 2023-08-10.
 `plotCellCounts,SCE` <- # nolint
     function(object,
              assay = 1L,
@@ -45,15 +45,14 @@ NULL
         sampleData <- sampleData(object)
         assert(areSetEqual(names(metric), rownames(sampleData)))
         data <- sampleData
-        metricCol <- "nCells"
-        data[[metricCol]] <- as.integer(metric[rownames(data)])
+        data[["nCells"]] <- as.integer(metric[rownames(data)])
         ## Plot.
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("sampleName"),
-                y = !!sym(metricCol),
-                fill = str_replace_na(!!sym("interestingGroups"))
+                x = .data$sampleName,
+                y = .data$nCells,
+                fill = str_replace_na(.data$interestingGroups)
             )
         ) +
             acid_geom_bar() +
@@ -67,7 +66,7 @@ NULL
         if (isTRUE(nrow(data) <= 16L)) {
             p <- p + acid_geom_label(
                 data = as.data.frame(data),
-                mapping = aes(label = !!sym(metricCol)),
+                mapping = aes(label = .data$nCells),
                 ## Align the label just under the top of the bar.
                 vjust = 1.25
             )
