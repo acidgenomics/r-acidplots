@@ -61,7 +61,7 @@ NULL
         p <- p + autoDiscreteFillScale()
         ## Wrap for multiple samples.
         if (isTRUE(multipleSamples)) {
-            p <- p + facet_wrap(facets = vars(.data$ident))
+            p <- p + facet_wrap(facets = vars(.data[["ident"]]))
         }
         ## Return.
         p
