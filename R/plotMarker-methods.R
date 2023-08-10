@@ -89,9 +89,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = .data$x,
-                y = .data$y,
-                color = !!sym(expression)
+                x = .data[["x"]],
+                y = .data[["y"]],
+                color = .data[[expression]]
             )
         )
         ## Customize legend.
