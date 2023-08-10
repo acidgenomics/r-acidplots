@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.5.5
-Date: 2023-04-27
+Version: 0.5.6.9000
+Date: 2023-08-10
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -20,31 +20,31 @@ URL:
 BugReports: https://github.com/acidgenomics/r-acidplots/issues/
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 4.2)
+Depends: R (>= 4.3)
 Imports:
-    AcidBase (>= 0.6.15),
-    AcidCLI (>= 0.2.7),
+    AcidBase (>= 0.6.18),
+    AcidCLI (>= 0.2.8),
     AcidExperiment (>= 0.4.7),
     AcidGenerics (>= 0.6.7),
-    AcidGenomes (>= 0.5.0),
+    AcidGenomes (>= 0.5.1),
     AcidMarkdown (>= 0.2.5),
-    AcidPlyr (>= 0.3.10),
+    AcidPlyr (>= 0.3.11),
     AcidSingleCell (>= 0.3.5),
-    Biobase (>= 2.58.0),
-    BiocGenerics (>= 0.44.0),
-    IRanges (>= 2.32.0),
-    Matrix (>= 1.5.4),
-    S4Vectors (>= 0.36.0),
-    SingleCellExperiment (>= 1.20.0),
-    SummarizedExperiment (>= 1.28.0),
+    Biobase (>= 2.60.0),
+    BiocGenerics (>= 0.46.0),
+    IRanges (>= 2.34.0),
+    Matrix (>= 1.6.0),
+    S4Vectors (>= 0.38.0),
+    SingleCellExperiment (>= 1.22.0),
+    SummarizedExperiment (>= 1.30.0),
     ggplot2 (>= 3.4.2),
-    goalie (>= 0.6.9),
+    goalie (>= 0.6.14),
     patchwork (>= 1.1.2),
-    pipette (>= 0.10.9),
-    rlang (>= 1.1.0),
+    pipette (>= 0.11.1),
+    rlang (>= 1.1.1),
     scales (>= 1.2.1),
     stringr (>= 1.5.0),
-    syntactic (>= 0.6.5),
+    syntactic (>= 0.6.6),
     grDevices,
     grid,
     methods,
@@ -52,17 +52,17 @@ Imports:
     utils
 Suggests:
     AcidTest (>= 0.7.2),
-    BiocParallel (>= 1.32.0),
+    BiocParallel (>= 1.34.0),
     ComplexUpset (>= 1.3.3),
-    DropletUtils (>= 1.18.0),
+    DropletUtils (>= 1.20.0),
     RColorBrewer (>= 1.1.3),
-    ggpmisc (>= 0.5.2),
+    ggpmisc (>= 0.5.3),
     ggrepel (>= 0.9.3),
     ggridges (>= 0.5.4),
-    matrixStats (>= 0.63.0),
+    matrixStats (>= 1.0.0),
     pheatmap (>= 1.0.12),
-    testthat (>= 3.1.7),
-    viridis (>= 0.6.2)
+    testthat (>= 3.1.10),
+    viridis (>= 0.6.4)
 Additional_repositories: https://r.acidgenomics.com
 Config/testthat/edition: 3
 Config/testthat/parallel: true
