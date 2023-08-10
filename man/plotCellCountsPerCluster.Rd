@@ -26,7 +26,7 @@ Show graphical output. Invisibly return \code{ggplot}.
 Plot cell counts per cluster
 }
 \note{
-Updated 2022-11-09.
+Updated 2023-08-10.
 }
 \examples{
 data(SingleCellExperiment_Seurat, package = "AcidTest")

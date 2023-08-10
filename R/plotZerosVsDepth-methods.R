@@ -50,9 +50,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("depth"),
-                y = !!sym("dropout"),
-                color = str_replace_na(!!sym("interestingGroups"))
+                x = .data[["depth"]],
+                y = .data[["dropout"]],
+                color = str_replace_na(.data[["interestingGroups"]])
             )
         ) +
             geom_point(
@@ -72,6 +72,7 @@ NULL
             facets <- "aggregate"
         }
         if (is.character(facets)) {
+            ## FIXME How to rework this without syms?
             p <- p + facet_wrap(
                 facets = vars(!!!syms(facets)),
                 scales = "free"

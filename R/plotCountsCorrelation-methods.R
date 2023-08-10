@@ -63,13 +63,13 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym("colname"),
-                y = !!sym("value"),
-                color = !!sym("type")
+                x = .data[["colname"]],
+                y = .data[["value"]],
+                color = .data[["type"]]
             )
         ) +
             geom_point() +
-            facet_wrap(facets = vars(!!sym("rowname")), scales = "free_y")
+            facet_wrap(facets = vars(.data[["rowname"]]), scales = "free_y")
         ## Color palette.
         p <- p + autoDiscreteColorScale()
         ## Labels

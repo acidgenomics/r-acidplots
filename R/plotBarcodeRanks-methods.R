@@ -81,8 +81,8 @@ NULL
                 p <- ggplot(data = as.data.frame(data)) +
                     geom_point(
                         mapping = aes(
-                            x = !!sym("rank"),
-                            y = !!sym("total")
+                            x = .data[["rank"]],
+                            y = .data[["total"]]
                         )
                     ) +
                     scale_x_continuous(trans = "log10") +
@@ -95,8 +95,8 @@ NULL
                     p <- p + geom_line(
                         data = as.data.frame(fitData),
                         mapping = aes(
-                            x = !!sym("rank"),
-                            y = !!sym("fitted")
+                            x = .data[["rank"]],
+                            y = .data[["fitted"]]
                         ),
                         color = colors[["fitline"]],
                         linewidth = 1L
@@ -117,9 +117,9 @@ NULL
                     acid_geom_label_repel(
                         data = as.data.frame(labelData),
                         mapping = aes(
-                            x = !!sym("rank"),
-                            y = !!sym("total"),
-                            label = !!sym("label")
+                            x = .data[["rank"]],
+                            y = .data[["total"]],
+                            label = .data[["label"]]
                         ),
                         color = colors[c("knee", "inflection")]
                     )
