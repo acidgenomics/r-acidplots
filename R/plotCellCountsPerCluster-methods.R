@@ -1,6 +1,6 @@
 #' @name plotCellCountsPerCluster
 #' @inherit AcidGenerics::plotCellCountsPerCluster
-#' @note Updated 2022-11-09.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2022-03-05.
+## Updated 2023-08-10.
 `plotCellCountsPerCluster,SCE` <- # nolint
     function(object,
              interestingGroups = NULL) {
@@ -43,9 +43,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym(col),
-                y = !!sym("n"),
-                fill = !!sym(col)
+                x = {{ col }},
+                y = .data$n,
+                fill = {{ col }}
             )
         ) +
             geom_bar(
@@ -61,7 +61,7 @@ NULL
         p <- p + autoDiscreteFillScale()
         ## Wrap for multiple samples.
         if (isTRUE(multipleSamples)) {
-            p <- p + facet_wrap(facets = vars(!!sym("ident")))
+            p <- p + facet_wrap(facets = vars(.data$ident))
         }
         ## Return.
         p
