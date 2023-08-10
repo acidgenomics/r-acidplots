@@ -1,7 +1,7 @@
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerCell
-#' @note Updated 2022-03-07.
+#' @note Updated 2022-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -24,7 +24,7 @@ NULL
 
 
 
-## Updated 2022-03-07.
+## Updated 2023-08-10.
 `plotCountsPerCell,SCE` <- # nolint
     function(object,
              geom,
@@ -107,9 +107,9 @@ NULL
                     geom_point(
                         data = pointData,
                         mapping = aes(
-                            x = !!sym("x"),
-                            y = !!sym("y"),
-                            color = !!sym("sampleName")
+                            x = .data$x,
+                            y = .data$y,
+                            color = .data$sampleName
                         ),
                         size = 5L,
                         show.legend = FALSE
@@ -117,10 +117,10 @@ NULL
                     acid_geom_label_repel(
                         data = pointData,
                         mapping = aes(
-                            x = !!sym("x"),
-                            y = !!sym("y"),
-                            label = !!sym("label"),
-                            color = !!sym("sampleName")
+                            x = .data$x,
+                            y = .data$y,
+                            label = .data$label,
+                            color = .data$sampleName
                         )
                     )
             }
