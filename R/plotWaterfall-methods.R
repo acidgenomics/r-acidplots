@@ -2,7 +2,7 @@
 
 #' @name plotWaterfall
 #' @inherit AcidGenerics::plotWaterfall
-#' @note Updated 2023-04-27.
+#' @note Updated 2023-08-10.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -120,7 +120,7 @@ NULL
                 data[["x"]] <- reorder(data[["x"]], data[["y"]])
                 p <- ggplot(
                     data = data,
-                    mapping = aes(x = !!sym("x"), y = !!sym("y"))
+                    mapping = aes(x = .data$x, y = .data$y)
                 ) +
                     geom_bar(
                         color = NA,
