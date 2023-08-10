@@ -43,9 +43,9 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = {{ col }},
-                y = .data$n,
-                fill = {{ col }}
+                x = .data[[col]],
+                y = .data[["n"]],
+                fill = .data[[col]]
             )
         ) +
             geom_bar(
