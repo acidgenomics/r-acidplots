@@ -273,8 +273,8 @@ formals(`.plotQCMetric`)[["geom"]] <-
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = !!sym(xCol),
-                y = !!sym(yCol),
+                x = .data[[xCol]],
+                y = .data[[yCol]],
                 color = str_replace_na(.data[["interestingGroups"]])
             )
         ) +

@@ -113,10 +113,10 @@ NULL
             p <- p +
                 geom_text(
                     mapping = aes(
-                        x = !!sym("x"),
-                        y = !!sym("y"),
-                        label = !!sym("ident"),
-                        color = !!sym(expression)
+                        x = .data[["x"]],
+                        y = .data[["y"]],
+                        label = .data[["ident"]],
+                        color = .data[[expression]]
                     ),
                     alpha = pointAlpha,
                     size = pointSize
@@ -138,9 +138,9 @@ NULL
             p <- p +
                 geom_text(
                     mapping = aes(
-                        x = !!sym("centerX"),
-                        y = !!sym("centerY"),
-                        label = !!sym("ident")
+                        x = .data[["centerX"]],
+                        y = .data[["centerY"]],
+                        label = .data[["ident"]]
                     ),
                     color = labelColor,
                     size = labelSize,
