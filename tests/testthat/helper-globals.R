@@ -7,6 +7,8 @@ options(
     "warnPartialMatchDollar" = FALSE
 )
 
+data <- utils::data
+
 data(
     KnownMarkers,
     RangedSummarizedExperiment,
