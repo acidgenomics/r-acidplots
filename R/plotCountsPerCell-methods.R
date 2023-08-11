@@ -1,12 +1,7 @@
-## FIXME This is erroring with the working example, need to debug:
-## plotCountsPerCell(object, geom = "ecdf", point = "inflection")
-
-
-
 #' @name plotCountsPerCell
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerCell
-#' @note Updated 2022-08-10.
+#' @note Updated 2023-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -29,7 +24,7 @@ NULL
 
 
 
-## Updated 2023-08-10.
+## Updated 2023-08-11.
 `plotCountsPerCell,SCE` <- # nolint
     function(object,
              geom,
@@ -42,9 +37,36 @@ NULL
         assert(isString(title, nullOK = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
-        ## Override `interestingGroups` argument when labeling points.
+        interestingGroups <- matchInterestingGroups(object, interestingGroups)
         if (!identical(point, "none")) {
-            interestingGroups <- "sampleName"
+            ## Require ecdf geom for now.
+            assert(
+                identical(geom, "ecdf"),
+                msg = sprintf(
+                    paste(
+                        "Only {.var %s} {.val %s} is currently",
+                        "supported for {.var %s} {.val %s}."
+                    ),
+                    "geom", "ecdf",
+                    "point", point
+                )
+            )
+            ## Override `interestingGroups` argument when labeling points.
+            assert(
+                identical(interestingGroups, "sampleName"),
+                msg = sprintf(
+                    paste(
+                        "Only {.var %s} {.val %s} is currently supported when",
+                        "labeling points with {.var %s} {.val %s}."
+                    ),
+                    "interestingGroups", "sampleName",
+                    "point", point
+                )
+            )
+            ## Need to ensure that `nCount` exists for downstream calculations.
+            if (!isSubset("nCount", colnames(colData(object)))) {
+                object <- calculateMetrics(object)
+            }
         }
         ## Plot.
         p <- do.call(
@@ -61,8 +83,6 @@ NULL
         )
         ## Calculate barcode ranks and label inflection or knee points.
         if (!identical(point, "none")) {
-            ## Require ecdf geom for now.
-            assert(identical(geom, "ecdf"))
             if (length(title)) {
                 p <- p + labs(subtitle = paste(point, "point per sample"))
             }
@@ -84,6 +104,7 @@ NULL
             points <- points[names(sampleNames)]
             if (identical(geom, "ecdf")) {
                 ## Calculate the y-intercept per sample.
+                assert(isSubset("nCount", colnames(colData(object))))
                 freq <- Map(
                     sampleId = names(points),
                     point = points,
@@ -106,7 +127,8 @@ NULL
                     "x" = points,
                     "y" = freq,
                     "label" = paste0(sampleNames, " (", points, ")"),
-                    "sampleName" = sampleNames
+                    "sampleName" = sampleNames,
+                    "interestingGroups" = sampleNames
                 )
                 p <- p +
                     geom_point(
