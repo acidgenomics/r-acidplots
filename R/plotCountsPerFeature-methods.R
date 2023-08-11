@@ -117,7 +117,6 @@ NULL
         p <- p + autoDiscreteFillScale()
         ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !identical(geom, "density")) {
-            ## FIXME This step is now erroring out, need to rework.
             p <- acid_coord_flip(p)
         }
         ## Hide sample name legend.
