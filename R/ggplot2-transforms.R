@@ -17,11 +17,10 @@
 #' @examples
 #' library(ggplot2)
 #' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
-#'
 #' ## Notice the difference in Y axis sample order.
 #' g + coord_flip()
-#' g + acid_coord_flip()
-acid_coord_flip <- # nolint
+#' g + acid_discrete_coord_flip()
+acid_discrete_coord_flip <- # nolint
     function() {
         list(
             scale_x_discrete(limits = rev),
@@ -31,25 +30,21 @@ acid_coord_flip <- # nolint
 
 
 
-## FIXME Need a working example here.
-
 #' Remove Y axis padding
 #'
 #' @export
-#' @note Updated 2021-06-29.
-#'
-#' @param expand `numeric`.
-#' Range expansion.
-#' Refer to `ggplot2::expansion` for details.
-#'
-#' @param ... Other arguments passed to `scale_y_continuous()`.
+#' @note Updated 2023-08-11.
 #'
 #' @return `ggproto`.
 #'
 #' @examples
-#' acid_scale_y_continuous_nopad()
+#' library(ggplot2)
+#' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+#' ## By default, plots contain padding at the top of the graph.
+#' print(g)
+#' ## This function will automatically remove the padding.
+#' g + acid_scale_y_continuous_nopad()
 acid_scale_y_continuous_nopad <- # nolint
-    function(...,
-             expand = ggplot2::expansion(mult = c(0L, 0.025))) {
-        scale_y_continuous(..., expand = expand)
+    function() {
+        scale_y_continuous(expand = expansion(mult = c(0L, 0L)))
     }
