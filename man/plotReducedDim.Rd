@@ -26,7 +26,7 @@ plotUMAP(object, ...)
   dims = 1:2,
   interestingGroups = NULL,
   color = getOption(x = "acid.discrete.color", default =
-    AcidPlots::scale_color_synesthesia_d()),
+    AcidPlots::acid_scale_color_synesthesia_d()),
   pointSize = getOption(x = "acid.point.size", default = 1L),
   pointAlpha = getOption(x = "acid.point.alpha", default = 0.9),
   pointsAsNumbers = getOption(x = "acid.points.as.numbers", default = FALSE),

@@ -136,8 +136,8 @@ NULL
         names(labels)[names(labels) == "countAxis"] <- "y"
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_color_discrete()
+        p <- p + acid_scale_fill_discrete()
         ## Return.
         p
     }

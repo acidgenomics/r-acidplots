@@ -4,11 +4,11 @@
 \alias{synesthesia}
 \alias{synesthesia_pal}
 \alias{scale_colour_synesthesia_c}
-\alias{scale_color_synesthesia_c}
+\alias{acid_scale_color_synesthesia_c}
 \alias{scale_colour_synesthesia_d}
-\alias{scale_color_synesthesia_d}
-\alias{scale_fill_synesthesia_c}
-\alias{scale_fill_synesthesia_d}
+\alias{acid_scale_color_synesthesia_d}
+\alias{acid_scale_fill_synesthesia_c}
+\alias{acid_scale_fill_synesthesia_d}
 \title{Synesthesia color palette}
 \usage{
 synesthesia(
@@ -30,7 +30,7 @@ scale_colour_synesthesia_c(
     "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
 )
 
-scale_color_synesthesia_c(
+acid_scale_color_synesthesia_c(
   ...,
   na.value = "grey50",
   guide = "colourbar",
@@ -44,13 +44,13 @@ scale_colour_synesthesia_d(
     "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
 )
 
-scale_color_synesthesia_d(
+acid_scale_color_synesthesia_d(
   ...,
   palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
     "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
 )
 
-scale_fill_synesthesia_c(
+acid_scale_fill_synesthesia_c(
   ...,
   na.value = "grey50",
   guide = "colourbar",
@@ -58,7 +58,7 @@ scale_fill_synesthesia_c(
     "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
 )
 
-scale_fill_synesthesia_d(
+acid_scale_fill_synesthesia_d(
   ...,
   palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
     "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
@@ -100,22 +100,22 @@ suppressPackageStartupMessages({
 ## Color, continuous.
 cc <- ggplot(mpg, aes(cty, hwy)) +
     geom_jitter(aes(color = hwy))
-cc + scale_color_synesthesia_c()
+cc + acid_scale_color_synesthesia_c()
 
 ## Color, discrete.
 cd <- ggplot(mpg, aes(fl)) +
     geom_bar(aes(color = fl), fill = NA)
-cd + scale_color_synesthesia_d()
+cd + acid_scale_color_synesthesia_d()
 
 ## Fill, continuous.
 fc <- ggplot(diamonds, aes(carat, price)) +
     geom_hex()
-fc + scale_fill_synesthesia_c()
+fc + acid_scale_fill_synesthesia_c()
 
 ## Fill, discrete.
 fd <- ggplot(mpg, aes(fl)) +
     geom_bar(aes(fill = fl))
-fd + scale_fill_synesthesia_d()
+fd + acid_scale_fill_synesthesia_d()
 
 ## Base color.
 par(mar = rep(2.5, times = 4L))

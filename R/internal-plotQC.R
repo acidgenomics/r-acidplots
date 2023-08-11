@@ -154,9 +154,9 @@
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
         if (identical(geom, "ecdf")) {
-            p <- p + autoDiscreteColorScale()
+            p <- p + acid_scale_color_discrete()
         } else {
-            p <- p + autoDiscreteFillScale()
+            p <- p + acid_scale_fill_discrete()
         }
         ## Median labels.
         if (!isSubset(geom, c("ecdf", "histogram"))) {
@@ -291,7 +291,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
         labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
+        p <- p + acid_scale_color_discrete()
         ## Facets.
         facets <- NULL
         if (isSubset("aggregate", colnames(data))) {

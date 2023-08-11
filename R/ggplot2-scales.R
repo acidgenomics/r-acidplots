@@ -6,7 +6,7 @@
 #'
 #' These functions will inherit values defined in global `options()`. Either
 #' input a ggplot2 color scale function that returns `Scale` class
-#' (e.g. `scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
+#' (e.g. `acid_scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
 #' character strings.
 #'
 #' - `acid_scale_color_continuous()`: `"ggplot2.continuous.colour"`.
@@ -43,7 +43,7 @@ acid_scale_color_continuous <- # nolint
         x <- scale_colour_continuous(
             type = getOption(
                 x = "ggplot2.continuous.colour",
-                default = scale_color_synesthesia_c
+                default = acid_scale_color_synesthesia_c
             )
         )
         assert(isGGScale(x, scale = "continuous", aes = "color"))
@@ -59,7 +59,7 @@ acid_scale_fill_continuous <- # nolint
         x <- scale_fill_continuous(
             type = getOption(
                 x = "ggplot2.continuous.fill",
-                default = scale_fill_synesthesia_c
+                default = acid_scale_fill_synesthesia_c
             )
         )
         assert(isGGScale(x, scale = "continuous", aes = "fill"))
@@ -75,7 +75,7 @@ acid_scale_colour_discrete <- # nolint
         x <- scale_colour_discrete(
             type = getOption(
                 x = "ggplot2.discrete.colour",
-                default = scale_color_synesthesia_d
+                default = acid_scale_color_synesthesia_d
             )
         )
         assert(isGGScale(x, scale = "discrete", aes = "color"))
@@ -91,7 +91,7 @@ acid_scale_fill_discrete <- # nolint
         x <- scale_fill_discrete(
             type = getOption(
                 x = "ggplot2.discrete.fill",
-                default = scale_fill_synesthesia_d
+                default = acid_scale_fill_synesthesia_d
             )
         )
         assert(isGGScale(x, scale = "discrete", aes = "fill"))

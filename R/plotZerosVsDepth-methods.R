@@ -65,7 +65,7 @@ NULL
         labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
+        p <- p + acid_scale_color_discrete()
         ## Wrap samples by `aggregate` column, if defined.
         facets <- NULL
         if (isSubset("aggregate", colnames(data))) {

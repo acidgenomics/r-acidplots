@@ -63,7 +63,7 @@ plotViolin(object, ...)
   perSample = TRUE,
   scale = c("count", "width", "area"),
   color = getOption(x = "acid.discrete.color", default =
-    AcidPlots::scale_color_synesthesia_d()),
+    AcidPlots::acid_scale_color_synesthesia_d()),
   legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
 )
