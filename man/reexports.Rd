@@ -4,6 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{.data}
+\alias{.env}
 \alias{!!!}
 \alias{!!}
 \alias{aes}
@@ -15,8 +16,6 @@
 \alias{plot_layout}
 \alias{percent}
 \alias{pretty_breaks}
-\alias{quo}
-\alias{quo_text}
 \alias{sym}
 \alias{syms}
 \alias{theme_set}
@@ -32,7 +31,7 @@ below to see their documentation.
 
   \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
 
-  \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:dot-data]{.data}}, \code{\link[rlang:defusing-advanced]{quo}}, \code{\link[rlang:quo_label]{quo_text}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
+  \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:dot-data]{.data}}, \code{\link[rlang:dot-data]{.env}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
 
   \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:percent_format]{percent}}, \code{\link[scales]{pretty_breaks}}}
 }}
