@@ -1,7 +1,3 @@
-## FIXME Convert these into ggproto functions.
-
-
-
 #' Automatic color/fill scales to use with ggplot object
 #'
 #' Helper functions for setting default colors in Acid Genomics plots.
@@ -13,13 +9,13 @@
 #' (e.g. `scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
 #' character strings.
 #'
-#' - `autoContinuousColorScale()`: `"ggplot2.continuous.colour"`.
-#' - `autoContinuousFillScale()`: `"ggplot2.continuous.fill"`.
-#' - `autoDiscreteColorScale()`: `"ggplot2.discrete.colour"`.
-#' - `autoDiscreteFillScale()`: `"ggplot2.discrete.fill"`.
+#' - `acid_scale_color_continuous()`: `"ggplot2.continuous.colour"`.
+#' - `acid_scale_color_discrete()`: `"ggplot2.discrete.colour"`.
+#' - `acid_scale_fill_continuous()`: `"ggplot2.continuous.fill"`.
+#' - `acid_scale_fill_discrete()`: `"ggplot2.discrete.fill"`.
 #'
 #' @name autoScale
-#' @note Updated 2021-09-10.
+#' @note Updated 2023-08-11.
 #'
 #' @seealso
 #' - https://ggplot2.tidyverse.org/reference/scale_colour_continuous.html
@@ -28,13 +24,13 @@
 #' @return `Scale`/`ggproto`/`gg`.
 #'
 #' @examples
-#' x <- autoContinuousColorScale()
+#' x <- acid_scale_color_continuous()
 #' class(x)
-#' x <- autoContinuousFillScale()
+#' x <- acid_scale_color_discrete()
 #' class(x)
-#' x <- autoDiscreteColorScale()
+#' x <- acid_scale_fill_continuous()
 #' class(x)
-#' x <- autoDiscreteFillScale()
+#' x <- acid_scale_fill_discrete()
 #' class(x)
 NULL
 
@@ -42,7 +38,7 @@ NULL
 
 #' @rdname autoScale
 #' @export
-autoContinuousColorScale <- function() {
+acid_scale_color_continuous <- function() {
     x <- scale_colour_continuous(
         type = getOption(
             x = "ggplot2.continuous.colour",
@@ -57,7 +53,7 @@ autoContinuousColorScale <- function() {
 
 #' @rdname autoScale
 #' @export
-autoContinuousFillScale <- function() {
+acid_scale_fill_continuous <- function() {
     x <- scale_fill_continuous(
         type = getOption(
             x = "ggplot2.continuous.fill",
@@ -72,7 +68,7 @@ autoContinuousFillScale <- function() {
 
 #' @rdname autoScale
 #' @export
-autoDiscreteColorScale <- function() {
+acid_scale_colour_discrete <- function() {
     x <- scale_colour_discrete(
         type = getOption(
             x = "ggplot2.discrete.colour",
@@ -87,7 +83,7 @@ autoDiscreteColorScale <- function() {
 
 #' @rdname autoScale
 #' @export
-autoDiscreteFillScale <- function() {
+acid_scale_fill_discrete <- function() {
     x <- scale_fill_discrete(
         type = getOption(
             x = "ggplot2.discrete.fill",
@@ -96,4 +92,36 @@ autoDiscreteFillScale <- function() {
     )
     assert(isGGScale(x, scale = "discrete", aes = "fill"))
     x
+}
+
+
+
+## Soft deprecated =============================================================
+
+#' @rdname autoScale
+#' @usage NULL
+#' @export
+autoContinuousColorScale <- function(...) {
+    acid_scale_color_continuous(...)
+}
+
+#' @rdname autoScale
+#' @usage NULL
+#' @export
+autoContinuousFillScale <- function(...) {
+    acid_scale_fill_continuous(...)
+}
+
+#' @rdname autoScale
+#' @usage NULL
+#' @export
+autoDiscreteColorScale <- function(...) {
+    acid_scale_color_discrete(...)
+}
+
+#' @rdname autoScale
+#' @usage NULL
+#' @export
+autoDiscreteFillScale <- function(...) {
+    acid_scale_fill_discrete(...)
 }
