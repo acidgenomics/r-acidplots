@@ -55,7 +55,7 @@ See \code{ggplot2::labs()} for details.}
 Quality control
 }
 \note{
-Updated 2022-03-07.
+Updated 2023-08-11.
 }
 \examples{
 data(
