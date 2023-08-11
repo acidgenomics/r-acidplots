@@ -3,6 +3,10 @@
 rlang::`.data`
 
 #' @export
+#' @importFrom rlang .env
+rlang::`.env`
+
+#' @export
 #' @importFrom rlang !!!
 rlang::`!!!` # nolint
 
@@ -46,14 +50,6 @@ scales::percent
 #' @export
 #' @importFrom scales pretty_breaks
 scales::pretty_breaks
-
-#' @export
-#' @importFrom rlang quo
-rlang::quo
-
-#' @export
-#' @importFrom rlang quo_text
-rlang::quo_text
 
 #' @export
 #' @importFrom rlang sym

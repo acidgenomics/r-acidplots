@@ -1,3 +1,36 @@
+#' Flip coordinates
+#'
+#' Intelligently flip a plot with discrete data on the X axis.
+#'
+#' @export
+#' @note Updated 2023-08-11.
+#'
+#' @details
+#' This function puts the samples that were near the left origin on the X at the
+#' top on the Y axis, making them more human readable.
+#'
+#' @return `list` of `ggproto` objects.
+#'
+#' @seealso
+#' - `coord_flip()`.
+#'
+#' @examples
+#' library(ggplot2)
+#' g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+#'
+#' ## Notice the difference in Y axis sample order.
+#' g + coord_flip()
+#' g + acid_coord_flip()
+acid_coord_flip <- # nolint
+    function() {
+        list(
+            scale_x_discrete(limits = rev),
+            coord_flip()
+        )
+    }
+
+
+
 ## FIXME Need a working example here.
 
 #' Remove Y axis padding

@@ -4,13 +4,10 @@
 \alias{acid_coord_flip}
 \title{Flip coordinates}
 \usage{
-acid_coord_flip(object)
-}
-\arguments{
-\item{object}{\code{ggplot}.}
+acid_coord_flip()
 }
 \value{
-\code{ggplot}.
+\code{list} of \code{ggproto} objects.
 }
 \description{
 Intelligently flip a plot with discrete data on the X axis.
@@ -18,35 +15,20 @@ Intelligently flip a plot with discrete data on the X axis.
 \details{
 This function puts the samples that were near the left origin on the X at the
 top on the Y axis, making them more human readable.
-
-To my knowledge, there's not an easy way to create a \code{ggproto} object
-(via CoordFlip ggproto call internally) that lets you reorder the samples
-on the Y-axis to be reversed. So this function works directly on the
-\code{ggplot} object instead of a \code{ggproto}, and therefore doesn't currently
-support the \code{+} operator.
 }
 \note{
 Updated 2023-08-11.
 }
 \examples{
 library(ggplot2)
-g <- ggplot(data = mpg, aes(x = class)) +
-    geom_bar()
+g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
 
 ## Notice the difference in Y axis sample order.
 g + coord_flip()
-g <- acid_coord_flip(g)
+g + acid_coord_flip()
 }
 \seealso{
 \itemize{
 \item \code{coord_flip()}.
-\item \code{ggplot2::ggproto()}.
-\item \code{ggplot2:::add_ggplot}.
-\item \verb{ggplot2:::+.gg}.
-\item https://cran.r-project.org/web/packages/ggplot2/vignettes/
-extending-ggplot2.html
-\item https://stackoverflow.com/questions/40450904
-\item https://stackoverflow.com/questions/34227967
-\item https://github.com/tidyverse/ggplot2/blob/master/R/ggproto.r
 }
 }
