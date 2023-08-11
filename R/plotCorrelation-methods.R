@@ -1,6 +1,6 @@
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2022-05-06.
+#' @note Updated 2023-08-11.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -145,9 +145,9 @@ NULL
                 )
             )
         }
-        args <- list("x" = .data[["x"]], "y" = .data[["y"]])
+        args <- list("x" = sym("x"), "y" = sym("y"))
         if (isTRUE(label)) {
-            args[["label"]] <- .data[["label"]]
+            args[["label"]] <- sym("label")
         }
         mapping <- do.call(what = aes, args = args)
         formula <- y ~ x
