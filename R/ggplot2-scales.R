@@ -5,8 +5,8 @@
 #' @section Setting default colors:
 #'
 #' These functions will inherit values defined in global `options()`. Either
-#' input a ggplot2 color scale function that returns `Scale` class
-#' (e.g. `acid_scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
+#' input a ggplot2 color scale function that returns `Scale` class (e.g.
+#' `acid_scale_color_synesthesia_c`), or can input `"gradient"`, `"viridis"`
 #' character strings.
 #'
 #' - `acid_scale_color_continuous()`: `"ggplot2.continuous.colour"`.
