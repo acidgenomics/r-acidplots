@@ -46,6 +46,7 @@ acid_coord_flip <- # nolint
         mapping <- .detectMapping(object)
         assert(
             is(mapping, "uneval"),
+            isSubset("x", names(mapping)),
             is(mapping[["x"]], "quosure")
         )
         quo <- mapping[["x"]]
