@@ -4,17 +4,7 @@
 \alias{acid_scale_y_continuous_nopad}
 \title{Remove Y axis padding}
 \usage{
-acid_scale_y_continuous_nopad(
-  ...,
-  expand = ggplot2::expansion(mult = c(0L, 0.025))
-)
-}
-\arguments{
-\item{...}{Other arguments passed to \code{scale_y_continuous()}.}
-
-\item{expand}{\code{numeric}.
-Range expansion.
-Refer to \code{ggplot2::expansion} for details.}
+acid_scale_y_continuous_nopad()
 }
 \value{
 \code{ggproto}.
@@ -23,8 +13,13 @@ Refer to \code{ggplot2::expansion} for details.}
 Remove Y axis padding
 }
 \note{
-Updated 2021-06-29.
+Updated 2023-08-11.
 }
 \examples{
-acid_scale_y_continuous_nopad()
+library(ggplot2)
+g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+## By default, plots contain padding at the top of the graph.
+print(g)
+## This function will automatically remove the padding.
+g + acid_scale_y_continuous_nopad()
 }
