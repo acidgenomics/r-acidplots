@@ -1,5 +1,3 @@
-## FIXME This doesn't work right.
-
 #' Extract quosure name
 #'
 #' @note Updated 2023-08-11.
