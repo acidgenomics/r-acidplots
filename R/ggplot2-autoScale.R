@@ -1,3 +1,7 @@
+## FIXME Convert these into ggproto functions.
+
+
+
 #' Automatic color/fill scales to use with ggplot object
 #'
 #' Helper functions for setting default colors in Acid Genomics plots.
