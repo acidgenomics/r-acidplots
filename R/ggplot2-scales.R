@@ -38,90 +38,62 @@ NULL
 
 #' @rdname autoScale
 #' @export
-acid_scale_color_continuous <- function() {
-    x <- scale_colour_continuous(
-        type = getOption(
-            x = "ggplot2.continuous.colour",
-            default = scale_color_synesthesia_c
+acid_scale_color_continuous <- # nolint
+    function() {
+        x <- scale_colour_continuous(
+            type = getOption(
+                x = "ggplot2.continuous.colour",
+                default = scale_color_synesthesia_c
+            )
         )
-    )
-    assert(isGGScale(x, scale = "continuous", aes = "color"))
-    x
-}
+        assert(isGGScale(x, scale = "continuous", aes = "color"))
+        x
+    }
 
 
 
 #' @rdname autoScale
 #' @export
-acid_scale_fill_continuous <- function() {
-    x <- scale_fill_continuous(
-        type = getOption(
-            x = "ggplot2.continuous.fill",
-            default = scale_fill_synesthesia_c
+acid_scale_fill_continuous <- # nolint
+    function() {
+        x <- scale_fill_continuous(
+            type = getOption(
+                x = "ggplot2.continuous.fill",
+                default = scale_fill_synesthesia_c
+            )
         )
-    )
-    assert(isGGScale(x, scale = "continuous", aes = "fill"))
-    x
-}
+        assert(isGGScale(x, scale = "continuous", aes = "fill"))
+        x
+    }
 
 
 
 #' @rdname autoScale
 #' @export
-acid_scale_colour_discrete <- function() {
-    x <- scale_colour_discrete(
-        type = getOption(
-            x = "ggplot2.discrete.colour",
-            default = scale_color_synesthesia_d
+acid_scale_colour_discrete <- # nolint
+    function() {
+        x <- scale_colour_discrete(
+            type = getOption(
+                x = "ggplot2.discrete.colour",
+                default = scale_color_synesthesia_d
+            )
         )
-    )
-    assert(isGGScale(x, scale = "discrete", aes = "color"))
-    x
-}
+        assert(isGGScale(x, scale = "discrete", aes = "color"))
+        x
+    }
 
 
 
 #' @rdname autoScale
 #' @export
-acid_scale_fill_discrete <- function() {
-    x <- scale_fill_discrete(
-        type = getOption(
-            x = "ggplot2.discrete.fill",
-            default = scale_fill_synesthesia_d
+acid_scale_fill_discrete <- # nolint
+    function() {
+        x <- scale_fill_discrete(
+            type = getOption(
+                x = "ggplot2.discrete.fill",
+                default = scale_fill_synesthesia_d
+            )
         )
-    )
-    assert(isGGScale(x, scale = "discrete", aes = "fill"))
-    x
-}
-
-
-
-## Soft deprecated =============================================================
-
-#' @rdname autoScale
-#' @usage NULL
-#' @export
-autoContinuousColorScale <- function(...) {
-    acid_scale_color_continuous(...)
-}
-
-#' @rdname autoScale
-#' @usage NULL
-#' @export
-autoContinuousFillScale <- function(...) {
-    acid_scale_fill_continuous(...)
-}
-
-#' @rdname autoScale
-#' @usage NULL
-#' @export
-autoDiscreteColorScale <- function(...) {
-    acid_scale_color_discrete(...)
-}
-
-#' @rdname autoScale
-#' @usage NULL
-#' @export
-autoDiscreteFillScale <- function(...) {
-    acid_scale_fill_discrete(...)
-}
+        assert(isGGScale(x, scale = "discrete", aes = "fill"))
+        x
+    }

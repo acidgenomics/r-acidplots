@@ -1,6 +1,6 @@
 #' @name plotFeaturesDetected
 #' @inherit AcidGenerics::plotFeaturesDetected
-#' @note Updated 2022-03-04.
+#' @note Updated 2023-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2022-05-06.
+## Updated 2023-08-11.
 `plotFeaturesDetected,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -78,7 +78,7 @@ NULL
         }
         ## Flip.
         if (isTRUE(flip)) {
-            p <- acid_coord_flip(p)
+            p <- p + acid_discrete_coord_flip()
         }
         ## Hide sample name legend.
         if (identical(interestingGroups, "sampleName")) {
