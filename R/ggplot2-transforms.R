@@ -49,23 +49,8 @@ acid_coord_flip <- # nolint
             isSubset("x", names(mapping)),
             is(mapping[["x"]], "quosure")
         )
-        quo <- mapping[["x"]]
-        if (quo_is_symbol(quo)) {
-            ## e.g. using `!!sym("x")`, extracts `"x"`.
-            xCol <- quo_text(quo)
-        } else if (quo_is_symbolic(quo)) {
-            ## e.g. using `.data[["x"]]`, returns as unmodified string.
-            pronoun <- quo_text(quo)
-            pattern <- "^\\.data\\[\\[\"(.+)\"\\]\\]$"
-            assert(isMatchingRegex(pattern = pattern, x = pronoun))
-            xCol <- sub(pattern = pattern, replacement = "\\1", x = pronoun)
-        } else {
-            abort("Unexpected rlang quosure error.")
-        }
-        assert(
-            isString(xCol),
-            isSubset(xCol, colnames(data))
-        )
+        xCol <- .extractQuoName(mapping[["x"]])
+        assert(isSubset(xCol, colnames(data)))
         limits <- rev(levels(as.factor(data[[xCol]])))
         object +
             scale_x_discrete(limits = limits) +
