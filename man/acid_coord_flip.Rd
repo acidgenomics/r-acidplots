@@ -18,15 +18,15 @@ Intelligently flip a plot with discrete data on the X axis.
 \details{
 This function puts the samples that were near the left origin on the X at the
 top on the Y axis, making them more human readable.
-}
-\note{
+
 To my knowledge, there's not an easy way to create a \code{ggproto} object
 (via CoordFlip ggproto call internally) that lets you reorder the samples
 on the Y-axis to be reversed. So this function works directly on the
 \code{ggplot} object instead of a \code{ggproto}, and therefore doesn't currently
 support the \code{+} operator.
-
-Updated 2020-03-11.
+}
+\note{
+Updated 2023-08-11.
 }
 \examples{
 library(ggplot2)

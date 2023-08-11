@@ -1,6 +1,6 @@
 #' @name plotCountsPerFeature
 #' @inherit AcidGenerics::plotCountsPerFeature
-#' @note Updated 2023-08-10.
+#' @note Updated 2023-08-11.
 #'
 #' @inheritParams AcidExperiment::melt
 #' @inheritParams AcidRoxygen::params
@@ -28,7 +28,7 @@ NULL
 
 
 
-## Updated 2021-09-10.
+## Updated 2023-08-11.
 `plotCountsPerFeature,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -117,6 +117,7 @@ NULL
         p <- p + autoDiscreteFillScale()
         ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !identical(geom, "density")) {
+            ## FIXME This step is now erroring out, need to rework.
             p <- acid_coord_flip(p)
         }
         ## Hide sample name legend.

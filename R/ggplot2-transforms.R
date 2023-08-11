@@ -2,16 +2,18 @@
 #'
 #' Intelligently flip a plot with discrete data on the X axis.
 #'
+#' @export
+#' @note Updated 2023-08-11.
+#'
+#' @details
 #' This function puts the samples that were near the left origin on the X at the
 #' top on the Y axis, making them more human readable.
 #'
-#' @export
-#' @note To my knowledge, there's not an easy way to create a `ggproto` object
+#' To my knowledge, there's not an easy way to create a `ggproto` object
 #' (via CoordFlip ggproto call internally) that lets you reorder the samples
 #' on the Y-axis to be reversed. So this function works directly on the
 #' `ggplot` object instead of a `ggproto`, and therefore doesn't currently
 #' support the `+` operator.
-#' @note Updated 2020-03-11.
 #'
 #' @param object `ggplot`.
 #'
@@ -42,8 +44,25 @@ acid_coord_flip <- # nolint
         data <- object[["data"]]
         assert(is.data.frame(data))
         mapping <- .detectMapping(object)
-        assert(is(mapping, "uneval"))
-        xCol <- quo_text(mapping[["x"]])
+        assert(
+            is(mapping, "uneval"),
+            is(mapping[["x"]], "quosure")
+        )
+        quo <- mapping[["x"]]
+        if (quo_is_symbol(quo)) {
+            xCol <- quo_text(quo)
+        } else if (quo_is_symbolic(quo)) {
+            pronoun <- quo_text(quo)
+            pattern <- "^\\.data\\[\\[\"(.+)\"\\]\\]$"
+            assert(isMatchingRegex(pattern = pattern, x = pronoun))
+            xCol <- sub(pattern = pattern, replacement = "\\1", x = pronoun)
+        } else {
+            abort("Unexpected rlang quosure error.")
+        }
+        assert(
+            isString(xCol),
+            isSubset(xCol, colnames(data))
+        )
         limits <- rev(levels(as.factor(data[[xCol]])))
         object +
             scale_x_discrete(limits = limits) +

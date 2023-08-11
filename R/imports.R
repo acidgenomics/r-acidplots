@@ -81,12 +81,13 @@ NULL
 #' hasSubset hasUniqueCols hasValidDimnames isAlpha isBiocParallelParam
 #' isCharacter isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
 #' isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
-#' isInRightOpenRange isInt isIntegerish isNonNegative isNumber isPositive
-#' isScalar isString isSubset requireNamespaces
+#' isInRightOpenRange isInt isIntegerish isMatchingRegex isNonNegative isNumber
+#' isPositive isScalar isString isSubset requireNamespaces
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject
-#' @importFrom rlang !! !!! .data quo quo_text sym syms
+#' @importFrom rlang !! !!! .data quo quo_is_symbol quo_is_symbolic quo_text sym
+#' syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust median prcomp reorder
 #' @importFrom stringr str_replace_na

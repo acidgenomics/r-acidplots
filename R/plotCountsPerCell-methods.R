@@ -37,7 +37,9 @@ NULL
         assert(isString(title, nullOK = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
-        interestingGroups <- matchInterestingGroups(object, interestingGroups)
+        interestingGroups(object) <-
+            matchInterestingGroups(object, interestingGroups)
+        interestingGroups <- interestingGroups(object)
         if (!identical(point, "none")) {
             ## Require ecdf geom for now.
             assert(
