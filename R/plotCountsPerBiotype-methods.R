@@ -125,7 +125,7 @@ NULL
                 breaks = pretty_breaks(),
                 labels = prettyNum
             ) +
-            facet_wrap(facets = vars(!!sym(biotypeCol)), scales = "free_y")
+            facet_wrap(facets = vars(.data[[biotypeCol]]), scales = "free_y")
         ## Labels.
         if (!identical(trans, "identity")) {
             labels[["countAxis"]] <- paste(trans, labels[["countAxis"]])
