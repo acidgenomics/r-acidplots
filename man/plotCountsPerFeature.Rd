@@ -74,7 +74,7 @@ Passes \code{...} to \code{SummarizedExperiment} method.
 
 }}
 \note{
-Updated 2023-08-10.
+Updated 2023-08-11.
 }
 \examples{
 data(
