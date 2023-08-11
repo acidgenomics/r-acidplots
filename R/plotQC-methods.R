@@ -1,6 +1,6 @@
 #' @name plotQC
 #' @inherit AcidGenerics::plotQC
-#' @note Updated 2022-03-07.
+#' @note Updated 2023-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -23,7 +23,7 @@ NULL
 
 
 
-## Updated 2021-08-11.
+## Updated 2023-08-11.
 `plotQC,SE` <- # nolint
     function(object,
              assay = 1L,
@@ -41,33 +41,33 @@ NULL
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         labels <- matchLabels(labels)
-        plotlist <- list(
-            "totalCounts" =
-                plotTotalCounts(
-                    object = object,
-                    assay = assay
-                ),
-            "zerosVsDepth" =
-                plotZerosVsDepth(
-                    object = object,
-                    assay = assay
-                ) +
-                    guides(color = "none"),
-            "rowSums" =
-                plotSums(
-                    object = object,
-                    assay = assay,
-                    MARGIN = 1L
-                ) +
-                    theme(legend.position = "none"),
-            "colSums" =
-                plotSums(
-                    object = object,
-                    assay = assay,
-                    MARGIN = 2L
-                ) +
-                    theme(legend.position = "none")
-        )
+        ## Construct the plotlist.
+        plotlist <- list()
+        plotlist[["totalCounts"]] <-
+            plotTotalCounts(
+                object = object,
+                assay = assay
+            )
+        plotlist[["zerosVsDepth"]] <-
+            plotZerosVsDepth(
+                object = object,
+                assay = assay
+            ) +
+            guides(color = "none")
+        plotlist[["rowSums"]] <-
+            plotSums(
+                object = object,
+                assay = assay,
+                MARGIN = 1L
+            ) +
+            theme(legend.position = "none")
+        plotlist[["colSums"]] <-
+            plotSums(
+                object = object,
+                assay = assay,
+                MARGIN = 2L
+            ) +
+            theme(legend.position = "none")
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
         if (identical(legend, FALSE)) {
@@ -88,7 +88,7 @@ formals(`plotQC,SE`)[["legend"]] <- # nolint
 
 
 
-## Updated 2021-09-13.
+## Updated 2023-08-11.
 `plotQC,SCE` <- # nolint
     function(object,
              assay = 1L,
@@ -124,57 +124,53 @@ formals(`plotQC,SE`)[["legend"]] <- # nolint
                 plotZerosVsDepth(object, assay = assay) +
                 theme(legend.position = "none")
         }
-        plotlist <- append(
-            x = plotlist,
-            values = list(
-                "countsPerCell" =
-                    plotCountsPerCell(
+        plotlist[["countsPerCell"]] <-
+            plotCountsPerCell(
+                object = object,
+                geom = geom
+            )
+        plotlist[["featuresPerCell"]] <-
+            plotFeaturesPerCell(
+                object = object,
+                geom = geom
+            ) +
+            theme(legend.position = "none")
+        plotlist[["countsVsFeatures"]] <-
+            plotCountsVsFeatures(object) +
+            theme(legend.position = "none")
+        plotlist[["novelty"]] <-
+            plotNovelty(
+                object = object,
+                geom = geom
+            ) +
+            theme(legend.position = "none")
+        plotlist[["mitoRatio"]] <-
+            tryCatch(
+                expr = {
+                    plotMitoRatio(
                         object = object,
                         geom = geom
-                    ),
-                "featuresPerCell" =
-                    plotFeaturesPerCell(
-                        object = object,
-                        geom = geom
-                    ) +
-                        theme(legend.position = "none"),
-                "countsVsFeatures" =
-                    plotCountsVsFeatures(object) +
-                        theme(legend.position = "none"),
-                "novelty" =
-                    plotNovelty(
-                        object = object,
-                        geom = geom
-                    ) +
-                        theme(legend.position = "none"),
-                "mitoRatio" = tryCatch(
-                    expr = {
-                        plotMitoRatio(
-                            object = object,
-                            geom = geom
-                        ) +
-                            theme(legend.position = "none")
-                    },
-                    error = function(e) {
-                        NULL
-                    }
-                ),
-                "rowSums" =
-                    plotSums(
-                        object = object,
-                        assay = assay,
-                        MARGIN = 1L
-                    ) +
-                        theme(legend.position = "none"),
-                "colSums" =
-                    plotSums(
-                        object = object,
-                        assay = assay,
-                        MARGIN = 2L
                     ) +
                         theme(legend.position = "none")
+                },
+                error = function(e) {
+                    NULL
+                }
             )
-        )
+        plotlist[["rowSums"]] <-
+            plotSums(
+                object = object,
+                assay = assay,
+                MARGIN = 1L
+            ) +
+            theme(legend.position = "none")
+        plotlist[["colSums"]] <-
+            plotSums(
+                object = object,
+                assay = assay,
+                MARGIN = 2L
+            ) +
+            theme(legend.position = "none")
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
         if (identical(legend, FALSE)) {
