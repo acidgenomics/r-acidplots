@@ -66,7 +66,7 @@ NULL
             ## Need to ensure that `nCount` exists for downstream calculations.
             if (!isSubset("nCount", colnames(colData(object)))) {
                 suppressMessages({
-                    object <- calculateMetrics(object)
+                    object <- calculateMetrics(object, assay = 1L)
                 })
             }
         }
