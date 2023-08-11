@@ -58,7 +58,7 @@ NULL
                 fill = legendTitle
             )
         ## Color palette.
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_fill_discrete()
         ## Wrap for multiple samples.
         if (isTRUE(multipleSamples)) {
             p <- p + facet_wrap(facets = vars(.data[["ident"]]))

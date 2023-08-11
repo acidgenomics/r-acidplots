@@ -46,7 +46,7 @@
     "discreteColor" = quote(
         getOption(
             x = "acid.discrete.color",
-            default = AcidPlots::scale_color_synesthesia_d()
+            default = AcidPlots::acid_scale_color_synesthesia_d()
         )
     ),
     "expression" = c("mean", "sum"),

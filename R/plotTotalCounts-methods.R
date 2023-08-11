@@ -73,7 +73,7 @@ NULL
         labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_fill_discrete()
         ## Flip.
         if (isTRUE(flip)) {
             p <- p + acid_discrete_coord_flip()

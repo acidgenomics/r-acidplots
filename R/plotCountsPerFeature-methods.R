@@ -113,8 +113,8 @@ NULL
         labels[["fill"]] <- labels[["color"]]
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_color_discrete()
+        p <- p + acid_scale_fill_discrete()
         ## Flip the axis for plots with counts on y-axis, if desired.
         if (isTRUE(flip) && !identical(geom, "density")) {
             p <- p + acid_discrete_coord_flip()

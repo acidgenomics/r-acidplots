@@ -63,22 +63,22 @@
 #' ## Color, continuous.
 #' cc <- ggplot(mpg, aes(cty, hwy)) +
 #'     geom_jitter(aes(color = hwy))
-#' cc + scale_color_synesthesia_c()
+#' cc + acid_scale_color_synesthesia_c()
 #'
 #' ## Color, discrete.
 #' cd <- ggplot(mpg, aes(fl)) +
 #'     geom_bar(aes(color = fl), fill = NA)
-#' cd + scale_color_synesthesia_d()
+#' cd + acid_scale_color_synesthesia_d()
 #'
 #' ## Fill, continuous.
 #' fc <- ggplot(diamonds, aes(carat, price)) +
 #'     geom_hex()
-#' fc + scale_fill_synesthesia_c()
+#' fc + acid_scale_fill_synesthesia_c()
 #'
 #' ## Fill, discrete.
 #' fd <- ggplot(mpg, aes(fl)) +
 #'     geom_bar(aes(fill = fl))
-#' fd + scale_fill_synesthesia_d()
+#' fd + acid_scale_fill_synesthesia_d()
 #'
 #' ## Base color.
 #' par(mar = rep(2.5, times = 4L))
@@ -148,7 +148,7 @@ formals(scale_colour_synesthesia_c)[["palette"]] <- # nolint
 
 #' @rdname synesthesia
 #' @export
-scale_color_synesthesia_c <- # nolint
+acid_scale_color_synesthesia_c <- # nolint
     scale_colour_synesthesia_c
 
 
@@ -174,14 +174,14 @@ formals(scale_colour_synesthesia_d)[["palette"]] <- # nolint
 
 #' @rdname synesthesia
 #' @export
-scale_color_synesthesia_d <- # nolint
+acid_scale_color_synesthesia_d <- # nolint
     scale_colour_synesthesia_d
 
 
 
 #' @rdname synesthesia
 #' @export
-scale_fill_synesthesia_c <- # nolint
+acid_scale_fill_synesthesia_c <- # nolint
     function(...,
              na.value = "grey50", # nolint
              guide = "colourbar",
@@ -199,14 +199,14 @@ scale_fill_synesthesia_c <- # nolint
         )
     }
 
-formals(scale_fill_synesthesia_c)[["palette"]] <- # nolint
+formals(acid_scale_fill_synesthesia_c)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
 
 #' @rdname synesthesia
 #' @export
-scale_fill_synesthesia_d <- # nolint
+acid_scale_fill_synesthesia_d <- # nolint
     function(..., palette) {
         palette <- match.arg(palette)
         palette <- synesthesia_pal(palette = palette)
@@ -218,5 +218,5 @@ scale_fill_synesthesia_d <- # nolint
         )
     }
 
-formals(scale_fill_synesthesia_d)[["palette"]] <- # nolint
+formals(acid_scale_fill_synesthesia_d)[["palette"]] <- # nolint
     .formalsList[["palette"]]

@@ -68,7 +68,7 @@ NULL
                 stat = "identity"
             )
         ## Color palette.
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_fill_discrete()
         ## Labels.
         if (!isSubset("x", names(labels))) {
             labels[["x"]] <- paste(interestingGroups, collapse = ":\n")

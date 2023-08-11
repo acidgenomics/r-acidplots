@@ -71,7 +71,7 @@ NULL
         labels[["fill"]] <- paste(interestingGroups, collapse = ":\n")
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteFillScale()
+        p <- p + acid_scale_fill_discrete()
         ## Show limit line.
         if (isPositive(limit)) {
             p <- p + acid_geom_abline(yintercept = limit)

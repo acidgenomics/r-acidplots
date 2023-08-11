@@ -71,7 +71,7 @@ NULL
             geom_point() +
             facet_wrap(facets = vars(.data[["rowname"]]), scales = "free_y")
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
+        p <- p + acid_scale_color_discrete()
         ## Labels
         p <- p + do.call(what = labs, args = labels)
         ## Return.

@@ -30,7 +30,7 @@ Updated 2023-08-11.
 
 These functions will inherit values defined in global \code{options()}. Either
 input a ggplot2 color scale function that returns \code{Scale} class
-(e.g. \code{scale_color_synesthesia_c}), or can input \code{"gradient"}, \code{"viridis"}
+(e.g. \code{acid_scale_color_synesthesia_c}), or can input \code{"gradient"}, \code{"viridis"}
 character strings.
 \itemize{
 \item \code{acid_scale_color_continuous()}: \code{"ggplot2.continuous.colour"}.

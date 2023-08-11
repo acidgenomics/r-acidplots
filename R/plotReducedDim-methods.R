@@ -140,7 +140,7 @@ NULL
         )
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
-        p <- p + autoDiscreteColorScale()
+        p <- p + acid_scale_color_discrete()
         ## Label.
         if (isTRUE(label)) {
             p <- p + acid_geom_label_repel(
