@@ -1,5 +1,22 @@
 # Release notes
 
+## AcidPlots 0.6.0 (2023-08-11)
+
+Major changes:
+
+- Now requiring R 4.3 / Bioconductor 3.17.
+- Reworked internal code to use rlang pronouns (`.data`) instead of legacy
+  syntactic sugar approach with `!!` and `sym`. Refer to rlang documentation
+  for details on non-standard evaluation and tidy evaluation.
+
+Minor changes:
+
+- Updated ggplot2 deprecations related to recommendation of `linewidth` instead
+  of `size` for line geoms.
+- `plotCountsPerCell`: Hardened `point` mode for SCE objects that don't contain
+  precalculated `nCount` metadata in `colData`. Also improved error message
+  when user attempts to plot `point` with a geom other than `ecdf`.
+
 ## AcidPlots 0.5.5 (2023-04-27)
 
 - NAMESPACE fixes for Bioconductor 3.17 compatibility.
