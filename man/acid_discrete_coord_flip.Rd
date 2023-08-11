@@ -21,7 +21,8 @@ Updated 2023-08-11.
 }
 \examples{
 library(ggplot2)
-g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+g <- ggplot(data = mpg, aes(x = class)) +
+    geom_bar()
 ## Notice the difference in Y axis sample order.
 g + coord_flip()
 g + acid_discrete_coord_flip()

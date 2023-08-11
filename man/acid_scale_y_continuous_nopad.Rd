@@ -17,7 +17,8 @@ Updated 2023-08-11.
 }
 \examples{
 library(ggplot2)
-g <- ggplot(data = mpg, aes(x = class)) + geom_bar()
+g <- ggplot(data = mpg, aes(x = class)) +
+    geom_bar()
 ## By default, plots contain padding at the top of the graph.
 print(g)
 ## This function will automatically remove the padding.
