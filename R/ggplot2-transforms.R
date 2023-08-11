@@ -51,8 +51,10 @@ acid_coord_flip <- # nolint
         )
         quo <- mapping[["x"]]
         if (quo_is_symbol(quo)) {
+            ## e.g. using `!!sym("x")`, extracts `"x"`.
             xCol <- quo_text(quo)
         } else if (quo_is_symbolic(quo)) {
+            ## e.g. using `.data[["x"]]`, returns as unmodified string.
             pronoun <- quo_text(quo)
             pattern <- "^\\.data\\[\\[\"(.+)\"\\]\\]$"
             assert(isMatchingRegex(pattern = pattern, x = pronoun))
