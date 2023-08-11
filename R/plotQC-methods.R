@@ -52,21 +52,21 @@ NULL
                     object = object,
                     assay = assay
                 ) +
-                    guides(color = "none"),
+                guides(color = "none"),
             "rowSums" =
                 plotSums(
                     object = object,
                     assay = assay,
                     MARGIN = 1L
                 ) +
-                    theme(legend.position = "none"),
+                theme(legend.position = "none"),
             "colSums" =
                 plotSums(
                     object = object,
                     assay = assay,
                     MARGIN = 2L
                 ) +
-                    theme(legend.position = "none")
+                theme(legend.position = "none")
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
         ## Hide the legends, if desired.
@@ -137,25 +137,27 @@ formals(`plotQC,SE`)[["legend"]] <- # nolint
                         object = object,
                         geom = geom
                     ) +
-                        theme(legend.position = "none"),
+                    theme(legend.position = "none"),
                 "countsVsFeatures" =
                     plotCountsVsFeatures(object) +
-                        theme(legend.position = "none"),
+                    theme(legend.position = "none"),
                 "novelty" =
                     plotNovelty(
                         object = object,
                         geom = geom
                     ) +
-                        theme(legend.position = "none"),
+                    theme(legend.position = "none"),
                 "mitoRatio" = tryCatch(
                     expr = {
                         plotMitoRatio(
                             object = object,
                             geom = geom
                         ) +
-                            theme(legend.position = "none")
+                        theme(legend.position = "none")
                     },
-                    error = function(e) NULL
+                    error = function(e) {
+                        NULL
+                    }
                 ),
                 "rowSums" =
                     plotSums(
@@ -163,14 +165,14 @@ formals(`plotQC,SE`)[["legend"]] <- # nolint
                         assay = assay,
                         MARGIN = 1L
                     ) +
-                        theme(legend.position = "none"),
+                    theme(legend.position = "none"),
                 "colSums" =
                     plotSums(
                         object = object,
                         assay = assay,
                         MARGIN = 2L
                     ) +
-                        theme(legend.position = "none")
+                    theme(legend.position = "none")
             )
         )
         plotlist <- Filter(f = Negate(is.null), x = plotlist)
