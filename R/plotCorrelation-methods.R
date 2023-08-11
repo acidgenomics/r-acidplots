@@ -164,8 +164,8 @@ NULL
             requireNamespaces("ggpmisc")
             p <- p + ggpmisc::stat_poly_eq(
                 mapping = aes(label = paste(
-                    stat(.data[["eq.label"]]),
-                    stat(.data[["rr.label"]]),
+                    after_stat(.data[["eq.label"]]),
+                    after_stat(.data[["rr.label"]]),
                     sep = "*\", \"*"
                 )),
                 formula = formula,

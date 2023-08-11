@@ -16,6 +16,8 @@ Minor changes:
 - `plotCountsPerCell`: Hardened `point` mode for SCE objects that don't contain
   precalculated `nCount` metadata in `colData`. Also improved error message
   when user attempts to plot `point` with a geom other than `ecdf`.
+- `plotCorrelation`: Now using recommended `after_stat` instead of deprecated
+  `stat` function for correlation calculations.
 
 ## AcidPlots 0.5.5 (2023-04-27)
 
