@@ -63,11 +63,17 @@ acid_geom_abline <- # nolint
 #' @export
 #' @note Updated 2021-06-29.
 #'
+#' @details
+#' Convenience function that sets `stat = "identity"` automatically and disables
+#' the border around the bars.
+#'
 #' @param ...
 #' Additional arguments, passed to `ggplot2::geom_bar()`.
+#'
 #' @param color `character(1)`.
 #' Line color.
 #' Defaults to disabled, using `NA`.
+#'
 #' @param stat `character(1)`.
 #' Statistical transformation to use on the data for this layer.
 #'
@@ -78,7 +84,6 @@ acid_geom_abline <- # nolint
 #'     x = c("a", "b", "c", "d"),
 #'     y = c(5L, 10L, 15L, 20L)
 #' )
-#' # Note that `.data` is a data pronoun from the rlang package.
 #' p <- ggplot(data = data, mapping = aes(x = .data[["x"]], y = .data[["y"]]))
 #' p + acid_geom_bar(fill = "black")
 acid_geom_bar <- # nolint
@@ -97,8 +102,10 @@ acid_geom_bar <- # nolint
 #'
 #' @param data `data.frame`.
 #' Data frame, containing plot data.
+#'
 #' @param mapping
 #' Set of aesthetic mappings created by `ggplot2::aes()`.
+#'
 #' @param ...
 #' Additional arguments, passed to `ggplot2::geom_label()`.
 #'
@@ -140,14 +147,18 @@ acid_geom_label <- # nolint
 #'
 #' @param data `data.frame`.
 #' Data frame, containing plot data.
+#'
 #' @param col `character(1)`.
 #' Column name.
+#'
 #' @param fun `character(1)`.
 #' Function name to use for average calculation.
 #' Currently supports mean or median.
+#'
 #' @param digits `integer(1)`.
 #' Number of significant digits to use.
 #' Defaults to rounded.
+#'
 #' @param ...
 #' Additional arguments, passed to [acid_geom_label()].
 #'
@@ -219,12 +230,16 @@ acid_geom_label_average <- # nolint
 #'
 #' @param data `data.frame`.
 #' Data frame, containing plot data.
+#'
 #' @param mapping
 #' Set of aesthetic mappings created by `ggplot2::aes()`.
+#'
 #' @param color `character(1)` or `NULL`.
 #' Text color.
+#'
 #' @param size `integer(1)`.
 #' Font size.
+#'
 #' @param ...
 #' Additional arguments, passed to `ggrepel::geom_label_repel()`.
 #'

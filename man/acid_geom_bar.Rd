@@ -22,6 +22,10 @@ Statistical transformation to use on the data for this layer.}
 \description{
 Modified version of \code{ggplot2::geom_bar()}.
 }
+\details{
+Convenience function that sets \code{stat = "identity"} automatically and disables
+the border around the bars.
+}
 \note{
 Updated 2021-06-29.
 }
@@ -30,7 +34,6 @@ data <- data.frame(
     x = c("a", "b", "c", "d"),
     y = c(5L, 10L, 15L, 20L)
 )
-# Note that `.data` is a data pronoun from the rlang package.
 p <- ggplot(data = data, mapping = aes(x = .data[["x"]], y = .data[["y"]]))
 p + acid_geom_bar(fill = "black")
 }
