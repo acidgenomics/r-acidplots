@@ -70,7 +70,7 @@ acid_scale_fill_continuous <- # nolint
 
 #' @rdname autoScale
 #' @export
-acid_scale_colour_discrete <- # nolint
+acid_scale_color_discrete <- # nolint
     function() {
         x <- scale_colour_discrete(
             type = getOption(

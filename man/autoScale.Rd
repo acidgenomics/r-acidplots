@@ -4,7 +4,7 @@
 \alias{autoScale}
 \alias{acid_scale_color_continuous}
 \alias{acid_scale_fill_continuous}
-\alias{acid_scale_colour_discrete}
+\alias{acid_scale_color_discrete}
 \alias{acid_scale_fill_discrete}
 \title{Automatic color/fill scales to use with ggplot object}
 \usage{
@@ -12,7 +12,7 @@ acid_scale_color_continuous()
 
 acid_scale_fill_continuous()
 
-acid_scale_colour_discrete()
+acid_scale_color_discrete()
 
 acid_scale_fill_discrete()
 }
