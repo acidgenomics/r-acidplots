@@ -26,6 +26,7 @@ data(
 allAreHexColors <- goalie::allAreHexColors
 assay <- SummarizedExperiment::assay
 calculateMetrics <- AcidGenerics::calculateMetrics
+ggplot_build <- ggplot2::ggplot_build
 import <- pipette::import
 isInstalled <- goalie::isInstalled
 mpg <- ggplot2::mpg
