@@ -65,7 +65,9 @@ NULL
             )
             ## Need to ensure that `nCount` exists for downstream calculations.
             if (!isSubset("nCount", colnames(colData(object)))) {
-                object <- calculateMetrics(object)
+                suppressMessages({
+                    object <- calculateMetrics(object)
+                })
             }
         }
         ## Plot.
