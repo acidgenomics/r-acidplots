@@ -208,7 +208,9 @@ NULL
                 expr = suppressMessages({
                     convertGenesToSymbols(object)
                 }),
-                error = function(e) object
+                error = function(e) {
+                    object
+                }
             )
         }
         ## Ensure we're always using a dense matrix.
@@ -256,7 +258,9 @@ NULL
         ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
-            error = function(e) NULL
+            error = function(e) {
+                NULL
+            }
         )
         if (hasLength(sampleNames)) {
             colnames(mat) <- sampleNames

@@ -109,7 +109,9 @@ NULL
         ## Substitute human-friendly sample names, if defined.
         sampleNames <- tryCatch(
             expr = sampleNames(object),
-            error = function(e) NULL
+            error = function(e) {
+                NULL
+            }
         )
         if (hasLength(sampleNames)) {
             rownames(cor) <- sampleNames
