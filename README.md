@@ -1,7 +1,6 @@
 # AcidPlots
 
-![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)
-[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io/recipes/r-acidplots/README.html)
+[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/recipes/r-acidplots/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)
 
 Functions for plotting genomic data.
 
