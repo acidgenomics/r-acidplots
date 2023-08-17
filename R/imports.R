@@ -78,11 +78,11 @@ NULL
 #' allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
 #' hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
 #' hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
-#' hasSubset hasUniqueCols hasValidDimnames isAlpha isBiocParallelParam
-#' isCharacter isDark isFlag isGGScale isGreaterThanOrEqualTo isHeaderLevel
-#' isHexColorFunction isInClosedRange isInLeftOpenRange isInRange
-#' isInRightOpenRange isInt isIntegerish isMatchingRegex isNonNegative isNumber
-#' isPositive isScalar isString isSubset requireNamespaces
+#' hasSubset hasUniqueCols hasValidDimnames isAlpha isCharacter isDark isFlag
+#' isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
+#' isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
+#' isIntegerish isMatchingRegex isNonNegative isNumber isPositive isScalar
+#' isString isSubset requireNamespaces
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject

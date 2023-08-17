@@ -1,6 +1,6 @@
 #' @name plotKnownMarkers
 #' @inherit AcidGenerics::plotKnownMarkers
-#' @note Updated 2022-03-05.
+#' @note Updated 2023-08-17.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param markers Object.
@@ -91,11 +91,9 @@ NULL
     }
 
 formals(`plotKnownMarkers,SCE,KnownMarkers`)[c( # nolint
-    "BPPARAM",
     "headerLevel",
     "reduction"
 )] <- .formalsList[c(
-    "BPPARAM",
     "headerLevel",
     "reduction"
 )]
