@@ -1,5 +1,23 @@
 # Release notes
 
+## AcidPlots 0.6.1 (2023-08-17)
+
+Major changes:
+
+- All custom ggplot2 functions are now prefixed with `acid_`, for consistency.
+- Simplified `acid_coord_flip` as `acid_discrete_coord_flip`. This no longer
+  attempts to parse the `gg` object, and returns `ggproto`, so it can be
+  chained in `+` operations.
+- Renamed scale functions to fit ggplot2 `snake_case` conventions:
+  `autoContinuousColorScale` to `acid_scale_color_continuous`;
+  `autoContinuousFillScale` to `acid_scale_fill_continuous`;
+  `autoDiscreteColorScale` to `acid_scale_color_discrete`;
+  `autoDiscreteFillScale` to `acid_scale_fill_discrete`.
+
+Minor changes:
+
+- Removed usage of BiocParallel.
+
 ## AcidPlots 0.6.0 (2023-08-11)
 
 Major changes:
