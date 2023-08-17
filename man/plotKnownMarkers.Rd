@@ -7,14 +7,7 @@
 \usage{
 plotKnownMarkers(object, markers, ...)
 
-\S4method{plotKnownMarkers}{SingleCellExperiment,KnownMarkers}(
-  object,
-  markers,
-  reduction = "UMAP",
-  headerLevel = 2L,
-  ...,
-  BPPARAM = BiocParallel::bpparam()
-)
+\S4method{plotKnownMarkers}{SingleCellExperiment,KnownMarkers}(object, markers, reduction = "UMAP", headerLevel = 2L, ...)
 }
 \arguments{
 \item{object}{Object.}
@@ -28,15 +21,6 @@ Dimension reduction name or index position.}
 Markdown header level.}
 
 \item{...}{Passthrough arguments to \code{\link[=plotMarker]{plotMarker()}}.}
-
-\item{BPPARAM}{\code{bpparamClass}.
-BiocParallel parameter to specify the desired processor configuration.\cr
-We recommend using one of the following:
-\itemize{
-\item \link[BiocParallel:register]{bpparam}.
-\item \link[BiocParallel:SerialParam-class]{SerialParam}.
-\item \link[BiocParallel:MulticoreParam-class]{MulticoreParam}.
-}}
 }
 \value{
 Show graphical output.
@@ -46,7 +30,7 @@ Invisibly return a \code{ggplot} \code{list}.
 Plot known markers
 }
 \note{
-Updated 2022-03-05.
+Updated 2023-08-17.
 }
 \examples{
 data(

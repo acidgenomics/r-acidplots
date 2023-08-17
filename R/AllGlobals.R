@@ -5,13 +5,9 @@
 
 #' Internal formals list, specific to package
 #'
-#' @note Updated 2022-03-07.
+#' @note Updated 2023-08-17.
 #' @noRd
 .formalsList <- list(
-    "BPPARAM" = # nolint
-        quote(
-            BiocParallel::bpparam()
-        ),
     "continuousColor" = quote(
         getOption(
             x = "acid.continuous.color",

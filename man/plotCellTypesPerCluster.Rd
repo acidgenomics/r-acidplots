@@ -16,8 +16,7 @@ plotCellTypesPerCluster(object, markers, ...)
   reduction = "UMAP",
   expression = c("mean", "sum"),
   headerLevel = 2L,
-  ...,
-  BPPARAM = BiocParallel::bpparam()
+  ...
 )
 }
 \arguments{
@@ -43,15 +42,6 @@ argument in the \code{character} vector.}
 Markdown header level.}
 
 \item{...}{Passthrough arguments to \code{\link[=plotMarker]{plotMarker()}}.}
-
-\item{BPPARAM}{\code{bpparamClass}.
-BiocParallel parameter to specify the desired processor configuration.\cr
-We recommend using one of the following:
-\itemize{
-\item \link[BiocParallel:register]{bpparam}.
-\item \link[BiocParallel:SerialParam-class]{SerialParam}.
-\item \link[BiocParallel:MulticoreParam-class]{MulticoreParam}.
-}}
 }
 \value{
 Show graphical output. Invisibly return \code{list}.
@@ -65,7 +55,7 @@ type (per unbiased cluster). Cell types with too few (\code{min} cutoff) or too
 many (\code{max} cutoff) marker genes will be skipped.
 }
 \note{
-Updated 2020-02-21.
+Updated 2023-08-17.
 }
 \examples{
 data(
