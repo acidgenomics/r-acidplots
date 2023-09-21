@@ -65,7 +65,7 @@
             X = data,
             FUN = function(x) {
                 x <- as.character(x)
-                x <- str_replace_na(x)
+                x <- strReplaceNA(x)
                 x <- as.factor(x)
                 x
             }

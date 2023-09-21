@@ -52,7 +52,7 @@ NULL
             mapping = aes(
                 x = .data[["depth"]],
                 y = .data[["dropout"]],
-                color = str_replace_na(.data[["interestingGroups"]])
+                color = strReplaceNA(.data[["interestingGroups"]])
             )
         ) +
             geom_point(

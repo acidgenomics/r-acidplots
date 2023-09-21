@@ -121,7 +121,7 @@ NULL
             mapping = aes(
                 x = .data[["pc1"]],
                 y = .data[["pc2"]],
-                color = str_replace_na(.data[["interestingGroups"]])
+                color = strReplaceNA(.data[["interestingGroups"]])
             )
         ) +
             geom_point(size = 4L) +
