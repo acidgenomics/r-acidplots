@@ -43,7 +43,6 @@ Imports:
     pipette (>= 0.11.1),
     rlang (>= 1.1.1),
     scales (>= 1.2.1),
-    stringr (>= 1.5.0),
     syntactic (>= 0.6.6),
     grDevices,
     grid,
