@@ -1,3 +1,7 @@
+## FIXME Take out stringr dependency here.
+
+
+
 ## S4 classes ==================================================================
 
 #' @importClassesFrom AcidSingleCell KnownMarkers
@@ -58,7 +62,7 @@ NULL
 
 ## Standard functions ==========================================================
 
-#' @importFrom AcidBase methodFormals printString standardizeCall
+#' @importFrom AcidBase methodFormals printString standardizeCall strReplaceNA
 #' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
@@ -89,6 +93,5 @@ NULL
 #' @importFrom rlang !! !!! .data sym syms
 #' @importFrom scales comma gradient_n_pal log_breaks percent pretty_breaks
 #' @importFrom stats as.formula dist ecdf hclust median prcomp reorder
-#' @importFrom stringr str_replace_na
 #' @importFrom utils packageName packageVersion
 NULL
