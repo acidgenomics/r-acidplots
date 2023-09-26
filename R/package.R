@@ -22,7 +22,7 @@ NULL
 
 #' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
 #' as.SummarizedExperiment barcodeRanksPerSample calculateMetrics camelCase
-#' cell2sample cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
+#' cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
 #' interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
 #' makeTitle mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
 #' metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks plotCellCounts
@@ -57,7 +57,7 @@ NULL
 #' @importMethodsFrom AcidGenomes Gene2Symbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
-#' barcodeRanksPerSample cell2sample cellCountsPerCluster cellTypesPerCluster
+#' barcodeRanksPerSample cellCountsPerCluster cellTypesPerCluster
 #' melt metrics sampleData zerosVsDepth
 #' @importMethodsFrom pipette decode
 #' @importMethodsFrom syntactic camelCase makeLabel makeTitle snakeCase
