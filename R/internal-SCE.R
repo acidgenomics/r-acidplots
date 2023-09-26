@@ -73,7 +73,7 @@
         colData[["colname"]] <- rownames(colData)
         data <- leftJoin(data, colData, by = "colname")
         ## Join the `geneId` and `geneName` columns by the `rowname` column.
-        g2s <- Gene2Symbol(object, format = "makeUnique")
+        g2s <- GeneToSymbol(object, format = "makeUnique")
         assert(hasLength(g2s), hasRownames(g2s))
         g2s <- as(g2s, "DFrame")
         g2s[["rowname"]] <- rownames(g2s)

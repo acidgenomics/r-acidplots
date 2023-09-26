@@ -20,7 +20,7 @@ NULL
 
 ## S4 generics and methods =====================================================
 
-#' @importFrom AcidGenerics Gene2Symbol aggregateCellsToSamples
+#' @importFrom AcidGenerics GeneToSymbol aggregateCellsToSamples
 #' as.SummarizedExperiment barcodeRanksPerSample calculateMetrics camelCase
 #' cellCountsPerCluster cellTypesPerCluster convertGenesToSymbols
 #' interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
@@ -54,7 +54,7 @@ NULL
 #' calculateMetrics convertGenesToSymbols decode interestingGroups
 #' interestingGroups<- mapGenesToRownames mapGenesToSymbols matchSampleColumn
 #' melt metrics nonzeroRowsAndCols organism sampleData uniteInterestingGroups
-#' @importMethodsFrom AcidGenomes Gene2Symbol organism
+#' @importMethodsFrom AcidGenomes GeneToSymbol organism
 #' @importMethodsFrom AcidPlyr leftJoin melt mutateIf
 #' @importMethodsFrom AcidSingleCell aggregate aggregateCellsToSamples
 #' barcodeRanksPerSample cellCountsPerCluster cellTypesPerCluster
