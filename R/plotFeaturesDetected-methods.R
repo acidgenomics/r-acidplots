@@ -62,7 +62,7 @@ NULL
             mapping = aes(
                 x = .data[["sampleName"]],
                 y = .data[["featureCount"]],
-                fill = strReplaceNA(.data[["interestingGroups"]])
+                fill = .data[["interestingGroups"]]
             )
         ) +
             acid_geom_bar() +

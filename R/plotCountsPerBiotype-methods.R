@@ -93,7 +93,7 @@ NULL
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
-                x = strReplaceNA(.data[["interestingGroups"]]),
+                x = .data[["interestingGroups"]],
                 y = .data[["value"]]
             )
         )
@@ -103,7 +103,7 @@ NULL
                 p <- p +
                     geom_violin(
                         mapping = aes(
-                            fill = strReplaceNA(.data[["interestingGroups"]])
+                            fill = .data[["interestingGroups"]]
                         ),
                         color = NA,
                         scale = "area",
@@ -114,7 +114,7 @@ NULL
                 p <- p +
                     geom_boxplot(
                         mapping = aes(
-                            color = strReplaceNA(.data[["interestingGroups"]])
+                            color = .data[["interestingGroups"]]
                         ),
                         fill = NA
                     )

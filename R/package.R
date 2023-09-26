@@ -67,7 +67,7 @@ NULL
 
 ## Standard functions ==========================================================
 
-#' @importFrom AcidBase methodFormals printString standardizeCall strReplaceNA
+#' @importFrom AcidBase methodFormals printString standardizeCall
 #' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
