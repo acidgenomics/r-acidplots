@@ -16,7 +16,7 @@ NULL
 
 
 
-## Updated 2023-08-10.
+## Updated 2023-09-26.
 `plotCellCounts,SCE` <- # nolint
     function(object,
              assay = 1L,
@@ -27,8 +27,10 @@ NULL
                  "x" = NULL,
                  "y" = "cells"
              )) {
-        validObject(object)
-        assert(hasMultipleSamples(object))
+        assert(
+            validObject(object),
+            hasMultipleSamples(object)
+        )
         labels <- matchLabels(labels)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -52,7 +54,7 @@ NULL
             mapping = aes(
                 x = .data[["sampleName"]],
                 y = .data[["nCells"]],
-                fill = strReplaceNA(.data[["interestingGroups"]])
+                fill = .data[["interestingGroups"]]
             )
         ) +
             acid_geom_bar() +

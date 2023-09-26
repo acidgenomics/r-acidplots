@@ -144,10 +144,10 @@ NULL
     ggplot(
         data = as.data.frame(data),
         mapping = aes(
-            x = strReplaceNA(.data[["interestingGroups"]]),
+            x = .data[["interestingGroups"]],
             y = .data[["value"]],
-            color = strReplaceNA(.data[["interestingGroups"]]),
-            fill = strReplaceNA(.data[["interestingGroups"]])
+            color = .data[["interestingGroups"]],
+            fill = .data[["interestingGroups"]]
         )
     ) +
         facet_wrap(facets = vars(.data[["rowname"]]), scales = "free_y")
@@ -165,8 +165,8 @@ NULL
         mapping = aes(
             x = .data[["rowname"]],
             y = .data[["value"]],
-            color = strReplaceNA(.data[["interestingGroups"]]),
-            fill = strReplaceNA(.data[["interestingGroups"]])
+            color = .data[["interestingGroups"]],
+            fill = .data[["interestingGroups"]]
         )
     )
 }

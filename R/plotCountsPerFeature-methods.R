@@ -71,8 +71,8 @@ NULL
                 geom_density(
                     mapping = aes(
                         x = .data[["value"]],
-                        group = strReplaceNA(.data[["interestingGroups"]]),
-                        color = strReplaceNA(.data[["interestingGroups"]])
+                        group = .data[["interestingGroups"]],
+                        color = .data[["interestingGroups"]]
                     ),
                     fill = NA,
                     linewidth = 1L
@@ -83,7 +83,7 @@ NULL
                     mapping = aes(
                         x = .data[["sampleName"]],
                         y = .data[["value"]],
-                        fill = strReplaceNA(.data[["interestingGroups"]])
+                        fill = .data[["interestingGroups"]]
                     ),
                     color = "black"
                 )
@@ -93,7 +93,7 @@ NULL
                     mapping = aes(
                         x = .data[["sampleName"]],
                         y = .data[["value"]],
-                        color = strReplaceNA(.data[["interestingGroups"]])
+                        color = .data[["interestingGroups"]]
                     ),
                     size = 0.5
                 )
