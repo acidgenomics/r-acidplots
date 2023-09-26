@@ -68,7 +68,7 @@
 #' object <- RangedSummarizedExperiment
 #' rownames <- head(rownames(object))
 #' print(rownames)
-#' g2s <- AcidGenomes::Gene2Symbol(object)
+#' g2s <- AcidGenomes::GeneToSymbol(object)
 #' geneIds <- head(g2s[[1L]])
 #' print(geneIds)
 #' geneNames <- head(g2s[[2L]])
