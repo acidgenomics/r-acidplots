@@ -2,7 +2,7 @@ Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
 Version: 0.6.2.9000
-Date: 2023-09-21
+Date: 2023-09-26
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -22,28 +22,28 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.3)
 Imports:
-    AcidBase (>= 0.6.18),
+    AcidBase (>= 0.7.0),
     AcidCLI (>= 0.2.8),
-    AcidExperiment (>= 0.4.7),
-    AcidGenerics (>= 0.6.7),
-    AcidGenomes (>= 0.5.1),
-    AcidMarkdown (>= 0.2.5),
-    AcidPlyr (>= 0.3.11),
-    AcidSingleCell (>= 0.3.5),
+    AcidExperiment (>= 0.4.8),
+    AcidGenerics (>= 0.6.13),
+    AcidGenomes (>= 0.5.2),
+    AcidMarkdown (>= 0.2.6),
+    AcidPlyr (>= 0.4.2),
+    AcidSingleCell (>= 0.3.7),
     Biobase (>= 2.60.0),
     BiocGenerics (>= 0.46.0),
     IRanges (>= 2.34.0),
-    Matrix (>= 1.6.0),
+    Matrix (>= 1.6.1),
     S4Vectors (>= 0.38.0),
     SingleCellExperiment (>= 1.22.0),
     SummarizedExperiment (>= 1.30.0),
-    ggplot2 (>= 3.4.2),
-    goalie (>= 0.6.14),
-    patchwork (>= 1.1.2),
-    pipette (>= 0.11.1),
+    ggplot2 (>= 3.4.3),
+    goalie (>= 0.6.19),
+    patchwork (>= 1.1.3),
+    pipette (>= 0.14.0),
     rlang (>= 1.1.1),
     scales (>= 1.2.1),
-    syntactic (>= 0.6.6),
+    syntactic (>= 0.6.7),
     grDevices,
     grid,
     methods,
@@ -54,7 +54,7 @@ Suggests:
     ComplexUpset (>= 1.3.3),
     DropletUtils (>= 1.20.0),
     RColorBrewer (>= 1.1.3),
-    ggpmisc (>= 0.5.3),
+    ggpmisc (>= 0.5.4),
     ggrepel (>= 0.9.3),
     ggridges (>= 0.5.4),
     matrixStats (>= 1.0.0),
@@ -66,3 +66,4 @@ Config/testthat/edition: 3
 Config/testthat/parallel: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+biocViews: Visualization
