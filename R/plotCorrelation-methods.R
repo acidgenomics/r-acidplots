@@ -209,7 +209,7 @@ NULL
 ## Updated 2021-05-17.
 `plotCorrelation,data.frame` <- # nolint
     function(object, labelCol = NULL, ...) {
-        assert(isString(labelCol, nullOK = TRUE))
+        assert(isString(labelCol, nullOk = TRUE))
         mat <- as.matrix(object)
         if (isString(labelCol)) {
             rn <- object[[labelCol]]

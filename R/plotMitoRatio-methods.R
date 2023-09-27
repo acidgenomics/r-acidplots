@@ -28,7 +28,7 @@ NULL
              labels) {
         assert(isInLeftOpenRange(max, lower = 0L, upper = 1L))
         do.call(
-            what = .plotQCMetric,
+            what = .plotQcMetric,
             args = list(
                 "object" = object,
                 "metricCol" = "mitoRatio",
@@ -44,7 +44,7 @@ NULL
 
 .f <- formals(`plotMitoRatio,SCE`)
 .f[["geom"]] <- .formalsList[["geom"]]
-.f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+.f[["labels"]] <- formals(.plotQcMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Mito ratio"
 formals(`plotMitoRatio,SCE`) <- .f # nolint
 rm(.f)

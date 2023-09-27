@@ -182,8 +182,8 @@ NULL
             isFlag(showColnames),
             isInt(treeheightRow),
             isInt(treeheightCol),
-            isString(borderColor, nullOK = TRUE),
-            isString(title, nullOK = TRUE),
+            isString(borderColor, nullOk = TRUE),
+            isString(title, nullOk = TRUE),
             isFlag(convertGenesToSymbols)
         )
         scale <- match.arg(scale)

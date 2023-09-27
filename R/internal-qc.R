@@ -2,7 +2,7 @@
 #'
 #' @note Updated 2022-11-09.
 #' @noRd
-.plotQCMetric <-
+.plotQcMetric <-
     function(object,
              assay = 1L,
              metricCol,
@@ -187,7 +187,7 @@
         p
     }
 
-formals(`.plotQCMetric`)[["geom"]] <-
+formals(`.plotQcMetric`)[["geom"]] <-
     .formalsList[["geom"]]
 
 
@@ -196,7 +196,7 @@ formals(`.plotQCMetric`)[["geom"]] <-
 #'
 #' @note Updated 2022-03-07.
 #' @noRd
-.plotQCScatterplot <-
+.plotQcScatterplot <-
     function(object,
              assay = 1L,
              xCol,

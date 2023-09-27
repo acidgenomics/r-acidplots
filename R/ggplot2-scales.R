@@ -46,7 +46,7 @@ acid_scale_color_continuous <- # nolint
                 default = acid_scale_color_synesthesia_c
             )
         )
-        assert(isGGScale(x, scale = "continuous", aes = "color"))
+        assert(isGgscale(x, scale = "continuous", aes = "color"))
         x
     }
 
@@ -62,7 +62,7 @@ acid_scale_fill_continuous <- # nolint
                 default = acid_scale_fill_synesthesia_c
             )
         )
-        assert(isGGScale(x, scale = "continuous", aes = "fill"))
+        assert(isGgscale(x, scale = "continuous", aes = "fill"))
         x
     }
 
@@ -78,7 +78,7 @@ acid_scale_color_discrete <- # nolint
                 default = acid_scale_color_synesthesia_d
             )
         )
-        assert(isGGScale(x, scale = "discrete", aes = "color"))
+        assert(isGgscale(x, scale = "discrete", aes = "color"))
         x
     }
 
@@ -94,6 +94,6 @@ acid_scale_fill_discrete <- # nolint
                 default = acid_scale_fill_synesthesia_d
             )
         )
-        assert(isGGScale(x, scale = "discrete", aes = "fill"))
+        assert(isGgscale(x, scale = "discrete", aes = "fill"))
         x
     }

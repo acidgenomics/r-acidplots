@@ -73,8 +73,8 @@ NULL
             isFlag(clusterCols),
             isFlag(clusterRows),
             isFlag(legend),
-            isString(borderColor, nullOK = TRUE),
-            isString(title, nullOK = TRUE),
+            isString(borderColor, nullOk = TRUE),
+            isString(title, nullOk = TRUE),
             isFlag(convertGenesToSymbols)
         )
         interestingGroups(object) <-

@@ -77,7 +77,7 @@ NULL
             isString(sampleCol),
             isString(valueCol),
             isSubset(c(sampleCol, valueCol), colnames(object)),
-            isCharacter(interestingGroups, nullOK = TRUE),
+            isCharacter(interestingGroups, nullOk = TRUE),
             isString(fill)
         )
         trans <- match.arg(trans)

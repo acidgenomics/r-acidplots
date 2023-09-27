@@ -56,7 +56,7 @@ NULL
             isFlag(showColnames),
             isInt(treeheightRow),
             isInt(treeheightCol),
-            isString(borderColor, nullOK = TRUE)
+            isString(borderColor, nullOk = TRUE)
         )
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)

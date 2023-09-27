@@ -1,5 +1,5 @@
 test_that("grid", {
-    p <- plotQC(rse)
+    p <- plotQc(rse)
     expect_s3_class(p, "ggplot")
 })
 
@@ -8,14 +8,14 @@ test_that("grid", {
 sce <- calculateMetrics(sce)
 
 test_that("grid", {
-    p <- plotQC(sce)
+    p <- plotQc(sce)
     expect_s3_class(p, "ggplot")
 })
 
-geoms <- eval(formals(`plotQC,SCE`)[["geom"]])
+geoms <- eval(formals(`plotQc,SCE`)[["geom"]])
 test_that("geom", {
     for (geom in geoms) {
-        p <- plotQC(sce, geom = geom)
+        p <- plotQc(sce, geom = geom)
         expect_s3_class(p, "ggplot")
     }
 })

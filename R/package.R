@@ -31,14 +31,14 @@ NULL
 #' plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
 #' plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
 #' plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers
-#' plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotQC
-#' plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums plotTSNE
-#' plotTotalCounts plotUpset plotUMAP plotViolin plotWaterfall
+#' plotHeatmap plotKnownMarkers plotMarker plotMitoRatio plotNovelty plotPca
+#' plotQc plotQuantileHeatmap plotReducedDim plotStackedBarPlot plotSums
+#' plotTsne plotTotalCounts plotUpset plotUmap plotViolin plotWaterfall
 #' plotZerosVsDepth sampleData sem snakeCase uniteInterestingGroups
 #' zerosVsDepth
 #' @importFrom Biobase sampleNames
-#' @importFrom BiocGenerics append counts do.call organism plotPCA rbind t
-#' unlist unsplit var
+#' @importFrom BiocGenerics append counts do.call organism rbind t unlist
+#' unsplit var
 #' @importFrom IRanges quantile
 #' @importFrom S4Vectors aggregate complete.cases decode head mcols merge
 #' metadata na.omit sort split
@@ -67,7 +67,7 @@ NULL
 
 ## Standard functions ==========================================================
 
-#' @importFrom AcidBase methodFormals printString standardizeCall strReplaceNA
+#' @importFrom AcidBase methodFormals printString standardizeCall strReplaceNa
 #' @importFrom AcidCLI abort alert alertInfo alertWarning dl toInlineString
 #' @importFrom AcidExperiment matchInterestingGroups
 #' @importFrom AcidMarkdown markdownHeader
@@ -88,7 +88,7 @@ NULL
 #' hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
 #' hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
 #' hasSubset hasUniqueCols hasValidDimnames isAlpha isCharacter isDark isFlag
-#' isGGScale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
+#' isGgscale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
 #' isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
 #' isIntegerish isMatchingRegex isNonNegative isNumber isPositive isScalar
 #' isString isSubset requireNamespaces
