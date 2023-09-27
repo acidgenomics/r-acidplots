@@ -1,5 +1,5 @@
-#' @name plotQC
-#' @inherit AcidGenerics::plotQC
+#' @name plotQc
+#' @inherit AcidGenerics::plotQc
 #' @note Updated 2023-08-11.
 #'
 #' @inheritParams AcidRoxygen::params
@@ -14,17 +14,17 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotQC(object)
+#' plotQc(object)
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_splatter
-#' plotQC(object)
+#' plotQc(object)
 NULL
 
 
 
 ## Updated 2023-08-11.
-`plotQC,SE` <- # nolint
+`plotQc,SE` <- # nolint
     function(object,
              assay = 1L,
              interestingGroups = NULL,
@@ -83,13 +83,13 @@ NULL
         p
     }
 
-formals(`plotQC,SE`)[["legend"]] <- # nolint
+formals(`plotQc,SE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
 
 ## Updated 2023-08-11.
-`plotQC,SCE` <- # nolint
+`plotQc,SCE` <- # nolint
     function(object,
              assay = 1L,
              interestingGroups = NULL,
@@ -186,23 +186,23 @@ formals(`plotQC,SE`)[["legend"]] <- # nolint
         p
     }
 
-formals(`plotQC,SCE`)[c("geom", "legend")] <- # nolint
+formals(`plotQc,SCE`)[c("geom", "legend")] <- # nolint
     .formalsList[c("geom", "legend")]
 
 
 
-#' @rdname plotQC
+#' @rdname plotQc
 #' @export
 setMethod(
-    f = "plotQC",
+    f = "plotQc",
     signature = signature(object = "SingleCellExperiment"),
-    definition = `plotQC,SCE`
+    definition = `plotQc,SCE`
 )
 
-#' @rdname plotQC
+#' @rdname plotQc
 #' @export
 setMethod(
-    f = "plotQC",
+    f = "plotQc",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `plotQC,SE`
+    definition = `plotQc,SE`
 )

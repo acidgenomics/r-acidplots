@@ -34,7 +34,7 @@ NULL
              point = c("none", "inflection", "knee"),
              trans = "log10",
              title = "Counts per cell") {
-        assert(isString(title, nullOK = TRUE))
+        assert(isString(title, nullOk = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
         interestingGroups(object) <-
@@ -74,7 +74,7 @@ NULL
         }
         ## Plot.
         p <- do.call(
-            what = .plotQCMetric,
+            what = .plotQcMetric,
             args = list(
                 "object" = object,
                 "metricCol" = "nCount",

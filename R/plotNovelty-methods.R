@@ -26,7 +26,7 @@ NULL
              labels) {
         assert(isInRightOpenRange(min, lower = 0L, upper = 1L))
         do.call(
-            what = .plotQCMetric,
+            what = .plotQcMetric,
             args = list(
                 "object" = object,
                 "metricCol" = "log10FeaturesPerCount",
@@ -43,7 +43,7 @@ NULL
 
 .f <- formals(`plotNovelty,SCE`)
 .f[["geom"]] <- .formalsList[["geom"]]
-.f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+.f[["labels"]] <- formals(.plotQcMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Novelty"
 formals(`plotNovelty,SCE`) <- .f # nolint
 

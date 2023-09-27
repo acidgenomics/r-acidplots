@@ -26,7 +26,7 @@ NULL
              trans = "log2",
              labels) {
         do.call(
-            what = .plotQCMetric,
+            what = .plotQcMetric,
             args = list(
                 "object" = object,
                 "metricCol" = "nFeature",
@@ -42,7 +42,7 @@ NULL
 
 .f <- formals(`plotFeaturesPerCell,SCE`)
 .f[["geom"]] <- .formalsList[["geom"]]
-.f[["labels"]] <- formals(.plotQCMetric)[["labels"]]
+.f[["labels"]] <- formals(.plotQcMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Features per cell"
 .f[["labels"]][["metricAxis"]] <- "features"
 formals(`plotFeaturesPerCell,SCE`) <- .f # nolint

@@ -40,7 +40,7 @@ NULL
                  "y" = "mito"
              )) {
         do.call(
-            what = .plotQCScatterplot,
+            what = .plotQcScatterplot,
             args = list(
                 "object" = object,
                 "interestingGroups" = interestingGroups,

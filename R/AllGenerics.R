@@ -143,15 +143,15 @@ NULL
 NULL
 
 #' @export
-#' @name plotPCA
+#' @name plotPca
 #' @rdname plotReducedDim
-#' @usage plotPCA(object, ...)
+#' @usage plotPca(object, ...)
 NULL
 
 #' @export
-#' @name plotQC
-#' @rdname plotQC
-#' @usage plotQC(object, ...)
+#' @name plotQc
+#' @rdname plotQc
+#' @usage plotQc(object, ...)
 NULL
 
 #' @export
@@ -179,9 +179,9 @@ NULL
 NULL
 
 #' @export
-#' @name plotTSNE
+#' @name plotTsne
 #' @rdname plotReducedDim
-#' @usage plotTSNE(object, ...)
+#' @usage plotTsne(object, ...)
 NULL
 
 #' @export
@@ -191,9 +191,9 @@ NULL
 NULL
 
 #' @export
-#' @name plotUMAP
+#' @name plotUmap
 #' @rdname plotReducedDim
-#' @usage plotUMAP(object, ...)
+#' @usage plotUmap(object, ...)
 NULL
 
 #' @export

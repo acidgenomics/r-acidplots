@@ -33,7 +33,7 @@
         assert(
             is(object, "SummarizedExperiment"),
             isCharacter(denylist),
-            isHexColorFunction(legendColor, nullOK = TRUE)
+            isHexColorFunction(legendColor, nullOk = TRUE)
         )
         empty <- .emptyPheatmapAnnotations
         data <- colData(object)
@@ -65,7 +65,7 @@
             X = data,
             FUN = function(x) {
                 x <- as.character(x)
-                x <- strReplaceNA(x)
+                x <- strReplaceNa(x)
                 x <- as.factor(x)
                 x
             }

@@ -378,14 +378,14 @@ formals(`plotCounts,SCE`)[["legend"]] <- # nolint
             isNumber(colMax),
             isNumber(dotMin),
             isNumber(dotScale),
-            isGGScale(
+            isGgscale(
                 x = color,
                 scale = "continuous",
                 aes = "color",
-                nullOK = TRUE
+                nullOk = TRUE
             ),
             isFlag(legend),
-            isString(title, nullOK = TRUE)
+            isString(title, nullOk = TRUE)
         )
         assay <- "logcounts"
         ## Fetch the gene expression data.
@@ -491,9 +491,9 @@ formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
         assert(
             isCharacter(genes),
             isFlag(perSample),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
+            isGgscale(color, scale = "discrete", aes = "color", nullOk = TRUE),
             isFlag(legend),
-            isString(title, nullOK = TRUE)
+            isString(title, nullOk = TRUE)
         )
         assay <- match.arg(assay)
         scale <- match.arg(scale)

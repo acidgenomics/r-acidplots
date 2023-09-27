@@ -1,5 +1,5 @@
 #' @name plotReducedDim
-#' @aliases plotPCA plotTSNE plotUMAP
+#' @aliases plotPca plotTsne plotUmap
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotReducedDim
 #' @note Updated 2022-03-07.
@@ -14,7 +14,7 @@
 #' - t-SNE: **t**-distributed **S**tochastic **N**eighbor **E**mbedding.
 #' - UMAP: **U**niform **M**anifold **A**pproximation and **P**rojection.
 #'
-#' @section Principal component analysis (`plotPCA`):
+#' @section Principal component analysis (`plotPca`):
 #'
 #' PCA (Jolliffe, et al., 2002) is a multivariate technique that allows us to
 #' summarize the systematic patterns of variations in the data. PCA takes the
@@ -43,7 +43,7 @@
 #' @references Jolliffe, et al., 2002.
 #'
 #' @seealso
-#' - `DESeq2::plotPCA()`.
+#' - `DESeq2::plotPca()`.
 #' - `Seurat::DimPlot()`.
 #' - `monocle3::plot_cells()`.
 #'
@@ -58,7 +58,7 @@
 #'
 #' ## SummarizedExperiment ====
 #' object <- RangedSummarizedExperiment
-#' plotPCA(object)
+#' plotPca(object)
 #'
 #' ## SingleCellExperiment ====
 #' object <- SingleCellExperiment_Seurat
@@ -68,7 +68,7 @@ NULL
 
 
 ## Updated 2021-09-10.
-`plotPCA,SE` <- # nolint
+`plotPca,SE` <- # nolint
     function(object,
              assay = 1L,
              interestingGroups = NULL,
@@ -151,7 +151,7 @@ NULL
         p
     }
 
-formals(`plotPCA,SE`)[c( # nolint
+formals(`plotPca,SE`)[c( # nolint
     "label",
     "pointSize"
 )] <- .formalsList[c(
@@ -186,8 +186,8 @@ formals(`plotPCA,SE`)[c( # nolint
             isScalar(reduction),
             hasLength(dims, n = 2L),
             all(isIntegerish(dims)),
-            isCharacter(interestingGroups, nullOK = TRUE),
-            isGGScale(color, scale = "discrete", aes = "color", nullOK = TRUE),
+            isCharacter(interestingGroups, nullOk = TRUE),
+            isGgscale(color, scale = "discrete", aes = "color", nullOk = TRUE),
             isNumber(pointSize),
             isNumber(pointAlpha),
             isFlag(pointsAsNumbers),
@@ -356,19 +356,19 @@ formals(`plotReducedDim,SCE`)[c( # nolint
 
 
 ## Updated 2020-02-21.
-`plotPCA,SCE` <- # nolint
+`plotPca,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "PCA", ...)
     }
 
 ## Updated 2020-02-21.
-`plotTSNE,SCE` <- # nolint
+`plotTsne,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "TSNE", ...)
     }
 
 ## Updated 2020-02-21.
-`plotUMAP,SCE` <- # nolint
+`plotUmap,SCE` <- # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "UMAP", ...)
     }
@@ -386,31 +386,31 @@ setMethod(
 #' @rdname plotReducedDim
 #' @export
 setMethod(
-    f = "plotPCA",
+    f = "plotPca",
     signature = signature(object = "SingleCellExperiment"),
-    definition = `plotPCA,SCE`
+    definition = `plotPca,SCE`
 )
 
 #' @rdname plotReducedDim
 #' @export
 setMethod(
-    f = "plotPCA",
+    f = "plotPca",
     signature = signature(object = "SummarizedExperiment"),
-    definition = `plotPCA,SE`
+    definition = `plotPca,SE`
 )
 
 #' @rdname plotReducedDim
 #' @export
 setMethod(
-    f = "plotTSNE",
+    f = "plotTsne",
     signature = signature(object = "SingleCellExperiment"),
-    definition = `plotTSNE,SCE`
+    definition = `plotTsne,SCE`
 )
 
 #' @rdname plotReducedDim
 #' @export
 setMethod(
-    f = "plotUMAP",
+    f = "plotUmap",
     signature = signature(object = "SingleCellExperiment"),
-    definition = `plotUMAP,SCE`
+    definition = `plotUmap,SCE`
 )

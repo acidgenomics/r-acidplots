@@ -92,7 +92,7 @@ acid_theme_light <- # nolint
             isScalar(base_family)
         )
         face <- match.arg(face)
-        assert(isNumber(aspect_ratio, nullOK = TRUE))
+        assert(isNumber(aspect_ratio, nullOk = TRUE))
         legend_position <- match.arg(legend_position)
         assert(
             isFlag(grid),
@@ -165,7 +165,7 @@ acid_theme_dark <- # nolint
             isScalar(base_family)
         )
         face <- match.arg(face)
-        assert(isNumber(aspect_ratio, nullOK = TRUE))
+        assert(isNumber(aspect_ratio, nullOk = TRUE))
         legend_position <- match.arg(legend_position)
         assert(isFlag(grid))
         bg <- palette[["background"]]

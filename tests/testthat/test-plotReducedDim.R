@@ -11,7 +11,7 @@ test_that("SCE", {
 })
 
 test_that("Aliases", {
-    for (fun in list(plotPCA, plotTSNE, plotUMAP)) {
+    for (fun in list(plotPca, plotTsne, plotUmap)) {
         p <- fun(object)
         expect_s3_class(p, "ggplot")
     }

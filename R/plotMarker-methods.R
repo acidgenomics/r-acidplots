@@ -46,11 +46,11 @@ NULL
         assert(
             isCharacter(genes),
             isScalar(reduction),
-            isGGScale(
+            isGgscale(
                 x = color,
                 scale = "continuous",
                 aes = "color",
-                nullOK = TRUE
+                nullOk = TRUE
             ),
             isNumber(pointSize),
             isNumber(pointAlpha),
