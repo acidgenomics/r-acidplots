@@ -13,9 +13,7 @@ plotCountsCorrelation(x, y, ...)
   y,
   i = NULL,
   j = NULL,
-  labels = list(title = NULL, subtitle = NULL, color = NULL, x = NULL, y = "counts"),
-  .xname = getNameInParent(x),
-  .yname = getNameInParent(y)
+  labels = list(title = NULL, subtitle = NULL, color = NULL, x = NULL, y = "counts")
 )
 }
 \arguments{
@@ -43,12 +41,6 @@ For more information:
 ggplot2 labels.
 See \code{ggplot2::labs()} for details.}
 
-\item{.xname}{Name of object defined in \code{x}.
-\emph{Not intended to be used directly.}}
-
-\item{.yname}{Name of object defined in \code{y}.
-\emph{Not intended to be used directly.}}
-
 \item{...}{Additional arguments.}
 }
 \value{
@@ -58,7 +50,7 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2022-11-09.
+Updated 2023-10-03.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
