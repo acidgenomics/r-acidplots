@@ -84,14 +84,14 @@ NULL
 #' scale_fill_discrete scale_radius scale_x_continuous scale_x_discrete
 #' scale_y_continuous stat_ecdf stat_summary theme theme_linedraw waiver vars
 #' @importFrom goalie allAreHexColors allAreMatchingRegex allAreNonNegative
-#' allArePositive areDisjointSets areSetEqual assert bapply getNameInParent
-#' hasClusters hasColnames hasDims hasLength hasMultipleSamples hasNames
-#' hasNoDuplicates hasMetrics hasNonzeroRowsAndCols hasRownames hasRows
-#' hasSubset hasUniqueCols hasValidDimnames isAlpha isCharacter isDark isFlag
-#' isGgscale isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction
-#' isInClosedRange isInLeftOpenRange isInRange isInRightOpenRange isInt
-#' isIntegerish isMatchingRegex isNonNegative isNumber isPositive isScalar
-#' isString isSubset requireNamespaces
+#' allArePositive areDisjointSets areSetEqual assert bapply hasClusters
+#' hasColnames hasDims hasLength hasMultipleSamples hasNames hasNoDuplicates
+#' hasMetrics hasNonzeroRowsAndCols hasRownames hasRows hasSubset hasUniqueCols
+#' hasValidDimnames isAlpha isCharacter isDark isFlag isGgscale
+#' isGreaterThanOrEqualTo isHeaderLevel isHexColorFunction isInClosedRange
+#' isInLeftOpenRange isInRange isInRightOpenRange isInt isIntegerish
+#' isMatchingRegex isNonNegative isNumber isPositive isScalar isString isSubset
+#' requireNamespaces
 #' @importFrom grDevices axisTicks colorRampPalette rgb
 #' @importFrom grid arrow unit
 #' @importFrom methods as formalArgs is setMethod signature validObject

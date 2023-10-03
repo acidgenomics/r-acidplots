@@ -1,6 +1,6 @@
 #' @name plotCountsCorrelation
 #' @inherit AcidGenerics::plotCountsCorrelation
-#' @note Updated 2022-11-09.
+#' @note Updated 2023-10-03.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -17,7 +17,7 @@ NULL
 
 
 
-## Updated 2022-11-09.
+## Updated 2023-10-03.
 `plotCountsCorrelation,matrix` <- # nolint
     function(x,
              y,
@@ -29,17 +29,13 @@ NULL
                  "color" = NULL,
                  "x" = NULL,
                  "y" = "counts"
-             ),
-             .xname = getNameInParent(x),
-             .yname = getNameInParent(y)) {
-        validObject(x)
-        validObject(y)
+             )) {
         assert(
+            validObject(x),
+            validObject(y),
             identical(dimnames(x), dimnames(y)),
             !anyNA(x),
-            !anyNA(y),
-            isString(.xname),
-            isString(.yname)
+            !anyNA(y)
         )
         labels <- matchLabels(labels)
         if (!is.null(i)) {
@@ -56,10 +52,11 @@ NULL
             ncol(x) >= 2L
         )
         xData <- melt(x)
-        xData[["type"]] <- factor(.xname)
+        xData[["type"]] <- "x"
         yData <- melt(y)
-        yData[["type"]] <- factor(.yname)
+        yData[["type"]] <- "y"
         data <- rbind(xData, yData)
+        data[["type"]] <- as.factor(data[["type"]])
         p <- ggplot(
             data = as.data.frame(data),
             mapping = aes(
