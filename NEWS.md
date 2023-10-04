@@ -1,5 +1,17 @@
 # Release notes
 
+## AcidPlots 0.7.0 (2023-10-04)
+
+Major changes:
+
+- Now enforcing strict camel case for all function names.
+- Renamed `plotPCA` to `plotPca`. Now using AcidGenerics variant instead of
+  BiocGenerics here.
+- Renamed `plotQC` to `plotQc`.
+- Renamed `plotTSNE` to `plotTsne`.
+- Renamed `plotUMAP` to `plotUmap`.
+- Removed stringr dependency.
+
 ## AcidPlots 0.6.1 (2023-08-17)
 
 Major changes:
