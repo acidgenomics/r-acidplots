@@ -1,5 +1,12 @@
 # Release notes
 
+## AcidPlots 0.7.1 (2023-10-05
+
+Minor changes:
+
+- `plotCountsCorrelation`: Add back `xName` and `yName` arguments, which
+  are useful for customizing the plot labels.
+
 ## AcidPlots 0.7.0 (2023-10-04)
 
 Major changes:
