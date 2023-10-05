@@ -1,9 +1,12 @@
 #' @name plotCountsCorrelation
 #' @inherit AcidGenerics::plotCountsCorrelation
-#' @note Updated 2023-10-03.
+#' @note Updated 2023-10-05.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
+#'
+#' @param xName,yName `character(1)`.
+#' Color legend name for value in `x` or `y`.
 #'
 #' @examples
 #' data(RangedSummarizedExperiment, package = "AcidTest")
@@ -23,6 +26,8 @@ NULL
              y,
              i = NULL,
              j = NULL,
+             xName = "x",
+             yName = "y",
              labels = list(
                  "title" = NULL,
                  "subtitle" = NULL,
@@ -35,7 +40,9 @@ NULL
             validObject(y),
             identical(dimnames(x), dimnames(y)),
             !anyNA(x),
-            !anyNA(y)
+            !anyNA(y),
+            isString(xName),
+            isString(yName)
         )
         labels <- matchLabels(labels)
         if (!is.null(i)) {
@@ -52,9 +59,9 @@ NULL
             ncol(x) >= 2L
         )
         xData <- melt(x)
-        xData[["type"]] <- "x"
+        xData[["type"]] <- xName
         yData <- melt(y)
-        yData[["type"]] <- "y"
+        yData[["type"]] <- yName
         data <- rbind(xData, yData)
         data[["type"]] <- as.factor(data[["type"]])
         p <- ggplot(
