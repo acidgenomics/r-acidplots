@@ -13,6 +13,8 @@ plotCountsCorrelation(x, y, ...)
   y,
   i = NULL,
   j = NULL,
+  xName = "x",
+  yName = "y",
   labels = list(title = NULL, subtitle = NULL, color = NULL, x = NULL, y = "counts")
 )
 }
@@ -37,6 +39,9 @@ For more information:
 \if{html}{\out{<div class="sourceCode">}}\preformatted{help(topic = "Extract", package = "base")
 }\if{html}{\out{</div>}}}
 
+\item{xName, yName}{\code{character(1)}.
+Color legend name for value in \code{x} or \code{y}.}
+
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{ggplot2::labs()} for details.}
@@ -50,7 +55,7 @@ Graphical output.
 Compare feature expression correlation across two data sets.
 }
 \note{
-Updated 2023-10-03.
+Updated 2023-10-05.
 }
 \examples{
 data(RangedSummarizedExperiment, package = "AcidTest")
