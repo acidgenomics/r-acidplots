@@ -56,13 +56,11 @@ NULL
         interestingGroups <- interestingGroups(object)
         rowData <- rowData(object)
         if (!isSubset(biotypeCol, colnames(rowData))) {
-            ## nocov start
             alertWarning(sprintf(
                 "{.fun %s} does not contain biotypes defined in {.val %s}.",
                 "rowData", biotypeCol
             ))
             return(invisible(NULL))
-            ## nocov end
         }
         rowData <- decode(rowData)
         rowData[["rowname"]] <- rownames(object)
