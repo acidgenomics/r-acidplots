@@ -1,6 +1,13 @@
 # Release notes
 
-## AcidPlots 0.7.1 (2023-10-05
+## AcidPlots 0.7.2 (2023-12-04)
+
+Minor changes:
+
+- `plotCounts`, `plotCountsPerBiotype`: Fixed unwanted type mismatch during
+  internal `leftJoin` operations for `SingleCellExperiment` method.
+
+## AcidPlots 0.7.1 (2023-10-05)
 
 Minor changes:
 
