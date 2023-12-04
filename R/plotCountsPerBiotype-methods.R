@@ -1,7 +1,7 @@
 #' @name plotCountsPerBiotype
 #' @author Michael Steinbaugh, Rory Kirchner
 #' @inherit AcidGenerics::plotCountsPerBiotype
-#' @note Updated 2022-03-04.
+#' @note Updated 2023-12-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
@@ -63,7 +63,7 @@ NULL
             return(invisible(NULL))
         }
         rowData <- decode(rowData)
-        rowData[["rowname"]] <- rownames(object)
+        rowData[["rowname"]] <- as.factor(rownames(object))
         ## Get the top biotypes from the row data.
         biotypes <- table(rowData[[biotypeCol]])
         ## Requiring at least 10 genes per biotype.
