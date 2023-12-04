@@ -34,7 +34,7 @@
 
 #' Fetch gene data
 #'
-#' @note Updated 2021-09-03.
+#' @note Updated 2023-12-04.
 #' @noRd
 .fetchGeneData <-
     function(object,
@@ -55,7 +55,7 @@
         counts <- counts[rownames, , drop = FALSE]
         ## Early return the transposed matrix, if we don't want metadata.
         ## This return is used by `.fetchReductionExpressionData()`.
-        if (!isTRUE(metadata)) {
+        if (isFALSE(metadata)) {
             ## Transpose, putting genes into the columns.
             out <- t(counts)
             assert(identical(class(counts), class(out)))
@@ -70,13 +70,13 @@
         ## using `metrics` here. This ensures `sampleName` and
         ## `interestingGroups` are always defined.
         colData <- metrics(object)
-        colData[["colname"]] <- rownames(colData)
+        colData[["colname"]] <- as.factor(rownames(colData))
         data <- leftJoin(data, colData, by = "colname")
         ## Join the `geneId` and `geneName` columns by the `rowname` column.
         g2s <- GeneToSymbol(object, format = "makeUnique")
         assert(hasLength(g2s), hasRownames(g2s))
         g2s <- as(g2s, "DFrame")
-        g2s[["rowname"]] <- rownames(g2s)
+        g2s[["rowname"]] <- as.factor(rownames(g2s))
         data <- leftJoin(data, g2s, by = "rowname")
         data <- mutateIf(data, is.character, as.factor)
         data <- data[, unique(c("rowname", sort(colnames(data))))]

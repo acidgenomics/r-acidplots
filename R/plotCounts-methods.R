@@ -1,6 +1,6 @@
 #' @name plotCounts
 #' @inherit AcidGenerics::plotCounts
-#' @note Updated 2022-05-06.
+#' @note Updated 2023-12-04.
 #'
 #' @inheritParams AcidRoxygen::params
 #' @param ... Additional arguments.
