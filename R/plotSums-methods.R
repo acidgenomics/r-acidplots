@@ -42,7 +42,7 @@ NULL
             EXPR = as.character(MARGIN),
             "1" = "rowSums",
             "2" = "colSums",
-            stop("Invalid MARGIN.") # nocov
+            stop("Invalid MARGIN.")
         )
         ## Get the interestingGroups factor to split object.
         metrics <- metrics(object)

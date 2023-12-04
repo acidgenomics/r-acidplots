@@ -32,12 +32,10 @@
                     method = method
                 ),
                 error = function(e) {
-                    ## nocov start
                     alertWarning(sprintf(
                         "{.fun %s} row calculation failed.", "hclust"
                     ))
                     FALSE
-                    ## nocov end
                 }
             )
         }
@@ -49,12 +47,10 @@
                     method = method
                 ),
                 error = function(e) {
-                    ## nocov start
                     alertWarning(sprintf(
                         "{.fun %s} column calculation failed.", "hclust"
                     ))
                     FALSE
-                    ## nocov end
                 }
             )
         }
@@ -78,7 +74,7 @@
     ## `na.rm` in `rowVars()` and `colVars()` calls below to handle this edge
     ## case.
     if (anyNA(object)) {
-        alertWarning("NA values detected in matrix.") # nocov
+        alertWarning("NA values detected in matrix.")
     }
     if (!identical(scale, "none")) {
         alert(sprintf("Scaling matrix per %s (z-score).", scale))
@@ -94,7 +90,6 @@
         requireNamespaces("matrixStats")
         pass <- matrixStats::rowVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
-            ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
             alertInfo(sprintf(
@@ -108,13 +103,11 @@
                 toInlineString(rownames(object)[which(fail)], n = 5L)
             ))
             object <- object[pass, , drop = FALSE]
-            ## nocov end
         }
     } else if (identical(scale, "column")) {
         requireNamespaces("matrixStats")
         pass <- matrixStats::colVars(object, na.rm = TRUE) > varThreshold
         if (!all(pass)) {
-            ## nocov start
             fail <- !pass
             n <- sum(fail, na.rm = TRUE)
             abort(sprintf(
@@ -127,7 +120,6 @@
                 ),
                 toInlineString(colnames(object)[which(fail)], n = 5L)
             ))
-            ## nocov end
         }
     }
     ## Require at least a 2x2 matrix.

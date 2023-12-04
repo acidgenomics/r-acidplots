@@ -45,7 +45,6 @@
             assert(all(isInRange(c(min, max), lower = 0L, upper = 1L)))
         }
         data <- metrics(object)
-        ## nocov start
         if (!isSubset(metricCol, colnames(data))) {
             abort(sprintf(
                 "{.var %s} is not defined in {.fun %s}.",
@@ -62,7 +61,6 @@
                 metricCol, "colData"
             ))
         }
-        ## nocov end
         mapping <- aes(
             color = .data[["interestingGroups"]],
             fill = .data[["interestingGroups"]]
