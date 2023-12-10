@@ -92,7 +92,7 @@ See \code{ggplot2::labs()} for details.}
 Plot counts per biotype
 }
 \note{
-Updated 2022-03-04.
+Updated 2023-12-04.
 }
 \examples{
 data(

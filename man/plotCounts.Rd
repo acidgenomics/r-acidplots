@@ -167,7 +167,7 @@ See \code{ggplot2::geom_violin} for details.}
 Plot counts
 }
 \note{
-Updated 2022-05-06.
+Updated 2023-12-04.
 }
 \examples{
 data(
