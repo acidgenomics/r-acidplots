@@ -1,6 +1,10 @@
+## FIXME Rework matrix method into data.frame method?
+
+
+
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2023-08-11.
+#' @note Updated 2023-12-10.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -51,14 +55,17 @@ NULL
 
 
 
-## Updated 2021-05-17.
+## FIXME Rework this as data.frame primary method, and then allow support
+## for matrix method.
+
+## Updated 2023-12-10.
 `plotCorrelation,matrix` <- # nolint
     function(object,
              xCol,
              yCol,
              label = FALSE,
              labels = NULL,
-             trans = c("log10", "log2", "identity"),
+             trans = c("identity", "log10", "log2"),
              r2 = TRUE,
              se = TRUE,
              colors = list(
@@ -66,8 +73,8 @@ NULL
                  "line" = "black",
                  "se" = "gray"
              )) {
-        validObject(object)
         assert(
+            validObject(object),
             hasColnames(object),
             hasRows(object),
             isString(xCol) || isInt(xCol),
@@ -206,10 +213,13 @@ NULL
 
 
 
+## FIXME Rework this as matrix method, and always set the labelCol from rownames.
+
 ## Updated 2021-05-17.
 `plotCorrelation,data.frame` <- # nolint
     function(object, labelCol = NULL, ...) {
         assert(isString(labelCol, nullOk = TRUE))
+        ## FIXME This coercion step is problematic, no?
         mat <- as.matrix(object)
         if (isString(labelCol)) {
             rn <- object[[labelCol]]
@@ -232,13 +242,13 @@ NULL
 
 
 
-## Updated 2021-08-09.
+## Updated 2023-12-10.
 `plotCorrelation,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             ...) {
-        validObject(object)
-        assert(isString(assay) || isInt(assay))
+    function(object, assay = 1L, ...) {
+        assert(
+            validObject(object),
+            isString(assay) || isInt(assay)
+        )
         assay <- assay(x = object, i = assay)
         plotCorrelation(object = assay, ...)
     }
