@@ -1,3 +1,7 @@
+## FIXME Rework support for default NULL or empty list here.
+
+
+
 #' Match ggplot2 labels
 #'
 #' Allow user to define ggplot labels, and populate missing values from the
