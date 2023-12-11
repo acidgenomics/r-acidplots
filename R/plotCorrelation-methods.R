@@ -60,7 +60,12 @@ NULL
              xCol,
              yCol,
              pointLabelCol = NULL,
-             labels = NULL,
+             labels = list(
+                 "title" = NULL,
+                 "subtitle" = NULL,
+                 "x" = NULL,
+                 "y" = NULL
+            ),
              trans = c("identity", "log10", "log2"),
              r2 = TRUE,
              se = TRUE,
@@ -140,13 +145,14 @@ NULL
                 )
             )
         }
-        args <- list("x" = sym("x"), "y" = sym("y"))
-        if (!is.null(pointLabelCol)) {
-            args[["label"]] <- sym("label")
-        }
-        mapping <- do.call(what = aes, args = args)
         formula <- y ~ x
-        p <- ggplot(data = df, mapping = mapping) +
+        p <- ggplot(
+            data = df,
+            mapping = aes(
+                x = .data[["x"]],
+                y = .data[["y"]]
+            )
+        ) +
             geom_point(color = colors[["dots"]]) +
             geom_smooth(
                 method = "lm",
@@ -188,7 +194,10 @@ NULL
                 )
         }
         if (!is.null(pointLabelCol)) {
-            p <- p + acid_geom_label_repel()
+            p <- p +
+                acid_geom_label_repel(
+                    mapping = aes(label = .data[["label"]])
+                )
         }
         p
     }
