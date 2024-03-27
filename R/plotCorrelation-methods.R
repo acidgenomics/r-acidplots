@@ -1,6 +1,6 @@
 #' @name plotCorrelation
 #' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2023-12-10.
+#' @note Updated 2024-03-27.
 #'
 #' @section Correlation coefficient calculations:
 #'
@@ -233,7 +233,7 @@ NULL
             pointLabelCol <- "label"
             df[[pointLabelCol]] <- rownames(df)
         } else {
-            labelCol <- NULL
+            pointLabelCol <- NULL
         }
         rownames(df) <- NULL
         plotCorrelation(
