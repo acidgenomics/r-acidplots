@@ -65,7 +65,7 @@ NULL
                  "subtitle" = NULL,
                  "x" = NULL,
                  "y" = NULL
-            ),
+             ),
              trans = c("identity", "log10", "log2"),
              r2 = TRUE,
              se = TRUE,
@@ -120,7 +120,11 @@ NULL
             )
         }
         if (isTRUE(isLog)) {
-            base <- switch(trans, "log2" = 2L, "log10" = 10L)
+            base <- switch(
+                EXPR = trans,
+                "log2" = 2L,
+                "log10" = 10L
+            )
             limits <- list(
                 "x" = c(
                     base^min(floor(log(df[["x"]], base = base))),
