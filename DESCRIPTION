@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.7.3.9000
-Date: 2023-12-10
+Version: 0.7.3
+Date: 2024-03-27
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -22,26 +22,26 @@ License: AGPL-3
 Encoding: UTF-8
 Depends: R (>= 4.3)
 Imports:
-    AcidBase (>= 0.7.2),
+    AcidBase (>= 0.7.3),
     AcidCLI (>= 0.3.0),
     AcidExperiment (>= 0.5.4),
-    AcidGenerics (>= 0.7.4),
-    AcidGenomes (>= 0.7.0),
+    AcidGenerics (>= 0.7.7),
+    AcidGenomes (>= 0.7.2),
     AcidMarkdown (>= 0.3.0),
-    AcidPlyr (>= 0.5.2),
-    AcidSingleCell (>= 0.4.1),
-    Biobase (>= 2.60.0),
-    BiocGenerics (>= 0.46.0),
-    IRanges (>= 2.34.0),
-    Matrix (>= 1.6.4),
-    S4Vectors (>= 0.38.0),
-    SingleCellExperiment (>= 1.22.0),
-    SummarizedExperiment (>= 1.30.0),
-    ggplot2 (>= 3.4.4),
-    goalie (>= 0.7.6),
-    patchwork (>= 1.1.3),
-    pipette (>= 0.15.0),
-    rlang (>= 1.1.2),
+    AcidPlyr (>= 0.5.4),
+    AcidSingleCell (>= 0.4.2),
+    Biobase (>= 2.62.0),
+    BiocGenerics (>= 0.48.0),
+    IRanges (>= 2.36.0),
+    Matrix (>= 1.6.5),
+    S4Vectors (>= 0.40.0),
+    SingleCellExperiment (>= 1.24.0),
+    SummarizedExperiment (>= 1.32.0),
+    ggplot2 (>= 3.5.0),
+    goalie (>= 0.7.7),
+    patchwork (>= 1.2.0),
+    pipette (>= 0.15.2),
+    rlang (>= 1.1.3),
     scales (>= 1.3.0),
     syntactic (>= 0.7.1),
     grDevices,
@@ -52,18 +52,18 @@ Imports:
 Suggests:
     AcidTest (>= 0.9.0),
     ComplexUpset (>= 1.3.3),
-    DropletUtils (>= 1.20.0),
+    DropletUtils (>= 1.22.0),
     RColorBrewer (>= 1.1.3),
     ggpmisc (>= 0.5.5),
-    ggrepel (>= 0.9.4),
-    ggridges (>= 0.5.4),
-    matrixStats (>= 1.1.0),
+    ggrepel (>= 0.9.5),
+    ggridges (>= 0.5.6),
+    matrixStats (>= 1.2.0),
     pheatmap (>= 1.0.12),
-    testthat (>= 3.2.0),
-    viridis (>= 0.6.4)
+    testthat (>= 3.2.1),
+    viridis (>= 0.6.5)
 Additional_repositories: https://r.acidgenomics.com
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 biocViews: Visualization

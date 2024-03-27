@@ -1,6 +1,7 @@
 #+TITLE: AcidPlots
 #+STARTUP: content
 * Development
+** TODO matchLabels: Rework support for default NULL or empty list here.
 ** TODO Rework heatmap engine to use ComplexHeatmap instead of pheatmap.
 ** TODO Check that plotQC SCE method returns interestingGroups in plot legend correctly.
 ** TODO Need to think about NA gene symbol handling in call to convertGenesToSymbols.
