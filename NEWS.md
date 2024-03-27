@@ -1,5 +1,11 @@
 # Release notes
 
+## AcidPlots 0.7.3 (2024-03-27)
+
+Minor changes:
+
+- Reworked `plotCorrelation` function.
+
 ## AcidPlots 0.7.2 (2023-12-04)
 
 Minor changes:
