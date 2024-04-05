@@ -26,8 +26,8 @@ NULL
 #' interestingGroups interestingGroups<- intersectionMatrix leftJoin makeLabel
 #' makeTitle mapGenesToRownames mapGenesToSymbols matchSampleColumn melt
 #' metrics mutateIf nonzeroRowsAndCols plotBarcodeRanks plotCellCounts
-#' plotCellCountsPerCluster plotCellTypesPerCluster plotCorrelation
-#' plotCorrelationHeatmap plotCounts plotCountsCorrelation
+#' plotCellCountsPerCluster plotCellTypesPerCluster plotCleveland
+#' plotCorrelation plotCorrelationHeatmap plotCounts plotCountsCorrelation
 #' plotCountsCorrelationHeatmap plotCountsPerBiotype plotCountsPerBroadClass
 #' plotCountsPerCell plotCountsPerFeature plotCountsVsFeatures plotDots
 #' plotFeature plotFeaturesDetected plotFeaturesPerCell plotGenderMarkers

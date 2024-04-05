@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.7.3
-Date: 2024-03-27
+Version: 0.7.4.9000
+Date: 2024-04-05
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -25,7 +25,7 @@ Imports:
     AcidBase (>= 0.7.3),
     AcidCLI (>= 0.3.0),
     AcidExperiment (>= 0.5.4),
-    AcidGenerics (>= 0.7.7),
+    AcidGenerics (>= 0.7.8),
     AcidGenomes (>= 0.7.2),
     AcidMarkdown (>= 0.3.0),
     AcidPlyr (>= 0.5.4),
