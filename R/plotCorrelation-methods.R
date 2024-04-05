@@ -160,6 +160,7 @@ NULL
             geom_point(color = colors[["dots"]]) +
             geom_smooth(
                 method = "lm",
+                level = 0.95,
                 formula = formula,
                 se = TRUE,
                 color = colors[["line"]],
