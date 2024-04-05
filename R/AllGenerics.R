@@ -23,6 +23,12 @@ NULL
 NULL
 
 #' @export
+#' @name plotCleveland
+#' @rdname plotCleveland
+#' @usage plotCleveland(object, ...)
+NULL
+
+#' @export
 #' @name plotCorrelation
 #' @rdname plotCorrelation
 #' @usage plotCorrelation(object, ...)
