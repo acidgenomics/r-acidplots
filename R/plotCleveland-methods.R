@@ -1,6 +1,6 @@
 #' @name plotCleveland
-#' @inherit AcidGenerics::plotCorrelation
-#' @note Updated 2024-04-05.
+#' @inherit AcidGenerics::plotCleveland
+#' @note Updated 2024-04-17.
 #'
 #' @param xCol,yCol `character(1)` or `integer(1)`.
 #' X and Y column name or position.
