@@ -4,7 +4,7 @@
 \alias{plotCleveland}
 \alias{plotCleveland,DFrame-method}
 \alias{plotCleveland,data.frame-method}
-\title{Correlation X-Y scatterplot}
+\title{Cleveland plot}
 \usage{
 plotCleveland(object, ...)
 
@@ -31,13 +31,13 @@ plotCleveland(object, ...)
 X and Y column name or position.}
 }
 \value{
-Plot.
+\code{ggplot}.
 }
 \description{
-Correlation X-Y scatterplot
+Cleveland plot
 }
 \note{
-Updated 2024-04-05.
+Updated 2024-04-17.
 }
 \examples{
 ## FIXME Need to add working example.
