@@ -1,5 +1,11 @@
 # Release notes
 
+## AcidPlots 0.7.4 (2025-03-24)
+
+Minor changes:
+
+- Decreased R dependency from 4.3 to 4.0.
+
 ## AcidPlots 0.7.3 (2024-03-27)
 
 Minor changes:
