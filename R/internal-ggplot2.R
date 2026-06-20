@@ -15,7 +15,6 @@
 }
 
 
-
 ## Updated 2019-08-12.
 .hideLegendsInPlotlist <- function(plotlist) {
     assert(is.list(plotlist))

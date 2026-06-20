@@ -24,25 +24,26 @@
 NULL
 
 
-
 ## Updated 2023-08-10.
 `plotMarker,SCE` <- # nolint
-    function(object,
-             genes,
-             reduction,
-             expression,
-             color,
-             pointSize,
-             pointAlpha,
-             pointsAsNumbers,
-             label,
-             labelSize,
-             dark,
-             legend,
-             labels = list(
-                 "title" = "auto",
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        genes,
+        reduction,
+        expression,
+        color,
+        pointSize,
+        pointAlpha,
+        pointsAsNumbers,
+        label,
+        labelSize,
+        dark,
+        legend,
+        labels = list(
+            "title" = "auto",
+            "subtitle" = NULL
+        )
+    ) {
         assert(
             isCharacter(genes),
             isScalar(reduction),
@@ -195,7 +196,6 @@ formals(`plotMarker,SCE`)[c( # nolint
     "pointsAsNumbers",
     "reduction"
 )]
-
 
 
 #' @rdname plotMarker

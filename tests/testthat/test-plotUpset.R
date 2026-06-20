@@ -22,7 +22,8 @@ test_that("data.frame", {
         object = plotUpset(
             object = data.frame(
                 "aaa" = c("a", "b"),
-                "bbb" = c("c", "d")
+                "bbb" = c("c", "d"),
+                stringsAsFactors = FALSE
             )
         ),
         regexp = "0, 1"

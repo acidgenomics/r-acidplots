@@ -18,17 +18,18 @@
 NULL
 
 
-
 ## Updated 2023-08-10.
 `plotSums,SE` <- # nolint
-    function(object,
-             MARGIN, # nolint
-             assay = 1L,
-             interestingGroups = NULL,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        MARGIN, # nolint
+        assay = 1L,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
+    ) {
         assert(
             validObject(object),
             isInt(MARGIN),
@@ -42,7 +43,7 @@ NULL
             EXPR = as.character(MARGIN),
             "1" = "rowSums",
             "2" = "colSums",
-            stop("Invalid MARGIN.")
+            stop("Invalid MARGIN.", call. = FALSE)
         )
         ## Get the interestingGroups factor to split object.
         metrics <- metrics(object)
@@ -96,7 +97,6 @@ NULL
         p <- p + acid_scale_color_discrete()
         p
     }
-
 
 
 #' @rdname plotSums

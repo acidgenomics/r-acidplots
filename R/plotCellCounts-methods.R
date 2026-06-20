@@ -15,18 +15,19 @@
 NULL
 
 
-
 ## Updated 2023-09-26.
 `plotCellCounts,SCE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             labels = list(
-                 "title" = "Cell counts",
-                 "subtitle" = NULL,
-                 "x" = NULL,
-                 "y" = "cells"
-             )) {
+    function(
+        object,
+        assay = 1L,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = "Cell counts",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "cells"
+        )
+    ) {
         assert(
             validObject(object),
             hasMultipleSamples(object)
@@ -66,12 +67,13 @@ NULL
         p <- p + acid_scale_fill_discrete()
         ## Labels.
         if (isTRUE(nrow(data) <= 16L)) {
-            p <- p + acid_geom_label(
-                data = as.data.frame(data),
-                mapping = aes(label = .data[["nCells"]]),
-                ## Align the label just under the top of the bar.
-                vjust = 1.25
-            )
+            p <- p +
+                acid_geom_label(
+                    data = as.data.frame(data),
+                    mapping = aes(label = .data[["nCells"]]),
+                    ## Align the label just under the top of the bar.
+                    vjust = 1.25
+                )
         }
         ## Facets.
         facets <- NULL
@@ -79,10 +81,11 @@ NULL
             facets <- c(facets, "aggregate")
         }
         if (is.character(facets)) {
-            p <- p + facet_wrap(
-                facets = vars(!!!syms(facets)),
-                scales = "free"
-            )
+            p <- p +
+                facet_wrap(
+                    facets = vars(!!!syms(facets)),
+                    scales = "free"
+                )
         }
         ## Return.
         p

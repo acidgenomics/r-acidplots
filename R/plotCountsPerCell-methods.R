@@ -23,17 +23,18 @@
 NULL
 
 
-
 ## Updated 2023-08-11.
 `plotCountsPerCell,SCE` <- # nolint
-    function(object,
-             geom,
-             interestingGroups = NULL,
-             min = 0L,
-             max = Inf,
-             point = c("none", "inflection", "knee"),
-             trans = "log10",
-             title = "Counts per cell") {
+    function(
+        object,
+        geom,
+        interestingGroups = NULL,
+        min = 0L,
+        max = Inf,
+        point = c("none", "inflection", "knee"),
+        trans = "log10",
+        title = "Counts per cell"
+    ) {
         assert(isString(title, nullOk = TRUE))
         geom <- match.arg(geom)
         point <- match.arg(point)
@@ -49,8 +50,10 @@ NULL
                         "Only {.var %s} {.val %s} is currently",
                         "supported for {.var %s} {.val %s}."
                     ),
-                    "geom", "ecdf",
-                    "point", point
+                    "geom",
+                    "ecdf",
+                    "point",
+                    point
                 )
             )
             ## Override `interestingGroups` argument when labeling points.
@@ -61,8 +64,10 @@ NULL
                         "Only {.var %s} {.val %s} is currently supported when",
                         "labeling points with {.var %s} {.val %s}."
                     ),
-                    "interestingGroups", "sampleName",
-                    "point", point
+                    "interestingGroups",
+                    "sampleName",
+                    "point",
+                    point
                 )
             )
             ## Need to ensure that `nCount` exists for downstream calculations.
@@ -163,7 +168,6 @@ NULL
 
 formals(`plotCountsPerCell,SCE`)[["geom"]] <- # nolint
     .formalsList[["geom"]]
-
 
 
 #' @rdname plotCountsPerCell

@@ -1,7 +1,5 @@
 ## NOTE Is there a way to hide "Intersection size" text in the plot?
 
-
-
 #' @name plotUpset
 #' @inherit AcidGenerics::plotUpset
 #' @note Updated 2022-04-05.
@@ -55,7 +53,6 @@
 NULL
 
 
-
 ## Updated 2022-05-24.
 `plotUpset,list` <- # nolint
     function(object, ...) {
@@ -65,21 +62,22 @@ NULL
     }
 
 
-
 ## Updated 2022-04-05.
 `plotUpset,matrix` <- # nolint
-    function(object,
-             minSize = 0L,
-             maxSize = Inf,
-             nIntersections = 40L,
-             orderBySize = c(
-                 "intersections" = TRUE,
-                 "sets" = TRUE
-             ),
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        minSize = 0L,
+        maxSize = Inf,
+        nIntersections = 40L,
+        orderBySize = c(
+            "intersections" = TRUE,
+            "sets" = TRUE
+        ),
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
+    ) {
         whatPkg <- "ComplexUpset"
         whatFun <- "upset"
         requireNamespaces(whatPkg)
@@ -111,12 +109,11 @@ NULL
         args <- list(
             "data" = as.data.frame(object),
             "base_annotations" = list(
-                "Intersection size" =
-                    ComplexUpset::intersection_size(
-                        counts = FALSE,
-                        color = NA,
-                        fill = "black"
-                    )
+                "Intersection size" = ComplexUpset::intersection_size( # nolint
+                    counts = FALSE,
+                    color = NA,
+                    fill = "black"
+                )
             ),
             "intersect" = colnames(object),
             "max_size" = maxSize,
@@ -126,7 +123,7 @@ NULL
             ## The exact number of the intersections to be displayed;
             ## "n" largest intersections that meet criteria will be shown.
             "n_intersections" = nIntersections,
-            "set_sizes" = ComplexUpset::upset_set_size(
+            "set_sizes" = ComplexUpset::upset_set_size( # nolint
                 geom = geom_bar(
                     width = 0.6,
                     color = NA,
@@ -154,7 +151,6 @@ NULL
     }
 
 
-
 ## Updated 2021-09-08.
 `plotUpset,data.frame` <- # nolint
     function(object, ...) {
@@ -174,11 +170,9 @@ NULL
     }
 
 
-
 ## Updated 2023-04-27.
 `plotUpset,DFrame` <- # nolint
     `plotUpset,data.frame`
-
 
 
 #' @rdname plotUpset

@@ -8,7 +8,6 @@
 )
 
 
-
 #' Generate pheatmap annotation data
 #'
 ## Automatically handle the annotation data and colors.
@@ -27,9 +26,7 @@
 #' Here this will a level of 1, even though we have 2 unique values. This
 #' approach handles NA values better than using `levels()`.
 .pheatmapAnnotations <-
-    function(object,
-             denylist = "sampleName",
-             legendColor) {
+    function(object, legendColor, denylist = "sampleName") {
         assert(
             is(object, "SummarizedExperiment"),
             isCharacter(denylist),
@@ -103,7 +100,6 @@
     }
 
 
-
 #' Generate pheatmap arguments
 #'
 #' @note Updated 2021-09-03.
@@ -127,13 +123,12 @@
     assert(
         isSubset(
             x = names(args),
-            y = formalArgs(pheatmap::pheatmap)
+            y = formalArgs(pheatmap::pheatmap) # nolint
         ),
         hasNoDuplicates(names(args))
     )
     args
 }
-
 
 
 #' Generate pheatmap color palette
@@ -156,6 +151,6 @@
         ## pheatmap default palette.
         ## Note that `n` argument won't get evaluated here.
         requireNamespaces("pheatmap")
-        eval(formals(pheatmap::pheatmap)[["color"]])
+        eval(formals(pheatmap::pheatmap)[["color"]]) # nolint
     }
 }

@@ -31,16 +31,17 @@
 }
 
 
-
 #' Fetch gene data
 #'
 #' @note Updated 2023-12-04.
 #' @noRd
 .fetchGeneData <-
-    function(object,
-             genes,
-             assay = c("logcounts", "normcounts"),
-             metadata = FALSE) {
+    function(
+        object,
+        genes,
+        assay = c("logcounts", "normcounts"),
+        metadata = FALSE
+    ) {
         object <- as(object, "SingleCellExperiment")
         assert(
             isCharacter(genes),
@@ -85,15 +86,12 @@
     }
 
 
-
 #' Fetch reduction data
 #'
 #' @note Updated 2021-03-03.
 #' @noRd
 .fetchReductionData <-
-    function(object,
-             reduction = 1L,
-             dims = seq_len(2L)) {
+    function(object, reduction = 1L, dims = seq_len(2L)) {
         object <- as(object, "SingleCellExperiment")
         assert(
             hasClusters(object),
@@ -163,13 +161,9 @@ formals(.fetchReductionData)[c("dims", "reduction")] <-
     .formalsList[c("dims", "reduction")]
 
 
-
 ## Updated 2021-03-03.
 .fetchReductionExpressionData <-
-    function(object,
-             genes,
-             reduction,
-             assay = "logcounts") {
+    function(object, genes, reduction, assay = "logcounts") {
         object <- as(object, "SingleCellExperiment")
         assert(
             is.character(genes),
@@ -209,7 +203,6 @@ formals(.fetchReductionData)[c("dims", "reduction")] <-
 
 formals(.fetchReductionExpressionData)[["reduction"]] <-
     .formalsList[["reduction"]]
-
 
 
 #' Generate a grouping factor

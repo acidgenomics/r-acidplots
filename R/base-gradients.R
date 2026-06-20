@@ -21,11 +21,11 @@
 gradient <- function(colors, n) {
     assert(
         isCharacter(colors),
-        isInt(n), isPositive(n)
+        isInt(n),
+        isPositive(n)
     )
     colorRampPalette(colors = colors, space = "rgb")(n)
 }
-
 
 
 #' Internal gradient palette handler
@@ -62,7 +62,6 @@ formals(.gradientPalette)[c("n", "palette")] <-
     .formalsList[c("n", "palette")]
 
 
-
 #' @rdname gradient
 #' @export
 blueYellow <- function(n, palette) {
@@ -79,7 +78,6 @@ blueYellow <- function(n, palette) {
 
 formals(blueYellow)[c("n", "palette")] <-
     formals(.gradientPalette)[c("n", "palette")]
-
 
 
 #' @rdname gradient

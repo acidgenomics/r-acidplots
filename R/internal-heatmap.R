@@ -3,10 +3,7 @@
 #' @return `hclust` object or `FALSE` (not `NULL`) to skip.
 #' @noRd
 .hclust <-
-    function(object,
-             method = "ward.D2",
-             rows = TRUE,
-             cols = TRUE) {
+    function(object, method = "ward.D2", rows = TRUE, cols = TRUE) {
         assert(
             is.matrix(object),
             is.numeric(object),
@@ -22,7 +19,8 @@
                     "Performing hierarchical clustering with ",
                     "{.fun %s} method {.val %s}."
                 ),
-                "hclust", method
+                "hclust",
+                method
             ))
         }
         if (isTRUE(rows)) {
@@ -33,7 +31,8 @@
                 ),
                 error = function(e) {
                     alertWarning(sprintf(
-                        "{.fun %s} row calculation failed.", "hclust"
+                        "{.fun %s} row calculation failed.",
+                        "hclust"
                     ))
                     FALSE
                 }
@@ -48,7 +47,8 @@
                 ),
                 error = function(e) {
                     alertWarning(sprintf(
-                        "{.fun %s} column calculation failed.", "hclust"
+                        "{.fun %s} column calculation failed.",
+                        "hclust"
                     ))
                     FALSE
                 }
@@ -56,7 +56,6 @@
         }
         out
     }
-
 
 
 #' Apply z-scaling to matrix
@@ -133,7 +132,6 @@
 }
 
 
-
 ## Updated 2019-07-29.
 .scaleCols <- function(object) {
     assert(is.matrix(object), is.numeric(object))
@@ -141,11 +139,10 @@
 }
 
 
-
 ## Updated 2019-07-29.
 .scaleRows <- function(object) {
     assert(is.matrix(object), is.numeric(object))
-    mean <- apply(object, MARGIN = 1L, FUN = mean, na.rm = TRUE)
+    mean <- rowMeans(object, na.rm = TRUE)
     sd <- apply(object, MARGIN = 1L, FUN = sd, na.rm = TRUE)
     out <- (object - mean) / sd
     out

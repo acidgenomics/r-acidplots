@@ -22,17 +22,18 @@
 NULL
 
 
-
 ## Updated 2023-08-11.
 `plotQc,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             legend,
-             labels = list(
-                 "title" = "Quality control",
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        legend,
+        assay = 1L,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = "Quality control",
+            "subtitle" = NULL
+        )
+    ) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -76,10 +77,11 @@ NULL
         ## Using patchwork package to dynamically arrange the plots.
         p <- wrap_plots(plotlist, guides = "collect")
         ## Support title and/or subtitle labeling.
-        p <- p + plot_annotation(
-            "title" = labels[["title"]],
-            "subtitle" = labels[["subtitle"]]
-        )
+        p <- p +
+            plot_annotation(
+                "title" = labels[["title"]],
+                "subtitle" = labels[["subtitle"]]
+            )
         p
     }
 
@@ -87,18 +89,19 @@ formals(`plotQc,SE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
-
 ## Updated 2023-08-11.
 `plotQc,SCE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             geom,
-             legend,
-             labels = list(
-                 "title" = "Quality control",
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        geom,
+        legend,
+        assay = 1L,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = "Quality control",
+            "subtitle" = NULL
+        )
+    ) {
         validObject(object)
         assert(
             identical(assayNames(object)[[1L]], "counts"),
@@ -179,16 +182,16 @@ formals(`plotQc,SE`)[["legend"]] <- # nolint
         ## Using patchwork package to dynamically arrange the plots.
         p <- wrap_plots(plotlist, guides = "collect")
         ## Support title and/or subtitle labeling.
-        p <- p + plot_annotation(
-            "title" = labels[["title"]],
-            "subtitle" = labels[["subtitle"]]
-        )
+        p <- p +
+            plot_annotation(
+                "title" = labels[["title"]],
+                "subtitle" = labels[["subtitle"]]
+            )
         p
     }
 
 formals(`plotQc,SCE`)[c("geom", "legend")] <- # nolint
     .formalsList[c("geom", "legend")]
-
 
 
 #' @rdname plotQc

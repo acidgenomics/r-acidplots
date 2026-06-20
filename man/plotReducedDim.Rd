@@ -24,7 +24,6 @@ plotUmap(object, ...)
   object,
   reduction = "UMAP",
   dims = 1:2,
-  interestingGroups = NULL,
   color = getOption(x = "acid.discrete.color", default =
     AcidPlots::acid_scale_color_synesthesia_d()),
   pointSize = getOption(x = "acid.point.size", default = 1L),
@@ -34,6 +33,7 @@ plotUmap(object, ...)
   labelSize = getOption(x = "acid.label.size", default = 6L),
   dark = getOption(x = "acid.dark", default = FALSE),
   legend = getOption(x = "acid.legend", default = TRUE),
+  interestingGroups = NULL,
   labels = list(title = NULL, subtitle = NULL)
 )
 
@@ -41,11 +41,11 @@ plotUmap(object, ...)
 
 \S4method{plotPca}{SummarizedExperiment}(
   object,
+  label = getOption(x = "acid.label", default = FALSE),
+  pointSize = getOption(x = "acid.point.size", default = 3L),
   assay = 1L,
   interestingGroups = NULL,
   ntop = 500L,
-  label = getOption(x = "acid.label", default = FALSE),
-  pointSize = getOption(x = "acid.point.size", default = 3L),
   labels = list(title = "PCA", subtitle = NULL)
 )
 
@@ -63,10 +63,6 @@ Dimension reduction name or index position.}
 Vector of length 2 that denotes the columns from the reduced dimension
 matrix to use for \code{centerX} and \code{centerY} column calculations. Defaults the
 first and second dimensions.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
 
 \item{color}{\code{ScaleDiscrete}.
 Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
@@ -100,6 +96,10 @@ theme.}
 
 \item{legend}{\code{logical(1)}.
 Include plot legend.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.

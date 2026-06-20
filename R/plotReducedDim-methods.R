@@ -66,19 +66,20 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotPca,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             ntop = 500L,
-             label,
-             pointSize,
-             labels = list(
-                 "title" = "PCA",
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        label,
+        pointSize,
+        assay = 1L,
+        interestingGroups = NULL,
+        ntop = 500L,
+        labels = list(
+            "title" = "PCA",
+            "subtitle" = NULL
+        )
+    ) {
         requireNamespaces("matrixStats")
         validObject(object)
         assert(
@@ -133,19 +134,24 @@ NULL
         labels[["color"]] <- paste(interestingGroups, collapse = ":\n")
         labels[["fill"]] <- labels[["color"]]
         labels[["x"]] <- paste0(
-            "PC1: ", round(percentVar[[1L]] * 100L), "% variance"
+            "PC1: ",
+            round(percentVar[[1L]] * 100L),
+            "% variance"
         )
         labels[["y"]] <- paste0(
-            "PC2: ", round(percentVar[[2L]] * 100L), "% variance"
+            "PC2: ",
+            round(percentVar[[2L]] * 100L),
+            "% variance"
         )
         p <- p + do.call(what = labs, args = labels)
         ## Color palette.
         p <- p + acid_scale_color_discrete()
         ## Label.
         if (isTRUE(label)) {
-            p <- p + acid_geom_label_repel(
-                mapping = aes(label = .data[["sampleName"]])
-            )
+            p <- p +
+                acid_geom_label_repel(
+                    mapping = aes(label = .data[["sampleName"]])
+                )
         }
         ## Return.
         p
@@ -160,25 +166,26 @@ formals(`plotPca,SE`)[c( # nolint
 )]
 
 
-
 ## Updated 2022-03-07.
 `plotReducedDim,SCE` <- # nolint
-    function(object,
-             reduction,
-             dims,
-             interestingGroups = NULL,
-             color,
-             pointSize,
-             pointAlpha,
-             pointsAsNumbers,
-             label,
-             labelSize,
-             dark,
-             legend,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        reduction,
+        dims,
+        color,
+        pointSize,
+        pointAlpha,
+        pointsAsNumbers,
+        label,
+        labelSize,
+        dark,
+        legend,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
+    ) {
         validObject(object)
         assert(
             hasClusters(object),
@@ -354,7 +361,6 @@ formals(`plotReducedDim,SCE`)[c( # nolint
 )]
 
 
-
 ## Updated 2020-02-21.
 `plotPca,SCE` <- # nolint
     function(object, ...) {
@@ -372,7 +378,6 @@ formals(`plotReducedDim,SCE`)[c( # nolint
     function(object, ...) {
         plotReducedDim(object = object, reduction = "UMAP", ...)
     }
-
 
 
 #' @rdname plotReducedDim

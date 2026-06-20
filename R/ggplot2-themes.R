@@ -3,8 +3,6 @@
 ## NOTE Consider adding support for patchwork:
 ## > theme(plot.tag = element_text(size = 8L))
 
-
-
 #' ggplot2 themes
 #'
 #' Complete ggplot2 themes.
@@ -70,19 +68,20 @@
 NULL
 
 
-
 #' @describeIn themes Light theme that has a white background and black text.\cr
 #' Optimized for print and recommended for scientific manuscripts.\cr
 #' See `lightPalette` for color values.
 #' @export
 acid_theme_light <- # nolint
-    function(base_size = 14L,
-             base_family = "",
-             face = c("bold", "plain"),
-             aspect_ratio = NULL,
-             legend_position = c("right", "bottom", "top", "none"),
-             grid = FALSE,
-             minimal = FALSE) {
+    function(
+        base_size = 14L,
+        base_family = "",
+        face = c("bold", "plain"),
+        aspect_ratio = NULL,
+        legend_position = c("right", "bottom", "top", "none"),
+        grid = FALSE,
+        minimal = FALSE
+    ) {
         palette <- lightPalette
         ## Set dark mode global variable that we can access inside functions.
         options(acid.dark = FALSE)
@@ -130,7 +129,9 @@ acid_theme_light <- # nolint
                 axis.line = element_blank(),
                 axis.text = text,
                 axis.text.x = element_text(
-                    angle = 90L, hjust = 1L, vjust = 0.5
+                    angle = 90L,
+                    hjust = 1L,
+                    vjust = 0.5
                 ),
                 axis.ticks = axis_ticks,
                 panel.background = element_blank(),
@@ -145,7 +146,6 @@ acid_theme_light <- # nolint
                 validate = TRUE
             )
     }
-
 
 
 #' @describeIn themes Dark theme that has a black background and white text.\cr
@@ -200,7 +200,9 @@ acid_theme_dark <- # nolint
                 axis.line = element_blank(),
                 axis.text = text,
                 axis.text.x = element_text(
-                    angle = 90L, hjust = 1L, vjust = 0.5
+                    angle = 90L,
+                    hjust = 1L,
+                    vjust = 0.5
                 ),
                 axis.ticks = axis_ticks,
                 legend.key = element_rect(color = NA, fill = border),
@@ -221,7 +223,6 @@ acid_theme_dark <- # nolint
 formals(acid_theme_dark) <- formals(acid_theme_light)
 
 
-
 #' @describeIn themes Dark theme that uses Dracula color palette.\cr
 #' See `draculaPalette` for color values.
 #' @export
@@ -230,7 +231,5 @@ acid_theme_dracula <- acid_theme_dark
 b <- body(acid_theme_dracula)
 b[[2L]] <- quote(palette <- draculaPalette)
 body(acid_theme_dracula) <- b
-
-
 
 ## nolint end

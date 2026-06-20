@@ -10,30 +10,23 @@ plotQc(object, ...)
 
 \S4method{plotQc}{SingleCellExperiment}(
   object,
-  assay = 1L,
-  interestingGroups = NULL,
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
   legend = getOption(x = "acid.legend", default = TRUE),
+  assay = 1L,
+  interestingGroups = NULL,
   labels = list(title = "Quality control", subtitle = NULL)
 )
 
 \S4method{plotQc}{SummarizedExperiment}(
   object,
+  legend = getOption(x = "acid.legend", default = TRUE),
   assay = 1L,
   interestingGroups = NULL,
-  legend = getOption(x = "acid.legend", default = TRUE),
   labels = list(title = "Quality control", subtitle = NULL)
 )
 }
 \arguments{
 \item{object}{Object.}
-
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
 
 \item{geom}{\code{character(1)}.
 Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
@@ -41,6 +34,13 @@ the first argument in the \code{character} vector.}
 
 \item{legend}{\code{logical(1)}.
 Include plot legend.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
 
 \item{labels}{\code{list}.
 ggplot2 labels.

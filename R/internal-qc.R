@@ -3,21 +3,23 @@
 #' @note Updated 2022-11-09.
 #' @noRd
 .plotQcMetric <-
-    function(object,
-             assay = 1L,
-             metricCol,
-             geom,
-             interestingGroups = NULL,
-             min = 0L,
-             max = Inf,
-             trans = "identity",
-             ratio = FALSE,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL,
-                 "metricAxis" = NULL,
-                 "otherAxis" = NULL
-             )) {
+    function(
+        object,
+        metricCol,
+        geom,
+        assay = 1L,
+        interestingGroups = NULL,
+        min = 0L,
+        max = Inf,
+        trans = "identity",
+        ratio = FALSE,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL,
+            "metricAxis" = NULL,
+            "otherAxis" = NULL
+        )
+    ) {
         validObject(object)
         assert(
             is(object, "SingleCellExperiment"),
@@ -48,17 +50,20 @@
         if (!isSubset(metricCol, colnames(data))) {
             abort(sprintf(
                 "{.var %s} is not defined in {.fun %s}.",
-                metricCol, "colData"
+                metricCol,
+                "colData"
             ))
         } else if (anyNA(data[[metricCol]])) {
             abort(sprintf(
                 "{.var %s} in {.fun %s} contains NA values.",
-                metricCol, "colData"
+                metricCol,
+                "colData"
             ))
         } else if (all(data[[metricCol]] == 0L)) {
             abort(sprintf(
                 "{.var %s} in {.fun %s} contains only zeros.",
-                metricCol, "colData"
+                metricCol,
+                "colData"
             ))
         }
         mapping <- aes(
@@ -176,10 +181,11 @@
             facets <- "aggregate"
         }
         if (is.character(facets)) {
-            p <- p + facet_wrap(
-                facets = vars(!!!syms(facets)),
-                scales = "free"
-            )
+            p <- p +
+                facet_wrap(
+                    facets = vars(!!!syms(facets)),
+                    scales = "free"
+                )
         }
         ## Return.
         p
@@ -189,26 +195,27 @@ formals(`.plotQcMetric`)[["geom"]] <-
     .formalsList[["geom"]]
 
 
-
 #' Compare two quality control metrics
 #'
 #' @note Updated 2022-03-07.
 #' @noRd
 .plotQcScatterplot <-
-    function(object,
-             assay = 1L,
-             xCol,
-             yCol,
-             xTrans = "identity",
-             yTrans = "identity",
-             interestingGroups = NULL,
-             trendline = FALSE,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL,
-                 "x" = NULL,
-                 "y" = NULL
-             )) {
+    function(
+        object,
+        xCol,
+        yCol,
+        assay = 1L,
+        xTrans = "identity",
+        yTrans = "identity",
+        interestingGroups = NULL,
+        trendline = FALSE,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = NULL
+        )
+    ) {
         validObject(object)
         assert(
             is(object, "SingleCellExperiment"),
@@ -237,35 +244,40 @@ formals(`.plotQcMetric`)[["geom"]] <-
             isSubset(c(xCol, yCol), colnames(data)),
             msg = sprintf(
                 "Not defined in {.fun %s}: %s.",
-                "colData", toInlineString(c(xCol, yCol))
+                "colData",
+                toInlineString(c(xCol, yCol))
             )
         )
         assert(
             !anyNA(data[[xCol]]),
             msg = sprintf(
                 "{.var %s} in {.fun %s} contains NA values.",
-                xCol, "colData"
+                xCol,
+                "colData"
             )
         )
         assert(
             !anyNA(data[[yCol]]),
             msg = sprintf(
                 "{.var %s} in {.fun %s} contains NA values.",
-                yCol, "colData"
+                yCol,
+                "colData"
             )
         )
         assert(
             !all(data[[xCol]] == 0L),
             msg = sprintf(
                 "{.var %s} in {.fun %s} contains only zeros.",
-                xCol, "colData"
+                xCol,
+                "colData"
             )
         )
         assert(
             !all(data[[yCol]] == 0L),
             msg = sprintf(
                 "{.var %s} in {.fun %s} contains only zeros.",
-                yCol, "colData"
+                yCol,
+                "colData"
             )
         )
         p <- ggplot(
@@ -296,10 +308,11 @@ formals(`.plotQcMetric`)[["geom"]] <-
             facets <- c(facets, "aggregate")
         }
         if (is.character(facets)) {
-            p <- p + facet_wrap(
-                facets = vars(!!!syms(facets)),
-                scales = "free"
-            )
+            p <- p +
+                facet_wrap(
+                    facets = vars(!!!syms(facets)),
+                    scales = "free"
+                )
         }
         ## Return.
         p

@@ -15,15 +15,16 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotNovelty,SCE` <- # nolint
-    function(object,
-             geom,
-             interestingGroups = NULL,
-             min = 0L,
-             trans = "identity",
-             labels) {
+    function(
+        object,
+        geom,
+        labels,
+        interestingGroups = NULL,
+        min = 0L,
+        trans = "identity"
+    ) {
         assert(isInRightOpenRange(min, lower = 0L, upper = 1L))
         do.call(
             what = .plotQcMetric,
@@ -46,7 +47,6 @@ NULL
 .f[["labels"]] <- formals(.plotQcMetric)[["labels"]]
 .f[["labels"]][["title"]] <- "Novelty"
 formals(`plotNovelty,SCE`) <- .f # nolint
-
 
 
 #' @rdname plotNovelty

@@ -27,12 +27,12 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{ggplot2}{\code{\link[ggplot2]{aes}}, \code{\link[ggplot2:aes_eval]{after_stat}}, \code{\link[ggplot2]{ggplot}}, \code{\link[ggplot2]{ggsave}}, \code{\link[ggplot2:theme_get]{theme_set}}}
+  \item{ggplot2}{\code{\link[ggplot2:aes]{aes()}}, \code{\link[ggplot2:after_stat]{after_stat()}}, \code{\link[ggplot2:ggplot]{ggplot()}}, \code{\link[ggplot2:ggsave]{ggsave()}}, \code{\link[ggplot2:theme_set]{theme_set()}}}
 
-  \item{patchwork}{\code{\link[patchwork]{plot_annotation}}, \code{\link[patchwork]{plot_layout}}, \code{\link[patchwork]{wrap_plots}}}
+  \item{patchwork}{\code{\link[patchwork:plot_annotation]{plot_annotation()}}, \code{\link[patchwork:plot_layout]{plot_layout()}}, \code{\link[patchwork:wrap_plots]{wrap_plots()}}}
 
-  \item{rlang}{\code{\link[rlang:injection-operator]{!!}}, \code{\link[rlang:splice-operator]{!!!}}, \code{\link[rlang:dot-data]{.data}}, \code{\link[rlang:dot-data]{.env}}, \code{\link[rlang]{sym}}, \code{\link[rlang:sym]{syms}}}
+  \item{rlang}{\code{\link[rlang:!!]{!!()}}, \code{\link[rlang:!!!]{!!!()}}, \code{\link[rlang:.data]{.data}}, \code{\link[rlang:.env]{.env}}, \code{\link[rlang:sym]{sym()}}, \code{\link[rlang:syms]{syms()}}}
 
-  \item{scales}{\code{\link[scales:breaks_log]{log_breaks}}, \code{\link[scales:percent_format]{percent}}, \code{\link[scales]{pretty_breaks}}}
+  \item{scales}{\code{\link[scales:log_breaks]{log_breaks()}}, \code{\link[scales:percent]{percent()}}, \code{\link[scales:pretty_breaks]{pretty_breaks()}}}
 }}
 
