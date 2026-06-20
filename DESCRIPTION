@@ -1,8 +1,8 @@
 Package: AcidPlots
 Title: Acid Genomics Plot Functions and Themes
 Description: Functions for plotting genomic data.
-Version: 0.7.4
-Date: 2025-03-24
+Version: 0.7.5
+Date: 2026-06-19
 Authors@R: c(
     person(
         "Michael", "Steinbaugh",
@@ -18,7 +18,7 @@ URL:
     https://r.acidgenomics.com/packages/acidplots/,
     https://github.com/acidgenomics/r-acidplots/
 BugReports: https://github.com/acidgenomics/r-acidplots/issues/
-License: AGPL-3
+License: Apache License (>= 2)
 Encoding: UTF-8
 Depends: R (>= 4.0)
 Imports:
@@ -62,8 +62,8 @@ Suggests:
     testthat,
     viridis
 Additional_repositories: https://r.acidgenomics.com
+Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 biocViews: Visualization

@@ -70,7 +70,6 @@ test_that("style", {
 })
 
 
-
 test_that("'geom' support", {
     data(
         SingleCellExperiment_Seurat,

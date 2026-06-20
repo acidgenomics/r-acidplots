@@ -4,7 +4,6 @@ test_that("grid", {
 })
 
 
-
 sce <- calculateMetrics(sce)
 
 test_that("grid", {

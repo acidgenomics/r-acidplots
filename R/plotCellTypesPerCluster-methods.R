@@ -28,17 +28,18 @@
 NULL
 
 
-
 ## Updated 2020-02-21.
 `plotCellTypesPerCluster,SCE,KnownMarkers` <- # nolint
-    function(object,
-             markers,
-             min = 1L,
-             max = Inf,
-             reduction,
-             expression,
-             headerLevel = 2L,
-             ...) {
+    function(
+        object,
+        markers,
+        reduction,
+        expression,
+        min = 1L,
+        max = Inf,
+        headerLevel = 2L,
+        ...
+    ) {
         ## Passthrough: color, dark.
         validObject(object)
         validObject(markers)
@@ -64,7 +65,8 @@ NULL
                 clusterData <- markers[keep, , drop = FALSE]
                 if (!hasRows(clusterData)) {
                     alertWarning(sprintf(
-                        "No markers for cluster %s.", cluster
+                        "No markers for cluster %s.",
+                        cluster
                     ))
                     return(invisible(NULL))
                 }
@@ -82,13 +84,18 @@ NULL
                         ## Modify the title by adding the cluster number.
                         title <- paste(paste0("Cluster ", cluster, ":"), title)
                         cellData <- clusterData[
-                            clusterData[["cellType"]] == cellType, ,
+                            clusterData[["cellType"]] == cellType,
+                            ,
                             drop = FALSE
                         ]
                         assert(identical(nrow(cellData), 1L))
                         genes <- cellData[["name"]]
                         genes <- as.character(genes)
-                        genes <- strsplit(genes, split = ", ")[[1L]]
+                        genes <- strsplit(
+                            genes,
+                            split = ", ",
+                            fixed = TRUE
+                        )[[1L]]
                         if (!hasLength(genes)) {
                             return(invisible(NULL))
                         }
@@ -115,7 +122,6 @@ formals(`plotCellTypesPerCluster,SCE,KnownMarkers`)[c( # nolint
     "expression",
     "reduction"
 )]
-
 
 
 #' @rdname plotCellTypesPerCluster

@@ -28,23 +28,24 @@
 NULL
 
 
-
 ## Updated 2022-03-07.
 `plotCorrelationHeatmap,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             method,
-             clusteringMethod = "ward.D2",
-             showRownames = TRUE,
-             showColnames = TRUE,
-             treeheightRow = 0L,
-             treeheightCol = 50L,
-             color,
-             legendColor,
-             borderColor = NULL,
-             title = TRUE,
-             ...) {
+    function(
+        object,
+        method,
+        color,
+        legendColor,
+        assay = 1L,
+        interestingGroups = NULL,
+        clusteringMethod = "ward.D2",
+        showRownames = TRUE,
+        showColnames = TRUE,
+        treeheightRow = 0L,
+        treeheightCol = 50L,
+        borderColor = NULL,
+        title = TRUE,
+        ...
+    ) {
         assert(
             requireNamespaces("pheatmap"),
             validObject(object),
@@ -141,7 +142,7 @@ NULL
             ...
         )
         args <- .pheatmapArgs(args)
-        do.call(what = pheatmap::pheatmap, args = args)
+        do.call(what = pheatmap::pheatmap, args = args) # nolint
     }
 
 formals(`plotCorrelationHeatmap,SE`)[c( # nolint
@@ -155,7 +156,6 @@ formals(`plotCorrelationHeatmap,SE`)[c( # nolint
 )
 
 
-
 ## Updated 2020-02-19.
 `plotCorrelationHeatmap,SCE` <- # nolint
     function(object, ...) {
@@ -164,7 +164,6 @@ formals(`plotCorrelationHeatmap,SE`)[c( # nolint
             ...
         )
     }
-
 
 
 #' @rdname plotCorrelationHeatmap

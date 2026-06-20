@@ -22,21 +22,22 @@
 NULL
 
 
-
 ## Updated 2023-08-11.
 `plotFeaturesDetected,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             limit = 0L,
-             minCounts = 1L,
-             labels = list(
-                 "title" = "Features detected",
-                 "subtitle" = NULL,
-                 "x" = NULL,
-                 "y" = "features"
-             ),
-             flip) {
+    function(
+        object,
+        flip,
+        assay = 1L,
+        interestingGroups = NULL,
+        limit = 0L,
+        minCounts = 1L,
+        labels = list(
+            "title" = "Features detected",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "features"
+        )
+    ) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -92,7 +93,6 @@ formals(`plotFeaturesDetected,SE`)[["flip"]] <- # nolint
     .formalsList[["flip"]]
 
 
-
 ## Updated 2019-09-15.
 `plotFeaturesDetected,SCE` <- # nolint
     function(object, ...) {
@@ -101,7 +101,6 @@ formals(`plotFeaturesDetected,SE`)[["flip"]] <- # nolint
             ...
         )
     }
-
 
 
 #' @describeIn plotFeaturesDetected Applies `aggregateCellsToSamples()`

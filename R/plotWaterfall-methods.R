@@ -57,20 +57,20 @@ NULL
 
 ## nolint end
 
-
-
 ## Updated 2021-02-09.
 `plotWaterfall,data.frame` <- # nolint
-    function(object,
-             sampleCol,
-             valueCol,
-             interestingGroups = NULL,
-             trans = c("identity", "log2", "log10"),
-             fill = purpleOrange(1L),
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL
-             )) {
+    function(
+        object,
+        sampleCol,
+        valueCol,
+        interestingGroups = NULL,
+        trans = c("identity", "log2", "log10"),
+        fill = purpleOrange(1L),
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        )
+    ) {
         validObject(object)
         object <- as.data.frame(object)
         assert(
@@ -130,12 +130,13 @@ NULL
                         width = 1L
                     )
                 if (isTRUE(isLog)) {
-                    p <- p + geom_hline(
-                        color = "black",
-                        linetype = "solid",
-                        size = 0.5,
-                        yintercept = 0L
-                    )
+                    p <- p +
+                        geom_hline(
+                            color = "black",
+                            linetype = "solid",
+                            size = 0.5,
+                            yintercept = 0L
+                        )
                 }
                 ## Labels.
                 labels <- list(
@@ -149,38 +150,41 @@ NULL
                     labels[["y"]] <- paste(trans, labels[["y"]])
                 }
                 p <- p + do.call(what = labs, args = labels)
-                p <- p + theme(
-                    legend.position = "none",
-                    strip.text.x = element_text(
-                        angle = 90L,
-                        hjust = 0L,
-                        margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+                p <- p +
+                    theme(
+                        legend.position = "none",
+                        strip.text.x = element_text(
+                            angle = 90L,
+                            hjust = 0L,
+                            margin = margin(0.2, 0.2, 0.2, 0.2, "cm")
+                        )
                     )
-                )
                 ## Dynamically hide x-axis labels if there are a lot of samples.
                 if (length(unique(data[["x"]])) <= 100L) {
-                    p <- p + theme(
-                        axis.text.x = element_text(angle = 90L, hjust = 1L)
-                    )
+                    p <- p +
+                        theme(
+                            axis.text.x = element_text(angle = 90L, hjust = 1L)
+                        )
                 } else {
-                    p <- p + theme(
-                        axis.text.x = element_blank(),
-                        axis.ticks.x = element_blank(),
-                        axis.title.x = element_blank()
-                    )
+                    p <- p +
+                        theme(
+                            axis.text.x = element_blank(),
+                            axis.ticks.x = element_blank(),
+                            axis.title.x = element_blank()
+                        )
                 }
             }
         )
         ## Using patchwork package to dynamically arrange the plots.
         p <- wrap_plots(plotlist)
         ## Support title and/or subtitle labeling.
-        p <- p + plot_annotation(
-            "title" = labels[["title"]],
-            "subtitle" = labels[["subtitle"]]
-        )
+        p <- p +
+            plot_annotation(
+                "title" = labels[["title"]],
+                "subtitle" = labels[["subtitle"]]
+            )
         p
     }
-
 
 
 ## Updated 2021-10-13.
@@ -188,14 +192,15 @@ NULL
     `plotWaterfall,data.frame`
 
 
-
 ## Updated 2023-04-27.
 `plotWaterfall,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             fun = c("mean", "sum"),
-             interestingGroups = NULL,
-             ...) {
+    function(
+        object,
+        assay = 1L,
+        fun = c("mean", "sum"),
+        interestingGroups = NULL,
+        ...
+    ) {
         assert(validObject(object))
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
@@ -232,7 +237,6 @@ NULL
             ...
         )
     }
-
 
 
 #' @rdname plotWaterfall

@@ -24,14 +24,9 @@
 NULL
 
 
-
 ## Updated 2019-09-03.
 `plotKnownMarkers,SCE,KnownMarkers` <- # nolint
-    function(object,
-             markers,
-             reduction,
-             headerLevel,
-             ...) {
+    function(object, markers, reduction, headerLevel, ...) {
         validObject(object)
         validObject(markers)
         ## Handle gene identifier to symbol conversion automatically.
@@ -97,7 +92,6 @@ formals(`plotKnownMarkers,SCE,KnownMarkers`)[c( # nolint
     "headerLevel",
     "reduction"
 )]
-
 
 
 #' @rdname plotKnownMarkers

@@ -17,13 +17,14 @@
 NULL
 
 
-
 ## Updated 2022-03-05.
 `plotStackedBarPlot,SCE` <- # nolint
-    function(object,
-             absolute = FALSE,
-             interestingGroups = NULL,
-             labels = NULL) {
+    function(
+        object,
+        absolute = FALSE,
+        interestingGroups = NULL,
+        labels = NULL
+    ) {
         validObject(object)
         assert(isFlag(absolute))
         labels <- matchLabels(labels)
@@ -82,7 +83,6 @@ NULL
         p <- p + do.call(what = labs, args = labels)
         p
     }
-
 
 
 #' @rdname plotStackedBarPlot

@@ -10,11 +10,11 @@ plotMitoRatio(object, ...)
 \S4method{plotMitoRatio}{SingleCellExperiment}(
   object,
   geom = c("histogram", "ecdf", "violin", "ridgeline", "boxplot"),
+  labels = list(title = "Mito ratio", subtitle = NULL, metricAxis = NULL, otherAxis =
+    NULL),
   interestingGroups = NULL,
   max = 1L,
-  trans = "sqrt",
-  labels = list(title = "Mito ratio", subtitle = NULL, metricAxis = NULL, otherAxis =
-    NULL)
+  trans = "sqrt"
 )
 }
 \arguments{
@@ -23,6 +23,10 @@ plotMitoRatio(object, ...)
 \item{geom}{\code{character(1)}.
 Plot type. Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to
 the first argument in the \code{character} vector.}
+
+\item{labels}{\code{list}.
+ggplot2 labels.
+See \code{ggplot2::labs()} for details.}
 
 \item{interestingGroups}{\code{character}.
 Groups of interest to use for visualization.
@@ -38,10 +42,6 @@ For more information:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{help(topic = "scale_x_continuous", package = "ggplot2")
 }\if{html}{\out{</div>}}}
-
-\item{labels}{\code{list}.
-ggplot2 labels.
-See \code{ggplot2::labs()} for details.}
 
 \item{...}{Additional arguments.}
 }
