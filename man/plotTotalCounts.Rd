@@ -12,17 +12,20 @@ plotTotalCounts(object, ...)
 
 \S4method{plotTotalCounts}{SummarizedExperiment}(
   object,
+  flip = getOption(x = "acid.flip", default = TRUE),
   assay = 1L,
   interestingGroups = NULL,
   perMillion = FALSE,
-  labels = list(title = "Total counts", subtitle = NULL, x = NULL, y = "counts"),
-  flip = getOption(x = "acid.flip", default = TRUE)
+  labels = list(title = "Total counts", subtitle = NULL, x = NULL, y = "counts")
 )
 }
 \arguments{
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
+
+\item{flip}{\code{logical(1)}.
+Flip x and y axes. Recommended for plots containing many samples.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -37,9 +40,6 @@ Display as counts per million.}
 \item{labels}{\code{list}.
 ggplot2 labels.
 See \code{ggplot2::labs()} for details.}
-
-\item{flip}{\code{logical(1)}.
-Flip x and y axes. Recommended for plots containing many samples.}
 }
 \value{
 \code{ggplot}.

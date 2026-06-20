@@ -20,20 +20,15 @@
 NULL
 
 
-
 ## Updated 2019-07-23.
 `plotCountsCorrelationHeatmap,matrix` <- # nolint
-    function(x,
-             y,
-             i = NULL,
-             j = NULL,
-             method = "pearson",
-             ...) {
+    function(x, y, i = NULL, j = NULL, method = "pearson", ...) {
         validObject(x)
         validObject(y)
         assert(
             identical(dimnames(x), dimnames(y)),
-            !anyNA(x), !anyNA(y),
+            !anyNA(x),
+            !anyNA(y),
             isString(method)
         )
         if (!is.null(i)) {
@@ -56,7 +51,6 @@ NULL
             ...
         )
     }
-
 
 
 #' @rdname plotCountsCorrelationHeatmap

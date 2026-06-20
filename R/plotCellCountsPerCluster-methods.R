@@ -16,17 +16,15 @@
 NULL
 
 
-
 ## Updated 2023-08-10.
 `plotCellCountsPerCluster,SCE` <- # nolint
-    function(object,
-             interestingGroups = NULL) {
+    function(object, interestingGroups = NULL) {
         validObject(object)
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         interestingGroups <- interestingGroups(object)
         data <- cellCountsPerCluster(object = object)
-        if (isTRUE(length(levels(data[["sampleName"]])) > 1L)) {
+        if (isTRUE(nlevels(data[["sampleName"]]) > 1L)) {
             multipleSamples <- TRUE
             col <- "interestingGroups"
             legendTitle <- paste(interestingGroups, collapse = ":\n")
@@ -66,7 +64,6 @@ NULL
         ## Return.
         p
     }
-
 
 
 #' @rdname plotCellCountsPerCluster

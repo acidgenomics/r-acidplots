@@ -26,22 +26,23 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotCountsPerBiotype,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             biotypeCol = "geneBiotype",
-             n = 9L,
-             interestingGroups = NULL,
-             geom = c("violin", "boxplot"),
-             trans = c("identity", "log2", "log10"),
-             labels = list(
-                 "title" = "Counts per biotype",
-                 "subtitle" = NULL,
-                 "sampleAxis" = NULL,
-                 "countAxis" = "counts"
-             )) {
+    function(
+        object,
+        assay = 1L,
+        biotypeCol = "geneBiotype",
+        n = 9L,
+        interestingGroups = NULL,
+        geom = c("violin", "boxplot"),
+        trans = c("identity", "log2", "log10"),
+        labels = list(
+            "title" = "Counts per biotype",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
+        )
+    ) {
         assert(
             validObject(object),
             isScalar(assay),
@@ -58,7 +59,8 @@ NULL
         if (!isSubset(biotypeCol, colnames(rowData))) {
             alertWarning(sprintf(
                 "{.fun %s} does not contain biotypes defined in {.val %s}.",
-                "rowData", biotypeCol
+                "rowData",
+                biotypeCol
             ))
             return(invisible(NULL))
         }
@@ -86,7 +88,7 @@ NULL
         data <- data[keep, , drop = FALSE]
         data <- data[, c("value", "interestingGroups", biotypeCol)]
         ## Sanitize the biotype column to appear nicer in plots.
-        data[[biotypeCol]] <- gsub("_", " ", data[[biotypeCol]])
+        data[[biotypeCol]] <- gsub("_", " ", data[[biotypeCol]], fixed = TRUE)
         ## Plot.
         p <- ggplot(
             data = as.data.frame(data),
@@ -141,23 +143,23 @@ NULL
     }
 
 
-
 ## Updated 2021-09-08.
 `plotCountsPerBiotype,SCE` <- # nolint
     `plotCountsPerBiotype,SE`
 
 
-
 ## Updated 2021-09-09.
 `plotCountsPerBroadClass,SE` <- # nolint
-    function(object,
-             ...,
-             labels = list(
-                 "title" = "Counts per broad class biotype",
-                 "subtitle" = NULL,
-                 "sampleAxis" = NULL,
-                 "countAxis" = "counts"
-             )) {
+    function(
+        object,
+        ...,
+        labels = list(
+            "title" = "Counts per broad class biotype",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
+        )
+    ) {
         plotCountsPerBiotype(
             object = object,
             biotypeCol = "broadClass",
@@ -167,10 +169,8 @@ NULL
     }
 
 
-
 `plotCountsPerBroadClass,SCE` <- # nolint
     `plotCountsPerBroadClass,SE`
-
 
 
 #' @rdname plotCountsPerBiotype
@@ -188,7 +188,6 @@ setMethod(
     signature = signature(object = "SummarizedExperiment"),
     definition = `plotCountsPerBiotype,SE`
 )
-
 
 
 #' @rdname plotCountsPerBiotype

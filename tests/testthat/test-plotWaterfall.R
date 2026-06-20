@@ -13,7 +13,8 @@ test_that("data.frame", {
         tumor_subtype = rep(
             x = c("benign", "malignant"),
             each = 6L
-        )
+        ),
+        stringsAsFactors = FALSE
     )
     p <- plotWaterfall(
         object = object,

@@ -24,20 +24,21 @@
 NULL
 
 
-
 ## Updated 2023-08-10.
 `plotBarcodeRanks,SCE` <- # nolint
-    function(object,
-             colors = c(
-                 "fitline" = AcidPlots::lightPalette[["blue"]],
-                 "inflection" = AcidPlots::lightPalette[["purple"]],
-                 "knee" = AcidPlots::lightPalette[["orange"]]
-             ),
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL
-             ),
-             ...) {
+    function(
+        object,
+        colors = c(
+            "fitline" = AcidPlots::lightPalette[["blue"]],
+            "inflection" = AcidPlots::lightPalette[["purple"]],
+            "knee" = AcidPlots::lightPalette[["orange"]]
+        ),
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL
+        ),
+        ...
+    ) {
         assert(
             requireNamespaces("DropletUtils"),
             validObject(object),
@@ -92,15 +93,16 @@ NULL
                         y = "counts per cell"
                     )
                 if (hasRows(fitData)) {
-                    p <- p + geom_line(
-                        data = as.data.frame(fitData),
-                        mapping = aes(
-                            x = .data[["rank"]],
-                            y = .data[["fitted"]]
-                        ),
-                        color = colors[["fitline"]],
-                        linewidth = 1L
-                    )
+                    p <- p +
+                        geom_line(
+                            data = as.data.frame(fitData),
+                            mapping = aes(
+                                x = .data[["rank"]],
+                                y = .data[["fitted"]]
+                            ),
+                            color = colors[["fitline"]],
+                            linewidth = 1L
+                        )
                 }
                 p <- p +
                     geom_hline(
@@ -130,13 +132,13 @@ NULL
         ## Using patchwork package to dynamically arrange the plots.
         p <- wrap_plots(plotlist)
         ## Support title and/or subtitle labeling.
-        p <- p + plot_annotation(
-            "title" = labels[["title"]],
-            "subtitle" = labels[["subtitle"]]
-        )
+        p <- p +
+            plot_annotation(
+                "title" = labels[["title"]],
+                "subtitle" = labels[["subtitle"]]
+            )
         p
     }
-
 
 
 #' @rdname plotBarcodeRanks

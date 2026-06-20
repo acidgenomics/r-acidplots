@@ -1,7 +1,8 @@
 test_that("SummarizedExperiment", {
     object <- rse
     markers <- readRDS(system.file(
-        "extdata", "gender-markers.rds",
+        "extdata",
+        "gender-markers.rds",
         package = "AcidPlots"
     ))
     gr <- markers[[camelCase(organism(object))]]
@@ -9,7 +10,7 @@ test_that("SummarizedExperiment", {
     expect_true(isSubset(x = c("geneId", "geneName"), y = names(mcols(gr))))
     geneIds <- mcols(gr)[["geneId"]]
     geneNames <- mcols(gr)[["geneName"]]
-    seq <- seq_len(length(gr))
+    seq <- seq_along(gr)
     rownames(object)[seq] <- geneIds
     rowData(object)[["geneId"]] <-
         as.character(rowData(object)[["geneId"]])

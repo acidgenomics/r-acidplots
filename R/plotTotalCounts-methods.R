@@ -22,20 +22,21 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotTotalCounts,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             perMillion = FALSE,
-             labels = list(
-                 "title" = "Total counts",
-                 "subtitle" = NULL,
-                 "x" = NULL,
-                 "y" = "counts"
-             ),
-             flip) {
+    function(
+        object,
+        flip,
+        assay = 1L,
+        interestingGroups = NULL,
+        perMillion = FALSE,
+        labels = list(
+            "title" = "Total counts",
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = "counts"
+        )
+    ) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -90,7 +91,6 @@ formals(`plotTotalCounts,SE`)[["flip"]] <- # nolint
     .formalsList[["flip"]]
 
 
-
 ## Updated 2019-09-15.
 `plotTotalCounts,SCE` <- # nolint
     function(object, ...) {
@@ -99,7 +99,6 @@ formals(`plotTotalCounts,SE`)[["flip"]] <- # nolint
             ...
         )
     }
-
 
 
 #' @describeIn plotTotalCounts Applies `aggregateCellsToSamples()` calculation

@@ -53,27 +53,28 @@
 NULL
 
 
-
 ## Updated 2023-12-10.
 `plotCorrelation,data.frame` <- # nolint
-    function(object,
-             xCol,
-             yCol,
-             pointLabelCol = NULL,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL,
-                 "x" = NULL,
-                 "y" = NULL
-             ),
-             trans = c("identity", "log10", "log2"),
-             r2 = TRUE,
-             se = TRUE,
-             colors = list(
-                 "dots" = "black",
-                 "line" = "black",
-                 "se" = "gray"
-             )) {
+    function(
+        object,
+        xCol,
+        yCol,
+        pointLabelCol = NULL,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL,
+            "x" = NULL,
+            "y" = NULL
+        ),
+        trans = c("identity", "log10", "log2"),
+        r2 = TRUE,
+        se = TRUE,
+        colors = list(
+            "dots" = "black",
+            "line" = "black",
+            "se" = "gray"
+        )
+    ) {
         assert(
             validObject(object),
             hasCols(object),
@@ -167,15 +168,18 @@ NULL
             )
         if (isTRUE(r2)) {
             requireNamespaces("ggpmisc")
-            p <- p + ggpmisc::stat_poly_eq(
-                mapping = aes(label = paste(
-                    after_stat(.data[["eq.label"]]),
-                    after_stat(.data[["rr.label"]]),
-                    sep = "*\", \"*"
-                )),
-                formula = formula,
-                parse = TRUE
-            )
+            p <- p +
+                ggpmisc::stat_poly_eq( # nolint
+                    mapping = aes(
+                        label = paste(
+                            after_stat(.data[["eq.label"]]),
+                            after_stat(.data[["rr.label"]]),
+                            sep = "*\", \"*"
+                        )
+                    ),
+                    formula = formula,
+                    parse = TRUE
+                )
         }
         p <- p + labs
         if (isTRUE(isLog)) {
@@ -207,14 +211,9 @@ NULL
     }
 
 
-
 ## Updated 2023-12-10.
 `plotCorrelation,matrix` <- # nolint
-    function(object,
-             xCol,
-             yCol,
-             labelPoints = FALSE,
-             ...) {
+    function(object, xCol, yCol, labelPoints = FALSE, ...) {
         assert(
             validObject(object),
             hasCols(object),
@@ -246,7 +245,6 @@ NULL
     }
 
 
-
 ## Updated 2021-02-09.
 `plotCorrelation,Matrix` <- # nolint
     `plotCorrelation,matrix`
@@ -254,7 +252,6 @@ NULL
 ## Updated 2023-04-27.
 `plotCorrelation,DFrame` <- # nolint
     `plotCorrelation,data.frame`
-
 
 
 ## Updated 2023-12-10.
@@ -267,7 +264,6 @@ NULL
         assay <- assay(x = object, i = assay)
         plotCorrelation(object = assay, ...)
     }
-
 
 
 #' @rdname plotCorrelation

@@ -26,7 +26,7 @@ Must pass in color names or hexadecimal values.}
 ggplot2 labels.
 See \code{ggplot2::labs()} for details.}
 
-\item{...}{Passthrough to \code{\link[=barcodeRanksPerSample]{barcodeRanksPerSample()}}.}
+\item{...}{Passthrough to \code{\link[AcidGenerics:barcodeRanksPerSample]{barcodeRanksPerSample()}}.}
 }
 \value{
 \code{ggplot} grid.

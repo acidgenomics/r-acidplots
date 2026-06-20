@@ -24,18 +24,18 @@ synesthesia_pal(
 
 scale_colour_synesthesia_c(
   ...,
-  na.value = "grey50",
-  guide = "colourbar",
   palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
-    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette"),
+  na.value = "grey50",
+  guide = "colourbar"
 )
 
 acid_scale_color_synesthesia_c(
   ...,
-  na.value = "grey50",
-  guide = "colourbar",
   palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
-    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette"),
+  na.value = "grey50",
+  guide = "colourbar"
 )
 
 scale_colour_synesthesia_d(
@@ -52,10 +52,10 @@ acid_scale_color_synesthesia_d(
 
 acid_scale_fill_synesthesia_c(
   ...,
-  na.value = "grey50",
-  guide = "colourbar",
   palette = c("lightPalette", "darkPalette", "draculaPalette", "macOSLightPalette",
-    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette")
+    "macOSDarkPalette", "iOSLightPalette", "iOSDarkPalette"),
+  na.value = "grey50",
+  guide = "colourbar"
 )
 
 acid_scale_fill_synesthesia_d(

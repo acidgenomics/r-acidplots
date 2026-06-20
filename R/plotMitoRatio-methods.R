@@ -17,15 +17,16 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotMitoRatio,SCE` <- # nolint
-    function(object,
-             geom,
-             interestingGroups = NULL,
-             max = 1L,
-             trans = "sqrt",
-             labels) {
+    function(
+        object,
+        geom,
+        labels,
+        interestingGroups = NULL,
+        max = 1L,
+        trans = "sqrt"
+    ) {
         assert(isInLeftOpenRange(max, lower = 0L, upper = 1L))
         do.call(
             what = .plotQcMetric,
@@ -48,7 +49,6 @@ NULL
 .f[["labels"]][["title"]] <- "Mito ratio"
 formals(`plotMitoRatio,SCE`) <- .f # nolint
 rm(.f)
-
 
 
 #' @rdname plotMitoRatio

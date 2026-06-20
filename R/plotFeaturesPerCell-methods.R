@@ -15,16 +15,17 @@
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotFeaturesPerCell,SCE` <- # nolint
-    function(object,
-             geom,
-             interestingGroups = NULL,
-             min = 0L,
-             max = Inf,
-             trans = "log2",
-             labels) {
+    function(
+        object,
+        geom,
+        labels,
+        interestingGroups = NULL,
+        min = 0L,
+        max = Inf,
+        trans = "log2"
+    ) {
         do.call(
             what = .plotQcMetric,
             args = list(
@@ -47,7 +48,6 @@ NULL
 .f[["labels"]][["metricAxis"]] <- "features"
 formals(`plotFeaturesPerCell,SCE`) <- .f # nolint
 rm(.f)
-
 
 
 #' @rdname plotFeaturesPerCell

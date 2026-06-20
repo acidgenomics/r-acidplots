@@ -12,6 +12,9 @@ plotHeatmap(object, ...)
 
 \S4method{plotHeatmap}{SummarizedExperiment}(
   object,
+  color = getOption(x = "acid.heatmap.color", default = AcidPlots::blueYellow),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    AcidPlots::synesthesia),
   assay = 1L,
   interestingGroups = NULL,
   scale = c("row", "column", "none"),
@@ -22,9 +25,6 @@ plotHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.color", default = AcidPlots::blueYellow),
-  legendColor = getOption(x = "acid.heatmap.legend.color", default =
-    AcidPlots::synesthesia),
   breaks = seq(from = -3L, to = 3L, by = 0.25),
   legendBreaks = seq(from = -3L, to = 3L, by = 1L),
   borderColor = NULL,
@@ -38,6 +38,28 @@ plotHeatmap(object, ...)
 
 \item{...}{Passthrough arguments to \code{pheatmap()}.
 The argument names must be formatted in camel case, not snake case.}
+
+\item{color}{\code{function}, \code{character}, or \code{NULL}.
+Hexadecimal color function or values to use for plot.
+
+We generally recommend these hexadecimal functions from the viridis
+package, in addition to our \code{synesthesia()} palette:
+\itemize{
+\item \code{viridis::viridis()}.
+\item \code{viridis::inferno()}.
+\item \code{viridis::magma()}.
+\item \code{viridis::plasma()}.
+}
+
+Alternatively, colors can be defined manually using hexadecimal values
+(e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
+Refer to the RColorBrewer package for hexadecimal color palettes that may
+be suitable. If set \code{NULL}, will use the default pheatmap colors.}
+
+\item{legendColor}{\code{function} or \code{NULL}.
+Hexadecimal color function to use for legend labels. Note that hexadecimal
+values are not supported. If set \code{NULL}, will use the default pheatmap
+colors.}
 
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
@@ -61,28 +83,6 @@ Show row or column names.}
 
 \item{treeheightRow, treeheightCol}{\code{integer(1)}.
 Size of the row and column dendrograms. Use \code{0} to disable.}
-
-\item{color}{\code{function}, \code{character}, or \code{NULL}.
-Hexadecimal color function or values to use for plot.
-
-We generally recommend these hexadecimal functions from the viridis
-package, in addition to our \code{synesthesia()} palette:
-\itemize{
-\item \code{viridis::viridis()}.
-\item \code{viridis::inferno()}.
-\item \code{viridis::magma()}.
-\item \code{viridis::plasma()}.
-}
-
-Alternatively, colors can be defined manually using hexadecimal values
-(e.g. \code{c("#FF0000", "#0000FF")}), but this is not generally recommended.
-Refer to the RColorBrewer package for hexadecimal color palettes that may
-be suitable. If set \code{NULL}, will use the default pheatmap colors.}
-
-\item{legendColor}{\code{function} or \code{NULL}.
-Hexadecimal color function to use for legend labels. Note that hexadecimal
-values are not supported. If set \code{NULL}, will use the default pheatmap
-colors.}
 
 \item{breaks}{\code{numeric} or \code{NULL}.
 A sequence of numbers that covers the range of values in the matrix. Must

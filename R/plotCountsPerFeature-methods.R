@@ -27,21 +27,22 @@
 NULL
 
 
-
 ## Updated 2023-08-11.
 `plotCountsPerFeature,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             geom = c("boxplot", "density", "jitter"),
-             trans = c("identity", "log2", "log10"),
-             labels = list(
-                 "title" = "Counts per feature",
-                 "subtitle" = NULL,
-                 "sampleAxis" = NULL,
-                 "countAxis" = "counts"
-             ),
-             flip) {
+    function(
+        object,
+        flip,
+        assay = 1L,
+        interestingGroups = NULL,
+        geom = c("boxplot", "density", "jitter"),
+        trans = c("identity", "log2", "log10"),
+        labels = list(
+            "title" = "Counts per feature",
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
+        )
+    ) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -138,7 +139,6 @@ formals(`plotCountsPerFeature,SE`)[c("flip", "minMethod")] <- # nolint
     )
 
 
-
 ## Updated 2019-07-23.
 `plotCountsPerFeature,SCE` <- # nolint
     function(object, ...) {
@@ -147,7 +147,6 @@ formals(`plotCountsPerFeature,SE`)[c("flip", "minMethod")] <- # nolint
             ...
         )
     }
-
 
 
 #' @describeIn plotCountsPerFeature Applies `aggregateCellsToSamples()`

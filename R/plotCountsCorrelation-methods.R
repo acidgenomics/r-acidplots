@@ -19,22 +19,23 @@
 NULL
 
 
-
 ## Updated 2023-10-03.
 `plotCountsCorrelation,matrix` <- # nolint
-    function(x,
-             y,
-             i = NULL,
-             j = NULL,
-             xName = "x",
-             yName = "y",
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL,
-                 "color" = NULL,
-                 "x" = NULL,
-                 "y" = "counts"
-             )) {
+    function(
+        x,
+        y,
+        i = NULL,
+        j = NULL,
+        xName = "x",
+        yName = "y",
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL,
+            "color" = NULL,
+            "x" = NULL,
+            "y" = "counts"
+        )
+    ) {
         assert(
             validObject(x),
             validObject(y),
@@ -81,7 +82,6 @@ NULL
         ## Return.
         p
     }
-
 
 
 #' @rdname plotCountsCorrelation

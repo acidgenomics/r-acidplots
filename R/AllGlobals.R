@@ -2,7 +2,6 @@
 .pkgVersion <- packageVersion(.pkgName)
 
 
-
 #' Internal formals list, specific to package
 #'
 #' @note Updated 2023-08-17.
@@ -69,7 +68,7 @@
     "heatmapCorrelationColor" = quote(
         getOption(
             x = "acid.heatmap.correlation.color",
-            default = viridis::magma
+            default = viridis::magma # nolint
         )
     ),
     "heatmapLegendColor" = quote(
@@ -81,7 +80,7 @@
     "heatmapQuantileColor" = quote(
         getOption(
             x = "acid.heatmap.quantile.color",
-            default = viridis::magma
+            default = viridis::magma # nolint
         )
     ),
     "label" = quote(
@@ -131,7 +130,6 @@
 )
 
 
-
 #' AcidPlots test data URL
 #'
 #' @keywords internal
@@ -141,7 +139,6 @@
 #' AcidPlotsTestsUrl
 AcidPlotsTestsUrl <- # nolint
     "https://r.acidgenomics.com/testdata/acidplots"
-
 
 
 ## Color palettes ==============================================================
@@ -168,8 +165,6 @@ NULL
 
 ## nolint end
 
-
-
 #' Prepare exported palette global variable
 #'
 #' @note Updated 2021-08-11.
@@ -179,7 +174,6 @@ NULL
 }
 
 
-
 #' Improve the `rgb()` default to use 0:255, as expected
 #'
 #' @note Updated 2019-09-13.
@@ -187,7 +181,6 @@ NULL
 .rgb <- function(...) {
     rgb(..., maxColorValue = 255L)
 }
-
 
 
 #' Internal color palette hex values
@@ -258,7 +251,6 @@ NULL
 .palettes[["dark"]][["background"]] <- .rgb(0L, 0L, 0L)
 .palettes[["dark"]][["foreground"]] <- .rgb(255L, 255L, 255L)
 .palettes[["dark"]][["gray"]] <- .rgb(26L, 26L, 26L) ## gray10
-
 
 
 #' @rdname palettes

@@ -21,8 +21,7 @@
 #' geom <- acid_geom_abline(yintercept = 1L)
 #' print(geom)
 acid_geom_abline <- # nolint
-    function(xintercept = NULL,
-             yintercept = NULL) {
+    function(xintercept = NULL, yintercept = NULL) {
         alpha <- 0.75
         color <- "black"
         linetype <- "dashed"
@@ -33,7 +32,8 @@ acid_geom_abline <- # nolint
         ) {
             abort(sprintf(
                 "Either {.arg %s} or {.arg %s} is required.",
-                "xintercept", "yintercept"
+                "xintercept",
+                "yintercept"
             ))
         } else if (is.numeric(xintercept)) {
             geom_vline(
@@ -53,7 +53,6 @@ acid_geom_abline <- # nolint
             )
         }
     }
-
 
 
 #' Bar chart
@@ -92,7 +91,6 @@ acid_geom_bar <- # nolint
     }
 
 
-
 #' Text label
 #'
 #' Modified version of `ggplot2::geom_label()`.
@@ -115,9 +113,7 @@ acid_geom_bar <- # nolint
 #' geom <- acid_geom_label()
 #' print(geom)
 acid_geom_label <- # nolint
-    function(data = NULL,
-             mapping = NULL,
-             ...) {
+    function(data = NULL, mapping = NULL, ...) {
         geom_label(
             data = data,
             mapping = mapping,
@@ -131,7 +127,6 @@ acid_geom_label <- # nolint
             ...
         )
     }
-
 
 
 #' Average labels
@@ -176,11 +171,7 @@ acid_geom_label <- # nolint
 #' )
 #' print(geom)
 acid_geom_label_average <- # nolint
-    function(data,
-             col,
-             fun = c("mean", "median"),
-             digits = 0L,
-             ...) {
+    function(data, col, fun = c("mean", "median"), digits = 0L, ...) {
         data <- as.data.frame(data)
         assert(
             isString(col),
@@ -216,7 +207,6 @@ acid_geom_label_average <- # nolint
     }
 
 
-
 #' Repulsive textual annotations
 #'
 #' Modified version of `ggrepel::geom_label_repel()`.
@@ -249,11 +239,7 @@ acid_geom_label_average <- # nolint
 #' geom <- acid_geom_label_repel()
 #' print(geom)
 acid_geom_label_repel <- # nolint
-    function(data = NULL,
-             mapping = NULL,
-             color = NULL,
-             size = 4L,
-             ...) {
+    function(data = NULL, mapping = NULL, color = NULL, size = 4L, ...) {
         requireNamespaces("ggrepel")
         geom <- ggrepel::geom_label_repel(
             data = data,

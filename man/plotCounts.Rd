@@ -19,23 +19,23 @@ plotViolin(object, ...)
 \S4method{plotCounts}{SingleCellExperiment}(
   object,
   genes,
+  legend = getOption(x = "acid.legend", default = TRUE),
   assay = c("logcounts", "normcounts"),
   geom = c("violin", "dots"),
   perSample = TRUE,
-  legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
 )
 
 \S4method{plotCounts}{SummarizedExperiment}(
   object,
   genes,
+  legend = getOption(x = "acid.legend", default = TRUE),
   assay = 1L,
   interestingGroups = NULL,
   convertGenesToSymbols = TRUE,
   geom = c("point", "violin", "boxplot", "bar"),
   trans = c("identity", "log2", "log10"),
   line = c("none", "median", "mean", "geometricMean"),
-  legend = getOption(x = "acid.legend", default = TRUE),
   style = c("facet", "wide"),
   sort = FALSE,
   labels = list(title = NULL, subtitle = NULL, sampleAxis = NULL, countAxis = "counts")
@@ -44,27 +44,27 @@ plotViolin(object, ...)
 \S4method{plotDots}{SingleCellExperiment}(
   object,
   genes,
+  color = getOption(x = "acid.continuous.color", default =
+    ggplot2::scale_color_gradient2(low = "orange", mid = "gray75", high = "purple",
+    midpoint = 0L)),
+  legend = getOption(x = "acid.legend", default = TRUE),
   perSample = TRUE,
   colMin = -2.5,
   colMax = 2.5,
   dotMin = 0L,
   dotScale = 6L,
-  color = getOption(x = "acid.continuous.color", default =
-    ggplot2::scale_color_gradient2(low = "orange", mid = "gray75", high = "purple",
-    midpoint = 0L)),
-  legend = getOption(x = "acid.legend", default = TRUE),
   title = NULL
 )
 
 \S4method{plotViolin}{SingleCellExperiment}(
   object,
   genes,
-  assay = c("logcounts", "normcounts"),
-  perSample = TRUE,
-  scale = c("count", "width", "area"),
   color = getOption(x = "acid.discrete.color", default =
     AcidPlots::acid_scale_color_synesthesia_d()),
   legend = getOption(x = "acid.legend", default = TRUE),
+  assay = c("logcounts", "normcounts"),
+  perSample = TRUE,
+  scale = c("count", "width", "area"),
   title = NULL
 )
 }
@@ -75,6 +75,9 @@ plotViolin(object, ...)
 automatically match identifiers corresponding to the rownames of the
 object, or gene symbols defined in the object.}
 
+\item{legend}{\code{logical(1)}.
+Include plot legend.}
+
 \item{assay}{\code{vector(1)}.
 Assay name or index position.}
 
@@ -84,9 +87,6 @@ Currently supports \code{"dots"} and \code{"violin"}.}
 
 \item{perSample}{\code{logical(1)}.
 Visualize the distributions per sample.}
-
-\item{legend}{\code{logical(1)}.
-Include plot legend.}
 
 \item{title}{\code{character(1)}.
 Title.}
@@ -123,6 +123,16 @@ when \code{convertGenesToSymbols} is \code{TRUE}.}
 ggplot2 labels.
 See \code{ggplot2::labs()} for details.}
 
+\item{color}{\code{ScaleDiscrete}.
+Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
+the default ggplot2 color palette will be used. If manual color definitions
+are desired, we recommend using \code{ggplot2::scale_color_manual()}.
+
+To set the discrete color palette globally, use:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
+}\if{html}{\out{</div>}}}
+
 \item{colMin}{\code{numeric(1)}.
 Minimum scaled average expression threshold. Everything smaller will be
 set to this.}
@@ -137,16 +147,6 @@ with less than this expressing the given gene will have no dot drawn.}
 
 \item{dotScale}{\code{numeric(1)}.
 Scale the size of the points, similar to \code{cex}.}
-
-\item{color}{\code{ScaleDiscrete}.
-Desired ggplot2 color scale. Must supply discrete values. When set \code{NULL},
-the default ggplot2 color palette will be used. If manual color definitions
-are desired, we recommend using \code{ggplot2::scale_color_manual()}.
-
-To set the discrete color palette globally, use:
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{options("acid.color.discrete" = ggplot2::scale_color_viridis_d())
-}\if{html}{\out{</div>}}}
 
 \item{scale}{\code{character(1)}.
 If "area" (default), all violins have the same area (before trimming the
