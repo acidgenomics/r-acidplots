@@ -34,8 +34,8 @@ test_that("SummarizedExperiment", {
         expect_s3_class(
             object = fun(
                 object = object,
-                color = viridis::viridis,
-                legendColor = viridis::viridis
+                color = viridis::viridis, # nolint
+                legendColor = viridis::viridis # nolint
             ),
             class = "pheatmap"
         )

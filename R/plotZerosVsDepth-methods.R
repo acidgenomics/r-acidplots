@@ -22,20 +22,21 @@
 NULL
 
 
-
 ## Updated 2022-11-09.
 `plotZerosVsDepth,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             pointAlpha,
-             pointSize,
-             labels = list(
-                 "title" = "Zeros vs. depth",
-                 "subtitle" = NULL,
-                 "x" = "library size (depth)",
-                 "y" = "dropout rate"
-             )) {
+    function(
+        object,
+        pointAlpha,
+        pointSize,
+        assay = 1L,
+        interestingGroups = NULL,
+        labels = list(
+            "title" = "Zeros vs. depth",
+            "subtitle" = NULL,
+            "x" = "library size (depth)",
+            "y" = "dropout rate"
+        )
+    ) {
         validObject(object)
         assert(
             isScalar(assay),
@@ -72,10 +73,11 @@ NULL
             facets <- "aggregate"
         }
         if (is.character(facets)) {
-            p <- p + facet_wrap(
-                facets = vars(!!!syms(facets)),
-                scales = "free"
-            )
+            p <- p +
+                facet_wrap(
+                    facets = vars(!!!syms(facets)),
+                    scales = "free"
+                )
         }
         ## Return.
         p
@@ -88,7 +90,6 @@ formals(`plotZerosVsDepth,SE`)[c( # nolint
     "pointAlpha",
     "pointSize2"
 )]
-
 
 
 #' @rdname plotZerosVsDepth

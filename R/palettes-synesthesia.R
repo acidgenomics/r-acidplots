@@ -89,7 +89,6 @@
 NULL
 
 
-
 #' @rdname synesthesia
 #' @export
 synesthesia <- function(n, palette) {
@@ -103,7 +102,6 @@ synesthesia <- function(n, palette) {
 
 formals(synesthesia)[c("n", "palette")] <-
     .formalsList[c("n", "palette")]
-
 
 
 #' @rdname synesthesia
@@ -120,14 +118,15 @@ formals(synesthesia_pal)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
-
 #' @rdname synesthesia
 #' @export
 scale_colour_synesthesia_c <- # nolint
-    function(...,
-             na.value = "grey50", # nolint
-             guide = "colourbar",
-             palette) {
+    function(
+        ...,
+        palette,
+        na.value = "grey50", # nolint
+        guide = "colourbar"
+    ) {
         palette <- match.arg(palette)
         colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
@@ -145,12 +144,10 @@ formals(scale_colour_synesthesia_c)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
-
 #' @rdname synesthesia
 #' @export
 acid_scale_color_synesthesia_c <- # nolint
     scale_colour_synesthesia_c
-
 
 
 #' @rdname synesthesia
@@ -171,21 +168,21 @@ formals(scale_colour_synesthesia_d)[["palette"]] <- # nolint
     .formalsList[["palette"]]
 
 
-
 #' @rdname synesthesia
 #' @export
 acid_scale_color_synesthesia_d <- # nolint
     scale_colour_synesthesia_d
 
 
-
 #' @rdname synesthesia
 #' @export
 acid_scale_fill_synesthesia_c <- # nolint
-    function(...,
-             na.value = "grey50", # nolint
-             guide = "colourbar",
-             palette) {
+    function(
+        ...,
+        palette,
+        na.value = "grey50", # nolint
+        guide = "colourbar"
+    ) {
         palette <- match.arg(palette)
         colours <- synesthesia(palette = palette)
         palette <- gradient_n_pal(colours = colours)
@@ -201,7 +198,6 @@ acid_scale_fill_synesthesia_c <- # nolint
 
 formals(acid_scale_fill_synesthesia_c)[["palette"]] <- # nolint
     .formalsList[["palette"]]
-
 
 
 #' @rdname synesthesia

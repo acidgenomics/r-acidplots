@@ -35,7 +35,6 @@
 NULL
 
 
-
 #' @rdname autoScale
 #' @export
 acid_scale_color_continuous <- # nolint
@@ -49,7 +48,6 @@ acid_scale_color_continuous <- # nolint
         assert(isGgscale(x, scale = "continuous", aes = "color"))
         x
     }
-
 
 
 #' @rdname autoScale
@@ -67,7 +65,6 @@ acid_scale_fill_continuous <- # nolint
     }
 
 
-
 #' @rdname autoScale
 #' @export
 acid_scale_color_discrete <- # nolint
@@ -81,7 +78,6 @@ acid_scale_color_discrete <- # nolint
         assert(isGgscale(x, scale = "discrete", aes = "color"))
         x
     }
-
 
 
 #' @rdname autoScale

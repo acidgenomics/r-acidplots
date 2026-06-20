@@ -13,17 +13,17 @@ plotCorrelationHeatmap(object, ...)
 
 \S4method{plotCorrelationHeatmap}{SummarizedExperiment}(
   object,
+  method = c("pearson", "kendall", "spearman"),
+  color = getOption(x = "acid.heatmap.correlation.color", default = viridis::magma),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    AcidPlots::synesthesia),
   assay = 1L,
   interestingGroups = NULL,
-  method = c("pearson", "kendall", "spearman"),
   clusteringMethod = "ward.D2",
   showRownames = TRUE,
   showColnames = TRUE,
   treeheightRow = 0L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.correlation.color", default = viridis::magma),
-  legendColor = getOption(x = "acid.heatmap.legend.color", default =
-    AcidPlots::synesthesia),
   borderColor = NULL,
   title = TRUE,
   ...
@@ -34,26 +34,10 @@ plotCorrelationHeatmap(object, ...)
 
 \item{...}{Additional arguments.}
 
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
-
 \item{method}{\code{character(1)}.
 Correlation coefficient (or covariance) method to be computed.
 Defaults to pearson, but spearman or kendall can also be used.
 Refer to \code{cor()} documentation for details.}
-
-\item{clusteringMethod}{\code{character(1)}.
-Clustering method. Accepts the same values as \code{hclust()}.}
-
-\item{showRownames, showColnames}{\code{logical(1)}.
-Show row or column names.}
-
-\item{treeheightRow, treeheightCol}{\code{integer(1)}.
-Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{color}{\code{function}, \code{character}, or \code{NULL}.
 Hexadecimal color function or values to use for plot.
@@ -76,6 +60,22 @@ be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 Hexadecimal color function to use for legend labels. Note that hexadecimal
 values are not supported. If set \code{NULL}, will use the default pheatmap
 colors.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
+
+\item{clusteringMethod}{\code{character(1)}.
+Clustering method. Accepts the same values as \code{hclust()}.}
+
+\item{showRownames, showColnames}{\code{logical(1)}.
+Show row or column names.}
+
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{borderColor}{\code{character(1)} or \code{NULL}.
 Border color.}

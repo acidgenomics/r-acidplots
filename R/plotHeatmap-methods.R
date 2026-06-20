@@ -145,31 +145,32 @@
 NULL
 
 
-
 ## Updated 2021-05-17.
 `plotHeatmap,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             scale = c("row", "column", "none"),
-             clusteringMethod = "ward.D2",
-             clusterRows = TRUE,
-             clusterCols = TRUE,
-             showRownames = isTRUE(nrow(object) <= 30L),
-             showColnames = TRUE,
-             ## Set to `0L` to disable.
-             treeheightRow = 50L,
-             ## Set to `0L` to disable.
-             treeheightCol = 50L,
-             color,
-             legendColor,
-             breaks = seq(from = -3L, to = 3L, by = 0.25),
-             legendBreaks = seq(from = -3L, to = 3L, by = 1L),
-             borderColor = NULL,
-             title = NULL,
-             ## Attept to map genes to symbols automatically only when shown.
-             convertGenesToSymbols = showRownames,
-             ...) {
+    function(
+        object,
+        color,
+        legendColor,
+        assay = 1L,
+        interestingGroups = NULL,
+        scale = c("row", "column", "none"),
+        clusteringMethod = "ward.D2",
+        clusterRows = TRUE,
+        clusterCols = TRUE,
+        showRownames = isTRUE(nrow(object) <= 30L),
+        showColnames = TRUE,
+        ## Set to `0L` to disable.
+        treeheightRow = 50L,
+        ## Set to `0L` to disable.
+        treeheightCol = 50L,
+        breaks = seq(from = -3L, to = 3L, by = 0.25),
+        legendBreaks = seq(from = -3L, to = 3L, by = 1L),
+        borderColor = NULL,
+        title = NULL,
+        ## Attept to map genes to symbols automatically only when shown.
+        convertGenesToSymbols = showRownames,
+        ...
+    ) {
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -187,10 +188,18 @@ NULL
             isFlag(convertGenesToSymbols)
         )
         scale <- match.arg(scale)
-        if (!isString(borderColor)) borderColor <- NA
-        if (!isString(title)) title <- NA
-        if (!is.numeric(breaks)) breaks <- NA
-        if (!is.numeric(legendBreaks)) legendBreaks <- NA
+        if (!isString(borderColor)) {
+            borderColor <- NA
+        }
+        if (!isString(title)) {
+            title <- NA
+        }
+        if (!is.numeric(breaks)) {
+            breaks <- NA
+        }
+        if (!is.numeric(legendBreaks)) {
+            legendBreaks <- NA
+        }
         interestingGroups(object) <-
             matchInterestingGroups(object, interestingGroups)
         ## Warn and early return if any samples are duplicated.
@@ -291,12 +300,15 @@ NULL
         args <- .pheatmapArgs(args)
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
-            expr = do.call(what = pheatmap::pheatmap, args = args),
+            expr = do.call(what = pheatmap::pheatmap, args = args), # nolint
             warning = function(w) {
-                if (isTRUE(grepl(
-                    pattern = "partial match",
-                    x = as.character(w)
-                ))) {
+                if (
+                    isTRUE(grepl(
+                        pattern = "partial match",
+                        x = as.character(w),
+                        fixed = TRUE
+                    ))
+                ) {
                     invokeRestart("muffleWarning")
                 } else {
                     w
@@ -309,7 +321,6 @@ formals(`plotHeatmap,SE`)[c("color", "legendColor")] <- # nolint
     .formalsList[c("heatmapColor", "heatmapLegendColor")]
 
 
-
 ## Updated 2020-02-19.
 `plotHeatmap,SCE` <- # nolint
     function(object, ...) {
@@ -318,7 +329,6 @@ formals(`plotHeatmap,SE`)[c("color", "legendColor")] <- # nolint
             ...
         )
     }
-
 
 
 #' @rdname plotHeatmap

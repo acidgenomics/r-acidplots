@@ -26,20 +26,21 @@
 NULL
 
 
-
 ## Updated 2022-03-07.
 `plotFeature,SCE` <- # nolint
-    function(object,
-             features,
-             reduction,
-             color,
-             pointSize,
-             pointAlpha,
-             pointsAsNumbers,
-             label,
-             labelSize,
-             dark,
-             legend) {
+    function(
+        object,
+        features,
+        reduction,
+        color,
+        pointSize,
+        pointAlpha,
+        pointsAsNumbers,
+        label,
+        labelSize,
+        dark,
+        legend
+    ) {
         assert(
             isCharacter(features),
             isScalar(reduction),
@@ -116,7 +117,9 @@ NULL
                     )
                 )
                 if (isTRUE(pointsAsNumbers)) {
-                    if (pointSize < 4L) pointSize <- 4L
+                    if (pointSize < 4L) {
+                        pointSize <- 4L
+                    }
                     p <- p +
                         geom_text(
                             mapping = aes(
@@ -220,7 +223,6 @@ formals(`plotFeature,SCE`)[c( # nolint
     "pointsAsNumbers",
     "reduction"
 )]
-
 
 
 #' @rdname plotFeature

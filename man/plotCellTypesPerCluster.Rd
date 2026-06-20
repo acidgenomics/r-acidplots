@@ -11,10 +11,10 @@ plotCellTypesPerCluster(object, markers, ...)
 \S4method{plotCellTypesPerCluster}{SingleCellExperiment,KnownMarkers}(
   object,
   markers,
-  min = 1L,
-  max = Inf,
   reduction = "UMAP",
   expression = c("mean", "sum"),
+  min = 1L,
+  max = Inf,
   headerLevel = 2L,
   ...
 )
@@ -24,12 +24,6 @@ plotCellTypesPerCluster(object, markers, ...)
 
 \item{markers}{Object containing gene markers.}
 
-\item{min}{\code{numeric(1)}.
-Recommended minimum value cutoff.}
-
-\item{max}{\code{numeric(1)}.
-Recommended maximum value cutoff.}
-
 \item{reduction}{\code{vector(1)}.
 Dimension reduction name or index position.}
 
@@ -37,6 +31,12 @@ Dimension reduction name or index position.}
 Calculation to apply.
 Uses \code{\link[base:match.arg]{match.arg()}} internally and defaults to the first
 argument in the \code{character} vector.}
+
+\item{min}{\code{numeric(1)}.
+Recommended minimum value cutoff.}
+
+\item{max}{\code{numeric(1)}.
+Recommended maximum value cutoff.}
 
 \item{headerLevel}{\code{integer(1)} (\code{1}-\code{7}).
 Markdown header level.}

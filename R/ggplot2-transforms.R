@@ -30,7 +30,6 @@ acid_discrete_coord_flip <- # nolint
     }
 
 
-
 #' Remove Y axis padding
 #'
 #' @export

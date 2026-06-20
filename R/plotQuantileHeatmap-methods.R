@@ -29,7 +29,6 @@
 NULL
 
 
-
 ## Updated 2019-07-23.
 .quantileBreaks <- function(object, n = 10L) {
     assert(
@@ -42,27 +41,28 @@ NULL
 }
 
 
-
 ## Updated 2021-02-08.
 `plotQuantileHeatmap,SE` <- # nolint
-    function(object,
-             assay = 1L,
-             interestingGroups = NULL,
-             n = 10L,
-             clusterRows = TRUE,
-             clusterCols = TRUE,
-             showRownames = isTRUE(nrow(object) <= 30L),
-             showColnames = TRUE,
-             treeheightRow = 50L,
-             treeheightCol = 50L,
-             color,
-             legendColor,
-             legend = FALSE,
-             borderColor = NULL,
-             title = NULL,
-             ## Attept to map genes to symbols automatically only when shown.
-             convertGenesToSymbols = showRownames,
-             ...) {
+    function(
+        object,
+        color,
+        legendColor,
+        assay = 1L,
+        interestingGroups = NULL,
+        n = 10L,
+        clusterRows = TRUE,
+        clusterCols = TRUE,
+        showRownames = isTRUE(nrow(object) <= 30L),
+        showColnames = TRUE,
+        treeheightRow = 50L,
+        treeheightCol = 50L,
+        legend = FALSE,
+        borderColor = NULL,
+        title = NULL,
+        ## Attept to map genes to symbols automatically only when shown.
+        convertGenesToSymbols = showRownames,
+        ...
+    ) {
         requireNamespaces("pheatmap")
         validObject(object)
         assert(
@@ -155,12 +155,15 @@ NULL
         args <- .pheatmapArgs(args)
         ## Ignore "partial match of 'just' to 'justification'" warning.
         withCallingHandlers(
-            expr = do.call(what = pheatmap::pheatmap, args = args),
+            expr = do.call(what = pheatmap::pheatmap, args = args), # nolint
             warning = function(w) {
-                if (isTRUE(grepl(
-                    pattern = "partial match",
-                    x = as.character(w)
-                ))) {
+                if (
+                    isTRUE(grepl(
+                        pattern = "partial match",
+                        x = as.character(w),
+                        fixed = TRUE
+                    ))
+                ) {
                     invokeRestart("muffleWarning")
                 } else {
                     w
@@ -173,7 +176,6 @@ formals(`plotQuantileHeatmap,SE`)[c("color", "legendColor")] <- # nolint
     .formalsList[c("heatmapQuantileColor", "heatmapLegendColor")]
 
 
-
 ## Updated 2020-02-19.
 `plotQuantileHeatmap,SCE` <- # nolint
     function(object, ...) {
@@ -182,7 +184,6 @@ formals(`plotQuantileHeatmap,SE`)[c("color", "legendColor")] <- # nolint
             ...
         )
     }
-
 
 
 #' @rdname plotQuantileHeatmap

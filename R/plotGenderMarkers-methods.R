@@ -29,7 +29,6 @@
 NULL
 
 
-
 ## Updated 2021-02-07.
 `plotGenderMarkers,SE` <- # nolint
     function(object, style = "wide", ...) {
@@ -38,7 +37,8 @@ NULL
         assert(isString(organism))
         organism <- camelCase(organism, strict = TRUE)
         markers <- readRDS(system.file(
-            "extdata", "gender-markers.rds",
+            "extdata",
+            "gender-markers.rds",
             package = .pkgName
         ))
         assert(
@@ -71,7 +71,6 @@ NULL
     }
 
 
-
 ## Updated 2020-02-19.
 `plotGenderMarkers,SCE` <- # nolint
     function(object, ...) {
@@ -80,7 +79,6 @@ NULL
             ...
         )
     }
-
 
 
 #' @rdname plotGenderMarkers

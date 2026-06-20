@@ -12,6 +12,9 @@ plotQuantileHeatmap(object, ...)
 
 \S4method{plotQuantileHeatmap}{SummarizedExperiment}(
   object,
+  color = getOption(x = "acid.heatmap.quantile.color", default = viridis::magma),
+  legendColor = getOption(x = "acid.heatmap.legend.color", default =
+    AcidPlots::synesthesia),
   assay = 1L,
   interestingGroups = NULL,
   n = 10L,
@@ -21,9 +24,6 @@ plotQuantileHeatmap(object, ...)
   showColnames = TRUE,
   treeheightRow = 50L,
   treeheightCol = 50L,
-  color = getOption(x = "acid.heatmap.quantile.color", default = viridis::magma),
-  legendColor = getOption(x = "acid.heatmap.legend.color", default =
-    AcidPlots::synesthesia),
   legend = FALSE,
   borderColor = NULL,
   title = NULL,
@@ -35,25 +35,6 @@ plotQuantileHeatmap(object, ...)
 \item{object}{Object.}
 
 \item{...}{Additional arguments.}
-
-\item{assay}{\code{vector(1)}.
-Assay name or index position.}
-
-\item{interestingGroups}{\code{character}.
-Groups of interest to use for visualization.
-Corresponds to factors describing the columns of the object.}
-
-\item{n}{\code{integer(1)}.
-The number of quantile breaks to create.}
-
-\item{clusterRows, clusterCols}{\code{logical(1)}.
-Arrange with hierarchical clustering.}
-
-\item{showRownames, showColnames}{\code{logical(1)}.
-Show row or column names.}
-
-\item{treeheightRow, treeheightCol}{\code{integer(1)}.
-Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{color}{\code{function}, \code{character}, or \code{NULL}.
 Hexadecimal color function or values to use for plot.
@@ -76,6 +57,25 @@ be suitable. If set \code{NULL}, will use the default pheatmap colors.}
 Hexadecimal color function to use for legend labels. Note that hexadecimal
 values are not supported. If set \code{NULL}, will use the default pheatmap
 colors.}
+
+\item{assay}{\code{vector(1)}.
+Assay name or index position.}
+
+\item{interestingGroups}{\code{character}.
+Groups of interest to use for visualization.
+Corresponds to factors describing the columns of the object.}
+
+\item{n}{\code{integer(1)}.
+The number of quantile breaks to create.}
+
+\item{clusterRows, clusterCols}{\code{logical(1)}.
+Arrange with hierarchical clustering.}
+
+\item{showRownames, showColnames}{\code{logical(1)}.
+Show row or column names.}
+
+\item{treeheightRow, treeheightCol}{\code{integer(1)}.
+Size of the row and column dendrograms. Use \code{0} to disable.}
 
 \item{legend}{\code{logical(1)}.
 Show the color legend.}

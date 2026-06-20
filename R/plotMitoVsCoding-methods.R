@@ -17,7 +17,6 @@
 NULL
 
 
-
 #' @rdname plotMitoVsCoding
 #' @name plotMitoVsCoding
 #' @importFrom AcidGenerics plotMitoVsCoding
@@ -26,19 +25,20 @@ NULL
 NULL
 
 
-
 ## Updated 2021-09-10.
 `plotMitoVsCoding,SCE` <- # nolint
-    function(object,
-             interestingGroups = NULL,
-             trendline = FALSE,
-             trans = "log2",
-             labels = list(
-                 "title" = "Mito vs. coding",
-                 "subtitle" = NULL,
-                 "x" = "coding",
-                 "y" = "mito"
-             )) {
+    function(
+        object,
+        interestingGroups = NULL,
+        trendline = FALSE,
+        trans = "log2",
+        labels = list(
+            "title" = "Mito vs. coding",
+            "subtitle" = NULL,
+            "x" = "coding",
+            "y" = "mito"
+        )
+    ) {
         do.call(
             what = .plotQcScatterplot,
             args = list(
@@ -53,7 +53,6 @@ NULL
             )
         )
     }
-
 
 
 #' @rdname plotMitoVsCoding

@@ -93,15 +93,12 @@
 NULL
 
 
-
 #' Improved gene point geom
 #'
 #' @note Updated 2019-07-23.
 #' @noRd
 .genePoint <-
-    function(size = 3L,
-             alpha = 1L,
-             ...) {
+    function(size = 3L, alpha = 1L, ...) {
         geom_point(
             ...,
             size = size,
@@ -109,7 +106,6 @@ NULL
             position = position_jitterdodge(dodge.width = 0.9)
         )
     }
-
 
 
 #' Min max
@@ -124,7 +120,6 @@ NULL
 }
 
 
-
 #' Percent above
 #'
 #' @note Updated 2019-07-31.
@@ -133,7 +128,6 @@ NULL
 .percentAbove <- function(x, threshold) {
     length(x[x > threshold]) / length(x)
 }
-
 
 
 #' Facet wrap the counts plot
@@ -154,7 +148,6 @@ NULL
 }
 
 
-
 #' Display the counts plot in wide format
 #'
 #' @note Updated 2022-05-06.
@@ -172,7 +165,6 @@ NULL
 }
 
 
-
 ## nolint start
 #' Plot counts
 #'
@@ -188,23 +180,25 @@ NULL
 #' - http://environmentalcomputing.net/plotting-with-ggplot-bar-plots-with-error-bars/
 ## nolint end
 `plotCounts,SE` <- # nolint
-    function(object,
-             genes,
-             assay = 1L,
-             interestingGroups = NULL,
-             convertGenesToSymbols = TRUE,
-             geom = c("point", "violin", "boxplot", "bar"),
-             trans = c("identity", "log2", "log10"),
-             line = c("none", "median", "mean", "geometricMean"),
-             legend,
-             style = c("facet", "wide"),
-             sort = FALSE,
-             labels = list(
-                 "title" = NULL,
-                 "subtitle" = NULL,
-                 "sampleAxis" = NULL,
-                 "countAxis" = "counts"
-             )) {
+    function(
+        object,
+        genes,
+        legend,
+        assay = 1L,
+        interestingGroups = NULL,
+        convertGenesToSymbols = TRUE,
+        geom = c("point", "violin", "boxplot", "bar"),
+        trans = c("identity", "log2", "log10"),
+        line = c("none", "median", "mean", "geometricMean"),
+        style = c("facet", "wide"),
+        sort = FALSE,
+        labels = list(
+            "title" = NULL,
+            "subtitle" = NULL,
+            "sampleAxis" = NULL,
+            "countAxis" = "counts"
+        )
+    ) {
         validObject(object)
         if (missing(genes)) {
             genes <- rownames(object)
@@ -294,14 +288,15 @@ NULL
             alertInfo(sprintf("Line denotes {.fun %s}.", line))
             lineFun <- get(x = line, inherits = TRUE)
             assert(is.function(lineFun))
-            p <- p + stat_summary(
-                fun = lineFun,
-                fun.min = lineFun,
-                fun.max = lineFun,
-                geom = "crossbar",
-                show.legend = FALSE,
-                width = 0.5
-            )
+            p <- p +
+                stat_summary(
+                    fun = lineFun,
+                    fun.min = lineFun,
+                    fun.max = lineFun,
+                    geom = "crossbar",
+                    show.legend = FALSE,
+                    width = 0.5
+                )
         }
         ## Color palette.
         p <- p + acid_scale_color_discrete()
@@ -323,16 +318,17 @@ formals(`plotCounts,SE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
-
 ## Updated 2022-03-07.
 `plotCounts,SCE` <- # nolint
-    function(object,
-             genes,
-             assay = c("logcounts", "normcounts"),
-             geom = c("violin", "dots"),
-             perSample = TRUE,
-             legend,
-             title = NULL) {
+    function(
+        object,
+        genes,
+        legend,
+        assay = c("logcounts", "normcounts"),
+        geom = c("violin", "dots"),
+        perSample = TRUE,
+        title = NULL
+    ) {
         validObject(object)
         assay <- match.arg(assay)
         geom <- match.arg(geom)
@@ -356,19 +352,20 @@ formals(`plotCounts,SCE`)[["legend"]] <- # nolint
     .formalsList[["legend"]]
 
 
-
 ## Updated 2022-03-21.
 `plotDots,SCE` <- # nolint
-    function(object,
-             genes,
-             perSample = TRUE,
-             colMin = -2.5,
-             colMax = 2.5,
-             dotMin = 0L,
-             dotScale = 6L,
-             color,
-             legend,
-             title = NULL) {
+    function(
+        object,
+        genes,
+        color,
+        legend,
+        perSample = TRUE,
+        colMin = -2.5,
+        colMax = 2.5,
+        dotMin = 0L,
+        dotScale = 6L,
+        title = NULL
+    ) {
         validObject(object)
         assert(
             hasClusters(object),
@@ -476,17 +473,18 @@ formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
     .formalsList[c("continuousColorPurpleOrange", "legend")]
 
 
-
 ## Updated 2019-09-03.
 `plotViolin,SCE` <- # nolint
-    function(object,
-             genes,
-             assay = c("logcounts", "normcounts"),
-             perSample = TRUE,
-             scale = c("count", "width", "area"),
-             color,
-             legend,
-             title = NULL) {
+    function(
+        object,
+        genes,
+        color,
+        legend,
+        assay = c("logcounts", "normcounts"),
+        perSample = TRUE,
+        scale = c("count", "width", "area"),
+        title = NULL
+    ) {
         validObject(object)
         assert(
             isCharacter(genes),
@@ -575,7 +573,6 @@ formals(`plotDots,SCE`)[c("color", "legend")] <- # nolint
 
 formals(`plotViolin,SCE`)[c("color", "legend")] <- # nolint
     .formalsList[c("discreteColor", "legend")]
-
 
 
 #' @rdname plotCounts
