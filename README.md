@@ -1,6 +1,6 @@
 # AcidPlots
 
-[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](http://bioconda.github.io/recipes/r-acidplots/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
+[![Install with Bioconda](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg)](https://bioconda.github.io/recipes/r-acidplots/README.html) ![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)
 
 Functions for plotting genomic data.
 
@@ -37,3 +37,7 @@ R
 [bioconda]: https://bioconda.github.io/
 [conda]: https://docs.conda.io/
 [r]: https://www.r-project.org/
+
+## License
+
+Apache-2.0 — Copyright 2019 Acid Genomics LLC — see [LICENSE.md](LICENSE.md).
