@@ -11,7 +11,7 @@ Functions for plotting genomic data.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://r.acidgenomics.com/packages/acidplots/}
+  \item \url{https://r.acidgenomics.com/acidplots/}
   \item \url{https://github.com/acidgenomics/r-acidplots/}
   \item Report bugs at \url{https://github.com/acidgenomics/r-acidplots/issues/}
 }

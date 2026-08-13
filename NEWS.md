@@ -1,5 +1,3 @@
-# Release notes
-
 ## AcidPlots 0.7.5 (2026-06-19)
 
 License changes:
@@ -634,5 +632,5 @@ Updated packages depencies and switched to Docker for Travis CI.
 
 Initial release, migrating ggplot2 functions from [basejump][] package.
 
-[basejump]: https://r.acidgenomics.com/packages/basejump/
-[deseqanalysis]: https://r.acidgenomics.com/packages/deseqanalysis/
+[basejump]: https://r.acidgenomics.com/basejump/
+[deseqanalysis]: https://r.acidgenomics.com/deseqanalysis/
